@@ -155,7 +155,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    fontFamily: 'Inter Regular, sans-serif', // Body font
     backgroundColor: '#FAFAFA', // Cloud White for the overall page background
     color: '#222222', // Graphite for main text
   },
@@ -197,7 +196,7 @@ const styles = {
     alignItems: 'center',
   },
   logo: {
-    fontFamily: 'Sora ExtraBold, sans-serif',
+    fontFamily: 'var(--font-sora), sans-serif',
     fontSize: '1.8rem',
     margin: 0,
     color: '#0047FF', // Electric Cobalt for logo highlight (contrasts on white)
@@ -241,7 +240,7 @@ const styles = {
     borderRadius: '8px',
     cursor: 'pointer',
     fontSize: '0.85rem',
-    fontFamily: 'Inter Regular, sans-serif',
+    fontFamily: 'var(--font-inter), sans-serif',
     marginLeft: '1rem',
     transition: 'background-color 0.3s ease',
   },
@@ -288,14 +287,14 @@ const styles = {
     padding: '0 2rem',
   },
   heroTitle: {
-    fontFamily: 'Sora ExtraBold, sans-serif',
+    fontFamily: 'var(--font-sora), sans-serif',
     fontSize: '3rem',
     color: '#FAFAFA',
     marginBottom: '0.5rem',
     lineHeight: '1.2',
   },
   heroSubtitle: {
-    fontFamily: 'Inter Regular, sans-serif',
+    fontFamily: 'var(--font-inter), sans-serif',
     fontSize: '1.2rem',
     color: '#FAFAFA',
     maxWidth: '600px',
@@ -307,7 +306,7 @@ const styles = {
     padding: '1.5rem 2rem', // Padding within the section
     backgroundColor: '#FAFAFA', // Match page background
     color: '#222222', // Graphite for text
-    fontFamily: 'Inter Regular, sans-serif',
+    fontFamily: 'var(--font-inter), sans-serif',
     maxWidth: '1200px', // Align with grid max-width
     margin: '0 auto 2rem auto', // Center and add bottom margin
     // No box-shadow or border-radius as requested "not in a block with shadows"
@@ -334,7 +333,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-start',
     gap: '1rem',
-    fontFamily: 'Inter Regular, sans-serif',
+    fontFamily: 'var(--font-inter), sans-serif',
   },
 
   // Specific Card Styles (Overrides/Additions to base card)
@@ -347,7 +346,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-start', // Align to start for text, but input/button centered
     gap: '1rem',
-    fontFamily: 'Inter Regular, sans-serif',
+    fontFamily: 'var(--font-inter), sans-serif',
     width: '100%', // Ensure it takes full width of its grid column
   },
   aiCoachText: { // Text below AI Coach title
@@ -376,7 +375,7 @@ const styles = {
     minHeight: '60px', // Taller default height
     resize: 'vertical', // User can resize vertically
     backgroundColor: '#f9f9f9',
-    fontFamily: 'Inter Regular, sans-serif',
+    fontFamily: 'var(--font-inter), sans-serif',
     fontSize: '1rem',
     alignSelf: 'center', // Keep input centered
   },
@@ -387,7 +386,7 @@ const styles = {
     padding: '0.8rem 1.5rem',
     borderRadius: '8px',
     cursor: 'pointer',
-    fontFamily: 'Space Grotesk SemiBold, sans-serif',
+    fontFamily: 'var(--font-space-grotesk), sans-serif',
     fontSize: '1rem',
     alignSelf: 'flex-end', // Aligned to right as per Figma
     marginTop: '0.5rem',
@@ -403,7 +402,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-start',
     gap: '1rem',
-    fontFamily: 'Inter Regular, sans-serif',
+    fontFamily: 'var(--font-inter), sans-serif',
     width: '100%', // Ensure it takes full width of its grid column
   },
   viewPlanButton: {
@@ -413,7 +412,7 @@ const styles = {
     padding: '0.8rem 1.5rem',
     borderRadius: '8px',
     cursor: 'pointer',
-    fontFamily: 'Space Grotesk SemiBold, sans-serif',
+    fontFamily: 'var(--font-space-grotesk), sans-serif',
     fontSize: '1rem',
     marginTop: '1rem',
     transition: 'background-color 0.3s ease',
@@ -428,7 +427,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-start',
     gap: '1rem',
-    fontFamily: 'Inter Regular, sans-serif',
+    fontFamily: 'var(--font-inter), sans-serif',
     width: '100%', // Ensure it takes full width of its grid column
     overflowX: 'hidden',
   },
