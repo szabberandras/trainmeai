@@ -1,3 +1,4 @@
+// app/dashboard/page.js
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -42,6 +43,27 @@ export default function DashboardPage() {
     return null; 
   }
 
+  // --- Image Strategy Placeholder Logic (Now using Firebase Storage URLs) ---
+  // In a real app, this would come from Firestore based on user's first plan or current goal
+  const defaultHeroImageUrl = "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fgabin-vallet-J154nEkpzlQ-unsplash.jpg?alt=media&token=bfcc204b-747f-494c-ac86-53b0f1f1c3b4"; 
+  const heroImageForUser = defaultHeroImageUrl; // For now, always use the default hero image
+
+  const pastPlanImages = {
+    "Yoga for Beginners": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fthe-nix-company-biX8sBfNcPc-unsplash.jpg?alt=media&token=21cdc6cb-d8e9-4e8f-9d97-238b0d798427",
+    "Cardio Blast": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Frisen-wang-20jX9b35r_M-unsplash.jpg?alt=media&token=c94ff3e1-7dbd-49b9-82a2-37d6decfd7f4",
+    "Strength Foundations": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fsamuel-girven-VJ2s0c20qCo-unsplash.jpg?alt=media&token=0b51bc15-a0e1-4421-b43d-5102202208b7",
+    "Endurance Build": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fbradley-dunn-fjpl1yrNvNQ-unsplash.jpg?alt=media&token=d8a1d533-4afe-4703-b0cb-310353c70f6f",
+    "Recovery & Mobility": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fcarl-barcelo-nqUHQkuVj3c-unsplash.jpg?alt=media&token=748ecbe7-224f-4aa8-ae97-bcaa0d4dc0c2",
+  };
+
+  const pastPlanItemsData = [
+    { title: "Yoga for Beginners", imageKey: "Yoga for Beginners" },
+    { title: "Cardio Blast", imageKey: "Cardio Blast" },
+    { title: "Strength Foundations", imageKey: "Strength Foundations" },
+    { title: "Endurance Build", imageKey: "Endurance Build" },
+    { title: "Recovery & Mobility", imageKey: "Recovery & Mobility" },
+  ];
+
   // --- Dashboard Content (Visible after successful authentication) ---
   return (
     <div style={styles.fullPageContainer}>
@@ -52,9 +74,7 @@ export default function DashboardPage() {
         </div>
         <nav style={styles.navbarNav}>
           <a href="/dashboard" style={styles.navLink}>Dashboard</a>
-          <a href="#" style={styles.navLink}>Workouts</a>
-          <a href="#" style={styles.navLink}>Plans</a>
-          <a href="#" style={styles.navLink}>Nutrition</a>
+          <a href="/training-plans" style={styles.navLink}>Training Plans</a>
           <a href="#" style={styles.navLink}>Community</a>
         </nav>
         <div style={styles.headerRight}>
@@ -76,8 +96,8 @@ export default function DashboardPage() {
         {/* Hero Section - "Welcome back, Chloe" */}
         <section style={styles.heroSection}>
           <img 
-            src="https://images.unsplash.com/photo-1541334994270-b753a8089ae1?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-            alt="Cyclist by the lake" 
+            src={heroImageForUser} // Uses the dynamic hero image URL from Firebase Storage
+            alt="Fitness journey" 
             style={styles.heroImage} 
           />
           <div style={styles.heroOverlay}>
@@ -127,10 +147,10 @@ export default function DashboardPage() {
           <div style={styles.cardPastPlansCarousel}>
             <h3>Past Training Plans</h3>
             <div style={styles.carouselContainer}>
-              {[...Array(5)].map((_, index) => ( // Placeholder for 5 items
+              {pastPlanItemsData.map((item, index) => ( // Placeholder for 5 items
                 <div key={index} style={styles.carouselItem}>
-                  <img src={`https://via.placeholder.com/120x120?text=Plan+${index+1}`} alt={`Plan ${index+1}`} style={styles.carouselImage} />
-                  <p style={styles.carouselText}>Plan Title {index+1}</p>
+                  <img src={pastPlanImages[item.imageKey]} alt={item.title} style={styles.carouselImage} />
+                  <p style={styles.carouselText}>{item.title}</p>
                 </div>
               ))}
             </div>
@@ -206,7 +226,7 @@ const styles = {
     gap: '1.5rem',
   },
   navLink: {
-    color: '#222222', // Changed to Graphite
+    color: '#222222', // Graphite
     textDecoration: 'none',
     fontSize: '1rem',
     fontWeight: 'normal',
