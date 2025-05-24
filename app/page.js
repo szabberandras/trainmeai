@@ -27,7 +27,7 @@ export default function HomePage() {
   useEffect(() => {
     console.log('useEffect triggered. User:', user, 'Loading:', loading);
     if (user && !loading) {
-      console.log('User detected and not loading. Preparing to redirect to /dashboard...'); // <-- DEBUG LOG
+      console.log('User detected and not loading. Preparing to redirect to /dashboard...');
       router.push('/dashboard'); 
     } else if (!user && !loading && !authError) { 
       console.log('No user, not loading, no auth error. Showing login/register form.');
@@ -84,71 +84,95 @@ export default function HomePage() {
     card: {
       backgroundColor: '#fff',
       padding: '2.5rem',
-      borderRadius: '8px',
-      boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+      borderRadius: '12px', // More rounded to match brand style
+      boxShadow: '0 4px 15px rgba(0,0,0,0.1)', // Slightly softer shadow
       width: '100%',
       maxWidth: '400px',
       textAlign: 'center',
+      display: 'flex', // For better alignment of content inside
+      flexDirection: 'column',
+      alignItems: 'center',
     },
     h2: {
+      fontFamily: 'var(--font-space-grotesk), sans-serif', // Using brand font for headers
+      fontWeight: '600',
       marginBottom: '1.5rem',
-      color: '#555',
+      color: '#222222', // Graphite for text
     },
     input: {
-      width: 'calc(100% - 20px)',
-      padding: '10px',
-      margin: '0.5rem 0',
+      width: '320px', // Fixed width to match button width visually (adjust as needed)
+      padding: '12px 15px', // Larger padding for a more substantial feel
+      margin: '0.6rem 0',
       border: '1px solid #ddd',
-      borderRadius: '4px',
+      borderRadius: '8px', // Slightly rounded corners
+      fontSize: '1rem',
+      fontFamily: 'var(--font-inter), sans-serif', // Using brand font
+      color: '#222222', // Regular text color
+      backgroundColor: '#fefefe', // Light background for inputs
     },
-    button: {
-      backgroundColor: '#333',
+    // Placeholder styling for input (requires a separate CSS class or global style for full control)
+    // For now, we'll try to get it visually lighter with color property
+    // Future: Use CSS modules or global CSS for ::placeholder pseudo-element.
+    inputPlaceholder: { 
+      color: '#999', // Lighter placeholder color (visual only, not actual code property)
+    },
+
+    button: { // Base button style for Register/Login
+      backgroundColor: '#0047FF', // Electric Cobalt primary color
       color: '#fff',
       padding: '12px 20px',
       border: 'none',
-      borderRadius: '4px',
+      borderRadius: '12px', // Rounded corners to match brand
       cursor: 'pointer',
       fontSize: '1rem',
+      fontFamily: 'var(--font-space-grotesk), sans-serif', // Using brand font
+      fontWeight: '600',
+      marginTop: '1.5rem', // More space above
+      width: '320px', // Fixed width to match inputs visually
+      transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
+      boxShadow: '0 4px 10px rgba(0, 71, 255, 0.2)', // Primary button shadow
+    },
+    googleButton: { // Adjusted for smaller, more concise look
+      backgroundColor: '#4285F4', // Google blue (keep for branding)
+      color: '#fff',
+      padding: '8px 15px', // Smaller padding
+      border: 'none',
+      borderRadius: '8px', // Slightly less rounded than primary
+      cursor: 'pointer',
+      fontSize: '0.9rem', // Smaller font size
+      fontFamily: 'var(--font-inter), sans-serif', // Inter for a standard look
       marginTop: '1rem',
-      width: '100%',
-      transition: 'background-color 0.3s ease',
-    },
-    googleButton: {
-      backgroundColor: '#4285F4',
-      color: '#fff',
-      padding: '12px 20px',
-      border: 'none',
-      borderRadius: '4px',
-      cursor: 'pointer',
-      fontSize: '1rem',
-      marginTop: '0.5rem',
-      width: '100%',
-      transition: 'background-color 0.3s ease',
+      width: '250px', // Smaller width for social button
+      transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
+      boxShadow: '0 2px 5px rgba(0,0,0,0.1)', // Lighter shadow
     },
     toggleButton: {
       backgroundColor: 'transparent',
-      color: '#555',
+      color: '#0047FF', // Use primary Electric Cobalt for links
       border: 'none',
       cursor: 'pointer',
-      marginTop: '1rem',
+      marginTop: '1.5rem', // More space
       textDecoration: 'underline',
       fontSize: '0.9rem',
+      fontFamily: 'var(--font-inter), sans-serif',
     },
-    logoutButton: { 
-      backgroundColor: '#e74c3c', 
+    logoutButton: {
+      backgroundColor: '#FF4C4C', // Pulse Coral (for logout)
       color: '#fff',
       padding: '10px 15px',
       border: 'none',
-      borderRadius: '4px',
+      borderRadius: '8px',
       cursor: 'pointer',
       fontSize: '0.9rem',
       marginTop: '2rem',
+      fontFamily: 'var(--font-inter), sans-serif',
       boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
     },
     error: {
-      color: '#e74c3c',
+      color: '#FF4C4C', // Pulse Coral for errors
       marginTop: '1rem',
       fontWeight: 'bold',
+      fontFamily: 'var(--font-inter), sans-serif',
     },
   };
 
@@ -204,7 +228,7 @@ export default function HomePage() {
 
       <button
         onClick={handleGoogleSignIn}
-        style={formStyles.googleButton} 
+        style={formStyles.googleButton}
       >
         Sign in with Google
       </button>
