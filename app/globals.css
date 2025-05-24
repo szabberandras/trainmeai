@@ -1,3 +1,6 @@
+/* app/globals.css */
+
+/* Default Next.js global variables and resets */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -13,15 +16,23 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevent horizontal scrollbars from shapes */
+  margin: 0; /* Ensure no default margin */
+  padding: 0; /* Ensure no default padding */
+  min-height: 100vh; /* Ensure body takes full height */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif; /* Fallback for default Next.js if font not loaded */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Apply global fonts and colors from your brand guidelines */
+  font-family: var(--font-inter), sans-serif; /* Inter for global body font */
+  color: #222222; /* Graphite for global text color */
+  background-color: #FAFAFA; /* Cloud White for global background */
 }
 
 * {
@@ -39,4 +50,73 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+/* Custom CSS for gradient and animated shapes */
+.gradient-background {
+    background: linear-gradient(135deg, #0047FF, #D1FF00, #FF4C4C); /* Electric Cobalt, Energy Lime, Pulse Coral */
+}
+
+.shape-one, .shape-two, .shape-three {
+    position: absolute;
+    border-radius: 50%; /* Start as circles */
+    filter: blur(70px); /* Soften the edges */
+    /* Specific top/left/width/height set in JSX inline styles for layout.js */
+}
+
+.shape-one {
+    background-color: #0047FF; /* Electric Cobalt */
+    animation: moveShapeOne 15s infinite alternate ease-in-out;
+}
+
+.shape-two {
+    background-color: #D1FF00; /* Energy Lime */
+    animation: moveShapeTwo 18s infinite alternate ease-in-out;
+}
+
+.shape-three {
+    background-color: #FF4C4C; /* Pulse Coral */
+    animation: moveShapeThree 20s infinite alternate ease-in-out;
+}
+
+@keyframes moveShapeOne {
+    0% { transform: translate(0, 0) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { transform: translate(20vw, 10vh) scale(1.1); border-radius: 40% 60% 70% 30% / 30% 70% 40% 60%; }
+    100% { transform: translate(0, 0) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+@keyframes moveShapeTwo {
+    0% { transform: translate(0, 0) scale(1); border-radius: 70% 30% 60% 40% / 40% 60% 30% 70%; }
+    50% { transform: translate(-15vw, 15vh) scale(1.05); border-radius: 30% 70% 40% 60% / 60% 40% 70% 30%; }
+    100% { transform: translate(0, 0) scale(1); border-radius: 70% 30% 60% 40% / 40% 60% 30% 70%; }
+}
+
+@keyframes moveShapeThree {
+    0% { transform: translate(0, 0) scale(1); border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+    50% { transform: translate(10vw, -20vh) scale(1.15); border-radius: 80% 20% 80% 20% / 20% 80% 20% 80%; }
+    100% { transform: translate(0, 0) scale(1); border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+}
+
+/* Styles for ::placeholder and OR separator for app/page.js */
+input::placeholder {
+  color: #aaa; /* Lighter placeholder color */
+  opacity: 1; /* Ensures color is applied consistently */
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: calc(50% - 20px); /* Adjust based on OR text width */
+    height: 1px;
+    background-color: #eee;
+}
+
+.or-separator::before {
+    left: 0;
+}
+
+.or-separator::after {
+    right: 0;
 }

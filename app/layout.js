@@ -1,23 +1,23 @@
 // app/layout.js
 import './globals.css';
-import { Inter, Sora, Space_Grotesk } from 'next/font/google'; // Import the fonts
+import { Inter, Sora, Space_Grotesk } from 'next/font/google';
 
 // Define your font loaders
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter', // Define CSS variable for Inter
-  weight: ['400', '500', '600'], // Specify weights used in your design
+  variable: '--font-inter',
+  weight: ['400', '500', '600'],
 });
 
 const sora = Sora({
   subsets: ['latin'],
-  variable: '--font-sora', // Define CSS variable for Sora
+  variable: '--font-sora',
   weight: ['800'], // ExtraBold
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-space-grotesk', // Define CSS variable for Space Grotesk
+  variable: '--font-space-grotesk',
   weight: ['600'], // SemiBold
 });
 
@@ -28,70 +28,83 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    // Apply font variables to the html tag using template literals
-    <html 
-      lang="en" 
+    <html
+      lang="en"
       className={`${inter.variable} ${sora.variable} ${spaceGrotesk.variable}`}
     >
-      <body>
-        {/* The overall container, header, main, and footer from previous layout */}
-        <div style={styles.container}>
-          <header style={styles.header}>
-            <h1 style={styles.logo}>FitCoach AI</h1>
-          </header>
-          <main style={styles.mainContent}>
-            {children} 
-          </main>
-          <footer style={styles.footer}>
-            <p>&copy; {new Date().getFullYear()} FitCoach AI. All rights reserved.</p>
-          </footer>
+      <body style={styles.body}> {/* Apply body styles */}
+        {/* Animated background shapes */}
+        <div style={styles.backgroundContainer}>
+          <div className="gradient-background" style={styles.gradientBackground}></div>
+          <div className="shape-one" style={styles.shapeOne}></div>
+          <div className="shape-two" style={styles.shapeTwo}></div>
+          <div className="shape-three" style={styles.shapeThree}></div>
+        </div>
+
+        {/* Main content wrapper where all pages (login, dashboard, etc.) will render */}
+        <div style={styles.contentWrapper}>
+          {children}
         </div>
       </body>
     </html>
   );
 }
 
-// --- Styles Object (Inline Styles for RootLayout) ---
-// Updated to use CSS variables for fonts
+// --- Styles Object for app/layout.js ---
 const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-    fontFamily: 'var(--font-inter), sans-serif', // Use Inter for body by default
-    color: '#222222', // Graphite for main text, from your palette
-    backgroundColor: '#FAFAFA', // Cloud White for the page background
-  },
-  header: {
-    backgroundColor: '#FAFAFA', // Cloud White
-    color: '#222222', // Graphite
-    padding: '1rem 2rem', // Adjusted padding
-    textAlign: 'center',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-    // No fixed positioning here, as it's a global layout header
-  },
-  logo: {
-    fontFamily: 'var(--font-sora), sans-serif', // Sora for logo
-    fontSize: '1.8rem',
+  body: {
+    overflow: 'hidden', // Prevent scrollbars from showing due to large shapes
     margin: 0,
-    color: '#0047FF', // Electric Cobalt
-    fontWeight: '800', // Explicitly use Sora ExtraBold weight
+    padding: 0,
+    minHeight: '100vh',
+    width: '100vw',
+    position: 'relative', // Ensure body is positioned for absolute children
   },
-  mainContent: {
-    flexGrow: 1,
-    padding: '2rem',
+  backgroundContainer: {
+    position: 'fixed', // Fixed to cover entire viewport
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    zIndex: -1, // Send to background
+    overflow: 'hidden', // Hide overflow from shapes
+  },
+  gradientBackground: {
+    position: 'absolute',
+    inset: 0, // Top, right, bottom, left 0
+    // background handled by CSS class gradient-background in globals.css
+  },
+  // Shape positioning and sizing (animated via CSS keyframes in globals.css)
+  shapeOne: {
+    width: '384px', // w-96 = 384px
+    height: '384px', // h-96 = 384px
+    top: '25%', // top-1/4
+    left: '25%', // left-1/4
+    transform: 'translate(-50%, -50%)', // -translate-x-1/2 -translate-y-1/2
+  },
+  shapeTwo: {
+    width: '320px', // w-80 = 320px
+    height: '320px', // h-80 = 320px
+    bottom: '25%', // bottom-1/4
+    right: '25%', // right-1/4
+    transform: 'translate(50%, 50%)', // translate-x-1/2 translate-y-1/2
+  },
+  shapeThree: {
+    width: '288px', // w-72 = 288px
+    height: '288px', // h-72 = 288px
+    top: '50%', // top-1/2
+    left: '50%', // left-1/2
+    transform: 'translate(-50%, -50%)', // -translate-x-1/2 -translate-y-1/2
+  },
+  contentWrapper: {
+    position: 'relative', // Ensure content is above the background
+    zIndex: 1,
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
-    width: '100%', // Ensure main content takes full width
-  },
-  footer: {
-    backgroundColor: '#222222', // Graphite
-    color: '#FAFAFA', // Cloud White
-    padding: '1rem 2rem',
-    textAlign: 'center',
-    marginTop: 'auto',
+    justifyContent: 'center',
+    minHeight: '100vh',
     width: '100%',
+    padding: '0', // Changed padding from 2rem to 0
+    backgroundColor: 'transparent', // Make the wrapper transparent
   },
 };

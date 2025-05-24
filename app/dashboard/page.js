@@ -243,7 +243,7 @@ const styles = {
   searchIcon: {
     fontSize: '1.2rem',
     cursor: 'pointer',
-    color: '#222222', // Changed to Graphite
+    color: '#222222', // Graphite
   },
   profilePic: {
     width: '40px',
