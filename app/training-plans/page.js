@@ -1,234 +1,174 @@
 // app/training-plans/page.js
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/lib/firebase';
-import { signOut } from 'firebase/auth';
+// No imports for useRouter, useAuthState, auth, signOut here;
+// These are now handled in LayoutClientWrapper (the global layout component).
 
 export default function TrainingPlansPage() {
-  const [user, loading, error] = useAuthState(auth);
-  const router = useRouter();
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      alert('Logged out successfully!');
-      router.push('/'); // Redirect to home/login page after logout
-    } catch (err) {
-      console.error('Logout Error:', err);
-    }
-  };
-
-  if (loading) {
-    return (
-      <div style={styles.loadingContainer}>
-        <p>Loading your training plan...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    console.error("Authentication error:", error);
-    return (
-      <div style={styles.errorContainer}>
-        <p>Error: {error.message}</p>
-        <p>Please try logging in again.</p>
-      </div>
-    );
-  }
-
-  if (!user) {
-    router.push('/'); 
-    return null; 
-  }
+  // Dummy user for display if context is not fully wired yet
+  const dummyUser = { email: "user@example.com", displayName: "Chloe" }; 
+  
+  // Image URL for the logo (from app/page.js)
+  const headerLogoImageUrl = "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2Ftrainmeai.png?alt=media&token=a9fad87b-adbc-4530-a11c-95ed2694bdf6";
 
   // --- Training Plan Page Content ---
   return (
-    <div style={styles.fullPageContainer}>
-      {/* Top Navigation Header (from Dashboard, repeated for this page) */}
-      <header style={styles.header}>
-        <div style={styles.headerLeft}>
-          <h1 style={styles.logo}>TrainMeAI</h1>
-        </div>
-        <nav style={styles.navbarNav}>
-          <a href="/dashboard" style={styles.navLink}>Dashboard</a>
-          <a href="/training-plans" style={styles.navLink}>Training Plans</a>
-          <a href="#" style={styles.navLink}>Community</a>
-        </nav>
-        <div style={styles.headerRight}>
-          <span style={styles.searchIcon}>🔍</span> 
-          <img 
-            src="https://via.placeholder.com/40/222222/FAFAFA" 
-            alt="User Profile" 
-            style={styles.profilePic} 
-          />
-          <button onClick={handleLogout} style={styles.logoutButton}>
-            Logout
-          </button>
-        </div>
-      </header>
+    <div style={styles.trainingPlanContentWrapper}> {/* Wrapper for training plan specific content */}
+      <div style={styles.container}>
+          {/* Logo Section from HTML Template - Replaced interactive SVG with static image */}
+          <div style={styles.logoSection}>
+              {/* Using the same logo image as the global header */}
+              <img src={headerLogoImageUrl} alt="TrainMeAI Logo" style={styles.brandLogoImage} /> 
+              <h1 style={styles.brandName}>trainme <span style={styles.brandAccentColor}>AI</span></h1>
+              <p style={styles.tagline}>Empowering movement through intelligence</p>
+          </div>
 
-      {/* Main Content Area for the Training Plan */}
-      <main style={styles.mainContent}>
-        <div style={styles.container}>
-            {/* Logo Section - Keeping simple, not the interactive SVG picker for now */}
-            <div style={styles.logoSection}>
-                <h1 style={styles.brandName}>trainme <span style={styles.brandAccentColor}>AI</span></h1>
-                <p style={styles.tagline}>Empowering movement through intelligence</p>
+          {/* Training Plan Template */}
+          <div style={styles.templateSection}>
+              <div style={styles.templateHeader}>
+                  <h2 style={styles.planTitle}>Marathon Training Plan</h2>
+                  <p style={styles.planSubtitle}>AI-Personalized 16-Week Program</p>
+                  <div style={styles.planMeta}>
+                      <div style={styles.metaItem}>
+                          <span style={styles.metaLabel}>Duration</span>
+                          <span style={styles.metaValue}>16 Weeks</span>
+                      </div>
+                      <div style={styles.metaItem}>
+                          <span style={styles.metaLabel}>Target</span>
+                          <span style={styles.metaValue}>Sub 4:00</span>
+                      </div>
+                      <div style={styles.metaItem}>
+                          <span style={styles.metaLabel}>Experience</span>
+                          <span style={styles.metaValue}>Intermediate</span>
+                      </div>
+                      <div style={styles.metaItem}>
+                          <span style={styles.metaLabel}>Weekly Miles</span>
+                          <span style={styles.metaValue}>35-55</span>
+                      </div>
+                  </div>
+              </div>
+
+              <div style={styles.templateBody}>
+                  <h3 style={styles.weekOverviewTitle}>Week 1 Overview</h3>
+                  
+                  <div className="hide-scrollbar" style={styles.weekOverviewGrid}> {/* Added hide-scrollbar class */}
+                      {/* Example Day Card 1 */}
+                      <div style={styles.dayCard}>
+                          <div style={styles.dayHeader}>
+                              <span style={styles.dayName}>Monday</span>
+                              <span style={styles.dayType}>Easy</span>
+                          </div>
+                          <div style={styles.workoutDetails}>
+                              <div style={styles.workoutItem}>
+                                  <span>Easy Run</span>
+                                  <span>5 miles</span>
+                              </div>
+                              <div style={styles.workoutItem}>
+                                  <span>Pace</span>
+                                  <span>9:30/mile</span>
+                              </div>
+                          </div>
+                          <div style={styles.intensityBar}>
+                              <div style={{...styles.intensityFill, width: '40%'}}></div>
+                          </div>
+                      </div>
+
+                      {/* Example Day Card 2 */}
+                      <div style={styles.dayCard}>
+                          <div style={styles.dayHeader}>
+                              <span style={styles.dayName}>Tuesday</span>
+                              <span style={styles.dayType}>Speed</span>
+                          </div>
+                          <div style={styles.workoutDetails}>
+                              <div style={styles.workoutItem}>
+                                  <span>Track Workout</span>
+                                  <span>6x800m</span>
+                              </div>
+                               <div style={styles.workoutItem}>
+                                  <span>Target Pace</span>
+                                  <span>7:45/mile</span>
+                              </div>
+                          </div>
+                          <div style={styles.intensityBar}>
+                              <div style={{...styles.intensityFill, width: '85%'}}></div>
+                          </div>
+                      </div>
+
+                      {/* More Day Cards (simplified for brevity, you'll extend this with your data) */}
+                      <div style={styles.dayCard}> {/* Wednesday */}
+                          <div style={styles.dayHeader}><span style={styles.dayName}>Wednesday</span><span style={styles.dayType}>Recovery</span></div>
+                          <div style={styles.workoutDetails}>
+                              <div style={styles.workoutItem}><span>Cross Training</span><span>45 min</span></div>
+                              <div style={styles.workoutItem}><span>Activity</span><span>Cycling</span></div>
+                          </div>
+                          <div style={styles.intensityBar}><div style={{width: '30%'}}></div></div>
+                      </div>
+                      <div style={styles.dayCard}> {/* Thursday */}
+                          <div style={styles.dayHeader}><span style={styles.dayName}>Thursday</span><span style={styles.dayType}>Tempo</span></div>
+                          <div style={styles.workoutDetails}>
+                              <div style={styles.workoutItem}><span>Tempo Run</span><span>4 miles</span></div>
+                              <div style={styles.workoutItem}><span>Pace</span><span>8:15/mile</span></div>
+                          </div>
+                          <div style={styles.intensityBar}><div style={{width: '70%'}}></div></div>
+                      </div>
+                      <div style={styles.dayCard}> {/* Friday */}
+                          <div style={styles.dayHeader}><span style={styles.dayName}>Friday</span><span style={styles.dayType}>Rest</span></div>
+                          <div style={styles.workoutDetails}>
+                              <div style={styles.workoutItem}><span>Complete Rest</span><span>Recovery</span></div>
+                              <div style={styles.workoutItem}><span>Focus</span><span>Nutrition</span></div>
+                          </div>
+                          <div style={styles.intensityBar}><div style={{width: '0%'}}></div></div>
+                      </div>
+                      <div style={styles.dayCard}> {/* Saturday */}
+                          <div style={styles.dayHeader}><span style={styles.dayName}>Saturday</span><span style={styles.dayType}>Easy</span></div>
+                          <div style={styles.workoutDetails}>
+                              <div style={styles.workoutItem}><span>Easy Run</span><span>6 miles</span></div>
+                              <div style={styles.workoutItem}><span>Pace</span><span>9:45/mile</span></div>
+                          </div>
+                          <div style={styles.intensityBar}><div style={{width: '45%'}}></div></div>
+                      </div>
+                      <div style={{...styles.dayCard, ...styles.dayCardHighlight}}> {/* Sunday */}
+                          <div style={styles.dayHeader}><span style={styles.dayName}>Sunday</span><span style={styles.dayTypeLongRun}>Long Run</span></div>
+                          <div style={styles.workoutDetails}>
+                              <div style={styles.workoutItem}><span>Long Run</span><span>12 miles</span></div>
+                              <div style={styles.workoutItem}><span>Pace</span><span>9:00/mile</span></div>
+                          </div>
+                          <div style={styles.intensityBar}><div style={{width: '60%'}}></div></div>
+                      </div>
+                  </div>
+
+                  <div style={styles.actionButtons}>
+                      <button style={styles.btnPrimary} onClick={() => alert('Edit mode activated!')}>✏️ Edit Plan</button>
+                      <button style={styles.btnSecondary} onClick={() => alert('Generating PDF...')}>📄 Export PDF</button>
+                      <button style={styles.btnSecondary} onClick={() => alert('Week 1 activated!')}>🚀 Start Week 1</button>
+                  </div>
+              </div>
+          </div>
+
+          {/* Progress Section */}
+          <div style={styles.progressSection}>
+            <h3 style={styles.progressTitle}>Your AI-Driven Insights</h3>
+            <div style={styles.progressGrid}>
+              <div style={styles.progressItem}>
+                  <span style={styles.progressValue}>94%</span>
+                  <span style={styles.progressLabel}>Plan Compatibility</span>
+              </div>
+              <div style={styles.progressItem}>
+                  <span style={styles.progressValue}>8.2</span>
+                  <span style={styles.progressLabel}>Predicted Finish</span>
+              </div>
+              <div style={styles.progressItem}>
+                  <span style={styles.progressValue}>76%</span>
+                  <span style={styles.progressLabel}>Injury Prevention</span>
+              </div>
+              <div style={styles.progressItem}>
+                  <span style={styles.progressValue}>3:52</span>
+                  <span style={styles.progressLabel}>Target Time</span>
+              </div>
             </div>
-
-            {/* Training Plan Template */}
-            <div style={styles.templateSection}>
-                <div style={styles.templateHeader}>
-                    <h2 style={styles.planTitle}>Marathon Training Plan</h2>
-                    <p style={styles.planSubtitle}>AI-Personalized 16-Week Program</p>
-                    <div style={styles.planMeta}>
-                        <div style={styles.metaItem}>
-                            <span style={styles.metaLabel}>Duration</span>
-                            <span style={styles.metaValue}>16 Weeks</span>
-                        </div>
-                        <div style={styles.metaItem}>
-                            <span style={styles.metaLabel}>Target</span>
-                            <span style={styles.metaValue}>Sub 4:00</span>
-                        </div>
-                        <div style={styles.metaItem}>
-                            <span style={styles.metaLabel}>Experience</span>
-                            <span style={styles.metaValue}>Intermediate</span>
-                        </div>
-                        <div style={styles.metaItem}>
-                            <span style={styles.metaLabel}>Weekly Miles</span>
-                            <span style={styles.metaValue}>35-55</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div style={styles.templateBody}>
-                    <h3 style={styles.weekOverviewTitle}>Week 1 Overview</h3>
-                    
-                    <div style={styles.weekOverviewGrid}>
-                        {/* Example Day Card 1 */}
-                        <div style={styles.dayCard}>
-                            <div style={styles.dayHeader}>
-                                <span style={styles.dayName}>Monday</span>
-                                <span style={styles.dayType}>Easy</span>
-                            </div>
-                            <div style={styles.workoutDetails}>
-                                <div style={styles.workoutItem}>
-                                    <span>Easy Run</span>
-                                    <span>5 miles</span>
-                                </div>
-                                <div style={styles.workoutItem}>
-                                    <span>Pace</span>
-                                    <span>9:30/mile</span>
-                                </div>
-                            </div>
-                            <div style={styles.intensityBar}>
-                                <div style={{...styles.intensityFill, width: '40%'}}></div>
-                            </div>
-                        </div>
-
-                        {/* Example Day Card 2 */}
-                        <div style={styles.dayCard}>
-                            <div style={styles.dayHeader}>
-                                <span style={styles.dayName}>Tuesday</span>
-                                <span style={styles.dayType}>Speed</span>
-                            </div>
-                            <div style={styles.workoutDetails}>
-                                <div style={styles.workoutItem}>
-                                    <span>Track Workout</span>
-                                    <span>6x800m</span>
-                                </div>
-                                 <div style={styles.workoutItem}>
-                                    <span>Target Pace</span>
-                                    <span>7:45/mile</span>
-                                </div>
-                            </div>
-                            <div style={styles.intensityBar}>
-                                <div style={{...styles.intensityFill, width: '85%'}}></div>
-                            </div>
-                        </div>
-
-                        {/* More Day Cards (simplified for brevity, you'll extend this with your data) */}
-                        <div style={styles.dayCard}> {/* Wednesday */}
-                            <div style={styles.dayHeader}><span style={styles.dayName}>Wednesday</span><span style={styles.dayType}>Recovery</span></div>
-                            <div style={styles.workoutDetails}>
-                                <div style={styles.workoutItem}><span>Cross Training</span><span>45 min</span></div>
-                                <div style={styles.workoutItem}><span>Activity</span><span>Cycling</span></div>
-                            </div>
-                            <div style={styles.intensityBar}><div style={{width: '30%'}}></div></div>
-                        </div>
-                        <div style={styles.dayCard}> {/* Thursday */}
-                            <div style={styles.dayHeader}><span style={styles.dayName}>Thursday</span><span style={styles.dayType}>Tempo</span></div>
-                            <div style={styles.workoutDetails}>
-                                <div style={styles.workoutItem}><span>Tempo Run</span><span>4 miles</span></div>
-                                <div style={styles.workoutItem}><span>Pace</span><span>8:15/mile</span></div>
-                            </div>
-                            <div style={styles.intensityBar}><div style={{width: '70%'}}></div></div>
-                        </div>
-                        <div style={styles.dayCard}> {/* Friday */}
-                            <div style={styles.dayHeader}><span style={styles.dayName}>Friday</span><span style={styles.dayType}>Rest</span></div>
-                            <div style={styles.workoutDetails}>
-                                <div style={styles.workoutItem}><span>Complete Rest</span><span>Recovery</span></div>
-                                <div style={styles.workoutItem}><span>Focus</span><span>Nutrition</span></div>
-                            </div>
-                            <div style={styles.intensityBar}><div style={{width: '0%'}}></div></div>
-                        </div>
-                        <div style={styles.dayCard}> {/* Saturday */}
-                            <div style={styles.dayHeader}><span style={styles.dayName}>Saturday</span><span style={styles.dayType}>Easy</span></div>
-                            <div style={styles.workoutDetails}>
-                                <div style={styles.workoutItem}><span>Easy Run</span><span>6 miles</span></div>
-                                <div style={styles.workoutItem}><span>Pace</span><span>9:45/mile</span></div>
-                            </div>
-                            <div style={styles.intensityBar}><div style={{width: '45%'}}></div></div>
-                        </div>
-                        <div style={{...styles.dayCard, ...styles.dayCardHighlight}}> {/* Sunday */}
-                            <div style={styles.dayHeader}><span style={styles.dayName}>Sunday</span><span style={styles.dayTypeLongRun}>Long Run</span></div>
-                            <div style={styles.workoutDetails}>
-                                <div style={styles.workoutItem}><span>Long Run</span><span>12 miles</span></div>
-                                <div style={styles.workoutItem}><span>Pace</span><span>9:00/mile</span></div>
-                            </div>
-                            <div style={styles.intensityBar}><div style={{width: '60%'}}></div></div>
-                        </div>
-                    </div>
-
-                    <div style={styles.actionButtons}>
-                        <button style={styles.btnPrimary} onClick={() => alert('Edit mode activated!')}>✏️ Edit Plan</button>
-                        <button style={styles.btnSecondary} onClick={() => alert('Generating PDF...')}>📄 Export PDF</button>
-                        <button style={styles.btnSecondary} onClick={() => alert('Week 1 activated!')}>🚀 Start Week 1</button>
-                    </div>
-                </div>
-            </div>
-
-            {/* Progress Section */}
-            <div style={styles.progressSection}>
-                <h3 style={styles.progressTitle}>Your AI-Driven Insights</h3>
-                <div style={styles.progressGrid}>
-                    <div style={styles.progressItem}>
-                        <span style={styles.progressValue}>94%</span>
-                        <span style={styles.progressLabel}>Plan Compatibility</span>
-                    </div>
-                    <div style={styles.progressItem}>
-                        <span style={styles.progressValue}>8.2</span>
-                        <span style={styles.progressLabel}>Predicted Finish</span>
-                    </div>
-                    <div style={styles.progressItem}>
-                        <span style={styles.progressValue}>76%</span>
-                        <span style={styles.progressLabel}>Injury Prevention</span>
-                    </div>
-                    <div style={styles.progressItem}>
-                        <span style={styles.progressValue}>3:52</span>
-                        <span style={styles.progressLabel}>Target Time</span>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
       </main>
-
-      {/* Footer - Consistent across pages */}
-      <footer style={styles.footer}>
-        <p style={styles.footerText}>&copy; {new Date().getFullYear()} FitCoach AI. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
@@ -237,13 +177,10 @@ export default function TrainingPlansPage() {
 // --- Styles Object (Inline Styles for React Components) ---
 // Converted from original HTML/CSS to match React inline style conventions
 const styles = {
-  // Global & Layout Styles (inherited from layout.js, but repeated for clarity/overrides)
-  fullPageContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-    backgroundColor: '#FAFAFA', // Cloud White for the overall page background
-    color: '#222222', // Graphite for main text
+  trainingPlanContentWrapper: { // Wrapper for training plan specific content
+    width: '100%',
+    padding: '2rem', // Overall padding for training plan content
+    paddingTop: '65px', // Offset for global fixed header from layout.js
   },
   loadingContainer: {
     display: 'flex',
@@ -263,85 +200,18 @@ const styles = {
     color: '#FF4C4C', // Pulse Coral for errors
   },
 
-  // Header Styles (from Dashboard, repeated/matched)
-  header: {
-    backgroundColor: '#FAFAFA', // Cloud White
-    color: '#222222', // Graphite for text
-    padding: '0.8rem 2rem',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-    width: '100%',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    zIndex: 1000,
-  },
-  headerLeft: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  logo: { // Updated to match the new template's style
-    fontFamily: 'var(--font-space-grotesk), sans-serif', // Use Space Grotesk as per template
-    fontWeight: '600',
-    fontSize: '1.8rem', // Adjusted slightly to match template visual
-    margin: 0,
-    color: '#222222', // Match template logo color
-  },
-  brandAccentColor: { // For the 'AI' part of the logo
-      color: '#D1FF00', // Energy Lime
-  },
-  navbarNav: {
-    display: 'flex',
-    gap: '1.5rem',
-  },
-  navLink: {
-    color: '#222222', // Graphite
-    textDecoration: 'none',
-    fontSize: '1rem',
-    fontWeight: 'normal',
-    transition: 'color 0.3s ease',
-  },
-  navLinkHover: {
-    color: '#D1FF00', // Energy Lime
-  },
-  headerRight: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '1rem',
-  },
-  searchIcon: {
-    fontSize: '1.2rem',
-    cursor: 'pointer',
-    color: '#222222', // Graphite
-  },
-  profilePic: {
-    width: '40px',
-    height: '40px',
-    borderRadius: '50%',
-    backgroundColor: '#222222', // Placeholder background - Graphite
-    cursor: 'pointer',
-  },
-  logoutButton: {
-    backgroundColor: '#FF4C4C', // Pulse Coral
-    color: '#FAFAFA', // Cloud White (still contrasts well on red)
-    border: 'none',
-    padding: '0.5rem 1rem',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    fontSize: '0.85rem',
-    fontFamily: 'var(--font-inter), sans-serif',
-    marginLeft: '1rem',
-    transition: 'background-color 0.3s ease',
-  },
+  // Header Styles (These styles are now in LayoutClientWrapper.js for global header)
+  // These are here for clarity in the template, but not directly used in this component's render
+  header: { /* ... */ }, headerLeft: { /* ... */ }, logo: { /* ... */ }, brandAccentColor: { /* ... */ },
+  navbarNav: { /* ... */ }, navLink: { /* ... */ }, navLinkHover: { /* ... */ }, headerRight: { /* ... */ },
+  searchIcon: { /* ... */ }, profilePic: { /* ... */ }, logoutButton: { /* ... */ },
 
-  // Main Content & Hero Section (from Dashboard, kept for consistency if user navigates back)
+  // Main Content Area (from LayoutClientWrapper.js, adjusted for this page's specific needs)
   mainContent: {
     flexGrow: 1,
     width: '100%',
-    paddingTop: '65px', // Offset for fixed header
-    paddingBottom: '2rem', // Add some bottom padding
+    // padding and minHeight are primarily managed by trainingPlanContentWrapper
+    // Remove paddingTop here, as it's already on trainingPlanContentWrapper
   },
   container: { // Inner container for content sizing
     maxWidth: '1200px',
@@ -358,6 +228,12 @@ const styles = {
     background: 'white',
     borderRadius: '24px',
     boxShadow: '0 20px 40px rgba(0, 71, 255, 0.1)',
+  },
+  brandLogoImage: { // Style for the actual logo image
+    width: '120px', // Adjust size as needed for your logo in this section
+    height: 'auto',
+    objectFit: 'contain',
+    marginBottom: '1rem', // Spacing below logo
   },
   brandName: {
     fontFamily: 'var(--font-space-grotesk), sans-serif',
@@ -451,7 +327,7 @@ const styles = {
   },
   dayHeader: {
     display: 'flex',
-    justifyContent: 'space-between', // Changed from 'between' to 'space-between'
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: '1rem',
   },
@@ -469,7 +345,7 @@ const styles = {
     fontSize: '0.8rem',
     fontWeight: '600',
   },
-  dayTypeLongRun: { // Specific style for Long Run type
+  dayTypeLongRun: {
     background: '#222222', // Graphite
     color: '#D1FF00', // Energy Lime
     padding: '0.25rem 0.75rem',
@@ -509,7 +385,7 @@ const styles = {
     marginTop: '2rem',
     flexWrap: 'wrap',
   },
-  btn: { // Base button style
+  btn: {
     padding: '1rem 2rem',
     borderRadius: '12px',
     border: 'none',
@@ -565,20 +441,6 @@ const styles = {
   },
   progressLabel: {
     opacity: '0.8',
-    fontSize: '0.9rem',
-  },
-
-  // Footer Styles
-  footer: {
-    backgroundColor: '#222222', // Graphite
-    color: '#FAFAFA', // Cloud White
-    padding: '1rem 2rem',
-    textAlign: 'center',
-    marginTop: 'auto',
-    width: '100%',
-  },
-  footerText: {
-    margin: 0,
     fontSize: '0.9rem',
   },
 };

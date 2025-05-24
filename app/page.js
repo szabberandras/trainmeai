@@ -87,10 +87,11 @@ export default function HomePage() {
   ];
 
   return (
+    // pageContainer now completely fills the contentWrapper from layout.js
     <div style={styles.pageContainer}>
       {/* Left side: Login/Register Form */}
       <div style={styles.loginContent}>
-        <img src={actualLogoImageUrl} alt="TrainMeAI Logo" style={styles.logoImage} /> {/* Image Logo */}
+        <img src={actualLogoImageUrl} alt="TrainMeAI Logo" style={styles.logoImage} />
         <h2 style={styles.formHeader}>{isRegistering ? 'Register' : 'Login'}</h2>
         <form onSubmit={handleAuth} style={styles.form}>
           <input
@@ -135,7 +136,7 @@ export default function HomePage() {
       <div style={styles.designShowcase}>
         <div style={styles.imageFrame}>
           <img
-            src={mainLoginImageUrl} // Main login image URL
+            src={mainLoginImageUrl}
             alt="Fitness Motivation"
             style={styles.showcaseImage}
           />
@@ -149,9 +150,9 @@ export default function HomePage() {
           {userIconUrls.map((url, index) => (
             <img key={index} src={url} alt={`User ${index + 1}`} style={{
                 ...styles.userIcon,
-                zIndex: userIconUrls.length - index, // Ensure overlap order
-                left: `${index * 20}px`, // Staggering effect
-                transform: `translateY(${index % 2 === 0 ? '-10px' : '10px'})`, // Slight vertical stagger
+                zIndex: userIconUrls.length - index,
+                left: `${index * 20}px`,
+                transform: `translateY(${index % 2 === 0 ? '-10px' : '10px'})`,
             }} />
           ))}
         </div>
@@ -163,29 +164,34 @@ export default function HomePage() {
 const styles = {
   pageContainer: {
     display: 'flex',
-    minHeight: '100vh',
-    backgroundColor: 'transparent', // CORRECTED: Set background to transparent
+    minHeight: '100vh', // Now spans the height of its parent (contentWrapper)
+    width: '100%', // Spans the width of its parent (contentWrapper)
+    backgroundColor: 'transparent', // Crucial: No background here; it relies on layout.js's background
     color: '#222222', // Graphite
     fontFamily: 'var(--font-inter), sans-serif',
-    alignItems: 'center',
-    justifyContent: 'center', // Center content horizontally
-    padding: '2rem',
-    gap: '4rem', // Space between left and right sections
+    alignItems: 'center', // Vertically center content
+    justifyContent: 'center', // Horizontally center content
+    padding: '0', // No padding here; sections will have their own
+    gap: '0', // No gap between sections
+    height: '100vh', // Explicitly set height to match viewport height
   },
   loginContent: {
-    flex: '1 1 45%', // Take up ~45% of space on left
+    width: '50vw', // Left half of the screen
+    height: '100vh', // Full height of the screen
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center content within the left half
-    maxWidth: '450px', // Max width for login form
-    padding: '2rem',
-    backgroundColor: 'white', // Card background
-    borderRadius: '12px',
-    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
-    zIndex: 2, // Ensure it's above background elements
+    alignItems: 'center', // Center content horizontally within this half
+    justifyContent: 'center', // Center content vertically within this half
+    padding: '2rem 4rem', // Padding inside the login card area
+    backgroundColor: 'white', // Card background (this is the white box)
+    borderRadius: '0', // Remove border-radius for full-side fill
+    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)', // Shadow for the white login card itself
+    zIndex: 2,
+    flexShrink: 0, // Prevent shrinking
+    flexGrow: 0, // Prevent growing
   },
     logoImage: {
-        width: '150px', // Adjust size as needed for your logo
+        width: '64px', // Adjust size as needed for your logo
         marginBottom: '2rem',
     },
     formHeader: {
@@ -200,6 +206,7 @@ const styles = {
     flexDirection: 'column',
     gap: '1rem',
     width: '100%', // Make form elements full width of its container
+    maxWidth: '380px', // Constrain form width for readability
   },
   input: {
     padding: '1rem', // Larger padding for a more substantial feel
@@ -225,7 +232,6 @@ const styles = {
     marginTop: '0.5rem',
     width: '100%', // Full width
     transition: 'background-color 0.3s ease',
-    // Note: :hover style for buttons should be in app/globals.css for consistency
   },
   orSeparator: {
     textAlign: 'center',
@@ -233,7 +239,6 @@ const styles = {
     color: '#999',
     width: '100%',
     position: 'relative', // Keep position relative here for line positioning
-    // Note: ::before and ::after pseudo-elements for lines are in app/globals.css
   },
   googleButton: {
     display: 'flex',
@@ -251,6 +256,7 @@ const styles = {
     width: '100%', // Full width
     transition: 'all 0.3s ease',
     boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
+    marginBottom: '2.5rem', // Spacing below Google button (40px)
   },
     googleLogo: {
         width: '24px',
@@ -260,7 +266,7 @@ const styles = {
     fontSize: '0.9rem',
     color: '#555',
     textAlign: 'center',
-    marginTop: '1.5rem', // Adjust this for more spacing if needed
+    marginTop: '0', // Spacing handled by googleButton's marginBottom
     width: '100%',
   },
   toggleButton: {
@@ -279,29 +285,31 @@ const styles = {
     width: '100%',
   },
   designShowcase: {
-    flex: '1 1 55%', // Take up ~55% of space on right
+    width: '50vw',
+    height: '100vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center', // Center content vertically
-    position: 'relative', // For absolute positioning of user icons
+    position: 'relative',
     padding: '2rem',
-    // Media queries for responsiveness will be needed here for mobile
+    overflow: 'hidden',
   },
   imageFrame: {
-    borderRadius: '20px', // More rounded
+    borderRadius: '20px',
     overflow: 'hidden',
     position: 'relative',
-    width: '100%',
-    height: 'auto', // Adjust based on image aspect ratio
-    maxWidth: '550px', // Max width for image frame
-    boxShadow: '0 15px 30px rgba(0, 71, 255, 0.2)', // Stronger shadow
+    width: '100%', // Image frame should fill the entire 50vw side
+    height: 'auto',
+    maxWidth: '550px', // Max width for image frame content
+    maxHeight: '80vh', // Max height for image frame to fit screen
+    boxShadow: '0 15px 30px rgba(0, 71, 255, 0.2)',
     display: 'flex', 
   },
   showcaseImage: {
     width: '100%',
-    height: '100%', // Ensure image fills frame
-    objectFit: 'cover', // Cover the area
+    height: '100%',
+    objectFit: 'cover',
     display: 'block',
   },
   imageOverlay: {
@@ -310,7 +318,7 @@ const styles = {
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.25)', // Darker overlay for text readability
+    backgroundColor: 'rgba(0, 0, 0, 0.25)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -322,29 +330,29 @@ const styles = {
   },
   overlayTitle: {
     fontFamily: 'var(--font-sora), sans-serif',
-    fontSize: '2.5rem', // Larger title
+    fontSize: '2.5rem',
     marginBottom: '0.5rem',
     fontWeight: '800',
   },
   overlayText: {
     fontSize: '1.1rem',
     lineHeight: '1.5',
-    maxWidth: '80%', // Constrain text width
+    maxWidth: '80%',
   },
   userIconsContainer: {
-    position: 'absolute', // Position relative to designShowcase
-    bottom: '20px', // Adjust as needed
+    position: 'absolute',
+    bottom: '20px',
     left: '50%',
-    transform: 'translateX(-50%)', // Center horizontally
+    transform: 'translateX(-50%)',
     display: 'flex',
-    gap: '-10px', // Overlapping effect (negative margin)
-    zIndex: 3, // Ensure icons are above image/overlay
+    gap: '-10px',
+    zIndex: 3,
   },
   userIcon: {
-    width: '40px', // Larger icons
+    width: '40px',
     height: '40px',
     borderRadius: '50%',
-    border: '3px solid white', // White border
-    boxShadow: '0 2px 5px rgba(0,0,0,0.2)', // Subtle shadow
+    border: '3px solid white',
+    boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
   },
 };

@@ -1,13 +1,21 @@
 /* app/globals.css */
 
-/* Default Next.js global variables and resets */
+/* Custom Brand Colors as CSS Variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-electric-cobalt: #0047FF;
+  --color-energy-lime: #D1FF00;
+  --color-cloud-white: #FAFAFA;
+  --color-graphite: #222222;
+  --color-pulse-coral: #FF4C4C;
+
+  /* Default Next.js global variables and resets */
+  --background: var(--color-cloud-white); /* Use your brand white */
+  --foreground: var(--color-graphite); /* Use your brand graphite */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Define dark mode versions of your brand colors if needed */
     --background: #0a0a0a;
     --foreground: #ededed;
   }
@@ -31,8 +39,8 @@ body {
 
   /* Apply global fonts and colors from your brand guidelines */
   font-family: var(--font-inter), sans-serif; /* Inter for global body font */
-  color: #222222; /* Graphite for global text color */
-  background-color: #FAFAFA; /* Cloud White for global background */
+  color: var(--color-graphite); /* Graphite for global text color */
+  background-color: var(--color-cloud-white); /* Cloud White for global background */
 }
 
 * {
@@ -54,7 +62,7 @@ a {
 
 /* Custom CSS for gradient and animated shapes */
 .gradient-background {
-    background: linear-gradient(135deg, #0047FF, #D1FF00, #FF4C4C); /* Electric Cobalt, Energy Lime, Pulse Coral */
+    background: linear-gradient(135deg, var(--color-electric-cobalt), var(--color-energy-lime), var(--color-pulse-coral));
 }
 
 .shape-one, .shape-two, .shape-three {
@@ -65,17 +73,17 @@ a {
 }
 
 .shape-one {
-    background-color: #0047FF; /* Electric Cobalt */
+    background-color: var(--color-electric-cobalt);
     animation: moveShapeOne 15s infinite alternate ease-in-out;
 }
 
 .shape-two {
-    background-color: #D1FF00; /* Energy Lime */
+    background-color: var(--color-energy-lime);
     animation: moveShapeTwo 18s infinite alternate ease-in-out;
 }
 
 .shape-three {
-    background-color: #FF4C4C; /* Pulse Coral */
+    background-color: var(--color-pulse-coral);
     animation: moveShapeThree 20s infinite alternate ease-in-out;
 }
 
@@ -103,6 +111,9 @@ input::placeholder {
   opacity: 1; /* Ensures color is applied consistently */
 }
 
+.or-separator {
+    position: relative; /* Ensure position relative for line positioning */
+}
 .or-separator::before,
 .or-separator::after {
     content: "";
@@ -119,4 +130,29 @@ input::placeholder {
 
 .or-separator::after {
     right: 0;
+}
+
+/* Custom scrollbar styles for WebKit browsers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+/* For Firefox (scrollbar-width property) */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;   /* Firefox */
+}
+
+/* Hover effects for buttons (cannot be inlined in React) */
+.button-primary-hover:hover {
+  background-color: #0033CC !important; /* Darker Electric Cobalt */
+}
+
+.button-secondary-hover:hover {
+  background-color: var(--color-electric-cobalt) !important;
+  color: white !important;
+}
+
+.google-button-hover:hover {
+  background-color: #357ae8 !important; /* Darker Google Blue */
 }
