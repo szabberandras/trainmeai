@@ -1,0 +1,189 @@
+{
+  "goals": {
+    "strength": {
+      "name": "Strength Training",
+      "questions": [
+        {
+          "id": "experience",
+          "text": "How many days per week do you currently work out?",
+          "type": "numeric",
+          "validation": {
+            "min": 0,
+            "max": 7
+          },
+          "followUp": {
+            "0-1": "Starting fresh is great! We'll begin with fundamentals.",
+            "2-3": "Good baseline! We can build on this.",
+            "4+": "Excellent! We can create an advanced program."
+          }
+        },
+        {
+          "id": "exercises",
+          "text": "What type of exercises are you familiar with?",
+          "type": "multi_select",
+          "options": [
+            "Bodyweight exercises",
+            "Free weights",
+            "Machines",
+            "Olympic lifts"
+          ]
+        },
+        {
+          "id": "current_lifts",
+          "text": "Do you know your current lift numbers for any of these exercises?",
+          "type": "compound",
+          "exercises": [
+            {
+              "name": "Squat",
+              "unit": "kg/lbs"
+            },
+            {
+              "name": "Bench Press",
+              "unit": "kg/lbs"
+            },
+            {
+              "name": "Deadlift",
+              "unit": "kg/lbs"
+            }
+          ]
+        }
+      ],
+      "programTemplates": {
+        "beginner": {
+          "frequency": "3x per week",
+          "progression": "Linear",
+          "exercises": ["Squats", "Bench Press", "Rows", "Deadlifts"]
+        },
+        "intermediate": {
+          "frequency": "4x per week",
+          "progression": "Undulating",
+          "exercises": ["Back Squats", "Bench Press", "Deadlifts", "OHP"]
+        },
+        "advanced": {
+          "frequency": "5-6x per week",
+          "progression": "Block Periodization",
+          "exercises": ["Competition Lifts", "Variations", "Accessories"]
+        }
+      }
+    },
+    "endurance": {
+      "name": "Marathon Training",
+      "questions": [
+        {
+          "id": "current_distance",
+          "text": "What's your current longest running distance?",
+          "type": "numeric",
+          "unit": "km",
+          "validation": {
+            "min": 0,
+            "max": 42.2
+          }
+        },
+        {
+          "id": "weekly_mileage",
+          "text": "How many kilometers do you run per week?",
+          "type": "numeric",
+          "validation": {
+            "min": 0
+          }
+        },
+        {
+          "id": "race_goal",
+          "text": "Do you have a target marathon time?",
+          "type": "time",
+          "format": "HH:MM:SS"
+        }
+      ],
+      "programTemplates": {
+        "beginner": {
+          "duration": "24 weeks",
+          "peakMileage": "50km/week",
+          "longRun": "up to 32km"
+        },
+        "intermediate": {
+          "duration": "18 weeks",
+          "peakMileage": "80km/week",
+          "longRun": "up to 35km"
+        },
+        "advanced": {
+          "duration": "16 weeks",
+          "peakMileage": "100km/week",
+          "longRun": "up to 38km"
+        }
+      }
+    },
+    "weight_loss": {
+      "name": "Weight Loss",
+      "questions": [
+        {
+          "id": "current_weight",
+          "text": "What's your current weight?",
+          "type": "numeric",
+          "unit": "kg/lbs"
+        },
+        {
+          "id": "target_weight",
+          "text": "What's your target weight?",
+          "type": "numeric",
+          "unit": "kg/lbs"
+        },
+        {
+          "id": "timeline",
+          "text": "What's your target timeline for reaching this goal?",
+          "type": "duration",
+          "unit": "months"
+        }
+      ],
+      "programTemplates": {
+        "beginner": {
+          "workoutTypes": ["Walking", "Light Resistance", "Flexibility"],
+          "frequency": "3x per week",
+          "duration": "30-45 minutes"
+        },
+        "intermediate": {
+          "workoutTypes": ["HIIT", "Strength Training", "Cardio"],
+          "frequency": "4-5x per week",
+          "duration": "45-60 minutes"
+        },
+        "advanced": {
+          "workoutTypes": ["Complex Training", "HIIT", "Sport Specific"],
+          "frequency": "5-6x per week",
+          "duration": "60-90 minutes"
+        }
+      }
+    }
+  },
+  "commonQuestions": {
+    "injuries": {
+      "id": "injuries",
+      "text": "Do you have any injuries or medical conditions we should consider?",
+      "type": "text",
+      "required": true
+    },
+    "equipment": {
+      "id": "equipment",
+      "text": "What equipment do you have access to?",
+      "type": "multi_select",
+      "options": [
+        "Full Gym",
+        "Home Gym",
+        "Basic Equipment",
+        "No Equipment"
+      ]
+    },
+    "availability": {
+      "id": "availability",
+      "text": "Which days of the week are you available to train?",
+      "type": "multi_select",
+      "options": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
+    }
+  }
+} 

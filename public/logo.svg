@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1" />
+      <stop offset="100%" style="stop-color:#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" style="stop-color:#ffffff" stop-opacity="0.1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main circle -->
+  <circle cx="20" cy="20" r="19" fill="url(#gradient)" stroke="#ffffff" stroke-width="2" />
+  
+  <!-- Circuit pattern -->
+  <path fill="url(#circuitGradient)" d="M10 15h4v2h6v-2h4v4h-2v6h2v4h-4v-2h-6v2h-4v-4h2v-6h-2z" />
+  
+  <!-- Brain nodes -->
+  <circle cx="15" cy="18" r="1.5" fill="#ffffff" />
+  <circle cx="25" cy="18" r="1.5" fill="#ffffff" />
+  <circle cx="20" cy="23" r="1.5" fill="#ffffff" />
+  <circle cx="15" cy="28" r="1.5" fill="#ffffff" />
+  <circle cx="25" cy="28" r="1.5" fill="#ffffff" />
+  
+  <!-- Connecting lines -->
+  <path d="M15 19.5L20 21.5M20 21.5L25 19.5M15 26.5L20 24.5M20 24.5L25 26.5" 
+        stroke="#ffffff" 
+        stroke-width="1" 
+        fill="none" 
+        stroke-linecap="round" />
+</svg> 

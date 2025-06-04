@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptiTrain AI - Cinematic Onboarding Mockup</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            background: #000;
+        }
+        
+        .onboarding-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Background Gradients */
+        .bg-sunrise {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+        }
+        
+        .bg-dusk {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .bg-golden {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .bg-morning {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .bg-final {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+        
+        /* Floating Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* Content Styling */
+        .content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 40px;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .question-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        .question-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 4rem;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+        
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 2.5s forwards;
+        }
+        
+        .choice-button {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .choice-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .choice-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .choice-button:hover::before {
+            left: 100%;
+        }
+        
+        .step-indicator {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 3s forwards;
+        }
+        
+        .final-message {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 500;
+            color: #333;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+        }
+        
+        /* Pulsing Effect */
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        /* Breathing Effect */
+        .breathe {
+            animation: breathe 4s ease-in-out infinite;
+        }
+        
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+        }
+        
+        /* Wave Motion */
+        .wave {
+            animation: wave 6s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(10px) rotate(1deg); }
+            75% { transform: translateX(-10px) rotate(-1deg); }
+        }
+        
+        /* Fade transition */
+        .fade-out {
+            animation: fadeOut 1s ease-out forwards;
+        }
+        
+        /* Custom input for "Type your own" */
+        .custom-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            color: white;
+            font-size: 1.1rem;
+            width: 100%;
+            margin-top: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .custom-input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Preview text for communication styles */
+        .choice-preview {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        /* Navigation */
+        .nav-button {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 3s forwards;
+        }
+        
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="onboarding-container bg-sunrise" id="onboardingContainer">
+        <!-- Floating Particles -->
+        <div class="particles" id="particles"></div>
+        
+        <!-- Content -->
+        <div class="content" id="content">
+            <div class="question-title">Before we begin your journey...</div>
+            <div class="question-subtitle">What brings you here today?</div>
+            <div class="choices">
+                <button class="choice-button" onclick="nextStep()">I want to move without pain</button>
+                <button class="choice-button" onclick="nextStep()">I want to feel stronger</button>
+                <button class="choice-button" onclick="nextStep()">I want to have more energy for my family</button>
+                <button class="choice-button" onclick="nextStep()">I'm not sure, but I need a change</button>
+                <button class="choice-button" onclick="showCustomInput()">Type your own...</button>
+            </div>
+        </div>
+        
+        <div class="step-indicator">1 of 4</div>
+        <button class="nav-button" onclick="previousStep()" style="display: none;">← Back</button>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        const steps = [
+            {
+                background: 'bg-sunrise',
+                animation: '',
+                title: 'Before we begin your journey...',
+                subtitle: 'What brings you here today?',
+                choices: [
+                    'I want to move without pain',
+                    'I want to feel stronger',
+                    'I want to have more energy for my family',
+                    'I\'m not sure, but I need a change',
+                    'Type your own...'
+                ]
+            },
+            {
+                background: 'bg-dusk pulse',
+                animation: 'pulse',
+                title: '',
+                subtitle: 'What does a good day feel like to you?',
+                choices: [
+                    'I feel calm and centered',
+                    'I feel light in my body',
+                    'I laugh and play easily',
+                    'I finish what I started',
+                    'I move with confidence',
+                    'Type your own...'
+                ]
+            },
+            {
+                background: 'bg-golden wave',
+                animation: 'wave',
+                title: '',
+                subtitle: 'How much time do you have most days?',
+                choices: [
+                    '10-15 minutes (Quick sessions)',
+                    '20-30 minutes (Focused training)',
+                    '40+ minutes (Full workouts)',
+                    'It varies day to day'
+                ]
+            },
+            {
+                background: 'bg-morning breathe',
+                animation: 'breathe',
+                title: '',
+                subtitle: 'How would you like me to speak to you?',
+                choices: [
+                    { text: 'Supportive', preview: '"You\'re doing great, let\'s keep building"' },
+                    { text: 'Playful', preview: '"Ready to have some fun with this?"' },
+                    { text: 'Direct', preview: '"Here\'s what we\'re doing today"' },
+                    { text: 'Minimal', preview: '"3 exercises. 20 minutes. Let\'s go."' },
+                    { text: 'Reflective', preview: '"How did that feel for you?"' }
+                ]
+            }
+        ];
+        
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                fadeToBlack(() => {
+                    currentStep++;
+                    updateStep();
+                });
+            } else {
+                // Final transition
+                fadeToBlack(() => {
+                    showFinalScreen();
+                });
+            }
+        }
+        
+        function previousStep() {
+            if (currentStep > 1) {
+                fadeToBlack(() => {
+                    currentStep--;
+                    updateStep();
+                });
+            }
+        }
+        
+        function fadeToBlack(callback) {
+            const container = document.getElementById('onboardingContainer');
+            container.style.background = '#000';
+            container.style.opacity = '0';
+            
+            setTimeout(() => {
+                callback();
+                container.style.opacity = '1';
+            }, 800);
+        }
+        
+        function updateStep() {
+            const container = document.getElementById('onboardingContainer');
+            const content = document.getElementById('content');
+            const step = steps[currentStep - 1];
+            
+            // Update background
+            container.className = `onboarding-container ${step.background}`;
+            
+            // Update content
+            content.innerHTML = `
+                <div class="question-title">${step.title}</div>
+                <div class="question-subtitle">${step.subtitle}</div>
+                <div class="choices">
+                    ${step.choices.map(choice => {
+                        if (typeof choice === 'object') {
+                            return `
+                                <button class="choice-button" onclick="nextStep()">
+                                    ${choice.text}
+                                    <div class="choice-preview">${choice.preview}</div>
+                                </button>
+                            `;
+                        } else {
+                            return `<button class="choice-button" onclick="${choice === 'Type your own...' ? 'showCustomInput()' : 'nextStep()'}">${choice}</button>`;
+                        }
+                    }).join('')}
+                </div>
+            `;
+            
+            // Update step indicator
+            document.querySelector('.step-indicator').textContent = `${currentStep} of ${totalSteps}`;
+            
+            // Show/hide back button
+            const backButton = document.querySelector('.nav-button');
+            backButton.style.display = currentStep > 1 ? 'block' : 'none';
+        }
+        
+        function showCustomInput() {
+            const choices = document.querySelector('.choices');
+            choices.innerHTML += `
+                <input type="text" class="custom-input" placeholder="Tell us what brings you here..." 
+                       onkeypress="if(event.key==='Enter') nextStep()">
+            `;
+            document.querySelector('.custom-input').focus();
+        }
+        
+        function showFinalScreen() {
+            const container = document.getElementById('onboardingContainer');
+            const content = document.getElementById('content');
+            
+            container.className = 'onboarding-container bg-final';
+            content.innerHTML = `
+                <div class="final-message">Let's build something that fits your life.</div>
+            `;
+            
+            document.querySelector('.step-indicator').style.display = 'none';
+            document.querySelector('.nav-button').style.display = 'none';
+            
+            // Simulate transition to dashboard after 3 seconds
+            setTimeout(() => {
+                alert('Transitioning to your personalized dashboard...\n\nBased on your answers, we\'ve customized:\n• Visual theme\n• AI communication style\n• Recommended templates\n• Welcome message');
+            }, 3000);
+        }
+        
+        // Initialize
+        createParticles();
+        
+        // Add some interactive hover effects
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach((particle, index) => {
+                if (index % 3 === 0) {
+                    const x = (e.clientX / window.innerWidth) * 10;
+                    const y = (e.clientY / window.innerHeight) * 10;
+                    particle.style.transform = `translate(${x}px, ${y}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
