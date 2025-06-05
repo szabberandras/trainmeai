@@ -10534,6 +10534,751 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
       ],
       breathing: 'Exhale as you lift your arms, inhale as you lower.'
     }
+  },
+  'standing-chest-stretch': {
+    id: 'standing-chest-stretch',
+    name: 'Standing Chest Stretch',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: [
+      'Chest (Pectorals)',
+      'Shoulders'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand tall with your feet hip-width apart.',
+      'Interlace your fingers behind your lower back, palms pressing together if possible.',
+      'Keeping your arms straight, gently pull your shoulder blades together and down your back.',
+      'Lift your hands away from your glutes and lift your chest towards the ceiling.',
+      'Feel a stretch across the front of your chest and shoulders.',
+      'Hold the stretch, breathing deeply.',
+      'To release, unclasp your hands slowly.'
+    ],
+    safetyNotes: [
+      'Avoid arching your lower back; keep your core engaged.',
+      'If you cannot interlace your fingers, hold a strap or towel between your hands.',
+      'Do not force the arm lift; only go as high as your shoulder mobility comfortably allows.'
+    ],
+    modifications: {
+      beginner: 'Use a strap or towel to allow for a wider grip. Do not lift arms as high.',
+      advanced: 'Hinge at the hips and fold forward, allowing your clasped hands to fall overhead for a deeper stretch.',
+      equipment_alternatives: {
+        'None': 'Doorway chest stretch.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, interlace fingers behind your back.'
+      ],
+      execution: [
+        'Squeeze shoulder blades together and down.',
+        'Lift your chest proudly.',
+        'Lift hands away from your body.',
+        'Breathe into the chest.'
+      ],
+      common_mistakes: [
+        'Arching the lower back.',
+        'Shrugging shoulders up to ears.',
+        'Forcing the arm lift.'
+      ],
+      breathing: 'Breathe deeply and steadily throughout the hold.'
+    }
+  },
+  'hand-and-wrist-sequence': {
+    id: 'hand-and-wrist-sequence',
+    name: 'Hand & Wrist Sequence',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Forearms',
+      'Wrists',
+      'Hands'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Part 1 (Flexion/Extension): Extend one arm forward, palm up. With your other hand, gently bend the wrist down, pulling fingers towards the floor. Hold. Then, gently bend the wrist up. Hold. Repeat with palm down.',
+      'Part 2 (Rotations): Clasp your hands together and make slow, controlled circles with your wrists in both directions.',
+      'Part 3 (Finger Spreads): Extend your arms and spread your fingers as wide as possible, then make a tight fist. Repeat this opening and closing motion quickly.',
+      'Complete the entire sequence.'
+    ],
+    safetyNotes: [
+      'All movements should be gentle and pain-free.',
+      'Do not apply excessive pressure when stretching the wrist.',
+      'Keep movements slow and controlled.'
+    ],
+    modifications: {
+      beginner: 'Perform each stretch with less intensity and for a shorter duration.',
+      advanced: 'Increase the duration of the holds and the number of repetitions.',
+      equipment_alternatives: {
+        'None': 'This is a fundamental bodyweight mobility sequence.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      progressionRate: 0.1,
+      unit: 'seconds total'
+    },
+    coaching: {
+      setup: [
+        'Sit or stand tall.'
+      ],
+      execution: [
+        'Gently perform wrist flexion and extension stretches on both sides.',
+        'Perform slow wrist rotations with hands clasped.',
+        'Finish with dynamic finger spreads and fists.'
+      ],
+      common_mistakes: [
+        'Pulling too hard on the wrist.',
+        'Moving too quickly.',
+        'Forgetting to stretch in all directions.'
+      ],
+      breathing: 'Breathe deeply and continuously throughout the sequence.'
+    }
+  },
+  'cross-body-hamstring-stretch': {
+    id: 'cross-body-hamstring-stretch',
+    name: 'Cross Body Hamstring Stretch',
+    category: 'flexibility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Hamstrings',
+      'IT Band',
+      'Glutes'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Lie on your back.',
+      'Extend your right leg up towards the ceiling and your left leg flat on the floor.',
+      'Grasp your right leg with your left hand (on the calf or thigh). You can use a strap for assistance.',
+      'Keeping your right shoulder on the floor, gently pull your straight right leg across your body to the left.',
+      'Stop when you feel a stretch along the outside of your right leg (IT Band) and hamstring.',
+      'Hold the stretch, breathing deeply.',
+      'Release slowly and switch sides.'
+    ],
+    safetyNotes: [
+      'Keep the opposite shoulder grounded to maintain the twist and focus the stretch.',
+      'Do not pull so hard that it causes pain in your hip or lower back.',
+      'Keep the stretching leg as straight as is comfortable.'
+    ],
+    modifications: {
+      beginner: 'Use a strap or towel around your foot. Keep a bend in the knee of the stretching leg.',
+      advanced: 'Try to bring the leg closer to the floor on the opposite side while keeping the shoulder down.',
+      equipment_alternatives: {
+        'None': 'Standing crossover forward fold.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Lie on back, extend one leg up.'
+      ],
+      execution: [
+        'Gently pull the straight leg across your body.',
+        'Keep the opposite shoulder on the floor.',
+        'Feel the stretch along the outer leg and hamstring.',
+        'Hold and breathe.'
+      ],
+      common_mistakes: [
+        'Lifting the shoulder off the floor.',
+        'Bending the knee too much.',
+        'Forcing the stretch.'
+      ],
+      breathing: 'Breathe deeply to relax into the stretch.'
+    }
+  },
+  'supine-criss-cross': {
+    id: 'supine-criss-cross',
+    name: 'Supine Criss Cross',
+    category: 'flexibility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Hips',
+      'Glutes',
+      'IT Band'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie on your back with your legs extended straight.',
+      'Cross your right ankle over your left ankle.',
+      'Engage your glutes and allow your legs to gently rotate so your right hip slightly lifts and your left hip presses down.',
+      'This creates a gentle, passive stretch through the outer hip and IT band.',
+      'This is a very subtle movement.',
+      'Hold for the desired duration.',
+      'Uncross your legs and repeat with the left ankle over the right.'
+    ],
+    safetyNotes: [
+      'This is a gentle, passive stretch. Do not force any movement.',
+      'Keep your upper body and shoulders relaxed on the floor.',
+      'Listen to your body and stop if there is any sharp pain.'
+    ],
+    modifications: {
+      beginner: 'Focus on just crossing the ankles without adding the rotation.',
+      advanced: 'Actively press the top leg down slightly to deepen the stretch.',
+      equipment_alternatives: {
+        'None': 'Standing crossover stretch.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Lie on your back, legs straight.',
+        'Cross one ankle over the other.'
+      ],
+      execution: [
+        'Relax and let gravity create a gentle stretch.',
+        'Feel a subtle stretch in the outer hip.',
+        'Breathe and hold.'
+      ],
+      common_mistakes: [
+        'Trying to actively force a stretch.',
+        'Tensing the body.',
+        'Holding breath.'
+      ],
+      breathing: 'Breathe deeply and allow your body to relax.'
+    }
+  },
+  'toe-grab-calf-stretch': {
+    id: 'toe-grab-calf-stretch',
+    name: 'Toe Grab Calf Stretch',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: [
+      'Calves',
+      'Hamstrings',
+      'Plantar Fascia'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Sit on the floor with one leg extended straight and the other bent.',
+      'Hinge forward from your hips with a straight back and grasp the toes of your extended leg.',
+      'Gently pull your toes back towards your shin.',
+      'You should feel a stretch along the entire back of your lower leg (calf) and potentially into your hamstring and the arch of your foot.',
+      'Hold the stretch.',
+      'Release and switch sides.'
+    ],
+    safetyNotes: [
+      'Hinge from your hips; do not round your back to reach your toes.',
+      'The pull should be gentle and sustained.',
+      'If you cannot reach your toes, use a yoga strap or towel.'
+    ],
+    modifications: {
+      beginner: 'Use a strap or towel. Keep a bend in the knee.',
+      advanced: 'Try to keep the leg perfectly straight and pull the toes back further.',
+      equipment_alternatives: {
+        'None': 'Standing calf stretch against a wall.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Sit with one leg extended.',
+        'Hinge forward to grab the toes.'
+      ],
+      execution: [
+        'Gently pull toes back towards shin.',
+        'Keep back straight.',
+        'Feel stretch in calf and bottom of foot.',
+        'Hold and breathe.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Pulling too aggressively.',
+        'Bouncing.'
+      ],
+      breathing: 'Inhale to lengthen, exhale to deepen the stretch.'
+    }
+  },
+  'half-camel-pose': {
+    id: 'half-camel-pose',
+    name: 'Half Camel',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: [
+      'Hip Flexors',
+      'Chest',
+      'Shoulders',
+      'Spine'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start in a tall kneeling position with your knees hip-width apart.',
+      'Place your hands on your lower back, fingers pointing down, for support.',
+      'Inhale and lift your chest up towards the ceiling, beginning to arch your upper back.',
+      'Engage your glutes and press your hips forward.',
+      'Reach your right hand back to grasp your right heel.',
+      'Extend your left arm up towards the ceiling, creating a long line of energy.',
+      'Keep your neck in a comfortable position, either looking forward or slightly up.',
+      'Hold the pose, then return to start with control and switch sides.'
+    ],
+    safetyNotes: [
+      'This is a deep backbend. Warm up thoroughly first.',
+      'Keep your glutes and core engaged throughout to protect your lower back.',
+      'If you cannot reach your heel, keep your hand on your lower back or use a yoga block next to your foot.'
+    ],
+    modifications: {
+      beginner: 'Keep both hands on your lower back and focus on just lifting the chest and arching the upper back.',
+      advanced: 'Progress to the full Camel Pose by reaching both hands back to both heels simultaneously.',
+      equipment_alternatives: {
+        'None': 'Standing backbend with hands on lower back.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 20,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Kneel tall, hands on low back for support.'
+      ],
+      execution: [
+        'Lift chest, arch upper back.',
+        'Press hips forward, squeeze glutes.',
+        'Reach one hand back to same-side heel.',
+        'Reach other arm up.',
+        'Breathe into the front of your body.'
+      ],
+      common_mistakes: [
+        'Crunching the lower back instead of lifting the chest.',
+        'Not engaging the glutes.',
+        'Letting the head drop back completely.'
+      ],
+      breathing: 'Breathe deeply and steadily into the chest.'
+    }
+  },
+  'advanced-gate-pose': {
+    id: 'advanced-gate-pose',
+    name: 'Advanced Gate Pose',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: [
+      'Side Body (Obliques, Lats)',
+      'Hamstrings',
+      'Adductors'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start in a kneeling position. Extend your right leg straight out to the side, with the sole of your foot on the floor.',
+      'Inhale and reach your left arm up overhead.',
+      'Exhale and side bend to the right, sliding your right hand down your right leg.',
+      'For the advanced variation, aim to bring your right forearm to rest on your right shin or a block, and wrap your top (left) arm behind your back, trying to grasp your right inner thigh.',
+      'Roll your top shoulder open and gaze up towards the ceiling.',
+      'This creates a deeper side bend and a chest-opening bind.',
+      'Hold the pose. Release and switch sides.'
+    ],
+    safetyNotes: [
+      'Keep your chest open and avoid collapsing forward.',
+      'Do not force the bind; a standard Gate Pose is sufficient if the bind is not accessible.',
+      'Move into and out of the pose slowly.'
+    ],
+    modifications: {
+      beginner: 'Perform a standard Gate Pose without the bind. Rest bottom hand on a yoga block.',
+      advanced: 'Work deeper into the bind and side bend.',
+      equipment_alternatives: {
+        'None': 'Standing side bend.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Start in Gate Pose, one leg extended.',
+        'Side bend over the straight leg.'
+      ],
+      execution: [
+        'Deepen the side bend, potentially resting forearm on shin.',
+        'Wrap top arm behind back for a bind.',
+        'Roll top shoulder open.',
+        'Breathe into the side body.'
+      ],
+      common_mistakes: [
+        'Collapsing the chest forward.',
+        'Forcing the bind.',
+        'Lifting the bent knee off the floor.'
+      ],
+      breathing: 'Breathe deeply to create space in your side ribs.'
+    }
+  },
+  'v-sit': {
+    id: 'v-sit',
+    name: 'V-Sit',
+    category: 'core',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Abs',
+      'Hip Flexors',
+      'Core'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Sit on the floor with your knees bent and feet flat.',
+      'Place your hands on the floor slightly behind you for support.',
+      'Engage your core and lean your torso back slightly.',
+      'Lift your feet off the floor, keeping your shins parallel to the ground (tabletop legs).',
+      'This is the starting hold. To advance, begin to straighten your legs and lift your chest to create a \'V\' shape with your body.',
+      'You can keep your hands on the floor or extend them forward parallel to the ground for a challenge.',
+      'Hold the position, keeping your back straight and your core tight.'
+    ],
+    safetyNotes: [
+      'Keep your back straight; do not let it round or slump.',
+      'If you feel strain in your lower back, lower your legs or bend your knees more.',
+      'The movement should be controlled; avoid shaking excessively.'
+    ],
+    modifications: {
+      beginner: 'Keep hands on the floor for support. Keep knees bent in a tabletop position.',
+      advanced: 'Straighten legs fully. Extend arms forward. Hold for a longer duration.',
+      equipment_alternatives: {
+        'None': 'Hollow body hold.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Sit on floor, knees bent.',
+        'Lean back, engage core.'
+      ],
+      execution: [
+        'Lift feet off the floor.',
+        'Straighten legs as much as possible.',
+        'Lift chest to create a \'V\' shape.',
+        'Keep back straight and hold.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Holding breath.',
+        'Relying on hands too much.'
+      ],
+      breathing: 'Breathe steadily and deeply throughout the hold.'
+    }
+  },
+  'center-stretch-static': {
+    id: 'center-stretch-static',
+    name: 'Center Stretch',
+    category: 'flexibility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Adductors (Inner Thighs)',
+      'Hamstrings',
+      'Hips'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Sit on the floor in a wide straddle position, with your legs extended out to the sides.',
+      'Keep your feet flexed and your spine tall.',
+      'Inhale to lengthen your spine.',
+      'Exhale and hinge at your hips, walking your hands forward and folding your torso towards the floor between your legs.',
+      'Go only as far as your flexibility allows while keeping your back relatively straight.',
+      'Rest on your hands, forearms, or a block.',
+      'Hold this static stretch, breathing into your inner thighs and hamstrings.'
+    ],
+    safetyNotes: [
+      'Hinge from the hips; do not just round your spine to get lower.',
+      'Keep your feet flexed to protect your knees.',
+      'If your hamstrings are tight, sit on a cushion to help tilt your pelvis forward.'
+    ],
+    modifications: {
+      beginner: 'Sit on a cushion. Keep knees slightly bent. Do not fold as far forward.',
+      advanced: 'Fold deeper, aiming to rest your torso and head on the floor. Hold for a longer duration.',
+      equipment_alternatives: {
+        'None': 'Standing wide-legged forward fold.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Sit in a wide straddle, feet flexed.',
+        'Sit up tall on your sit bones.'
+      ],
+      execution: [
+        'Walk hands forward, hinging at the hips.',
+        'Keep spine long.',
+        'Fold down between your legs.',
+        'Hold and breathe into the stretch.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Letting feet roll in.',
+        'Forcing the stretch.'
+      ],
+      breathing: 'Inhale to find length, exhale to deepen the fold.'
+    }
+  },
+  'standing-glute-stretch': {
+    id: 'standing-glute-stretch',
+    name: 'Standing Glute Stretch',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: [
+      'Glutes (Piriformis)',
+      'Hips'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand on your left leg, holding onto a wall or chair for balance.',
+      'Cross your right ankle over your left thigh, just above the knee, creating a \'figure four\' shape.',
+      'Keeping your back straight, hinge at your hips and sit back as if lowering into a chair.',
+      'Lower yourself until you feel a deep stretch in your right glute and hip.',
+      'Keep your right foot flexed to protect the knee.',
+      'Hold this static stretch, breathing deeply.',
+      'Slowly rise to stand and switch sides.'
+    ],
+    safetyNotes: [
+      'Focus on balance; use support as needed.',
+      'Keep your back straight as you hinge; do not round your spine.',
+      'Do not force the stretch; only go as deep as your hip mobility allows.'
+    ],
+    modifications: {
+      beginner: 'Do not sit as deep into the stretch. Use more support from the wall/chair.',
+      advanced: 'Perform without any support for a greater balance challenge. Sit deeper into the stretch.',
+      equipment_alternatives: {
+        'None': 'Seated or supine figure four stretch.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Stand on one leg, hold support.',
+        'Cross other ankle over standing thigh.',
+        'Flex the lifted foot.'
+      ],
+      execution: [
+        'Hinge hips and sit back.',
+        'Keep back straight, chest up.',
+        'Feel stretch in the outer hip/glute.',
+        'Hold the pose and breathe.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Losing balance.',
+        'Not flexing the foot, which can strain the knee.'
+      ],
+      breathing: 'Breathe deeply and steadily throughout the hold.'
+    }
+  },
+  'z-stretch': {
+    id: 'z-stretch',
+    name: 'Z-Stretch',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Hips',
+      'Hip Flexors',
+      'Quads'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Sit on the floor with your right leg bent in front of you (like pigeon pose) and your left leg bent behind you, with both knees at roughly 90-degree angles, creating a \'Z\' shape.',
+      'Try to keep both sit bones on the floor.',
+      'Place your hands on the floor for support.',
+      'Gently press your back (left) hip forward to feel a stretch in the front of that hip.',
+      'For a dynamic version, you can lift your hips and rotate to the other side, or hold statically.',
+      'Hold the stretch. To switch sides, you can lean back and swing your legs around, or press up and rearrange.'
+    ],
+    safetyNotes: [
+      'This can be challenging for tight hips. Do not force your knees to the floor.',
+      'Use your hands for support to control the intensity.',
+      'If you feel any sharp knee pain, adjust your position or choose a different stretch.'
+    ],
+    modifications: {
+      beginner: 'Sit on a cushion to elevate your hips. Do not press the back hip forward as much.',
+      advanced: 'Try to lift your torso upright without using your hands for support. Fold forward over the front leg.',
+      equipment_alternatives: {
+        'None': '90/90 Stretch.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Sit on floor, legs in a \'Z\' shape.',
+        'Hands on floor for balance.'
+      ],
+      execution: [
+        'Keep torso upright.',
+        'Gently press the back hip forward.',
+        'Feel the stretch in the hip flexor.',
+        'Breathe and hold.'
+      ],
+      common_mistakes: [
+        'Slouching or leaning heavily to one side.',
+        'Forcing the knees to the floor.',
+        'Feeling pain in the knees.'
+      ],
+      breathing: 'Breathe deeply to relax into the hip stretch.'
+    }
+  },
+  'half-frog-stretch': {
+    id: 'half-frog-stretch',
+    name: 'Half Frog',
+    category: 'flexibility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Adductors (Inner Thighs)',
+      'Groin',
+      'Hips'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start by lying face down on your mat.',
+      'Come up onto your forearms.',
+      'Slide your right knee out to the side, in line with your right hip, keeping the knee bent at a 90-degree angle.',
+      'Your left leg remains extended straight back.',
+      'Flex your right foot.',
+      'Gently press your hips down and slightly back to feel a stretch in your right inner thigh and groin.',
+      'Hold the stretch. To release, slowly slide your right knee back to the starting position. Switch sides.'
+    ],
+    safetyNotes: [
+      'Ease into the stretch slowly.',
+      'If you feel any sharp pain in your knee or hip, back off.',
+      'Keep your core engaged to prevent your lower back from sagging.'
+    ],
+    modifications: {
+      beginner: 'Do not bring the knee up as high (not fully in line with the hip). Place a cushion under the bent knee.',
+      advanced: 'Try to press your hips further back to deepen the stretch. Progress to the full Frog Stretch.',
+      equipment_alternatives: {
+        'None': 'Butterfly stretch.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Lie face down, propped on forearms.',
+        'Slide one knee out to the side, bent at 90 degrees.'
+      ],
+      execution: [
+        'Flex the foot of the bent leg.',
+        'Gently press hips down and back.',
+        'Feel stretch in the inner thigh.',
+        'Breathe and hold.'
+      ],
+      common_mistakes: [
+        'Forcing the stretch.',
+        'Letting the lower back sag.',
+        'Not keeping the foot flexed.'
+      ],
+      breathing: 'Breathe deeply and slowly to help the muscles release.'
+    }
+  },
+  'knee-hug-to-happy-baby': {
+    id: 'knee-hug-to-happy-baby',
+    name: 'Knee Hug to Happy Baby',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Hips',
+      'Groin',
+      'Lower Back'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie on your back.',
+      'Inhale and hug both knees into your chest, wrapping your arms around your shins.',
+      'Hold the knee hug for a breath.',
+      'Exhale and transition to Happy Baby pose by grasping the outsides of your feet with your hands and drawing your knees towards your armpits.',
+      'Hold Happy Baby for a breath.',
+      'Inhale and release your feet to return to the knee hug.',
+      'Continue flowing between the two poses.'
+    ],
+    safetyNotes: [
+      'Keep the movements slow and controlled, synced with your breath.',
+      'In Happy Baby, keep your lower back on the floor as much as possible.',
+      'If you cannot reach your feet, grasp your ankles or shins.'
+    ],
+    modifications: {
+      beginner: 'In Happy Baby, grasp behind your thighs instead of your feet.',
+      advanced: 'In Happy Baby, add a gentle rock from side to side.',
+      equipment_alternatives: {
+        'None': 'This is a sequence of fundamental bodyweight movements.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'cycles'
+    },
+    coaching: {
+      setup: [
+        'Lie on your back.'
+      ],
+      execution: [
+        'Inhale, hug knees to chest.',
+        'Exhale, open into Happy Baby.',
+        'Flow between the two poses.',
+        'Keep upper body relaxed.'
+      ],
+      common_mistakes: [
+        'Rushing the movement.',
+        'Lifting the head and neck.',
+        'Forcing the knees down in Happy Baby.'
+      ],
+      breathing: 'Inhale on the knee hug, exhale into Happy Baby.'
+    }
   }
 
 };
@@ -10541,11 +11286,11 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
 // Exercise categories for easy filtering
 export const EXERCISE_CATEGORIES = {
   strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'walking-lunges', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'warrior-ii', 'hip-bridge-lift', 'lateral-leg-lift', 'hamstring-bridge-with-chair', 'frog-pumps', 'supine-abductions-with-miniband', 'lateral-wrist-curls-with-dumbbells', 'standing-fire-hydrant', 'prone-frog-lifts', 'standing-hamstring-curl', 'lateral-walk', 'clamshells', 'dumbbell-good-morning', 'squat-to-overhead-press', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'alternating-jump-lunges', 'squat-to-calf-raise', 'diagonal-lunge', '90-degree-squats', 'sumo-squat', 'fire-hydrants', 'adductor-lifts', 'half-kneeling-rotation-with-block-and-dumbbell', 'skater-squats', 'monster-walks-with-miniband', 'fire-hydrants-with-internal-rotation', 'prone-y-raises'],
-  core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'bird-dog', 'tick-tocks-with-miniband', 'vacuums', 'flutter-kicks', 'side-plank', 'side-plank-leg-lift', 'standing-crunch', 'supermans', 'chin-tucks', 'staff-pose', 'superman-sequence', 'decline-plank-with-chair', 'side-plank-hip-dip'],
+  core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'bird-dog', 'tick-tocks-with-miniband', 'vacuums', 'flutter-kicks', 'side-plank', 'side-plank-leg-lift', 'standing-crunch', 'supermans', 'chin-tucks', 'staff-pose', 'superman-sequence', 'decline-plank-with-chair', 'side-plank-hip-dip', 'v-sit'],
   cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs', 'high-knees', 'reverse-lunge-knee-drive', 'run-in-place'],
   plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'swim-plyometric-box-jumps', 'high-skip'],
-  mobility: ['arm-circles', 'dynamic-star', 'alternating-step-and-squat', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'froggers', 'ankle-rocks', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'plank-calf-press', 'dynamic-side-body-stretch', 'shoulder-openers', 'lizard-circles', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'dynamic-baby-cobra', '90-90-stretch', 'activated-hip-flexor-stretch-with-block', 'wide-dynamic-cobra', 'upper-body-around-the-world', 'single-leg-hip-flexor-extension-with-pole', 'seated-toe-rainbows-with-chair', 'knee-hug-rock'],
-  flexibility: ['standing-calf-stretch', 'foam-roll-hip-abductors', 'childs-pose', 'tricep-and-lat-stretch', 'pigeon-pose', 'forward-fold', 'chest-stretch', 'seated-twist', 'single-leg-hamstring-stretch', 'frog-stretch', 'upper-back-stretch', 'release-lats-with-foam-roller', 'leaning-quad-stretch', 'elevated-pigeon-with-chair'],
+  mobility: ['arm-circles', 'dynamic-star', 'alternating-step-and-squat', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'froggers', 'ankle-rocks', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'plank-calf-press', 'dynamic-side-body-stretch', 'shoulder-openers', 'lizard-circles', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'dynamic-baby-cobra', '90-90-stretch', 'activated-hip-flexor-stretch-with-block', 'wide-dynamic-cobra', 'upper-body-around-the-world', 'single-leg-hip-flexor-extension-with-pole', 'seated-toe-rainbows-with-chair', 'knee-hug-rock', 'hand-and-wrist-sequence', 'z-stretch', 'knee-hug-to-happy-baby'],
+  flexibility: ['standing-calf-stretch', 'foam-roll-hip-abductors', 'childs-pose', 'tricep-and-lat-stretch', 'pigeon-pose', 'forward-fold', 'chest-stretch', 'seated-twist', 'single-leg-hamstring-stretch', 'frog-stretch', 'upper-back-stretch', 'release-lats-with-foam-roller', 'leaning-quad-stretch', 'elevated-pigeon-with-chair', 'standing-chest-stretch', 'cross-body-hamstring-stretch', 'supine-criss-cross', 'toe-grab-calf-stretch', 'half-camel-pose', 'advanced-gate-pose', 'center-stretch-static', 'standing-glute-stretch', 'half-frog-stretch'],
   technique: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill'],
   endurance: ['bike-hill-climbs-intervals'],
   triathlon: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals'],

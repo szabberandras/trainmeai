@@ -20,7 +20,7 @@ export const EXERCISE_DATABASE: ExerciseDatabase = {
   ...ENDURANCE_EXERCISES,
 };
 
-// Category mappings for easy access
+// Category mappings
 export const EXERCISE_CATEGORIES: CategoryExercises = {
   strength: Object.keys(STRENGTH_EXERCISES),
   core: Object.keys(CORE_EXERCISES),
@@ -32,7 +32,7 @@ export const EXERCISE_CATEGORIES: CategoryExercises = {
   endurance: Object.keys(ENDURANCE_EXERCISES),
 };
 
-// Helper functions for accessing exercises
+// Helper functions
 export function getExercisesByCategory(category: ExerciseCategory): Exercise[] {
   const exerciseIds = EXERCISE_CATEGORIES[category] || [];
   return exerciseIds.map(id => EXERCISE_DATABASE[id]).filter(Boolean);
@@ -42,52 +42,49 @@ export function getExerciseById(id: string): Exercise | undefined {
   return EXERCISE_DATABASE[id];
 }
 
-export function getExercisesByEquipment(equipment: string): Exercise[] {
+export function getExercisesByEquipment(equipment: string[]): Exercise[] {
   return Object.values(EXERCISE_DATABASE).filter(exercise => 
-    exercise.equipment.includes(equipment) || exercise.equipment.length === 0
+    equipment.length === 0 || exercise.equipment.some(eq => equipment.includes(eq))
   );
 }
 
 export function getExercisesByDifficulty(difficulty: number): Exercise[] {
-  return Object.values(EXERCISE_DATABASE).filter(exercise => 
-    exercise.difficulty === difficulty
-  );
+  return Object.values(EXERCISE_DATABASE).filter(exercise => exercise.difficulty <= difficulty);
 }
 
 export function getExercisesByMuscleGroup(muscleGroup: string): Exercise[] {
   return Object.values(EXERCISE_DATABASE).filter(exercise => 
-    exercise.muscleGroups.some(group => 
-      group.toLowerCase().includes(muscleGroup.toLowerCase())
-    )
+    exercise.muscleGroups.some(mg => mg.toLowerCase().includes(muscleGroup.toLowerCase()))
   );
 }
 
 export function searchExercises(query: string): Exercise[] {
-  const searchTerm = query.toLowerCase();
-  return Object.values(EXERCISE_DATABASE).filter(exercise => 
-    exercise.name.toLowerCase().includes(searchTerm) ||
-    exercise.muscleGroups.some(group => group.toLowerCase().includes(searchTerm)) ||
-    exercise.equipment.some(eq => eq.toLowerCase().includes(searchTerm))
+  const lowercaseQuery = query.toLowerCase();
+  return Object.values(EXERCISE_DATABASE).filter(exercise =>
+    exercise.name.toLowerCase().includes(lowercaseQuery) ||
+    exercise.muscleGroups.some(mg => mg.toLowerCase().includes(lowercaseQuery)) ||
+    exercise.category.toLowerCase().includes(lowercaseQuery)
   );
 }
 
 export function getRandomExercises(count: number, category?: ExerciseCategory): Exercise[] {
   const exercises = category ? getExercisesByCategory(category) : Object.values(EXERCISE_DATABASE);
-  const shuffled = [...exercises].sort(() => 0.5 - Math.random());
+  const shuffled = exercises.sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 }
 
-// Export individual category exercises for direct access
-export {
-  STRENGTH_EXERCISES,
-  CORE_EXERCISES,
-  CARDIO_EXERCISES,
-  MOBILITY_EXERCISES,
-  FLEXIBILITY_EXERCISES,
-  PLYOMETRIC_EXERCISES,
-  TECHNIQUE_EXERCISES,
-  ENDURANCE_EXERCISES,
-};
+// Statistics
+export function getDatabaseStats() {
+  const totalExercises = Object.keys(EXERCISE_DATABASE).length;
+  const categoryStats = Object.entries(EXERCISE_CATEGORIES).map(([category, exercises]) => ({
+    category,
+    count: exercises.length,
+    percentage: ((exercises.length / totalExercises) * 100).toFixed(1)
+  }));
 
-// Export types
-export type { Exercise, ExerciseCategory, ExerciseDatabase, CategoryExercises }; 
+  return {
+    totalExercises,
+    categories: categoryStats,
+    lastUpdated: new Date().toISOString()
+  };
+}

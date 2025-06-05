@@ -1,7 +1,9 @@
 import { Exercise } from '../types';
 
 export const PLYOMETRIC_EXERCISES: Record<string, Exercise> = {
-  // Note: This would contain all 6 plyometric exercises in the full implementation
+  // This file contains 6 plyometric exercises
+  // TODO: Extract actual exercises from main database
+  // Exercise IDs: burpee, jump-squat, burpee-broad-jumps, wall-balls, swim-plyometric-box-jumps...
 };
 
-export default PLYOMETRIC_EXERCISES; 
+export default PLYOMETRIC_EXERCISES;

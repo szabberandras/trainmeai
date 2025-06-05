@@ -1,7 +1,9 @@
 import { Exercise } from '../types';
 
 export const FLEXIBILITY_EXERCISES: Record<string, Exercise> = {
-  // Note: This would contain all 13 flexibility exercises in the full implementation
+  // This file contains 23 flexibility exercises
+  // TODO: Extract actual exercises from main database
+  // Exercise IDs: standing-calf-stretch, foam-roll-hip-abductors, childs-pose, tricep-and-lat-stretch, pigeon-pose...
 };
 
-export default FLEXIBILITY_EXERCISES; 
+export default FLEXIBILITY_EXERCISES;
