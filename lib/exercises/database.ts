@@ -284,6 +284,177 @@ export const MARATHON_TRAINING_DATA = {
   ]
 };
 
+// ===== AI TRAINING GUIDANCE: INJURY PREVENTION & TREATMENT METHODOLOGY =====
+
+/**
+ * CORE PHILOSOPHY & METHODOLOGY FOR AI MODEL TRAINING
+ * 
+ * This section provides the foundational understanding for how to approach
+ * running injury prevention and treatment through exercise prescription.
+ */
+
+export const INJURY_PREVENTION_METHODOLOGY = {
+  core_philosophy: {
+    principle: "Most common running injuries are not isolated events but symptoms of muscle imbalances",
+    manifestation: "Combination of weakness in crucial stabilizing muscles and tightness in others",
+    root_causes: [
+      "Repetitive nature of running",
+      "Poor biomechanics", 
+      "Lifestyle factors (prolonged sitting)",
+      "Muscle compensation patterns"
+    ],
+    intervention_strategy: {
+      dual_approach: {
+        targeted_strengthening: {
+          purpose: "Activating and building strength in underused or weak supporting muscles",
+          primary_targets: ["glutes", "core", "feet", "hamstrings", "hip stabilizers"]
+        },
+        mobility_and_release: {
+          purpose: "Stretching and releasing overused, tight, or shortened muscles",
+          primary_targets: ["hip flexors", "TFL", "quads", "calves", "piriformis"]
+        }
+      },
+      program_structure: "Multi-week routine combining strengthening and mobility to address root cause, not just symptoms"
+    }
+  },
+
+  injury_specific_protocols: {
+    "low-back-and-sciatic-pain": {
+      identified_causes: {
+        weakness: ["core", "glutes", "hamstrings", "postural muscles"],
+        tightness: ["hip flexors (psoas)", "hamstrings", "piriformis"],
+        lifestyle_factors: ["prolonged sitting", "poor posture"]
+      },
+      solution_profile: {
+        strengthen: ["core", "glutes", "postural muscles", "deep stabilizers"],
+        stretch_mobilize: ["hip flexors", "hamstrings", "piriformis"],
+        goal: "Decompress lumbar spine and sciatic nerve pathway"
+      },
+      exercise_categories: ["core", "strength", "flexibility", "mobility"],
+      key_exercises: [
+        "glute-bridge", "bird-dog", "dead-bug", "hip-flexor-stretch", 
+        "pigeon-pose", "cat-cow", "standing-cat-cow"
+      ]
+    },
+
+    "hip-and-knee-pain-it-band": {
+      identified_causes: {
+        primary_root: "Weak and tight hips/glutes",
+        mechanism: "Weak gluteus medius fails to stabilize pelvis and femur",
+        compensation: "Strain on knee joint and IT Band"
+      },
+      solution_profile: {
+        strengthen: ["entire hip complex", "glutes", "adductors", "hip flexors"],
+        stretch_mobilize: ["TFL", "quads", "hip flexors"],
+        stabilize: ["core to reduce rotational forces"]
+      },
+      exercise_categories: ["strength", "mobility", "core"],
+      key_exercises: [
+        "clamshells", "lateral-walk", "single-leg-glute-bridge", 
+        "standing-hip-open-and-close", "lateral-leg-lift"
+      ]
+    },
+
+    "shin-splints": {
+      identified_causes: {
+        overuse_factor: "Contributing but not root cause",
+        biomechanical_faults: ["weak hip flexors", "weak calves", "poor core/hip stability"],
+        mechanism: "Excessive motion upon landing and push-off"
+      },
+      solution_profile: {
+        primary_focus: "Calf mobility and strength",
+        kinetic_chain: "Strengthen hip flexors, glutes, core, and feet",
+        approach: "Address entire kinetic chain above injury site"
+      },
+      exercise_categories: ["strength", "mobility", "core"],
+      key_exercises: [
+        "single-leg-calf-raise", "standing-dumbbell-calf-raise", 
+        "ankle-rocks", "single-leg-shin-sequence", "high-knees"
+      ]
+    },
+
+    "foundational-stability": {
+      ankle_foot_stability: {
+        identified_causes: {
+          principle: "Feet are the body's foundation",
+          mechanism: "Weakness and instability translate up kinetic chain"
+        },
+        solution_profile: {
+          direct_targets: ["foot stability", "ankle stability", "calf strength"],
+          exercises: ["calf strengthening", "shin stability", "ankle mobility drills"]
+        },
+        key_exercises: [
+          "single-leg-calf-raise", "balance-and-change-of-support-drill",
+          "ankle-rocks", "pony-drill"
+        ]
+      },
+      
+      posture_correction: {
+        identified_causes: {
+          impact: "Poor posture reduces running efficiency",
+          consequence: "Excess stress on joints"
+        },
+        solution_profile: {
+          approach: "Strengthen and stretch opposing muscle groups",
+          goals: ["improve torso stabilization", "increase lung capacity"]
+        },
+        key_exercises: [
+          "standing-cat-cow", "shoulder-openers", "bird-dog", 
+          "dynamic-side-body-stretch"
+        ]
+      }
+    }
+  },
+
+  ai_prescription_guidelines: {
+    assessment_framework: {
+      step_1: "Identify primary complaint and pain location",
+      step_2: "Determine likely muscle imbalances based on injury pattern",
+      step_3: "Assess lifestyle factors (sitting, activity level, running volume)",
+      step_4: "Select exercises targeting both weakness and tightness patterns"
+    },
+    
+    exercise_selection_principles: {
+      dual_approach_required: "Always combine strengthening and mobility work",
+      kinetic_chain_thinking: "Address the entire movement chain, not just injury site",
+      progression_mindset: "Start with foundational stability, progress to dynamic movements",
+      specificity: "Choose exercises that directly address identified imbalances"
+    },
+
+    program_structure_guidelines: {
+      frequency: "3-4 times per week for injury prevention/treatment",
+      duration: "15-30 minutes per session",
+      progression: "2-4 week phases with gradual intensity increases",
+      balance: "Equal emphasis on strengthening weak areas and mobilizing tight areas"
+    },
+
+    contraindications_and_modifications: {
+      acute_pain: "Avoid exercises that reproduce sharp pain",
+      chronic_conditions: "Focus on gentle mobility and gradual strengthening",
+      beginner_considerations: "Start with basic movements, emphasize form over intensity",
+      advanced_athletes: "Can handle more complex, sport-specific movements"
+    }
+  },
+
+  exercise_categorization_for_injuries: {
+    strengthening_priorities: {
+      "core-stability": ["plank", "side-plank", "dead-bug", "bird-dog", "vacuums"],
+      "glute-activation": ["glute-bridge", "clamshells", "lateral-walk", "single-leg-glute-bridge"],
+      "hip-stability": ["single-leg-deadlift-to-hop", "balance-and-change-of-support-drill"],
+      "calf-strength": ["single-leg-calf-raise", "standing-dumbbell-calf-raise"],
+      "foot-ankle": ["ankle-rocks", "single-leg-shin-sequence", "pony-drill"]
+    },
+    
+    mobility_priorities: {
+      "hip-flexor-release": ["dynamic-quad-stretch", "standing-fours", "kang-squats"],
+      "posterior-chain": ["boot-strappers", "hamstring-bridge-with-chair"],
+      "spinal-mobility": ["cat-cow", "standing-cat-cow", "dynamic-side-body-stretch"],
+      "hip-mobility": ["standing-hip-open-and-close", "pigeon-pose", "lizard-circles"],
+      "calf-ankle": ["standing-calf-stretch", "ankle-rocks"]
+    }
+  }
+};
+
 // Comprehensive exercise database - covering all major movement patterns and equipment
 export const EXERCISE_DATABASE: Record<string, Exercise> = {
   // ===== BODYWEIGHT STRENGTH EXERCISES =====
@@ -5537,21 +5708,4849 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
     }
   },
 
+  // ===== NEW MOBILITY & FLEXIBILITY EXERCISES =====
+  'dynamic-star': {
+    id: 'dynamic-star',
+    name: 'Dynamic Star',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: ['core', 'obliques', 'hamstrings', 'shoulders'],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet wide apart, arms extended out to the sides at shoulder height, forming a "star" shape.',
+      'Keeping your back straight and legs relatively straight, hinge at your hips.',
+      'Rotate your torso and reach your right hand towards your left foot.',
+      'Return to the starting star position with control.',
+      'Repeat on the other side, reaching your left hand towards your right foot.',
+      'Continue alternating sides in a fluid, dynamic motion.'
+    ],
+    safetyNotes: [
+      'Maintain a flat back; avoid rounding your spine to reach further.',
+      'Keep a slight bend in your knees to protect them.',
+      'Control the movement; avoid using jerky momentum.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion; reach for your knee or shin instead of your foot. Widen your stance for more stability.',
+      advanced: 'Increase the speed of the movement while maintaining control. Touch the floor outside of your foot.',
+      equipment_alternatives: {
+        'none': 'Windmill Stretch (static)'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 10,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Stand in a wide star pose, feet wide, arms out.',
+        'Core engaged, back straight.'
+      ],
+      execution: [
+        'Hinge at the hips, rotate torso.',
+        'Reach opposite hand to opposite foot.',
+        'Keep legs straight and back flat.',
+        'Return to start and alternate smoothly.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Bending the knees too much.',
+        'Losing balance by moving too quickly.'
+      ],
+      breathing: 'Exhale as you reach down, inhale as you return to the star position.'
+    }
+  },
+
+  'alternating-step-and-squat': {
+    id: 'alternating-step-and-squat',
+    name: 'Alternating Step & Squat',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: ['quadriceps', 'glutes', 'adductors', 'abductors'],
+    difficulty: 2,
+    instructions: [
+      'Start standing with your feet together.',
+      'Step your right foot out to the side, wider than shoulder-width.',
+      'Immediately lower your hips into a squat position, keeping your chest up and back straight.',
+      'Push off your right foot to return to the starting position with feet together.',
+      'Repeat the movement, this time stepping out with your left foot.',
+      'Continue alternating sides in a fluid motion.'
+    ],
+    safetyNotes: [
+      'Ensure your knee tracks over your toes when you squat.',
+      'Keep your chest lifted and avoid rounding your back.',
+      'Control the movement; do not just fall into the squat.'
+    ],
+    modifications: {
+      beginner: 'Reduce the depth of the squat. Step out less wide.',
+      advanced: 'Increase the speed. Add a pulse at the bottom of the squat. Hold a light weight at your chest.',
+      equipment_alternatives: {
+        'none': 'Standard bodyweight squats'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 10,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet together.',
+        'Core engaged, chest up.'
+      ],
+      execution: [
+        'Step out to the side.',
+        'Sink hips back and down into a squat.',
+        'Keep weight in your heels.',
+        'Push off to return to center and switch sides.'
+      ],
+      common_mistakes: [
+        'Knees caving inward.',
+        'Leaning too far forward.',
+        'Not controlling the descent.'
+      ],
+      breathing: 'Exhale as you step out and squat, inhale as you return to center.'
+    }
+  },
+
+  'childs-pose': {
+    id: 'childs-pose',
+    name: 'Child\'s Pose',
+    category: 'flexibility',
+    equipment: ['mat'],
+    muscleGroups: ['lower-back', 'hips', 'thighs', 'ankles'],
+    difficulty: 1,
+    instructions: [
+      'Start on your hands and knees.',
+      'Bring your big toes to touch and spread your knees as wide as your mat (or keep them together).',
+      'Sit your hips back towards your heels.',
+      'Fold your torso forward and down between your thighs.',
+      'Rest your forehead on the mat.',
+      'Extend your arms out long in front of you, or rest them alongside your body, palms up.',
+      'Breathe deeply into your back and hips, and relax.'
+    ],
+    safetyNotes: [
+      'If you have knee issues, place a rolled blanket in the crease of your knees.',
+      'If your forehead does not reach the mat, rest it on a block or cushion.',
+      'Listen to your body and do not force your hips to your heels.'
+    ],
+    modifications: {
+      beginner: 'Keep knees closer together. Place a cushion between your hips and heels for support.',
+      advanced: 'Walk your hands further forward to deepen the stretch in the shoulders and lats. Walk hands to one side for a side-body stretch.',
+      equipment_alternatives: {
+        'none': 'Seated forward fold'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      progressionRate: 10,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Kneel on the mat, big toes touching.',
+        'Knees together or wide.'
+      ],
+      execution: [
+        'Sit hips back towards heels.',
+        'Fold torso down, rest forehead on mat.',
+        'Let your body feel heavy and relax.',
+        'Breathe into your back.'
+      ],
+      common_mistakes: [
+        'Holding tension in the shoulders and neck.',
+        'Forcing the hips down.',
+        'Not breathing deeply.'
+      ],
+      breathing: 'Deep, slow breaths directed into the back of your ribcage.'
+    }
+  },
+
+  'tricep-and-lat-stretch': {
+    id: 'tricep-and-lat-stretch',
+    name: 'Tricep & Lat Stretch',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: ['triceps', 'lats', 'shoulders'],
+    difficulty: 1,
+    instructions: [
+      'Stand or sit tall.',
+      'Reach your right arm straight up to the ceiling.',
+      'Bend your right elbow and let your right hand fall behind your head, aiming for the middle of your back.',
+      'Grasp your right elbow with your left hand and gently pull it to the left and slightly down to stretch the tricep.',
+      'To add the lat stretch, gently side-bend your torso to the left while continuing to pull the elbow.',
+      'Hold the stretch, breathing into your right side-body and tricep.',
+      'Release and repeat on the other side.'
+    ],
+    safetyNotes: [
+      'Be gentle with the pull on your elbow; do not force it.',
+      'Avoid jutting your head forward.',
+      'Keep your core engaged to avoid arching your lower back.'
+    ],
+    modifications: {
+      beginner: 'Perform the tricep stretch and a separate side-bend stretch. Use a towel to assist if you cannot reach your elbow.',
+      advanced: 'Increase the side-bend for a deeper lat stretch.',
+      equipment_alternatives: {
+        'none': 'Can use a towel or strap to help grasp the elbow'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 10,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Sit or stand with a long spine.',
+        'Raise one arm, bend elbow, hand behind head.'
+      ],
+      execution: [
+        'Gently pull elbow with opposite hand.',
+        'Add a side-bend away from the stretched arm.',
+        'Breathe into the tricep and lat.',
+        'Keep chest open.'
+      ],
+      common_mistakes: [
+        'Pulling too hard on the elbow.',
+        'Arching the back.',
+        'Sticking the chin out.'
+      ],
+      breathing: 'Breathe deeply and steadily throughout the stretch.'
+    }
+  },
+
+  'warrior-ii': {
+    id: 'warrior-ii',
+    name: 'Warrior II',
+    category: 'strength',
+    equipment: ['mat'],
+    muscleGroups: ['quadriceps', 'glutes', 'adductors', 'shoulders', 'core'],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet wide apart, about 3-4 feet.',
+      'Turn your right foot out 90 degrees to point forward. Turn your left foot in slightly.',
+      'Align your front heel with the arch of your back foot.',
+      'On an exhale, bend your right knee over your right ankle, so your shin is perpendicular to the floor.',
+      'Extend your arms parallel to the floor, reaching actively out to the sides.',
+      'Turn your head to look over your right fingertips.',
+      'Hold the pose, keeping your torso upright and your core engaged.'
+    ],
+    safetyNotes: [
+      'Ensure your front knee is stacked directly over your ankle, not past it.',
+      'Keep the outer edge of your back foot firmly grounded.',
+      'Relax your shoulders away from your ears.'
+    ],
+    modifications: {
+      beginner: 'Lessen the bend in the front knee. Shorten your stance.',
+      advanced: 'Deepen the bend in the front knee, bringing the thigh parallel to the floor. Hold for a longer duration.',
+      equipment_alternatives: {
+        'none': 'Can be practiced with a chair for support under the front thigh'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 10,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Wide stance, align heels.',
+        'Turn front foot out 90 degrees.',
+        'Extend arms parallel to the floor.'
+      ],
+      execution: [
+        'Bend front knee over ankle.',
+        'Press into the outer edge of the back foot.',
+        'Keep torso centered and shoulders relaxed.',
+        'Gaze over front fingertips.'
+      ],
+      common_mistakes: [
+        'Front knee going past the ankle.',
+        'Leaning the torso forward.',
+        'Shoulders creeping up to ears.'
+      ],
+      breathing: 'Breathe steadily and deeply while holding the pose.'
+    }
+  },
+
+  'pigeon-pose': {
+    id: 'pigeon-pose',
+    name: 'Pigeon Pose',
+    category: 'flexibility',
+    equipment: ['mat'],
+    muscleGroups: ['glutes', 'piriformis', 'hips', 'hip-flexors'],
+    difficulty: 2,
+    instructions: [
+      'Start in a downward-facing dog or tabletop position.',
+      'Bring your right knee forward and place it behind your right wrist.',
+      'Angle your right shin so your right foot is somewhere in front of your left hip. The more parallel your shin is to the front of the mat, the more intense the stretch.',
+      'Extend your left leg straight back behind you, with the top of your foot on the floor.',
+      'Keep your hips square and level. You can stay upright on your hands or fold forward over your front leg to deepen the stretch.',
+      'Breathe deeply into the stretch in your right outer hip. Hold, then switch sides.'
+    ],
+    safetyNotes: [
+      'Protect your front knee. If you feel any pain, ease off or modify.',
+      'Do not let all your weight fall onto the hip of the bent leg; keep hips level.',
+      'Flexing the front foot can help protect the knee joint.'
+    ],
+    modifications: {
+      beginner: 'Place a yoga block or cushion under the hip of the bent leg for support. Do not fold forward. Perform a "Figure Four" stretch on your back instead.',
+      advanced: 'Bring the front shin more parallel to the front of the mat. Fold deeper over the front leg.',
+      equipment_alternatives: {
+        'none': 'Figure Four stretch on back'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      progressionRate: 10,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'From tabletop, bring one knee forward behind the same-side wrist.',
+        'Extend the back leg straight.',
+        'Square your hips to the front.'
+      ],
+      execution: [
+        'Stay upright or fold forward over the front shin.',
+        'Breathe into the outer hip stretch.',
+        'Keep the back leg active and straight.'
+      ],
+      common_mistakes: [
+        'Collapsing onto one hip.',
+        'Feeling pain in the front knee.',
+        'Holding tension in the shoulders.'
+      ],
+      breathing: 'Inhale to find length in the spine, exhale to sink deeper into the stretch.'
+    }
+  },
+
+  'pelvic-tilts': {
+    id: 'pelvic-tilts',
+    name: 'Pelvic Tilts',
+    category: 'mobility',
+    equipment: ['mat'],
+    muscleGroups: ['core', 'lower-abs', 'lower-back'],
+    difficulty: 1,
+    instructions: [
+      'Lie on your back with your knees bent, feet flat on the floor hip-width apart, and your spine in a neutral position.',
+      'Place your hands on your hips to feel the movement.',
+      'Exhale and gently engage your lower abs to press your lower back flat against the floor (posterior tilt). Imagine bringing your pubic bone towards your navel.',
+      'Inhale and release the contraction, allowing your lower back to arch slightly away from the floor, creating a small space (anterior tilt). Imagine tilting your pelvis forward.',
+      'Continue rocking your pelvis back and forth in this small, controlled motion.',
+      'This is a subtle movement focused on awareness and control.'
+    ],
+    safetyNotes: [
+      'Keep the movement small and controlled; do not use your glutes or legs to force it.',
+      'The movement should be comfortable and pain-free.',
+      'Avoid lifting your hips off the floor.'
+    ],
+    modifications: {
+      beginner: 'Perform an even smaller range of motion. Focus purely on the sensation.',
+      advanced: 'Perform the movement while in a glute bridge position for added stability challenge.',
+      equipment_alternatives: {
+        'none': 'Can be done standing against a wall'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 10,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie on back, knees bent, feet flat.',
+        'Find a neutral spine position.',
+        'Hands on hips to guide the movement.'
+      ],
+      execution: [
+        'Exhale, flatten your low back to the floor.',
+        'Inhale, create a small arch in your low back.',
+        'Isolate the movement to the pelvis.',
+        'Keep upper body relaxed.'
+      ],
+      common_mistakes: [
+        'Using glutes to lift the hips.',
+        'Making the movement too large.',
+        'Holding breath.'
+      ],
+      breathing: 'Exhale to flatten the back (posterior tilt), inhale to arch (anterior tilt).'
+    }
+  },
+
+  'upper-back-rotations': {
+    id: 'upper-back-rotations',
+    name: 'Upper Back Rotations',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Thoracic Spine',
+      'Obliques',
+      'Shoulders'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start on all fours (quadruped position) with your hands under your shoulders and knees under your hips.',
+      'Place your right hand behind your head, elbow pointing out to the side.',
+      'Keeping your hips stable, rotate your upper back to bring your right elbow down towards your left wrist.',
+      'Reverse the motion, rotating your chest open to the right side and pointing your right elbow up towards the ceiling.',
+      'Follow your elbow with your gaze to encourage the twist through your upper spine.',
+      'Complete all repetitions on one side before switching to the other.'
+    ],
+    safetyNotes: [
+      'Initiate the rotation from your upper/mid-back, not your lower back or hips.',
+      'Keep your supporting arm straight and strong.',
+      'Move slowly and with control; avoid using momentum.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion. Do not place hand behind head; instead, just reach the arm up.',
+      advanced: 'Hold the open position for 2-3 seconds at the top of each rep. Add a \'thread the needle\' stretch between reps.',
+      equipment_alternatives: {
+        'None': 'Seated torso twists.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Start in a stable tabletop position.',
+        'Place one hand behind your head, elbow out.',
+        'Keep hips level and core engaged.'
+      ],
+      execution: [
+        'Rotate elbow down towards opposite wrist.',
+        'Rotate up, opening chest and pointing elbow to ceiling.',
+        'Follow elbow with your eyes.',
+        'Isolate the twist in your upper back.'
+      ],
+      common_mistakes: [
+        'Shifting hips side-to-side.',
+        'Bending the supporting arm.',
+        'Twisting from the lower back.'
+      ],
+      breathing: 'Exhale as you rotate down, inhale as you rotate open towards the ceiling.'
+    }
+  },
+
+  'tick-tocks-with-miniband': {
+    id: 'tick-tocks-with-miniband',
+    name: 'Tick Tocks with a miniband',
+    category: 'core',
+    equipment: [
+      'Resistance Band'
+    ],
+    muscleGroups: [
+      'Obliques',
+      'Core'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet hip-width apart, with a miniband looped around your wrists.',
+      'Raise your arms straight overhead, pulling the band apart to create tension.',
+      'Keeping your arms straight and core tight, slowly bend your torso directly to the right side, as if you are a clock hand.',
+      'Go as far as you can without twisting or bending forward. Feel the stretch on your left side and the contraction on your right.',
+      'Return to the center with control.',
+      'Repeat on the left side. This completes one repetition.'
+    ],
+    safetyNotes: [
+      'The movement should be a pure side-bend; avoid leaning forward or backward.',
+      'Keep tension on the band throughout the exercise.',
+      'Do not use momentum; the movement should be slow and controlled.'
+    ],
+    modifications: {
+      beginner: 'Perform without a resistance band. Reduce the range of motion.',
+      advanced: 'Use a heavier resistance band. Hold a light dumbbell in each hand.',
+      equipment_alternatives: {
+        'Resistance Band': 'Can be done without a band, focusing on the oblique contraction.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet hip-width apart.',
+        'Band around wrists, arms overhead.',
+        'Create tension in the band, core braced.'
+      ],
+      execution: [
+        'Slowly bend to one side, keeping arms straight.',
+        'Feel the oblique crunch and opposite side stretch.',
+        'Return to center with control.',
+        'Alternate sides.'
+      ],
+      common_mistakes: [
+        'Leaning forward or backward.',
+        'Losing tension in the band.',
+        'Using momentum to swing.'
+      ],
+      breathing: 'Inhale at the top, exhale as you bend to the side.'
+    }
+  },
+
+  'kneeling-pelvic-tilts': {
+    id: 'kneeling-pelvic-tilts',
+    name: 'Kneeling Pelvic Tilts',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Core',
+      'Lower Abs',
+      'Lower Back'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Start in a tall kneeling position with your knees hip-width apart and your torso upright.',
+      'Place your hands on your hips to feel the movement.',
+      'Exhale and perform a posterior tilt by tucking your tailbone under and engaging your glutes and lower abs. Imagine bringing your pubic bone up towards your navel.',
+      'Inhale and release, performing an anterior tilt by arching your lower back slightly and sticking your tailbone out.',
+      'Focus on isolating the movement to the pelvis, keeping your upper body still.',
+      'Repeat the movement in a slow, controlled rhythm.'
+    ],
+    safetyNotes: [
+      'The movement should be small and focused, not a large body sway.',
+      'Avoid excessive arching in the anterior tilt.',
+      'Use a mat or cushion under your knees for comfort.'
+    ],
+    modifications: {
+      beginner: 'Perform the movement with an even smaller range of motion. Can also be done lying on your back.',
+      advanced: 'Perform the tilts while holding a light weight at your chest to challenge core stability.',
+      equipment_alternatives: {
+        'None': 'Can be done standing or lying on the back.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Kneel tall, knees hip-width.',
+        'Hands on hips, spine neutral.'
+      ],
+      execution: [
+        'Exhale, tuck your tailbone under (posterior tilt).',
+        'Inhale, untuck and slightly arch (anterior tilt).',
+        'Keep shoulders and chest still.',
+        'Isolate the movement to the pelvis.'
+      ],
+      common_mistakes: [
+        'Moving the whole torso.',
+        'Arching the back too much.',
+        'Rushing the movement.'
+      ],
+      breathing: 'Exhale on the posterior tuck, inhale on the anterior arch.'
+    }
+  },
+
+  'hip-bridge-lift': {
+    id: 'hip-bridge-lift',
+    name: 'Hip Bridge Lift',
+    category: 'strength',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Glutes',
+      'Hamstrings',
+      'Core'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie on your back with your knees bent, feet flat on the floor hip-width apart, and heels relatively close to your glutes.',
+      'Place your arms by your sides with your palms down.',
+      'Engage your core and exhale as you press through your heels to lift your hips off the floor.',
+      'Squeeze your glutes and hamstrings at the top. Your body should form a straight line from your shoulders to your knees.',
+      'Hold the contraction at the top for a moment.',
+      'Inhale and slowly lower your hips back to the starting position with control.'
+    ],
+    safetyNotes: [
+      'Avoid hyperextending your lower back at the top; the work should be in the glutes.',
+      'Press through your full foot, especially the heels, not just the toes.',
+      'Keep your knees aligned with your hips; don\'t let them splay out or fall in.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion. Do not lift hips as high.',
+      advanced: 'Place a weight plate or dumbbell across your hips. Progress to a single-leg hip bridge.',
+      equipment_alternatives: {
+        'None': 'This is a fundamental bodyweight exercise.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie on back, knees bent, feet flat.',
+        'Heels close to glutes, arms by sides.'
+      ],
+      execution: [
+        'Drive through heels to lift hips.',
+        'Squeeze glutes hard at the top.',
+        'Create a straight line from shoulders to knees.',
+        'Lower down with control.'
+      ],
+      common_mistakes: [
+        'Arching the lower back instead of using glutes.',
+        'Lifting hips too high.',
+        'Knees caving in or out.'
+      ],
+      breathing: 'Exhale as you lift, inhale as you lower.'
+    }
+  },
+
+  'vacuums': {
+    id: 'vacuums',
+    name: 'Vacuums',
+    category: 'core',
+    equipment: [],
+    muscleGroups: [
+      'Transverse Abdominis'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Can be performed standing, kneeling on all fours, or seated.',
+      'Start by taking a deep breath in.',
+      'Forcefully exhale all the air out of your lungs.',
+      'As you exhale, pull your navel in as close to your spine as possible. Imagine your belly button trying to touch your backbone.',
+      'Hold this \'sucked in\' position for a set amount of time, continuing to breathe shallowly if needed.',
+      'Release the contraction and breathe normally. That is one repetition.'
+    ],
+    safetyNotes: [
+      'This is an activation exercise, not a heavy strength move. Focus on the deep core contraction.',
+      'Do not perform if you have uncontrolled high blood pressure or hernias.',
+      'Do not hold your breath for too long; learn to breathe shallowly while holding the vacuum.'
+    ],
+    modifications: {
+      beginner: 'Perform lying on your back with knees bent. Hold for a shorter duration (5-10 seconds).',
+      advanced: 'Hold for a longer duration (30-60 seconds). Perform from a plank or other more challenging position.',
+      equipment_alternatives: {
+        'None': 'This is a unique bodyweight control exercise.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 20,
+      progressionRate: 0.1,
+      unit: 'seconds per hold'
+    },
+    coaching: {
+      setup: [
+        'Assume a stable position (kneeling, standing, etc.).',
+        'Relax your belly.'
+      ],
+      execution: [
+        'Exhale all your air out.',
+        'Pull your navel in towards your spine as far as possible.',
+        'Hold the deep contraction.',
+        'Try to breathe shallowly during the hold.'
+      ],
+      common_mistakes: [
+        'Simply sucking in your gut without exhaling first.',
+        'Holding your breath and turning red.',
+        'Not engaging the deep transverse abdominis.'
+      ],
+      breathing: 'Exhale fully to initiate, then take small, shallow breaths as you hold the contraction.'
+    }
+  },
+
+  'lateral-leg-lift': {
+    id: 'lateral-leg-lift',
+    name: 'Lateral Leg Lift',
+    category: 'strength',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Glutes (Medius)',
+      'Abductors'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie on your right side with your legs extended and stacked one on top of the other.',
+      'You can support your head with your bottom arm.',
+      'Engage your core to keep your torso stable and prevent it from rocking.',
+      'Keeping your top (left) leg straight and your foot in a neutral position, slowly lift it towards the ceiling.',
+      'Lift as high as you can without rocking your torso back. The movement should come from your hip.',
+      'Pause at the top, then slowly lower the leg back down with control.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'Avoid swinging the leg; the movement should be slow and deliberate.',
+      'Keep your torso still; do not use momentum from your upper body.',
+      'Focus on using your outer hip/glute muscles to lift the leg.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion. Bend the bottom leg for more stability.',
+      advanced: 'Add an ankle weight or a resistance band around your ankles/thighs. Add a pause at the top of the lift.',
+      equipment_alternatives: {
+        'None': 'Standing hip abductions.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Lie on your side, legs stacked and straight.',
+        'Core engaged to stabilize torso.'
+      ],
+      execution: [
+        'Slowly lift the top leg towards the ceiling.',
+        'Lead with the heel slightly.',
+        'Keep the leg straight and torso still.',
+        'Lower with control.'
+      ],
+      common_mistakes: [
+        'Swinging the leg or using momentum.',
+        'Rocking the torso back and forth.',
+        'Bending the knee of the lifted leg.'
+      ],
+      breathing: 'Exhale as you lift the leg, inhale as you lower.'
+    }
+  },
+
+  'hamstring-bridge-with-chair': {
+    id: 'hamstring-bridge-with-chair',
+    name: 'Hamstring Bridge with a chair',
+    category: 'strength',
+    equipment: [
+      'Chair',
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Hamstrings',
+      'Glutes'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Lie on your back with your heels placed on the edge of a chair seat.',
+      'Your knees should be bent at approximately a 90-degree angle.',
+      'Place your arms by your sides on the floor.',
+      'Engage your core and drive your heels down into the chair to lift your hips off the floor.',
+      'Focus on using your hamstrings and glutes to perform the lift.',
+      'Raise your hips until your body forms a straight line from your shoulders to your knees.',
+      'Lower your hips back down with control.'
+    ],
+    safetyNotes: [
+      'Ensure the chair is stable and will not slide.',
+      'Avoid lifting your hips so high that you feel strain in your lower back.',
+      'Control the movement, especially the lowering phase.'
+    ],
+    modifications: {
+      beginner: 'Perform a standard glute bridge on the floor. Don\'t lift hips as high.',
+      advanced: 'Progress to a single-leg hamstring bridge with one heel on the chair.',
+      equipment_alternatives: {
+        'Chair': 'A bench, ottoman, or stability ball.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie on back, heels on the edge of a chair.',
+        'Knees at a 90-degree angle.',
+        'Core ready.'
+      ],
+      execution: [
+        'Dig heels down into the chair.',
+        'Lift hips by contracting hamstrings and glutes.',
+        'Form a straight line from shoulders to knees.',
+        'Lower down slowly.'
+      ],
+      common_mistakes: [
+        'Hyperextending the lower back.',
+        'Chair sliding away.',
+        'Not feeling the contraction in the hamstrings.'
+      ],
+      breathing: 'Exhale as you lift, inhale as you lower.'
+    }
+  },
+
+  'frog-pumps': {
+    id: 'frog-pumps',
+    name: 'Frog Pumps',
+    category: 'strength',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Glutes (Maximus)'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie on your back with your knees bent.',
+      'Bring the soles of your feet together and let your knees fall out to the sides, like a butterfly stretch. Pull your heels in close to your body.',
+      'Place your arms by your sides.',
+      'Keeping the soles of your feet pressed together, drive through the outer edges of your feet to lift your hips off the floor.',
+      'Squeeze your glutes powerfully at the top.',
+      'Lower your hips back down to the floor.',
+      'Perform the repetitions in a quick, pumping motion.'
+    ],
+    safetyNotes: [
+      'The range of motion is smaller than a regular glute bridge.',
+      'Focus on a strong glute contraction at the top of each pump.',
+      'Keep your upper back on the floor.'
+    ],
+    modifications: {
+      beginner: 'Move more slowly and with a smaller range of motion.',
+      advanced: 'Place a dumbbell or weight plate across your hips. Add a resistance band around your thighs.',
+      equipment_alternatives: {
+        'None': 'Standard glute bridge.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 25,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie on back, soles of feet together, knees out wide.',
+        'Heels close to your body.'
+      ],
+      execution: [
+        'Press through the outside of your feet.',
+        'Lift hips and squeeze glutes hard.',
+        'Perform in a continuous, pumping motion.',
+        'Focus on the glute squeeze.'
+      ],
+      common_mistakes: [
+        'Not squeezing the glutes at the top.',
+        'Letting feet come apart.',
+        'Moving too slowly (it\'s meant to be a pump).'
+      ],
+      breathing: 'Exhale sharply on each pump up.'
+    }
+  },
+
+  'supine-abductions-with-miniband': {
+    id: 'supine-abductions-with-miniband',
+    name: 'Supine Abductions with a miniband',
+    category: 'strength',
+    equipment: [
+      'Resistance Band'
+    ],
+    muscleGroups: [
+      'Glutes (Medius)',
+      'Abductors'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie on your back with your knees bent, feet flat on the floor, and hip-width apart.',
+      'Place a miniband around your thighs, just above your knees.',
+      'Engage your core and keep your back in a neutral position.',
+      'Slowly press your knees outwards against the resistance of the band.',
+      'Go as far as you can while keeping your feet flat on the floor.',
+      'Hold the outward press for a moment, feeling the contraction in your outer hips and glutes.',
+      'Slowly return your knees to the starting position with control. Do not let them snap back.'
+    ],
+    safetyNotes: [
+      'The movement should be controlled in both directions.',
+      'Keep your feet stationary on the floor.',
+      'Ensure the resistance is challenging but allows for good form.'
+    ],
+    modifications: {
+      beginner: 'Use a lighter resistance band. Reduce the range of motion.',
+      advanced: 'Use a heavier resistance band. Perform the movement from a glute bridge position (banded bridge abductions).',
+      equipment_alternatives: {
+        'None': 'Side-lying leg lifts.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 20,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie on back, knees bent, feet flat.',
+        'Band around thighs, just above knees.'
+      ],
+      execution: [
+        'Press knees out against the band.',
+        'Feel the outer glutes fire.',
+        'Control the return to the start.',
+        'Keep feet glued to the floor.'
+      ],
+      common_mistakes: [
+        'Letting the band snap the knees back together.',
+        'Lifting the feet off the floor.',
+        'Using a band that is too heavy and compromising form.'
+      ],
+      breathing: 'Exhale as you press out, inhale as you return.'
+    }
+  },
+
+  'lateral-wrist-curls-with-dumbbells': {
+    id: 'lateral-wrist-curls-with-dumbbells',
+    name: 'Lateral Wrist Curls with dumbbells',
+    category: 'strength',
+    equipment: [
+      'Dumbbells'
+    ],
+    muscleGroups: [
+      'Forearms (Extensors, Flexors)'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Sit on a bench or chair and hold a light dumbbell in each hand with a neutral (hammer) grip.',
+      'Rest your forearms on your thighs, with your wrists and hands extending past your knees.',
+      'Keeping your forearms stationary, deviate your wrists by tilting your hands upwards so your thumbs move towards the ceiling (radial deviation).',
+      'Slowly lower your hands back down, then tilt them downwards so your pinkies move towards the floor (ulnar deviation).',
+      'Repeat this up-and-down tilting motion in a slow and controlled manner.'
+    ],
+    safetyNotes: [
+      'Use a very light weight to avoid straining the wrist joint.',
+      'Isolate the movement to the wrist; do not use your arms to lift the weight.',
+      'Perform the movement slowly and deliberately.'
+    ],
+    modifications: {
+      beginner: 'Perform without any weight, focusing on the range of motion.',
+      advanced: 'Use a slightly heavier dumbbell, maintaining strict form.',
+      equipment_alternatives: {
+        'Dumbbells': 'A resistance band looped under your foot and held in your hand.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Sit with forearms resting on thighs.',
+        'Hold light dumbbells with a neutral grip.',
+        'Wrists are free to move.'
+      ],
+      execution: [
+        'Tilt wrists up (thumb towards ceiling).',
+        'Tilt wrists down (pinky towards floor).',
+        'Keep forearms still.',
+        'Movement is slow and controlled.'
+      ],
+      common_mistakes: [
+        'Using too much weight.',
+        'Moving the forearm instead of just the wrist.',
+        'Performing the movement too quickly.'
+      ],
+      breathing: 'Breathe naturally throughout the exercise.'
+    }
+  },
+
+  'flutter-kicks': {
+    id: 'flutter-kicks',
+    name: 'Flutter Kicks',
+    category: 'core',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Lower Abs',
+      'Hip Flexors'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Lie on your back with your legs extended straight.',
+      'Place your hands under your lower back for support and to keep it pressed into the floor.',
+      'Lift your heels a few inches off the floor. Keep your legs straight.',
+      'Engage your core and begin making small, quick, alternating up-and-down kicking motions with your legs (like you\'re swimming on your back).',
+      'The range of motion for each kick should only be a few inches.',
+      'Continue the flutter motion for the desired duration.'
+    ],
+    safetyNotes: [
+      'Keep your lower back pressed into the floor/your hands at all times. If it starts to arch, lift your legs higher.',
+      'Avoid letting your head and neck strain; keep them relaxed on the floor.',
+      'The smaller and more controlled the kicks, the more effective.'
+    ],
+    modifications: {
+      beginner: 'Lift your legs higher off the floor to make it easier. Perform with bent knees.',
+      advanced: 'Lower your legs closer to the floor without letting your back arch. Lift your head and shoulders off the floor.',
+      equipment_alternatives: {
+        'None': 'Scissor kicks (alternating side-to-side).'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Lie on back, hands under low back.',
+        'Legs straight, lift heels off the floor.',
+        'Press low back into hands.'
+      ],
+      execution: [
+        'Small, quick, alternating kicks.',
+        'Keep legs straight.',
+        'Keep core tight and back flat.',
+        'Breathe steadily.'
+      ],
+      common_mistakes: [
+        'Lower back arching off the floor.',
+        'Kicks being too large and slow.',
+        'Holding your breath.'
+      ],
+      breathing: 'Breathe steadily and continuously throughout the set.'
+    }
+  },
+
+  'standing-fire-hydrant': {
+    id: 'standing-fire-hydrant',
+    name: 'Standing Fire Hydrant',
+    category: 'strength',
+    equipment: [
+      'Chair (optional)'
+    ],
+    muscleGroups: [
+      'Glutes (Medius)',
+      'Abductors'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet together, holding onto a chair or wall for balance.',
+      'Shift your weight to your left leg.',
+      'Keeping your right knee bent at a 90-degree angle, lift your right leg out to the side.',
+      'Lift as high as you can without tilting your torso. The movement should be isolated to the hip.',
+      'Squeeze your outer glute at the top.',
+      'Lower the leg back to the starting position with control.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'Avoid leaning your torso to the opposite side to lift the leg higher.',
+      'Keep your core engaged to maintain stability.',
+      'The movement should be controlled, not a swing.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion. Use more support from the chair/wall.',
+      advanced: 'Add a resistance band around your thighs, just above the knees. Perform without holding on for a balance challenge.',
+      equipment_alternatives: {
+        'None': 'Clamshells (lying on side).'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, holding support.',
+        'Shift weight to one leg, core braced.',
+        'Keep torso upright.'
+      ],
+      execution: [
+        'Lift bent knee out to the side.',
+        'Isolate the movement to the hip.',
+        'Squeeze outer glute.',
+        'Lower with control.'
+      ],
+      common_mistakes: [
+        'Leaning the torso to compensate.',
+        'Swinging the leg.',
+        'Arching the back.'
+      ],
+      breathing: 'Exhale as you lift, inhale as you lower.'
+    }
+  },
+
+  'prone-frog-lifts': {
+    id: 'prone-frog-lifts',
+    name: 'Prone Frog Lifts',
+    category: 'strength',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Glutes'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie face down on a mat. Rest your forehead on your hands.',
+      'Bend your knees to a 90-degree angle and bring your heels together, allowing your knees to splay outwards (frog leg position).',
+      'Engage your core to keep your lower back stable.',
+      'Squeezing your glutes, lift your knees and thighs a few inches off the floor.',
+      'Keep your heels pressed together throughout the lift.',
+      'Hold the contraction at the top for a moment.',
+      'Lower your knees back to the floor with control.'
+    ],
+    safetyNotes: [
+      'The range of motion is very small; focus on the glute contraction, not the height of the lift.',
+      'Avoid arching your lower back; keep your pubic bone pressed gently into the mat.',
+      'Keep your upper body relaxed.'
+    ],
+    modifications: {
+      beginner: 'Focus on just squeezing the glutes without lifting the knees.',
+      advanced: 'Add a light ankle weight to each leg.',
+      equipment_alternatives: {
+        'None': 'Standard prone leg lifts (one leg at a time).'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 20,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie face down, forehead on hands.',
+        'Bend knees, bring heels together, knees wide.'
+      ],
+      execution: [
+        'Squeeze your glutes to lift your thighs off the floor.',
+        'Keep heels touching.',
+        'Movement is small, focus on the squeeze.',
+        'Lower with control.'
+      ],
+      common_mistakes: [
+        'Lifting too high and arching the back.',
+        'Using momentum.',
+        'Not keeping heels together.'
+      ],
+      breathing: 'Exhale as you lift, inhale as you lower.'
+    }
+  },
+
+  'froggers': {
+    id: 'froggers',
+    name: 'Froggers',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Hips',
+      'Groin',
+      'Core',
+      'Quads'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start in a high plank position with your hands directly under your shoulders.',
+      'Engage your core and keep your back flat.',
+      'In one explosive movement, jump both feet forward to the outside of your hands, landing in a deep squat position.',
+      'Try to land softly with your heels on the ground.',
+      'Pause for a moment in the deep squat.',
+      'Jump your feet back to the starting high plank position. This is one repetition.'
+    ],
+    safetyNotes: [
+      'Keep your core engaged throughout to protect your lower back.',
+      'Land softly to minimize impact on your joints.',
+      'If you cannot get your heels down in the squat, that\'s okay; work within your mobility range.'
+    ],
+    modifications: {
+      beginner: 'Instead of jumping, step one foot forward at a time, then step back one at a time.',
+      advanced: 'Increase the speed. Add a small hop or a full jump squat from the deep squat position.',
+      equipment_alternatives: {
+        'None': 'Deep squat hold.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Start in a strong high plank.',
+        'Core tight, back flat.'
+      ],
+      execution: [
+        'Jump feet to the outside of your hands.',
+        'Land in a low squat, chest up.',
+        'Jump back to plank with control.',
+        'Maintain a fluid motion.'
+      ],
+      common_mistakes: [
+        'Letting hips sag in the plank.',
+        'Rounding the back in the squat.',
+        'Landing heavily.'
+      ],
+      breathing: 'Exhale as you jump forward, inhale as you jump back.'
+    }
+  },
+
+  'standing-hamstring-curl': {
+    id: 'standing-hamstring-curl',
+    name: 'Standing Hamstring Curl',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Hamstrings'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand tall, holding onto a wall or chair for balance.',
+      'Shift your weight to your left leg.',
+      'Engage your right hamstring to bend your right knee and pull your heel up towards your glute.',
+      'Focus on a strong contraction in the back of your thigh.',
+      'Hold the peak contraction for a moment.',
+      'Slowly lower your foot back to the starting position with control.',
+      'Complete all repetitions on one side before switching.'
+    ],
+    safetyNotes: [
+      'Avoid swinging the leg; the movement should be driven by muscle contraction.',
+      'Keep your torso upright and your hips stationary.',
+      'Use support for balance to better isolate the hamstring.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion.',
+      advanced: 'Add an ankle weight or a resistance band looped under your standing foot and around your working ankle.',
+      equipment_alternatives: {
+        'None': 'Lying hamstring curls.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps per leg'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, holding support.',
+        'Shift weight to standing leg.',
+        'Core engaged.'
+      ],
+      execution: [
+        'Flex your knee, bringing your heel to your glute.',
+        'Squeeze the hamstring muscle hard.',
+        'Keep thighs parallel.',
+        'Lower with control.'
+      ],
+      common_mistakes: [
+        'Using momentum to swing the leg.',
+        'Arching the back.',
+        'Moving the thigh forward.'
+      ],
+      breathing: 'Exhale as you curl, inhale as you lower.'
+    }
+  },
+
+  'lateral-walk': {
+    id: 'lateral-walk',
+    name: 'Lateral Walk',
+    category: 'strength',
+    equipment: [
+      'Resistance Band'
+    ],
+    muscleGroups: [
+      'Glutes (Medius)',
+      'Hips'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Place a resistance band around your ankles or just above your knees.',
+      'Stand in an athletic, half-squat position with your feet shoulder-width apart to create tension in the band.',
+      'Maintain this low stance and take a controlled step to the right with your right foot.',
+      'Follow with your left foot, stepping just enough to return to shoulder-width, keeping tension on the band at all times.',
+      'Continue taking several steps to the right, then repeat the process stepping to the left.',
+      'Stay low throughout the movement.'
+    ],
+    safetyNotes: [
+      'Never let the band lose tension by bringing your feet together.',
+      'Keep your toes pointed straight ahead.',
+      'Avoid leaning your torso; the movement should come from the hips.'
+    ],
+    modifications: {
+      beginner: 'Use a lighter resistance band. Place the band above the knees instead of ankles.',
+      advanced: 'Use a heavier resistance band. Take larger steps while maintaining control.',
+      equipment_alternatives: {
+        'None': 'Bodyweight side lunges.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'steps per direction'
+    },
+    coaching: {
+      setup: [
+        'Band around ankles/knees.',
+        'Assume a half-squat athletic stance.',
+        'Feet shoulder-width, create tension.'
+      ],
+      execution: [
+        'Stay low.',
+        'Take a controlled step sideways.',
+        'Trail foot follows, maintaining tension.',
+        'Keep chest up and core engaged.'
+      ],
+      common_mistakes: [
+        'Standing up straight.',
+        'Bringing feet together.',
+        'Waddling or leaning with the torso.'
+      ],
+      breathing: 'Breathe steadily throughout the movement.'
+    }
+  },
+
+  'clamshells': {
+    id: 'clamshells',
+    name: 'Clamshells',
+    category: 'strength',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Glutes (Medius)',
+      'Hips'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie on your side with your hips and knees bent at approximately a 45 to 90-degree angle, with your legs stacked.',
+      'Rest your head on your bottom arm. Your heels should be in line with your glutes.',
+      'Engage your core to keep your hips stacked and prevent your torso from rocking backward.',
+      'Keeping your feet together, lift your top knee up towards the ceiling, as if a clam opening its shell.',
+      'Lift as high as you can without letting your hips roll back.',
+      'Pause at the top to squeeze your glute, then slowly lower the knee back down.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'The movement must be isolated to the hip; do not rock your pelvis or torso.',
+      'Keep your feet touching throughout the movement.',
+      'The range of motion may be small; focus on the quality of the contraction.'
+    ],
+    modifications: {
+      beginner: 'Perform with a smaller range of motion.',
+      advanced: 'Add a resistance band around your thighs, just above the knees. Progress to a \'Clam Shell Hip Lift\'.',
+      equipment_alternatives: {
+        'None': 'This is a fundamental bodyweight exercise.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 20,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Lie on side, knees bent, legs stacked.',
+        'Heels in line with glutes.',
+        'Core braced, hips stacked vertically.'
+      ],
+      execution: [
+        'Keep feet together.',
+        'Lift top knee towards the ceiling.',
+        'Squeeze the outer glute.',
+        'Don\'t rock your hips back.',
+        'Lower with control.'
+      ],
+      common_mistakes: [
+        'Rocking the pelvis backward to get more height.',
+        'Letting the feet come apart.',
+        'Rushing the movement.'
+      ],
+      breathing: 'Exhale as you lift the knee, inhale as you lower.'
+    }
+  },
+
+  'dumbbell-good-morning': {
+    id: 'dumbbell-good-morning',
+    name: 'Dumbbell Good Morning',
+    category: 'strength',
+    equipment: [
+      'Dumbbells'
+    ],
+    muscleGroups: [
+      'Hamstrings',
+      'Glutes',
+      'Lower Back'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet shoulder-width apart, holding one dumbbell horizontally against your upper chest, or two dumbbells resting on your shoulders.',
+      'Keep a slight bend in your knees throughout the movement.',
+      'Engage your core and keep your back perfectly straight.',
+      'Hinge at your hips, pushing your glutes straight back, and lower your torso until it is nearly parallel to the floor.',
+      'Feel a deep stretch in your hamstrings.',
+      'Drive your hips forward and squeeze your glutes to return to the standing position.'
+    ],
+    safetyNotes: [
+      'Maintaining a flat back is crucial to protect your spine. Do not allow it to round.',
+      'The movement is a hip hinge, not a squat. Your shins should remain mostly vertical.',
+      'Use a light weight until you have mastered the form.'
+    ],
+    modifications: {
+      beginner: 'Perform with just your bodyweight, hands behind your head. Reduce the range of motion.',
+      advanced: 'Increase the weight of the dumbbell(s). Slow down the eccentric (lowering) phase.',
+      equipment_alternatives: {
+        'Dumbbells': 'A barbell across the shoulders, or a resistance band looped under the feet and around the neck.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet shoulder-width.',
+        'Hold dumbbell at chest/shoulders.',
+        'Soft bend in the knees, flat back.'
+      ],
+      execution: [
+        'Push your hips straight back.',
+        'Hinge forward with a flat back.',
+        'Feel the stretch in your hamstrings.',
+        'Squeeze glutes to return to standing.'
+      ],
+      common_mistakes: [
+        'Rounding the lower back.',
+        'Bending the knees too much (turning it into a squat).',
+        'Using too much weight.'
+      ],
+      breathing: 'Inhale as you hinge forward, exhale as you stand up.'
+    }
+  },
+
+  'squat-to-overhead-press': {
+    id: 'squat-to-overhead-press',
+    name: 'Squat to Overhead press',
+    category: 'strength',
+    equipment: [
+      'Dumbbells'
+    ],
+    muscleGroups: [
+      'Quads',
+      'Glutes',
+      'Shoulders',
+      'Triceps',
+      'Core'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet shoulder-width apart, holding a pair of dumbbells at your shoulders, palms facing forward.',
+      'Engage your core and perform a standard squat, lowering your hips back and down.',
+      'As you drive up from the bottom of the squat, use the momentum to help press the dumbbells straight overhead.',
+      'Fully extend your arms at the top, keeping your core tight to avoid arching your back.',
+      'Lower the dumbbells back to the shoulder position with control as you simultaneously descend into the next squat.',
+      'Maintain a fluid motion.'
+    ],
+    safetyNotes: [
+      'Keep your core tight, especially at the top of the press, to protect your lower back.',
+      'Control the weight; do not let the dumbbells fall back to your shoulders.',
+      'Ensure proper squat form, keeping your chest up and knees tracking over toes.'
+    ],
+    modifications: {
+      beginner: 'Use very light dumbbells or no weight. Perform the squat and the press as two separate movements.',
+      advanced: 'Increase the weight of the dumbbells. Make the movement more explosive.',
+      equipment_alternatives: {
+        'Dumbbells': 'Kettlebells, a barbell, or a resistance band.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand with feet shoulder-width.',
+        'Hold dumbbells at shoulder height.',
+        'Core braced.'
+      ],
+      execution: [
+        'Squat down to parallel or below.',
+        'Drive up explosively from the heels.',
+        'Use momentum to press weights overhead.',
+        'Lower weights with control into the next squat.'
+      ],
+      common_mistakes: [
+        'Arching the lower back during the press.',
+        'Poor squat form (knees caving, chest dropping).',
+        'Not controlling the weight on the way down.'
+      ],
+      breathing: 'Inhale on the squat down, exhale forcefully as you drive up and press.'
+    }
+  },
+
+  'side-plank': {
+    id: 'side-plank',
+    name: 'Side Plank',
+    category: 'core',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Obliques',
+      'Core',
+      'Shoulders'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Lie on your right side with your legs straight and stacked.',
+      'Place your right forearm on the floor with your elbow directly under your shoulder.',
+      'Engage your core and lift your hips off the floor until your body forms a straight line from your head to your feet.',
+      'Keep your hips stacked and avoid letting them drop.',
+      'You can place your top hand on your hip or extend it towards the ceiling.',
+      'Hold for the desired duration, then switch sides.'
+    ],
+    safetyNotes: [
+      'Ensure your supporting elbow is directly under your shoulder to protect the joint.',
+      'Do not let your hips sag towards the floor.',
+      'Keep your body in one straight plane; avoid twisting forward or backward.'
+    ],
+    modifications: {
+      beginner: 'Perform from your knees by bending your bottom leg for support. Hold for a shorter duration.',
+      advanced: 'Lift your top leg off your bottom leg. Add \'hip dips\' by lowering and lifting your hips.',
+      equipment_alternatives: {
+        'None': 'This is a fundamental bodyweight exercise.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Lie on side, elbow directly under shoulder.',
+        'Legs stacked and straight.'
+      ],
+      execution: [
+        'Lift hips to create a straight line.',
+        'Engage bottom oblique.',
+        'Keep hips stacked and forward.',
+        'Hold.'
+      ],
+      common_mistakes: [
+        'Hips sagging.',
+        'Shoulder not aligned with elbow.',
+        'Rolling the torso forward or back.'
+      ],
+      breathing: 'Breathe steadily throughout the hold.'
+    }
+  },
+
+  'speed-skater-lunges': {
+    id: 'speed-skater-lunges',
+    name: 'Speed Skater Lunges',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Glutes',
+      'Quads',
+      'Abductors',
+      'Core'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start standing with your feet together.',
+      'Leap to your right, landing on your right foot with your right knee bent.',
+      'As you land, sweep your left leg behind your right leg, and you can touch the left toes to the ground for balance.',
+      'Simultaneously, you can swing your left arm forward and your right arm back, mimicking a speed skater.',
+      'From this position, push off your right foot and leap to the left, landing on your left foot.',
+      'Continue leaping from side to side in a dynamic, fluid motion.'
+    ],
+    safetyNotes: [
+      'Land softly to protect your joints.',
+      'Keep your chest up and your back relatively straight as you land.',
+      'Start with small leaps and increase the distance as you get comfortable.'
+    ],
+    modifications: {
+      beginner: 'Instead of leaping, take a large step to the side into a curtsy lunge. Keep the back foot on the ground for balance.',
+      advanced: 'Increase the speed and distance of the leap. Keep the back foot off the ground entirely. Touch the floor with your opposite hand.',
+      equipment_alternatives: {
+        'None': 'Side lunges.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet together.',
+        'Prepare to leap sideways.'
+      ],
+      execution: [
+        'Leap to one side, landing softly on one foot.',
+        'Sweep the other leg behind.',
+        'Push off explosively to leap to the other side.',
+        'Stay low and athletic.'
+      ],
+      common_mistakes: [
+        'Landing too heavily.',
+        'Staying too upright and not getting low.',
+        'Losing balance.'
+      ],
+      breathing: 'Exhale on the push-off to the side.'
+    }
+  },
+
+  'single-leg-deadlift-to-hop': {
+    id: 'single-leg-deadlift-to-hop',
+    name: 'Single Leg Deadlift to Hop',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Glutes',
+      'Hamstrings',
+      'Calves',
+      'Core'
+    ],
+    difficulty: 3,
+    instructions: [
+      'Stand on your left leg with a slight bend in the knee.',
+      'Perform a single leg deadlift by hinging at your hips, extending your right leg straight back behind you and lowering your torso.',
+      'Go as low as you can while maintaining a flat back and balance.',
+      'Drive your hips forward to return to the standing position, but instead of placing your right foot down, drive your right knee up powerfully.',
+      'Use the upward momentum to perform a small hop on your standing (left) leg.',
+      'Land softly on your left leg and immediately go into the next repetition.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'This is an advanced move; master the single leg deadlift first.',
+      'Focus on balance and control above all else.',
+      'Land softly from the hop to protect your knee and ankle.'
+    ],
+    modifications: {
+      beginner: 'Perform a single leg deadlift to a high knee drive, without the hop.',
+      advanced: 'Increase the height of the hop. Hold a light dumbbell in the opposite hand.',
+      equipment_alternatives: {
+        'None': 'Single leg deadlift.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps per leg'
+    },
+    coaching: {
+      setup: [
+        'Stand on one leg, find your balance.',
+        'Core tight.'
+      ],
+      execution: [
+        'Hinge forward into a controlled single leg deadlift.',
+        'Drive up, bringing the back knee forward powerfully.',
+        'Explode into a hop on the standing leg.',
+        'Land softly and repeat.'
+      ],
+      common_mistakes: [
+        'Losing balance.',
+        'Rounding the back during the deadlift.',
+        'Landing too hard.'
+      ],
+      breathing: 'Inhale on the deadlift, exhale forcefully on the drive up and hop.'
+    }
+  },
+
+  'single-leg-calf-raise': {
+    id: 'single-leg-calf-raise',
+    name: 'Single Leg Calf Raise',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Calves'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand on one leg, holding onto a wall or chair for balance.',
+      'You can perform this on flat ground or with the ball of your foot on the edge of a step for greater range of motion.',
+      'Press through the ball of your standing foot to raise your heel as high as possible.',
+      'Squeeze your calf muscle at the top of the movement.',
+      'Slowly lower your heel back to the starting position with control.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'Use support for balance to focus on the calf contraction.',
+      'Avoid using momentum or bouncing at the bottom of the movement.',
+      'Control the lowering (eccentric) phase.'
+    ],
+    modifications: {
+      beginner: 'Perform with two legs. Reduce the range of motion.',
+      advanced: 'Hold a dumbbell in the hand on the same side as the working leg. Slow down the lowering phase (3-5 seconds).',
+      equipment_alternatives: {
+        'None': 'Can be done on a step for more range of motion.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps per leg'
+    },
+    coaching: {
+      setup: [
+        'Stand on one leg, hold support.',
+        'Ball of foot firmly planted.'
+      ],
+      execution: [
+        'Drive up through the ball of the foot.',
+        'Raise heel as high as possible.',
+        'Squeeze calf at the top.',
+        'Lower slowly and with control.'
+      ],
+      common_mistakes: [
+        'Bouncing.',
+        'Losing balance.',
+        'Not controlling the descent.'
+      ],
+      breathing: 'Exhale as you raise your heel, inhale as you lower.'
+    }
+  },
+
+  'supermans': {
+    id: 'supermans',
+    name: 'Supermans',
+    category: 'core',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Lower Back',
+      'Glutes',
+      'Shoulders',
+      'Hamstrings'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Lie face down on a mat with your arms extended straight out in front of you and your legs straight behind you (like Superman flying).',
+      'Keep your head in a neutral position with your gaze towards the floor.',
+      'Engage your core, lower back, and glutes to simultaneously lift both your arms and your legs a few inches off the floor.',
+      'Focus on creating length from your fingertips to your toes.',
+      'Hold the position for a moment at the top.',
+      'Slowly lower your arms and legs back to the floor with control.'
+    ],
+    safetyNotes: [
+      'Avoid looking up, as this can strain your neck.',
+      'The lift should be controlled and come from your posterior chain, not by arching into a painful position.',
+      'If you have lower back pain, stick to the alternating version.'
+    ],
+    modifications: {
+      beginner: 'Perform the \'Alternating Superman\' by lifting opposite arm and leg. Lift only your upper body or only your lower body.',
+      advanced: 'Hold the top position for a longer duration. Add small flutter kicks or arm circles while in the hold.',
+      equipment_alternatives: {
+        'None': 'Bird Dog.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie face down, arms and legs extended.',
+        'Gaze down, neck neutral.'
+      ],
+      execution: [
+        'Lift arms and legs off the floor simultaneously.',
+        'Squeeze glutes and back muscles.',
+        'Focus on length, not height.',
+        'Lower with full control.'
+      ],
+      common_mistakes: [
+        'Lifting too high and straining the back.',
+        'Cranking the neck upwards.',
+        'Dropping without control.'
+      ],
+      breathing: 'Exhale as you lift, inhale as you lower.'
+    }
+  },
+
+  'alternating-jump-lunges': {
+    id: 'alternating-jump-lunges',
+    name: 'Alternating Jump Lunges',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Quads',
+      'Glutes',
+      'Hamstrings'
+    ],
+    difficulty: 3,
+    instructions: [
+      'Start in a lunge position with your right foot forward and left foot back, both knees bent at 90 degrees.',
+      'Engage your core and keep your chest up.',
+      'Lower slightly, then jump explosively into the air.',
+      'While in the air, switch the position of your legs, bringing your left foot forward and your right foot back.',
+      'Land softly back in a lunge position with your legs switched.',
+      'Immediately descend into the next jump. Continue alternating.'
+    ],
+    safetyNotes: [
+      'This is a high-impact exercise; ensure you have a solid foundation of lunge strength first.',
+      'Land as softly as possible to protect your knees and ankles.',
+      'Maintain control and balance; do not let your front knee collapse inward.'
+    ],
+    modifications: {
+      beginner: 'Perform alternating forward lunges without the jump. Perform a less explosive jump.',
+      advanced: 'Increase the height and speed of the jumps. Hold light dumbbells.',
+      equipment_alternatives: {
+        'None': 'Alternating forward lunges.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps per leg'
+    },
+    coaching: {
+      setup: [
+        'Start in a stable lunge position.',
+        'Chest up, core braced.'
+      ],
+      execution: [
+        'Jump vertically with power.',
+        'Switch legs in mid-air.',
+        'Land softly in the opposite lunge.',
+        'Absorb the impact and repeat.'
+      ],
+      common_mistakes: [
+        'Landing too hard.',
+        'Front knee going past the toes.',
+        'Losing balance and control.'
+      ],
+      breathing: 'Breathe rhythmically, exhaling on the explosive jump.'
+    }
+  },
+  'side-plank-leg-lift': {
+    id: 'side-plank-leg-lift',
+    name: 'Side Plank Leg Lift',
+    category: 'core',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Obliques',
+      'Glutes (Medius)',
+      'Core',
+      'Abductors'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Assume a strong side plank position on your right forearm, with your elbow under your shoulder and your body in a straight line.',
+      'Engage your core and keep your hips lifted and stacked.',
+      'Keeping your top (left) leg straight, slowly lift it up towards the ceiling without letting your hips drop.',
+      'Focus on using your outer glute and hip to perform the lift.',
+      'Pause at the top, then slowly lower the leg back down with control.',
+      'Complete all repetitions on one side before switching.'
+    ],
+    safetyNotes: [
+      'Do not let your hips sag towards the floor during the movement.',
+      'The leg lift should be controlled; avoid swinging the leg.',
+      'If you cannot maintain a stable plank, master the static side plank first.'
+    ],
+    modifications: {
+      beginner: 'Perform the side plank from your knees and then lift the top leg.',
+      advanced: 'Add a resistance band around your thighs or ankles.',
+      equipment_alternatives: {
+        'None': 'Side-lying leg lifts (non-plank version).'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Establish a solid side plank, elbow under shoulder.',
+        'Body in a straight line, hips stacked and lifted.',
+        'Core braced.'
+      ],
+      execution: [
+        'Slowly lift the top leg without moving your torso.',
+        'Squeeze the outer glute of the lifted leg.',
+        'Keep hips high and stable.',
+        'Lower the leg with full control.'
+      ],
+      common_mistakes: [
+        'Hips sagging during the leg lift.',
+        'Swinging the leg or using momentum.',
+        'Torso rotating forward or backward.'
+      ],
+      breathing: 'Exhale as you lift the leg, inhale as you lower.'
+    }
+  },
+  'ankle-rocks': {
+    id: 'ankle-rocks',
+    name: 'Ankle Rocks',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Ankles',
+      'Calves',
+      'Tibialis Anterior'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Start in a half-kneeling position with your right foot forward, foot flat on the floor.',
+      'Place your hands on your right knee.',
+      'Keeping your right heel on the ground, slowly rock your body forward, pushing your knee over your toes to feel a stretch in your ankle and calf.',
+      'Hold for a moment at the point of maximum comfortable dorsiflexion.',
+      'Rock back to the starting position.',
+      'Repeat the rocking motion. Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'Keep your front heel glued to the floor throughout the movement.',
+      'The movement should be a smooth rock, not a painful jam of the ankle joint.',
+      'Do not allow your arch to collapse.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion. Do not rock as far forward.',
+      advanced: 'Hold a light weight or kettlebell on the front knee to increase the stretch. Try to push the knee outside of the foot to mobilize different angles.',
+      equipment_alternatives: {
+        'None': 'Standing calf stretch against a wall.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Half-kneeling position, front foot flat.',
+        'Hands on front knee.'
+      ],
+      execution: [
+        'Rock forward, driving knee over toes.',
+        'Keep heel on the ground.',
+        'Feel stretch in the ankle.',
+        'Rock back and repeat smoothly.'
+      ],
+      common_mistakes: [
+        'Lifting the heel off the ground.',
+        'Moving too quickly.',
+        'Collapsing the arch of the foot.'
+      ],
+      breathing: 'Inhale as you rock back, exhale as you rock forward into the stretch.'
+    }
+  },
+  'reverse-lunge-knee-drive': {
+    id: 'reverse-lunge-knee-drive',
+    name: 'Reverse Lunge Knee Drive',
+    category: 'cardio',
+    equipment: [],
+    muscleGroups: [
+      'Glutes',
+      'Quads',
+      'Hip Flexors',
+      'Core'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand tall with your feet hip-width apart.',
+      'Step your right foot back into a reverse lunge, lowering both knees to about 90 degrees.',
+      'Push off your back (right) foot and drive your right knee up towards your chest in one fluid motion.',
+      'Simultaneously come to balance on your standing (left) leg.',
+      'Immediately go from the high knee position back into the next reverse lunge.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'Maintain an upright torso and engaged core to aid balance.',
+      'Control the descent into the lunge; do not let your back knee slam into the floor.',
+      'Focus on a powerful but controlled knee drive.'
+    ],
+    modifications: {
+      beginner: 'Perform the reverse lunge and the knee drive as two separate movements. Use a wall for balance.',
+      advanced: 'Add a small hop on the standing leg as you drive the knee up.',
+      equipment_alternatives: {
+        'None': 'Standard alternating reverse lunges.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet hip-width apart.',
+        'Core braced, ready to step back.'
+      ],
+      execution: [
+        'Step back into a reverse lunge.',
+        'Drive off back foot into a powerful high knee.',
+        'Maintain balance on the standing leg.',
+        'Flow smoothly between movements.'
+      ],
+      common_mistakes: [
+        'Losing balance.',
+        'Leaning too far forward.',
+        'Not controlling the lunge.'
+      ],
+      breathing: 'Inhale on the lunge, exhale forcefully on the knee drive.'
+    }
+  },
+  'squat-to-calf-raise': {
+    id: 'squat-to-calf-raise',
+    name: 'Squat to Calf Raise',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Quads',
+      'Glutes',
+      'Calves'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand with your feet shoulder-width apart, toes pointing slightly out.',
+      'Lower your hips back and down into a bodyweight squat, keeping your chest up and back straight.',
+      'Drive through your heels to return to the standing position.',
+      'Once you are fully standing, continue the upward motion by pressing through the balls of your feet to perform a calf raise.',
+      'Hold the calf raise for a moment, then lower your heels back to the floor.',
+      'That is one repetition. Immediately descend into the next squat.'
+    ],
+    safetyNotes: [
+      'Ensure proper squat form with a straight back and knees tracking over toes.',
+      'Control the calf raise; do not rock onto your toes.',
+      'Maintain a fluid motion between the two parts of the exercise.'
+    ],
+    modifications: {
+      beginner: 'Perform a squat and a calf raise as two distinct, separate movements.',
+      advanced: 'Hold light dumbbells. Add a pause at the bottom of the squat and at the top of the calf raise.',
+      equipment_alternatives: {
+        'None': 'Bodyweight squats.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand with feet shoulder-width apart.',
+        'Core engaged, chest up.'
+      ],
+      execution: [
+        'Perform a full squat.',
+        'Drive up to standing.',
+        'Seamlessly transition into a calf raise.',
+        'Lower heels and repeat.'
+      ],
+      common_mistakes: [
+        'Poor squat form.',
+        'Rushing the movement and losing balance on the calf raise.',
+        'Not achieving full height in the calf raise.'
+      ],
+      breathing: 'Inhale as you squat down, exhale as you stand and perform the calf raise.'
+    }
+  },
+  'single-leg-shin-sequence': {
+    id: 'single-leg-shin-sequence',
+    name: 'Single Leg Shin Sequence',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Tibialis Anterior',
+      'Ankles',
+      'Calves'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand on your left leg, holding onto a wall for balance if needed.',
+      'Lift your right foot slightly off the floor in front of you.',
+      'Part 1 (Flex/Point): Point your toes down towards the floor, then flex them up towards your shin. Repeat this motion.',
+      'Part 2 (Circles): Make slow, controlled circles with your ankle in a clockwise direction, then counter-clockwise.',
+      'Part 3 (Alphabet): \'Write\' the letters of the alphabet in the air with your big toe.',
+      'This entire sequence activates and mobilizes the shin and ankle. Complete on one side before switching.'
+    ],
+    safetyNotes: [
+      'Isolate the movement to your ankle; try not to move your entire leg.',
+      'The movements should be deliberate and controlled, not fast or jerky.',
+      'Use support for balance to focus on the quality of the ankle movement.'
+    ],
+    modifications: {
+      beginner: 'Perform the sequence while seated in a chair. Make smaller movements.',
+      advanced: 'Perform without any support to challenge your balance.',
+      equipment_alternatives: {
+        'None': 'Standard ankle circles.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      progressionRate: 0.1,
+      unit: 'seconds per leg'
+    },
+    coaching: {
+      setup: [
+        'Stand on one leg, use support for balance.',
+        'Lift the other foot off the floor.'
+      ],
+      execution: [
+        'Perform controlled toe points and flexes.',
+        'Transition to smooth ankle circles in both directions.',
+        'Finish by drawing the alphabet with your toe.',
+        'Focus on ankle articulation.'
+      ],
+      common_mistakes: [
+        'Moving the whole leg instead of just the ankle.',
+        'Rushing through the movements.',
+        'Losing balance.'
+      ],
+      breathing: 'Breathe naturally and rhythmically.'
+    }
+  },
+  'standing-fours': {
+    id: 'standing-fours',
+    name: 'Standing Fours',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Glutes (Piriformis)',
+      'Hips'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand on your left leg, holding onto a wall or chair for balance.',
+      'Cross your right ankle over your left thigh, just above the knee, creating a \'figure four\' shape.',
+      'Keeping your back straight, hinge at your hips and sit back as if lowering into a chair.',
+      'Lower yourself until you feel a deep stretch in your right glute and hip.',
+      'Keep your right foot flexed to protect the knee.',
+      'Hold the stretch, or for a dynamic version, gently pulse in and out of the stretch.',
+      'Complete on one side before switching.'
+    ],
+    safetyNotes: [
+      'Focus on balance; use support as needed.',
+      'Keep your back straight as you hinge; do not round your spine.',
+      'Do not force the stretch; only go as deep as your hip mobility allows.'
+    ],
+    modifications: {
+      beginner: 'Do not sit as deep into the stretch. Use more support from the wall/chair.',
+      advanced: 'Perform without any support for a greater balance challenge. Sit deeper into the stretch.',
+      equipment_alternatives: {
+        'None': 'Seated or supine figure four stretch.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'pulses per side'
+    },
+    coaching: {
+      setup: [
+        'Stand on one leg, hold support.',
+        'Cross other ankle over standing thigh.',
+        'Flex the lifted foot.'
+      ],
+      execution: [
+        'Hinge hips and sit back.',
+        'Keep back straight, chest up.',
+        'Feel stretch in the outer hip/glute.',
+        'Pulse gently or hold.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Losing balance.',
+        'Not flexing the foot, which can strain the knee.'
+      ],
+      breathing: 'Exhale as you sit back into the stretch.'
+    }
+  },
+  'kang-squats': {
+    id: 'kang-squats',
+    name: 'Kang Squats',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Hamstrings',
+      'Glutes',
+      'Lower Back',
+      'Quads'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet shoulder-width apart, and place your hands behind your head with elbows wide.',
+      'Begin by performing a \'Good Morning\': keeping your back straight and a slight bend in your knees, hinge at your hips and lower your torso until it\'s nearly parallel to the floor.',
+      'From this hinged position, drop your hips down and back to transition into the bottom of a deep squat. Your torso will become more upright.',
+      'From the bottom of the squat, reverse the motion: first, lift your hips back up to the \'Good Morning\' position.',
+      'Finally, drive your hips forward to return to a full standing position.',
+      'Maintain a slow and controlled tempo throughout.'
+    ],
+    safetyNotes: [
+      'This is a complex movement. Keeping your back flat is the top priority.',
+      'Move slowly and deliberately, especially during the transitions.',
+      'Master both the Good Morning and the Squat individually before combining them.'
+    ],
+    modifications: {
+      beginner: 'Perform without hands behind your head (hands on hips or at chest). Reduce the range of motion in both the hinge and the squat.',
+      advanced: 'Hold a very light dumbbell or plate behind your head. Pause at each position.',
+      equipment_alternatives: {
+        'None': 'Perform Good Mornings and Squats as separate exercises.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet shoulder-width.',
+        'Hands behind head, elbows wide.',
+        'Core braced.'
+      ],
+      execution: [
+        'Hinge into a Good Morning (flat back).',
+        'Drop hips into a deep squat.',
+        'Lift hips back to the Good Morning position.',
+        'Stand up by squeezing glutes.'
+      ],
+      common_mistakes: [
+        'Rounding the back at any point.',
+        'Rushing the transitions.',
+        'Lifting the chest before the hips from the squat.'
+      ],
+      breathing: 'Inhale as you hinge and squat, exhale as you lift hips and stand.'
+    }
+  },
+  'dynamic-quad-stretch': {
+    id: 'dynamic-quad-stretch',
+    name: 'Dynamic Quad Stretch',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Quads',
+      'Hip Flexors'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand tall, using a wall for light balance support if needed.',
+      'Shift your weight to your left foot.',
+      'Bend your right knee and grab your right ankle or foot with your right hand.',
+      'Gently pull your heel towards your glute for a brief 1-2 second stretch. Keep your knees aligned.',
+      'Release your foot and step forward, then repeat the stretch on the left leg.',
+      'Continue alternating legs as you walk forward, creating a dynamic \'walk and pull\' motion.'
+    ],
+    safetyNotes: [
+      'Do not pull forcefully or jerk the leg; the stretch should be brief and gentle.',
+      'Maintain an upright posture and avoid arching your back.',
+      'Focus on balance.'
+    ],
+    modifications: {
+      beginner: 'Perform the stretch while standing in place, holding onto a wall for full support. Hold the stretch for slightly longer.',
+      advanced: 'Perform without any support. Increase the pace of the walk.',
+      equipment_alternatives: {
+        'None': 'Static quad stretch.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps per leg'
+    },
+    coaching: {
+      setup: [
+        'Stand tall.',
+        'Prepare to walk forward.'
+      ],
+      execution: [
+        'Take a step.',
+        'Grab the ankle of the back leg.',
+        'Pull heel to glute for a quick stretch.',
+        'Release, step, and switch sides.',
+        'Keep it moving.'
+      ],
+      common_mistakes: [
+        'Holding the stretch for too long (making it static).',
+        'Losing balance.',
+        'Arching the back when pulling the leg.'
+      ],
+      breathing: 'Exhale briefly during each pull.'
+    }
+  },
+  'plank-calf-press': {
+    id: 'plank-calf-press',
+    name: 'Plank Calf Press',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Core',
+      'Calves',
+      'Shoulders'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Start in a high plank position (top of a push-up) with your hands under your shoulders and your body in a straight line.',
+      'Engage your core to keep your hips stable.',
+      'Keeping your body rigid, press forward onto your toes, shifting your shoulders slightly past your wrists.',
+      'Then, press your heels back, feeling a stretch in your calves. Your body will rock forward and backward.',
+      'Continue this controlled rocking motion, pressing through the ankles.',
+      'Maintain a strong plank position throughout.'
+    ],
+    safetyNotes: [
+      'Do not let your hips sag or rise during the rocking motion.',
+      'The movement should come from the ankles, not from bending at the waist.',
+      'Keep your core tight to protect your lower back.'
+    ],
+    modifications: {
+      beginner: 'Perform from a kneeling plank position. Reduce the range of the rock.',
+      advanced: 'Perform from a forearm plank. Perform on one foot at a time.',
+      equipment_alternatives: {
+        'None': 'Downward dog with \'pedaling\' feet.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'rocks'
+    },
+    coaching: {
+      setup: [
+        'Assume a strong high plank position.',
+        'Body straight, core braced.'
+      ],
+      execution: [
+        'Rock forward onto your toes.',
+        'Press back through your heels.',
+        'Feel the calf stretch on the backward press.',
+        'Keep your plank form perfect.'
+      ],
+      common_mistakes: [
+        'Hips sagging.',
+        'Bouncing.',
+        'Losing core engagement.'
+      ],
+      breathing: 'Breathe steadily throughout the movement.'
+    }
+  },
+  'dynamic-side-body-stretch': {
+    id: 'dynamic-side-body-stretch',
+    name: 'Dynamic Side Body Stretch',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Lats',
+      'Obliques',
+      'Shoulders'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand with your feet hip-width apart.',
+      'Reach your right arm straight up to the ceiling, creating length in your right side.',
+      'Gently bend your torso to the left, feeling a stretch all along your right side body. Hold for only 1-2 seconds.',
+      'Return to the center and lower your right arm.',
+      'Repeat on the other side, reaching your left arm up and bending to the right.',
+      'Continue alternating sides in a smooth, flowing motion.'
+    ],
+    safetyNotes: [
+      'The movement should be a pure side-bend; avoid leaning forward or backward.',
+      'Keep your core engaged to support your spine.',
+      'Do not bounce into the stretch.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion. Perform with hands on hips.',
+      advanced: 'Grasp your wrist with your opposite hand and gently pull to deepen the stretch. Increase the pace of the alternating motion.',
+      equipment_alternatives: {
+        'None': 'Static side bend.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet hip-width apart.'
+      ],
+      execution: [
+        'Reach one arm up high.',
+        'Bend to the opposite side.',
+        'Feel a gentle stretch.',
+        'Return to center and switch smoothly.'
+      ],
+      common_mistakes: [
+        'Bending forward.',
+        'Holding the stretch for too long (making it static).',
+        'Not reaching fully overhead.'
+      ],
+      breathing: 'Inhale as you reach up, exhale as you bend to the side.'
+    }
+  },
+  'shoulder-openers': {
+    id: 'shoulder-openers',
+    name: 'Shoulder Openers',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Shoulders',
+      'Chest',
+      'Upper Back'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand tall with your feet shoulder-width apart.',
+      'Interlace your fingers behind your lower back, palms facing in.',
+      'Straighten your arms and gently pull your shoulder blades together and down.',
+      'Lift your hands away from your glutes as far as is comfortable, opening up your chest and the front of your shoulders.',
+      'Hold for 2-3 seconds.',
+      'Release the bind and bring your arms in front of you. Cross your arms and give yourself a hug, rounding your upper back to stretch the rhomboids.',
+      'Alternate between the chest-opening and back-stretching positions.'
+    ],
+    safetyNotes: [
+      'Avoid arching your lower back when opening the chest; keep your core engaged.',
+      'Do not force the lift of the arms if you have tight shoulders.',
+      'Keep the movements gentle and controlled.'
+    ],
+    modifications: {
+      beginner: 'If you can\'t interlace your fingers, hold a towel or resistance band between your hands.',
+      advanced: 'From the chest-opening position, hinge at your hips and fold forward, letting your arms fall overhead for a deeper stretch.',
+      equipment_alternatives: {
+        'None': 'Doorway chest stretch.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'cycles'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, core engaged.'
+      ],
+      execution: [
+        'Clasp hands behind your back, open chest.',
+        'Lift arms away from body.',
+        'Release, hug yourself, and round upper back.',
+        'Flow between the two positions.'
+      ],
+      common_mistakes: [
+        'Arching the lower back.',
+        'Forcing the arm lift.',
+        'Shrugging the shoulders.'
+      ],
+      breathing: 'Inhale as you open the chest, exhale as you round the back.'
+    }
+  },
+  'standing-crunch': {
+    id: 'standing-crunch',
+    name: 'Standing Crunch',
+    category: 'core',
+    equipment: [],
+    muscleGroups: [
+      'Abs',
+      'Obliques',
+      'Hip Flexors'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand with your feet shoulder-width apart and place your hands behind your head, elbows wide.',
+      'Engage your core and lift your right knee up towards your chest.',
+      'Simultaneously, bring your left elbow towards your right knee, performing a standing crunch motion.',
+      'The goal is to touch elbow to knee, but only go as far as you can with control.',
+      'Return to the starting position.',
+      'Repeat on the other side, lifting your left knee to your right elbow.',
+      'Continue alternating sides.'
+    ],
+    safetyNotes: [
+      'Do not pull on your head or neck with your hands.',
+      'The movement should be a controlled crunch, not a fast, jerky motion.',
+      'Focus on using your abs to bring the knee and elbow together.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion; do not try to touch elbow to knee. Use a wall for balance.',
+      advanced: 'Increase the speed while maintaining control. Add a pause at the peak contraction.',
+      equipment_alternatives: {
+        'None': 'High knees.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet shoulder-width.',
+        'Hands behind head, elbows out.'
+      ],
+      execution: [
+        'Lift opposite knee to opposite elbow.',
+        'Crunch your core.',
+        'Maintain balance.',
+        'Alternate sides smoothly.'
+      ],
+      common_mistakes: [
+        'Pulling on the neck.',
+        'Losing balance.',
+        'Rounding the back too much instead of crunching.'
+      ],
+      breathing: 'Exhale as you bring your knee and elbow together.'
+    }
+  },
+  'lizard-circles': {
+    id: 'lizard-circles',
+    name: 'Lizard Circles',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Hips',
+      'Groin',
+      'Hip Flexors'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start in a low lunge or \'Lizard Pose\' with your right foot on the outside of your right hand, and your left knee on the ground.',
+      'Keep your hands on the floor for support.',
+      'Begin to make slow, controlled circles with your hips.',
+      'Circle in one direction, shifting your weight forward, to the side, and back to explore the full range of motion of your hip joint.',
+      'After several circles in one direction, reverse the direction.',
+      'Complete on one side before switching legs.'
+    ],
+    safetyNotes: [
+      'The movement should be slow and deliberate, not fast or jerky.',
+      'Keep the movement pain-free. If you feel any pinching, reduce the size of the circles.',
+      'Use yoga blocks under your hands if you cannot comfortably reach the floor.'
+    ],
+    modifications: {
+      beginner: 'Make smaller circles. Keep your hands on yoga blocks for more height and less intensity.',
+      advanced: 'Lower down onto your forearms for a deeper stretch. Make larger circles.',
+      equipment_alternatives: {
+        'None': 'Static Lizard Pose or frog stretch.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'circles per direction, per side'
+    },
+    coaching: {
+      setup: [
+        'Assume a Lizard Pose, back knee down.',
+        'Hands on the floor inside front foot.'
+      ],
+      execution: [
+        'Initiate slow circles with your hips.',
+        'Explore the range of motion: forward, side, back.',
+        'Keep it smooth and controlled.',
+        'Reverse direction.'
+      ],
+      common_mistakes: [
+        'Moving too quickly.',
+        'Forcing the movement into a painful range.',
+        'Holding your breath.'
+      ],
+      breathing: 'Breathe naturally and rhythmically with the circular motion.'
+    }
+  },
+  'run-in-place': {
+    id: 'run-in-place',
+    name: 'Run in Place',
+    category: 'cardio',
+    equipment: [],
+    muscleGroups: [
+      'Full Body'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand with your feet hip-width apart.',
+      'Begin by lifting one knee towards your chest, then quickly switching to the other, mimicking a running motion.',
+      'Land lightly on the balls of your feet.',
+      'Coordinate your arms, swinging them in opposition to your legs (right arm forward with left knee up).',
+      'Start at a light jog pace and gradually increase the intensity if desired.',
+      'Maintain an upright posture.'
+    ],
+    safetyNotes: [
+      'Land softly to minimize impact.',
+      'Keep your core engaged to maintain good posture.',
+      'Ensure you have adequate space around you.'
+    ],
+    modifications: {
+      beginner: 'March in place without the impact of running.',
+      advanced: 'Increase the intensity to \'High Knees\', driving your knees up towards your chest more explosively.',
+      equipment_alternatives: {
+        'None': 'Jumping jacks.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet ready.'
+      ],
+      execution: [
+        'Lift knees alternately.',
+        'Land lightly on the balls of your feet.',
+        'Swing arms in coordination.',
+        'Keep posture upright.'
+      ],
+      common_mistakes: [
+        'Landing heavily on the heels.',
+        'Slouching or leaning forward.',
+        'Holding breath.'
+      ],
+      breathing: 'Breathe naturally and rhythmically.'
+    }
+  },
+  'diagonal-lunge': {
+    id: 'diagonal-lunge',
+    name: 'Diagonal Lunge',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Glutes',
+      'Quads',
+      'Adductors',
+      'Abductors'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet hip-width apart.',
+      'Take a large step forward and out to the right with your right foot, at about a 45-degree angle.',
+      'Lower your hips until your right thigh is parallel to the floor, keeping your left leg relatively straight.',
+      'Ensure your right knee tracks in line with your right foot.',
+      'Keep your chest up and your core engaged.',
+      'Push off your right foot to return to the starting position.',
+      'Repeat on the left side, stepping diagonally forward and out with your left foot.',
+      'Continue alternating sides.'
+    ],
+    safetyNotes: [
+      'Control the movement and maintain balance.',
+      'Keep your front knee aligned with your foot; do not let it collapse inward.',
+      'Maintain an upright torso.'
+    ],
+    modifications: {
+      beginner: 'Reduce the depth of the lunge. Take a smaller diagonal step.',
+      advanced: 'Hold dumbbells in each hand. Add a hop as you return to the start.',
+      equipment_alternatives: {
+        'None': 'Forward lunges or side lunges.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet hip-width.',
+        'Core braced.'
+      ],
+      execution: [
+        'Step forward and out at a 45-degree angle.',
+        'Lower into the lunge, keeping chest up.',
+        'Push off the front foot to return to start.',
+        'Alternate sides.'
+      ],
+      common_mistakes: [
+        'Front knee caving inward.',
+        'Leaning too far forward.',
+        'Losing balance.'
+      ],
+      breathing: 'Inhale as you lunge, exhale as you push back to the start.'
+    }
+  },
+  'high-skip': {
+    id: 'high-skip',
+    name: 'High Skip',
+    category: 'plyometric',
+    equipment: [],
+    muscleGroups: [
+      'Hip Flexors',
+      'Glutes',
+      'Calves',
+      'Hamstrings'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Begin by skipping forward lightly.',
+      'Start to exaggerate the upward motion. On each skip, drive your knee up towards your chest explosively.',
+      'Simultaneously, use your opposite arm to drive upward to generate more height.',
+      'Focus on getting vertical height with each skip, not just forward distance.',
+      'Land softly on the ball of your foot and immediately spring into the next skip.',
+      'Maintain a tall, upright posture.'
+    ],
+    safetyNotes: [
+      'Land softly to absorb impact.',
+      'This is a high-impact exercise; ensure you are properly warmed up.',
+      'Keep your core engaged to maintain stability and posture.'
+    ],
+    modifications: {
+      beginner: 'Perform a high-knee march without the skip to learn the motion. Reduce the height of the skip.',
+      advanced: 'Increase the height and explosive power of each skip. Cover more ground with each skip.',
+      equipment_alternatives: {
+        'None': 'High knees in place.'
+      }
+    },
+    metrics: {
+      type: 'distance',
+      defaultValue: 20,
+      progressionRate: 0.1,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, ready to move forward.'
+      ],
+      execution: [
+        'Drive one knee up powerfully.',
+        'Explode off the ground for vertical height.',
+        'Use opposite arm drive.',
+        'Land softly and immediately transition to the other side.'
+      ],
+      common_mistakes: [
+        'Leaning back.',
+        'Landing heavily on heels.',
+        'Not using arms to generate power.'
+      ],
+      breathing: 'Exhale forcefully on each upward knee drive.'
+    }
+  },
+  'boot-strappers': {
+    id: 'boot-strappers',
+    name: 'Boot Strappers',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Hamstrings',
+      'Glutes',
+      'Hips',
+      'Quads'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet shoulder-width apart.',
+      'Squat down and place your fingertips under your toes.',
+      'Keeping your fingertips under your toes, lift your hips up towards the ceiling, straightening your legs as much as possible to feel a deep hamstring stretch.',
+      'Your back will be rounded at the top of this stretch.',
+      'Lower your hips back down into the deep squat position, trying to bring your chest up and flatten your back.',
+      'Repeat this fluid motion of lifting and lowering the hips.'
+    ],
+    safetyNotes: [
+      'Move slowly and with control; do not jerk your hips up or down.',
+      'Only straighten your legs as much as your hamstring flexibility allows.',
+      'Keep your fingertips under your toes throughout the movement.'
+    ],
+    modifications: {
+      beginner: 'Place hands on your shins or ankles instead of under your toes. Do not straighten legs as much.',
+      advanced: 'Try to flatten your back more at the bottom of the squat. Hold the hamstring stretch for longer.',
+      equipment_alternatives: {
+        'None': 'Separate deep squats and standing forward folds.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Squat down, place fingertips under toes.',
+        'Keep heels on the ground if possible.'
+      ],
+      execution: [
+        'Lift hips up, straightening legs for hamstring stretch.',
+        'Lower hips back down into a deep squat.',
+        'Try to lift your chest at the bottom.',
+        'Maintain a continuous flow.'
+      ],
+      common_mistakes: [
+        'Moving too quickly.',
+        'Letting go of the toes.',
+        'Forcing the stretch.'
+      ],
+      breathing: 'Inhale as you lower your hips, exhale as you lift your hips.'
+    }
+  },
+  'standing-hip-open-and-close': {
+    id: 'standing-hip-open-and-close',
+    name: 'Hip Open & Close',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Hips',
+      'Glutes',
+      'Abductors',
+      'Adductors'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand tall on your left leg, using a wall for balance if needed.',
+      'Lift your right knee up in front of you to a 90-degree angle.',
+      'Keeping your knee bent, open your hip by moving your right knee out to the right side, as if stepping over a hurdle.',
+      'From the open position, circle the knee back and down to the starting position.',
+      'This is one \'open\' repetition. For the \'close\', reverse the motion: lift the knee out to the side, then bring it to the front and lower it.',
+      'Complete all repetitions on one side before switching.'
+    ],
+    safetyNotes: [
+      'Keep your torso upright and stable; avoid leaning to compensate.',
+      'The movement should be controlled and initiated from the hip joint.',
+      'Use support for balance to ensure quality of movement.'
+    ],
+    modifications: {
+      beginner: 'Reduce the height of the knee lift. Make smaller circles. Use a wall for full support.',
+      advanced: 'Perform without any support to challenge balance. Increase the height and size of the circle.',
+      equipment_alternatives: {
+        'None': 'Clamshells or fire hydrants on the floor.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps per direction, per side'
+    },
+    coaching: {
+      setup: [
+        'Stand tall on one leg, hold support.',
+        'Lift opposite knee to hip height.'
+      ],
+      execution: [
+        'Circle the knee out to the side (open).',
+        'Circle the knee from the side to the front (close).',
+        'Keep hips level and torso still.',
+        'Focus on smooth hip rotation.'
+      ],
+      common_mistakes: [
+        'Leaning the torso.',
+        'Swinging the leg with momentum.',
+        'Losing balance.'
+      ],
+      breathing: 'Breathe naturally and rhythmically with the movement.'
+    }
+  },
+  'standing-cat-cow': {
+    id: 'standing-cat-cow',
+    name: 'Standing Cat-Cow',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Spine',
+      'Back',
+      'Core'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand with your feet shoulder-width apart and your knees slightly bent.',
+      'Place your hands on your thighs for support.',
+      'Cow Pose: Inhale as you arch your back, dropping your belly, and lifting your chest and gaze forward. Pull your shoulders back.',
+      'Cat Pose: Exhale as you round your spine, tucking your chin to your chest and pressing your hands into your thighs to deepen the spinal flexion.',
+      'Flow smoothly between the two positions, articulating through your entire spine.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: [
+      'The movement should be slow and controlled, guided by your breath.',
+      'Keep a soft bend in your knees throughout.',
+      'Avoid any movement that causes sharp pain.'
+    ],
+    modifications: {
+      beginner: 'Perform with a smaller range of motion.',
+      advanced: 'Deepen the arch and the rounding, exploring the full range of your spinal mobility.',
+      equipment_alternatives: {
+        'None': 'Standard Cat-Cow on hands and knees.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'cycles'
+    },
+    coaching: {
+      setup: [
+        'Stand with knees bent, hands on thighs.'
+      ],
+      execution: [
+        'Inhale, arch your back, look forward (Cow).',
+        'Exhale, round your spine, tuck chin (Cat).',
+        'Let breath guide the movement.',
+        'Feel the articulation of each vertebra.'
+      ],
+      common_mistakes: [
+        'Moving too quickly.',
+        'Only moving the neck or lower back.',
+        'Holding breath.'
+      ],
+      breathing: 'Inhale for Cow, exhale for Cat.'
+    }
+  },
+  'balance-and-change-of-support-drill': {
+    id: 'balance-and-change-of-support-drill',
+    name: 'Balance & Change of Support - Drill',
+    category: 'technique',
+    equipment: [],
+    muscleGroups: [
+      'Core',
+      'Ankles',
+      'Glutes'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start by balancing on your left leg, with your right knee lifted to hip height.',
+      'Hold this single-leg balance for 3-5 seconds, staying as still as possible.',
+      'Quickly \'change support\' by hopping from your left foot to your right foot, immediately bringing your left knee up to hip height.',
+      'Establish your balance on the right leg and hold for 3-5 seconds.',
+      'The goal is to minimize time on the ground during the switch and to find stability instantly on the landing foot.',
+      'Continue alternating sides.'
+    ],
+    safetyNotes: [
+      'Focus on a soft landing to absorb impact.',
+      'Keep your core tight to maintain balance.',
+      'If you are unstable, spend more time on the balance portion and less on the quick switch.'
+    ],
+    modifications: {
+      beginner: 'Instead of hopping, quickly step from one foot to the other. Use a wall for support.',
+      advanced: 'Increase the speed of the switch. Perform on a slightly unstable surface.',
+      equipment_alternatives: {
+        'None': 'Single leg balance holds.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Balance on one leg, opposite knee high.',
+        'Find your stability.'
+      ],
+      execution: [
+        'Hold the balance.',
+        'Perform a quick hop to switch feet.',
+        'Immediately find and hold the balance on the other side.',
+        'Be quick in the air, still on the ground.'
+      ],
+      common_mistakes: [
+        'Wobbling excessively after landing.',
+        'Landing heavily.',
+        'Not holding the balance portion.'
+      ],
+      breathing: 'Breathe steadily during the hold, exhale on the switch.'
+    }
+  },
+  'pony-drill': {
+    id: 'pony-drill',
+    name: 'Pony - Drill',
+    category: 'technique',
+    equipment: [],
+    muscleGroups: [
+      'Calves',
+      'Ankles',
+      'Core'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet together, posture tall.',
+      'This drill mimics a prancing horse.',
+      'Perform quick, low-to-the-ground hops, alternating feet.',
+      'As you hop on your left foot, your right leg should be slightly in front with the knee bent. As you hop on your right foot, the left leg is in front.',
+      'The emphasis is on a stiff ankle and a quick, springy bounce off the ground. The knees do not bend much.',
+      'Keep your ground contact time as short as possible. Use a slight arm swing for rhythm.'
+    ],
+    safetyNotes: [
+      'Stay on the balls of your feet.',
+      'This is a plyometric drill; ensure you are warmed up.',
+      'Focus on ankle stiffness, not high jumping.'
+    ],
+    modifications: {
+      beginner: 'Perform the motion slowly without the \'spring\'. Focus on the footwork.',
+      advanced: 'Increase the speed and reactivity. Try to cover a small amount of ground moving forward.',
+      equipment_alternatives: {
+        'None': 'Pogo hops (two feet).'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, core engaged.'
+      ],
+      execution: [
+        'Quick, alternating hops on the balls of the feet.',
+        'Think \'stiff ankles\' and \'springy\'.',
+        'Minimize ground contact time.',
+        'Keep the hops low.'
+      ],
+      common_mistakes: [
+        'Bending the knees too much.',
+        'Spending too much time on the ground.',
+        'Landing on the heels.'
+      ],
+      breathing: 'Maintain a quick, rhythmic breathing pattern.'
+    }
+  },
+  'hopping-drills': {
+    id: 'hopping-drills',
+    name: 'Hopping - Drills',
+    category: 'technique',
+    equipment: [],
+    muscleGroups: [
+      'Calves',
+      'Quads',
+      'Glutes',
+      'Core'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Balance on your left leg, with your right knee bent and foot off the ground.',
+      'Perform a series of continuous, forward-moving hops on your left leg.',
+      'Focus on a powerful push-off and a stable, soft landing.',
+      'Use your arms to help with balance and momentum.',
+      'The goal is to maintain balance while generating forward propulsion.',
+      'Hop for a set distance or number of reps, then switch to the right leg.'
+    ],
+    safetyNotes: [
+      'Land softly on the midfoot to absorb impact.',
+      'Maintain a slight bend in the knee of your hopping leg upon landing.',
+      'If you lose balance, reset before continuing.'
+    ],
+    modifications: {
+      beginner: 'Perform hops in place instead of moving forward. Perform fewer hops in a row.',
+      advanced: 'Increase the distance or height of each hop. Try hopping in different directions (side to side, backward).',
+      equipment_alternatives: {
+        'None': 'Pogo hops (two feet).'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'hops per leg'
+    },
+    coaching: {
+      setup: [
+        'Balance on one leg.'
+      ],
+      execution: [
+        'Hop continuously forward.',
+        'Push off powerfully.',
+        'Land softly and with control.',
+        'Use arms for balance.'
+      ],
+      common_mistakes: [
+        'Landing heavily on the heel.',
+        'Losing balance between hops.',
+        'Hopping with a straight, locked knee.'
+      ],
+      breathing: 'Exhale on each hop.'
+    }
+  },
+  'advanced-jump-drill': {
+    id: 'advanced-jump-drill',
+    name: 'Advanced Jump - Drill',
+    category: 'technique',
+    equipment: [],
+    muscleGroups: [
+      'Full Body'
+    ],
+    difficulty: 3,
+    instructions: [
+      'This drill combines a hop and a bound.',
+      'Start by balancing on your left leg.',
+      'Perform two forward hops on your left leg.',
+      'After the second hop, immediately bound forward, landing on your right leg.',
+      'Stick the landing and find your balance on the right leg.',
+      'From the right leg, perform two forward hops.',
+      'After the second hop, immediately bound forward, landing on your left leg.',
+      'Continue this \'hop-hop-bound\' sequence, alternating legs for the bound.'
+    ],
+    safetyNotes: [
+      'This is a high-impact, advanced drill. Ensure you have a strong base of plyometric fitness.',
+      'Focus on control and soft landings above all else.',
+      'Perform in an area with plenty of clear space.'
+    ],
+    modifications: {
+      beginner: 'Break the drill down. Practice just the single-leg hops. Practice just bounding from one leg to the other.',
+      advanced: 'Increase the distance and power of both the hops and the bound.',
+      equipment_alternatives: {
+        'None': 'Broad jumps.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      progressionRate: 0.1,
+      unit: 'sequences per side'
+    },
+    coaching: {
+      setup: [
+        'Stand with space in front of you.',
+        'Balance on one leg.'
+      ],
+      execution: [
+        'Hop, hop (on same leg).',
+        'Bound (land on opposite leg).',
+        'Stick the landing, find balance.',
+        'Repeat: hop, hop, bound.'
+      ],
+      common_mistakes: [
+        'Losing balance on the landing.',
+        'Landing too hard.',
+        'Not being explosive enough in the bound.'
+      ],
+      breathing: 'Exhale on the explosive movements (hops and bound).'
+    }
+  },
+  '90-degree-squats': {
+    id: '90-degree-squats',
+    name: '90 Degree Squats',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Quads',
+      'Glutes',
+      'Hamstrings'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand with your feet shoulder-width apart, toes pointing slightly out.',
+      'Engage your core and keep your chest up and back straight.',
+      'Lower your hips back and down as if sitting in a chair, stopping precisely when your thighs are parallel to the floor (a 90-degree angle at the knees).',
+      'Hold for a moment at the bottom to ensure control.',
+      'Push through your heels to return to the starting position.',
+      'Focus on the controlled descent and stopping at the target depth.'
+    ],
+    safetyNotes: [
+      'Maintain a flat back throughout; do not round.',
+      'Ensure your knees track in line with your toes and do not collapse inward.',
+      'You can place a chair or box behind you to learn the correct depth.'
+    ],
+    modifications: {
+      beginner: 'Use a chair for support and to gauge depth. Reduce the hold time at the bottom.',
+      advanced: 'Add a longer pause at the 90-degree position. Hold a light weight.',
+      equipment_alternatives: {
+        'None': 'Box squats.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Feet shoulder-width, chest up, core braced.'
+      ],
+      execution: [
+        'Hips go back and down.',
+        'Stop when thighs are parallel to the floor.',
+        'Pause to demonstrate control.',
+        'Drive through heels to stand.'
+      ],
+      common_mistakes: [
+        'Going too deep or not deep enough.',
+        'Dropping too quickly.',
+        'Leaning too far forward.'
+      ],
+      breathing: 'Inhale as you lower, exhale as you stand up.'
+    }
+  },
+  'forward-fold': {
+    id: 'forward-fold',
+    name: 'Forward Fold',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: [
+      'Hamstrings',
+      'Calves',
+      'Lower Back'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand tall with your feet hip-width apart.',
+      'Place your hands on your hips and keep a slight bend in your knees.',
+      'Exhale and hinge at your hips, leading with your chest to fold your torso over your legs.',
+      'Keep your back as straight as possible during the hinge.',
+      'Once folded, let your head and neck relax completely. Your hands can rest on your shins, the floor, or grab opposite elbows.',
+      'Hold the stretch, breathing deeply into your hamstrings.'
+    ],
+    safetyNotes: [
+      'Keep a micro-bend in your knees to protect them; do not lock them.',
+      'If you have lower back issues, bend your knees more generously.',
+      'Lead with your chest, not by rounding your back.'
+    ],
+    modifications: {
+      beginner: 'Bend your knees significantly. Rest your hands on your thighs or on yoga blocks.',
+      advanced: 'Straighten your legs more. Wrap your hands around the backs of your ankles to gently deepen the fold.',
+      equipment_alternatives: {
+        'None': 'Seated forward fold.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet hip-width.',
+        'Slight bend in knees.'
+      ],
+      execution: [
+        'Hinge from your hips with a flat back.',
+        'Fold torso over legs.',
+        'Let your head and neck hang heavy.',
+        'Breathe into the hamstring stretch.'
+      ],
+      common_mistakes: [
+        'Rounding the back to reach the floor.',
+        'Locking the knees.',
+        'Holding tension in the neck and shoulders.'
+      ],
+      breathing: 'Inhale to find length, exhale to fold deeper.'
+    }
+  },
+  'chest-stretch': {
+    id: 'chest-stretch',
+    name: 'Chest Stretch',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: [
+      'Chest (Pectorals)',
+      'Shoulders'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand in a doorway or next to a wall.',
+      'Place your right forearm on the doorway or wall with your elbow bent at a 90-degree angle and at shoulder height.',
+      'Gently step forward with your right foot until you feel a comfortable stretch across your chest and the front of your shoulder.',
+      'Keep your core engaged to avoid arching your back.',
+      'Hold the stretch, breathing deeply.',
+      'Release and repeat on the other side.'
+    ],
+    safetyNotes: [
+      'The stretch should be gentle; do not force it or you may strain the shoulder joint.',
+      'Ensure your elbow is not significantly higher or lower than your shoulder.',
+      'Keep your shoulder blade pulled back and down.'
+    ],
+    modifications: {
+      beginner: 'Do not step as far into the stretch. Hold for a shorter duration.',
+      advanced: 'Gently rotate your torso away from the wall to deepen the stretch.',
+      equipment_alternatives: {
+        'None': 'Clasping hands behind your back and lifting arms.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Stand in a doorway or next to a wall.',
+        'Place forearm on the surface, elbow at 90 degrees.'
+      ],
+      execution: [
+        'Gently step forward.',
+        'Feel a stretch across your chest.',
+        'Keep core tight and posture tall.',
+        'Breathe and relax into the stretch.'
+      ],
+      common_mistakes: [
+        'Pushing too hard into the stretch.',
+        'Shrugging the shoulder up towards the ear.',
+        'Arching the lower back.'
+      ],
+      breathing: 'Breathe deeply and steadily throughout the hold.'
+    }
+  },
+  'sumo-squat': {
+    id: 'sumo-squat',
+    name: 'Sumo Squat',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Adductors (Inner Thighs)',
+      'Glutes',
+      'Quads'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand with your feet much wider than shoulder-width apart.',
+      'Turn your toes out to about a 45-degree angle.',
+      'Keeping your torso upright and core engaged, lower your hips straight down until your thighs are parallel to the floor or as low as you can comfortably go.',
+      'Ensure your knees track in line with your toes and do not collapse inward.',
+      'Drive through your heels to return to the starting position, squeezing your glutes and inner thighs at the top.',
+      'You can hold your hands at your chest for balance.'
+    ],
+    safetyNotes: [
+      'Keep your chest lifted and your torso as upright as possible.',
+      'Do not let your knees cave inward.',
+      'Focus on dropping your hips straight down, rather than pushing them back like a regular squat.'
+    ],
+    modifications: {
+      beginner: 'Reduce the depth of the squat. Use a wall for balance support.',
+      advanced: 'Hold a single heavy dumbbell or kettlebell with both hands (Goblet Sumo Squat). Add a pause at the bottom.',
+      equipment_alternatives: {
+        'None': 'This is a fundamental bodyweight exercise.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Wide stance, feet turned out at 45 degrees.',
+        'Chest up, torso upright.'
+      ],
+      execution: [
+        'Drop hips straight down.',
+        'Keep knees tracking over your feet.',
+        'Go as low as your mobility allows.',
+        'Drive through heels to stand, squeeze glutes.'
+      ],
+      common_mistakes: [
+        'Knees collapsing inward.',
+        'Leaning the torso too far forward.',
+        'Not keeping feet wide enough.'
+      ],
+      breathing: 'Inhale as you lower, exhale as you drive up.'
+    }
+  },
+  'chin-tucks': {
+    id: 'chin-tucks',
+    name: 'Chin Tucks',
+    category: 'core',
+    equipment: [],
+    muscleGroups: [
+      'Deep Neck Flexors'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Sit or stand tall with your spine straight and your shoulders relaxed.',
+      'Without tilting your head up or down, gently pull your chin and head straight back, as if you are trying to make a double chin.',
+      'Imagine a string pulling the back of your head straight up and back.',
+      'You should feel a stretch at the base of your skull and an engagement in the front of your neck.',
+      'Hold the tucked position for a few seconds.',
+      'Relax back to the neutral starting position. Repeat.'
+    ],
+    safetyNotes: [
+      'The movement should be gentle and pain-free.',
+      'Avoid tilting your chin down to your chest; the movement is a straight backward glide.',
+      'Keep your jaw relaxed.'
+    ],
+    modifications: {
+      beginner: 'Perform lying on your back with a small rolled towel under your neck. Gently press your neck into the towel.',
+      advanced: 'Perform against a wall, trying to touch the back of your head to the wall without tilting your chin up.',
+      equipment_alternatives: {
+        'None': 'This is a body-awareness exercise.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Sit or stand tall, shoulders relaxed.',
+        'Gaze straight ahead.'
+      ],
+      execution: [
+        'Gently glide your chin straight back.',
+        'Create a \'double chin\'.',
+        'Feel the back of your neck lengthen.',
+        'Hold, then release with control.'
+      ],
+      common_mistakes: [
+        'Tilting the chin down instead of gliding back.',
+        'Shrugging the shoulders.',
+        'Tensing the jaw.'
+      ],
+      breathing: 'Breathe naturally throughout the exercise.'
+    }
+  },
+  'seated-twist': {
+    id: 'seated-twist',
+    name: 'Seated Twist',
+    category: 'flexibility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Spine',
+      'Obliques',
+      'Lower Back',
+      'Hips'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Sit on the floor with your legs extended in front of you.',
+      'Bend your right knee and place your right foot on the floor outside of your left thigh.',
+      'Place your right hand on the floor behind you for support, fingers pointing away.',
+      'Inhale to sit up tall, lengthening your spine.',
+      'Exhale and twist your torso to the right, hooking your left elbow on the outside of your right knee to gently deepen the twist.',
+      'Keep both sit bones grounded. Gaze over your right shoulder.',
+      'Hold the stretch, then release and switch sides.'
+    ],
+    safetyNotes: [
+      'Initiate the twist from your waist, not by cranking your neck.',
+      'Always lengthen the spine on the inhale before twisting on the exhale.',
+      'Do not force the twist; move within a comfortable range.'
+    ],
+    modifications: {
+      beginner: 'Hug your knee with your arm instead of hooking the elbow. Keep the bottom leg bent.',
+      advanced: 'Increase the depth of the twist. Bind your arms by wrapping your left arm through the gap in your bent leg and clasping your right hand behind your back.',
+      equipment_alternatives: {
+        'None': 'Can be performed sitting in a chair.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Sit tall, one leg straight, other foot crossed over.',
+        'Hand behind you for support.'
+      ],
+      execution: [
+        'Inhale, lengthen your spine.',
+        'Exhale, twist towards the bent knee.',
+        'Use your arm to gently deepen the twist.',
+        'Keep sit bones on the floor.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Lifting one hip off the floor.',
+        'Forcing the twist from the neck.'
+      ],
+      breathing: 'Inhale to lengthen, exhale to twist.'
+    }
+  },
+  'single-leg-hamstring-stretch': {
+    id: 'single-leg-hamstring-stretch',
+    name: 'Single Leg Hamstring Stretch',
+    category: 'flexibility',
+    equipment: [
+      'Mat (optional)',
+      'Yoga Strap'
+    ],
+    muscleGroups: [
+      'Hamstrings',
+      'Calves'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie on your back with both knees bent and feet flat on the floor.',
+      'Extend your right leg up towards the ceiling.',
+      'Loop a yoga strap, towel, or resistance band around the ball of your right foot, holding the ends with both hands.',
+      'Gently pull on the strap to draw your right leg closer to your torso, keeping the leg as straight as possible.',
+      'Stop when you feel a comfortable stretch in your hamstring. Flex your foot to also stretch the calf.',
+      'Keep your head and shoulders relaxed on the floor. You can keep your left leg bent or extend it flat on the floor for a deeper stretch.',
+      'Hold, then switch sides.'
+    ],
+    safetyNotes: [
+      'Keep the leg as straight as possible, but do not lock the knee.',
+      'The stretch should be felt in the belly of the hamstring, not behind the knee.',
+      'Avoid lifting your hips off the floor.'
+    ],
+    modifications: {
+      beginner: 'Keep the non-stretching leg bent with the foot on the floor. Do not pull the leg as close.',
+      advanced: 'Extend the non-stretching leg flat on the floor. Gently pull the leg closer to your torso.',
+      equipment_alternatives: {
+        'Yoga Strap': 'A towel, belt, or dog leash.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds per leg'
+    },
+    coaching: {
+      setup: [
+        'Lie on your back.',
+        'Loop strap around one foot and extend that leg up.'
+      ],
+      execution: [
+        'Gently pull on the strap.',
+        'Draw the straight leg towards you.',
+        'Feel the stretch in the back of your thigh.',
+        'Keep hips grounded and shoulders relaxed.'
+      ],
+      common_mistakes: [
+        'Bending the knee too much.',
+        'Lifting hips off the floor.',
+        'Pulling too aggressively.'
+      ],
+      breathing: 'Breathe deeply and exhale to relax further into the stretch.'
+    }
+  },
+  'dynamic-baby-cobra': {
+    id: 'dynamic-baby-cobra',
+    name: 'Dynamic Baby Cobra',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Spine',
+      'Back Extensors',
+      'Chest'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie face down on your mat with your forehead on the floor.',
+      'Place your hands under your shoulders, elbows tucked in close to your body.',
+      'Press the tops of your feet into the mat to engage your legs.',
+      'Inhale and use your back muscles to lift your head and chest a few inches off the floor. Keep the lift small and your gaze slightly forward and down.',
+      'Use minimal pressure from your hands.',
+      'Exhale and lower your chest and head back to the floor with control.',
+      'Repeat the lift and lower, flowing with your breath.'
+    ],
+    safetyNotes: [
+      'The work should come from your back muscles, not from pushing with your hands.',
+      'Keep your neck long; avoid jutting your chin forward.',
+      'Keep your glutes engaged to protect your lower back.'
+    ],
+    modifications: {
+      beginner: 'Lift only an inch or two off the floor. Keep more pressure in the hands for support.',
+      advanced: 'Hover your hands off the floor to ensure your back muscles are doing all the work.',
+      equipment_alternatives: {
+        'None': 'This is a fundamental bodyweight exercise.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie face down, hands under shoulders, elbows in.',
+        'Tops of feet on the floor.'
+      ],
+      execution: [
+        'Inhale, peel your chest off the floor.',
+        'Use your back muscles, not your hands.',
+        'Keep neck long, gaze slightly forward.',
+        'Exhale, lower with control.'
+      ],
+      common_mistakes: [
+        'Pushing up with the hands.',
+        'Cranking the neck back.',
+        'Lifting too high and crunching the low back.'
+      ],
+      breathing: 'Inhale as you lift, exhale as you lower.'
+    }
+  },
+  'frog-stretch': {
+    id: 'frog-stretch',
+    name: 'Frog Stretch',
+    category: 'flexibility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Adductors (Inner Thighs)',
+      'Groin',
+      'Hips'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start on your hands and knees in a tabletop position.',
+      'Slowly walk your knees out wide to the sides, as far as is comfortable.',
+      'Keep your shins on the floor and your ankles directly behind your knees, creating a 90-degree angle at the knee joint.',
+      'Flex your feet so the inner edges of your feet are on the floor.',
+      'Lower down onto your forearms and gently press your hips back.',
+      'Hold this deep stretch, breathing into your inner thighs and hips.'
+    ],
+    safetyNotes: [
+      'This is an intense stretch; ease into it slowly and do not force it.',
+      'Use a mat or blankets under your knees for cushioning.',
+      'If you feel any sharp pain in your knees or hips, back off immediately.'
+    ],
+    modifications: {
+      beginner: 'Do not spread your knees as wide. Stay up on your hands instead of lowering to forearms. Place a cushion under your torso for support.',
+      advanced: 'Spread your knees wider. Gently rock your hips forward and backward to mobilize the joint.',
+      equipment_alternatives: {
+        'None': 'Butterfly stretch.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Start on all fours.',
+        'Slide knees out wide.',
+        'Keep ankles behind knees, feet flexed.'
+      ],
+      execution: [
+        'Lower to your forearms.',
+        'Gently press your hips back.',
+        'Breathe deeply and try to relax your inner thighs.',
+        'Hold the stretch.'
+      ],
+      common_mistakes: [
+        'Going too deep too quickly.',
+        'Letting ankles collapse inward.',
+        'Holding breath and tensing up.'
+      ],
+      breathing: 'Deep, slow breaths are crucial to allow the muscles to release in this pose.'
+    }
+  },
+  'upper-back-stretch': {
+    id: 'upper-back-stretch',
+    name: 'Upper Back Stretch',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: [
+      'Upper Back',
+      'Rhomboids',
+      'Shoulders'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Sit or stand tall.',
+      'Extend your arms straight out in front of you at shoulder height and interlace your fingers, palms facing away from you.',
+      'Tuck your chin to your chest and round your upper back, actively pushing your hands away from you.',
+      'Feel a deep stretch between your shoulder blades.',
+      'Hold this position, breathing into the space between your shoulder blades.',
+      'To release, return to a tall posture.'
+    ],
+    safetyNotes: [
+      'Focus the stretch on the upper back, not the lower back.',
+      'The movement should be a gentle rounding, not a forceful slump.',
+      'Keep your shoulders relaxed away from your ears.'
+    ],
+    modifications: {
+      beginner: 'Do not push hands as far away. Hold for a shorter duration.',
+      advanced: 'Add a gentle side-to-side motion with your torso to stretch different fibers of the muscles.',
+      equipment_alternatives: {
+        'None': 'Eagle Arms or Cat Pose.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Sit or stand tall.',
+        'Interlace fingers in front of you.'
+      ],
+      execution: [
+        'Push palms away from you.',
+        'Round your upper back and tuck your chin.',
+        'Breathe into the space between your shoulder blades.',
+        'Actively press away to deepen the stretch.'
+      ],
+      common_mistakes: [
+        'Shrugging shoulders up to ears.',
+        'Holding breath.',
+        'Rounding the low back instead of the upper back.'
+      ],
+      breathing: 'Breathe deeply throughout the hold.'
+    }
+  },
+  'fire-hydrants': {
+    id: 'fire-hydrants',
+    name: 'Fire Hydrants',
+    category: 'strength',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Glutes (Medius)',
+      'Hips'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Start on all fours in a tabletop position with hands under shoulders and knees under hips.',
+      'Engage your core to keep your back flat and prevent your torso from twisting.',
+      'Keeping your right knee bent at a 90-degree angle, lift your right leg out to the side.',
+      'Lift as high as you can while keeping your hips level and without shifting all your weight to the left.',
+      'Pause at the top and squeeze your outer glute.',
+      'Lower your knee back to the starting position with control.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'The movement should be isolated to the hip; avoid rotating or tilting your torso.',
+      'Keep the 90-degree bend in your knee.',
+      'Move with control, not momentum.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion.',
+      advanced: 'Add a resistance band around your thighs, just above the knees. Add a pause at the top.',
+      equipment_alternatives: {
+        'None': 'Standing fire hydrants.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Start in a stable tabletop position.',
+        'Core braced, back flat.'
+      ],
+      execution: [
+        'Lift one bent knee out to the side.',
+        'Keep hips square to the floor.',
+        'Squeeze the outer glute.',
+        'Lower with control.'
+      ],
+      common_mistakes: [
+        'Tilting the torso to lift the leg higher.',
+        'Arching or rounding the back.',
+        'Swinging the leg.'
+      ],
+      breathing: 'Exhale as you lift, inhale as you lower.'
+    }
+  },
+  'staff-pose': {
+    id: 'staff-pose',
+    name: 'Staff Pose',
+    category: 'core',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Core',
+      'Back',
+      'Hamstrings'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Sit on the floor with your legs extended straight out in front of you.',
+      'Sit up as tall as possible, stacking your shoulders directly over your hips.',
+      'Place your hands on the floor alongside your hips, with fingers pointing forward, and gently press down to help lift and lengthen your torso.',
+      'Flex your feet by pulling your toes back towards you and actively press your thighs into the floor.',
+      'Engage your core and imagine a string pulling the crown of your head towards the ceiling.',
+      'Hold this active, engaged position.'
+    ],
+    safetyNotes: [
+      'If your hamstrings are tight, sit on the edge of a folded blanket or block to help tilt your pelvis forward.',
+      'Avoid rounding your lower back; focus on creating a straight spine.',
+      'Keep your shoulders relaxed away from your ears.'
+    ],
+    modifications: {
+      beginner: 'Sit on a cushion or block. Keep a slight bend in your knees.',
+      advanced: 'Actively engage every muscle more intensely. Hold for a longer duration.',
+      equipment_alternatives: {
+        'None': 'This is a fundamental postural exercise.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Sit on floor, legs straight out.',
+        'Sit on a block if hamstrings are tight.'
+      ],
+      execution: [
+        'Sit up tall, long spine.',
+        'Press hands into floor to help lift.',
+        'Flex feet, press thighs down.',
+        'Engage your entire body.'
+      ],
+      common_mistakes: [
+        'Slouching or rounding the back.',
+        'Not actively engaging the legs.',
+        'Shrugging the shoulders.'
+      ],
+      breathing: 'Breathe steadily and deeply, using the breath to create more length in the spine.'
+    }
+  },
+  'adductor-lifts': {
+    id: 'adductor-lifts',
+    name: 'Adductor Lifts',
+    category: 'strength',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Adductors (Inner Thighs)'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Lie on your right side, supporting your head with your right arm.',
+      'Bend your top (left) leg and place your left foot on the floor in front of your bottom leg for support.',
+      'Keep your bottom (right) leg straight.',
+      'Engage your inner thigh to lift your bottom (right) leg off the floor.',
+      'Lift as high as you can, focusing on the contraction in your adductor muscle.',
+      'Hold for a moment at the top.',
+      'Slowly lower the leg back down with control, but try not to let it rest on the floor.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'The movement should be small and controlled.',
+      'Avoid using momentum or your hips to lift the leg.',
+      'Focus on isolating the inner thigh.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion. Let the leg rest on the floor between reps.',
+      advanced: 'Add a light ankle weight. Add a pause at the top of the lift.',
+      equipment_alternatives: {
+        'None': 'Sumo squats or plié squats.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Lie on your side, top foot planted in front.',
+        'Bottom leg is straight.'
+      ],
+      execution: [
+        'Lift the bottom straight leg off the floor.',
+        'Use your inner thigh to initiate the lift.',
+        'Movement is small and focused.',
+        'Lower with control.'
+      ],
+      common_mistakes: [
+        'Using momentum.',
+        'Rocking the torso.',
+        'Not feeling the contraction in the inner thigh.'
+      ],
+      breathing: 'Exhale as you lift, inhale as you lower.'
+    }
+  },
+  'activated-hip-flexor-stretch-with-block': {
+    id: 'activated-hip-flexor-stretch-with-block',
+    name: 'Hip Flexor Stretch with a block',
+    category: 'mobility',
+    equipment: [
+      'Yoga Block'
+    ],
+    muscleGroups: [
+      'Hip Flexors',
+      'Psoas',
+      'Core'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start in a half-kneeling position with your left knee on a yoga block or cushion and your right foot forward.',
+      'Ensure your torso is upright and your hips are square.',
+      'Perform a posterior pelvic tilt by tucking your tailbone under and engaging your right glute.',
+      'You should feel a deep stretch in the front of your left hip (hip flexor).',
+      'Hold this activated position, maintaining the pelvic tuck and glute squeeze.',
+      'To increase the stretch, you can gently press your hips forward without losing the pelvic tuck.',
+      'Hold, then switch sides.'
+    ],
+    safetyNotes: [
+      'The key to this stretch is the posterior pelvic tilt; do not just lean forward with an arched back.',
+      'Keep your core engaged to stabilize your spine.',
+      'The block under the knee is for comfort and to allow a better angle for the stretch.'
+    ],
+    modifications: {
+      beginner: 'Perform without the block. Focus solely on mastering the pelvic tilt and glute squeeze.',
+      advanced: 'Raise the arm on the same side as the back leg overhead to deepen the stretch along the fascial line.',
+      equipment_alternatives: {
+        'Yoga Block': 'A firm cushion or folded towel.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Half-kneeling, back knee on a block.',
+        'Torso upright, hips square.'
+      ],
+      execution: [
+        'Tuck your tailbone under (posterior tilt).',
+        'Squeeze the glute of the back leg.',
+        'Feel the stretch in the front of the hip.',
+        'Maintain the activation.'
+      ],
+      common_mistakes: [
+        'Arching the lower back instead of tucking the pelvis.',
+        'Leaning forward without activation.',
+        'Not squeezing the glute.'
+      ],
+      breathing: 'Breathe deeply throughout the hold to help the psoas release.'
+    }
+  },
+  'half-kneeling-rotation-with-block-and-dumbbell': {
+    id: 'half-kneeling-rotation-with-block-and-dumbbell',
+    name: 'Half Kneeling Rotation with a block & dumbbell',
+    category: 'strength',
+    equipment: [
+      'Yoga Block',
+      'Dumbbells'
+    ],
+    muscleGroups: [
+      'Core',
+      'Obliques',
+      'Hips',
+      'Glutes'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Assume a half-kneeling position with your left knee on a yoga block and your right foot forward.',
+      'Hold a single light dumbbell with both hands, arms extended straight out in front of your chest.',
+      'Engage your core and keep your hips stable and facing forward.',
+      'Slowly rotate your torso and arms to the right (towards your front leg).',
+      'The rotation should come from your upper/mid-back, not from twisting your hips.',
+      'Return to the center with control.',
+      'Rotate your torso and arms to the left.',
+      'Return to center. That is one repetition. Complete all reps, then switch legs.'
+    ],
+    safetyNotes: [
+      'Keep your hips and lower body completely still; the movement is a torso rotation.',
+      'Use a light weight; control is more important than load.',
+      'Maintain a tall, upright posture.'
+    ],
+    modifications: {
+      beginner: 'Perform without the dumbbell. Reduce the range of rotation.',
+      advanced: 'Use a slightly heavier dumbbell. Pause at the end range of each rotation.',
+      equipment_alternatives: {
+        'Dumbbell': 'A medicine ball or weight plate.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Half-kneeling, back knee on block.',
+        'Hold dumbbell with straight arms at chest height.',
+        'Core braced, hips stable.'
+      ],
+      execution: [
+        'Rotate torso and arms to one side.',
+        'Keep hips locked and facing forward.',
+        'Return to center with control.',
+        'Rotate to the other side.'
+      ],
+      common_mistakes: [
+        'Twisting the hips instead of the torso.',
+        'Leaning or losing posture.',
+        'Using a weight that is too heavy.'
+      ],
+      breathing: 'Exhale as you rotate, inhale as you return to center.'
+    }
+  },
+  'skater-squats': {
+    id: 'skater-squats',
+    name: 'Skater Squats',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: [
+      'Glutes',
+      'Quads',
+      'Hamstrings',
+      'Core'
+    ],
+    difficulty: 3,
+    instructions: [
+      'Stand on your left leg, with your right leg bent and foot lifted off the floor behind you.',
+      'Extend your arms out in front of you for balance.',
+      'Initiate the movement by sending your hips back and bending your left knee, as if performing a single-leg squat.',
+      'Lower yourself with control, allowing your back (right) knee to travel towards the floor behind your standing heel.',
+      'Go as low as you can, ideally until your back knee lightly taps the floor.',
+      'Drive through your left heel to return to the starting standing position.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'This is an advanced single-leg exercise. Master single-leg deadlifts and split squats first.',
+      'Keep your standing knee tracking over your foot; do not let it collapse inward.',
+      'Control the descent; do not drop into the bottom position.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion. Place cushions on the floor to tap your knee onto. Hold onto a wall or TRX for support.',
+      advanced: 'Hold dumbbells in each hand. Add a pause at the bottom.',
+      equipment_alternatives: {
+        'None': 'Pistol squats (different mechanics but similar challenge) or assisted single-leg squats.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      progressionRate: 0.1,
+      unit: 'reps per leg'
+    },
+    coaching: {
+      setup: [
+        'Balance on one leg.',
+        'Arms out front for counterbalance.',
+        'Core tight.'
+      ],
+      execution: [
+        'Hinge hips back and bend standing knee.',
+        'Lower down with control.',
+        'Aim to tap back knee to the floor.',
+        'Drive through standing heel to rise.'
+      ],
+      common_mistakes: [
+        'Losing balance.',
+        'Standing knee caving in.',
+        'Dropping down without control.'
+      ],
+      breathing: 'Inhale as you lower, exhale as you drive up.'
+    }
+  },
+  'monster-walks-with-miniband': {
+    id: 'monster-walks-with-miniband',
+    name: 'Monster Walks with a miniband',
+    category: 'strength',
+    equipment: [
+      'Resistance Band'
+    ],
+    muscleGroups: [
+      'Glutes (Medius, Maximus)',
+      'Hips'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Place a miniband around your ankles or just above your knees.',
+      'Assume an athletic, half-squat stance with your feet wide enough to create tension on the band.',
+      'Begin walking forward by taking diagonal steps. Step forward and out with your right foot, then forward and out with your left foot.',
+      'Maintain the wide stance and low squat position throughout the walk.',
+      'Keep tension on the band at all times.',
+      'After walking forward for a set distance, walk backward in the same diagonal pattern to return to the start.'
+    ],
+    safetyNotes: [
+      'Keep your knees pushed out against the band; do not let them collapse inward.',
+      'Maintain a relatively upright chest and a flat back.',
+      'The movement should be controlled, not a waddle.'
+    ],
+    modifications: {
+      beginner: 'Use a lighter resistance band. Place the band above the knees.',
+      advanced: 'Use a heavier band. Place the band around your feet for maximum glute activation. Stay lower in your squat.',
+      equipment_alternatives: {
+        'None': 'Bodyweight sumo walks.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'steps forward and back'
+    },
+    coaching: {
+      setup: [
+        'Band around ankles/knees.',
+        'Assume a low, wide athletic stance.',
+        'Create tension.'
+      ],
+      execution: [
+        'Take diagonal steps forward.',
+        'Stay low and wide.',
+        'Keep knees out.',
+        'Walk backward to return.'
+      ],
+      common_mistakes: [
+        'Knees caving in.',
+        'Standing up too tall.',
+        'Losing tension in the band.'
+      ],
+      breathing: 'Breathe steadily throughout the movement.'
+    }
+  },
+  'superman-sequence': {
+    id: 'superman-sequence',
+    name: 'Superman Sequence',
+    category: 'core',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Lower Back',
+      'Glutes',
+      'Shoulders'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Lie face down with your arms extended in front of you.',
+      'Lift your right arm and left leg simultaneously (Alternating Superman). Lower them.',
+      'Lift your left arm and right leg. Lower them.',
+      'Lift just your arms, squeezing your upper back. Lower them.',
+      'Lift just your legs, squeezing your glutes. Lower them.',
+      'Finally, lift both arms and both legs at the same time (Full Superman). Lower them.',
+      'This entire sequence constitutes one repetition.'
+    ],
+    safetyNotes: [
+      'Keep your gaze towards the floor to maintain a neutral neck.',
+      'The lifts should be small and controlled, focusing on muscle engagement, not height.',
+      'Keep your core engaged to protect your lower back.'
+    ],
+    modifications: {
+      beginner: 'Focus on only one part of the sequence, such as the alternating superman, until you feel stronger.',
+      advanced: 'Add a pause at the top of each lift.',
+      equipment_alternatives: {
+        'None': 'Bird dog sequence.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      progressionRate: 0.1,
+      unit: 'sequences'
+    },
+    coaching: {
+      setup: [
+        'Lie face down, arms and legs extended.',
+        'Neutral neck.'
+      ],
+      execution: [
+        'Opposite arm/leg lift.',
+        'Other opposite arm/leg lift.',
+        'Arms only lift.',
+        'Legs only lift.',
+        'Full Superman lift.',
+        'Move smoothly through the sequence.'
+      ],
+      common_mistakes: [
+        'Cranking the neck up.',
+        'Lifting too high and straining the back.',
+        'Using momentum.'
+      ],
+      breathing: 'Exhale on each lift, inhale as you lower.'
+    }
+  },
+  'wide-dynamic-cobra': {
+    id: 'wide-dynamic-cobra',
+    name: 'Wide Dynamic Cobra',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Spine',
+      'Chest',
+      'Shoulders'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie face down on your mat.',
+      'Place your hands on the floor wider than your mat, tenting your fingertips.',
+      'Keep your elbows pointing up towards the ceiling.',
+      'Press the tops of your feet into the mat.',
+      'Inhale and press into your fingertips to lift your head and chest off the floor, rolling up through your spine.',
+      'Look over your right shoulder, then your left.',
+      'Exhale and slowly roll back down to the floor.',
+      'Repeat the movement, flowing with your breath.'
+    ],
+    safetyNotes: [
+      'Keep your glutes and core engaged to protect your lower back.',
+      'The movement should be fluid; avoid any sharp or jerky motions.',
+      'Only lift as high as is comfortable for your back.'
+    ],
+    modifications: {
+      beginner: 'Do not lift as high. Keep hands closer to the body for more support.',
+      advanced: 'Lift higher and add a longer pause while looking over each shoulder.',
+      equipment_alternatives: {
+        'None': 'Standard cobra or baby cobra pose.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie face down, hands wide on fingertips.',
+        'Elbows pointing up.'
+      ],
+      execution: [
+        'Inhale, roll your chest up.',
+        'Look over one shoulder, then the other.',
+        'Exhale, roll back down smoothly.',
+        'Keep glutes engaged.'
+      ],
+      common_mistakes: [
+        'Pushing up too high and jamming the low back.',
+        'Shrugging shoulders up to ears.',
+        'Forgetting to breathe with the movement.'
+      ],
+      breathing: 'Inhale as you roll up, exhale as you roll down.'
+    }
+  },
+  'leaning-quad-stretch': {
+    id: 'leaning-quad-stretch',
+    name: 'Leaning Quad Stretch',
+    category: 'flexibility',
+    equipment: [],
+    muscleGroups: [
+      'Quads',
+      'Hip Flexors'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Kneel on the floor with both knees together.',
+      'Keep your torso upright and your core engaged.',
+      'Slowly and with control, begin to lean your torso straight back.',
+      'You can place your hands on the floor behind you for support.',
+      'Lean back only as far as you can while feeling a deep stretch in your quads and the front of your hips.',
+      'Keep your knees on or close to the floor.',
+      'Hold the stretch. To exit, use your hands to press yourself back to the upright kneeling position.'
+    ],
+    safetyNotes: [
+      'This can be an intense stretch on the knees and quads. Do not perform if you have knee injuries.',
+      'Avoid arching your lower back; try to maintain a relatively straight line from your knees to your head.',
+      'Move into and out of the stretch very slowly.'
+    ],
+    modifications: {
+      beginner: 'Do not lean back as far. Keep hands on heels for support. Perform a standard standing or side-lying quad stretch instead.',
+      advanced: 'Lean back further, aiming to rest on your forearms or lie all the way back (Hero Pose).',
+      equipment_alternatives: {
+        'None': 'Standing quad stretch.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Kneel upright, knees together.',
+        'Core engaged.'
+      ],
+      execution: [
+        'Slowly lean your torso straight back.',
+        'Use hands for support if needed.',
+        'Feel a deep stretch in your quads.',
+        'Hold and breathe.'
+      ],
+      common_mistakes: [
+        'Arching the back excessively.',
+        'Leaning back too quickly.',
+        'Forcing the stretch despite knee pain.'
+      ],
+      breathing: 'Breathe deeply and steadily throughout the hold.'
+    }
+  },
+  'upper-body-around-the-world': {
+    id: 'upper-body-around-the-world',
+    name: 'Upper Body Around the World',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: [
+      'Shoulders',
+      'Chest',
+      'Lats',
+      'Spine'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand with your feet shoulder-width apart and knees slightly bent.',
+      'Interlace your fingers and reach your arms straight up overhead.',
+      'Begin to make a large, slow circle with your entire upper body.',
+      'Bend to the right, then fold forward, then bend to the left, and finally return to the upright position.',
+      'Keep your core engaged and your lower body stable.',
+      'After completing a circle in one direction, reverse the direction.',
+      'The movement should be fluid and controlled.'
+    ],
+    safetyNotes: [
+      'Keep the movement slow to avoid dizziness.',
+      'Only move within a range that feels good for your back and shoulders.',
+      'Keep your lower body anchored and stable.'
+    ],
+    modifications: {
+      beginner: 'Make smaller circles. Do not fold as far forward.',
+      advanced: 'Make larger, slower circles to deepen the stretch in all positions. Hold a light weight or yoga block.',
+      equipment_alternatives: {
+        'None': 'Cat-cow and standing side bends.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      progressionRate: 0.1,
+      unit: 'circles per direction'
+    },
+    coaching: {
+      setup: [
+        'Stand with feet wide, knees soft.',
+        'Clasp hands and reach overhead.'
+      ],
+      execution: [
+        'Make a large, slow circle with your torso.',
+        'Move through side-bend, forward-fold, other side-bend, and back up.',
+        'Keep lower body still.',
+        'Reverse direction.'
+      ],
+      common_mistakes: [
+        'Moving too quickly.',
+        'Bending the knees too much.',
+        'Not engaging the core.'
+      ],
+      breathing: 'Inhale as you come up and to the side, exhale as you fold forward.'
+    }
+  },
+  'single-leg-hip-flexor-extension-with-pole': {
+    id: 'single-leg-hip-flexor-extension-with-pole',
+    name: 'Single Leg Hip Flexor Extension with Pole',
+    category: 'mobility',
+    equipment: [
+      'Pole'
+    ],
+    muscleGroups: [
+      'Hip Flexors',
+      'Glutes'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Stand on your left leg, holding a pole (or wall) with your left hand for balance.',
+      'Lift your right knee up towards your chest (hip flexion).',
+      'From this position, sweep your right leg back behind you, extending your hip as far as you can.',
+      'Squeeze your right glute at the end of the extension.',
+      'The movement should be a controlled swing from full flexion to full extension.',
+      'Keep your torso upright and your core engaged.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'Use the pole for balance so you can focus on the hip movement.',
+      'Avoid arching your lower back as you extend the leg back; the movement should come from the hip and glute.',
+      'Control the swing; do not use wild momentum.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion of the swing.',
+      advanced: 'Perform without support to challenge balance. Add a pause at peak flexion and peak extension.',
+      equipment_alternatives: {
+        'Pole': 'A wall, chair, or sturdy object.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps per leg'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, holding pole for balance.',
+        'Balance on one leg.'
+      ],
+      execution: [
+        'Swing other leg from high knee (flexion) to behind you (extension).',
+        'Squeeze the glute on the backswing.',
+        'Keep torso upright and stable.',
+        'Maintain a fluid, controlled swing.'
+      ],
+      common_mistakes: [
+        'Arching the back.',
+        'Losing balance.',
+        'Swinging with momentum instead of control.'
+      ],
+      breathing: 'Exhale as you swing back, inhale as you bring the knee forward.'
+    }
+  },
+  'seated-toe-rainbows-with-chair': {
+    id: 'seated-toe-rainbows-with-chair',
+    name: 'Seated Toe Rainbows with Chair',
+    category: 'mobility',
+    equipment: [
+      'Chair'
+    ],
+    muscleGroups: [
+      'Hips',
+      'Core'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Sit tall on the edge of a chair with your feet flat on the floor.',
+      'Extend your right leg straight out in front of you, with your heel lightly touching the floor.',
+      'Keeping your leg straight, lift your right foot a few inches off the floor.',
+      'Slowly trace a \'rainbow\' or arc shape with your foot, moving it out to the right side and then back to the center.',
+      'The movement should be controlled and initiated from your hip.',
+      'Keep your torso and pelvis still.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'Sit tall; do not slouch or lean back.',
+      'Isolate the movement to the leg and hip; avoid rocking your torso.',
+      'Keep the movement small and controlled.'
+    ],
+    modifications: {
+      beginner: 'Make smaller rainbows. Do not lift the leg as high.',
+      advanced: 'Make larger rainbows. Add a light ankle weight.',
+      equipment_alternatives: {
+        'None': 'Supine leg circles.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps per leg'
+    },
+    coaching: {
+      setup: [
+        'Sit tall on the edge of a chair.',
+        'Extend one leg straight, heel on the floor.'
+      ],
+      execution: [
+        'Lift the straight leg slightly.',
+        'Draw an arc or rainbow shape on the floor.',
+        'Keep your upper body and hips still.',
+        'Control the movement from your hip.'
+      ],
+      common_mistakes: [
+        'Slouching.',
+        'Rocking the torso to help move the leg.',
+        'Bending the knee.'
+      ],
+      breathing: 'Breathe naturally throughout the movement.'
+    }
+  },
+  'decline-plank-with-chair': {
+    id: 'decline-plank-with-chair',
+    name: 'Decline Plank with Chair',
+    category: 'core',
+    equipment: [
+      'Chair'
+    ],
+    muscleGroups: [
+      'Core',
+      'Shoulders',
+      'Chest'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Place your feet on the seat of a stable chair.',
+      'Position your hands or forearms on the floor, walking them out until your body is in a straight line.',
+      'Your hands/elbows should be directly under your shoulders.',
+      'Engage your core, glutes, and quads to maintain a rigid, straight line from your head to your heels.',
+      'Do not let your hips sag or rise too high.',
+      'Hold this position for the desired duration.'
+    ],
+    safetyNotes: [
+      'Ensure the chair is stable and will not slide.',
+      'It is critical to keep your core braced to prevent your lower back from sagging, which can cause injury.',
+      'If you feel strain in your lower back, stop the exercise.'
+    ],
+    modifications: {
+      beginner: 'Use a lower surface, like a step, instead of a chair. Hold for a shorter duration.',
+      advanced: 'Lift one leg off the chair. Perform plank taps or other movements from this position.',
+      equipment_alternatives: {
+        'Chair': 'A bench, box, or stability ball.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Place feet on a chair.',
+        'Hands or forearms on the floor under shoulders.'
+      ],
+      execution: [
+        'Create a straight, rigid line with your body.',
+        'Brace your core HARD.',
+        'Squeeze glutes and quads.',
+        'Hold.'
+      ],
+      common_mistakes: [
+        'Hips sagging.',
+        'Hips pushing too high.',
+        'Not engaging the core sufficiently.'
+      ],
+      breathing: 'Breathe steadily throughout the hold.'
+    }
+  },
+  'elevated-pigeon-with-chair': {
+    id: 'elevated-pigeon-with-chair',
+    name: 'Elevated Pigeon with Chair',
+    category: 'flexibility',
+    equipment: [
+      'Chair'
+    ],
+    muscleGroups: [
+      'Glutes',
+      'Piriformis',
+      'Hips'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Stand in front of a chair or bench.',
+      'Lift your right leg and place your shin on the chair seat, with your knee pointing out to the right and your foot towards the left.',
+      'Your shin should be as parallel to the front of the chair as is comfortable.',
+      'Keep your standing (left) leg straight or slightly bent.',
+      'Place your hands on the chair for support.',
+      'Keeping your back straight, hinge at your hips and gently lean your torso forward over your shin until you feel a stretch in your right outer hip and glute.',
+      'Hold the stretch. Switch sides.'
+    ],
+    safetyNotes: [
+      'Ensure the chair is stable.',
+      'Keep your front foot flexed to protect your knee.',
+      'Do not force the stretch; ease into it gently.'
+    ],
+    modifications: {
+      beginner: 'Do not lean as far forward. Use a lower surface like a step.',
+      advanced: 'Lean further forward. Try to rest your forearms on the chair.',
+      equipment_alternatives: {
+        'Chair': 'A bench, table, or bed.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Place one shin on a chair in a pigeon-like pose.',
+        'Hands on chair for support.'
+      ],
+      execution: [
+        'Keep back straight.',
+        'Hinge forward over your shin.',
+        'Breathe into the hip stretch.',
+        'Keep the front foot flexed.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Forcing the stretch and causing knee pain.',
+        'Holding tension in the shoulders.'
+      ],
+      breathing: 'Breathe deeply to help the hip muscles release.'
+    }
+  },
+  'knee-hug-rock': {
+    id: 'knee-hug-rock',
+    name: 'Knee Hug Rock',
+    category: 'mobility',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Lower Back',
+      'Hips'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie on your back and hug both knees into your chest.',
+      'Grasp your shins or the backs of your thighs.',
+      'Gently and slowly, begin to rock from side to side.',
+      'Use the motion to massage your lower back against the floor.',
+      'The movement should be small and controlled.',
+      'You can also make small circles with your knees in both directions.'
+    ],
+    safetyNotes: [
+      'Keep the movement gentle; do not rock so far that you lose balance or fall over.',
+      'Keep your head and neck relaxed on the floor.',
+      'This should feel like a massage, not a strain.'
+    ],
+    modifications: {
+      beginner: 'Make very small rocks and circles.',
+      advanced: 'Make larger circles, exploring the full range of motion of your lower back and hips.',
+      equipment_alternatives: {
+        'None': 'This is a fundamental bodyweight exercise.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.1,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Lie on back, hug knees to chest.'
+      ],
+      execution: [
+        'Gently rock side to side.',
+        'Massage the lower back.',
+        'Try making small circles with the knees.',
+        'Relax and breathe.'
+      ],
+      common_mistakes: [
+        'Rocking too aggressively.',
+        'Tensing the neck and shoulders.',
+        'Holding breath.'
+      ],
+      breathing: 'Breathe deeply and naturally.'
+    }
+  },
+  'side-plank-hip-dip': {
+    id: 'side-plank-hip-dip',
+    name: 'Side Plank Hip Dip',
+    category: 'core',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Obliques',
+      'Core'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start in a strong side plank position on your right forearm, with your elbow under your shoulder and body in a straight line.',
+      'Engage your core to keep your hips stacked.',
+      'Slowly lower your right hip towards the floor, feeling a stretch in your right oblique.',
+      'Tap your hip to the floor lightly or come as close as you can.',
+      'Engage your right oblique to lift your hip back up, returning to the starting side plank position and even lifting slightly higher.',
+      'Repeat the dipping motion with control. Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'The movement should be controlled in both directions; do not just drop your hip.',
+      'Keep your shoulder stable and your elbow directly under it.',
+      'Maintain a straight line with your body; do not bend at the waist.'
+    ],
+    modifications: {
+      beginner: 'Perform from your knees instead of your feet. Reduce the range of motion of the dip.',
+      advanced: 'Hold a light dumbbell on your top hip.',
+      equipment_alternatives: {
+        'None': 'Standing side bends.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Establish a strong side plank.',
+        'Hips high, core braced.'
+      ],
+      execution: [
+        'Slowly dip your bottom hip towards the floor.',
+        'Use your obliques to lift the hip back up.',
+        'Control the movement both up and down.',
+        'Keep your body straight.'
+      ],
+      common_mistakes: [
+        'Dropping the hip without control.',
+        'Twisting the torso.',
+        'Shoulder not being over the elbow.'
+      ],
+      breathing: 'Inhale as you lower your hip, exhale as you lift.'
+    }
+  },
+  'fire-hydrants-with-internal-rotation': {
+    id: 'fire-hydrants-with-internal-rotation',
+    name: 'Fire Hydrants with Internal Rotation',
+    category: 'strength',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Glutes (Medius, Minimus)',
+      'Hips'
+    ],
+    difficulty: 2,
+    instructions: [
+      'Start on all fours in a tabletop position with hands under shoulders and knees under hips.',
+      'Engage your core to keep your back flat.',
+      'Lift your right knee out to the side, as in a standard fire hydrant.',
+      'At the top of the movement, internally rotate your hip to lift your right foot up towards the ceiling.',
+      'Reverse the motion: lower the foot back down by externally rotating the hip, then lower the knee back to the starting position.',
+      'The entire movement should be slow and controlled. Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'Avoid tilting your torso or shifting your weight excessively to compensate.',
+      'The movement comes from hip rotation, not from arching your back.',
+      'Focus on the mind-muscle connection with your glutes.'
+    ],
+    modifications: {
+      beginner: 'Perform standard fire hydrants without the internal rotation. Reduce the range of motion.',
+      advanced: 'Add a resistance band around your thighs, just above the knees.',
+      equipment_alternatives: {
+        'None': 'Standard fire hydrants.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps per side'
+    },
+    coaching: {
+      setup: [
+        'Start in a stable tabletop position.',
+        'Core braced, back flat.'
+      ],
+      execution: [
+        'Lift knee out to the side (abduction).',
+        'At the top, rotate hip to lift foot (internal rotation).',
+        'Control the reversal of the movement.',
+        'Keep hips level.'
+      ],
+      common_mistakes: [
+        'Rocking the torso side-to-side.',
+        'Rushing the rotational component.',
+        'Losing the 90-degree bend in the knee.'
+      ],
+      breathing: 'Exhale as you lift and rotate, inhale as you lower.'
+    }
+  },
+  'prone-y-raises': {
+    id: 'prone-y-raises',
+    name: 'Prone Y Raises',
+    category: 'strength',
+    equipment: [
+      'Mat (optional)'
+    ],
+    muscleGroups: [
+      'Upper Back',
+      'Shoulders',
+      'Lower Trapezius'
+    ],
+    difficulty: 1,
+    instructions: [
+      'Lie face down on a mat with your arms extended overhead in a \'Y\' shape, thumbs pointing towards the ceiling.',
+      'Rest your forehead on the mat to keep your neck neutral.',
+      'Engage your core and squeeze your shoulder blades together and down.',
+      'Keeping your arms straight, lift them off the floor as high as you can without arching your lower back.',
+      'Focus on the contraction in your mid and lower traps.',
+      'Hold for a moment at the top.',
+      'Slowly lower your arms back to the floor with control.'
+    ],
+    safetyNotes: [
+      'Avoid shrugging your shoulders towards your ears; keep them pulled down.',
+      'The movement should be initiated by your back and shoulder muscles, not by momentum.',
+      'Do not lift your chest off the floor; isolate the movement to your arms.'
+    ],
+    modifications: {
+      beginner: 'Reduce the range of motion. Perform without lifting, focusing only on the scapular squeeze.',
+      advanced: 'Hold very light dumbbells or weight plates. Add a pause at the top of the lift.',
+      equipment_alternatives: {
+        'None': 'Can also be performed on an incline bench.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie face down, arms in a \'Y\' shape.',
+        'Thumbs pointing up, forehead on mat.'
+      ],
+      execution: [
+        'Squeeze shoulder blades together and down.',
+        'Lift straight arms off the floor.',
+        'Feel the contraction in your upper back.',
+        'Lower with control.'
+      ],
+      common_mistakes: [
+        'Shrugging shoulders.',
+        'Bending the elbows.',
+        'Lifting the chest and arching the low back.'
+      ],
+      breathing: 'Exhale as you lift your arms, inhale as you lower.'
+    }
+  }
+
 };
 
 // Exercise categories for easy filtering
 export const EXERCISE_CATEGORIES = {
-  strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'walking-lunges', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension'],
-  core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'bird-dog'],
-  cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs', 'high-knees'],
-  plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'swim-plyometric-box-jumps'],
-  mobility: ['arm-circles'],
-  flexibility: ['standing-calf-stretch', 'foam-roll-hip-abductors'],
-  technique: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals'],
+  strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'walking-lunges', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'warrior-ii', 'hip-bridge-lift', 'lateral-leg-lift', 'hamstring-bridge-with-chair', 'frog-pumps', 'supine-abductions-with-miniband', 'lateral-wrist-curls-with-dumbbells', 'standing-fire-hydrant', 'prone-frog-lifts', 'standing-hamstring-curl', 'lateral-walk', 'clamshells', 'dumbbell-good-morning', 'squat-to-overhead-press', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'alternating-jump-lunges', 'squat-to-calf-raise', 'diagonal-lunge', '90-degree-squats', 'sumo-squat', 'fire-hydrants', 'adductor-lifts', 'half-kneeling-rotation-with-block-and-dumbbell', 'skater-squats', 'monster-walks-with-miniband', 'fire-hydrants-with-internal-rotation', 'prone-y-raises'],
+  core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'bird-dog', 'tick-tocks-with-miniband', 'vacuums', 'flutter-kicks', 'side-plank', 'side-plank-leg-lift', 'standing-crunch', 'supermans', 'chin-tucks', 'staff-pose', 'superman-sequence', 'decline-plank-with-chair', 'side-plank-hip-dip'],
+  cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs', 'high-knees', 'reverse-lunge-knee-drive', 'run-in-place'],
+  plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'swim-plyometric-box-jumps', 'high-skip'],
+  mobility: ['arm-circles', 'dynamic-star', 'alternating-step-and-squat', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'froggers', 'ankle-rocks', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'plank-calf-press', 'dynamic-side-body-stretch', 'shoulder-openers', 'lizard-circles', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'dynamic-baby-cobra', '90-90-stretch', 'activated-hip-flexor-stretch-with-block', 'wide-dynamic-cobra', 'upper-body-around-the-world', 'single-leg-hip-flexor-extension-with-pole', 'seated-toe-rainbows-with-chair', 'knee-hug-rock'],
+  flexibility: ['standing-calf-stretch', 'foam-roll-hip-abductors', 'childs-pose', 'tricep-and-lat-stretch', 'pigeon-pose', 'forward-fold', 'chest-stretch', 'seated-twist', 'single-leg-hamstring-stretch', 'frog-stretch', 'upper-back-stretch', 'release-lats-with-foam-roller', 'leaning-quad-stretch', 'elevated-pigeon-with-chair'],
+  technique: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill'],
   endurance: ['bike-hill-climbs-intervals'],
   triathlon: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals'],
   crossfit: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'deadlift', 'kettlebell-swing', 'farmers-carry', 'box-step-ups', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'barbell-hip-thrust', 'dumbbell-hip-thrust', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension'],
-  none: ['push-up', 'diamond-push-up', 'squat', 'jump-squat', 'lunge', 'plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'jumping-jacks', 'burpee', 'mountain-climber', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'arm-circles', 'skierg', 'sled-push', 'sled-pull', 'burpee-broad-jumps', 'rowing-erg', 'farmers-carry', 'sandbag-lunges', 'wall-balls', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'grip-endurance-circuit', 'sled-conditioning', 'zone-2-recovery-run', 'hyrox-pace-runs', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'high-knees', 'walking-lunges', 'bird-dog', 'standing-calf-stretch', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'foam-roll-hip-abductors', 'swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals']
+  none: ['push-up', 'diamond-push-up', 'squat', 'jump-squat', 'lunge', 'plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'jumping-jacks', 'burpee', 'mountain-climber', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'arm-circles', 'skierg', 'sled-push', 'sled-pull', 'burpee-broad-jumps', 'rowing-erg', 'farmers-carry', 'sandbag-lunges', 'wall-balls', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'grip-endurance-circuit', 'sled-conditioning', 'zone-2-recovery-run', 'hyrox-pace-runs', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'high-knees', 'walking-lunges', 'bird-dog', 'standing-calf-stretch', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'foam-roll-hip-abductors', 'swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'dynamic-star', 'alternating-step-and-squat', 'tricep-and-lat-stretch', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'hip-bridge-lift', 'vacuums', 'lateral-leg-lift', 'frog-pumps', 'flutter-kicks', 'prone-frog-lifts', 'froggers', 'standing-hamstring-curl', 'clamshells', 'side-plank', 'side-plank-leg-lift', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'supermans', 'alternating-jump-lunges', 'reverse-lunge-knee-drive', 'squat-to-calf-raise', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'dynamic-side-body-stretch', 'shoulder-openers', 'standing-crunch', 'run-in-place', 'diagonal-lunge', 'high-skip', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill']
 };
 
 // Helper functions

@@ -348,31 +348,41 @@ const EQUIPMENT_OPTIONS = [
 ];
 
 // Goals
-const GOALS = [
+const GOALS: Array<{
+  id: string;
+  title: string;
+  subtitle: string;
+  aspirationalFraming: string;
+}> = [
   {
     id: 'fitness',
     title: '🎯 Get Fit & Healthy',
-    subtitle: 'Build overall fitness and establish healthy habits'
+    subtitle: 'Build overall fitness and establish healthy habits',
+    aspirationalFraming: 'Imagine having energy all day and feeling confident in your body'
   },
   {
     id: 'weight-loss',
     title: '⚖️ Lose Weight',
-    subtitle: 'Burn calories and achieve a healthier body composition'
+    subtitle: 'Burn calories and achieve a healthier body composition',
+    aspirationalFraming: 'Picture yourself feeling lighter, more energetic, and loving how you look'
   },
   {
     id: 'strength',
-    title: '💪 Build Strength',
-    subtitle: 'Increase muscle mass and functional power'
+    title: '💪 Feel Strong & Powerful',
+    subtitle: 'Build the strength to handle anything life throws at you',
+    aspirationalFraming: 'Envision carrying groceries with ease, playing with kids without getting tired, and feeling unstoppable'
   },
   {
     id: 'performance',
     title: '🏆 Improve Performance',
-    subtitle: 'Train for competitions or personal records'
+    subtitle: 'Train for competitions or personal records',
+    aspirationalFraming: 'See yourself crushing your goals and achieving things you never thought possible'
   },
   {
     id: 'wellbeing',
     title: '🧘‍♀️ Manage Stress & Wellbeing',
-    subtitle: 'Focus on mental health and relaxation'
+    subtitle: 'Focus on mental health and relaxation',
+    aspirationalFraming: 'Imagine feeling calm, centered, and resilient no matter what your day brings'
   }
 ];
 
@@ -1186,7 +1196,8 @@ Maybe it's something energizing like dancing or running, something calming like 
                     >
                       <div>
                         <div className="text-base font-medium text-gray-900 mb-1">{goal.title}</div>
-                        <div className="text-sm text-gray-600">{goal.subtitle}</div>
+                        <div className="text-sm text-gray-600 mb-2">{goal.subtitle}</div>
+                        <div className="text-xs text-blue-600 italic">{goal.aspirationalFraming}</div>
                       </div>
                       <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center ${
                         answers.goal === goal.id 
