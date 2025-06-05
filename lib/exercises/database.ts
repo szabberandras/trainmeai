@@ -4498,18 +4498,745 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
       ],
       breathing: 'Exhale as you lift, inhale as you lower and switch.'
     }
-  }
+  },
+  'high-knees': {
+    id: 'high-knees',
+    name: 'High Knees',
+    category: 'cardio',
+    equipment: [],
+    muscleGroups: ['Quads', 'Hip Flexors', 'Core', 'Calves'],
+    difficulty: 2,
+    instructions: [
+      'Stand tall with your feet hip-width apart, looking straight ahead.',
+      'Begin to run in place, driving one knee up towards your chest as high as possible.',
+      'As one knee comes down, immediately drive the other knee up.',
+      'Pump your arms rhythmically with your legs, as if running.',
+      'Focus on quick, light foot strikes and maintaining an upright posture.'
+    ],
+    safetyNotes: [
+      'Land softly on the balls of your feet to minimize impact on your joints.',
+      'Maintain an upright posture; avoid hunching over or leaning back.',
+      'Start slowly to master coordination before increasing speed.'
+    ],
+    modifications: {
+      beginner: 'Perform walking high knees, focusing on bringing the knee up slowly and with control. Reduce the height of the knee lift.',
+      advanced: 'Increase the speed and explosiveness of the knee drive. Incorporate a slight forward movement (running high knees).',
+      equipment_alternatives: {
+        'Bodyweight': 'Stair Climbing',
+        'No Equipment': 'Jumping Rope'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.10,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet hip-width, chest up.',
+        'Arms bent at 90 degrees, ready to pump.',
+        'Gaze forward, light on feet.'
+      ],
+      execution: [
+        'Drive knees high towards chest, alternating rapidly.',
+        'Pump arms actively with leg movement.',
+        'Maintain quick ground contact, minimal bounce.'
+      ],
+      common_mistakes: [
+        'Leaning back excessively.',
+        'Landing heavily on heels.',
+        'Not engaging core, leading to hip sway.'
+      ],
+      breathing: 'Breathe rhythmically and deeply with the movement.'
+    }
+  },
+  'walking-lunges': {
+    id: 'walking-lunges',
+    name: 'Walking Lunges',
+    category: 'strength',
+    equipment: ['Dumbbells (optional)'],
+    muscleGroups: ['Quads', 'Glutes', 'Hamstrings', 'Calves'],
+    difficulty: 2,
+    instructions: [
+      'Stand tall with your feet hip-width apart, holding dumbbells by your sides (optional).',
+      'Step forward with one leg, lowering your hips until both knees are bent at approximately a 90-degree angle.',
+      'Ensure your front knee is directly over your ankle and your back knee hovers just above the floor.',
+      'Push off your back foot and drive through your front heel to bring your back leg forward into the next lunge step.',
+      'Continue alternating legs, maintaining balance and control throughout the movement.'
+    ],
+    safetyNotes: [
+      'Ensure your front knee does not collapse inward or extend past your toes.',
+      'Maintain an upright torso; avoid leaning too far forward or arching your back.',
+      'Control the descent; do not drop into the lunge rapidly.'
+    ],
+    modifications: {
+      beginner: 'Perform stationary lunges (Reverse Lunges or Forward Lunges in place) to master form before adding movement. Use bodyweight only.',
+      advanced: 'Increase the weight of the dumbbells. Perform with a barbell on your back. Add a pulse at the bottom of each lunge.',
+      equipment_alternatives: {
+        'Dumbbells': 'Kettlebells',
+        'Barbell': 'Barbell'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 0.05,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, chest up, shoulders back.',
+        'Core braced, gaze forward.',
+        'Dumbbells held securely (optional).'
+      ],
+      execution: [
+        'Step forward, lower hips, 90-degree bend in both knees.',
+        'Front knee over ankle, back knee hovers.',
+        'Drive through front heel, step into next lunge.'
+      ],
+      common_mistakes: [
+        'Front knee caving inward or going past toes.',
+        'Rounding the back or leaning too far forward.',
+        'Losing balance due to uncontrolled movement.'
+      ],
+      breathing: 'Inhale as you lunge down, exhale as you push up and step forward.'
+    }
+  },
+  'bird-dog': {
+    id: 'bird-dog',
+    name: 'Bird-Dog',
+    category: 'core',
+    equipment: [],
+    muscleGroups: ['Core (Transverse Abdominis, Obliques, Erector Spinae)', 'Glutes'],
+    difficulty: 1,
+    instructions: [
+      'Start on your hands and knees, with your hands directly under your shoulders and your knees directly under your hips.',
+      'Keep your back flat and core engaged, maintaining a neutral spine (imagine balancing a cup of water on your lower back).',
+      'Slowly extend your right arm straight forward while simultaneously extending your left leg straight back, keeping them parallel to the floor.',
+      'Focus on keeping your hips and shoulders level, avoiding any rotation or arching in your lower back.',
+      'Slowly return your arm and leg to the starting position, then repeat on the opposite side (left arm, right leg).'
+    ],
+    safetyNotes: [
+      'Maintain a neutral spine throughout the movement; avoid arching or rounding your lower back.',
+      'Perform slowly and with control; this is an exercise for stability, not speed.',
+      'Keep your core tightly braced to prevent any unwanted movement in your torso.'
+    ],
+    modifications: {
+      beginner: 'Perform only arm extensions or only leg extensions. Reduce the length of the extension.',
+      advanced: 'Hold the extended position for a longer duration. Place a light weight (e.g., small dumbbell, water bottle) on your lower back to provide feedback on stability.',
+      equipment_alternatives: {
+        'Bodyweight': 'Dead Bug (supine position)'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.05,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Hands under shoulders, knees under hips, flat back.',
+        'Core engaged, gaze down, neutral neck.',
+        'Imagine balancing a cup of water on your lower back.'
+      ],
+      execution: [
+        'Extend opposite arm and leg slowly and simultaneously.',
+        'Keep hips and shoulders level, avoid rotation.',
+        'Return to start with control before switching sides.'
+      ],
+      common_mistakes: [
+        'Arching or rounding the lower back excessively.',
+        'Rocking hips side-to-side.',
+        'Moving too quickly and losing control.'
+      ],
+      breathing: 'Breathe naturally and deeply throughout the movement.'
+    }
+  },
+  'standing-calf-stretch': {
+    id: 'standing-calf-stretch',
+    name: 'Standing Calf Stretch (Gastrocnemius)',
+    category: 'flexibility',
+    equipment: ['Wall', 'Sturdy Object'],
+    muscleGroups: ['Calves (Gastrocnemius)', 'Achilles Tendon'],
+    difficulty: 1,
+    instructions: [
+      'Stand facing a wall or sturdy object, placing your hands on it for support at shoulder height.',
+      'Step one leg back, keeping it straight with your heel on the floor and toes pointing forward.',
+      'Keep your front knee slightly bent.',
+      'Lean forward into the wall, keeping the back leg straight and heel down, until you feel a stretch in the calf of your back leg.',
+      'Hold the stretch for 20-30 seconds, breathing deeply, then switch legs.'
+    ],
+    safetyNotes: [
+      'Do not bounce into the stretch; apply gentle, sustained pressure.',
+      'Keep your back leg straight and heel on the floor to target the gastrocnemius.',
+      'Stop if you feel any sharp pain in your calf or Achilles tendon.'
+    ],
+    modifications: {
+      beginner: 'Reduce the distance you step back to lessen the intensity of the stretch.',
+      advanced: 'Increase the distance you step back. Perform the stretch with the ball of your foot on an elevated surface (e.g., step) to increase the stretch.',
+      equipment_alternatives: {
+        'Wall': 'Strap or Towel (for seated calf stretch)'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.10,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Face wall, hands on wall, one leg back, straight.',
+        'Front knee bent, back heel down, toes forward.',
+        'Ready to lean into stretch.'
+      ],
+      execution: [
+        'Lean forward, keeping back leg straight and heel down.',
+        'Feel stretch in calf, not knee.',
+        'Hold and breathe deeply, relax into stretch.'
+      ],
+      common_mistakes: [
+        'Bouncing into the stretch.',
+        'Lifting the back heel off the floor.',
+        'Rounding the back instead of leaning from hips.'
+      ],
+      breathing: 'Breathe deeply and slowly throughout the stretch.'
+    }
+  },
+  'box-step-ups': {
+    id: 'box-step-ups',
+    name: 'Box Step-Ups',
+    category: 'strength',
+    equipment: ['Plyo Box', 'Bench', 'Sturdy Step'],
+    muscleGroups: ['Quads', 'Glutes', 'Hamstrings', 'Calves'],
+    difficulty: 2,
+    instructions: [
+      'Stand facing a plyo box or sturdy elevated surface, about a foot away.',
+      'Place one entire foot flat on the center of the box, ensuring your knee is directly over your ankle.',
+      'Drive through the heel of your elevated foot, pushing yourself up until your standing leg is straight on the box.',
+      'Bring your trailing leg up to meet the standing leg on the box, or keep it hovering for continuous reps.',
+      'Slowly lower the trailing leg back to the floor, then the lead leg, controlling the descent. Alternate lead legs with each rep or after a set number of reps.'
+    ],
+    safetyNotes: [
+      'Use a box height that allows you to maintain good form without excessive knee strain or leaning.',
+      'Ensure the box is stable and will not slide or tip over.',
+      'Step up with your whole foot; do not push off your toes from the floor.'
+    ],
+    modifications: {
+      beginner: 'Use a lower box height. Perform without dumbbells. Focus on slow, controlled movements.',
+      advanced: 'Use a higher box height. Hold dumbbells or a barbell for added resistance. Perform plyometric step-ups (explosive step-up).',
+      equipment_alternatives: {
+        'Plyo Box': 'Stairs',
+        'Bench': 'Bench'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.05,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand facing box, one foot flat on box, knee over ankle.',
+        'Chest up, shoulders back, core braced.',
+        'Gaze forward, ready to drive up.'
+      ],
+      execution: [
+        'Drive through elevated heel, push up powerfully.',
+        'Keep torso upright, avoid leaning forward excessively.',
+        'Control the descent, don\'t just drop down.'
+      ],
+      common_mistakes: [
+        'Using momentum to step up.',
+        'Pushing off the floor with the trailing leg.',
+        'Knee caving inward on the elevated leg.'
+      ],
+      breathing: 'Exhale as you step up, inhale as you lower down.'
+    }
+  },
+  'calf-press': {
+    id: 'calf-press',
+    name: 'Calf Press (Leg Press Machine)',
+    category: 'strength',
+    equipment: ['Leg Press Machine'],
+    muscleGroups: ['Calves (Gastrocnemius, Soleus)'],
+    difficulty: 2,
+    instructions: [
+      'Sit on the leg press machine with your back firmly against the pad.',
+      'Place the balls of your feet on the lower edge of the footplate, with your heels hanging off.',
+      'Release the safety catches and extend your knees slightly, but do not lock them out.',
+      'Keeping your knees slightly bent, push the footplate away by extending your ankles, pressing through the balls of your feet and squeezing your calves.',
+      'Slowly return the footplate by flexing your ankles, allowing a full stretch in your calves, then repeat.'
+    ],
+    safetyNotes: [
+      'Do not lock out your knees at any point during the exercise.',
+      'Control the movement; do not let the weight stack slam down or bounce.',
+      'Ensure your feet are securely placed on the footplate.'
+    ],
+    modifications: {
+      beginner: 'Use lighter weight to master the form and mind-muscle connection. Reduce the range of motion if needed.',
+      advanced: 'Increase the weight, or incorporate a pause at the top contraction for increased intensity. Perform single-leg calf presses.',
+      equipment_alternatives: {
+        'Leg Press Machine': 'Standing Calf Raise Machine',
+        'Machine': 'Seated Calf Raise Machine'
+      }
+    },
+    metrics: {
+      type: 'weight',
+      defaultValue: 20,
+      progressionRate: 0.05,
+      unit: 'kg'
+    },
+    coaching: {
+      setup: [
+        'Sit on machine, back firm, balls of feet on lower edge of footplate.',
+        'Knees slightly bent, ready to press.',
+        'Core braced.'
+      ],
+      execution: [
+        'Push footplate by extending ankles, squeezing calves hard.',
+        'Control the return, allowing full calf stretch.',
+        'Keep knees slightly bent throughout.'
+      ],
+      common_mistakes: [
+        'Locking out knees.',
+        'Bouncing the weight.',
+        'Not getting a full range of motion.'
+      ],
+      breathing: 'Exhale as you press, inhale as you return.'
+    }
+  },
+  'standing-dumbbell-calf-raise': {
+    id: 'standing-dumbbell-calf-raise',
+    name: 'Standing Dumbbell Calf Raise',
+    category: 'strength',
+    equipment: ['Dumbbells', 'Elevated Surface (optional)'],
+    muscleGroups: ['Calves (Gastrocnemius, Soleus)'],
+    difficulty: 2,
+    instructions: [
+      'Stand tall with a dumbbell in each hand, arms extended by your sides, palms facing your body.',
+      'For increased range of motion, stand with the balls of your feet on an elevated surface (e.g., step, weight plate), with your heels hanging off.',
+      'Keep your knees straight but not locked out.',
+      'Slowly raise yourself up onto the balls of your feet, pushing through your toes and squeezing your calves hard at the top.',
+      'Slowly lower your heels back down, allowing a full stretch in your calves, then repeat.'
+    ],
+    safetyNotes: [
+      'Maintain balance throughout the movement; hold onto a stable support if needed.',
+      'Do not bounce at the bottom; control the eccentric phase.',
+      'Keep your knees straight but avoid locking them out to prevent strain.'
+    ],
+    modifications: {
+      beginner: 'Perform without dumbbells (Bodyweight Calf Raise). Hold onto a wall or sturdy object for balance.',
+      advanced: 'Increase the weight of the dumbbells. Perform single-leg standing dumbbell calf raises.',
+      equipment_alternatives: {
+        'Dumbbells': 'Barbell (Standing Barbell Calf Raise)',
+        'Weights': 'Calf Raise Machine'
+      }
+    },
+    metrics: {
+      type: 'weight',
+      defaultValue: 5,
+      progressionRate: 0.05,
+      unit: 'kg'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, dumbbells by sides, balls of feet on elevated surface (optional).',
+        'Knees straight but not locked, core braced.',
+        'Gaze forward, ready to lift.'
+      ],
+      execution: [
+        'Raise up onto balls of feet, squeezing calves hard.',
+        'Hold peak contraction briefly.',
+        'Control the descent, feeling the stretch in calves.'
+      ],
+      common_mistakes: [
+        'Bouncing at the bottom.',
+        'Not getting a full range of motion (stretch and contraction).',
+        'Using momentum instead of calf strength.'
+      ],
+      breathing: 'Exhale as you raise up, inhale as you lower down.'
+    }
+  },
+  'seated-machine-calf-press': {
+    id: 'seated-machine-calf-press',
+    name: 'Seated Machine Calf Press',
+    category: 'strength',
+    equipment: ['Seated Calf Raise Machine'],
+    muscleGroups: ['Calves (Soleus, Gastrocnemius)'],
+    difficulty: 1,
+    instructions: [
+      'Sit on the seated calf raise machine, placing the balls of your feet on the footplate, with your heels hanging off.',
+      'Adjust the knee pad so it rests firmly across your thighs, just above your knees.',
+      'Release the safety catch and allow your heels to drop down, feeling a stretch in your calves.',
+      'Push the footplate upwards by extending your ankles, pressing through the balls of your feet and squeezing your calves hard at the top.',
+      'Slowly lower your heels back down, allowing a full stretch in your calves, then repeat.'
+    ],
+    safetyNotes: [
+      'Do not bounce at the bottom; control the eccentric phase.',
+      'Ensure the knee pad is securely positioned to prevent it from slipping.',
+      'Maintain a controlled movement throughout the entire range of motion.'
+    ],
+    modifications: {
+      beginner: 'Use lighter weight to master the form and mind-muscle connection. Reduce the range of motion if needed.',
+      advanced: 'Increase the weight, or incorporate a pause at the top contraction for increased intensity. Perform single-leg seated calf presses.',
+      equipment_alternatives: {
+        'Seated Calf Raise Machine': 'Standing Calf Raise Machine',
+        'Machine': 'Dumbbell Seated Calf Raise'
+      }
+    },
+    metrics: {
+      type: 'weight',
+      defaultValue: 10,
+      progressionRate: 0.05,
+      unit: 'kg'
+    },
+    coaching: {
+      setup: [
+        'Sit on machine, balls of feet on footplate, heels off.',
+        'Knee pad secured, ready to lift.',
+        'Allow full stretch at the bottom.'
+      ],
+      execution: [
+        'Push up powerfully through balls of feet, squeezing calves.',
+        'Hold peak contraction briefly.',
+        'Control the descent, feeling the stretch in calves.'
+      ],
+      common_mistakes: [
+        'Bouncing the weight.',
+        'Not getting a full range of motion.',
+        'Using hip flexors to lift the weight instead of calves.'
+      ],
+      breathing: 'Exhale as you press up, inhale as you lower down.'
+    }
+  },
+  'seated-dumbbell-calf-raise': {
+    id: 'seated-dumbbell-calf-raise',
+    name: 'Seated Dumbbell Calf Raise',
+    category: 'strength',
+    equipment: ['Dumbbells', 'Bench', 'Elevated Surface (optional)'],
+    muscleGroups: ['Calves (Soleus)'],
+    difficulty: 1,
+    instructions: [
+      'Sit on a flat bench or chair with your feet flat on the floor.',
+      'Place a dumbbell on top of each thigh, just above your knees, holding them in place with your hands.',
+      'For increased range of motion, place the balls of your feet on an elevated surface (e.g., weight plate) with your heels hanging off.',
+      'Allow your heels to drop down, feeling a stretch in your calves.',
+      'Slowly raise yourself up onto the balls of your feet, pushing through your toes and squeezing your calves hard at the top.',
+      'Slowly lower your heels back down, allowing a full stretch in your calves, then repeat.'
+    ],
+    safetyNotes: [
+      'Ensure the dumbbells are securely placed and do not slide off your thighs.',
+      'Control the movement; do not bounce at the bottom.',
+      'Maintain an upright posture; avoid rounding your back.'
+    ],
+    modifications: {
+      beginner: 'Use lighter dumbbells or perform without weight. Reduce the range of motion if needed.',
+      advanced: 'Increase the weight of the dumbbells. Perform single-leg seated dumbbell calf raises.',
+      equipment_alternatives: {
+        'Dumbbells': 'Seated Calf Raise Machine',
+        'Weights': 'Barbell (for seated calf raise)'
+      }
+    },
+    metrics: {
+      type: 'weight',
+      defaultValue: 5,
+      progressionRate: 0.05,
+      unit: 'kg'
+    },
+    coaching: {
+      setup: [
+        'Sit on bench, dumbbells on thighs, balls of feet on elevated surface (optional).',
+        'Heels down, ready to lift.',
+        'Maintain upright posture.'
+      ],
+      execution: [
+        'Raise up onto balls of feet, squeezing calves hard.',
+        'Hold peak contraction briefly.',
+        'Control the descent, feeling the stretch in calves.'
+      ],
+      common_mistakes: [
+        'Bouncing the weights.',
+        'Not getting a full range of motion.',
+        'Allowing dumbbells to slide off thighs.'
+      ],
+      breathing: 'Exhale as you raise up, inhale as you lower down.'
+    }
+  },
+  'standing-barbell-calf-raise': {
+    id: 'standing-barbell-calf-raise',
+    name: 'Standing Barbell Calf Raise',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight Plates', 'Squat Rack (optional)', 'Elevated Surface (optional)'],
+    muscleGroups: ['Calves (Gastrocnemius, Soleus)'],
+    difficulty: 3,
+    instructions: [
+      'Load a barbell and place it on your upper back, similar to a high-bar squat position, in a squat rack (optional).',
+      'Stand with the balls of your feet on an elevated surface (e.g., step, weight plate), with your heels hanging off, feet hip-width apart.',
+      'Keep your knees straight but not locked out, and maintain an upright torso.',
+      'Slowly raise yourself up onto the balls of your feet, pushing through your toes and squeezing your calves hard at the top.',
+      'Slowly lower your heels back down, allowing a full stretch in your calves, then repeat.'
+    ],
+    safetyNotes: [
+      'Maintain balance throughout the movement; use a squat rack for safety if lifting heavy.',
+      'Do not bounce at the bottom; control the eccentric phase.',
+      'Keep your knees straight but avoid locking them out to prevent strain.'
+    ],
+    modifications: {
+      beginner: 'Use lighter weight or perform with dumbbells (Standing Dumbbell Calf Raise). Focus on bodyweight calf raises first.',
+      advanced: 'Increase the weight. Perform single-leg standing barbell calf raises (advanced and requires significant balance).',
+      equipment_alternatives: {
+        'Barbell': 'Dumbbells',
+        'Weights': 'Calf Raise Machine'
+      }
+    },
+    metrics: {
+      type: 'weight',
+      defaultValue: 20,
+      progressionRate: 0.025,
+      unit: 'kg'
+    },
+    coaching: {
+      setup: [
+        'Barbell on upper back, balls of feet on elevated surface, heels off.',
+        'Knees straight but not locked, core braced.',
+        'Gaze forward, ready to lift.'
+      ],
+      execution: [
+        'Raise up onto balls of feet, squeezing calves hard.',
+        'Hold peak contraction briefly.',
+        'Control the descent, feeling the stretch in calves.'
+      ],
+      common_mistakes: [
+        'Bouncing at the bottom.',
+        'Not getting a full range of motion (stretch and contraction).',
+        'Losing balance or shifting weight excessively.'
+      ],
+      breathing: 'Exhale as you raise up, inhale as you lower down.'
+    }
+  },
+  'standing-kettlebell-calf-raise': {
+    id: 'standing-kettlebell-calf-raise',
+    name: 'Standing Kettlebell Calf Raise',
+    category: 'strength',
+    equipment: ['Kettlebells (1 or 2)', 'Elevated Surface (optional)'],
+    muscleGroups: ['Calves (Gastrocnemius, Soleus)'],
+    difficulty: 2,
+    instructions: [
+      'Stand tall with a kettlebell in one or both hands, arms extended by your sides.',
+      'For increased range of motion, stand with the balls of your feet on an elevated surface (e.g., step, weight plate), with your heels hanging off.',
+      'Keep your knees straight but not locked out.',
+      'Slowly raise yourself up onto the balls of your feet, pushing through your toes and squeezing your calves hard at the top.',
+      'Slowly lower your heels back down, allowing a full stretch in your calves, then repeat.'
+    ],
+    safetyNotes: [
+      'Maintain balance throughout the movement; hold onto a stable support if needed.',
+      'Do not bounce at the bottom; control the eccentric phase.',
+      'Keep your knees straight but avoid locking them out to prevent strain.'
+    ],
+    modifications: {
+      beginner: 'Use lighter kettlebell or perform without weight (Bodyweight Calf Raise). Hold onto a wall or sturdy object for balance.',
+      advanced: 'Increase the weight of the kettlebell(s). Perform single-leg standing kettlebell calf raises.',
+      equipment_alternatives: {
+        'Kettlebells': 'Dumbbells',
+        'Weights': 'Barbell'
+      }
+    },
+    metrics: {
+      type: 'weight',
+      defaultValue: 8,
+      progressionRate: 0.05,
+      unit: 'kg'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, kettlebell(s) by sides, balls of feet on elevated surface (optional).',
+        'Knees straight but not locked, core braced.',
+        'Gaze forward, ready to lift.'
+      ],
+      execution: [
+        'Raise up onto balls of feet, squeezing calves hard.',
+        'Hold peak contraction briefly.',
+        'Control the descent, feeling the stretch in calves.'
+      ],
+      common_mistakes: [
+        'Bouncing at the bottom.',
+        'Not getting a full range of motion (stretch and contraction).',
+        'Using momentum instead of calf strength.'
+      ],
+      breathing: 'Exhale as you raise up, inhale as you lower down.'
+    }
+  },
+  'stiff-legged-barbell-good-morning': {
+    id: 'stiff-legged-barbell-good-morning',
+    name: 'Stiff-Legged Barbell Good Morning',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight Plates', 'Squat Rack (optional)'],
+    muscleGroups: ['Hamstrings', 'Glutes', 'Lower Back'],
+    difficulty: 3,
+    instructions: [
+      'Place a barbell on your upper back, similar to a high-bar squat position, in a squat rack (optional).',
+      'Stand with feet hip-width apart, knees almost completely straight (micro-bend, do not lock out).',
+      'Keeping your back straight and core engaged, slowly hinge forward at your hips, pushing your glutes back.',
+      'Lower your torso until it is nearly parallel to the floor, or until you feel a strong stretch in your hamstrings.',
+      'Engage your glutes and hamstrings to pull your torso back up to the starting position, squeezing your glutes at the top.'
+    ],
+    safetyNotes: [
+      'Maintain a flat back throughout the entire movement; rounding your back can lead to serious injury.',
+      'Use light weight, especially when learning, as this exercise places significant stress on the lower back.',
+      'Do not go lower than your hamstring flexibility allows; stop when you feel a strong stretch.'
+    ],
+    modifications: {
+      beginner: 'Perform with a broomstick or PVC pipe to master the hip hinge, or use a very light barbell. Perform Dumbbell Stiff Legged Deadlifts first.',
+      advanced: 'Increase the weight, or incorporate a pause at the bottom of the movement.',
+      equipment_alternatives: {
+        'Barbell': 'Dumbbells (Dumbbell Stiff Legged Deadlift)',
+        'Weights': 'Resistance Band (around neck and under feet)'
+      }
+    },
+    metrics: {
+      type: 'weight',
+      defaultValue: 10,
+      progressionRate: 0.025,
+      unit: 'kg'
+    },
+    coaching: {
+      setup: [
+        'Barbell on upper back, feet hip-width, knees almost straight.',
+        'Shoulders back and down, chest up.',
+        'Brace core firmly.'
+      ],
+      execution: [
+        'Initiate by pushing hips back, keeping back flat and legs almost straight.',
+        'Lower torso with control, feeling hamstring stretch.',
+        'Squeeze glutes and hamstrings to return to upright position.'
+      ],
+      common_mistakes: [
+        'Rounding the lower back.',
+        'Bending knees excessively, turning it into a squat.',
+        'Going too low and losing back integrity.'
+      ],
+      breathing: 'Inhale as you lower, exhale as you stand up.'
+    }
+  },
+  'incline-back-extension': {
+    id: 'incline-back-extension',
+    name: 'Incline Back Extension',
+    category: 'strength',
+    equipment: ['Incline Hyperextension Bench'],
+    muscleGroups: ['Lower Back (Erector Spinae)', 'Glutes', 'Hamstrings'],
+    difficulty: 2,
+    instructions: [
+      'Adjust the incline hyperextension bench so the top of the pad is just below your hip crease, allowing you to hinge freely at your hips.',
+      'Hook your heels securely under the foot pads, crossing your arms over your chest or placing hands lightly behind your head.',
+      'Allow your torso to bend forward at the hips, keeping your back straight, until you feel a stretch in your hamstrings and lower back.',
+      'Engage your lower back and glutes to extend your torso upwards until your body forms a straight line from your head to your heels.',
+      'Squeeze your lower back and glutes at the peak contraction, then slowly lower back down with control.'
+    ],
+    safetyNotes: [
+      'Avoid rounding your back; maintain a straight spine throughout the movement.',
+      'Do not hyperextend excessively at the top; stop when your body is in a straight line.',
+      'Control the movement; avoid jerking or using momentum.'
+    ],
+    modifications: {
+      beginner: 'Perform without added weight. Reduce the range of motion if needed.',
+      advanced: 'Hold a weight plate or dumbbell to your chest for added resistance. Perform with a slower eccentric phase.',
+      equipment_alternatives: {
+        'Incline Hyperextension Bench': 'Back Extension (horizontal bench)',
+        'Machine': 'Superman (bodyweight)'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.05,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Adjust pad to hip crease, heels hooked securely.',
+        'Arms crossed or hands behind head, back straight.',
+        'Core braced, ready to hinge.'
+      ],
+      execution: [
+        'Hinge at hips, extend torso up using lower back and glutes.',
+        'Squeeze glutes and lower back at the top.',
+        'Control the descent, feeling the stretch.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Hyperextending excessively at the top.',
+        'Using momentum to lift the torso.'
+      ],
+      breathing: 'Exhale as you extend up, inhale as you lower down.'
+    }
+  },
+  'foam-roll-hip-abductors': {
+    id: 'foam-roll-hip-abductors',
+    name: 'Foam Roll Hip Abductors',
+    category: 'flexibility',
+    equipment: ['Foam Roller'],
+    muscleGroups: ['Hip Abductors (Gluteus Medius, TFL)'],
+    difficulty: 1,
+    instructions: [
+      'Lie on your side with the foam roller positioned under your outer thigh/hip area.',
+      'Support your body with your forearms and the leg that is not on the roller (bent knee on the floor for stability).',
+      'Slowly roll your body up and down, allowing the foam roller to move along the side of your thigh, from just below your hip to just above your knee.',
+      'Pause on any tender spots and apply sustained pressure until the discomfort lessens.',
+      'Continue rolling for 30-60 seconds on each side.'
+    ],
+    safetyNotes: [
+      'Avoid rolling directly over bony prominences or joints.',
+      'Control the pressure; it should be uncomfortable but not painful.',
+      'Stop if you feel any sharp pain.'
+    ],
+    modifications: {
+      beginner: 'Reduce the amount of body weight on the roller by using more support from your arms and non-rolling leg.',
+      advanced: 'Increase the pressure by stacking your legs or using less support from your arms.',
+      equipment_alternatives: {
+        'Foam Roller': 'Massage Ball',
+        'Equipment': 'Manual Massage'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 0.10,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Lie on side, foam roller under outer thigh/hip.',
+        'Support with forearms and non-rolling leg.',
+        'Relax muscles being rolled.'
+      ],
+      execution: [
+        'Slowly roll up and down, covering entire outer thigh.',
+        'Pause on tender spots, breathe deeply.',
+        'Control the movement, avoid jerky motions.'
+      ],
+      common_mistakes: [
+        'Rolling too quickly.',
+        'Applying too much pressure too soon.',
+        'Holding breath due to discomfort.'
+      ],
+      breathing: 'Breathe deeply and slowly throughout the rolling process.'
+    }
+  },
 };
 
 // Exercise categories for easy filtering
 export const EXERCISE_CATEGORIES = {
-  strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine'],
-  core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch'],
-  cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs'],
+  strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'walking-lunges', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension'],
+  core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'bird-dog'],
+  cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs', 'high-knees'],
   plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls'],
   mobility: ['arm-circles'],
-  flexibility: [],
-  none: ['push-up', 'diamond-push-up', 'squat', 'jump-squat', 'lunge', 'plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'jumping-jacks', 'burpee', 'mountain-climber', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'arm-circles', 'skierg', 'sled-push', 'sled-pull', 'burpee-broad-jumps', 'rowing-erg', 'farmers-carry', 'sandbag-lunges', 'wall-balls', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'grip-endurance-circuit', 'sled-conditioning', 'zone-2-recovery-run', 'hyrox-pace-runs', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine']
+  flexibility: ['standing-calf-stretch', 'foam-roll-hip-abductors'],
+  none: ['push-up', 'diamond-push-up', 'squat', 'jump-squat', 'lunge', 'plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'jumping-jacks', 'burpee', 'mountain-climber', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'arm-circles', 'skierg', 'sled-push', 'sled-pull', 'burpee-broad-jumps', 'rowing-erg', 'farmers-carry', 'sandbag-lunges', 'wall-balls', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'grip-endurance-circuit', 'sled-conditioning', 'zone-2-recovery-run', 'hyrox-pace-runs', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'high-knees', 'walking-lunges', 'bird-dog', 'standing-calf-stretch', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'foam-roll-hip-abductors']
 };
 
 // Helper functions
