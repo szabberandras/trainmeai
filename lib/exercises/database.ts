@@ -5225,7 +5225,318 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
       ],
       breathing: 'Breathe deeply and slowly throughout the rolling process.'
     }
+  },,
+  'swim-freestyle-drills': {
+    id: 'swim-freestyle-drills',
+    name: 'Freestyle Drills (Catch-up, Fingertip Drag, Kickboard)',
+    category: 'technique',
+    equipment: ['Kickboard', 'Pull Buoy', 'Fins (optional)'],
+    muscleGroups: ['Full Body', 'Shoulders', 'Core', 'Legs'],
+    difficulty: 2,
+    instructions: [
+      '**Catch-up Drill:** Push off and glide. Take one arm stroke, and hold that arm extended in front until the other arm completes its stroke and meets the first hand. Then, both hands push off together, and the next stroke begins. Focus on extension and rotation.',
+      '**Fingertip Drag Drill:** Swim freestyle, but on the recovery phase of each arm stroke, drag your fingertips along the surface of the water, keeping your elbow high. This emphasizes a high elbow catch and proper recovery.',
+      '**Kickboard Drill:** Hold a kickboard out in front with both hands, keeping your body streamlined. Focus solely on a strong, consistent kick from your hips, with minimal knee bend. Vary kick speed and intensity.',
+      'Combine these drills within your swim sets to focus on different aspects of freestyle technique.'
+    ],
+    safetyNotes: [
+      'Ensure proper pool depth and safety regulations. Stop if you feel any pain, especially in the shoulders.',
+      'Hydrate well before and after swimming.',
+      'Listen to your body; don\'t push through discomfort that could lead to injury.'
+    ],
+    modifications: {
+      beginner: 'Focus on one drill at a time. Use fins for easier propulsion and to focus on upper body technique during drills.',
+      advanced: 'Increase drill distance or intensity. Combine multiple drills within one length. Focus on specific aspects like breathing timing or hip rotation.',
+      equipment_alternatives: {
+        'Kickboard': 'No equipment (focus on body position and kick)',
+        'Fins': 'Ankle weights (advanced, for kick strength without propulsion)'
+      }
+    },
+    metrics: {
+      type: 'distance',
+      defaultValue: 200,
+      progressionRate: 0.10,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: [
+        'Enter pool safely.',
+        'Select appropriate drill and equipment.',
+        'Focus on body position and core engagement.'
+      ],
+      execution: [
+        'Execute drill with focus on technique over speed.',
+        'Maintain streamlined body position.',
+        'Pay attention to catch, pull, and recovery phases.'
+      ],
+      common_mistakes: [
+        'Rushing the drills and losing focus on technique.',
+        'Dropping elbows during the catch-up or fingertip drag.',
+        'Kicking from the knees instead of the hips during kickboard drill.'
+      ],
+      breathing: 'Maintain consistent, relaxed breathing throughout all drills.'
+    }
   },
+  'bike-single-leg-pedaling': {
+    id: 'bike-single-leg-pedaling',
+    name: 'Single-Leg Pedaling Drills (Stationary Bike)',
+    category: 'technique',
+    equipment: ['Stationary Bike (indoor trainer or spin bike)'],
+    muscleGroups: ['Quads', 'Hamstrings', 'Glutes', 'Calves'],
+    difficulty: 3,
+    instructions: [
+      'Set up your stationary bike comfortably. Begin pedaling at a moderate cadence with both legs to warm up.',
+      'Unclip one foot (or remove from the toe cage) and rest it on a stable surface beside the bike, or simply let it hang freely without touching the ground.',
+      'Focus on pedaling smoothly and continuously with the single working leg through the entire pedal stroke (360 degrees). Emphasize pulling up through the top of the stroke and pushing through the bottom.',
+      'Maintain a consistent cadence and effort. Avoid jerking or choppy movements.',
+      'Perform for a set duration (e.g., 30-60 seconds) per leg, then switch. Alternate legs for several intervals.'
+    ],
+    safetyNotes: [
+      'Ensure your bike is stable and properly adjusted.',
+      'Start with a light resistance and gradually increase as your technique improves.',
+      'If using clipless pedals, ensure you can safely unclip and re-clip your foot quickly.',
+      'Stop if you feel any knee pain or excessive muscle strain.'
+    ],
+    modifications: {
+      beginner: 'Perform for shorter durations (e.g., 15-20 seconds per leg). Use very light resistance. Focus only on the downstroke initially.',
+      advanced: 'Increase duration and resistance. Vary cadence during the drill. Perform in and out of the saddle (carefully).',
+      equipment_alternatives: {
+        'Stationary Bike': 'Road bike on an indoor trainer (with proper setup)',
+        'Equipment': 'Outdoor riding (caution and skill required, not recommended for beginners)'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      progressionRate: 0.10,
+      unit: 'seconds per leg'
+    },
+    coaching: {
+      setup: [
+        'Bike set up, moderate resistance.',
+        'Warm-up with both legs.',
+        'Core engaged, upper body relaxed.'
+      ],
+      execution: [
+        'Unclip one foot, pedal smoothly with single leg.',
+        'Focus on 360-degree pedal stroke, pulling up and pushing down.',
+        'Maintain consistent cadence and smooth power delivery.'
+      ],
+      common_mistakes: [
+        'Jerking or choppy pedal stroke.',
+        'Rocking hips excessively to compensate.',
+        'Neglecting the upstroke or pull phase of the pedal.'
+      ],
+      breathing: 'Maintain steady, rhythmic breathing. Avoid holding your breath.'
+    }
+  },
+  'swim-plyometric-box-jumps': {
+    id: 'swim-plyometric-box-jumps',
+    name: 'Plyometric Box Jumps (for explosive push-off)',
+    category: 'plyometric',
+    equipment: ['Plyometric Box (sturdy and stable)'],
+    muscleGroups: ['Glutes', 'Quads', 'Hamstrings', 'Calves', 'Core'],
+    difficulty: 3,
+    instructions: [
+      'Stand facing a sturdy plyometric box, about an arm\'s length away, with feet hip-width apart.',
+      'Initiate the jump by swinging your arms back and bending at your knees and hips into a quarter squat, loading your glutes and hamstrings.',
+      'Explosively jump upwards and forwards onto the box, landing softly with both feet simultaneously in a athletic stance (knees slightly bent), core braced.',
+      'Stand up fully on the box, extending your hips and knees.',
+      'Step or jump back down safely (stepping is recommended for beginners/injury prevention) and immediately prepare for the next jump.'
+    ],
+    safetyNotes: [
+      'Ensure the box is stable and appropriate height; start low and gradually increase.',
+      'Land softly with bent knees to absorb impact; avoid landing with locked knees.',
+      'Perform on a non-slip surface.',
+      'Stop immediately if you feel any knee, ankle, or hip pain.'
+    ],
+    modifications: {
+      beginner: 'Use a lower box or stack plates to a low height. Focus on controlled landing. Perform step-ups instead of jumps.',
+      advanced: 'Increase box height. Perform continuous jumps (without stepping down between reps, only for experienced athletes). Add a pause at the landing to ensure stability.',
+      equipment_alternatives: {
+        'Plyometric Box': 'Sturdy bench or low wall (ensure stability)',
+        'Equipment': 'Squat Jumps (bodyweight, no box)'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      progressionRate: 0.05,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand facing box, arm\'s length away, feet hip-width.',
+        'Athletic stance, ready to load and explode.',
+        'Core braced, gaze forward.'
+      ],
+      execution: [
+        'Load hips and quads, explode upwards onto box.',
+        'Land softly, both feet simultaneously, knees bent.',
+        'Stand tall on box, step down safely for next rep.'
+      ],
+      common_mistakes: [
+        'Landing stiff-legged or with knees caving in.',
+        'Not fully extending hips at the top of the box.',
+        'Using too high a box and sacrificing form for height.'
+      ],
+      breathing: 'Inhale during the squat, exhale explosively during the jump.'
+    }
+  },
+  'bike-hill-climbs-intervals': {
+    id: 'bike-hill-climbs-intervals',
+    name: 'Hill Climb Intervals (Outdoor or Indoor)',
+    category: 'endurance',
+    equipment: ['Bicycle (Road or Mountain)', 'Outdoor Hill or Indoor Trainer with Resistance'],
+    muscleGroups: ['Quads', 'Glutes', 'Hamstrings', 'Calves', 'Core'],
+    difficulty: 4,
+    instructions: [
+      '**Outdoor Hill:** Find a moderate to steep hill that takes 2-5 minutes to climb. Warm up for 10-15 minutes on flat terrain.',
+      'Approach the base of the hill and shift into a challenging gear. Begin climbing, maintaining a high effort (e.g., 8/10 on a perceived exertion scale).',
+      'Focus on smooth, powerful pedal strokes, staying seated if possible, or standing when necessary for power (e.g., steep sections). Maintain good posture and engage your core.',
+      'Once you reach the top, ease off the effort and spin lightly for 3-5 minutes as recovery, then turn around and repeat the climb.',
+      '**Indoor Trainer:** Set your trainer to a high resistance or use a virtual climbing simulation. Follow the same interval structure of high-effort climbs followed by low-effort recovery.'
+    ],
+    safetyNotes: [
+      'If outdoors, choose a hill with minimal traffic and a safe shoulder/path. Be aware of your surroundings.',
+      'Ensure your bike is in good working order, especially brakes and gears.',
+      'Stay hydrated. Stop if you feel dizzy or excessively fatigued.',
+      'Indoors, ensure proper ventilation and cool-down protocols.'
+    ],
+    modifications: {
+      beginner: 'Choose shorter, less steep hills. Reduce the intensity or duration of the climb. Increase recovery time.',
+      advanced: 'Increase hill steepness, length, or number of repetitions. Decrease recovery time. Incorporate standing efforts more frequently.',
+      equipment_alternatives: {
+        'Outdoor Hill': 'Indoor trainer with ERG mode (maintains power regardless of cadence)',
+        'Equipment': 'Spin class with resistance focus'
+      }
+    },
+    metrics: {
+      type: 'duration',
+      defaultValue: 3,
+      progressionRate: 0.10,
+      unit: 'minutes per climb'
+    },
+    coaching: {
+      setup: [
+        'Warm up thoroughly on flat terrain or easy spin.',
+        'Select challenging but manageable gear.',
+        'Maintain upright posture, core engaged.'
+      ],
+      execution: [
+        'Push consistently with strong pedal strokes.',
+        'Manage effort level for sustained climb.',
+        'Breathe deeply and rhythmically, avoid shallow breathing.'
+      ],
+      common_mistakes: [
+        'Starting too hard and fading quickly.',
+        'Mashing gears instead of smooth pedaling.',
+        'Losing form or slumping over the handlebars.'
+      ],
+      breathing: 'Deep, controlled breathing. Inhale fully, exhale completely to fuel working muscles.'
+    }
+  },
+  'swim-open-water-sighting-drills': {
+    id: 'swim-open-water-sighting-drills',
+    name: 'Open Water Sighting Drills (Pool Practice)',
+    category: 'technique',
+    equipment: ['Pool'],
+    muscleGroups: ['Neck', 'Shoulders', 'Core'],
+    difficulty: 2,
+    instructions: [
+      'In the pool, swim freestyle normally. Every 6-8 strokes (or a set number of strokes), lift your head just enough to get your eyes out of the water, quickly spot a target at the end of the lane (or a fixed point), and then immediately return your head to the water to breathe and continue swimming.',
+      'Avoid lifting your head too high, which causes your hips to sink.',
+      'Practice taking quick glances; you don\'t need to hold your head up for a long time.',
+      'Vary the frequency of your sighting to simulate different open water conditions.'
+    ],
+    safetyNotes: [
+      'Ensure you are comfortable with basic freestyle technique before attempting sighting drills.',
+      'Avoid bumping into other swimmers in the lane.',
+      'If you experience neck strain, reduce the frequency or height of your head lift.'
+    ],
+    modifications: {
+      beginner: 'Sight more frequently (every 4-5 strokes). Practice sighting with a kickboard to focus only on head movement.',
+      advanced: 'Increase the number of strokes between sightings. Practice bilateral sighting (sighting before breathing to both sides). Incorporate a \'crocodile\' sighting (eyes just above the waterline).',
+      equipment_alternatives: {
+        'Pool': 'Open water (with a spotter and appropriate safety precautions)'
+      }
+    },
+    metrics: {
+      type: 'distance',
+      defaultValue: 200,
+      progressionRate: 0.10,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: [
+        'Swim freestyle normally, establish good rhythm.',
+        'Identify a target at the end of the lane.',
+        'Core engaged, ready for slight head lift.'
+      ],
+      execution: [
+        'Lift head just enough to sight, eyes out of water.',
+        'Quick glance, return head to water immediately.',
+        'Breathe to the side after sighting, maintain streamlined body.'
+      ],
+      common_mistakes: [
+        'Lifting head too high, causing hips to sink.',
+        'Holding head up for too long, disrupting rhythm.',
+        'Looking forward without immediately returning to streamlined position.'
+      ],
+      breathing: 'Exhale as you lift head for sight, inhale to the side as you return to water.'
+    }
+  },
+  'bike-spin-ups-intervals': {
+    id: 'bike-spin-ups-intervals',
+    name: 'Spin-Up Intervals (Cadence Drills)',
+    category: 'technique',
+    equipment: ['Bicycle (Stationary Bike, Indoor Trainer, or Outdoor with safe, flat area)'],
+    muscleGroups: ['Legs (Neuromuscular Coordination)'],
+    difficulty: 3,
+    instructions: [
+      'Begin pedaling at a comfortable, moderate cadence (e.g., 80-90 RPM) in an easy to moderate gear.',
+      'Over a short period (e.g., 10-15 seconds), gradually increase your cadence as high as possible without bouncing in the saddle or losing control of your pedal stroke. The goal is to reach your maximum smooth cadence.',
+      'Hold this high cadence for a few seconds if possible, then return to your starting cadence for a recovery period (e.g., 60-90 seconds).',
+      'Focus on staying smooth and relaxed throughout the entire movement. Avoid jerking or mashing the pedals.'
+    ],
+    safetyNotes: [
+      'Perform on a flat, safe surface if outdoors. If indoors, ensure your bike is stable.',
+      'Do not push into a cadence where you feel out of control or are bouncing excessively.',
+      'Warm up thoroughly before starting spin-ups to prepare your muscles and nervous system.'
+    ],
+    modifications: {
+      beginner: 'Start with shorter spin-up durations (e.g., 5-8 seconds). Focus on smaller increases in cadence. Use a very easy gear.',
+      advanced: 'Increase the duration of the high-cadence effort. Incorporate spin-ups into longer rides. Practice single-leg spin-ups (carefully).',
+      equipment_alternatives: {
+        'Bicycle': 'Spin bike (with cadence display)'
+      }
+    },
+    metrics: {
+      type: 'duration',
+      defaultValue: 15,
+      progressionRate: 0.05,
+      unit: 'seconds per spin-up'
+    },
+    coaching: {
+      setup: [
+        'Start with comfortable cadence, easy-moderate gear.',
+        'Core engaged, upper body relaxed.',
+        'Focus on smooth, circular pedal stroke.'
+      ],
+      execution: [
+        'Gradually increase cadence, staying smooth.',
+        'Avoid bouncing in saddle; maintain control.',
+        'Return to recovery cadence, relax legs.'
+      ],
+      common_mistakes: [
+        'Bouncing excessively in the saddle.',
+        'Losing control of the pedal stroke at high cadences.',
+        'Mashing the pedals instead of smooth, circular motion.'
+      ],
+      breathing: 'Maintain steady breathing; don\'t hold your breath during high-cadence efforts.'
+    }
+  },
+
 };
 
 // Exercise categories for easy filtering
