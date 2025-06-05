@@ -5,7 +5,7 @@ import { WeeklyPlan } from './index';
 export interface Exercise {
   id: string;
   name: string;
-  category: 'strength' | 'cardio' | 'flexibility' | 'balance' | 'plyometric' | 'core' | 'mobility' | 'hyrox';
+  category: 'strength' | 'cardio' | 'flexibility' | 'balance' | 'plyometric' | 'core' | 'mobility' | 'hyrox' | 'technique' | 'endurance';
   equipment: string[];
   muscleGroups: string[];
   difficulty: 1 | 2 | 3 | 4 | 5; // 1 = beginner, 5 = expert
@@ -22,7 +22,7 @@ export interface Exercise {
   
   // How to measure and progress this exercise
   metrics: {
-    type: 'reps' | 'time' | 'distance' | 'weight' | 'rounds';
+    type: 'reps' | 'time' | 'distance' | 'weight' | 'rounds' | 'duration';
     defaultValue: number;
     progressionRate: number; // percentage increase per week
     unit?: string; // kg, lbs, seconds, meters, etc.
