@@ -5225,7 +5225,7 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
       ],
       breathing: 'Breathe deeply and slowly throughout the rolling process.'
     }
-  },,
+  },
   'swim-freestyle-drills': {
     id: 'swim-freestyle-drills',
     name: 'Freestyle Drills (Catch-up, Fingertip Drag, Kickboard)',
