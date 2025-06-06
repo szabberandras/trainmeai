@@ -70,7 +70,10 @@ export default function LayoutClientWrapper({ children }: LayoutClientWrapperPro
         router.push('/');
       } else if (user && pathname === '/') {
         console.log("LayoutClientWrapper: User logged in, checking onboarding status");
-        checkUserOnboardingStatus();
+        // Only redirect after a small delay to allow user to see they're logged in
+        setTimeout(() => {
+          checkUserOnboardingStatus();
+        }, 1000);
       } else if (user) {
         // User is logged in and on a protected route, check onboarding
         checkUserOnboardingStatus();

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import { Plus } from 'lucide-react';
+import { Plus, Sparkles, MessageCircle } from 'lucide-react';
 
 export default function TrainingPlansPage() {
   const [user, loading] = useAuthState(auth);
@@ -97,16 +97,29 @@ export default function TrainingPlansPage() {
         </div>
       ) : (
         <div style={styles.emptyState}>
-          <h2>No Training Plans Yet</h2>
-          <p>Create your first training plan to get started on your fitness journey!</p>
-                  <button
-            style={styles.createFirstButton}
-            onClick={() => router.push('/training-plans/new')}
-          >
-            Create Your First Plan
-                  </button>
+          <div style={styles.emptyIcon}>
+            <Sparkles size={48} />
           </div>
-        )}
+          <h2>No Training Plans Yet</h2>
+          <p>Start by chatting with your AI coach to create a personalized training program that fits your goals and lifestyle.</p>
+          <div style={styles.emptyActions}>
+            <button
+              style={styles.chatButton}
+              onClick={() => router.push('/dashboard')}
+            >
+              <MessageCircle size={20} />
+              <span>Chat with AI Coach</span>
+            </button>
+            <button
+              style={styles.createFirstButton}
+              onClick={() => router.push('/training-plans/new')}
+            >
+              <Plus size={20} />
+              <span>Create Manual Plan</span>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -219,7 +232,40 @@ const styles = {
     borderRadius: '12px',
     border: '1px solid #eee',
   },
+  emptyIcon: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80px',
+    height: '80px',
+    backgroundColor: '#f3f4f6',
+    borderRadius: '50%',
+    margin: '0 auto 1.5rem',
+    color: '#9ca3af',
+  },
+  emptyActions: {
+    display: 'flex',
+    gap: '1rem',
+    justifyContent: 'center',
+    marginTop: '1.5rem',
+    flexWrap: 'wrap' as const,
+  },
+  chatButton: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    padding: '0.75rem 1.5rem',
+    backgroundColor: '#111827',
+    color: 'white',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontSize: '1rem',
+  },
   createFirstButton: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
     padding: '0.75rem 1.5rem',
     backgroundColor: '#0047FF',
     color: 'white',
@@ -227,6 +273,5 @@ const styles = {
     borderRadius: '8px',
     cursor: 'pointer',
     fontSize: '1rem',
-    marginTop: '1.5rem',
   },
 };

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import { Search, ChevronLeft, ChevronRight, Target, TrendingUp, Flame, Crown, MessageSquare } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, Target, TrendingUp, Flame, Crown, MessageSquare, Sparkles } from 'lucide-react';
 import LayoutClientWrapper from '@/app/components/LayoutClientWrapper';
 
 // Type definitions
@@ -15,6 +15,8 @@ interface UserProfile {
   maxPlans: number;
   programs: any[];
   preferences: any;
+  workoutStreak?: number;
+  totalWorkouts?: number;
 }
 
 const FEATURED_PROGRAMS = [
@@ -23,28 +25,28 @@ const FEATURED_PROGRAMS = [
     title: 'Beginner Running Program',
     duration: '4 weeks',
     intensity: 'Low Intensity',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBQ1ty0wqBOD2uWIcnK7B6HwykZx9FaSTUHIP6ore4IYMt9k8splo7nRCpnFPpSksYQo3Rsrl51-99np4ADxC6vlAsCX8A4lgc1bUzJmEaJd5uqywp6Htk_UpCKMOkIk7rhr4mhpnfLFTWecCCOaU6z7oV8sMUkGBXvzNdVauf70NH_IRnP6j1j82ZGFqQFzu2unMkqwDf9olEyP6BimXGezbWON1W71UcJG2XIdau_GGDV89TlPmb0EGOVeSUNqmc-rZXTWY4-QJV6'
+    image: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Frisen-wang-20jX9b35r_M-unsplash.jpg?alt=media&token=c94ff3e1-7dbd-49b9-82a2-37d6decfd7f4'
   },
   {
     id: 'intermediate-strength',
     title: 'Intermediate Strength Training',
     duration: '6 weeks',
     intensity: 'Medium Intensity',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC843Xs_GMixhUlRpnXtZeI06kjIWIVvZRaVb2gX__jaRXtEf7RIG2gWDUj_eFFEJfSZRgeWzPHJsKlwmwjphTQm67FnGvJa-B8Fj4RyuL8odd3PH1MAzTORZxrayvcTgDovsA1IN2gTqaw2EhLQ2AM7JYN2gj4GWP37ceBOXK8tzdWWljtLsNDaG6kAE9bOZNX-otmo77_jfJU9DNCpS8_tM8koj_iz2m402J61LnVqtVbTl95HZ_ZYA0nb6h3_bASbr_iSsOrwOZ5'
+    image: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fsamuel-girven-VJ2s0c20qCo-unsplash.jpg?alt=media&token=0b51bc15-a0e1-4421-b43d-5102202208b7'
   },
   {
     id: 'advanced-yoga',
     title: 'Advanced Yoga Flow',
     duration: '8 weeks',
     intensity: 'High Intensity',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCXfUH3Nd9451XwnhP6CAdS8pb0aJUSr-AipSQskPuj82Pgr7NnHJ5CEUuan_IFbyCf8cL7f9X4DaHnsK0ERsIqdul4XPZzt0rayyw06rEFsjLx4JHNctNAkEMR0GwWgLI1u3FT3tjvGtbWoqr1eyeg28RS-ozy0-vo7bOQ_QCAS4DPt111tzdj063SUqkye42Y4c0xesB-aZxbEGojnj3_Yl7VtTTwbJAvhzlqZBK6ieOQpWTnyorOgZGnSX_5zjzp3pzyhpEmuOnD'
+    image: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fthe-nix-company-biX8sBfNcPc-unsplash.jpg?alt=media&token=21cdc6cb-d8e9-4e8f-9d97-238b0d798427'
   },
   {
     id: 'hiit-blast',
     title: 'HIIT Blast',
     duration: '2 weeks',
     intensity: 'High Intensity',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCGAejcJ6CqRKbfzBwa0yUYhAfdzKVhkiqv1E338aj8OAchGw2sOCG5qe8UoqAYAHiQCjsnKzBRy7hhXPIL1V3FHPzHcCZZNxStHfL_lZhqd-YEixgeNV-_SinTge2ryALk_VIJM72a1quIbbkVvzmvmUbvMoOp1EAktAT4GlGtYRwirYdBYgv7-YiBMDJm4uoUzHNzcJbnnySy2G1vp6HXXtNdP6Vm4_8vCM5qtbSBrk_Fe3TkrSK3GGffmPIHepjV_QYp_sgKLe7N'
+    image: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fcarl-barcelo-nqUHQkuVj3c-unsplash.jpg?alt=media&token=748ecbe7-224f-4aa8-ae97-bcaa0d4dc0c2'
   }
 ];
 
@@ -58,7 +60,9 @@ export default function ProgramsPage() {
     plansGenerated: 0,
     maxPlans: 2,
     programs: [],
-    preferences: {}
+    preferences: {},
+    workoutStreak: 0,
+    totalWorkouts: 0
   });
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
 
@@ -80,7 +84,9 @@ export default function ProgramsPage() {
               plansGenerated: userData.plansGenerated || 0,
               maxPlans: userData.maxPlans || 2,
               programs: userData.programs || [],
-              preferences: userData.preferences || {}
+              preferences: userData.preferences || {},
+              workoutStreak: userData.workoutStreak || 0,
+              totalWorkouts: userData.totalWorkouts || 0
             });
           }
         } catch (error) {
@@ -113,177 +119,174 @@ export default function ProgramsPage() {
 
   return (
     <LayoutClientWrapper>
-      <div className="px-40 flex flex-1 justify-center py-5">
-        <div className="flex flex-col max-w-[960px] flex-1">
-          {/* KPIs Section */}
-          <div className="flex flex-col gap-4 mb-8">
-            <h2 className="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">
-              Your Progress
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-2">
-                  <Target className="w-5 h-5 text-blue-600" />
-                  <h3 className="font-semibold text-[#111418]">Programs Created</h3>
-                </div>
-                <p className="text-2xl font-bold text-[#111418]">{userProfile.plansGenerated}</p>
-                <p className="text-sm text-[#637088]">of {userProfile.maxPlans} {userProfile.subscription} limit</p>
-              </div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+        <div className="px-40 flex flex-1 justify-center py-5">
+          <div className="flex flex-col max-w-[960px] flex-1">
+            {/* Header */}
+            <div className="mb-8">
+              <h1 className="text-gray-900 text-[32px] font-light leading-tight tracking-wide mb-2">
+                Training Programs
+              </h1>
+              <p className="text-gray-600 text-lg">
+                Discover and manage your personalized fitness programs
+              </p>
+            </div>
 
-              <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-2">
-                  <TrendingUp className="w-5 h-5 text-green-600" />
-                  <h3 className="font-semibold text-[#111418]">Active Programs</h3>
+            {/* KPIs Section */}
+            <div className="mb-8">
+              <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
+                Your Progress
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-blue-100 rounded-2xl flex items-center justify-center">
+                      <Target className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <h3 className="font-medium text-gray-900">Programs Created</h3>
+                  </div>
+                  <p className="text-2xl font-light text-gray-900">{userProfile.plansGenerated}</p>
+                  <p className="text-sm text-gray-500">of {userProfile.maxPlans} {userProfile.subscription} limit</p>
                 </div>
-                <p className="text-2xl font-bold text-[#111418]">{activePrograms.length}</p>
-                <p className="text-sm text-[#637088]">Currently training</p>
-              </div>
 
-              <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-2">
-                  <Flame className="w-5 h-5 text-orange-600" />
-                  <h3 className="font-semibold text-[#111418]">Workout Streak</h3>
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-green-100 rounded-2xl flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-green-600" />
+                    </div>
+                    <h3 className="font-medium text-gray-900">Active Programs</h3>
+                  </div>
+                  <p className="text-2xl font-light text-gray-900">{activePrograms.length}</p>
+                  <p className="text-sm text-gray-500">Currently training</p>
                 </div>
-                <p className="text-2xl font-bold text-[#111418]">7</p>
-                <p className="text-sm text-[#637088]">days in a row</p>
-              </div>
 
-              <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-2">
-                  <Crown className="w-5 h-5 text-yellow-600" />
-                  <h3 className="font-semibold text-[#111418]">Subscription</h3>
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-orange-100 rounded-2xl flex items-center justify-center">
+                      <Flame className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <h3 className="font-medium text-gray-900">Workout Streak</h3>
+                  </div>
+                  <p className="text-2xl font-light text-gray-900">{userProfile.workoutStreak}</p>
+                  <p className="text-sm text-gray-500">
+                    {userProfile.workoutStreak === 0 ? 'Start your first workout!' : 'days in a row'}
+                  </p>
                 </div>
-                <p className="text-2xl font-bold text-[#111418] capitalize">{userProfile.subscription}</p>
-                <p className="text-sm text-[#637088]">
-                  {userProfile.subscription === 'free' ? 'Upgrade for unlimited' : 'Unlimited plans'}
-                </p>
+
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-yellow-100 rounded-2xl flex items-center justify-center">
+                      <Crown className="w-5 h-5 text-yellow-600" />
+                    </div>
+                    <h3 className="font-medium text-gray-900">Total Workouts</h3>
+                  </div>
+                  <p className="text-2xl font-light text-gray-900">{userProfile.totalWorkouts}</p>
+                  <p className="text-sm text-gray-500">
+                    {userProfile.totalWorkouts === 0 ? 'Ready to start!' : 'completed'}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Empty State or Programs Content */}
-          {!hasActivePrograms ? (
-            /* Empty State CTA */
-            <div className="flex flex-col items-center justify-center py-16 px-4">
-              <div className="bg-[#f0f2f4] rounded-xl p-12 text-center max-w-lg">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Target className="w-8 h-8 text-blue-600" />
+            {/* Empty State or Programs Content */}
+            {!hasActivePrograms ? (
+              /* Empty State CTA */
+              <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-12 shadow-lg text-center">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Sparkles className="text-gray-400" size={24} />
                 </div>
-                <h3 className="text-[#111418] text-2xl font-bold mb-4">
+                <h3 className="text-gray-900 font-medium text-2xl mb-4">
                   Ready to Start Your Fitness Journey?
                 </h3>
-                <p className="text-[#637088] mb-8 text-lg">
+                <p className="text-gray-500 mb-8 text-lg max-w-2xl mx-auto">
                   You don&apos;t have any active training programs yet. Let our AI coach create a personalized program tailored to your goals and fitness level.
                 </p>
-                <button
-                  onClick={() => router.push('/dashboard#ai-chat')}
-                  className="flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-colors mx-auto"
-                >
-                  <MessageSquare className="w-5 h-5" />
-                  Chat with AI Coach
-                </button>
-                <p className="text-sm text-[#637088] mt-4">
+                <div className="flex gap-4 justify-center">
+                  <button
+                    onClick={() => router.push('/dashboard#ai-chat')}
+                    className="flex items-center gap-3 bg-gray-900 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-gray-800 transition-colors"
+                  >
+                    <MessageSquare className="w-5 h-5" />
+                    Chat with AI Coach
+                  </button>
+                  <button
+                    onClick={() => router.push('/training-plans/new')}
+                    className="flex items-center gap-3 bg-gray-100 text-gray-700 px-8 py-4 rounded-xl text-lg font-medium hover:bg-gray-200 transition-colors"
+                  >
+                    <Target className="w-5 h-5" />
+                    Browse Templates
+                  </button>
+                </div>
+                <p className="text-sm text-gray-500 mt-6">
                   Free plan: {userProfile.plansGenerated}/{userProfile.maxPlans} programs used
                 </p>
               </div>
-            </div>
-          ) : (
-            /* Programs Content */
-            <>
-              {/* Header Section */}
-              <div className="flex flex-wrap justify-between gap-3 p-4">
-                <div className="flex min-w-72 flex-col gap-3">
-                  <p className="text-[#111418] tracking-light text-[32px] font-bold leading-tight">
-                    Training Programs
-                  </p>
-                  <p className="text-[#637088] text-sm font-normal leading-normal">
-                    Explore our curated programs designed to help you achieve your fitness goals. Each program is tailored to different fitness levels and interests.
-                  </p>
+            ) : (
+              /* Programs Content */
+              <>
+                {/* Search Bar */}
+                <div className="mb-6">
+                  <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl p-4 shadow-lg">
+                    <div className="flex items-center gap-3">
+                      <Search className="text-gray-400" size={20} />
+                      <input
+                        placeholder="Search programs..."
+                        className="flex-1 bg-transparent border-none outline-none text-gray-900 placeholder:text-gray-500"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Search Bar */}
-              <div className="px-4 py-3">
-                <label className="flex flex-col min-w-40 h-12 w-full">
-                  <div className="flex w-full flex-1 items-stretch rounded-xl h-full">
-                    <div className="text-[#637088] flex border-none bg-[#f0f2f4] items-center justify-center pl-4 rounded-l-xl border-r-0">
-                      <Search size={24} />
+                {/* Categories */}
+                <div className="flex gap-3 mb-6 flex-wrap">
+                  {PROGRAM_CATEGORIES.map((category) => (
+                    <div key={category} className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-full px-4 py-2 shadow-sm">
+                      <p className="text-gray-700 text-sm font-medium">{category}</p>
                     </div>
-                    <input
-                      placeholder="Search programs"
-                      className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-full placeholder:text-[#637088] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
-                    />
-                  </div>
-                </label>
-              </div>
+                  ))}
+                </div>
 
-              {/* Categories */}
-              <div className="flex gap-3 p-3 flex-wrap pr-4">
-                {PROGRAM_CATEGORIES.map((category) => (
-                  <div key={category} className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f0f2f4] px-4">
-                    <p className="text-[#111418] text-sm font-medium leading-normal">{category}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Program Grid */}
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-                {FEATURED_PROGRAMS.map((program) => (
-                  <div key={program.id} className="flex flex-col gap-3 pb-3">
-                    <div
-                      className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                      style={{ backgroundImage: `url(${program.image})` }}
-                    />
-                    <div>
-                      <p className="text-[#111418] text-base font-medium leading-normal">
-                        {program.title}
-                      </p>
-                      <p className="text-[#637088] text-sm font-normal leading-normal">
-                        {program.duration}, {program.intensity}
-                      </p>
+                {/* Program Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  {FEATURED_PROGRAMS.map((program) => (
+                    <div key={program.id} className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                      <div
+                        className="w-full h-48 bg-center bg-cover"
+                        style={{ backgroundImage: `url(${program.image})` }}
+                      />
+                      <div className="p-6">
+                        <h3 className="text-gray-900 font-medium text-lg mb-2">
+                          {program.title}
+                        </h3>
+                        <p className="text-gray-500 text-sm mb-4">
+                          {program.duration} • {program.intensity}
+                        </p>
+                        <button className="w-full bg-gray-900 text-white py-2 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors">
+                          Start Program
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              {/* Pagination */}
-              <div className="flex items-center justify-center p-4">
-                <a href="#" className="flex size-10 items-center justify-center">
-                  <ChevronLeft size={18} className="text-[#111418]" />
-                </a>
-                <a className="text-sm font-bold leading-normal tracking-[0.015em] flex size-10 items-center justify-center text-[#111418] rounded-full bg-[#f0f2f4]" href="#">
-                  1
-                </a>
-                <a className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#111418] rounded-full" href="#">
-                  2
-                </a>
-                <a className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#111418] rounded-full" href="#">
-                  3
-                </a>
-                <a href="#" className="flex size-10 items-center justify-center">
-                  <ChevronRight size={18} className="text-[#111418]" />
-                </a>
-              </div>
-
-              {/* Create Your Own Program CTA */}
-              <div className="mt-8 p-4">
-                <div className="bg-[#f0f2f4] rounded-xl p-8 text-center">
-                  <h3 className="text-[#111418] text-xl font-bold mb-4">
+                {/* Create Your Own Program CTA */}
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-8 shadow-lg text-center">
+                  <h3 className="text-gray-900 font-medium text-xl mb-4">
                     Want a Personalized Training Program?
                   </h3>
-                  <p className="text-[#637088] mb-6">
+                  <p className="text-gray-500 mb-6">
                     Let our AI coach create a custom program tailored to your specific goals and fitness level.
                   </p>
                   <button
                     onClick={() => router.push('/dashboard#ai-chat')}
-                    className="bg-blue-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors"
+                    className="bg-gray-900 text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors"
                   >
                     Create Custom Program
                   </button>
                 </div>
-              </div>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </LayoutClientWrapper>

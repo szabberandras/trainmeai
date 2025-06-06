@@ -312,7 +312,7 @@ function ActiveWorkoutCard({
                       type="number"
                       placeholder={`Target: ${currentSet.targetReps}`}
                       value={setData.actualReps || ''}
-                      onChange={(e) => setSetData(prev => ({ ...prev, actualReps: parseInt(e.target.value) }))}
+                      onChange={(e) => setSetData((prev: any) => ({ ...prev, actualReps: parseInt(e.target.value) }))}
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -324,7 +324,7 @@ function ActiveWorkoutCard({
                       type="number"
                       placeholder={`Target: ${currentSet.targetWeight}`}
                       value={setData.actualWeight || ''}
-                      onChange={(e) => setSetData(prev => ({ ...prev, actualWeight: parseInt(e.target.value) }))}
+                      onChange={(e) => setSetData((prev: any) => ({ ...prev, actualWeight: parseInt(e.target.value) }))}
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -336,7 +336,7 @@ function ActiveWorkoutCard({
                       type="number"
                       placeholder={`Target: ${currentSet.targetDuration}`}
                       value={setData.actualDuration || ''}
-                      onChange={(e) => setSetData(prev => ({ ...prev, actualDuration: parseInt(e.target.value) }))}
+                      onChange={(e) => setSetData((prev: any) => ({ ...prev, actualDuration: parseInt(e.target.value) }))}
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -349,7 +349,7 @@ function ActiveWorkoutCard({
                     max="10"
                     placeholder="Rate effort"
                     value={setData.rpe || ''}
-                    onChange={(e) => setSetData(prev => ({ ...prev, rpe: parseInt(e.target.value) }))}
+                                          onChange={(e) => setSetData((prev: any) => ({ ...prev, rpe: parseInt(e.target.value) }))}
                     className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>

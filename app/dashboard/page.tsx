@@ -16,22 +16,86 @@ import {
   Calendar,
   Zap,
   ThumbsUp,
-  ThumbsDown
+  ThumbsDown,
+  Sparkles,
+  Mountain,
+  Users,
+  Waves,
+  Plus,
+  ArrowRight,
+  CheckCircle,
+  Clock
 } from 'lucide-react';
 import LayoutClientWrapper from '@/app/components/LayoutClientWrapper';
 import ProgramCard from '@/app/components/programs/ProgramCard';
 import ProgramCreator from '@/app/components/programs/ProgramCreator';
 import CinematicOnboarding, { UserPersonalization } from '@/app/components/onboarding/CinematicOnboarding';
 import ProgressInsights from '@/app/components/dashboard/ProgressInsights';
-import DynamicTrainingDashboard from '@/app/components/dashboard/DynamicTrainingDashboard';
 import ProgramCreationModal from '@/app/components/programs/ProgramCreationModal';
 import { ProgramService } from '@/lib/services/program.service';
 import { TrainingProgram, ProgramTemplate } from '@/lib/types/program';
 import { AiMessage, GoalType } from '@/types';
 
+// Dynamic hero backgrounds based on training discipline
+const HERO_BACKGROUNDS = {
+  'cardio-endurance': {
+    image: "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Frisen-wang-20jX9b35r_M-unsplash.jpg?alt=media&token=c94ff3e1-7dbd-49b9-82a2-37d6decfd7f4",
+    gradient: 'linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(16, 185, 129, 0.8) 50%, rgba(6, 182, 212, 0.8) 100%)',
+    title: 'Build Your Endurance',
+    subtitle: 'Every step forward is progress'
+  },
+  'strength-power': {
+    image: "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fsamuel-girven-VJ2s0c20qCo-unsplash.jpg?alt=media&token=0b51bc15-a0e1-4421-b43d-5102202208b7",
+    gradient: 'linear-gradient(135deg, rgba(239, 68, 68, 0.8) 0%, rgba(245, 101, 101, 0.8) 50%, rgba(251, 146, 60, 0.8) 100%)',
+    title: 'Build Your Strength',
+    subtitle: 'Strength is built one rep at a time'
+  },
+  'mind-body': {
+    image: "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fthe-nix-company-biX8sBfNcPc-unsplash.jpg?alt=media&token=21cdc6cb-d8e9-4e8f-9d97-238b0d798427",
+    gradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.8) 0%, rgba(101, 163, 13, 0.8) 50%, rgba(132, 204, 22, 0.8) 100%)',
+    title: 'Find Your Balance',
+    subtitle: 'Mind and body in harmony'
+  },
+  'team-sports': {
+    image: "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Falgi-vmdJ6n8PIa8-unsplash.jpg?alt=media&token=62b61f06-50d6-404e-a457-87e16d567dfa",
+    gradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.8) 0%, rgba(139, 92, 246, 0.8) 50%, rgba(124, 58, 237, 0.8) 100%)',
+    title: 'Train Like a Champion',
+    subtitle: 'Excellence is a team effort'
+  },
+  'outdoor-adventure': {
+    image: "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fbradley-dunn-fjpl1yrNvNQ-unsplash.jpg?alt=media&token=d8a1d533-4afe-4703-b0cb-310353c70f6f",
+    gradient: 'linear-gradient(135deg, rgba(20, 184, 166, 0.8) 0%, rgba(5, 150, 105, 0.8) 50%, rgba(16, 185, 129, 0.8) 100%)',
+    title: 'Embrace Adventure',
+    subtitle: 'Nature is your playground'
+  },
+  'combat-sports': {
+    image: "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fcarl-barcelo-nqUHQkuVj3c-unsplash.jpg?alt=media&token=748ecbe7-224f-4aa8-ae97-bcaa0d4dc0c2",
+    gradient: 'linear-gradient(135deg, rgba(220, 38, 127, 0.8) 0%, rgba(190, 24, 93, 0.8) 50%, rgba(157, 23, 77, 0.8) 100%)',
+    title: 'Master Your Discipline',
+    subtitle: 'Precision through practice'
+  },
+  'dance-movement': {
+    image: "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fthe-nix-company-biX8sBfNcPc-unsplash.jpg?alt=media&token=21cdc6cb-d8e9-4e8f-9d97-238b0d798427",
+    gradient: 'linear-gradient(135deg, rgba(236, 72, 153, 0.8) 0%, rgba(219, 39, 119, 0.8) 50%, rgba(190, 24, 93, 0.8) 100%)',
+    title: 'Express Through Movement',
+    subtitle: 'Every movement tells a story'
+  },
+  'precision-skill': {
+    image: "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Falgi-vmdJ6n8PIa8-unsplash.jpg?alt=media&token=62b61f06-50d6-404e-a457-87e16d567dfa",
+    gradient: 'linear-gradient(135deg, rgba(99, 102, 241, 0.8) 0%, rgba(79, 70, 229, 0.8) 50%, rgba(67, 56, 202, 0.8) 100%)',
+    title: 'Perfect Your Precision',
+    subtitle: 'Excellence in every detail'
+  },
+  'general-fitness': {
+    image: "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Falgi-vmdJ6n8PIa8-unsplash.jpg?alt=media&token=62b61f06-50d6-404e-a457-87e16d567dfa",
+    gradient: 'linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(147, 51, 234, 0.8) 50%, rgba(236, 72, 153, 0.8) 100%)',
+    title: 'Your Fitness Journey',
+    subtitle: 'Every day is a new opportunity'
+  }
+};
 
-// Hero image should be a high-quality fitness/workout image
-const HERO_BG = "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Falgi-vmdJ6n8PIa8-unsplash.jpg?alt=media&token=62b61f06-50d6-404e-a457-87e16d567dfa";
+// Default hero for users without specific discipline
+const DEFAULT_HERO = HERO_BACKGROUNDS['general-fitness'];
 
 // Past training plans images from JavaScript version
 const PAST_PLAN_IMAGES = {
@@ -192,78 +256,66 @@ What does "feeling fit" mean to you? Is it about having energy for your daily ac
   }
 ];
 
+// Function to get dynamic hero based on user's primary activity
+// Function to get dynamic hero based on user's primary activity
+const getDynamicHero = (personalization: UserPersonalization | null) => {
+  if (!personalization?.onboardingAnswers?.activity) {
+    return DEFAULT_HERO;
+  }
+
+  const activity = personalization.onboardingAnswers.activity;
+  return HERO_BACKGROUNDS[activity as keyof typeof HERO_BACKGROUNDS] || DEFAULT_HERO;
+};
+
 // Personalized AI messages based on onboarding
 const getPersonalizedWelcomeMessage = (personalization: UserPersonalization | null, userName: string) => {
   if (!personalization || !personalization.motivation || !personalization.aiTone) {
     return `Hi! I'm your AI fitness coach. Let's create your personalized fitness program together.`;
   }
 
-  const { aiTone, motivation, onboardingAnswers } = personalization;
+  const tone = personalization.aiTone;
+  const motivation = personalization.motivation;
   
-  // Create goal-aware base message from motivation and onboarding data
-  let goalContext = motivation.toLowerCase();
-  let activityContext = '';
-  let equipmentContext = '';
-  
-  if (onboardingAnswers) {
-    if (onboardingAnswers.activity) {
-      activityContext = ` with ${onboardingAnswers.activity}`;
-    }
-    if (onboardingAnswers.equipment && onboardingAnswers.equipment.length > 0) {
-      equipmentContext = ` using your ${onboardingAnswers.equipment.join(', ').toLowerCase()}`;
-    }
-  }
-  
-  const baseMessages = {
-    supportive: `Welcome back, ${userName}! I'm here to support you on your journey with ${goalContext}${activityContext}. I remember your preferences from onboarding and I'm excited to help you build on your progress${equipmentContext}. How are you feeling about your fitness journey today?`,
-    playful: `Hey ${userName}! Ready to have some fun with ${goalContext}${activityContext}? I've got your onboarding info and some exciting training ideas planned for you${equipmentContext}! What sounds good today?`,
-    direct: `${userName}, let's get to work on ${goalContext}${activityContext}. I have your preferences from onboarding - tell me what you need today and I'll create your plan${equipmentContext}.`,
-    minimal: `${userName}. Focus: ${goalContext}${activityContext}${equipmentContext}. What's today's priority?`,
-    reflective: `Hello ${userName}. I've been thinking about your journey with ${goalContext}${activityContext}. Based on what you shared during onboarding, how are you feeling about your progress${equipmentContext}? Let's check in and see what your body needs today.`
+  const toneMessages = {
+    supportive: `I'm here to support you every step of the way on your fitness journey. Together, we'll create something amazing that fits perfectly with your ${motivation} goals.`,
+    playful: `Hey there, fitness adventurer! 🎯 Ready to have some fun while crushing your ${motivation} goals? Let's make this journey exciting!`,
+    direct: `Let's get straight to it - you're here for ${motivation}, and I'm here to help you achieve it efficiently. What's your priority today?`,
+    minimal: `Ready to work on ${motivation}? Let's build your program.`,
+    reflective: `Your journey toward ${motivation} is deeply personal. I'm here to help you discover what truly works for your unique path.`
   };
 
-  return baseMessages[aiTone] || baseMessages.supportive;
+  return toneMessages[tone] || toneMessages.supportive;
 };
 
-// Get personalized hero message
 const getPersonalizedHeroMessage = (personalization: UserPersonalization | null) => {
-  if (!personalization || !personalization.motivation) {
-    return "Your fitness journey continues with us. Let's achieve your goals together.";
+  if (!personalization?.onboardingAnswers) {
+    return "Ready to start your fitness journey? Let's create something amazing together.";
   }
 
-  const { motivation, onboardingAnswers } = personalization;
+  const answers = personalization.onboardingAnswers;
+  const activity = answers.activity;
+  const goal = answers.goal;
+  const timeCommitment = answers.timeCommitment;
   
-  if (onboardingAnswers) {
-    const { activity, goal, timeCommitment, daysPerWeek, fitnessLevel } = onboardingAnswers;
-    
-    // Create activity-specific messages
-    const activityMessages = {
-      'running': `Your running journey continues! Ready for ${timeCommitment}-minute sessions, ${daysPerWeek}?`,
-      'cycling': `Time to get those wheels spinning! Your ${timeCommitment}-minute cycling sessions await.`,
-      'strength': `Let's build that strength! Your ${timeCommitment}-minute power sessions are ready.`,
-      'mindfulness': `Find your center with ${timeCommitment} minutes of mindful movement, ${daysPerWeek}.`,
-      'swimming': `Dive into your aquatic training! ${timeCommitment} minutes of pool perfection ahead.`,
-      'team-sports': `Game time! Your ${timeCommitment}-minute sport-specific training is ready.`
-    };
-    
-    // Create goal-specific messages
-    const goalMessages = {
-      'fitness': `Building overall fitness with ${activity} - your ${fitnessLevel} level journey continues!`,
-      'weight-loss': `Transforming your body with ${activity} - sustainable progress, ${timeCommitment} minutes at a time.`,
-      'strength': `Power building through ${activity} - your ${fitnessLevel} strength journey evolves!`,
-      'performance': `Performance optimization with ${activity} - training like the ${fitnessLevel} athlete you are!`,
-      'wellbeing': `Wellness through ${activity} - nurturing your mind and body, ${timeCommitment} minutes daily.`
-    };
-    
-    // Return activity-specific message if available, otherwise goal-specific
-    if (activity && activityMessages[activity as keyof typeof activityMessages]) {
-      return activityMessages[activity as keyof typeof activityMessages];
-    } else if (goal && goalMessages[goal as keyof typeof goalMessages]) {
-      return goalMessages[goal as keyof typeof goalMessages];
-    }
+  // Create personalized message based on their choices
+  const activityMessages = {
+    'cardio-endurance': 'Your cardiovascular journey awaits',
+    'strength-power': 'Time to build that strength you\'ve been dreaming of',
+    'mind-body': 'Find your center and embrace the flow',
+    'team-sports': 'Train like the champion you are',
+    'outdoor-adventure': 'Adventure is calling - are you ready?',
+    'combat-sports': 'Discipline, focus, and power await',
+    'dance-movement': 'Express yourself through movement',
+    'precision-skill': 'Perfect your craft with focused training'
+  };
+
+  const baseMessage = activityMessages[activity as keyof typeof activityMessages] || 'Your fitness journey starts here';
+  
+  if (timeCommitment && parseInt(timeCommitment) <= 30) {
+    return `${baseMessage} - even ${timeCommitment} minutes can transform your day`;
   }
   
-  return `Your ${motivation.toLowerCase()} journey continues. Let's make today count!`;
+  return `${baseMessage} - let's make every session count`;
 };
 
 export default function DashboardPage() {
@@ -280,7 +332,6 @@ export default function DashboardPage() {
   const [currentGoalType, setCurrentGoalType] = useState<GoalType | null>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
-  const [showDynamicDashboard, setShowDynamicDashboard] = useState(false);
   const [showProgramCreationModal, setShowProgramCreationModal] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
@@ -290,6 +341,61 @@ export default function DashboardPage() {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [conversation, isGenerating]);
+
+  // Initialize conversation if empty and user is loaded
+  useEffect(() => {
+    if (user && hasCompletedOnboarding && conversation.length === 0) {
+      const userName = user.displayName || user.email?.split('@')[0] || 'there';
+      let initialMessage;
+      
+      if (userPersonalization && userPersonalization.onboardingAnswers) {
+        const { onboardingAnswers } = userPersonalization;
+        const { activity, goal, timeCommitment, daysPerWeek, fitnessLevel, equipment } = onboardingAnswers;
+        
+        const personalizedWelcome = `Hello ${userName}! 👋 I'm your AI fitness coach, and I'm excited to work with you on your ${goal} journey.
+
+Based on your profile, I see you're focused on ${activity} at a ${fitnessLevel} level, with ${timeCommitment} minutes available ${daysPerWeek}. ${equipment && equipment.length > 0 ? `I also have your equipment preferences: ${equipment.join(', ')}.` : 'I know you prefer bodyweight exercises.'}
+
+What would you like to work on today? I can help you:
+• Create a personalized training plan
+• Adjust your current routine
+• Answer specific fitness questions
+• Plan your weekly schedule
+
+What sounds most helpful right now?`;
+
+        initialMessage = {
+          type: 'ai' as const,
+          content: personalizedWelcome,
+          timestamp: new Date(),
+          metadata: {
+            isPersonalizedWelcome: true
+          }
+        };
+      } else {
+        const genericWelcome = `Hello ${userName}! 👋 I'm your AI fitness coach, and I'm here to help you achieve your fitness goals.
+
+I can assist you with:
+• Creating personalized training plans
+• Answering fitness and nutrition questions  
+• Helping you stay motivated and on track
+• Adjusting workouts based on your progress
+
+What would you like to work on today? Feel free to tell me about your fitness goals, current activity level, or any specific questions you have!`;
+
+        initialMessage = {
+          type: 'ai' as const,
+          content: genericWelcome,
+          timestamp: new Date(),
+          metadata: {
+            isPersonalizedWelcome: false
+          }
+        };
+      }
+      
+      setConversation([initialMessage]);
+    }
+  }, [user, hasCompletedOnboarding, userPersonalization, conversation.length]);
 
   const loadUserData = async () => {
     if (!user) return;
@@ -385,41 +491,58 @@ How are you feeling about everything we discussed?`,
       } else {
         console.error('❌ Chat response not ok:', chatResponse.status);
         console.log('🔍 Response details:', await chatResponse.text());
-        // Only set initial message if no conversation exists
-        if (conversation.length === 0) {
-          const userName = user.displayName || user.email?.split('@')[0] || 'there';
-          let initialMessage;
+        // Set initial message if no conversation exists
+        const userName = user.displayName || user.email?.split('@')[0] || 'there';
+        let initialMessage;
+        
+        if (userPersonalization && userPersonalization.onboardingAnswers) {
+          // Create a highly personalized welcome message based on onboarding data
+          const { onboardingAnswers, aiTone } = userPersonalization;
+          const { activity, goal, timeCommitment, daysPerWeek, fitnessLevel, equipment } = onboardingAnswers;
           
-          if (userPersonalization && userPersonalization.onboardingAnswers) {
-            // Create a highly personalized welcome message based on onboarding data
-            const { onboardingAnswers, aiTone } = userPersonalization;
-            const { activity, goal, timeCommitment, daysPerWeek, fitnessLevel, equipment } = onboardingAnswers;
-            
-            const personalizedWelcome = `Welcome back, ${userName}! I'm excited to work with you on your ${goal} journey through ${activity}.
+          const personalizedWelcome = `Hello ${userName}! 👋 I'm your AI fitness coach, and I'm excited to work with you on your ${goal} journey.
 
-I remember from our onboarding that you're at a ${fitnessLevel} level and can commit ${timeCommitment} minutes, ${daysPerWeek}. ${equipment && equipment.length > 0 ? `I also have your equipment list: ${equipment.join(', ')}.` : 'I know you prefer bodyweight exercises.'}
+Based on your profile, I see you're focused on ${activity} at a ${fitnessLevel} level, with ${timeCommitment} minutes available ${daysPerWeek}. ${equipment && equipment.length > 0 ? `I also have your equipment preferences: ${equipment.join(', ')}.` : 'I know you prefer bodyweight exercises.'}
 
-What would you like to focus on today? I can help you create a personalized training plan, adjust your current routine, or answer any fitness questions you have.`;
+What would you like to work on today? I can help you:
+• Create a personalized training plan
+• Adjust your current routine
+• Answer specific fitness questions
+• Plan your weekly schedule
 
-            initialMessage = {
-              type: 'ai' as const,
-              content: personalizedWelcome,
-              timestamp: new Date(),
-              metadata: {
-                isPersonalizedWelcome: true
-              }
-            };
-          } else {
-            // Fallback to generic welcome if no onboarding data
-            initialMessage = {
-              type: 'ai' as const,
-              content: getPersonalizedWelcomeMessage(userPersonalization, userName),
-              timestamp: new Date()
-            };
-          }
-          
-          setConversation([initialMessage]);
+What sounds most helpful right now?`;
+
+          initialMessage = {
+            type: 'ai' as const,
+            content: personalizedWelcome,
+            timestamp: new Date(),
+            metadata: {
+              isPersonalizedWelcome: true
+            }
+          };
+        } else {
+          // Welcome message for users without complete onboarding
+          const genericWelcome = `Hello ${userName}! 👋 I'm your AI fitness coach, and I'm here to help you achieve your fitness goals.
+
+I can assist you with:
+• Creating personalized training plans
+• Answering fitness and nutrition questions  
+• Helping you stay motivated and on track
+• Adjusting workouts based on your progress
+
+What would you like to work on today? Feel free to tell me about your fitness goals, current activity level, or any specific questions you have!`;
+
+          initialMessage = {
+            type: 'ai' as const,
+            content: genericWelcome,
+            timestamp: new Date(),
+            metadata: {
+              isPersonalizedWelcome: false
+            }
+          };
         }
+        
+        setConversation([initialMessage]);
       }
     } catch (error) {
       console.error('Error loading user data:', error);
@@ -440,18 +563,21 @@ What would you like to focus on today? I can help you create a personalized trai
           const userDoc = await getDoc(doc(db, 'users', user.uid));
           if (userDoc.exists()) {
             const userData = userDoc.data();
-            if (userData.hasCompletedOnboarding) {
+            // Always show onboarding if user hasn't completed it properly
+            if (userData.hasCompletedOnboarding && userData.onboardingAnswers) {
               setUserPersonalization(userData as UserPersonalization);
               setHasCompletedOnboarding(true);
               // Load the rest of the data
               await loadUserData();
             } else {
-              // User hasn't completed onboarding, show it
+              // User exists but hasn't completed onboarding properly, show it
+              console.log('User exists but onboarding incomplete, showing onboarding');
               setShowOnboarding(true);
               return; // Don't load other data until onboarding is complete
             }
           } else {
             // New user, show onboarding
+            console.log('New user detected, showing onboarding');
             setShowOnboarding(true);
             return; // Don't load other data until onboarding is complete
           }
@@ -619,12 +745,6 @@ What would you like to focus on today? I can help you create a personalized trai
     setShowProgramCreationModal(false);
   };
 
-  const handleToggleDashboard = () => {
-    setShowDynamicDashboard(!showDynamicDashboard);
-  };
-
-
-
   if (loading) {
     return (
       <LayoutClientWrapper>
@@ -651,92 +771,177 @@ What would you like to focus on today? I can help you create a personalized trai
 
   const userName = user.displayName || user.email?.split('@')[0] || 'there';
   const heroMessage = getPersonalizedHeroMessage(userPersonalization);
+  const dynamicHero = getDynamicHero(userPersonalization);
 
   return (
     <LayoutClientWrapper>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
         <div className="px-40 flex flex-1 justify-center py-5">
           <div className="flex flex-col max-w-[960px] flex-1">
-            {/* Hero Section */}
+            {/* Dynamic Hero Section */}
             <div className="@container">
               <div className="@[480px]:p-4">
                 <div
-                  className="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-start justify-end px-4 pb-10 @[480px]:px-10"
+                  className="relative flex min-h-[500px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 rounded-3xl items-start justify-end px-6 pb-12 @[480px]:px-12 overflow-hidden shadow-2xl"
                   style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url(${HERO_BG})`
+                    backgroundImage: `url(${dynamicHero.image})`
                   }}
                 >
-                  <div className="flex flex-col gap-2 text-left">
-                    <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl">
-                      Welcome back, {userName}
+                  {/* Improved overlay for better text visibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+                  
+                  {/* Content */}
+                  <div className="relative z-10 flex flex-col gap-4 text-left max-w-4xl">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 bg-white/90 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/50 shadow-lg">
+                        <Sparkles className="text-gray-700" size={20} />
+                      </div>
+                      <div className="text-white text-sm font-medium tracking-wide">
+                        {dynamicHero.subtitle}
+                      </div>
+                    </div>
+                    
+                    <h1 className="text-white text-4xl font-light leading-tight tracking-tight @[480px]:text-6xl mb-2" 
+                        style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                      {dynamicHero.title}
                     </h1>
-                    <h2 className="text-white text-sm font-normal leading-normal @[480px]:text-base">
-                      {heroMessage}
+                    
+                    <h2 className="text-white text-lg font-light leading-relaxed @[480px]:text-xl max-w-3xl">
+                      Welcome back, {userName}. {heroMessage}
                     </h2>
+                    
+                    {/* Daily Focus Card */}
+                    <div className="mt-6 bg-white/95 backdrop-blur-xl border border-white/50 rounded-2xl p-4 max-w-md shadow-lg">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Target className="text-gray-600" size={16} />
+                        <span className="text-gray-700 text-sm font-medium">Today's Focus</span>
+                      </div>
+                      <div className="text-gray-800 text-sm mb-3">
+                        {userPersonalization?.onboardingAnswers?.activity === 'cardio-endurance' ? 
+                          'Endurance base building - steady pace run' :
+                        userPersonalization?.onboardingAnswers?.activity === 'strength-power' ?
+                          'Upper body strength - compound movements' :
+                        userPersonalization?.onboardingAnswers?.activity === 'mind-body' ?
+                          'Flexibility and mindfulness practice' :
+                          'Full body movement and mobility'
+                        }
+                      </div>
+                      
+                      {/* CTA Buttons */}
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => router.push('/training-plans')}
+                          className="flex items-center gap-2 bg-gray-900 text-white px-3 py-2 rounded-xl text-xs font-medium hover:bg-gray-800 transition-colors"
+                        >
+                          <CheckCircle size={14} />
+                          Log Activity
+                        </button>
+                        <button
+                          onClick={() => router.push('/training-plans')}
+                          className="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-2 rounded-xl text-xs font-medium hover:bg-gray-200 transition-colors"
+                        >
+                          <Clock size={14} />
+                          Review Today
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Dashboard Toggle */}
-            <div className="mt-8 flex justify-center">
-              <div className="bg-gray-100 rounded-lg p-1 flex">
-                <button
-                  onClick={() => setShowDynamicDashboard(false)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                    !showDynamicDashboard
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  AI Chat Dashboard
-                </button>
-                <button
-                  onClick={() => setShowDynamicDashboard(true)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                    showDynamicDashboard
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  Dynamic Training Dashboard
-                </button>
-              </div>
+            {/* Active Program Progress */}
+            <div className="mt-8">
+              <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
+                Your Progress
+              </h2>
+              {userPersonalization?.onboardingAnswers && programs.length > 0 ? (
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-blue-100 rounded-2xl flex items-center justify-center">
+                        <Trophy className="text-blue-600" size={20} />
+                      </div>
+                      <div>
+                        <h3 className="text-gray-900 font-medium">
+                          {userPersonalization.onboardingAnswers.activity === 'cardio-endurance' ? 'Marathon Training Program' :
+                           userPersonalization.onboardingAnswers.activity === 'strength-power' ? 'Strength Building Program' :
+                           userPersonalization.onboardingAnswers.activity === 'mind-body' ? 'Mindfulness & Flexibility Program' :
+                           'General Fitness Program'}
+                        </h3>
+                        <p className="text-gray-500 text-sm">8-week program • Week 3 of 8</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-light text-gray-900">37%</div>
+                      <div className="text-xs text-gray-500">Complete</div>
+                    </div>
+                  </div>
+                  
+                  {/* Progress Bar */}
+                  <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
+                    <div className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500" style={{ width: '37%' }}></div>
+                  </div>
+                  
+                  {/* Weekly Stats */}
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div className="text-lg font-medium text-gray-900">12</div>
+                      <div className="text-xs text-gray-500">Workouts Done</div>
+                    </div>
+                    <div>
+                      <div className="text-lg font-medium text-gray-900">5</div>
+                      <div className="text-xs text-gray-500">This Week</div>
+                    </div>
+                    <div>
+                      <div className="text-lg font-medium text-gray-900">3</div>
+                      <div className="text-xs text-gray-500">Streak Days</div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-8 shadow-lg text-center">
+                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Trophy className="text-gray-400" size={24} />
+                  </div>
+                  <h3 className="text-gray-900 font-medium mb-2">No Active Programs Yet</h3>
+                  <p className="text-gray-500 text-sm mb-4 max-w-md mx-auto">
+                    Start a conversation with your AI coach below to create your first personalized training program.
+                  </p>
+                  <button
+                    onClick={() => document.getElementById('ai-chat')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="flex items-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors mx-auto"
+                  >
+                    <Sparkles size={16} />
+                    Chat with AI Coach
+                  </button>
+                </div>
+              )}
             </div>
 
-            {/* Conditional Dashboard Rendering */}
-            {showDynamicDashboard ? (
-              <div className="mt-8">
-                {userPersonalization ? (
-                  <DynamicTrainingDashboard
-                    userProfile={{
-                      experience: (userPersonalization.onboardingAnswers?.fitnessLevel as 'beginner' | 'intermediate' | 'advanced') || 'intermediate',
-                      goals: [userPersonalization.onboardingAnswers?.goal as GoalType || 'general-fitness'],
-                      availability: parseInt(userPersonalization.onboardingAnswers?.daysPerWeek || '3'),
-                      equipment: userPersonalization.onboardingAnswers?.equipment || []
-                    }}
-                    currentPersona={userPersonalization.selectedPersona || 'FitCoach'}
-                    onCreateProgram={() => setShowProgramCreationModal(true)}
-                  />
-                ) : (
-                  <div className="text-center py-8 text-gray-500">
-                    Loading user profile...
-                  </div>
-                )}
-              </div>
-            ) : (
-              <>
-                {/* AI Chat Section */}
-                <div id="ai-chat" className="mt-8">
-                  <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
-                    AI Training Assistant
-                  </h2>
-              <div className="bg-white rounded-xl border border-[#eee] overflow-hidden">
+            {/* AI Chat Section */}
+            <div id="ai-chat" className="mt-8">
+              <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
+                AI Training Assistant
+              </h2>
+              <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl overflow-hidden shadow-lg">
                 <div 
                   ref={chatContainerRef}
                   className="h-[400px] overflow-y-auto p-6 flex flex-col gap-4"
                 >
-                  {conversation.map((message, index) => {
+                  {conversation.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center h-full text-center">
+                      <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                        <Sparkles className="text-gray-400" size={24} />
+                      </div>
+                      <h3 className="text-gray-900 font-medium mb-2">Welcome to your AI Coach!</h3>
+                      <p className="text-gray-500 text-sm max-w-md">
+                        I&apos;m here to help you with personalized training plans, workout advice, and fitness guidance. 
+                        Start by asking me anything about your fitness journey!
+                      </p>
+                    </div>
+                  ) : (
+                    conversation.map((message, index) => {
                     // Safely handle timestamp - it might be a Date, Firestore Timestamp, string, or undefined
                     let timestampKey;
                     try {
@@ -763,16 +968,16 @@ What would you like to focus on today? I can help you create a personalized trai
                       }`}
                     >
                       {message.type === 'ai' && (
-                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center">
-                          <Send size={14} />
+                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 border border-gray-200 text-gray-600 flex items-center justify-center shadow-sm">
+                          <Sparkles size={16} />
                         </div>
                       )}
                       <div className="flex flex-col gap-2">
                         <div
-                          className={`rounded-xl p-4 max-w-[80%] ${
+                          className={`rounded-2xl p-4 max-w-[80%] border shadow-sm ${
                             message.type === 'user'
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-900'
+                              ? 'bg-gray-900 text-white border-gray-800'
+                              : 'bg-gray-50 text-gray-900 border-gray-200'
                           }`}
                         >
                           <p className="whitespace-pre-wrap">{message.content}</p>
@@ -783,7 +988,7 @@ What would you like to focus on today? I can help you create a personalized trai
                                   setIsGenerating(true);
                                   setConversation(prev => [...prev, {
                                     type: 'ai',
-                                    content: 'Perfect! I\'m now generating your personalized training program based on our conversation. This may take a moment...',
+                                    content: 'Perfect! I&apos;m now generating your personalized training program based on our conversation. This may take a moment...',
                                     timestamp: new Date()
                                   }]);
 
@@ -836,7 +1041,7 @@ Your program is now being saved and you'll be redirected to view the full detail
                                   setIsGenerating(false);
                                 }
                               }}
-                              className="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
+                              className="mt-3 bg-gray-900 border border-gray-800 text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-gray-800 transition-all duration-300 shadow-sm"
                             >
                               Generate My Program
                             </button>
@@ -851,17 +1056,17 @@ Your program is now being saved and you'll be redirected to view the full detail
                             <span className="text-xs text-gray-500">Was this helpful?</span>
                             <button
                               onClick={() => handleEvaluateResponse(index, true)}
-                              className="p-1 rounded-full transition-colors text-gray-400 hover:text-green-600 hover:bg-green-50"
+                              className="p-2 rounded-full bg-gray-100 border border-gray-200 hover:bg-green-50 hover:border-green-200 transition-all duration-300"
                               title="Thumbs up"
                             >
-                              <ThumbsUp size={14} />
+                              <ThumbsUp size={14} className="text-gray-500 hover:text-green-600" />
                             </button>
                             <button
                               onClick={() => handleEvaluateResponse(index, false)}
-                              className="p-1 rounded-full transition-colors text-gray-400 hover:text-red-600 hover:bg-red-50"
+                              className="p-2 rounded-full bg-gray-100 border border-gray-200 hover:bg-red-50 hover:border-red-200 transition-all duration-300"
                               title="Thumbs down"
                             >
-                              <ThumbsDown size={14} />
+                              <ThumbsDown size={14} className="text-gray-500 hover:text-red-600" />
                             </button>
                           </div>
                         )}
@@ -873,10 +1078,10 @@ Your program is now being saved and you'll be redirected to view the full detail
                             <span className="text-xs text-gray-500">
                               {message.metadata.evaluation === 'positive' ? 'Marked as helpful' : 'Feedback received'}
                             </span>
-                            <div className={`p-1 rounded-full ${
+                            <div className={`p-2 rounded-full border ${
                               message.metadata.evaluation === 'positive'
-                                ? 'bg-green-100 text-green-600'
-                                : 'bg-red-100 text-red-600'
+                                ? 'bg-green-50 border-green-200 text-green-600'
+                                : 'bg-red-50 border-red-200 text-red-600'
                             }`}>
                               {message.metadata.evaluation === 'positive' ? 
                                 <ThumbsUp size={14} /> : 
@@ -888,20 +1093,20 @@ Your program is now being saved and you'll be redirected to view the full detail
                       </div>
                     </div>
                     );
-                  })}
+                  }))}
                   {isGenerating && (
                     <div className="flex items-center gap-2 text-gray-500 text-sm">
-                      <div className="w-5 h-5 rounded-full border-2 border-t-blue-600 animate-spin" />
+                      <div className="w-5 h-5 rounded-full border-2 border-t-gray-900 border-gray-200 animate-spin" />
                       Generating response...
                     </div>
                   )}
                 </div>
-                <div className="border-t border-[#eee] p-4 flex gap-2">
+                <div className="border-t border-gray-200 p-4 flex gap-2">
                   <textarea
                     value={aiMessage}
                     onChange={(e) => setAiMessage(e.target.value)}
                     placeholder="Ask me anything about your fitness journey..."
-                    className="flex-1 resize-none rounded-xl bg-white border border-[#dbdfe6] p-4 focus:outline-none focus:border-blue-600 min-h-[100px] text-[#111418] placeholder:text-[#637088]"
+                    className="flex-1 resize-none rounded-2xl bg-gray-50 border border-gray-200 p-4 focus:outline-none focus:border-gray-400 focus:bg-white min-h-[100px] text-gray-900 placeholder:text-gray-500"
                     onKeyPress={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();
@@ -915,7 +1120,7 @@ Your program is now being saved and you'll be redirected to view the full detail
                       handleUserResponse(aiMessage.trim());
                     }}
                     disabled={!aiMessage.trim() || isGenerating}
-                    className="flex-shrink-0 bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-700 transition-colors"
+                    className="flex-shrink-0 bg-gray-900 border border-gray-800 text-white rounded-full w-12 h-12 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-800 transition-all duration-300 shadow-sm"
                   >
                     <Send size={20} />
                   </button>
@@ -926,7 +1131,7 @@ Your program is now being saved and you'll be redirected to view the full detail
             {/* Progress Insights Section */}
             {userPersonalization?.selectedPersona && (
               <div className="mt-8">
-                <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
+                <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
                   Your Progress Insights
                 </h2>
                 <div className="max-w-[600px]">
@@ -940,30 +1145,42 @@ Your program is now being saved and you'll be redirected to view the full detail
 
             {/* Past Training Plans Carousel */}
             <div className="mt-8">
-              <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
+              <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
                 Past Training Plans
               </h2>
-              <div className="bg-white rounded-xl border border-[#dbdfe6] p-6">
-                <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                  {PAST_PLAN_ITEMS.map((item, index) => (
-                    <div key={index} className="flex-shrink-0 w-40 text-center">
-                      <div className="w-full h-24 rounded-lg overflow-hidden mb-2">
-                        <img 
-                          src={PAST_PLAN_IMAGES[item.imageKey as keyof typeof PAST_PLAN_IMAGES]} 
-                          alt={item.title} 
-                          className="w-full h-full object-cover"
-                        />
+              {programs.length > 0 ? (
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg">
+                  <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                    {PAST_PLAN_ITEMS.map((item, index) => (
+                      <div key={index} className="flex-shrink-0 w-40 text-center">
+                        <div className="w-full h-24 rounded-2xl overflow-hidden mb-2 border border-gray-200 shadow-sm">
+                          <img 
+                            src={PAST_PLAN_IMAGES[item.imageKey as keyof typeof PAST_PLAN_IMAGES]} 
+                            alt={item.title} 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <p className="text-sm text-gray-700 font-medium">{item.title}</p>
                       </div>
-                      <p className="text-sm text-gray-600 font-medium">{item.title}</p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-8 shadow-lg text-center">
+                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Calendar className="text-gray-400" size={24} />
+                  </div>
+                  <h3 className="text-gray-900 font-medium mb-2">No Past Programs</h3>
+                  <p className="text-gray-500 text-sm max-w-md mx-auto">
+                    Your completed training programs will appear here once you finish them.
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Activity Templates Section */}
             <div className="mt-8">
-              <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-6">
+              <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
                 Training Templates
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -971,19 +1188,19 @@ Your program is now being saved and you'll be redirected to view the full detail
                   <button
                     key={template.id}
                     onClick={() => handleActivitySelect(template)}
-                    className={`${template.color} border ${template.borderColor} rounded-xl p-6 text-left transition-all hover:scale-[1.02] hover:shadow-lg`}
+                    className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-gray-300 shadow-lg"
                   >
                     {/* Header */}
                     <div className="flex items-start justify-between mb-4">
-                      <div className={`${template.iconColor} p-2 rounded-lg bg-white/50`}>
+                      <div className="text-gray-700 p-3 rounded-2xl bg-gray-100 border border-gray-200 shadow-sm">
                         <template.icon size={24} />
                       </div>
                       <div className="text-right">
-                        <div className="flex items-center gap-1 text-xs text-gray-600 mb-1">
+                        <div className="flex items-center gap-1 text-xs text-gray-500 mb-1">
                           <Target size={12} />
                           {template.experienceLevel}
                         </div>
-                        <div className="flex items-center gap-1 text-xs text-gray-600">
+                        <div className="flex items-center gap-1 text-xs text-gray-500">
                           <Calendar size={12} />
                           {template.duration}
                         </div>
@@ -991,7 +1208,7 @@ Your program is now being saved and you'll be redirected to view the full detail
                     </div>
 
                     {/* Title and Description */}
-                    <h3 className="font-bold text-gray-900 text-lg mb-2">
+                    <h3 className="font-light text-gray-900 text-lg mb-2">
                       {template.title}
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">
@@ -999,10 +1216,10 @@ Your program is now being saved and you'll be redirected to view the full detail
                     </p>
 
                     {/* Sample Workout */}
-                    <div className="bg-white/60 rounded-lg p-3">
+                    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-3">
                       <div className="flex items-center gap-2 mb-2">
                         <Target size={14} className="text-gray-500" />
-                        <span className="text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                        <span className="text-xs font-medium text-gray-700 uppercase tracking-wide">
                           {template.sampleWorkout}
                         </span>
                       </div>
@@ -1027,7 +1244,7 @@ Your program is now being saved and you'll be redirected to view the full detail
             {/* Existing Programs */}
             {programs.length > 0 && (
               <div className="flex flex-col gap-3 p-4 mt-8">
-                <h2 className="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">
+                <h2 className="text-gray-900 text-lg font-light leading-tight tracking-wide">
                   Your Programs
                 </h2>
                 <div className="grid grid-cols-1 gap-3 @container">
@@ -1036,8 +1253,6 @@ Your program is now being saved and you'll be redirected to view the full detail
                   ))}
                 </div>
               </div>
-            )}
-              </>
             )}
           </div>
 
