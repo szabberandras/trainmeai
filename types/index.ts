@@ -56,6 +56,7 @@ export interface AiMessage {
     isCheckIn?: boolean;
     isPersonalizedWelcome?: boolean;
     isPersonaSwitch?: boolean;
+    isInitialWelcome?: boolean;
   };
 }
 

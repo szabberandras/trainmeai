@@ -1,0 +1,295 @@
+{
+  "training_plans": [
+    {
+      "plan_id": "intermediate_12_week",
+      "title": "IRONMAN 140.6 - 12 Week Intermediate",
+      "duration_weeks": 12,
+      "level": "Intermediate",
+      "average_weekly_hours": 10.35,
+      "max_week_hours": 14.14,
+      "description": "Suitable for Intermediate triathletes who want to maximize potential at IRONMAN 140.6 whilst balancing life and training",
+      "prerequisites": {
+        "swim_distance": "2600m with rests",
+        "bike_duration": "3hrs",
+        "run_duration": "1hr 40mins"
+      },
+      "training_zones": {
+        "Z1": {
+          "name": "Easy (Recovery)",
+          "heart_rate_percentage": "68-73%",
+          "description": "Recovery pace"
+        },
+        "Z2": {
+          "name": "Steady (Endurance)",
+          "heart_rate_percentage": "73-80%",
+          "description": "Aerobic endurance pace"
+        },
+        "Z3": {
+          "name": "Moderately Hard (Tempo)",
+          "heart_rate_percentage": "80-87%",
+          "description": "Tempo pace"
+        },
+        "Z4": {
+          "name": "Hard (Threshold)",
+          "heart_rate_percentage": "87-93%",
+          "description": "Threshold pace"
+        },
+        "Z5": {
+          "name": "Very Hard (VO2 Max)",
+          "heart_rate_percentage": "93-100%",
+          "description": "Maximum effort"
+        }
+      },
+      "phases": [
+        {
+          "phase": "Build Phase 1",
+          "weeks": [1, 2, 3],
+          "focus": "Base building and adaptation"
+        },
+        {
+          "phase": "Active Recovery Week",
+          "weeks": [4],
+          "focus": "Recovery and adaptation"
+        },
+        {
+          "phase": "Peak Phase 1",
+          "weeks": [5, 6, 7],
+          "focus": "Increasing intensity and volume"
+        },
+        {
+          "phase": "Active Recovery Week",
+          "weeks": [8],
+          "focus": "Recovery and adaptation"
+        },
+        {
+          "phase": "Peak Phase 2",
+          "weeks": [9, 10, 11],
+          "focus": "Peak training load"
+        },
+        {
+          "phase": "Race Taper Week",
+          "weeks": [12],
+          "focus": "Taper for race day"
+        }
+      ]
+    },
+    {
+      "plan_id": "intermediate_8_week",
+      "title": "IRONMAN 140.6 - 8 Week Intermediate",
+      "duration_weeks": 8,
+      "level": "Intermediate",
+      "average_weekly_hours": 10.13,
+      "max_week_hours": 13.39,
+      "description": "Suitable for Intermediate triathletes who want to maximize potential at IRONMAN 140.6 whilst balancing life and training",
+      "prerequisites": {
+        "swim_distance": "2600m with rests",
+        "bike_duration": "4hrs",
+        "run_duration": "1hr 50mins"
+      },
+      "training_zones": {
+        "Z1": {
+          "name": "Easy (Recovery)",
+          "heart_rate_percentage": "68-73%",
+          "description": "Recovery pace"
+        },
+        "Z2": {
+          "name": "Steady (Endurance)",
+          "heart_rate_percentage": "73-80%",
+          "description": "Aerobic endurance pace"
+        },
+        "Z3": {
+          "name": "Moderately Hard (Tempo)",
+          "heart_rate_percentage": "80-87%",
+          "description": "Tempo pace"
+        },
+        "Z4": {
+          "name": "Hard (Threshold)",
+          "heart_rate_percentage": "87-93%",
+          "description": "Threshold pace"
+        },
+        "Z5": {
+          "name": "Very Hard (VO2 Max)",
+          "heart_rate_percentage": "93-100%",
+          "description": "Maximum effort"
+        }
+      },
+      "phases": [
+        {
+          "phase": "Build Phase 1",
+          "weeks": [1, 2, 3],
+          "focus": "Base building and adaptation"
+        },
+        {
+          "phase": "Active Recovery Week",
+          "weeks": [4],
+          "focus": "Recovery and adaptation"
+        },
+        {
+          "phase": "Peak Phase 1",
+          "weeks": [5, 6, 7],
+          "focus": "Increasing intensity and volume"
+        },
+        {
+          "phase": "Race Taper Week",
+          "weeks": [8],
+          "focus": "Taper for race day"
+        }
+      ]
+    },
+    {
+      "plan_id": "beginner_12_week",
+      "title": "IRONMAN 140.6 - 12 Week Beginner",
+      "duration_weeks": 12,
+      "level": "Beginner",
+      "average_weekly_hours": 9.42,
+      "max_week_hours": 13.39,
+      "description": "Suitable for Beginner or time-limited athletes preparing for an IRONMAN 140.6 triathlon",
+      "prerequisites": {
+        "swim_distance": "2600m with rests",
+        "bike_duration": "3hrs 15mins",
+        "run_duration": "1hr 30mins"
+      },
+      "training_zones": {
+        "Z1": {
+          "name": "Easy (Recovery)",
+          "heart_rate_percentage": "68-73%",
+          "description": "Recovery pace"
+        },
+        "Z2": {
+          "name": "Steady (Endurance)",
+          "heart_rate_percentage": "73-80%",
+          "description": "Aerobic endurance pace"
+        },
+        "Z3": {
+          "name": "Moderately Hard (Tempo)",
+          "heart_rate_percentage": "80-87%",
+          "description": "Tempo pace"
+        },
+        "Z4": {
+          "name": "Hard (Threshold)",
+          "heart_rate_percentage": "87-93%",
+          "description": "Threshold pace"
+        },
+        "Z5": {
+          "name": "Very Hard (VO2 Max)",
+          "heart_rate_percentage": "93-100%",
+          "description": "Maximum effort"
+        }
+      },
+      "phases": [
+        {
+          "phase": "Build Phase 1",
+          "weeks": [1, 2, 3],
+          "focus": "Base building and adaptation"
+        },
+        {
+          "phase": "Active Recovery Week",
+          "weeks": [4],
+          "focus": "Recovery and adaptation"
+        },
+        {
+          "phase": "Peak Phase 1",
+          "weeks": [5, 6, 7],
+          "focus": "Increasing intensity and volume"
+        },
+        {
+          "phase": "Active Recovery Week",
+          "weeks": [8],
+          "focus": "Recovery and adaptation"
+        },
+        {
+          "phase": "Peak Phase 2",
+          "weeks": [9, 10, 11],
+          "focus": "Peak training load"
+        },
+        {
+          "phase": "Race Taper Week",
+          "weeks": [12],
+          "focus": "Taper for race day"
+        }
+      ],
+      "note": "This plan includes 2 swims, 2 rides, 3 runs and a 45 minute strength and conditioning session. There is usually 1 workout per day, with 1 day off each week. Every fourth week is an active recovery week, with less training, to help your body recover and adapt."
+    },
+    {
+      "plan_id": "beginner_8_week",
+      "title": "IRONMAN 140.6 - 8 Week Beginner",
+      "duration_weeks": 8,
+      "level": "Beginner",
+      "average_weekly_hours": 9.13,
+      "max_week_hours": 12.08,
+      "description": "Suitable for Beginner or time-limited athletes preparing for an IRONMAN 140.6 triathlon",
+      "prerequisites": {
+        "swim_distance": "2600m with rests",
+        "bike_duration": "3hrs 45mins",
+        "run_duration": "1hr 30mins"
+      },
+      "training_zones": {
+        "Z1": {
+          "name": "Easy (Recovery)",
+          "heart_rate_percentage": "68-73%",
+          "description": "Recovery pace"
+        },
+        "Z2": {
+          "name": "Steady (Endurance)",
+          "heart_rate_percentage": "73-80%",
+          "description": "Aerobic endurance pace"
+        },
+        "Z3": {
+          "name": "Moderately Hard (Tempo)",
+          "heart_rate_percentage": "80-87%",
+          "description": "Tempo pace"
+        },
+        "Z4": {
+          "name": "Hard (Threshold)",
+          "heart_rate_percentage": "87-93%",
+          "description": "Threshold pace"
+        },
+        "Z5": {
+          "name": "Very Hard (VO2 Max)",
+          "heart_rate_percentage": "93-100%",
+          "description": "Maximum effort"
+        }
+      },
+      "phases": [
+        {
+          "phase": "Build Phase 1",
+          "weeks": [1, 2, 3],
+          "focus": "Base building and adaptation"
+        },
+        {
+          "phase": "Active Recovery Week",
+          "weeks": [4],
+          "focus": "Recovery and adaptation"
+        },
+        {
+          "phase": "Peak Phase 1",
+          "weeks": [5, 6, 7],
+          "focus": "Increasing intensity and volume"
+        },
+        {
+          "phase": "Race Taper Week",
+          "weeks": [8],
+          "focus": "Taper for race day"
+        }
+      ],
+      "note": "This plan includes 2 swims, 2 rides, 3 runs and a 45 minute strength and conditioning session. There is usually 1 workout per day, with 1 day off each week. The fourth week is an active recovery week, with less training, to help your body recover and adapt."
+    }
+  ],
+  "glossary": {
+    "FS": "Freestyle (Front Crawl)",
+    "PULL": "Freestyle with a pull-buoy between your thighs",
+    "KICK": "Kick with a float held out in front",
+    "Z1-Z5": "Training Zones 1 to 5",
+    "DRILL": "Your preference of swim technique drill",
+    "BUILD": "Do each rep slightly faster than the previous"
+  },
+  "training_tips": {
+    "heart_rate_zones": "Run heart rates are usually higher than bike heart rates. Train at the upper end of each training zone for your run and at the lower end for your bike.",
+    "bike_workouts": "The bike workouts can be done on an indoor trainer if you prefer. But make sure you include enough outdoor rides to get used to your race-day bike.",
+    "recovery_weeks": "Every 4th week is an active recovery week. This gives your body a chance to recover and adapt.",
+    "consistency": "Consistency is the golden ticket. Think of each completed workout as progress toward your goal. When you complete the plan consistently, you'll be in peak race shape.",
+    "nutrition": "Practice your nutrition strategy in training to be prepared on race day.",
+    "pacing": "Pacing is a key factor for success in racing. Learn to maintain steady effort levels throughout long training sessions.",
+    "brick_workouts": "Running straight off the bike is a time-efficient way to get sessions done. It also prepares your body for the specific race-day requirements of triathlon."
+  }
+} 
