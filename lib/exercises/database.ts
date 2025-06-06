@@ -12869,6 +12869,641 @@ const SPORT_SPECIFIC_EXERCISES = {
       ],
       breathing: 'Deep, slow breaths, especially when holding on tender spots.'
     }
+  },
+
+  // ===== KNEE & ANKLE REHAB EXERCISES - NON-DUPLICATES =====
+  
+  // MOBILITY EXERCISES
+  'sole-lifts-seated': {
+    id: 'sole-lifts-seated',
+    name: 'Sole Lifts (Seated)',
+    category: 'mobility',
+    equipment: ['Chair'],
+    muscleGroups: ['Tibialis Anterior (Shin Muscle)'],
+    difficulty: 1,
+    instructions: [
+      'Sit upright in a chair with your feet flat on the floor and your knees bent at a 90-degree angle.',
+      'Keeping your heels on the ground, lift the front of both your feet (your toes and soles) towards your shins.',
+      'You should feel a contraction in the muscles at the front of your lower legs (shins).',
+      'Hold the peak contraction for a moment.',
+      'Slowly lower your feet back to the starting position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: [
+      'Perform the movement in a slow, controlled manner.',
+      'Avoid rocking your body to lift your feet; the movement should be isolated to your ankles.',
+      'Ensure your chair is stable and on a flat surface.'
+    ],
+    modifications: {
+      beginner: 'Perform the movement with a smaller range of motion.',
+      advanced: 'Add a resistance band around the front of your feet, anchored under your heels, to increase resistance.',
+      equipment_alternatives: {
+        'None': 'Can be performed while seated anywhere.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      progressionRate: 0.1,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: [
+        'Sit tall in a chair, feet flat on the floor.'
+      ],
+      execution: [
+        'Keep heels down.',
+        'Lift your toes and the front of your foot up.',
+        'Squeeze the muscle at the front of your shin.',
+        'Lower with control.'
+      ],
+      common_mistakes: [
+        'Lifting the heels off the ground.',
+        'Using momentum or rocking the body.'
+      ],
+      breathing: 'Exhale as you lift, inhale as you lower.'
+    }
+  },
+
+  'kneecap-jiggle-seated': {
+    id: 'kneecap-jiggle-seated',
+    name: 'Kneecap Jiggle (Seated)',
+    category: 'mobility',
+    equipment: ['Chair'],
+    muscleGroups: ['Knee Joint'],
+    difficulty: 1,
+    instructions: [
+      'Sit on a chair or the floor with your leg extended straight out in front of you.',
+      'Completely relax your quadriceps (thigh) muscle. The kneecap cannot move if the quad is tense.',
+      'Place your thumb and index finger on either side of your kneecap (patella).',
+      'Gently and passively move the kneecap from side to side.',
+      'The movement should be small, easy, and pain-free, like a gentle \'jiggle\'.',
+      'Continue for the desired duration, then switch legs.'
+    ],
+    safetyNotes: [
+      'This must be a completely passive and gentle movement. Do not force the kneecap to move.',
+      'If you feel any pain, stop immediately.',
+      'Ensure your thigh muscle is fully relaxed before starting.'
+    ],
+    modifications: {
+      beginner: 'Start with very small movements. You can also try moving the kneecap up and down.',
+      advanced: 'This is a passive mobility drill; advancement is not the goal. Consistency is key.',
+      equipment_alternatives: {
+        'None': 'Can be performed anywhere you can extend your leg.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Sit with one leg extended.',
+        'Completely relax your thigh muscle.'
+      ],
+      execution: [
+        'Gently grasp the sides of your kneecap.',
+        'Wiggle it gently from side to side.',
+        'The movement should feel loose and easy.',
+        'Keep the thigh relaxed at all times.'
+      ],
+      common_mistakes: [
+        'Tensing the quadriceps muscle.',
+        'Trying to force the kneecap to move too far.',
+        'Performing the movement too aggressively.'
+      ],
+      breathing: 'Breathe normally and stay relaxed.'
+    }
+  },
+
+  // FLEXIBILITY EXERCISES
+  'roll-quads-with-stick': {
+    id: 'roll-quads-with-stick',
+    name: 'Roll Quads with Stick/Rolling Pin',
+    category: 'flexibility',
+    equipment: ['Massage Stick', 'Rolling Pin', 'Chair'],
+    muscleGroups: ['Quadriceps'],
+    difficulty: 1,
+    instructions: [
+      'Sit in a sturdy chair.',
+      'Place the massage stick or rolling pin across your thigh.',
+      'Using both hands, apply gentle pressure and roll the stick up and down the length of your quad muscle, from the top of your knee to the bottom of your hip.',
+      'You can also roll across the inner thigh (adductors) and outer thigh (IT band/vastus lateralis).',
+      'When you find a tender spot, you can pause and hold gentle, firm pressure for 20-30 seconds until the tenderness subsides.',
+      'Control the pressure based on your tolerance.'
+    ],
+    safetyNotes: [
+      'Avoid rolling directly over your kneecap or the bony prominence of your hip.',
+      'Do not apply excessive pressure that causes sharp pain.',
+      'Keep the muscle you are rolling relaxed.'
+    ],
+    modifications: {
+      beginner: 'Apply very light pressure.',
+      advanced: 'Apply firmer pressure. You can also perform this on the floor with a foam roller for a deeper massage.',
+      equipment_alternatives: {
+        'Foam Roller': 'Use a foam roller on the floor for a more intense version.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      progressionRate: 0.1,
+      unit: 'seconds per side'
+    },
+    coaching: {
+      setup: [
+        'Sit comfortably in a chair.',
+        'Place the roller on your thigh.'
+      ],
+      execution: [
+        'Roll slowly along the length of the muscle.',
+        'Adjust pressure with your hands.',
+        'Pause on any tender spots and breathe.',
+        'Cover the entire front, inside, and outside of the thigh.'
+      ],
+      common_mistakes: [
+        'Rolling too quickly.',
+        'Applying too much pressure.',
+        'Holding your breath.',
+        'Rolling directly on bone.'
+      ],
+      breathing: 'Breathe deeply and consistently to help the muscles relax.'
+    }
+  },
+
+  // STRENGTH EXERCISES
+  'glute-strength-with-miniband': {
+    id: 'glute-strength-with-miniband',
+    name: 'Glute Strength with Miniband',
+    category: 'strength',
+    equipment: ['Miniband', 'Chair or Wall (for balance)'],
+    muscleGroups: ['Glutes (Gluteus Medius)'],
+    difficulty: 2,
+    instructions: [
+      'Place a miniband around your ankles or just above your knees (above knees is easier).',
+      'Stand with your feet hip-width apart, with a slight bend in your knees and hips (athletic stance).',
+      'You can hold onto a chair or wall for balance.',
+      'Keeping your torso upright, shift your weight to your left leg.',
+      'Slowly lift your right leg straight out to the side, leading with your heel.',
+      'Go as far as you can without leaning your torso to the opposite side.',
+      'Feel the contraction in the glute of the moving leg.',
+      'Slowly return your leg to the starting position with control.',
+      'This can be performed as a standing abduction (as described) or as lateral walks.'
+    ],
+    safetyNotes: [
+      'Avoid leaning your upper body as you lift your leg; keep your core tight.',
+      'The movement should be controlled, especially on the way back down.',
+      'Ensure the band is flat and not rolled up.'
+    ],
+    modifications: {
+      beginner: 'Place the band above the knees. Use a lighter resistance band. Use more support for balance.',
+      advanced: 'Place the band around the ankles or feet. Use a heavier band. Perform without support for a balance challenge.',
+      equipment_alternatives: {
+        'None': 'Perform the movement without a band, focusing on activation (Side-Lying Leg Lifts).'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'repetitions per side'
+    },
+    coaching: {
+      setup: [
+        'Place miniband around ankles or knees.',
+        'Adopt a slight athletic stance.'
+      ],
+      execution: [
+        'Shift weight to standing leg.',
+        'Lift the other leg out to the side, keeping it straight.',
+        'Squeeze the outer glute.',
+        'Control the return.',
+        'Do not lean your torso.'
+      ],
+      common_mistakes: [
+        'Leaning the torso to the side.',
+        'Using momentum instead of muscle control.',
+        'Letting the band snap the leg back.'
+      ],
+      breathing: 'Exhale as you lift the leg, inhale as you return.'
+    }
+  },
+
+  // ANKLE & FOOT MOBILITY EXERCISES
+  'ankle-gliding': {
+    id: 'ankle-gliding',
+    name: 'Ankle Gliding',
+    category: 'mobility',
+    equipment: ['Wall', 'Ball (optional)'],
+    muscleGroups: ['Ankle Joint', 'Calves'],
+    difficulty: 1,
+    instructions: [
+      'Stand facing a wall with your hands on the wall for support.',
+      'Step one foot forward and the other back.',
+      'Keeping the heel of your front foot on the ground, slowly bend your front knee and lean forward, bringing your knee towards the wall.',
+      'You should feel a stretch in your ankle and calf.',
+      'Go as far as you can without your heel lifting off the floor.',
+      'Hold for a moment at the end range, then return to the start.',
+      'A ball can be placed under the arch of the foot for added feedback.'
+    ],
+    safetyNotes: [
+      'The movement should be slow and controlled.',
+      'Do not allow the heel to lift off the floor.',
+      'Stop if you feel any sharp pain in the front of the ankle (impingement).'
+    ],
+    modifications: {
+      beginner: 'Do not lean as far forward; work within a smaller range of motion.',
+      advanced: 'Place a weight or kettlebell on the front knee to apply gentle overpressure.',
+      equipment_alternatives: {
+        'None': 'Can be performed without wall support.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'repetitions per side'
+    },
+    coaching: {
+      setup: [
+        'Stand facing a wall in a staggered stance.',
+        'Keep front heel planted firmly on the ground.'
+      ],
+      execution: [
+        'Drive your knee forward over your toes.',
+        'Feel the stretch in your ankle and calf.',
+        'Push the range of motion gently.',
+        'Return to the start with control.'
+      ],
+      common_mistakes: [
+        'Lifting the heel.',
+        'Allowing the knee to collapse inward.',
+        'Moving too quickly.'
+      ],
+      breathing: 'Exhale as you lean forward, inhale as you return.'
+    }
+  },
+
+  'single-leg-ankle-circle': {
+    id: 'single-leg-ankle-circle',
+    name: 'Single-Leg Ankle Circle',
+    category: 'mobility',
+    equipment: ['Chair (optional, for balance)'],
+    muscleGroups: ['Ankle Joint'],
+    difficulty: 1,
+    instructions: [
+      'Stand on one leg, holding onto a chair or wall for balance if needed.',
+      'Lift your other foot off the ground.',
+      'Slowly and with control, draw large circles with your lifted foot, initiating the movement from the ankle.',
+      'Perform the desired number of circles in one direction, then reverse.',
+      'Keep the rest of your leg still; the movement should be isolated to the ankle.',
+      'Switch legs and repeat.'
+    ],
+    safetyNotes: [
+      'Focus on slow, deliberate movements, not speed.',
+      'Use support for balance to allow for better ankle isolation.'
+    ],
+    modifications: {
+      beginner: 'Perform while seated in a chair. Make smaller circles.',
+      advanced: 'Perform without any support for a greater balance challenge. Try to draw letters of the alphabet with your foot.',
+      equipment_alternatives: {
+        'None': 'Can be performed anywhere with balance support.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'circles in each direction per side'
+    },
+    coaching: {
+      setup: [
+        'Stand on one leg, using support if needed.',
+        'Lift the other foot off the floor.'
+      ],
+      execution: [
+        'Draw a large, slow circle with your ankle.',
+        'Isolate the movement to the ankle joint.',
+        'Reverse the direction.',
+        'Keep your balance and posture tall.'
+      ],
+      common_mistakes: [
+        'Moving the entire leg instead of just the ankle.',
+        'Rushing the movement.',
+        'Losing balance.'
+      ],
+      breathing: 'Breathe steadily and continuously.'
+    }
+  },
+
+  'toe-walks': {
+    id: 'toe-walks',
+    name: 'Toe Walks',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: ['Calves', 'Feet'],
+    difficulty: 1,
+    instructions: [
+      'Stand up tall.',
+      'Rise up onto the balls of your feet, lifting your heels as high as possible.',
+      'Keeping your heels lifted, walk forward taking small, controlled steps.',
+      'Maintain your balance and keep your core engaged.',
+      'Walk for the desired distance or time.'
+    ],
+    safetyNotes: [
+      'Look straight ahead to help with balance.',
+      'If you lose balance, lower your heels and reset.',
+      'Avoid letting your ankles roll outwards.'
+    ],
+    modifications: {
+      beginner: 'Walk for a shorter distance. Walk next to a wall for support.',
+      advanced: 'Walk for a longer distance or hold light dumbbells.',
+      equipment_alternatives: {
+        'None': 'Can be performed anywhere with adequate space.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 5,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Stand tall and rise up onto the balls of your feet.'
+      ],
+      execution: [
+        'Keep heels high.',
+        'Take small, deliberate steps forward.',
+        'Stay tall and keep your core tight.',
+        'Focus on balance.'
+      ],
+      common_mistakes: [
+        'Letting heels drop.',
+        'Taking large, unstable steps.',
+        'Leaning forward or backward.'
+      ],
+      breathing: 'Breathe normally throughout the walk.'
+    }
+  },
+
+  'heel-walks': {
+    id: 'heel-walks',
+    name: 'Heel Walks',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: ['Tibialis Anterior (Shin Muscle)'],
+    difficulty: 1,
+    instructions: [
+      'Stand up tall.',
+      'Lift the front of both feet off the floor, so you are balancing on your heels.',
+      'Pull your toes up towards your shins.',
+      'Keeping your toes lifted, walk forward taking small, controlled steps on your heels.',
+      'Maintain your balance and keep your posture upright.',
+      'Walk for the desired distance or time.'
+    ],
+    safetyNotes: [
+      'This can be challenging for balance; walk next to a wall for support if needed.',
+      'Take small steps to maintain control.'
+    ],
+    modifications: {
+      beginner: 'Walk for a shorter distance and use a wall for support.',
+      advanced: 'Walk for a longer distance.',
+      equipment_alternatives: {
+        'None': 'Can be performed anywhere with adequate space.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 5,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Stand tall and pull your toes up, balancing on your heels.'
+      ],
+      execution: [
+        'Keep toes high.',
+        'Take small, deliberate steps forward.',
+        'Stay tall and use your arms for balance if needed.'
+      ],
+      common_mistakes: [
+        'Letting toes drop.',
+        'Losing balance.',
+        'Bending forward at the waist.'
+      ],
+      breathing: 'Breathe normally throughout the walk.'
+    }
+  },
+
+  'lower-leg-sequence': {
+    id: 'lower-leg-sequence',
+    name: 'Lower Leg Sequence',
+    category: 'mobility',
+    equipment: ['Chair'],
+    muscleGroups: ['Calves', 'Shins', 'Ankles'],
+    difficulty: 1,
+    instructions: [
+      'This is a combination of movements to mobilize the lower leg and ankle.',
+      'Part 1 (Calf Stretch): Sit on a chair and extend one leg. Place the other foot over the top of the extended foot\'s toes. Gently press down to stretch the calf.',
+      'Part 2 (Shin Stretch): From the same position, hook your top foot under the extended foot and gently pull up to stretch the shin muscles.',
+      'Part 3 (Ankle Rotations): Sit or stand and perform slow, controlled ankle circles in both directions.',
+      'Part 4 (Point and Flex): Repeatedly point your toes away from you (plantarflexion) and then pull them back towards your shin (dorsiflexion).'
+    ],
+    safetyNotes: [
+      'All movements should be gentle and pain-free.',
+      'Do not apply excessive pressure during the stretches.'
+    ],
+    modifications: {
+      beginner: 'Perform each movement with less intensity and for a shorter duration.',
+      advanced: 'Increase the duration of holds and the number of repetitions.',
+      equipment_alternatives: {
+        'None': 'Can be performed on the floor without a chair.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 90,
+      progressionRate: 10,
+      unit: 'seconds per side for the entire sequence'
+    },
+    coaching: {
+      setup: [
+        'Sit comfortably in a chair to begin the sequence.'
+      ],
+      execution: [
+        'Flow smoothly between the calf stretch, shin stretch, ankle rotations, and point/flex movements.',
+        'Focus on feeling the stretch and activation in the target muscles.'
+      ],
+      common_mistakes: [
+        'Moving too quickly.',
+        'Forcing a stretch.',
+        'Not isolating ankle movements.'
+      ],
+      breathing: 'Breathe deeply and continuously throughout the sequence.'
+    }
+  },
+
+  'single-leg-reach': {
+    id: 'single-leg-reach',
+    name: 'Single-Leg Reach',
+    category: 'stability',
+    equipment: [],
+    muscleGroups: ['Glutes', 'Hamstrings', 'Ankles'],
+    difficulty: 2,
+    instructions: [
+      'Stand on your right leg with a slight bend in the knee.',
+      'Keeping your back straight, hinge at your hips and reach your hands forward towards the floor.',
+      'As you hinge, your left leg should extend straight back behind you for balance.',
+      'Focus on maintaining balance using the small muscles in your standing foot and ankle.',
+      'Go as low as you can control without losing your balance or rounding your back.',
+      'Return to the starting position with control.',
+      'Repeat for the desired reps, then switch legs.'
+    ],
+    safetyNotes: [
+      'Keep the core engaged and the back straight.',
+      'The movement should be slow and deliberate.',
+      'If you lose balance, tap your other foot down and reset.'
+    ],
+    modifications: {
+      beginner: 'Practice next to a wall or chair for support. Reduce the range of motion.',
+      advanced: 'Try to touch the floor with your fingertips. Perform on an unstable surface like a cushion.',
+      equipment_alternatives: {
+        'None': 'Can be performed anywhere with adequate space.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 1,
+      unit: 'repetitions per side'
+    },
+    coaching: {
+      setup: [
+        'Stand on one leg, knee slightly bent.',
+        'Engage your core.'
+      ],
+      execution: [
+        'Hinge at the hip like a drinking bird.',
+        'Reach forward as your other leg extends back.',
+        'Keep your standing foot, knee, and hip aligned.',
+        'Control the movement up and down.'
+      ],
+      common_mistakes: [
+        'Bending the back.',
+        'Letting the standing knee collapse inward.',
+        'Rushing the movement.'
+      ],
+      breathing: 'Inhale as you hinge forward, exhale as you return to standing.'
+    }
+  },
+
+  'squat-rock': {
+    id: 'squat-rock',
+    name: 'Squat Rock',
+    category: 'mobility',
+    equipment: [],
+    muscleGroups: ['Hips', 'Ankles', 'Groin'],
+    difficulty: 1,
+    instructions: [
+      'Start in a deep squat position, with your feet as close together as your mobility allows.',
+      'Keep your heels on the ground if possible.',
+      'Place your elbows on the inside of your knees.',
+      'Gently and slowly, shift your weight from one foot to the other.',
+      'This \'rocking\' motion helps to mobilize the ankles and hips in the deep squat position.',
+      'Continue rocking side-to-side for the desired duration.'
+    ],
+    safetyNotes: [
+      'Only go as deep into the squat as you can while maintaining good form and keeping heels down.',
+      'If you cannot keep your heels down, elevate them on a small book or plate.',
+      'The rocking motion should be gentle.'
+    ],
+    modifications: {
+      beginner: 'Hold onto a stable object for support. Don\'t squat as deeply.',
+      advanced: 'Try to bring your feet closer together. Press your elbows into your knees to open the hips.',
+      equipment_alternatives: {
+        'None': 'Can be performed anywhere with adequate space.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      progressionRate: 5,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Get into a deep squat position.',
+        'Keep your chest up and heels down.'
+      ],
+      execution: [
+        'Slowly shift your weight from left to right.',
+        'Feel the stretch alternate in your ankles and hips.',
+        'Use your elbows to gently press your knees outward.'
+      ],
+      common_mistakes: [
+        'Lifting the heels.',
+        'Rounding the back excessively.',
+        'Rocking too fast.'
+      ],
+      breathing: 'Breathe deeply and continuously.'
+    }
+  },
+
+  'single-leg-jump': {
+    id: 'single-leg-jump',
+    name: 'Single-Leg Jump',
+    category: 'strength',
+    equipment: [],
+    muscleGroups: ['Calves', 'Glutes', 'Quadriceps', 'Hamstrings'],
+    difficulty: 2,
+    instructions: [
+      'Stand on one leg with a slight bend in your knee and hip.',
+      'Swing your arms back to load the jump.',
+      'Explosively jump straight up, swinging your arms forward for momentum.',
+      'Focus on landing softly on the same leg, absorbing the impact by bending your ankle, knee, and hip.',
+      'Stabilize yourself for a moment before performing the next jump.',
+      'Repeat for reps, then switch legs.'
+    ],
+    safetyNotes: [
+      'Master a two-legged jump before attempting a single-leg jump.',
+      'The landing is the most important part; it must be soft and controlled.',
+      'Start with small jumps and increase height as you get stronger.'
+    ],
+    modifications: {
+      beginner: 'Start with small \'hops\'. Use a wall for balance.',
+      advanced: 'Jump for maximum height. Progress to jumping onto a low, stable box.',
+      equipment_alternatives: {
+        'None': 'Can be performed anywhere with adequate space and ceiling height.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      progressionRate: 1,
+      unit: 'repetitions per side'
+    },
+    coaching: {
+      setup: [
+        'Balance on one leg, knee bent.',
+        'Use your arms to prepare.'
+      ],
+      execution: [
+        'Jump up explosively.',
+        'Land on the same leg like a ninja - softly and quietly.',
+        'Absorb the force through your entire leg.',
+        'Reset your balance before the next jump.'
+      ],
+      common_mistakes: [
+        'Landing with a stiff leg.',
+        'Letting the knee collapse inward on takeoff or landing.',
+        'Losing balance upon landing.'
+      ],
+      breathing: 'Exhale on the jump, inhale on the landing.'
+    }
   }
 };
 
