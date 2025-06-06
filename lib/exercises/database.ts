@@ -12326,6 +12326,549 @@ const SPORT_SPECIFIC_EXERCISES = {
       ],
       breathing: 'Strong, rhythmic breathing - don\'t hold your breath.'
     }
+  },
+
+  // ===== NEW EXERCISES ADDED - NON-DUPLICATES =====
+  
+  // STRENGTH EXERCISES
+  'barbell-back-squat': {
+    id: 'barbell-back-squat',
+    name: 'Barbell Back Squat',
+    category: 'strength',
+    equipment: ['barbell', 'weight plates', 'squat rack (optional)'],
+    muscleGroups: ['quadriceps', 'hamstrings', 'glutes', 'calves', 'lower back', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Position the barbell on your upper back (trapezius muscles), not your neck.',
+      'Stand with feet shoulder-width apart, toes slightly pointed out.',
+      'Keep your chest up, core tight, and eyes forward.',
+      'Initiate movement by pushing hips back and bending knees simultaneously.',
+      'Lower until thighs are parallel to the ground or as deep as mobility allows.',
+      'Drive through heels to return to standing position.'
+    ],
+    safetyNotes: [
+      'Maintain a flat back and engaged core throughout the movement.',
+      'Ensure proper form to avoid injury, especially with heavier weights.',
+      'Use a spotter or safety bars when lifting heavy.',
+      'Avoid hyperextending the back at the top of the movement.'
+    ],
+    modifications: {
+      beginner: 'Goblet Squat (for technique), bodyweight squats, box squats (to learn depth)',
+      advanced: 'Pause Squats, Front Squats, higher loads, accommodating resistance (bands/chains)',
+      equipment_alternatives: {
+        dumbbells: 'Goblet Squat, Dumbbell Squat',
+        kettlebells: 'Goblet Squat, Kettlebell Squat',
+        bodyweight: 'Bodyweight Squat, Jump Squat'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 2,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Bar positioned on upper traps, not neck.',
+        'Feet shoulder-width apart, toes slightly out.',
+        'Chest up, core tight, eyes forward.'
+      ],
+      execution: [
+        'Initiate movement by pushing hips back and bending knees simultaneously.',
+        'Keep knees tracking over toes.',
+        'Maintain a stable core and upright torso throughout.',
+        'Drive through heels to return to standing.'
+      ],
+      common_mistakes: [
+        'Knees caving inward.',
+        'Not reaching sufficient depth (crease below knee).',
+        'Relying too much on the lower back.'
+      ],
+      breathing: 'Inhale on descent, brace core, exhale on ascent.'
+    }
+  },
+
+  'barbell-deadlift': {
+    id: 'barbell-deadlift',
+    name: 'Barbell Deadlift',
+    category: 'strength',
+    equipment: ['barbell', 'weight plates'],
+    muscleGroups: ['glutes', 'hamstrings', 'quadriceps', 'lower back', 'upper back', 'traps', 'forearms (grip)'],
+    difficulty: 4,
+    instructions: [
+      'Stand with feet hip-width apart, bar over mid-foot.',
+      'Bend at your hips and knees, grasping the bar with an overhand or mixed grip, hands just outside your shins.',
+      'Keep your back straight, chest up, and shoulders slightly in front of the bar.',
+      'Push through your heels, extending your hips and knees simultaneously to lift the bar off the floor.',
+      'Pull the weight to an upright position, with shoulders back and legs straight.',
+      'Hinge at your hips again to lower the barbell back to the ground in a controlled manner.'
+    ],
+    safetyNotes: [
+      'Maintain a straight back throughout the lift; avoid rounding.',
+      'Focus on feeling the work in your glutes and legs, not primarily your back.',
+      'Proper form is crucial to prevent injury.',
+      'Use a mixed grip (one hand pronated, one supinated) for better grip on heavier lifts, if preferred.'
+    ],
+    modifications: {
+      beginner: 'Romanian Deadlift (RDL) (to learn hip hinge), Trap Bar Deadlift (easier to maintain neutral spine)',
+      advanced: 'Deficit Deadlift, Rack Pull, accommodating resistance (bands/chains)',
+      equipment_alternatives: {
+        'trap-bar': 'Hex Bar Deadlift',
+        dumbbells: 'Dumbbell RDL, Dumbbell Deadlift',
+        kettlebells: 'Kettlebell Deadlift, Kettlebell RDL'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      progressionRate: 5,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Feet hip-width, bar over mid-foot.',
+        'Hips back, chest up, shoulders slightly in front of bar.',
+        'Grip bar with straight arms, lats engaged.'
+      ],
+      execution: [
+        'Initiate pull by driving through the heels and extending hips and knees simultaneously.',
+        'Keep the bar close to the body throughout the lift.',
+        'Finish by standing tall, squeezing glutes, without hyperextending the back.'
+      ],
+      common_mistakes: [
+        'Rounding the back.',
+        'Bar drifting away from body.',
+        'Not engaging lats.',
+        'Hyperextending at the top.'
+      ],
+      breathing: 'Inhale before the pull, brace core, exhale at the top or on descent.'
+    }
+  },
+
+  'barbell-bench-press': {
+    id: 'barbell-bench-press',
+    name: 'Barbell Bench Press',
+    category: 'strength',
+    equipment: ['barbell', 'flat bench', 'squat rack (for spotting)'],
+    muscleGroups: ['chest (pectorals)', 'shoulders (deltoids)', 'triceps'],
+    difficulty: 3,
+    instructions: [
+      'Lie flat on a bench with your eyes looking directly up at the barbell.',
+      'Feet are flat on the floor, head and buttocks must remain flat on the bench.',
+      'Grasp the bar with a grip slightly wider than shoulder-width, fingers closed around the bar.',
+      'Unrack the bar to full arm extension, then lower it in a controlled motion to your chest.',
+      'Press the bar back to full arm extension without going down, until motionless.'
+    ],
+    safetyNotes: [
+      'Always use a spotter when lifting heavy.',
+      'Maintain a stable arch in your lower back, but ensure glutes remain on the bench.',
+      'Keep elbows slightly tucked (around 45 degrees) to protect shoulders.'
+    ],
+    modifications: {
+      beginner: 'Dumbbell Bench Press (for stability and range of motion), Push-ups',
+      advanced: 'Close Grip Bench Press, Incline Bench Press, Pin Press, Floor Press',
+      equipment_alternatives: {
+        dumbbells: 'Dumbbell Bench Press',
+        'resistance-bands': 'Resistance Band Chest Press',
+        bodyweight: 'Push-ups'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 5,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Lie flat on bench, feet flat on floor, head and glutes on bench.',
+        'Grip slightly wider than shoulder-width, bar over chest.',
+        'Retract and depress shoulder blades.'
+      ],
+      execution: [
+        'Lower bar to mid-chest in a controlled manner.',
+        'Press bar explosively upwards to full lockout.',
+        'Keep elbows slightly tucked (not flared wide).'
+      ],
+      common_mistakes: [
+        'Bouncing bar off chest.',
+        'Flaring elbows too wide.',
+        'Partial range of motion.'
+      ],
+      breathing: 'Inhale as you lower the bar, exhale as you press up.'
+    }
+  },
+
+  'pull-ups': {
+    id: 'pull-ups',
+    name: 'Pull-ups',
+    category: 'strength',
+    equipment: ['pull-up bar'],
+    muscleGroups: ['lats', 'biceps', 'forearms', 'upper back', 'shoulders'],
+    difficulty: 3,
+    instructions: [
+      'Hang from a pull-up bar with an overhand grip, hands slightly wider than shoulder-width.',
+      'Engage your lats and pull your body upwards until your chin clears the bar.',
+      'Lower your body back down in a controlled manner until your arms are fully extended.'
+    ],
+    safetyNotes: [
+      'Avoid kipping (using momentum) if focusing on strict strength.',
+      'Control the descent to prevent injury.',
+      'Ensure the pull-up bar is securely mounted.'
+    ],
+    modifications: {
+      beginner: 'Assisted pull-ups (resistance bands, machine), negative pull-ups (jump to top, slowly lower)',
+      advanced: 'Weighted pull-ups, one-arm pull-ups, L-sit pull-ups',
+      equipment_alternatives: {
+        'resistance-bands': 'Banded pull-ups',
+        machine: 'Lat Pulldown machine'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      progressionRate: 1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Overhand grip, hands slightly wider than shoulder-width.',
+        'Full hang, shoulders depressed (not shrugging).'
+      ],
+      execution: [
+        'Initiate pull with lats, thinking about pulling elbows down.',
+        'Keep chest up and core engaged.',
+        'Control the eccentric (lowering) phase.'
+      ],
+      common_mistakes: [
+        'Using momentum (kipping).',
+        'Not achieving full range of motion.',
+        'Shrugging shoulders at bottom.'
+      ],
+      breathing: 'Exhale as you pull up, inhale as you lower down.'
+    }
+  },
+
+  'barbell-overhead-press': {
+    id: 'barbell-overhead-press',
+    name: 'Barbell Overhead Press',
+    category: 'strength',
+    equipment: ['barbell', 'weight plates'],
+    muscleGroups: ['shoulders (deltoids)', 'triceps', 'upper chest', 'upper back', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Stand with feet shoulder-width apart, holding a barbell at shoulder height.',
+      'Grip the bar with hands slightly wider than shoulder-width, palms facing forward.',
+      'Brace your core and press the barbell directly overhead until arms are fully extended.',
+      'Lower the weight back to the starting position in a controlled manner.'
+    ],
+    safetyNotes: [
+      'Maintain a neutral spine; avoid excessive arching of the lower back.',
+      'Keep elbows slightly in front of the bar.',
+      'Ensure adequate shoulder mobility before attempting heavy overhead presses.'
+    ],
+    modifications: {
+      beginner: 'Dumbbell Shoulder Press, Landmine Shoulder Press, Kneeling Landmine Press',
+      advanced: 'Push Press (using leg drive), Z Press',
+      equipment_alternatives: {
+        dumbbells: 'Dumbbell Shoulder Press',
+        kettlebells: 'Kettlebell Overhead Press'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      progressionRate: 5,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Bar at shoulder height, grip slightly wider than shoulders.',
+        'Elbows slightly forward, core braced.'
+      ],
+      execution: [
+        'Press straight up, driving head slightly forward at the top.',
+        'Lock out elbows fully.',
+        'Control the eccentric phase.'
+      ],
+      common_mistakes: [
+        'Excessive lower back arch.',
+        'Flaring elbows out too wide.',
+        'Not fully locking out at the top.',
+        'Using too much leg drive (unless performing a push press).'
+      ],
+      breathing: 'Inhale before pressing, exhale as you press overhead.'
+    }
+  },
+
+  'lunges': {
+    id: 'lunges',
+    name: 'Lunges',
+    category: 'strength',
+    equipment: ['none', 'dumbbells/kettlebells (optional)'],
+    muscleGroups: ['quadriceps', 'hamstrings', 'glutes', 'calves', 'core'],
+    difficulty: 2,
+    instructions: [
+      'Stand upright with feet hip-width apart.',
+      'Step forward with one leg, lowering your hips until both knees are bent at about 90 degrees.',
+      'Ensure your front knee is directly over your ankle and your torso remains upright.',
+      'Push off the front foot to return to the starting position, or step through for walking lunges.',
+      'Alternate legs.'
+    ],
+    safetyNotes: [
+      'Keep your front knee aligned with your ankle; avoid letting it go past your toes.',
+      'Maintain an upright torso; avoid leaning too far forward.',
+      'Control the movement; do not let your knee slam into the ground.'
+    ],
+    modifications: {
+      beginner: 'Reverse Lunges (easier for balance), shorter stride.',
+      advanced: 'Walking Lunges, Weighted Lunges (dumbbells, kettlebells, barbell), Plyometric Lunges, Lunge with Rotation',
+      equipment_alternatives: {
+        dumbbells: 'Dumbbell Walking Lunge',
+        kettlebells: 'Kettlebell Lunges',
+        barbell: 'Barbell Lunges'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 2,
+      unit: 'reps per leg'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet hip-width apart.',
+        'Core engaged, shoulders back.'
+      ],
+      execution: [
+        'Step forward into lunge position.',
+        'Lower hips, not forward lean.',
+        'Push through front heel to return.',
+        'Maintain upright torso throughout.'
+      ],
+      common_mistakes: [
+        'Front knee going past toes.',
+        'Leaning forward excessively.',
+        'Not going deep enough.',
+        'Losing balance.'
+      ],
+      breathing: 'Inhale on descent, exhale on ascent.'
+    }
+  },
+
+  'push-ups': {
+    id: 'push-ups',
+    name: 'Push-ups',
+    category: 'strength',
+    equipment: ['none'],
+    muscleGroups: ['chest', 'shoulders', 'triceps', 'core'],
+    difficulty: 2,
+    instructions: [
+      'Start in a plank position with hands slightly wider than shoulder-width apart.',
+      'Keep your body in a straight line from head to heels.',
+      'Lower your chest towards the floor by bending your elbows.',
+      'Push back up to the starting position, fully extending your arms.'
+    ],
+    safetyNotes: [
+      'Maintain a straight body line; avoid sagging hips or piking up.',
+      'Keep your core engaged throughout the movement.',
+      'Don\'t let your elbows flare out too wide.'
+    ],
+    modifications: {
+      beginner: 'Knee push-ups, incline push-ups (hands on elevated surface like a wall or bench).',
+      advanced: 'Diamond push-ups, archer push-ups, single-arm push-ups, plyometric push-ups.',
+      equipment_alternatives: {
+        'resistance-bands': 'Resistance band chest press',
+        dumbbells: 'Dumbbell chest press',
+        barbell: 'Bench press'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 2,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Hands slightly wider than shoulders.',
+        'Body in straight line from head to heels.',
+        'Core engaged, glutes tight.'
+      ],
+      execution: [
+        'Control the descent, keeping tension in the chest and triceps.',
+        'Achieve full range of motion (chest to floor or near floor).',
+        'Push explosively back up, squeezing chest at the top.'
+      ],
+      common_mistakes: [
+        'Sagging hips.',
+        'Flaring elbows too wide.',
+        'Partial range of motion.',
+        'Not engaging core.'
+      ],
+      breathing: 'Inhale down, exhale up.'
+    }
+  },
+
+  // AGILITY/SPEED EXERCISES
+  'high-knees': {
+    id: 'high-knees',
+    name: 'High Knees',
+    category: 'agility-speed',
+    equipment: ['none'],
+    muscleGroups: ['quadriceps', 'hip flexors', 'calves', 'core'],
+    difficulty: 2,
+    instructions: [
+      'Stand tall with feet hip-width apart.',
+      'Run in place, bringing your knees up towards your chest as high as possible.',
+      'Maintain a quick tempo and pump your arms rhythmically.'
+    ],
+    safetyNotes: [
+      'Ensure adequate space to perform the drill without obstacles.',
+      'Focus on controlled landings to minimize impact on knees and ankles.',
+      'Maintain an upright posture; avoid leaning back.'
+    ],
+    modifications: {
+      beginner: 'Slower pace, lower knee height, focus on coordination.',
+      advanced: 'Faster pace, higher knee height, incorporating into sprints or ladder drills.',
+      equipment_alternatives: {
+        none: 'Running in place, fast feet drills.'
+      }
+    },
+    metrics: {
+      type: 'duration',
+      defaultValue: 30,
+      progressionRate: 10,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet hip-width apart.',
+        'Arms ready to pump rhythmically.'
+      ],
+      execution: [
+        'Drive knees up towards chest.',
+        'Land on balls of feet.',
+        'Maintain quick tempo.',
+        'Pump arms in coordination.'
+      ],
+      common_mistakes: [
+        'Leaning backwards.',
+        'Landing heavily on heels.',
+        'Not lifting knees high enough.',
+        'Lack of arm coordination.'
+      ],
+      breathing: 'Quick, shallow breaths, matching the intensity of the movement.'
+    }
+  },
+
+  'butt-kicks': {
+    id: 'butt-kicks',
+    name: 'Butt Kicks',
+    category: 'agility-speed',
+    equipment: ['none'],
+    muscleGroups: ['hamstrings', 'glutes', 'calves'],
+    difficulty: 2,
+    instructions: [
+      'Stand tall with feet hip-width apart.',
+      'Run in place, kicking your heels up towards your glutes.',
+      'Focus on conditioning and coordinating the glutes and hamstrings for a strong running stride.',
+      'Maintain a quick tempo and pump your arms rhythmically.'
+    ],
+    safetyNotes: [
+      'Ensure adequate space to perform the drill.',
+      'Focus on controlled movements to prevent hamstring strain.',
+      'Maintain an upright posture; avoid leaning forward excessively.'
+    ],
+    modifications: {
+      beginner: 'Slower pace, smaller range of motion.',
+      advanced: 'Faster pace, higher intensity, incorporating into dynamic warm-ups or sprints.',
+      equipment_alternatives: {
+        none: 'Hamstring curls (strength focus).'
+      }
+    },
+    metrics: {
+      type: 'duration',
+      defaultValue: 30,
+      progressionRate: 10,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, feet hip-width apart.',
+        'Arms ready to pump rhythmically.'
+      ],
+      execution: [
+        'Actively pull heels towards glutes.',
+        'Keep knees pointing downwards.',
+        'Maintain a quick, rhythmic pace.',
+        'Pump arms in sync with legs.'
+      ],
+      common_mistakes: [
+        'Kicking backwards instead of pulling heels up.',
+        'Leaning too far forward.',
+        'Lack of arm drive.',
+        'Not engaging hamstrings and glutes.'
+      ],
+      breathing: 'Quick, shallow breaths, matching the intensity of the movement.'
+    }
+  },
+
+  // RECOVERY/WARM-UP EXERCISES
+  'foam-rolling': {
+    id: 'foam-rolling',
+    name: 'Foam Rolling / Self-Myofascial Release',
+    category: 'recovery-warm-up',
+    equipment: ['foam roller'],
+    muscleGroups: ['various (depending on area rolled)'],
+    difficulty: 1,
+    instructions: [
+      'Position the foam roller under the target muscle group.',
+      'Apply moderate pressure and slowly roll back and forth.',
+      'Spend 30-60 seconds on each muscle group.',
+      'When you find a tender spot, pause and hold for 20-30 seconds.',
+      'Breathe deeply and try to relax the muscle.'
+    ],
+    safetyNotes: [
+      'Avoid rolling directly on bones or joints.',
+      'Don\'t roll too aggressively; moderate pressure is sufficient.',
+      'Stop if you experience sharp pain.',
+      'Avoid rolling the lower back directly.'
+    ],
+    modifications: {
+      beginner: 'Lighter pressure, shorter durations, focus on large muscle groups.',
+      advanced: 'Increased pressure, longer durations, using a smaller/denser roller or lacrosse ball for targeted areas.',
+      equipment_alternatives: {
+        'lacrosse-ball': 'Lacrosse ball (for smaller, more precise areas)',
+        'tennis-ball': 'Tennis ball (softer option)'
+      }
+    },
+    metrics: {
+      type: 'duration',
+      defaultValue: 30,
+      progressionRate: 5,
+      unit: 'seconds per muscle group'
+    },
+    coaching: {
+      setup: [
+        'Choose appropriate foam roller density.',
+        'Find comfortable position.',
+        'Target specific muscle groups.'
+      ],
+      execution: [
+        'Apply moderate, consistent pressure.',
+        'Roll slowly and controlled.',
+        'Pause on tender spots.',
+        'Breathe deeply throughout.'
+      ],
+      common_mistakes: [
+        'Rolling too fast.',
+        'Applying too much pressure.',
+        'Rolling over bones/joints.',
+        'Holding breath during rolling.'
+      ],
+      breathing: 'Deep, slow breaths, especially when holding on tender spots.'
+    }
   }
 };
 
