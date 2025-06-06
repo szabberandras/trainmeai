@@ -11714,14 +11714,14 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
 
 // Exercise categories for easy filtering
 export const EXERCISE_CATEGORIES = {
-  strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'walking-lunges', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'warrior-ii', 'hip-bridge-lift', 'lateral-leg-lift', 'hamstring-bridge-with-chair', 'frog-pumps', 'supine-abductions-with-miniband', 'lateral-wrist-curls-with-dumbbells', 'standing-fire-hydrant', 'prone-frog-lifts', 'standing-hamstring-curl', 'lateral-walk', 'clamshells', 'dumbbell-good-morning', 'squat-to-overhead-press', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'alternating-jump-lunges', 'squat-to-calf-raise', 'diagonal-lunge', '90-degree-squats', 'sumo-squat', 'fire-hydrants', 'adductor-lifts', 'half-kneeling-rotation-with-block-and-dumbbell', 'skater-squats', 'monster-walks-with-miniband', 'fire-hydrants-with-internal-rotation', 'prone-y-raises'],
+  strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'walking-lunges', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'warrior-ii', 'hip-bridge-lift', 'lateral-leg-lift', 'hamstring-bridge-with-chair', 'frog-pumps', 'supine-abductions-with-miniband', 'lateral-wrist-curls-with-dumbbells', 'standing-fire-hydrant', 'prone-frog-lifts', 'standing-hamstring-curl', 'lateral-walk', 'clamshells', 'dumbbell-good-morning', 'squat-to-overhead-press', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'alternating-jump-lunges', 'squat-to-calf-raise', 'diagonal-lunge', '90-degree-squats', 'sumo-squat', 'fire-hydrants', 'adductor-lifts', 'half-kneeling-rotation-with-block-and-dumbbell', 'skater-squats', 'monster-walks-with-miniband', 'fire-hydrants-with-internal-rotation', 'prone-y-raises', 'snatch-pull'],
   core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'bird-dog', 'tick-tocks-with-miniband', 'vacuums', 'flutter-kicks', 'side-plank', 'side-plank-leg-lift', 'standing-crunch', 'supermans', 'chin-tucks', 'staff-pose', 'superman-sequence', 'decline-plank-with-chair', 'side-plank-hip-dip', 'v-sit'],
   cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'a-skip', 'b-skip', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs', 'high-knees', 'reverse-lunge-knee-drive', 'run-in-place'],
-  plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'swim-plyometric-box-jumps', 'high-skip', 'box-jump', 'depth-jump', 'standing-broad-jump', 'bounding', 'hurdle-hops', 'medicine-ball-slam'],
+  plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'swim-plyometric-box-jumps', 'high-skip', 'box-jump', 'depth-jump', 'standing-broad-jump', 'bounding', 'hurdle-hops', 'medicine-ball-slam', 'depth-jump-to-box', 'lateral-bounds', 'tuck-jump', 'ankle-hops'],
   mobility: ['arm-circles', 'dynamic-star', 'alternating-step-and-squat', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'froggers', 'ankle-rocks', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'plank-calf-press', 'dynamic-side-body-stretch', 'shoulder-openers', 'lizard-circles', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'dynamic-baby-cobra', '90-90-stretch', 'activated-hip-flexor-stretch-with-block', 'wide-dynamic-cobra', 'upper-body-around-the-world', 'single-leg-hip-flexor-extension-with-pole', 'seated-toe-rainbows-with-chair', 'knee-hug-rock', 'hand-and-wrist-sequence', 'z-stretch', 'knee-hug-to-happy-baby'],
   flexibility: ['standing-calf-stretch', 'foam-roll-hip-abductors', 'childs-pose', 'tricep-and-lat-stretch', 'pigeon-pose', 'forward-fold', 'chest-stretch', 'seated-twist', 'single-leg-hamstring-stretch', 'frog-stretch', 'upper-back-stretch', 'release-lats-with-foam-roller', 'leaning-quad-stretch', 'elevated-pigeon-with-chair', 'standing-chest-stretch', 'cross-body-hamstring-stretch', 'supine-criss-cross', 'toe-grab-calf-stretch', 'half-camel-pose', 'advanced-gate-pose', 'center-stretch-static', 'standing-glute-stretch', 'half-frog-stretch'],
-  technique: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill'],
-  endurance: ['bike-hill-climbs-intervals', 'long-run', 'tempo-run', 'fartlek-run', 'hill-repeats'],
+  technique: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill', 'kickboard-swim-drill', 'underwater-kick', 'stride-outs'],
+  endurance: ['bike-hill-climbs-intervals', 'long-run', 'tempo-run', 'fartlek-run', 'hill-repeats', 'cycling-steady', 'swim-intervals'],
   triathlon: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals'],
   crossfit: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'deadlift', 'kettlebell-swing', 'farmers-carry', 'box-step-ups', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'barbell-hip-thrust', 'dumbbell-hip-thrust', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension'],
   none: ['push-up', 'diamond-push-up', 'squat', 'jump-squat', 'lunge', 'plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'jumping-jacks', 'burpee', 'mountain-climber', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'a-skips', 'b-skips', 'a-skip', 'b-skip', 'carioca', 'step-ups', 'marching-in-place', 'arm-circles', 'skierg', 'sled-push', 'sled-pull', 'burpee-broad-jumps', 'rowing-erg', 'farmers-carry', 'sandbag-lunges', 'wall-balls', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'grip-endurance-circuit', 'sled-conditioning', 'zone-2-recovery-run', 'hyrox-pace-runs', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'high-knees', 'walking-lunges', 'bird-dog', 'standing-calf-stretch', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'foam-roll-hip-abductors', 'swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'dynamic-star', 'alternating-step-and-squat', 'tricep-and-lat-stretch', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'hip-bridge-lift', 'vacuums', 'lateral-leg-lift', 'frog-pumps', 'flutter-kicks', 'prone-frog-lifts', 'froggers', 'standing-hamstring-curl', 'clamshells', 'side-plank', 'side-plank-leg-lift', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'supermans', 'alternating-jump-lunges', 'reverse-lunge-knee-drive', 'squat-to-calf-raise', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'dynamic-side-body-stretch', 'shoulder-openers', 'standing-crunch', 'run-in-place', 'diagonal-lunge', 'high-skip', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill', 'standing-broad-jump', 'bounding', 'long-run', 'tempo-run', 'fartlek-run', 'hill-repeats']
@@ -13503,6 +13503,331 @@ const SPORT_SPECIFIC_EXERCISES = {
         'Losing balance upon landing.'
       ],
       breathing: 'Exhale on the jump, inhale on the landing.'
+    }
+  },
+
+  'depth-jump-to-box': {
+    id: 'depth-jump-to-box',
+    name: 'Depth Jump to Box',
+    category: 'plyometric',
+    equipment: ['plyo box'],
+    muscleGroups: ['glutes', 'quads', 'hamstrings', 'calves'],
+    difficulty: 4,
+    instructions: [
+      'Start standing on a low platform or box',
+      'Step off and land with knees bent',
+      'Immediately jump vertically onto a higher box',
+      'Stand fully at the top to complete rep'
+    ],
+    safetyNotes: ['Ensure soft landing; avoid hard surfaces'],
+    modifications: {
+      beginner: 'Use low box and eliminate depth drop',
+      advanced: 'Add weight vest or increase box height',
+      equipment_alternatives: {
+        'no box': 'Depth jump to vertical jump'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      progressionRate: 1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: ['Platform and landing box positioned safely'],
+      execution: ['Land softly', 'Explode immediately'],
+      common_mistakes: ['No pause between landing and jump', 'Knees caving in'],
+      breathing: 'Inhale before drop, exhale as you jump'
+    }
+  },
+
+  'kickboard-swim-drill': {
+    id: 'kickboard-swim-drill',
+    name: 'Kickboard Swim Drill',
+    category: 'technique',
+    equipment: ['kickboard'],
+    muscleGroups: ['legs', 'core', 'shoulders'],
+    difficulty: 2,
+    instructions: [
+      'Hold kickboard at arm\'s length in water',
+      'Kick from hips, not knees',
+      'Keep head neutral and torso flat',
+      'Perform continuous flutter kicks for set distance'
+    ],
+    safetyNotes: ['Use in supervised pool environment'],
+    modifications: {
+      beginner: 'Use fins for assistance',
+      advanced: 'Add snorkel or reduce breathing breaks',
+      equipment_alternatives: {
+        'no kickboard': 'Hands extended streamline kick'
+      }
+    },
+    metrics: {
+      type: 'distance',
+      defaultValue: 25,
+      progressionRate: 25,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Hold board properly', 'Streamlined body position'],
+      execution: ['Small, fast kicks', 'Engage core'],
+      common_mistakes: ['Kicking from knees', 'Head too high'],
+      breathing: 'Bilateral or snorkel-based breathing'
+    }
+  },
+
+  'snatch-pull': {
+    id: 'snatch-pull',
+    name: 'Snatch Pull',
+    category: 'strength',
+    equipment: ['barbell'],
+    muscleGroups: ['hamstrings', 'glutes', 'back', 'traps'],
+    difficulty: 5,
+    instructions: [
+      'Set up with wide grip, barbell on floor',
+      'Pull explosively from floor, extending hips/knees',
+      'Shrug shoulders at full extension',
+      'Do not pull bar overhead'
+    ],
+    safetyNotes: ['Requires solid hip hinge and mobility'],
+    modifications: {
+      beginner: 'High pull with PVC',
+      advanced: 'Full snatch from blocks'
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 3,
+      progressionRate: 5,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: ['Wide grip', 'Bar over midfoot'],
+      execution: ['Explosive hip drive', 'Keep bar close'],
+      common_mistakes: ['Early arm bend', 'No shrug'],
+      breathing: 'Inhale setup, exhale after lift'
+    }
+  },
+
+  'underwater-kick': {
+    id: 'underwater-kick',
+    name: 'Underwater Dolphin Kick',
+    category: 'technique',
+    equipment: ['swimming pool', 'fins (optional)'],
+    muscleGroups: ['core', 'glutes', 'calves'],
+    difficulty: 3,
+    instructions: [
+      'Push off wall, arms overhead',
+      'Engage core and initiate dolphin kick from hips',
+      'Keep legs extended, minimal knee bend',
+      'Use streamlined position'
+    ],
+    safetyNotes: ['Ensure breath control', 'Use lifeguarded pool'],
+    modifications: {
+      beginner: 'Short distance (5m)',
+      advanced: 'With fins or longer distance'
+    },
+    metrics: {
+      type: 'distance',
+      defaultValue: 10,
+      progressionRate: 5,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Streamline arms', 'Tight core'],
+      execution: ['Small, fast kicks', 'Initiate from core'],
+      common_mistakes: ['Too much knee', 'Loose upper body'],
+      breathing: 'Exhale underwater'
+    }
+  },
+
+  'lateral-bounds': {
+    id: 'lateral-bounds',
+    name: 'Lateral Bounds',
+    category: 'plyometric',
+    equipment: [],
+    muscleGroups: ['glutes', 'quads', 'hamstrings', 'calves'],
+    difficulty: 3,
+    instructions: [
+      'Start in athletic stance',
+      'Jump laterally off one foot, landing softly on the opposite foot',
+      'Maintain balance and repeat side-to-side',
+      'Focus on distance and control'
+    ],
+    safetyNotes: ['Avoid hard landings', 'Progress gradually'],
+    modifications: {
+      beginner: 'Smaller hops, both feet land',
+      advanced: 'Add pause on landing or increase distance'
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 10,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: ['Athletic stance', 'Engaged core'],
+      execution: ['Explosive push', 'Land softly on single leg'],
+      common_mistakes: ['Stiff landings', 'Knee collapsing inward'],
+      breathing: 'Exhale on jump'
+    }
+  },
+
+  'tuck-jump': {
+    id: 'tuck-jump',
+    name: 'Tuck Jump',
+    category: 'plyometric',
+    equipment: [],
+    muscleGroups: ['quads', 'glutes', 'core', 'calves'],
+    difficulty: 4,
+    instructions: [
+      'Stand tall, arms at sides',
+      'Jump straight up, driving knees toward chest',
+      'Land softly with knees bent',
+      'Reset between each jump'
+    ],
+    safetyNotes: ['High impact — avoid on injured knees'],
+    modifications: {
+      beginner: 'Jump squats',
+      advanced: 'Continuous tuck jumps with time goal'
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      progressionRate: 10,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: ['Feet hip-width', 'Arms ready to swing'],
+      execution: ['Explode up, pull knees high', 'Land soft'],
+      common_mistakes: ['Stomping down', 'Not jumping high enough'],
+      breathing: 'Exhale on jump'
+    }
+  },
+
+  'cycling-steady': {
+    id: 'cycling-steady',
+    name: 'Cycling - Steady State Ride',
+    category: 'endurance',
+    equipment: ['bike', 'trainer (optional)'],
+    muscleGroups: ['quads', 'hamstrings', 'calves', 'glutes', 'heart'],
+    difficulty: 2,
+    instructions: [
+      'Cycle at moderate intensity (Zone 2)',
+      'Maintain steady cadence (80–100 RPM)',
+      'Target session of 45–90 minutes',
+      'Keep effort sustainable and aerobic'
+    ],
+    safetyNotes: ['Stay hydrated', 'Use proper bike fit'],
+    modifications: {
+      beginner: '30–45 min with breaks',
+      advanced: 'Include cadence drills or climb simulation'
+    },
+    metrics: {
+      type: 'duration',
+      defaultValue: 60,
+      progressionRate: 10,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Flat route or smart trainer', 'Warm-up first 10 min'],
+      execution: ['Steady HR or power zone', 'Smooth pedal stroke'],
+      common_mistakes: ['Going too hard', 'Poor position'],
+      breathing: 'Deep, relaxed breathing throughout'
+    }
+  },
+
+  'swim-intervals': {
+    id: 'swim-intervals',
+    name: 'Swim Intervals',
+    category: 'endurance',
+    equipment: ['swimming pool', 'goggles', 'kickboard (optional)'],
+    muscleGroups: ['shoulders', 'back', 'core', 'legs'],
+    difficulty: 3,
+    instructions: [
+      'Swim 4×100 meters at moderate pace',
+      'Rest 20–30 seconds between sets',
+      'Repeat for 3–5 rounds depending on fitness',
+      'Use freestyle unless otherwise specified'
+    ],
+    safetyNotes: ['Ensure rest between sets', 'Do not train to exhaustion'],
+    modifications: {
+      beginner: '4×50 meters, more rest',
+      advanced: 'Add pull buoy or reduced rest'
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 4,
+      progressionRate: 2,
+      unit: 'sets'
+    },
+    coaching: {
+      setup: ['Good push-off', 'Use pacing clock if available'],
+      execution: ['Even stroke tempo', 'Keep core tight'],
+      common_mistakes: ['Going all-out too early', 'Poor turns'],
+      breathing: 'Inhale every 3 strokes (or athlete-specific)'
+    }
+  },
+
+  'ankle-hops': {
+    id: 'ankle-hops',
+    name: 'Ankle Hops',
+    category: 'plyometric',
+    equipment: [],
+    muscleGroups: ['calves', 'ankles', 'feet'],
+    difficulty: 2,
+    instructions: [
+      'Stand tall with feet under hips',
+      'Bounce off ground using only ankles (minimal knee bend)',
+      'Keep rhythm fast and light',
+      'Land softly with quick recoil'
+    ],
+    safetyNotes: ['Avoid if active Achilles injury', 'Focus on foot control'],
+    modifications: {
+      beginner: 'Standing calf raises',
+      advanced: 'Add lateral hops or rope'
+    },
+    metrics: {
+      type: 'duration',
+      defaultValue: 20,
+      progressionRate: 5,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: ['Neutral posture', 'Core engaged'],
+      execution: ['Use spring from ankles', 'Stay upright'],
+      common_mistakes: ['Excessive knee bend', 'Slapping feet'],
+      breathing: 'Light rhythmic breathing'
+    }
+  },
+
+  'stride-outs': {
+    id: 'stride-outs',
+    name: 'Stride Outs',
+    category: 'technique',
+    equipment: [],
+    muscleGroups: ['glutes', 'hamstrings', 'quads', 'calves'],
+    difficulty: 2,
+    instructions: [
+      'Jog 10–20m, then accelerate to ~90% effort',
+      'Hold speed for 20m, then decelerate',
+      'Walk back to recover, repeat 4–6 times'
+    ],
+    safetyNotes: ['Do not sprint from cold', 'Warm-up required'],
+    modifications: {
+      beginner: '60% effort',
+      advanced: 'Add uphill strides'
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 4,
+      progressionRate: 2,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: ['Flat soft surface', 'Relaxed arms'],
+      execution: ['Smooth acceleration', 'Good posture'],
+      common_mistakes: ['Overstriding', 'Tight shoulders'],
+      breathing: 'Exhale as speed increases'
     }
   }
 };

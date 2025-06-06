@@ -27,14 +27,22 @@ export default function LayoutClientWrapper({ children }) {
     }
   };
 
-  // Image URL for the logo in the header
-  const headerLogoImageUrl = "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2Ftrainmeai.png?alt=media&token=a9fad87b-adbc-4530-a11c-95ed2694bdf6";
+  // Updated logo URLs
+  const headerLogoImageUrl = "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Logo%2F8819f3df-3241-4f21-be52-827df2f7cc25.png?alt=media&token=a017389c-c181-4143-9366-67bd70c9b6dd";
+  const iconLogoUrl = "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Logo%2F317ecd07-214d-4ac0-99a8-4e19c2ed8ebd.png?alt=media&token=de760234-5f32-470d-b88d-d55368799d36";
 
-  // Render a loading state if auth status is not yet determined
+  // Render a clean loading state that matches the dashboard design
   if (loading) {
     return (
       <div style={styles.loadingWrapper}>
-        <p>Loading app...</p>
+        <div style={styles.loadingContent}>
+          <div style={styles.logoContainer}>
+            <img src={iconLogoUrl} alt="TrainMeAI Logo" style={styles.loadingLogo} />
+          </div>
+          <h1 style={styles.loadingTitle}>My Fitness App</h1>
+          <p style={styles.loadingSubtitle}>Loading your personalized fitness experience...</p>
+          <div style={styles.loadingSpinner}></div>
+        </div>
       </div>
     );
   }
@@ -103,8 +111,45 @@ const styles = {
     alignItems: 'center',
     minHeight: '100vh',
     width: '100vw',
-    backgroundColor: '#FAFAFA', // Or match your background
-    color: '#222222',
+    background: 'linear-gradient(to br, #f8fafc, #ffffff)',
+    color: '#1f2937',
+  },
+  loadingContent: {
+    textAlign: 'center',
+    maxWidth: '400px',
+    padding: '2rem',
+  },
+  logoContainer: {
+    marginBottom: '2rem',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  loadingLogo: {
+    width: '80px',
+    height: '80px',
+    objectFit: 'contain',
+  },
+  loadingTitle: {
+    fontSize: '2rem',
+    fontWeight: '300',
+    color: '#1f2937',
+    marginBottom: '0.5rem',
+    fontFamily: 'system-ui, -apple-system, sans-serif',
+  },
+  loadingSubtitle: {
+    fontSize: '1rem',
+    color: '#6b7280',
+    marginBottom: '2rem',
+    fontFamily: 'system-ui, -apple-system, sans-serif',
+  },
+  loadingSpinner: {
+    width: '32px',
+    height: '32px',
+    border: '3px solid #e5e7eb',
+    borderTop: '3px solid #3b82f6',
+    borderRadius: '50%',
+    animation: 'spin 1s linear infinite',
+    margin: '0 auto',
   },
   appContainer: {
     display: 'flex',
@@ -133,8 +178,8 @@ const styles = {
     alignItems: 'center',
   },
   headerLogoImage: { // Style for the actual logo image
-    width: '80px', // Adjusted: Smaller logo width
-    height: 'auto',
+    height: '40px', // Fixed height for consistency
+    width: 'auto', // Auto width to maintain aspect ratio
     objectFit: 'contain',
     marginRight: '1rem',
   },
@@ -198,28 +243,35 @@ const styles = {
     justifyContent: 'flex-start', // Start content from top
     alignItems: 'center', // Center content horizontally if needed
     // The paddingTop for the header will be applied by individual pages now.
-    minHeight: '100vh', // Ensure content area takes full height
-  },
-  mainContentNoHeader: { // For login page
-    flexGrow: 1,
-    width: '100%',
-    backgroundColor: 'transparent',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center', // Center content horizontally
-    justifyContent: 'center', // Center content vertically
-    minHeight: '100vh', // Ensure it fills the screen
   },
   footer: {
-    backgroundColor: '#222222', // Graphite
-    color: '#FAFAFA', // Cloud White
-    padding: '1rem 2rem',
+    backgroundColor: '#ffffff',
+    color: '#222222',
     textAlign: 'center',
-    marginTop: 'auto', // Pushes footer to bottom
+    padding: '1rem 2rem',
+    borderTop: '1px solid #e5e7eb',
     width: '100%',
   },
   footerText: {
     margin: 0,
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
+    fontFamily: 'var(--font-inter), sans-serif',
+  },
+  fullScreenWrapper: {
+    minHeight: '100vh',
+    width: '100vw',
+    backgroundColor: 'transparent', // Let the login page handle its own background
   },
 };
+
+// Add CSS animation for spinner
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  `;
+  document.head.appendChild(style);
+}

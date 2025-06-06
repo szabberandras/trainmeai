@@ -140,9 +140,13 @@ export default function ProfilePage() {
     
     setIsResettingOnboarding(true);
     try {
-      // Clear the hasCompletedOnboarding flag to trigger onboarding again
+      // Clear ALL onboarding-related data to force fresh start
       await updateDoc(doc(db, 'users', user.uid), {
         hasCompletedOnboarding: false,
+        onboardingAnswers: null,
+        onboardingPath: null,
+        selectedPersona: null,
+        personaSelection: null,
         // Clear personalization data to start fresh
         motivation: null,
         vision: null,
@@ -151,14 +155,31 @@ export default function ProfilePage() {
         communicationStyle: null,
         visualTheme: null,
         aiTone: null,
+        preferredDuration: null,
+        safetyPriority: null,
+        progressionRate: null,
+        completedAt: null,
         updatedAt: new Date()
       });
+      
+      // Clear conversation history to start fresh
+      try {
+        await fetch('/api/chat', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId: user.uid })
+        });
+      } catch (chatError) {
+        console.warn('Could not clear chat history:', chatError);
+      }
       
       // Invalidate cache after update
       cache.invalidate(`userProfile:${user.uid}`);
       
-      // Redirect to dashboard which will now show the onboarding
-      router.push('/dashboard');
+      // Force reload to ensure clean state
+      window.location.href = '/dashboard';
     } catch (error) {
       await logError(error, {
         context: 'onboarding-reset',

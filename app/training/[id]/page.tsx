@@ -1,9 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Download, Edit } from 'lucide-react';
 import DayWorkoutCard from '@/app/components/workouts/DayWorkoutCard';
 import LayoutClientWrapper from '@/app/components/LayoutClientWrapper';
+import WeeklyPlanExport from '@/app/components/export/WeeklyPlanExport';
+import TrainingProgramNavBar from '@/app/components/navigation/TrainingProgramNavBar';
 
 interface TrainingPlan {
   name: string;
@@ -27,7 +30,9 @@ interface TrainingPlan {
 }
 
 export default function TrainingPlanPage({ params }: { params: { id: string } }) {
+  const router = useRouter();
   const [plan, setPlan] = useState<TrainingPlan | null>(null);
+  const [showExport, setShowExport] = useState(false);
 
   useEffect(() => {
     // TODO: Fetch actual plan data from your backend
@@ -118,6 +123,11 @@ export default function TrainingPlanPage({ params }: { params: { id: string } })
   return (
     <LayoutClientWrapper>
       <div className="min-h-screen bg-white">
+        {/* Secondary Navigation */}
+        <TrainingProgramNavBar 
+          onCreateNew={() => router.push('/training-plans/new')}
+        />
+        
         <div className="px-40 py-5">
           <div className="max-w-[960px] mx-auto">
             <div className="flex justify-between items-center mb-6">
@@ -130,9 +140,12 @@ export default function TrainingPlanPage({ params }: { params: { id: string } })
                   <Edit size={18} />
                   <span>Edit Plan</span>
                 </button>
-                <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white">
+                <button 
+                  onClick={() => setShowExport(true)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                >
                   <Download size={18} />
-                  <span>Export PDF</span>
+                  <span>Export Plan</span>
                 </button>
               </div>
             </div>
@@ -173,6 +186,40 @@ export default function TrainingPlanPage({ params }: { params: { id: string } })
             </div>
           </div>
         </div>
+
+        {/* Export Modal */}
+        {showExport && plan && (
+          <WeeklyPlanExport
+            weeklyPlan={{
+              weekNumber: plan.week,
+              totalWeeks: plan.totalWeeks,
+              programName: plan.name,
+              userGoal: "Marathon Training",
+              days: plan.days.map(day => ({
+                day: day.day,
+                focus: day.workoutType,
+                duration: day.metrics.duration || "45 minutes",
+                exercises: day.isRestDay ? [] : [
+                  {
+                    name: day.workoutType,
+                    sets: day.metrics.sets,
+                    reps: day.metrics.reps,
+                    weight: day.metrics.weight,
+                    duration: day.metrics.duration,
+                    instructions: [day.nutritionTip]
+                  }
+                ]
+              })),
+              nutrition: {
+                preWorkout: "Light carbs 30-60 minutes before exercise",
+                postWorkout: "Protein and carbs within 30 minutes after exercise",
+                daily: "Balanced meals with adequate protein, complex carbs, and healthy fats",
+                hydration: "8-10 glasses of water daily, more during intense training"
+              }
+            }}
+            onClose={() => setShowExport(false)}
+          />
+        )}
       </div>
     </LayoutClientWrapper>
   );

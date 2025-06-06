@@ -13,7 +13,7 @@ import Image from 'next/image';
 
 // Firebase Storage URLs for assets
 const ASSETS = {
-  logo: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2FGemini_Generated_Image_ku5fqiku5fqiku5f.jpeg?alt=media&token=25ad98ba-31c8-4c2f-b546-b3fcee287ccd',
+  logo: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Logo%2F8819f3df-3241-4f21-be52-827df2f7cc25.png?alt=media&token=a017389c-c181-4143-9366-67bd70c9b6dd',
   backgroundImage: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2FGemini_Generated_Image_up2hy2up2hy2up2h.jpeg?alt=media&token=cdef40b1-d94b-488d-9ab3-efed9574bf59',
   userAvatars: [
     'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2Falvito-danendra-j92WHR-KZnM-unsplash.jpg?alt=media&token=bb7a325c-d66e-4539-b784-25167de72418',
@@ -57,8 +57,8 @@ export default function ClientOnlyLoginPage() {
                 alt="TrainMeAI Logo"
                 width={128}
                 height={128}
-                className="rounded-xl object-cover"
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
+                className="object-contain"
+                style={{ objectFit: 'contain' }}
                 priority
               />
             </div>
@@ -108,13 +108,13 @@ export default function ClientOnlyLoginPage() {
       </div>
 
       {/* Right Side - Showcase Image */}
-      <div className="w-1/2 relative bg-gradient-to-br from-[#0047FF] via-[#D1FF00] to-[#FF4C4C] flex items-center justify-center p-16">
-        <div className="w-full max-w-[600px] aspect-[4/3] rounded-3xl overflow-hidden relative shadow-2xl bg-gradient-to-tr from-[#0047FF] via-[#3366FF] to-[#D1FF00]">
+      <div className="w-1/2 relative bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-16">
+        <div className="w-full max-w-[600px] aspect-[4/3] rounded-3xl overflow-hidden relative shadow-2xl">
           <Image
             src={ASSETS.backgroundImage}
             alt="Fitness Motivation"
             fill
-            style={{ objectFit: 'cover', mixBlendMode: 'overlay' }}
+            style={{ objectFit: 'cover' }}
             priority
           />
           <div className="absolute inset-0 flex flex-col items-start justify-between p-8 bg-gradient-to-b from-transparent via-transparent to-[rgba(0,0,0,0.8)]">

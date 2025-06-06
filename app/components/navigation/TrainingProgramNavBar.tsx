@@ -1,0 +1,270 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { ChevronLeft, ChevronRight, Plus, Target, Dumbbell, Heart, Zap, Trophy, Users } from 'lucide-react';
+
+interface TrainingProgram {
+  id: string;
+  name: string;
+  type: string;
+  color: string;
+  icon: React.ReactNode;
+  status: 'active' | 'completed' | 'paused';
+  progress: number;
+}
+
+interface TrainingProgramNavBarProps {
+  programs?: TrainingProgram[];
+  onCreateNew?: () => void;
+  showEmptyState?: boolean;
+}
+
+const TrainingProgramNavBar: React.FC<TrainingProgramNavBarProps> = ({ 
+  programs = [], 
+  onCreateNew,
+  showEmptyState = true
+}) => {
+  const router = useRouter();
+  const params = useParams();
+  const currentId = params?.id as string;
+  
+  // Use provided programs or mock data for demonstration
+  const trainingPrograms = programs.length > 0 ? programs : [
+    {
+      id: 'marathon-training',
+      name: 'Marathon Training',
+      type: 'Endurance',
+      color: 'bg-blue-500',
+      icon: <Target className="w-4 h-4" />,
+      status: 'active' as const,
+      progress: 65
+    },
+    {
+      id: 'strength-building',
+      name: 'Strength Building',
+      type: 'Strength',
+      color: 'bg-red-500',
+      icon: <Dumbbell className="w-4 h-4" />,
+      status: 'active' as const,
+      progress: 40
+    },
+    {
+      id: 'cardio-blast',
+      name: 'Cardio Blast',
+      type: 'Cardio',
+      color: 'bg-green-500',
+      icon: <Heart className="w-4 h-4" />,
+      status: 'paused' as const,
+      progress: 80
+    },
+    {
+      id: 'hiit-power',
+      name: 'HIIT Power',
+      type: 'HIIT',
+      color: 'bg-orange-500',
+      icon: <Zap className="w-4 h-4" />,
+      status: 'active' as const,
+      progress: 25
+    },
+    {
+      id: 'competition-prep',
+      name: 'Competition Prep',
+      type: 'Sport',
+      color: 'bg-purple-500',
+      icon: <Trophy className="w-4 h-4" />,
+      status: 'completed' as const,
+      progress: 100
+    }
+  ];
+
+  const scrollContainer = React.useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollButtons = () => {
+    if (scrollContainer.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainer.current) {
+      const scrollAmount = 200;
+      const newScrollLeft = direction === 'left' 
+        ? scrollContainer.current.scrollLeft - scrollAmount
+        : scrollContainer.current.scrollLeft + scrollAmount;
+      
+      scrollContainer.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  useEffect(() => {
+    updateScrollButtons();
+    const container = scrollContainer.current;
+    if (container) {
+      container.addEventListener('scroll', updateScrollButtons);
+      return () => container.removeEventListener('scroll', updateScrollButtons);
+    }
+  }, [trainingPrograms]);
+
+  // Empty State Component
+  const EmptyState = () => (
+    <div className="flex items-center justify-center py-8 px-6">
+      <div className="text-center">
+        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Users className="w-8 h-8 text-gray-400" />
+        </div>
+        <h3 className="text-lg font-medium text-gray-900 mb-2">No Training Programs</h3>
+        <p className="text-gray-500 mb-4 max-w-sm">
+          Create your first training program to start your fitness journey
+        </p>
+        <button
+          onClick={onCreateNew}
+          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+        >
+          <Plus className="w-4 h-4" />
+          Create Program
+        </button>
+      </div>
+    </div>
+  );
+
+  if (programs.length === 0 && showEmptyState) {
+    return (
+      <div className="bg-white/95 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-40">
+        <div className="px-6">
+          <EmptyState />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white/95 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-40">
+      <div className="px-6 py-4">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-medium text-gray-900">Training Programs</h2>
+          <button
+            onClick={onCreateNew}
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors"
+          >
+            <Plus className="w-4 h-4" />
+            New Program
+          </button>
+        </div>
+        
+        <div className="relative">
+          {/* Scroll Left Button */}
+          {canScrollLeft && (
+            <button
+              onClick={() => scroll('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full flex items-center justify-center shadow-sm hover:bg-white transition-colors"
+            >
+              <ChevronLeft className="w-4 h-4 text-gray-600" />
+            </button>
+          )}
+
+          {/* Navigation Items Container */}
+          <div
+            ref={scrollContainer}
+            className="flex gap-3 overflow-x-auto scrollbar-hide pb-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {trainingPrograms.map((program) => {
+              const isActive = currentId === program.id;
+              const statusColor = program.status === 'active' 
+                ? 'border-green-200 bg-green-50' 
+                : program.status === 'completed'
+                ? 'border-blue-200 bg-blue-50'
+                : 'border-gray-200 bg-gray-50';
+
+              return (
+                <div
+                  key={program.id}
+                  onClick={() => router.push(`/training/${program.id}`)}
+                  className={`
+                    flex-shrink-0 cursor-pointer transition-all duration-200 rounded-2xl border-2 p-4 min-w-[200px]
+                    ${isActive 
+                      ? 'border-blue-500 bg-blue-50 shadow-lg scale-105' 
+                      : `${statusColor} hover:shadow-md hover:scale-102`
+                    }
+                  `}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`w-8 h-8 ${program.color} rounded-lg flex items-center justify-center text-white`}>
+                      {program.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className={`font-medium truncate ${isActive ? 'text-blue-900' : 'text-gray-900'}`}>
+                        {program.name}
+                      </h3>
+                      <p className={`text-sm ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>
+                        {program.type}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Progress Bar */}
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className={`text-xs font-medium ${isActive ? 'text-blue-700' : 'text-gray-600'}`}>
+                        Progress
+                      </span>
+                      <span className={`text-xs font-bold ${isActive ? 'text-blue-700' : 'text-gray-700'}`}>
+                        {program.progress}%
+                      </span>
+                    </div>
+                    <div className={`w-full h-2 rounded-full ${isActive ? 'bg-blue-200' : 'bg-gray-200'}`}>
+                      <div
+                        className={`h-2 rounded-full transition-all duration-300 ${
+                          isActive ? 'bg-blue-600' : program.color.replace('bg-', 'bg-')
+                        }`}
+                        style={{ width: `${program.progress}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Status Badge */}
+                  <div className="mt-3 flex justify-between items-center">
+                    <span className={`
+                      inline-flex items-center px-2 py-1 rounded-full text-xs font-medium
+                      ${program.status === 'active' 
+                        ? 'bg-green-100 text-green-800' 
+                        : program.status === 'completed'
+                        ? 'bg-blue-100 text-blue-800'
+                        : 'bg-gray-100 text-gray-800'
+                      }
+                    `}>
+                      {program.status.charAt(0).toUpperCase() + program.status.slice(1)}
+                    </span>
+                    {isActive && (
+                      <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Scroll Right Button */}
+          {canScrollRight && (
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full flex items-center justify-center shadow-sm hover:bg-white transition-colors"
+            >
+              <ChevronRight className="w-4 h-4 text-gray-600" />
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TrainingProgramNavBar; 

@@ -33,54 +33,58 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
 
   if (!isVisible) {
     return (
-      <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center z-50 opacity-0 transition-opacity duration-500 pointer-events-none">
+      <div className="fixed inset-0 bg-gradient-to-br from-gray-50 to-white flex items-center justify-center z-50 opacity-0 transition-opacity duration-500 pointer-events-none">
       </div>
     );
   }
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center z-50 transition-opacity duration-500">
+    <div className="fixed inset-0 bg-gradient-to-br from-gray-50 to-white flex items-center justify-center z-50 transition-opacity duration-500">
       <div className="relative">
         {/* Circular rotating text */}
-        <div className="relative w-80 h-80 flex items-center justify-center">
+        <div className="relative w-96 h-96 flex items-center justify-center">
           {/* SVG for circular text */}
           <svg className="absolute inset-0 w-full h-full animate-spin-slow" viewBox="0 0 400 400">
             <defs>
               <path
                 id="circle-path"
-                d="M 200, 200 m -150, 0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0"
+                d="M 200, 200 m -180, 0 a 180,180 0 1,1 360,0 a 180,180 0 1,1 -360,0"
               />
             </defs>
             <text 
-              className="fill-white/80 text-lg font-bold tracking-widest font-space-grotesk"
+              className="fill-gray-400 text-sm font-bold tracking-widest font-space-grotesk"
             >
               <textPath href="#circle-path" startOffset="0%">
-                MYPACE • YOUR PACE TO A BETTER SELF • MYPACE • YOUR PACE TO A BETTER SELF • 
+                MY FITNESS APP • YOUR AI-POWERED FITNESS COMPANION • MY FITNESS APP • 
               </textPath>
             </text>
           </svg>
           
           {/* Center logo/text */}
           <div className="relative z-10 text-center">
+            <img 
+              src="https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Logo%2F317ecd07-214d-4ac0-99a8-4e19c2ed8ebd.png?alt=media&token=de760234-5f32-470d-b88d-d55368799d36" 
+              alt="My Fitness App Logo" 
+              className="w-16 h-16 mx-auto mb-3 animate-pulse-slow"
+            />
             <h1 
-              className="text-white font-black animate-pulse-slow tracking-tight font-space-grotesk"
+              className="text-gray-900 font-semibold animate-pulse-slow tracking-tight font-space-grotesk"
               style={{ 
-                fontSize: '64px',
-                lineHeight: '1',
-                textShadow: '0 0 30px rgba(255,255,255,0.3)'
+                fontSize: '24px',
+                lineHeight: '1'
               }}
             >
-              MyPace
+              My Fitness App
             </h1>
-            <div className="w-12 h-1 bg-white mx-auto rounded-full animate-pulse mt-2"></div>
+            <div className="w-8 h-0.5 bg-blue-600 mx-auto rounded-full animate-pulse mt-2"></div>
           </div>
         </div>
 
         {/* Loading dots */}
         <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          <div className="w-3 h-3 bg-white rounded-full animate-bounce"></div>
-          <div className="w-3 h-3 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-          <div className="w-3 h-3 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+          <div className="w-3 h-3 bg-blue-600 rounded-full animate-bounce"></div>
+          <div className="w-3 h-3 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+          <div className="w-3 h-3 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
         </div>
       </div>
     </div>

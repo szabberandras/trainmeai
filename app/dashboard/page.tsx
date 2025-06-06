@@ -24,7 +24,8 @@ import {
   Plus,
   ArrowRight,
   CheckCircle,
-  Clock
+  Clock,
+  Download
 } from 'lucide-react';
 import LayoutClientWrapper from '@/app/components/LayoutClientWrapper';
 import ProgramCard from '@/app/components/programs/ProgramCard';
@@ -32,6 +33,7 @@ import ProgramCreator from '@/app/components/programs/ProgramCreator';
 import CinematicOnboarding, { UserPersonalization } from '@/app/components/onboarding/CinematicOnboarding';
 import ProgressInsights from '@/app/components/dashboard/ProgressInsights';
 import ProgramCreationModal from '@/app/components/programs/ProgramCreationModal';
+import WeeklyPlanExport from '@/app/components/export/WeeklyPlanExport';
 import { ProgramService } from '@/lib/services/program.service';
 import { TrainingProgram, ProgramTemplate } from '@/lib/types/program';
 import { AiMessage, GoalType } from '@/types';
@@ -327,12 +329,32 @@ export default function DashboardPage() {
   const [aiMessage, setAiMessage] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [userPersonalization, setUserPersonalization] = useState<UserPersonalization | null>(null);
-  const [conversation, setConversation] = useState<AiMessage[]>([]);
+  const [conversation, setConversation] = useState<AiMessage[]>([
+    {
+      type: 'ai',
+      content: `Welcome back! I'm your AI fitness coach. 
+
+I'm here to help you with your training programs. What would you like to work on today?
+
+You can:
+- Create a new training program
+- Continue working on an existing program  
+- Get advice on your current workouts
+- Ask any fitness-related questions
+
+What's on your mind?`,
+      timestamp: new Date(),
+      metadata: {
+        isInitialWelcome: true
+      }
+    }
+  ]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentGoalType, setCurrentGoalType] = useState<GoalType | null>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
   const [showProgramCreationModal, setShowProgramCreationModal] = useState(false);
+  const [showExport, setShowExport] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll chat to bottom when new messages are added
@@ -491,7 +513,8 @@ How are you feeling about everything we discussed?`,
       } else {
         console.error('❌ Chat response not ok:', chatResponse.status);
         console.log('🔍 Response details:', await chatResponse.text());
-        // Set initial message if no conversation exists
+        // Set initial welcome message if no conversation exists
+        console.log('💬 No existing conversation, creating welcome message');
         const userName = user.displayName || user.email?.split('@')[0] || 'there';
         let initialMessage;
         
@@ -500,49 +523,56 @@ How are you feeling about everything we discussed?`,
           const { onboardingAnswers, aiTone } = userPersonalization;
           const { activity, goal, timeCommitment, daysPerWeek, fitnessLevel, equipment } = onboardingAnswers;
           
-          const personalizedWelcome = `Hello ${userName}! 👋 I'm your AI fitness coach, and I'm excited to work with you on your ${goal} journey.
+          const personalizedWelcome = `Welcome back, ${userName}! 👋 I'm your AI fitness coach.
 
-Based on your profile, I see you're focused on ${activity} at a ${fitnessLevel} level, with ${timeCommitment} minutes available ${daysPerWeek}. ${equipment && equipment.length > 0 ? `I also have your equipment preferences: ${equipment.join(', ')}.` : 'I know you prefer bodyweight exercises.'}
+I see you're focused on ${goal} with ${activity} training at a ${fitnessLevel} level. You have ${timeCommitment} minutes available ${daysPerWeek} days per week. ${equipment && equipment.length > 0 ? `I also have your equipment preferences: ${equipment.join(', ')}.` : 'I know you prefer bodyweight exercises.'}
 
-What would you like to work on today? I can help you:
-• Create a personalized training plan
-• Adjust your current routine
-• Answer specific fitness questions
-• Plan your weekly schedule
+I'm here to help you with your training programs. What would you like to work on today?
 
-What sounds most helpful right now?`;
+You can:
+- Create a new training program
+- Continue working on an existing program  
+- Get advice on your current workouts
+- Ask any fitness-related questions
+
+What's on your mind?`;
 
           initialMessage = {
             type: 'ai' as const,
             content: personalizedWelcome,
             timestamp: new Date(),
             metadata: {
-              isPersonalizedWelcome: true
+              isPersonalizedWelcome: true,
+              isInitialWelcome: true
             }
           };
         } else {
           // Welcome message for users without complete onboarding
-          const genericWelcome = `Hello ${userName}! 👋 I'm your AI fitness coach, and I'm here to help you achieve your fitness goals.
+          const genericWelcome = `Welcome back! I'm your AI fitness coach. 
 
-I can assist you with:
-• Creating personalized training plans
-• Answering fitness and nutrition questions  
-• Helping you stay motivated and on track
-• Adjusting workouts based on your progress
+I'm here to help you with your training programs. What would you like to work on today?
 
-What would you like to work on today? Feel free to tell me about your fitness goals, current activity level, or any specific questions you have!`;
+You can:
+- Create a new training program
+- Continue working on an existing program  
+- Get advice on your current workouts
+- Ask any fitness-related questions
+
+What's on your mind?`;
 
           initialMessage = {
             type: 'ai' as const,
             content: genericWelcome,
             timestamp: new Date(),
             metadata: {
-              isPersonalizedWelcome: false
+              isPersonalizedWelcome: false,
+              isInitialWelcome: true
             }
           };
         }
         
         setConversation([initialMessage]);
+        console.log('✅ Initial welcome message set');
       }
     } catch (error) {
       console.error('Error loading user data:', error);
@@ -563,26 +593,54 @@ What would you like to work on today? Feel free to tell me about your fitness go
           const userDoc = await getDoc(doc(db, 'users', user.uid));
           if (userDoc.exists()) {
             const userData = userDoc.data();
-            // Always show onboarding if user hasn't completed it properly
-            if (userData.hasCompletedOnboarding && userData.onboardingAnswers) {
+            console.log('📋 User data found:', {
+              hasCompletedOnboarding: userData.hasCompletedOnboarding,
+              hasOnboardingAnswers: !!userData.onboardingAnswers,
+              userCreatedAt: userData.createdAt
+            });
+            
+            // Check if user has completed onboarding properly with stricter validation
+            const hasValidOnboarding = userData.hasCompletedOnboarding && 
+                                     userData.onboardingAnswers && 
+                                     userData.onboardingAnswers.activity &&
+                                     userData.onboardingAnswers.goal &&
+                                     userData.onboardingAnswers.fitnessLevel &&
+                                     userData.completedAt;
+            
+            if (hasValidOnboarding) {
+              console.log('✅ User has completed onboarding, loading dashboard');
               setUserPersonalization(userData as UserPersonalization);
               setHasCompletedOnboarding(true);
+              setShowOnboarding(false);
               // Load the rest of the data
               await loadUserData();
             } else {
               // User exists but hasn't completed onboarding properly, show it
-              console.log('User exists but onboarding incomplete, showing onboarding');
+              console.log('⚠️ User exists but onboarding incomplete, showing onboarding');
+              console.log('Missing onboarding data:', {
+                hasCompletedOnboarding: userData.hasCompletedOnboarding,
+                hasOnboardingAnswers: !!userData.onboardingAnswers,
+                hasActivity: userData.onboardingAnswers?.activity,
+                hasGoal: userData.onboardingAnswers?.goal,
+                hasFitnessLevel: userData.onboardingAnswers?.fitnessLevel,
+                hasCompletedAt: !!userData.completedAt
+              });
               setShowOnboarding(true);
+              setHasCompletedOnboarding(false);
               return; // Don't load other data until onboarding is complete
             }
           } else {
             // New user, show onboarding
-            console.log('New user detected, showing onboarding');
+            console.log('🆕 New user detected, showing onboarding');
             setShowOnboarding(true);
+            setHasCompletedOnboarding(false);
             return; // Don't load other data until onboarding is complete
           }
         } catch (error) {
-          console.error('Error loading user data:', error);
+          console.error('❌ Error loading user data:', error);
+          // On error, default to showing onboarding to be safe
+          setShowOnboarding(true);
+          setHasCompletedOnboarding(false);
         }
       }
     };

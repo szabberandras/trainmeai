@@ -8,6 +8,8 @@ import { chatService } from '@/lib/services/chatService';
 import { TrainingService } from '@/lib/services/training.service';
 import { CoachPersona } from '@/lib/types/training-system';
 import coachPersonas from '@/lib/data/coach-personas.json';
+import { db } from '@/lib/firebase';
+import { collection, addDoc, query, where, orderBy, getDocs, limit, deleteDoc } from 'firebase/firestore';
 
 // --- Authentication for Server-Side AI Calls ---
 let genAI: GoogleGenerativeAI | undefined;
@@ -115,6 +117,13 @@ ${selectedPersona.responsePatterns.educational_integration.map((pattern: string)
   
   return basePrompt + `
 
+CRITICAL CONVERSATION MEMORY RULES:
+- You MUST remember and reference ALL previous conversation details
+- NEVER ask for information the user has already provided
+- Build upon what you already know about the user
+- Reference specific details they've shared (running experience, injury history, schedule, etc.)
+- If you need clarification, ask about NEW aspects, not things already discussed
+
 MYPACE PHILOSOPHY (Universal):
 - This is about understanding the person at THEIR pace, not rushing to results
 - Ask ONLY ONE simple, conversational question at a time - this is absolutely critical
@@ -124,11 +133,41 @@ MYPACE PHILOSOPHY (Universal):
 - Build emotional connection through encouragement and understanding
 - NEVER ask multiple questions in one response - this violates MyPace principles
 
+CONVERSATION PROGRESSION:
+- I know this may seem detailed, but my goal is to create a plan that is uniquely yours
+- After gathering sufficient information (4-6 meaningful exchanges), provide a comprehensive summary
+- When ready to generate a plan, respond with [READY_TO_GENERATE]
+
 PERSONA-SPECIFIC TONE: ${selectedPersona.style?.tone || 'supportive and professional'}
 COMMUNICATION STYLE: ${selectedPersona.style?.communication || 'encouraging and clear'}
 
-Remember: Adapt your expertise level and communication style to match this persona while maintaining the MyPace philosophy of one question at a time and genuine connection building.`;
+Remember: Adapt your expertise level and communication style to match this persona while maintaining the MyPace philosophy and NEVER repeating questions.`;
 };
+
+export async function DELETE(request: Request) {
+  try {
+    const { userId } = await request.json();
+    
+    if (!userId) {
+      return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
+    }
+
+    // Delete all conversation history for the user
+    const conversationRef = collection(db, 'conversations');
+    const q = query(conversationRef, where('userId', '==', userId));
+    const querySnapshot = await getDocs(q);
+    
+    const deletePromises = querySnapshot.docs.map(doc => deleteDoc(doc.ref));
+    await Promise.all(deletePromises);
+    
+    console.log(`🗑️ Cleared conversation history for user: ${userId}`);
+    
+    return NextResponse.json({ success: true, deletedCount: querySnapshot.docs.length });
+  } catch (error) {
+    console.error('❌ Error clearing conversation history:', error);
+    return NextResponse.json({ error: 'Failed to clear conversation history' }, { status: 500 });
+  }
+}
 
 export async function POST(req: Request) {
   const { message, context, history, userId, personalization } = await req.json();
@@ -238,17 +277,66 @@ Training Location: ${trainingLocation}${personaContext}${onboardingContext}
 IMPORTANT: Use this profile information to provide highly personalized responses that match their preferences, goals, and current situation. Reference their specific details when relevant to show you understand their unique context.`;
     }
 
-    // Create a conversation summary for better context
+    // Create a comprehensive conversation summary for better context
     let conversationSummary = '';
     if (persistentHistory.length > 0) {
-      conversationSummary = `\n\nCONVERSATION CONTEXT:\nThis is a continuing conversation. The user has already shared information about their fitness goals and preferences. Please reference and build upon the previous conversation rather than starting over.\n\nRecent conversation:\n`;
+      // Extract key information from conversation
+      const userInfo = {
+        goals: [] as string[],
+        experience: [] as string[],
+        schedule: [] as string[],
+        limitations: [] as string[],
+        preferences: [] as string[]
+      };
+      
+      persistentHistory.forEach((msg: AiMessage) => {
+        if (msg.type === 'user') {
+          const content = msg.content.toLowerCase();
+          // Extract key information patterns
+          if (content.includes('marathon') || content.includes('race')) {
+            userInfo.goals.push('Marathon/Race training');
+          }
+          if (content.includes('5km') || content.includes('5 km')) {
+            userInfo.experience.push('Currently runs 5km');
+          }
+          if (content.includes('cycle') || content.includes('bike')) {
+            userInfo.experience.push('Cycles daily to work');
+          }
+          if (content.includes('gym') || content.includes('strength')) {
+            userInfo.experience.push('Regular gym training');
+          }
+          if (content.includes('knee') || content.includes('injury')) {
+            userInfo.limitations.push('Previous knee injury');
+          }
+          if (content.includes('toddler') || content.includes('child')) {
+            userInfo.schedule.push('Has a toddler');
+          }
+          if (content.includes('office') || content.includes('work')) {
+            userInfo.schedule.push('Office work schedule');
+          }
+        }
+      });
+      
+      conversationSummary = `\n\nCONVERSATION CONTEXT - CRITICAL INFORMATION ALREADY SHARED:
+This is a continuing conversation. The user has already provided the following information:
+
+GOALS: ${userInfo.goals.join(', ') || 'Not yet specified'}
+EXPERIENCE: ${userInfo.experience.join(', ') || 'Not yet specified'}
+SCHEDULE: ${userInfo.schedule.join(', ') || 'Not yet specified'}
+LIMITATIONS: ${userInfo.limitations.join(', ') || 'None mentioned'}
+
+RECENT CONVERSATION (last 6 messages):
+`;
       persistentHistory.slice(-6).forEach((msg: AiMessage) => {
         conversationSummary += `${msg.type.toUpperCase()}: ${msg.content}\n`;
       });
-      conversationSummary += '\nPlease continue this conversation naturally, referring to what the user has already told you.';
+      conversationSummary += `\nIMPORTANT: DO NOT ask for information already provided above. Continue the conversation by building on what you know and asking about NEW aspects only.`;
       
-      console.log('📝 Conversation summary created:');
-      console.log(conversationSummary.substring(0, 500) + '...');
+      console.log('📝 Enhanced conversation summary created with extracted info:');
+      console.log('Goals:', userInfo.goals);
+      console.log('Experience:', userInfo.experience);
+      console.log('Schedule:', userInfo.schedule);
+      console.log('Limitations:', userInfo.limitations);
     } else {
       console.log('📝 No conversation history - starting fresh');
     }

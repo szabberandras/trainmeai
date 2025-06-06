@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import { Plus, Sparkles, MessageCircle } from 'lucide-react';
+import { Plus, Sparkles, MessageCircle, Download } from 'lucide-react';
+import WeeklyPlanExport from '@/app/components/export/WeeklyPlanExport';
 
 export default function TrainingPlansPage() {
   const [user, loading] = useAuthState(auth);
@@ -17,6 +18,7 @@ export default function TrainingPlansPage() {
     maxPlans: 2,
     programs: []
   });
+  const [exportingProgram, setExportingProgram] = useState<any>(null);
 
   useEffect(() => {
     if (!user && !loading) {
@@ -86,12 +88,24 @@ export default function TrainingPlansPage() {
                   <span style={styles.statLabel}>Workouts</span>
                 </div>
               </div>
+              <div style={styles.buttonGroup}>
                 <button
-                style={styles.viewButton}
-                onClick={() => router.push(`/training-plans/${program.id}`)}
-              >
-                View Plan
+                  style={styles.exportButton}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setExportingProgram(program);
+                  }}
+                >
+                  <Download size={16} />
+                  <span>Export</span>
                 </button>
+                <button
+                  style={styles.viewButton}
+                  onClick={() => router.push(`/training-plans/${program.id}`)}
+                >
+                  View Plan
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -119,6 +133,52 @@ export default function TrainingPlansPage() {
             </button>
           </div>
         </div>
+      )}
+
+      {/* Export Modal */}
+      {exportingProgram && (
+        <WeeklyPlanExport
+          weeklyPlan={{
+            weekNumber: 1,
+            totalWeeks: exportingProgram.weeklyPlans?.length || 4,
+            programName: exportingProgram.name,
+            userGoal: exportingProgram.goal || "Fitness Training",
+            days: exportingProgram.weeklyPlans?.[0]?.workouts?.map((workout: any, index: number) => ({
+              day: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][index] || `Day ${index + 1}`,
+              focus: workout.type || 'Training',
+              duration: workout.duration || "45 minutes",
+              exercises: workout.exercises?.map((exercise: any) => ({
+                name: exercise.name,
+                sets: exercise.sets,
+                reps: exercise.reps,
+                weight: exercise.weight,
+                duration: exercise.duration,
+                instructions: exercise.instructions || []
+              })) || []
+            })) || [
+              {
+                day: 'Monday',
+                focus: 'Training Day',
+                duration: '45 minutes',
+                exercises: [
+                  {
+                    name: exportingProgram.name,
+                    sets: 3,
+                    reps: 12,
+                    instructions: ['Follow your personalized training program']
+                  }
+                ]
+              }
+            ],
+            nutrition: {
+              preWorkout: "Light carbs 30-60 minutes before exercise",
+              postWorkout: "Protein and carbs within 30 minutes after exercise",
+              daily: "Balanced meals with adequate protein, complex carbs, and healthy fats",
+              hydration: "8-10 glasses of water daily, more during intense training"
+            }
+          }}
+          onClose={() => setExportingProgram(null)}
+        />
       )}
     </div>
   );
@@ -215,8 +275,25 @@ const styles = {
     fontSize: '0.875rem',
     color: '#666',
   },
+  buttonGroup: {
+    display: 'flex',
+    gap: '0.5rem',
+  },
+  exportButton: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    padding: '0.75rem 1rem',
+    backgroundColor: '#f3f4f6',
+    color: '#374151',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontSize: '0.875rem',
+    flex: '0 0 auto',
+  },
   viewButton: {
-    width: '100%',
+    flex: '1',
     padding: '0.75rem',
     backgroundColor: '#0047FF',
     color: 'white',

@@ -660,8 +660,19 @@ Maybe it's something energizing like dancing or running, something calming like 
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="animate-pulse text-gray-400">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center">
+        <div className="text-center max-w-md p-8">
+          <div className="mb-8 flex justify-center">
+            <img 
+              src="https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Logo%2F317ecd07-214d-4ac0-99a8-4e19c2ed8ebd.png?alt=media&token=de760234-5f32-470d-b88d-d55368799d36" 
+              alt="TrainMeAI Logo" 
+              className="w-20 h-20 object-contain"
+            />
+          </div>
+          <h1 className="text-2xl font-light text-gray-900 mb-2 font-sans">My Fitness App</h1>
+          <p className="text-gray-600 mb-8 font-sans">Preparing your personalized onboarding...</p>
+          <div className="w-8 h-8 border-3 border-gray-200 border-t-blue-500 rounded-full animate-spin mx-auto"></div>
+        </div>
       </div>
     );
   }
@@ -669,48 +680,38 @@ Maybe it's something energizing like dancing or running, something calming like 
   // Welcome to MyPace screen
   if (currentScreen === 0) {
     return (
-      <div className="min-h-screen bg-black flex flex-col items-center justify-center px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-600 via-blue-600 via-emerald-500 to-cyan-500 opacity-85" />
-        <div className="absolute inset-0 bg-gradient-to-tl from-blue-500 via-teal-500 to-emerald-600 opacity-75 animate-pulse" />
-        
-        <div className={`relative z-10 text-center transition-all duration-1000 ${isTransitioning ? 'opacity-0 transform translate-y-8' : 'opacity-100 transform translate-y-0'}`}>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex flex-col items-center justify-center px-8 relative">
+        <div className={`text-center transition-all duration-1000 ${isTransitioning ? 'opacity-0 transform translate-y-8' : 'opacity-100 transform translate-y-0'}`}>
           <div className="mb-12">
-            <div className="w-20 h-20 mx-auto mb-8 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
-              <Sparkles className="text-white" size={28} />
+            <div className="mb-8 flex justify-center">
+              <img 
+                src="https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Logo%2F8819f3df-3241-4f21-be52-827df2f7cc25.png?alt=media&token=a017389c-c181-4143-9366-67bd70c9b6dd" 
+                alt="TrainMeAI Logo" 
+                className="h-20 w-auto object-contain"
+              />
             </div>
             
-            <h1 className="text-6xl md:text-7xl font-light text-white tracking-tight mb-6 animate-handwrite" style={{ fontFamily: 'Brush Script MT, cursive' }}>
-              Welcome to MyPace
+            <h1 className="text-5xl md:text-6xl font-semibold text-gray-900 tracking-tight mb-6" style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}>
+              Welcome to My Fitness App
             </h1>
           </div>
           
-          <p className="text-xl text-white/80 mb-16 font-light max-w-2xl mx-auto leading-relaxed">
-            A tool designed to help you take charge of your wellbeing,
+          <p className="text-xl text-gray-600 mb-16 font-medium max-w-2xl mx-auto leading-relaxed">
+            Your AI-powered fitness companion designed to help you achieve your goals
             <br />
-            one step at a time, at your own pace
+            with personalized training programs and expert guidance
           </p>
           
           <div className="flex justify-center">
             <button
               onClick={handleNext}
-              className="group flex flex-col items-center text-white hover:text-white transition-all duration-300"
+              className="group flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 font-semibold"
             >
-              <div className="w-8 h-8 rounded-full border-2 border-white/80 flex items-center justify-center mb-2 group-hover:border-white transition-colors duration-300">
-                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform duration-300" />
-              </div>
-              <span className="text-sm font-medium">Let's begin</span>
+              <span>Get Started</span>
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </div>
         </div>
-
-        <style jsx>{`
-          @keyframes handwrite {
-            0% { opacity: 0; transform: translateY(30px) scale(0.9); }
-            50% { opacity: 0.8; }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-          }
-          .animate-handwrite { animation: handwrite 2.5s ease-out forwards; }
-        `}</style>
       </div>
     );
   }
@@ -718,33 +719,30 @@ Maybe it's something energizing like dancing or running, something calming like 
   // Path choice screen
   if (currentScreen === 1) {
     return (
-      <div className="min-h-screen bg-black flex flex-col items-center justify-center px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-blue-600 via-purple-500 to-pink-500 opacity-80" />
-        <div className="absolute inset-0 bg-gradient-to-tl from-orange-400 via-pink-500 to-purple-600 opacity-70 animate-pulse" />
-        
-        <div className={`relative z-10 text-center transition-all duration-1000 ${isTransitioning ? 'opacity-0 transform translate-y-8' : 'opacity-100 transform translate-y-0'}`}>
-          <h1 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight max-w-4xl mx-auto leading-tight">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex flex-col items-center justify-center px-8 relative">
+        <div className={`text-center transition-all duration-1000 max-w-4xl mx-auto ${isTransitioning ? 'opacity-0 transform translate-y-8' : 'opacity-100 transform translate-y-0'}`}>
+          <h1 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight leading-tight">
             Start your journey
           </h1>
           
-          <p className="text-lg text-white/80 mb-16 font-light max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 mb-16 font-light max-w-2xl mx-auto">
             Choose the path that feels right for you
           </p>
           
-          <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto mb-12">
+          <div className="flex flex-col md:flex-row gap-8 mb-12">
             <button
               onClick={() => handlePathChoice('goal-focused')}
-              className="group flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:scale-105 text-left"
+              className="group flex-1 bg-white border border-gray-200 rounded-3xl p-8 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:scale-105 text-left"
             >
               <div className="flex items-start gap-4">
-                <div className="bg-white/20 p-3 rounded-2xl group-hover:bg-white/30 transition-colors duration-300">
-                  <Target className="text-white" size={24} />
+                <div className="bg-blue-100 p-3 rounded-2xl group-hover:bg-blue-200 transition-colors duration-300">
+                  <Target className="text-blue-600" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     I have a goal I need help with
                   </h3>
-                  <p className="text-white/70 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     You know what you want to achieve and need a structured plan to get there
                   </p>
                 </div>
@@ -753,17 +751,17 @@ Maybe it's something energizing like dancing or running, something calming like 
             
             <button
               onClick={() => handlePathChoice('exploratory')}
-              className="group flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:scale-105 text-left"
+              className="group flex-1 bg-white border border-gray-200 rounded-3xl p-8 hover:border-green-300 hover:shadow-lg transition-all duration-300 hover:scale-105 text-left"
             >
               <div className="flex items-start gap-4">
-                <div className="bg-white/20 p-3 rounded-2xl group-hover:bg-white/30 transition-colors duration-300">
-                  <Heart className="text-white" size={24} />
+                <div className="bg-green-100 p-3 rounded-2xl group-hover:bg-green-200 transition-colors duration-300">
+                  <Heart className="text-green-600" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     I'm not sure what I'd like to do
                   </h3>
-                  <p className="text-white/70 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     You're open to exploring and want guidance on what might work best for you
                   </p>
                 </div>
