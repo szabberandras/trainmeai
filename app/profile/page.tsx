@@ -6,9 +6,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import LayoutClientWrapper from '@/app/components/LayoutClientWrapper';
+import PersonaCard from '@/app/components/dashboard/PersonaCard';
+import PersonaSwitchModal from '@/app/components/dashboard/PersonaSwitchModal';
 import { User } from 'firebase/auth';
 import { cache } from '@/lib/cache';
 import { logError } from '@/lib/errorLogging';
+import { CoachPersona } from '@/lib/types/training-system';
+import { UserPersonalization } from '@/app/components/onboarding/CinematicOnboarding';
 
 interface UserProfile {
   name: string;
@@ -61,6 +65,8 @@ export default function ProfilePage() {
   const [isSaving, setIsSaving] = useState(false);
   const [isResettingOnboarding, setIsResettingOnboarding] = useState(false);
   const [activeTab, setActiveTab] = useState('profile');
+  const [showPersonaSwitchModal, setShowPersonaSwitchModal] = useState(false);
+  const [userPersonalization, setUserPersonalization] = useState<UserPersonalization | null>(null);
   const [profile, setProfile] = useState<UserProfile>({
     name: '',
     email: '',
@@ -90,6 +96,11 @@ export default function ProfilePage() {
             ...prevProfile,
             ...profileData
           }));
+          
+          // Load personalization data for persona settings
+          if ((profileData as any).hasCompletedOnboarding) {
+            setUserPersonalization(profileData as any);
+          }
         }
       }
     };
@@ -159,6 +170,38 @@ export default function ProfilePage() {
     }
   };
 
+  const handlePersonaSwitch = async (newPersona: CoachPersona) => {
+    if (!user || !userPersonalization) return;
+
+    try {
+      // Update the user's personalization with the new persona
+      const updatedPersonalization = {
+        ...userPersonalization,
+        selectedPersona: newPersona,
+      };
+
+      // Save to Firebase
+      await updateDoc(doc(db, 'users', user.uid), {
+        selectedPersona: newPersona,
+        updatedAt: new Date()
+      });
+
+      // Update local state
+      setUserPersonalization(updatedPersonalization);
+      
+      // Invalidate cache
+      cache.invalidate(`userProfile:${user.uid}`);
+      
+      console.log(`🤖 Switched to ${newPersona} persona`);
+    } catch (error) {
+      await logError(error, {
+        context: 'persona-switch',
+        user: user.uid,
+        metadata: { newPersona }
+      });
+    }
+  };
+
   if (loading) {
     return (
       <LayoutClientWrapper>
@@ -199,6 +242,16 @@ export default function ProfilePage() {
                 <p className="text-sm font-bold leading-normal tracking-[0.015em]">Notifications</p>
               </button>
               <button
+                onClick={() => setActiveTab('coach')}
+                className={`flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 ${
+                  activeTab === 'coach'
+                    ? 'border-b-[#111318] text-[#111318]'
+                    : 'border-b-transparent text-[#617089]'
+                }`}
+              >
+                <p className="text-sm font-bold leading-normal tracking-[0.015em]">Coach Settings</p>
+              </button>
+              <button
                 onClick={() => setActiveTab('privacy')}
                 className={`flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 ${
                   activeTab === 'privacy'
@@ -224,6 +277,7 @@ export default function ProfilePage() {
           <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
             {activeTab === 'profile' && 'Profile Information'}
             {activeTab === 'notifications' && 'Notification Settings'}
+            {activeTab === 'coach' && 'AI Coach Settings'}
             {activeTab === 'privacy' && 'Privacy Settings'}
             {activeTab === 'settings' && 'App Settings'}
           </h2>
@@ -335,6 +389,26 @@ export default function ProfilePage() {
             </div>
           )}
 
+          {activeTab === 'coach' && userPersonalization?.selectedPersona && (
+            <div className="px-4 py-3">
+              <div className="max-w-[600px]">
+                <div className="mb-6">
+                  <p className="text-[#617089] text-sm leading-normal mb-4">
+                    Your AI coach adapts its communication style and training approach based on your selected persona. 
+                    You can switch between different coaching styles at any time.
+                  </p>
+                </div>
+                
+                <PersonaCard
+                  selectedPersona={userPersonalization.selectedPersona}
+                  personaSelection={userPersonalization.personaSelection}
+                  onPersonaChange={() => setShowPersonaSwitchModal(true)}
+                  onLearnMore={() => setShowPersonaSwitchModal(true)}
+                />
+              </div>
+            </div>
+          )}
+
           {activeTab === 'privacy' && (
             <div className="px-4 py-3">
               <div className="flex max-w-[480px] flex-col gap-4">
@@ -431,6 +505,16 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
+
+      {/* Persona Switch Modal */}
+      {userPersonalization?.selectedPersona && (
+        <PersonaSwitchModal
+          isOpen={showPersonaSwitchModal}
+          currentPersona={userPersonalization.selectedPersona}
+          onClose={() => setShowPersonaSwitchModal(false)}
+          onPersonaSelect={handlePersonaSwitch}
+        />
+      )}
     </LayoutClientWrapper>
   );
 } 

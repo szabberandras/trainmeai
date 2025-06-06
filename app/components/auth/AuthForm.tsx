@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { auth, firebaseConfig } from '@/lib/firebase';
+import { auth } from '@/lib/firebase';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -63,12 +63,6 @@ export default function AuthForm({ isRegistering, onToggleMode }: AuthFormProps)
 
     // Check Firebase configuration
     console.log('🔥 Firebase Auth initialized:', !!auth);
-    console.log('🔥 Firebase config check:', {
-      hasApiKey: !!firebaseConfig.apiKey,
-      hasAuthDomain: !!firebaseConfig.authDomain,
-      hasProjectId: !!firebaseConfig.projectId,
-      projectId: firebaseConfig.projectId
-    });
   }, []);
 
   // Check if email already exists

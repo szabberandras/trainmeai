@@ -22,7 +22,7 @@ export interface Exercise {
   
   // How to measure and progress this exercise
   metrics: {
-    type: 'reps' | 'time' | 'distance' | 'weight' | 'rounds' | 'duration';
+    type: 'reps' | 'time' | 'distance' | 'weight' | 'rounds' | 'duration' | 'power';
     defaultValue: number;
     progressionRate: number; // percentage increase per week
     unit?: string; // kg, lbs, seconds, meters, etc.

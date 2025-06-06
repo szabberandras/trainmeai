@@ -22,12 +22,31 @@ import LayoutClientWrapper from '@/app/components/LayoutClientWrapper';
 import ProgramCard from '@/app/components/programs/ProgramCard';
 import ProgramCreator from '@/app/components/programs/ProgramCreator';
 import CinematicOnboarding, { UserPersonalization } from '@/app/components/onboarding/CinematicOnboarding';
+import ProgressInsights from '@/app/components/dashboard/ProgressInsights';
 import { ProgramService } from '@/lib/services/program.service';
 import { TrainingProgram, ProgramTemplate } from '@/lib/types/program';
 import { AiMessage, GoalType } from '@/types';
 
+
 // Hero image should be a high-quality fitness/workout image
 const HERO_BG = "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Falgi-vmdJ6n8PIa8-unsplash.jpg?alt=media&token=62b61f06-50d6-404e-a457-87e16d567dfa";
+
+// Past training plans images from JavaScript version
+const PAST_PLAN_IMAGES = {
+  "Yoga for Beginners": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fthe-nix-company-biX8sBfNcPc-unsplash.jpg?alt=media&token=21cdc6cb-d8e9-4e8f-9d97-238b0d798427",
+  "Cardio Blast": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Frisen-wang-20jX9b35r_M-unsplash.jpg?alt=media&token=c94ff3e1-7dbd-49b9-82a2-37d6decfd7f4",
+  "Strength Foundations": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fsamuel-girven-VJ2s0c20qCo-unsplash.jpg?alt=media&token=0b51bc15-a0e1-4421-b43d-5102202208b7",
+  "Endurance Build": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fbradley-dunn-fjpl1yrNvNQ-unsplash.jpg?alt=media&token=d8a1d533-4afe-4703-b0cb-310353c70f6f",
+  "Recovery & Mobility": "https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Hero%2Fcarl-barcelo-nqUHQkuVj3c-unsplash.jpg?alt=media&token=748ecbe7-224f-4aa8-ae97-bcaa0d4dc0c2",
+};
+
+const PAST_PLAN_ITEMS = [
+  { title: "Yoga for Beginners", imageKey: "Yoga for Beginners" },
+  { title: "Cardio Blast", imageKey: "Cardio Blast" },
+  { title: "Strength Foundations", imageKey: "Strength Foundations" },
+  { title: "Endurance Build", imageKey: "Endurance Build" },
+  { title: "Recovery & Mobility", imageKey: "Recovery & Mobility" },
+];
 
 // Activity templates with personalization support
 const ACTIVITY_TEMPLATES = [
@@ -590,6 +609,8 @@ What would you like to focus on today? I can help you create a personalized trai
     }
   };
 
+
+
   if (loading) {
     return (
       <LayoutClientWrapper>
@@ -840,6 +861,44 @@ Your program is now being saved and you'll be redirected to view the full detail
               </div>
             </div>
 
+            {/* Progress Insights Section */}
+            {userPersonalization?.selectedPersona && (
+              <div className="mt-8">
+                <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
+                  Your Progress Insights
+                </h2>
+                <div className="max-w-[600px]">
+                  <ProgressInsights
+                    selectedPersona={userPersonalization.selectedPersona}
+                    personaSelection={userPersonalization.personaSelection}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Past Training Plans Carousel */}
+            <div className="mt-8">
+              <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
+                Past Training Plans
+              </h2>
+              <div className="bg-white rounded-xl border border-[#dbdfe6] p-6">
+                <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                  {PAST_PLAN_ITEMS.map((item, index) => (
+                    <div key={index} className="flex-shrink-0 w-40 text-center">
+                      <div className="w-full h-24 rounded-lg overflow-hidden mb-2">
+                        <img 
+                          src={PAST_PLAN_IMAGES[item.imageKey as keyof typeof PAST_PLAN_IMAGES]} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <p className="text-sm text-gray-600 font-medium">{item.title}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             {/* Activity Templates Section */}
             <div className="mt-8">
               <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-6">
@@ -925,6 +984,8 @@ Your program is now being saved and you'll be redirected to view the full detail
               initialType={currentGoalType}
             />
           )}
+
+
         </div>
       </div>
     </LayoutClientWrapper>

@@ -55,6 +55,7 @@ export interface AiMessage {
     evaluation?: 'positive' | 'negative';
     isCheckIn?: boolean;
     isPersonalizedWelcome?: boolean;
+    isPersonaSwitch?: boolean;
   };
 }
 

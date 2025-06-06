@@ -2,118 +2,271 @@
   "goals": {
     "strength": {
       "name": "Strength Training",
-      "questions": [
-        {
-          "id": "experience",
-          "text": "How many days per week do you currently work out?",
-          "type": "numeric",
-          "validation": {
-            "min": 0,
-            "max": 7
-          },
-          "followUp": {
-            "0-1": "Starting fresh is great! We'll begin with fundamentals.",
-            "2-3": "Good baseline! We can build on this.",
-            "4+": "Excellent! We can create an advanced program."
-          }
-        },
-        {
-          "id": "exercises",
-          "text": "What type of exercises are you familiar with?",
-          "type": "multi_select",
-          "options": [
-            "Bodyweight exercises",
-            "Free weights",
-            "Machines",
-            "Olympic lifts"
+      "experience_branches": {
+        "beginner": {
+          "name": "Beginner Strength (New to lifting)",
+          "safety_priority": true,
+          "questions": [
+            {
+              "id": "movement_screening",
+              "text": "Can you do 5 bodyweight squats with good form?",
+              "type": "boolean",
+              "safety_note": "Movement screening for injury prevention"
+            },
+            {
+              "id": "equipment_familiarity", 
+              "text": "Have you ever used free weights vs machines?",
+              "type": "multi_select",
+              "options": ["Never used weights", "Machines only", "Free weights", "Both"],
+              "safety_focus": "Equipment familiarity assessment"
+            },
+            {
+              "id": "injury_concerns",
+              "text": "Any back, knee, or shoulder concerns we should know about?",
+              "type": "text",
+              "required": true,
+              "priority": "injury_prevention"
+            },
+            {
+              "id": "bodyweight_comfort",
+              "text": "Are you comfortable starting with bodyweight exercises only?",
+              "type": "boolean",
+              "coaching_note": "Progressive entry point"
+            },
+            {
+              "id": "timeline_expectations",
+              "text": "Do you understand that real strength results take months, not weeks?",
+              "type": "boolean",
+              "education_focus": "realistic_expectations"
+            }
           ]
         },
-        {
-          "id": "current_lifts",
-          "text": "Do you know your current lift numbers for any of these exercises?",
-          "type": "compound",
-          "exercises": [
+        "amateur": {
+          "name": "Amateur Strength (Some experience)",
+          "questions": [
             {
-              "name": "Squat",
-              "unit": "kg/lbs"
+              "id": "workout_consistency",
+              "text": "How consistent have you been with your current workout routine?",
+              "type": "select",
+              "options": ["Very consistent (4+ weeks)", "Somewhat consistent", "Inconsistent", "Just starting again"]
             },
             {
-              "name": "Bench Press",
-              "unit": "kg/lbs"
+              "id": "exercise_comfort",
+              "text": "Which exercises are you comfortable performing?",
+              "type": "multi_select",
+              "options": ["Bodyweight exercises", "Machine exercises", "Free weight basics", "Compound movements"]
             },
             {
-              "name": "Deadlift",
-              "unit": "kg/lbs"
+              "id": "current_lifts",
+              "text": "Do you know approximate numbers for any of these lifts?",
+              "type": "compound",
+              "exercises": [
+                {"name": "Squat", "unit": "kg/lbs", "optional": true},
+                {"name": "Bench Press", "unit": "kg/lbs", "optional": true},
+                {"name": "Deadlift", "unit": "kg/lbs", "optional": true}
+              ]
+            }
+          ]
+        },
+        "advanced": {
+          "name": "Advanced Strength",
+          "questions": [
+            {
+              "id": "current_phase",
+              "text": "What training phase are you currently in?",
+              "type": "select",
+              "options": ["Hypertrophy", "Strength", "Power", "Deload/Recovery", "Not sure"]
+            },
+            {
+              "id": "progression_method",
+              "text": "What progression method do you currently use?",
+              "type": "select", 
+              "options": ["Linear progression", "Percentage-based", "RPE-based", "Undulating", "Block periodization"]
+            },
+            {
+              "id": "sport_specific",
+              "text": "Are you training for general strength or sport-specific goals?",
+              "type": "select",
+              "options": ["General strength", "Powerlifting", "Olympic lifting", "Sport performance", "Bodybuilding"]
             }
           ]
         }
-      ],
+      },
+      "experience_assessment": {
+        "beginner_indicators": [
+          "No structured program experience ever",
+          "Cannot perform basic bodyweight movements with good form", 
+          "Gets winded climbing 2 flights of stairs",
+          "Has never tracked workouts or progression",
+          "Unrealistic timeline expectations"
+        ],
+        "amateur_indicators": [
+          "Some gym experience but inconsistent",
+          "Knows some exercises but unsure about programming",
+          "Has tried programs but never completed them", 
+          "Understands basic concepts but lacks application",
+          "Wants to 'get serious' about fitness"
+        ]
+      },
       "programTemplates": {
         "beginner": {
           "frequency": "3x per week",
-          "progression": "Linear",
-          "exercises": ["Squats", "Bench Press", "Rows", "Deadlifts"]
+          "progression": "Bodyweight mastery first",
+          "exercises": ["Bodyweight squats", "Push-ups", "Planks", "Basic movements"],
+          "safety_focus": "Form mastery before load",
+          "timeline": "8-12 weeks foundation building"
         },
-        "intermediate": {
-          "frequency": "4x per week",
-          "progression": "Undulating",
-          "exercises": ["Back Squats", "Bench Press", "Deadlifts", "OHP"]
+        "amateur": {
+          "frequency": "3-4x per week", 
+          "progression": "Linear with deloads",
+          "exercises": ["Goblet squats", "Dumbbell press", "Supported rows", "Progressive loading"]
         },
         "advanced": {
-          "frequency": "5-6x per week",
-          "progression": "Block Periodization",
-          "exercises": ["Competition Lifts", "Variations", "Accessories"]
+          "frequency": "4-6x per week",
+          "progression": "Periodized programming",
+          "exercises": ["Competition lifts", "Variations", "Accessories", "Percentage-based"]
         }
       }
     },
     "endurance": {
       "name": "Marathon Training",
-      "questions": [
-        {
-          "id": "current_distance",
-          "text": "What's your current longest running distance?",
-          "type": "numeric",
-          "unit": "km",
-          "validation": {
-            "min": 0,
-            "max": 42.2
-          }
-        },
-        {
-          "id": "weekly_mileage",
-          "text": "How many kilometers do you run per week?",
-          "type": "numeric",
-          "validation": {
-            "min": 0
-          }
-        },
-        {
-          "id": "race_goal",
-          "text": "Do you have a target marathon time?",
-          "type": "time",
-          "format": "HH:MM:SS"
-        }
-      ],
-      "programTemplates": {
+      "experience_branches": {
         "beginner": {
-          "duration": "24 weeks",
-          "peakMileage": "50km/week",
-          "longRun": "up to 32km"
+          "name": "Beginner Running (Never run consistently)",
+          "safety_priority": true,
+          "questions": [
+            {
+              "id": "running_experience",
+              "text": "Have you ever run for more than 10 minutes straight?",
+              "type": "boolean",
+              "safety_note": "Base assessment for injury prevention"
+            },
+            {
+              "id": "walking_routine",
+              "text": "Do you currently have any walking routine?",
+              "type": "text",
+              "focus": "Starting point identification"
+            },
+            {
+              "id": "walking_comfort",
+              "text": "What's your comfortable walking pace and duration?",
+              "type": "compound",
+              "fields": [
+                {"name": "duration", "unit": "minutes"},
+                {"name": "pace", "type": "select", "options": ["Slow", "Moderate", "Brisk"]}
+              ]
+            },
+            {
+              "id": "injury_history",
+              "text": "Any previous running injuries or joint concerns?",
+              "type": "text",
+              "required": true,
+              "priority": "safety_screening"
+            },
+            {
+              "id": "timeline_reality",
+              "text": "Are you thinking in terms of months (not weeks) for building running fitness?",
+              "type": "boolean",
+              "education_focus": "expectation_management"
+            }
+          ]
         },
-        "intermediate": {
-          "duration": "18 weeks",
-          "peakMileage": "80km/week",
-          "longRun": "up to 35km"
+        "amateur": {
+          "name": "Amateur Running (Some experience)",
+          "questions": [
+            {
+              "id": "current_frequency",
+              "text": "How many days per week do you currently run?",
+              "type": "numeric",
+              "validation": {"min": 0, "max": 7}
+            },
+            {
+              "id": "longest_run",
+              "text": "What's your longest run distance achieved?",
+              "type": "numeric",
+              "unit": "km/miles"
+            },
+            {
+              "id": "typical_pace",
+              "text": "What's your typical running pace?",
+              "type": "text",
+              "unit": "min/km or min/mile"
+            }
+          ]
         },
         "advanced": {
-          "duration": "16 weeks",
-          "peakMileage": "100km/week",
+          "name": "Advanced Running",
+          "questions": [
+            {
+              "id": "vo2_max",
+              "text": "Do you know your current VO2max or recent race pace?",
+              "type": "text",
+              "focus": "Performance markers"
+            },
+            {
+              "id": "tempo_experience", 
+              "text": "Describe your longest tempo run experience",
+              "type": "text",
+              "focus": "Lactate threshold evaluation"
+            },
+            {
+              "id": "weekly_mileage",
+              "text": "What's your current weekly mileage and progression rate?",
+              "type": "compound",
+              "fields": [
+                {"name": "mileage", "unit": "km/miles"},
+                {"name": "progression", "type": "text"}
+              ]
+            }
+          ]
+        }
+      },
+      "programTemplates": {
+        "beginner": {
+          "duration": "12-16 weeks base building",
+          "start": "Walk-run intervals",
+          "progression": "From 30min walk-run to 30min continuous run",
+          "safety_focus": "Injury prevention through gradual adaptation"
+        },
+        "amateur": {
+          "duration": "18-24 weeks",
+          "peakMileage": "50-80km/week", 
+          "longRun": "up to 32-35km"
+        },
+        "advanced": {
+          "duration": "16-20 weeks",
+          "peakMileage": "80-120km/week",
           "longRun": "up to 38km"
         }
       }
     },
     "weight_loss": {
       "name": "Weight Loss",
+      "experience_branches": {
+        "beginner": {
+          "name": "Beginner Weight Loss",
+          "questions": [
+            {
+              "id": "current_activity",
+              "text": "What's your current daily activity level?",
+              "type": "select",
+              "options": ["Mostly sedentary", "Light activity", "Moderate activity", "Active"]
+            },
+            {
+              "id": "exercise_comfort",
+              "text": "How comfortable are you with the idea of structured exercise?",
+              "type": "select",
+              "options": ["Very nervous", "Somewhat nervous", "Neutral", "Excited"]
+            },
+            {
+              "id": "realistic_timeline",
+              "text": "Are you prepared for a gradual approach (1-2 lbs per week maximum)?",
+              "type": "boolean",
+              "education_focus": "sustainable_expectations"
+            }
+          ]
+        }
+      },
       "questions": [
         {
           "id": "current_weight",
@@ -138,7 +291,8 @@
         "beginner": {
           "workoutTypes": ["Walking", "Light Resistance", "Flexibility"],
           "frequency": "3x per week",
-          "duration": "30-45 minutes"
+          "duration": "20-30 minutes",
+          "focus": "Habit formation and enjoyment"
         },
         "intermediate": {
           "workoutTypes": ["HIIT", "Strength Training", "Cardio"],
@@ -153,12 +307,74 @@
       }
     }
   },
+  "experience_assessment": {
+    "beginner_safety_screening": {
+      "priority_questions": [
+        "Have you done any structured exercise before?",
+        "Any previous injuries or current pain?",
+        "What does 'getting in shape' mean to you?",
+        "How much time can you realistically commit?",
+        "What activities do you actually enjoy?",
+        "Rate your current fitness 1-10",
+        "Any concerns about starting a program?"
+      ],
+      "scientific_foundation": "New athletes face highest risk of injury and burnout if not properly guided. Structured plans serve as crucial protective measures."
+    },
+    "energy_system_assessment": {
+      "questions": [
+        {
+          "id": "primary_sport",
+          "text": "What's your sport/primary activity?",
+          "type": "select",
+          "options": ["Running", "Cycling", "Swimming", "Team sports", "Combat sports", "Strength training", "General fitness"],
+          "purpose": "Determines dominant energy system"
+        },
+        {
+          "id": "activity_duration",
+          "text": "Describe a typical competition/game/workout duration",
+          "type": "text",
+          "purpose": "Maps energy demands"
+        },
+        {
+          "id": "current_split",
+          "text": "What's your current training split?",
+          "type": "text", 
+          "purpose": "Identifies periodization needs"
+        }
+      ]
+    },
+    "periodization_planning": {
+      "questions": [
+        {
+          "id": "goal_date",
+          "text": "What's your main competition/goal date?",
+          "type": "date",
+          "purpose": "Macrocycle planning"
+        },
+        {
+          "id": "current_phase",
+          "text": "What training phase are you currently in?",
+          "type": "select",
+          "options": ["Base building", "Strength", "Power", "Competition prep", "Recovery", "Not sure"],
+          "purpose": "Mesocycle identification"
+        },
+        {
+          "id": "training_frequency",
+          "text": "What's your preferred training frequency?",
+          "type": "numeric",
+          "validation": {"min": 1, "max": 7},
+          "purpose": "Microcycle structure"
+        }
+      ]
+    }
+  },
   "commonQuestions": {
     "injuries": {
       "id": "injuries",
       "text": "Do you have any injuries or medical conditions we should consider?",
       "type": "text",
-      "required": true
+      "required": true,
+      "priority": "safety_first"
     },
     "equipment": {
       "id": "equipment",
@@ -166,7 +382,7 @@
       "type": "multi_select",
       "options": [
         "Full Gym",
-        "Home Gym",
+        "Home Gym", 
         "Basic Equipment",
         "No Equipment"
       ]
@@ -177,13 +393,26 @@
       "type": "multi_select",
       "options": [
         "Monday",
-        "Tuesday",
+        "Tuesday", 
         "Wednesday",
         "Thursday",
         "Friday",
         "Saturday",
         "Sunday"
       ]
+    },
+    "experience_level": {
+      "id": "experience_level",
+      "text": "How would you describe your fitness experience?",
+      "type": "select",
+      "options": [
+        "Complete beginner (never exercised regularly)",
+        "Beginner (some experience, inconsistent)",
+        "Amateur (regular exercise, want to improve)",
+        "Intermediate (structured training experience)",
+        "Advanced (competitive or high-level training)"
+      ],
+      "purpose": "Determines AI persona and safety protocols"
     }
   }
 } 

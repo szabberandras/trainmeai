@@ -6,6 +6,8 @@ import { auth, db } from '@/lib/firebase';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { Heart, Target, Clock, MapPin, MessageCircle, ArrowLeft, ArrowRight, Sparkles, Trophy, Flame, Waves, Dumbbell, Users, Mountain } from 'lucide-react';
 import { AiMessage } from '@/types';
+import { PersonaSelectionService, PersonaSelectionResult } from '@/lib/services/persona-selection.service';
+import { CoachPersona } from '@/lib/types/training-system';
 
 export interface OnboardingAnswers {
   activity: string;
@@ -105,6 +107,11 @@ export interface UserPersonalization {
   completedAt: Date;
   onboardingPath?: 'goal-focused' | 'exploratory';
   onboardingAnswers?: OnboardingAnswers;
+  // Enhanced persona selection
+  selectedPersona?: CoachPersona;
+  personaSelection?: PersonaSelectionResult;
+  safetyPriority?: string;
+  progressionRate?: string;
 }
 
 interface CinematicOnboardingProps {
@@ -589,6 +596,31 @@ Maybe it's something energizing like dancing or running, something calming like 
     let aiTone: UserPersonalization['aiTone'] = 'supportive';
     let visualTheme: UserPersonalization['visualTheme'] = 'calm';
 
+    // Enhanced persona selection based on user profile
+    const personaSelection = PersonaSelectionService.selectPersona(answers);
+    console.log('🤖 Persona Selection Result:', personaSelection);
+
+    // Adjust UI tone based on selected persona
+    switch (personaSelection.persona) {
+      case 'BeginnerGuide':
+        aiTone = 'supportive';
+        visualTheme = 'gentle';
+        break;
+      case 'SportSpecific':
+        aiTone = 'direct';
+        visualTheme = 'energetic';
+        break;
+      case 'TrainingPage':
+        aiTone = 'minimal';
+        visualTheme = 'calm';
+        break;
+      default: // FitCoach
+        aiTone = 'supportive';
+        visualTheme = 'energetic';
+        break;
+    }
+
+    // Legacy tone adjustments (fallback)
     if (answers.goal === 'performance') aiTone = 'direct';
     else if (answers.goal === 'wellbeing') aiTone = 'reflective';
     else if (answers.fitnessLevel === 'beginner') aiTone = 'supportive';
@@ -606,7 +638,12 @@ Maybe it's something energizing like dancing or running, something calming like 
       hasCompletedOnboarding: true,
       completedAt: new Date(),
       onboardingPath: path,
-      onboardingAnswers: answers
+      onboardingAnswers: answers,
+      // Enhanced persona integration
+      selectedPersona: personaSelection.persona,
+      personaSelection: personaSelection,
+      safetyPriority: personaSelection.safetyPriority,
+      progressionRate: personaSelection.progressionRate
     };
   };
 

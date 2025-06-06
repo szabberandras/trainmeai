@@ -11279,6 +11279,435 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
       ],
       breathing: 'Inhale on the knee hug, exhale into Happy Baby.'
     }
+  },
+
+  // ===== NEW DRILL EXERCISES =====
+  'a-skip': {
+    id: 'a-skip',
+    name: 'A-Skip',
+    category: 'cardio',
+    equipment: [],
+    muscleGroups: ['Hip Flexors', 'Hamstrings', 'Glutes', 'Calves'],
+    difficulty: 2,
+    instructions: [
+      'Start by marching in place.',
+      'Begin moving forward. As your right knee drives up, your left arm should drive forward.',
+      'The right knee should come up to hip height, forming a 90-degree angle.',
+      'Simultaneously, perform a small hop on your supporting (left) leg.',
+      'Quickly switch legs, driving the left knee up as you hop on your right leg.',
+      'The motion is a rhythmic "up-up-down, up-up-down". Focus on driving the knee up and the foot down directly under your center of mass.',
+      'Maintain a tall, proud posture.'
+    ],
+    safetyNotes: [
+      'Land on the ball of your foot.',
+      'Keep the ankle of the driving leg flexed (dorsiflexion).',
+      'The movement should be quick and cyclical, not a slow, high march.'
+    ],
+    modifications: {
+      beginner: 'Perform as a march without the hop to learn the coordination.',
+      advanced: 'Increase the speed and cadence of the skip. Cover more ground.',
+      equipment_alternatives: {
+        'None': 'High Knees.'
+      }
+    },
+    metrics: {
+      type: 'distance',
+      defaultValue: 20,
+      progressionRate: 0.1,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, core engaged.'
+      ],
+      execution: [
+        'Drive knee up to 90 degrees.',
+        'Opposite arm drives forward.',
+        'Small hop on the stance leg.',
+        'Quickly cycle the legs.',
+        'Think "punch the knee, stomp the foot".'
+      ],
+      common_mistakes: [
+        'Leaning back.',
+        'Swinging the leg forward instead of driving it down (casting).',
+        'Not coordinating arms and legs.'
+      ],
+      breathing: 'Maintain a quick, rhythmic breathing pattern.'
+    }
+  },
+
+  'b-skip': {
+    id: 'b-skip',
+    name: 'B-Skip',
+    category: 'cardio',
+    equipment: [],
+    muscleGroups: ['Hamstrings', 'Hip Flexors', 'Glutes'],
+    difficulty: 3,
+    instructions: [
+      'Start by performing an A-Skip: drive your right knee up to hip height.',
+      'At the peak of the knee drive, extend your lower leg forward, kicking your foot out.',
+      'Immediately and forcefully, snap the extended leg down and back, pawing at the ground.',
+      'As your right leg is snapping down, your left leg begins its A-Skip motion to drive up.',
+      'The rhythm is a continuous, cyclical "whip and claw" motion.',
+      'Maintain a tall posture and use your arms for coordination and balance.'
+    ],
+    safetyNotes: [
+      'This is an advanced drill. Master the A-Skip first.',
+      'The focus is on the downward "pawing" motion, which actively engages the hamstring.',
+      'Keep the ground contact brief and directly under your hips.'
+    ],
+    modifications: {
+      beginner: 'Perform the motion while standing still, one leg at a time, holding onto a wall for balance.',
+      advanced: 'Increase the speed and fluidity of the drill.',
+      equipment_alternatives: {
+        'None': 'Butt kicks with a focus on pulling the leg through.'
+      }
+    },
+    metrics: {
+      type: 'distance',
+      defaultValue: 20,
+      progressionRate: 0.1,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, core engaged.'
+      ],
+      execution: [
+        'Drive knee up (A-Skip).',
+        'Kick lower leg forward.',
+        'Forcefully snap the leg down and back.',
+        'Claw the ground under you.',
+        'Cycle immediately to the other leg.'
+      ],
+      common_mistakes: [
+        'Swinging the leg in a passive circle.',
+        'Not actively pulling the leg down.',
+        'Leaning too far forward or backward.'
+      ],
+      breathing: 'Exhale sharply on each downward snap.'
+    }
+  },
+
+  // ===== NEW PLYOMETRIC & POWER EXERCISES =====
+  'box-jump': {
+    id: 'box-jump',
+    name: 'Box Jump',
+    category: 'plyometric',
+    equipment: ['Plyo Box'],
+    muscleGroups: ['Glutes', 'Quads', 'Hamstrings', 'Calves'],
+    difficulty: 2,
+    instructions: [
+      'Stand in front of a plyo box, feet shoulder-width apart.',
+      'Lower into a quarter-squat position, swinging your arms back.',
+      'Explosively jump up onto the box, swinging your arms forward to generate momentum.',
+      'The jump should be powerful, aiming to land softly on the center of the box.',
+      'Land in a partial squat position to absorb the impact.',
+      'Stand up tall on the box.',
+      'Step down one foot at a time. Do not jump down.',
+      'Reset and repeat.'
+    ],
+    safetyNotes: [
+      'Start with a low box and master the landing mechanics before increasing the height.',
+      'The goal is to jump high, not just to clear a high box with tucked knees. Focus on hip extension.',
+      'Always step down. Jumping down significantly increases injury risk.',
+      'Ensure the box is stable and on a non-slip surface.'
+    ],
+    modifications: {
+      beginner: 'Use a very low box or a stack of weight plates. Perform box step-ups.',
+      advanced: 'Increase the height of the box. Add a tuck jump or perform from a seated position on a bench.',
+      equipment_alternatives: {
+        'Plyo Box': 'A stable bench, stack of weight plates, or sturdy ledge.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand facing a stable box.',
+        'Feet shoulder-width apart.'
+      ],
+      execution: [
+        'Load by dipping into a quarter-squat, arms back.',
+        'Explode up, driving arms forward.',
+        'Land softly on the box in a squat.',
+        'Stand tall, then step down.'
+      ],
+      common_mistakes: [
+        'Jumping down from the box.',
+        'Landing with stiff legs.',
+        'Tucking knees excessively instead of extending hips.'
+      ],
+      breathing: 'Exhale forcefully on the jump.'
+    }
+  },
+
+  'depth-jump': {
+    id: 'depth-jump',
+    name: 'Depth Jump',
+    category: 'plyometric',
+    equipment: ['Plyo Box'],
+    muscleGroups: ['Full Body', 'Glutes', 'Quads', 'Calves'],
+    difficulty: 3,
+    instructions: [
+      'Stand on top of a plyo box (start with a low height, 6-12 inches).',
+      'Step off the box (do not jump off). Land on both feet simultaneously.',
+      'As soon as your feet touch the ground, immediately explode into a maximal vertical jump.',
+      'The goal is to minimize ground contact time and convert the landing force into upward power.',
+      'Land softly from the vertical jump, absorbing the impact through your legs.',
+      'Reset and repeat.'
+    ],
+    safetyNotes: [
+      'This is an advanced plyometric exercise. Ensure you have a strong strength and landing base.',
+      'Start with a very low box height.',
+      'Focus on a quick, reactive jump. The ground is "hot lava".'
+    ],
+    modifications: {
+      beginner: 'Do not perform this exercise. Instead, focus on box jumps and proper landing mechanics.',
+      advanced: 'Increase the height of the box slightly. Jump onto another, higher box after the ground contact.',
+      equipment_alternatives: {
+        'Plyo Box': 'A sturdy bench or step.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 4,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand on a low box.'
+      ],
+      execution: [
+        'Step off, do not jump off.',
+        'Land on both feet.',
+        'As soon as you touch, explode straight up.',
+        'Minimize ground contact time.',
+        'Land softly from the second jump.'
+      ],
+      common_mistakes: [
+        'Spending too long on the ground after landing.',
+        'Jumping off the box instead of stepping.',
+        'Landing with stiff legs.'
+      ],
+      breathing: 'Hold breath briefly on landing, exhale forcefully on the upward jump.'
+    }
+  },
+
+  'standing-broad-jump': {
+    id: 'standing-broad-jump',
+    name: 'Standing Broad Jump',
+    category: 'plyometric',
+    equipment: [],
+    muscleGroups: ['Glutes', 'Quads', 'Hamstrings', 'Calves'],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet shoulder-width apart.',
+      'Lower into a quarter-squat position and swing your arms back behind you.',
+      'Explode forward, jumping as far as you can.',
+      'Use your arms to propel you forward by swinging them powerfully in front of you.',
+      'Aim to land on both feet simultaneously.',
+      'Absorb the landing by bending your knees and hips, finishing in a squat position.',
+      'Hold the landing for a second to demonstrate control. Reset and repeat.'
+    ],
+    safetyNotes: [
+      'Ensure you have plenty of clear space in front of you.',
+      'Land softly to absorb impact.',
+      'Focus on sticking the landing without taking extra steps.'
+    ],
+    modifications: {
+      beginner: 'Focus on shorter, more controlled jumps.',
+      advanced: 'Perform multiple jumps in a row without pausing (serial broad jumps).',
+      equipment_alternatives: {
+        'None': 'This is a fundamental bodyweight power exercise.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand with feet shoulder-width apart.'
+      ],
+      execution: [
+        'Load by squatting and swinging arms back.',
+        'Explode forward, driving with legs and arms.',
+        'Land softly in a squat position.',
+        'Stick the landing.'
+      ],
+      common_mistakes: [
+        'Landing with stiff legs.',
+        'Losing balance and stumbling forward.',
+        'Not using arms effectively.'
+      ],
+      breathing: 'Exhale forcefully as you jump.'
+    }
+  },
+
+  'bounding': {
+    id: 'bounding',
+    name: 'Bounding',
+    category: 'plyometric',
+    equipment: [],
+    muscleGroups: ['Glutes', 'Hamstrings', 'Quads'],
+    difficulty: 3,
+    instructions: [
+      'Start with a light jog to build momentum.',
+      'Begin to take exaggerated, powerful strides, aiming for maximum horizontal distance with each step.',
+      'Drive off your back leg with force, extending your hip, knee, and ankle (triple extension).',
+      'Simultaneously, drive your front knee up and your opposite arm forward.',
+      'Spend as much time in the air as possible.',
+      'The movement should look like a slow-motion, powerful run.',
+      'Continue for a set distance.'
+    ],
+    safetyNotes: [
+      'This is a high-impact, advanced drill. Ensure you are thoroughly warmed up and have a good fitness base.',
+      'Focus on good form and power, not just speed.',
+      'Perform on a soft surface like grass if possible.'
+    ],
+    modifications: {
+      beginner: 'Perform power skips, focusing on height before trying for distance.',
+      advanced: 'Increase the distance of each bound. Perform single-leg bounds for a set distance.',
+      equipment_alternatives: {
+        'None': 'High skips.'
+      }
+    },
+    metrics: {
+      type: 'distance',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: [
+        'Begin with a few steps of a jog.'
+      ],
+      execution: [
+        'Explode off your back leg.',
+        'Drive front knee and opposite arm forward.',
+        'Aim for maximum distance on each stride.',
+        'Think "running in slow motion through the air".'
+      ],
+      common_mistakes: [
+        'Taking short, choppy steps.',
+        'Focusing on speed instead of power and distance.',
+        'Poor arm coordination.'
+      ],
+      breathing: 'Exhale powerfully on each push-off.'
+    }
+  },
+
+  'hurdle-hops': {
+    id: 'hurdle-hops',
+    name: 'Hurdle Hops',
+    category: 'plyometric',
+    equipment: ['Hurdles (low)'],
+    muscleGroups: ['Glutes', 'Quads', 'Calves', 'Core'],
+    difficulty: 2,
+    instructions: [
+      'Set up a series of 5-6 low hurdles or cones in a straight line, about 2-3 feet apart.',
+      'Stand in front of the first hurdle with your feet together.',
+      'Keeping your feet together, perform a two-footed jump over the first hurdle.',
+      'As soon as you land, immediately rebound and jump over the next hurdle.',
+      'The goal is to be springy and reactive, spending minimal time on the ground.',
+      'Use your arms to help generate height.',
+      'Continue until you have cleared all the hurdles.'
+    ],
+    safetyNotes: [
+      'Start with very low hurdles or even just lines on the ground.',
+      'Focus on a quick ground contact and a springy response.',
+      'Land softly to absorb impact.'
+    ],
+    modifications: {
+      beginner: 'Use lines on the ground or very low cones. Pause between each jump to reset.',
+      advanced: 'Increase the height of the hurdles. Perform single-leg hops over the hurdles.',
+      equipment_alternatives: {
+        'Hurdles': 'Low cones, shoes, water bottles, or any small object to jump over.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 3,
+      progressionRate: 0.1,
+      unit: 'sets of 5-6 hurdles'
+    },
+    coaching: {
+      setup: [
+        'Stand facing a line of low hurdles.'
+      ],
+      execution: [
+        'Jump over each hurdle with both feet.',
+        'As soon as you land, jump again.',
+        'Be quick and springy off the ground.',
+        'Use your arms.'
+      ],
+      common_mistakes: [
+        'Pausing too long between hurdles.',
+        'Landing heavily.',
+        'Not using arms to help.'
+      ],
+      breathing: 'Exhale on each jump.'
+    }
+  },
+
+  'medicine-ball-slam': {
+    id: 'medicine-ball-slam',
+    name: 'Medicine Ball Slam',
+    category: 'plyometric',
+    equipment: ['Medicine Ball (non-bouncing)'],
+    muscleGroups: ['Lats', 'Core', 'Shoulders', 'Glutes'],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet shoulder-width apart, holding a medicine ball with both hands.',
+      'Raise the ball straight overhead, fully extending your body. You can rise up onto your toes for extra height.',
+      'Engage your core and powerfully slam the ball down onto the floor directly in front of you.',
+      'Use your entire body, hinging at the hips and following through with your arms.',
+      'Squat down to pick up the ball and immediately go into the next repetition.',
+      'The movement should be explosive and continuous.'
+    ],
+    safetyNotes: [
+      'Use a "slam ball" or non-bouncing medicine ball to prevent it from rebounding into your face.',
+      'Use your legs and hips to lower down to pick up the ball; do not round your lower back.',
+      'Ensure your surroundings are clear.'
+    ],
+    modifications: {
+      beginner: 'Use a lighter ball. Perform the movement more slowly to master the mechanics.',
+      advanced: 'Use a heavier ball. Increase the speed and explosiveness of the slam.',
+      equipment_alternatives: {
+        'Medicine Ball': 'Can be mimicked with a sandbag, but a slam ball is ideal.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'reps'
+    },
+    coaching: {
+      setup: [
+        'Stand tall, holding slam ball.'
+      ],
+      execution: [
+        'Raise ball high overhead, extending body.',
+        'Slam the ball down with force.',
+        'Hinge at the hips as you slam.',
+        'Squat to pick it up and repeat.'
+      ],
+      common_mistakes: [
+        'Using only the arms and not the whole body.',
+        'Rounding the back to pick up the ball.',
+        'Using a bouncy ball.'
+      ],
+      breathing: 'Inhale as you lift the ball, exhale forcefully as you slam.'
+    }
   }
 
 };
@@ -11287,15 +11716,15 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
 export const EXERCISE_CATEGORIES = {
   strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'walking-lunges', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'warrior-ii', 'hip-bridge-lift', 'lateral-leg-lift', 'hamstring-bridge-with-chair', 'frog-pumps', 'supine-abductions-with-miniband', 'lateral-wrist-curls-with-dumbbells', 'standing-fire-hydrant', 'prone-frog-lifts', 'standing-hamstring-curl', 'lateral-walk', 'clamshells', 'dumbbell-good-morning', 'squat-to-overhead-press', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'alternating-jump-lunges', 'squat-to-calf-raise', 'diagonal-lunge', '90-degree-squats', 'sumo-squat', 'fire-hydrants', 'adductor-lifts', 'half-kneeling-rotation-with-block-and-dumbbell', 'skater-squats', 'monster-walks-with-miniband', 'fire-hydrants-with-internal-rotation', 'prone-y-raises'],
   core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'bird-dog', 'tick-tocks-with-miniband', 'vacuums', 'flutter-kicks', 'side-plank', 'side-plank-leg-lift', 'standing-crunch', 'supermans', 'chin-tucks', 'staff-pose', 'superman-sequence', 'decline-plank-with-chair', 'side-plank-hip-dip', 'v-sit'],
-  cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs', 'high-knees', 'reverse-lunge-knee-drive', 'run-in-place'],
-  plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'swim-plyometric-box-jumps', 'high-skip'],
+  cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'a-skip', 'b-skip', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs', 'high-knees', 'reverse-lunge-knee-drive', 'run-in-place'],
+  plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'swim-plyometric-box-jumps', 'high-skip', 'box-jump', 'depth-jump', 'standing-broad-jump', 'bounding', 'hurdle-hops', 'medicine-ball-slam'],
   mobility: ['arm-circles', 'dynamic-star', 'alternating-step-and-squat', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'froggers', 'ankle-rocks', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'plank-calf-press', 'dynamic-side-body-stretch', 'shoulder-openers', 'lizard-circles', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'dynamic-baby-cobra', '90-90-stretch', 'activated-hip-flexor-stretch-with-block', 'wide-dynamic-cobra', 'upper-body-around-the-world', 'single-leg-hip-flexor-extension-with-pole', 'seated-toe-rainbows-with-chair', 'knee-hug-rock', 'hand-and-wrist-sequence', 'z-stretch', 'knee-hug-to-happy-baby'],
   flexibility: ['standing-calf-stretch', 'foam-roll-hip-abductors', 'childs-pose', 'tricep-and-lat-stretch', 'pigeon-pose', 'forward-fold', 'chest-stretch', 'seated-twist', 'single-leg-hamstring-stretch', 'frog-stretch', 'upper-back-stretch', 'release-lats-with-foam-roller', 'leaning-quad-stretch', 'elevated-pigeon-with-chair', 'standing-chest-stretch', 'cross-body-hamstring-stretch', 'supine-criss-cross', 'toe-grab-calf-stretch', 'half-camel-pose', 'advanced-gate-pose', 'center-stretch-static', 'standing-glute-stretch', 'half-frog-stretch'],
   technique: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill'],
-  endurance: ['bike-hill-climbs-intervals'],
+  endurance: ['bike-hill-climbs-intervals', 'long-run', 'tempo-run', 'fartlek-run', 'hill-repeats'],
   triathlon: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals'],
   crossfit: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'deadlift', 'kettlebell-swing', 'farmers-carry', 'box-step-ups', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'barbell-hip-thrust', 'dumbbell-hip-thrust', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension'],
-  none: ['push-up', 'diamond-push-up', 'squat', 'jump-squat', 'lunge', 'plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'jumping-jacks', 'burpee', 'mountain-climber', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'a-skips', 'b-skips', 'carioca', 'step-ups', 'marching-in-place', 'arm-circles', 'skierg', 'sled-push', 'sled-pull', 'burpee-broad-jumps', 'rowing-erg', 'farmers-carry', 'sandbag-lunges', 'wall-balls', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'grip-endurance-circuit', 'sled-conditioning', 'zone-2-recovery-run', 'hyrox-pace-runs', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'high-knees', 'walking-lunges', 'bird-dog', 'standing-calf-stretch', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'foam-roll-hip-abductors', 'swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'dynamic-star', 'alternating-step-and-squat', 'tricep-and-lat-stretch', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'hip-bridge-lift', 'vacuums', 'lateral-leg-lift', 'frog-pumps', 'flutter-kicks', 'prone-frog-lifts', 'froggers', 'standing-hamstring-curl', 'clamshells', 'side-plank', 'side-plank-leg-lift', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'supermans', 'alternating-jump-lunges', 'reverse-lunge-knee-drive', 'squat-to-calf-raise', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'dynamic-side-body-stretch', 'shoulder-openers', 'standing-crunch', 'run-in-place', 'diagonal-lunge', 'high-skip', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill']
+  none: ['push-up', 'diamond-push-up', 'squat', 'jump-squat', 'lunge', 'plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'jumping-jacks', 'burpee', 'mountain-climber', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'a-skips', 'b-skips', 'a-skip', 'b-skip', 'carioca', 'step-ups', 'marching-in-place', 'arm-circles', 'skierg', 'sled-push', 'sled-pull', 'burpee-broad-jumps', 'rowing-erg', 'farmers-carry', 'sandbag-lunges', 'wall-balls', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'grip-endurance-circuit', 'sled-conditioning', 'zone-2-recovery-run', 'hyrox-pace-runs', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'high-knees', 'walking-lunges', 'bird-dog', 'standing-calf-stretch', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'foam-roll-hip-abductors', 'swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'dynamic-star', 'alternating-step-and-squat', 'tricep-and-lat-stretch', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'hip-bridge-lift', 'vacuums', 'lateral-leg-lift', 'frog-pumps', 'flutter-kicks', 'prone-frog-lifts', 'froggers', 'standing-hamstring-curl', 'clamshells', 'side-plank', 'side-plank-leg-lift', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'supermans', 'alternating-jump-lunges', 'reverse-lunge-knee-drive', 'squat-to-calf-raise', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'dynamic-side-body-stretch', 'shoulder-openers', 'standing-crunch', 'run-in-place', 'diagonal-lunge', 'high-skip', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill', 'standing-broad-jump', 'bounding', 'long-run', 'tempo-run', 'fartlek-run', 'hill-repeats']
 };
 
 // Helper functions
@@ -11665,4 +12094,240 @@ export function formatDistance(distance: number, unit: 'miles' | 'km' = 'miles',
 export function convertDistance(distance: number, fromUnit: 'miles' | 'km', toUnit: 'miles' | 'km'): number {
   if (fromUnit === toUnit) return distance;
   return fromUnit === 'miles' ? milesToKilometers(distance) : kilometersToMiles(distance);
-} 
+}
+
+// ===== SPORT-SPECIFIC FOUNDATIONAL EXERCISES =====
+// Adding key exercises from comprehensive sports training report
+
+// Add to EXERCISE_DATABASE
+const SPORT_SPECIFIC_EXERCISES = {
+  // ENDURANCE SPORTS EXERCISES
+  'long-run': {
+    id: 'long-run',
+    name: 'Long Run',
+    category: 'endurance',
+    equipment: [],
+    muscleGroups: ['Legs', 'Cardiovascular'],
+    difficulty: 3,
+    instructions: [
+      'Start with a 5-10 minute easy warm-up jog.',
+      'Gradually build to your target long run distance.',
+      'Maintain a conversational pace throughout - you should be able to talk.',
+      'Focus on consistent effort rather than speed.',
+      'Add approximately 10% to your longest run each week.',
+      'Include a cutback week every 4th week for recovery.',
+      'Finish with a 5-minute cool-down walk.'
+    ],
+    safetyNotes: [
+      'Never increase distance by more than 10% per week.',
+      'Listen to your body - stop if experiencing pain.',
+      'Stay hydrated, especially on longer runs.',
+      'Plan your route and inform someone of your running plan.',
+      'Wear appropriate running shoes and clothing.'
+    ],
+    modifications: {
+      beginner: 'Start with run/walk intervals. Build from 30 minutes total time.',
+      advanced: 'Progress to 2-3 hour runs. Practice race nutrition strategies.',
+      equipment_alternatives: {
+        'None': 'Treadmill for weather protection or precise pacing.'
+      }
+    },
+    metrics: {
+      type: 'distance',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'km'
+    },
+    coaching: {
+      setup: [
+        'Plan your route in advance.',
+        'Check weather conditions.',
+        'Bring water for runs over 60 minutes.'
+      ],
+      execution: [
+        'Start conservatively - first half should feel easy.',
+        'Maintain steady breathing pattern.',
+        'Focus on relaxed form and efficient stride.',
+        'Practice negative splits occasionally.'
+      ],
+      common_mistakes: [
+        'Starting too fast.',
+        'Increasing distance too quickly.',
+        'Skipping rest/cutback weeks.',
+        'Neglecting hydration and nutrition.'
+      ],
+      breathing: 'Rhythmic breathing - try 3:2 pattern (3 steps inhale, 2 steps exhale).'
+    }
+  },
+
+  'tempo-run': {
+    id: 'tempo-run',
+    name: 'Tempo Run',
+    category: 'endurance',
+    equipment: [],
+    muscleGroups: ['Legs', 'Cardiovascular'],
+    difficulty: 4,
+    instructions: [
+      'Warm up with 10-15 minutes of easy running.',
+      'Run at a "comfortably hard" pace for 20-40 minutes.',
+      'Pace should be sustainable but challenging - about 10K race pace.',
+      'You should be able to speak only a few words at a time.',
+      'Maintain consistent effort throughout the tempo portion.',
+      'Cool down with 10 minutes of easy running.'
+    ],
+    safetyNotes: [
+      'Ensure proper warm-up before tempo effort.',
+      'Don\'t exceed prescribed duration.',
+      'Stop if experiencing chest pain or dizziness.'
+    ],
+    modifications: {
+      beginner: 'Start with 2 x 10 minutes at tempo pace with 5-minute recovery.',
+      advanced: 'Progress to 60+ minutes at tempo pace.',
+      equipment_alternatives: {
+        'None': 'Treadmill for precise pace control.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 20,
+      progressionRate: 0.1,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: [
+        'Know your target tempo pace.',
+        'Choose a relatively flat route.',
+        'Use a GPS watch or app for pacing.'
+      ],
+      execution: [
+        'Build into tempo pace gradually.',
+        'Focus on controlled, rhythmic breathing.',
+        'Maintain relaxed shoulders and efficient form.',
+        'Think "controlled discomfort".'
+      ],
+      common_mistakes: [
+        'Starting tempo portion too fast.',
+        'Letting pace drift during the run.',
+        'Inadequate warm-up.',
+        'Running tempo pace too frequently.'
+      ],
+      breathing: 'Controlled, deeper breathing - focus on full exhales.'
+    }
+  },
+
+  'fartlek-run': {
+    id: 'fartlek-run',
+    name: 'Fartlek (Speed Play)',
+    category: 'endurance',
+    equipment: [],
+    muscleGroups: ['Legs', 'Cardiovascular'],
+    difficulty: 3,
+    instructions: [
+      'Warm up with 10-15 minutes of easy running.',
+      'Begin "speed play" - vary your pace based on how you feel.',
+      'Sprint to a landmark, then jog to recover.',
+      'Mix short bursts (30 seconds) with longer efforts (2-3 minutes).',
+      'Recovery should be easy jogging, not walking.',
+      'Total workout time: 30-60 minutes including warm-up.',
+      'Cool down with 10 minutes easy running.'
+    ],
+    safetyNotes: [
+      'Listen to your body - this should be playful, not punishing.',
+      'Ensure adequate recovery between efforts.',
+      'Choose safe landmarks and routes.'
+    ],
+    modifications: {
+      beginner: 'Start with 20-30 second pickups with 2-minute easy recoveries.',
+      advanced: 'Include longer tempo efforts mixed with short sprints.',
+      equipment_alternatives: {
+        'None': 'Track or treadmill with manual speed adjustments.'
+      }
+    },
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      progressionRate: 0.1,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: [
+        'Choose a varied route with landmarks.',
+        'No strict pace targets - run by feel.',
+        'Mental preparation for varied efforts.'
+      ],
+      execution: [
+        'Make it playful and spontaneous.',
+        'Vary the length and intensity of efforts.',
+        'Focus on smooth transitions between paces.',
+        'Use landmarks as natural interval markers.'
+      ],
+      common_mistakes: [
+        'Making it too structured.',
+        'Not recovering adequately between efforts.',
+        'Always choosing the same effort lengths.',
+        'Running too hard on recovery portions.'
+      ],
+      breathing: 'Adapt breathing to effort level - deeper during hard efforts.'
+    }
+  },
+
+  'hill-repeats': {
+    id: 'hill-repeats',
+    name: 'Hill Repeats',
+    category: 'endurance',
+    equipment: [],
+    muscleGroups: ['Legs', 'Glutes', 'Cardiovascular'],
+    difficulty: 4,
+    instructions: [
+      'Find a hill approximately 200-400 meters long with 4-8% grade.',
+      'Warm up with 15 minutes easy running.',
+      'Run hard uphill maintaining good form.',
+      'Focus on driving with your arms and lifting your knees.',
+      'Jog or walk down for recovery.',
+      'Repeat 4-8 times depending on fitness level.',
+      'Cool down with 10 minutes easy running.'
+    ],
+    safetyNotes: [
+      'Choose a hill with safe footing.',
+      'Don\'t overstride - maintain quick turnover.',
+      'Be cautious on the downhill recovery.',
+      'Stop if experiencing unusual fatigue.'
+    ],
+    modifications: {
+      beginner: '4 x 30 seconds uphill with full recovery.',
+      advanced: '8-12 repeats or longer hill (up to 2 minutes).',
+      equipment_alternatives: {
+        'Treadmill': 'Set incline to 5-8% for hill simulation.'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      progressionRate: 0.1,
+      unit: 'repeats'
+    },
+    coaching: {
+      setup: [
+        'Scout your hill in advance.',
+        'Ensure adequate warm-up.',
+        'Plan your effort level for all repeats.'
+      ],
+      execution: [
+        'Drive with your arms.',
+        'Lean slightly into the hill.',
+        'Maintain quick, short steps.',
+        'Focus on effort, not speed.'
+      ],
+      common_mistakes: [
+        'Overstriding on the uphill.',
+        'Starting too fast on first repeat.',
+        'Not using arms effectively.',
+        'Inadequate recovery between repeats.'
+      ],
+      breathing: 'Strong, rhythmic breathing - don\'t hold your breath.'
+    }
+  }
+};
+
+// Merge sport-specific exercises into main database
+Object.assign(EXERCISE_DATABASE, SPORT_SPECIFIC_EXERCISES); 

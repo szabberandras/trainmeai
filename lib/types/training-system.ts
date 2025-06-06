@@ -1,6 +1,19 @@
 import { GoalType } from '@/types';
 
-export type CoachPersona = 'FitCoach' | 'TrainingPage';
+// Updated to include all 4 AI personas
+export type CoachPersona = 'FitCoach' | 'TrainingPage' | 'BeginnerGuide' | 'SportSpecific';
+
+// Experience level mapping for persona selection
+export type ExperienceLevel = 'complete-beginner' | 'beginner-inconsistent' | 'amateur-regular' | 'intermediate-structured' | 'advanced-competitive';
+
+// Energy system types for sport-specific training
+export type EnergySystem = 'aerobic' | 'anaerobic-alactic' | 'anaerobic-lactic' | 'mixed';
+
+// Periodization phases
+export type PeriodizationPhase = 'base' | 'build' | 'peak' | 'recovery' | 'transition';
+
+// Safety priority levels for beginner protection
+export type SafetyPriority = 'maximum' | 'high' | 'moderate' | 'standard' | 'athlete-managed';
 
 export interface TrainingSession {
   id: number;

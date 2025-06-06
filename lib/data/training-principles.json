@@ -1,0 +1,344 @@
+{
+  "core_training_principles": {
+    "specificity": {
+      "definition": "Training must be tailored to specific activity demands and individual needs",
+      "beginner_application": "Start with basic movement patterns before sport-specific skills",
+      "applications": [
+        "sport-specific movement patterns", 
+        "energy system targeting", 
+        "individual adaptations"
+      ],
+      "coaching_cues": [
+        "gym work complements rather than mimics sport", 
+        "most sport-specific training is the sport itself"
+      ],
+      "beginner_focus": "Master fundamental movements before adding complexity",
+      "amateur_focus": "Bridge general fitness to sport-specific demands",
+      "advanced_focus": "Fine-tune performance variables for competition"
+    },
+    "progressive_overload": {
+      "definition": "Body adapts when consistently challenged beyond current capabilities",
+      "beginner_focus": "Master bodyweight movements before adding external load",
+      "methods": [
+        "load increase", 
+        "volume increase", 
+        "frequency increase", 
+        "decreased rest", 
+        "time under tension", 
+        "range of motion", 
+        "single vs bilateral"
+      ],
+      "beginner_progression": [
+        "frequency first", 
+        "then duration", 
+        "then intensity", 
+        "finally complexity"
+      ],
+      "coaching_integration": "Multiple overload variables prevent plateaus and enable continuous adaptation",
+      "safety_considerations": {
+        "beginner": "10% rule - never increase more than 10% per week",
+        "amateur": "Deload every 4-6 weeks to prevent overreaching",
+        "advanced": "Periodized loading with planned peaks and valleys"
+      }
+    },
+    "recovery": {
+      "definition": "Adaptation occurs during rest, not during training",
+      "beginner_emphasis": "Recovery is equally important as training sessions",
+      "components": [
+        "sleep optimization (7-9 hours)",
+        "nutrition timing and quality",
+        "active recovery protocols",
+        "stress management",
+        "hydration maintenance"
+      ],
+      "coaching_cues": [
+        "Growth happens during rest",
+        "Listen to your body's signals",
+        "Quality sleep is non-negotiable",
+        "Recovery is part of the training plan"
+      ],
+      "beginner_protocols": {
+        "sleep": "Prioritize 8+ hours nightly",
+        "rest_days": "At least 2 complete rest days per week",
+        "active_recovery": "Light walking or gentle stretching"
+      }
+    },
+    "individual_differences": {
+      "definition": "Every person responds differently to training stimuli",
+      "beginner_consideration": "Start conservatively and adjust based on response",
+      "factors": [
+        "genetics and muscle fiber types",
+        "training history and experience",
+        "age and hormonal status",
+        "lifestyle and stress levels",
+        "injury history and limitations"
+      ],
+      "coaching_approach": [
+        "Monitor individual responses",
+        "Adjust programs based on feedback",
+        "Respect personal limitations",
+        "Celebrate individual progress"
+      ]
+    },
+    "reversibility": {
+      "definition": "Use it or lose it - fitness gains are lost without maintenance",
+      "beginner_education": "Consistency is more important than intensity",
+      "implications": [
+        "Regular training maintains adaptations",
+        "Detraining begins within 2-3 weeks",
+        "Muscle memory aids return to fitness",
+        "Maintenance requires less volume than building"
+      ],
+      "coaching_cues": [
+        "Something is better than nothing",
+        "Consistency beats perfection",
+        "Short breaks won't ruin progress",
+        "Focus on sustainable habits"
+      ]
+    },
+    "overload_progression": {
+      "definition": "Systematic increase in training demands to drive adaptation",
+      "beginner_safety": "Form quality must be maintained during progression",
+      "progression_variables": {
+        "frequency": "Days per week training",
+        "intensity": "Effort level or weight used", 
+        "time": "Duration of exercise or rest periods",
+        "type": "Exercise selection and complexity"
+      },
+      "beginner_hierarchy": [
+        "1. Master movement pattern",
+        "2. Increase frequency (consistency)",
+        "3. Increase duration (volume)",
+        "4. Increase intensity (effort)",
+        "5. Increase complexity (skill)"
+      ]
+    }
+  },
+  "beginner_specific_principles": {
+    "injury_prevention_first": {
+      "definition": "Beginners face highest risk of injury and burnout without proper guidance",
+      "applications": [
+        "form mastery before load", 
+        "conservative progression", 
+        "movement screening"
+      ],
+      "coaching_cues": [
+        "Better slow progress than injury setback", 
+        "Listen to your body always"
+      ],
+      "safety_protocols": {
+        "movement_screening": "Assess basic movement patterns before programming",
+        "load_progression": "Master bodyweight before adding external resistance",
+        "pain_monitoring": "Stop immediately if sharp pain occurs",
+        "form_degradation": "End set when form breaks down"
+      }
+    },
+    "confidence_building": {
+      "definition": "Structured plans build confidence through appropriate progression tailored to true starting fitness",
+      "applications": [
+        "achievable weekly goals", 
+        "celebrate small wins", 
+        "track non-scale victories"
+      ],
+      "progression_example": "First-time triathlete with 16-week patient plan successfully completed injury-free",
+      "coaching_strategies": {
+        "goal_setting": "Set process goals over outcome goals",
+        "progress_tracking": "Focus on consistency and form improvements",
+        "positive_reinforcement": "Celebrate every completed session",
+        "realistic_timelines": "Manage expectations with science-based projections"
+      }
+    },
+    "enthusiasm_management": {
+      "definition": "Initial excitement must evolve into sustainable participation",
+      "applications": [
+        "realistic timeline setting", 
+        "gradual intensity increases", 
+        "rest day education"
+      ],
+      "coaching_cues": [
+        "Marathon mindset, not sprint mentality", 
+        "Consistency beats intensity for beginners"
+      ],
+      "strategies": {
+        "intensity_control": "Keep most sessions at moderate effort",
+        "variety_introduction": "Gradually add new exercises and challenges",
+        "habit_formation": "Focus on showing up consistently",
+        "burnout_prevention": "Mandatory rest days and deload weeks"
+      }
+    }
+  },
+  "periodization_principles": {
+    "macrocycle": {
+      "definition": "Annual training plan organized around peak performance periods",
+      "duration": "6-12 months typically",
+      "phases": [
+        "Preparation phase (base building)",
+        "Competition phase (peak performance)", 
+        "Transition phase (recovery and regeneration)"
+      ],
+      "beginner_application": "Focus on consistent base building for first 6-12 months",
+      "amateur_application": "Introduce basic periodization with 2-3 distinct phases",
+      "advanced_application": "Complex periodization with multiple peaks"
+    },
+    "mesocycle": {
+      "definition": "Training blocks of 2-16 weeks with specific focus",
+      "common_types": [
+        "Anatomical adaptation (movement prep)",
+        "Hypertrophy (muscle building)",
+        "Strength (maximal force)",
+        "Power (explosive force)",
+        "Competition prep (sport-specific)"
+      ],
+      "beginner_mesocycles": {
+        "phase_1": "Movement mastery (4-6 weeks)",
+        "phase_2": "Base building (6-8 weeks)", 
+        "phase_3": "Progressive loading (4-6 weeks)"
+      }
+    },
+    "microcycle": {
+      "definition": "Weekly training organization and session distribution",
+      "beginner_structure": "3 days training, 4 days rest/recovery",
+      "amateur_structure": "4-5 days training with planned rest days",
+      "advanced_structure": "6+ days with periodized intensity distribution",
+      "recovery_integration": "Every microcycle includes planned recovery"
+    }
+  },
+  "energy_system_training": {
+    "aerobic_system": {
+      "definition": "Oxygen-dependent energy production for sustained activities",
+      "duration": "Activities lasting 2+ minutes",
+      "training_methods": [
+        "Long slow distance (60-70% max HR)",
+        "Tempo runs (80-85% max HR)",
+        "Threshold intervals (85-90% max HR)"
+      ],
+      "beginner_focus": "Build aerobic base with conversational pace training",
+      "sports_emphasis": "Endurance sports (85-90% of training volume)"
+    },
+    "anaerobic_alactic": {
+      "definition": "High-intensity power without oxygen or lactate accumulation",
+      "duration": "0-15 seconds maximum effort",
+      "training_methods": [
+        "Sprint intervals (95-100% effort)",
+        "Plyometric exercises",
+        "Olympic lift variations",
+        "Power development exercises"
+      ],
+      "recovery_requirements": "Full recovery between efforts (2-5 minutes)",
+      "sports_emphasis": "Power and strength sports, team sport power"
+    },
+    "anaerobic_lactic": {
+      "definition": "High-intensity efforts with lactate accumulation",
+      "duration": "15 seconds to 2 minutes",
+      "training_methods": [
+        "Lactate threshold intervals",
+        "VO2max intervals (3-8 minutes)",
+        "Repeated high-intensity efforts"
+      ],
+      "beginner_caution": "Introduce gradually due to high metabolic stress",
+      "sports_emphasis": "Middle-distance events, combat sports"
+    }
+  },
+  "sport_specific_applications": {
+    "endurance_sports": {
+      "energy_system_emphasis": "85-90% aerobic, 10-15% anaerobic",
+      "key_principles": [
+        "Aerobic base development priority",
+        "Progressive volume increases",
+        "Periodized intensity distribution",
+        "Recovery and adaptation focus"
+      ],
+      "beginner_progression": {
+        "weeks_1_8": "Walk-run intervals, base building",
+        "weeks_9_16": "Continuous running, aerobic development",
+        "weeks_17_24": "Tempo work and longer distances"
+      }
+    },
+    "strength_power_sports": {
+      "energy_system_emphasis": "70% alactic, 20% lactic, 10% aerobic",
+      "key_principles": [
+        "Progressive overload through multiple variables",
+        "Movement pattern mastery",
+        "Power development after strength base",
+        "Recovery between high-intensity sessions"
+      ],
+      "beginner_progression": {
+        "phase_1": "Movement mastery and bodyweight strength",
+        "phase_2": "Basic loading and strength development", 
+        "phase_3": "Progressive overload and power introduction"
+      }
+    },
+    "combat_sports": {
+      "energy_system_emphasis": "50% alactic, 30% lactic, 20% aerobic",
+      "key_principles": [
+        "Multi-energy system integration",
+        "Sport-specific movement patterns",
+        "Recovery between high-intensity rounds",
+        "Skill development alongside conditioning"
+      ]
+    },
+    "team_sports": {
+      "energy_system_emphasis": "40% alactic, 35% lactic, 25% aerobic",
+      "key_principles": [
+        "Intermittent high-intensity training",
+        "Agility and change of direction",
+        "Repeated sprint ability",
+        "Position-specific demands"
+      ]
+    }
+  },
+  "beginner_exercise_progressions": {
+    "running_progression": {
+      "phase_1_foundation": {
+        "name": "Walk-Run Intervals",
+        "week_1": "Walk 5min → Run 1min → Repeat 3x",
+        "progression": "Weekly: Add 30sec run, subtract 30sec walk",
+        "safety_cues": [
+          "Stop if pain, not just discomfort", 
+          "Conversation pace during run portions"
+        ],
+        "confidence_building": "Focus on completion, not speed"
+      },
+      "phase_2_building": {
+        "name": "Continuous Easy Runs",
+        "entry_requirement": "10min continuous run comfortable",
+        "progression": "Add 2-3min per week to longest run",
+        "coaching_emphasis": "Aerobic base building - this is your foundation"
+      }
+    },
+    "strength_progression": {
+      "movement_mastery": {
+        "name": "Bodyweight Squat Progression",
+        "stage_1": "Chair-assisted squats (hold chair for balance)",
+        "stage_2": "Bodyweight squats to full depth",
+        "stage_3": "Add pause at bottom (2-3 seconds)",
+        "stage_4": "Single-arm reach during squat",
+        "load_progression": "Only after 3x10 perfect form bodyweight",
+        "safety_note": "Form degradation = stop immediately"
+      }
+    }
+  },
+  "coaching_philosophy": {
+    "beginner_first_principles": [
+      "Safety and injury prevention above all else",
+      "Confidence building through appropriate challenges",
+      "Habit formation over performance optimization",
+      "Education and understanding of 'why'",
+      "Sustainable progression over rapid results"
+    ],
+    "universal_principles": [
+      "Individual differences must be respected",
+      "Progressive overload drives adaptation",
+      "Recovery is where adaptation occurs",
+      "Consistency trumps perfection",
+      "Long-term thinking over short-term gains"
+    ],
+    "advanced_principles": [
+      "Periodization optimizes performance peaks",
+      "Sport-specific training enhances transfer",
+      "Energy system training matches demands",
+      "Technical mastery enables progression",
+      "Mental preparation supports physical training"
+    ]
+  }
+} 
