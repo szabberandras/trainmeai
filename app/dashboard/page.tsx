@@ -23,6 +23,8 @@ import ProgramCard from '@/app/components/programs/ProgramCard';
 import ProgramCreator from '@/app/components/programs/ProgramCreator';
 import CinematicOnboarding, { UserPersonalization } from '@/app/components/onboarding/CinematicOnboarding';
 import ProgressInsights from '@/app/components/dashboard/ProgressInsights';
+import DynamicTrainingDashboard from '@/app/components/dashboard/DynamicTrainingDashboard';
+import ProgramCreationModal from '@/app/components/programs/ProgramCreationModal';
 import { ProgramService } from '@/lib/services/program.service';
 import { TrainingProgram, ProgramTemplate } from '@/lib/types/program';
 import { AiMessage, GoalType } from '@/types';
@@ -278,6 +280,8 @@ export default function DashboardPage() {
   const [currentGoalType, setCurrentGoalType] = useState<GoalType | null>(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
+  const [showDynamicDashboard, setShowDynamicDashboard] = useState(false);
+  const [showProgramCreationModal, setShowProgramCreationModal] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll chat to bottom when new messages are added
@@ -609,6 +613,16 @@ What would you like to focus on today? I can help you create a personalized trai
     }
   };
 
+  const handleCreateDynamicProgram = (programData: any) => {
+    console.log('Creating dynamic program:', programData);
+    // TODO: Integrate with DynamicTrainingService
+    setShowProgramCreationModal(false);
+  };
+
+  const handleToggleDashboard = () => {
+    setShowDynamicDashboard(!showDynamicDashboard);
+  };
+
 
 
   if (loading) {
@@ -664,11 +678,59 @@ What would you like to focus on today? I can help you create a personalized trai
               </div>
             </div>
 
-            {/* AI Chat Section */}
-            <div id="ai-chat" className="mt-8">
-              <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
-                AI Training Assistant
-              </h2>
+            {/* Dashboard Toggle */}
+            <div className="mt-8 flex justify-center">
+              <div className="bg-gray-100 rounded-lg p-1 flex">
+                <button
+                  onClick={() => setShowDynamicDashboard(false)}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    !showDynamicDashboard
+                      ? 'bg-white text-gray-900 shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  AI Chat Dashboard
+                </button>
+                <button
+                  onClick={() => setShowDynamicDashboard(true)}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    showDynamicDashboard
+                      ? 'bg-white text-gray-900 shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  Dynamic Training Dashboard
+                </button>
+              </div>
+            </div>
+
+            {/* Conditional Dashboard Rendering */}
+            {showDynamicDashboard ? (
+              <div className="mt-8">
+                {userPersonalization ? (
+                  <DynamicTrainingDashboard
+                    userProfile={{
+                      experience: (userPersonalization.onboardingAnswers?.fitnessLevel as 'beginner' | 'intermediate' | 'advanced') || 'intermediate',
+                      goals: [userPersonalization.onboardingAnswers?.goal as GoalType || 'general-fitness'],
+                      availability: parseInt(userPersonalization.onboardingAnswers?.daysPerWeek || '3'),
+                      equipment: userPersonalization.onboardingAnswers?.equipment || []
+                    }}
+                    currentPersona={userPersonalization.selectedPersona || 'FitCoach'}
+                    onCreateProgram={() => setShowProgramCreationModal(true)}
+                  />
+                ) : (
+                  <div className="text-center py-8 text-gray-500">
+                    Loading user profile...
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                {/* AI Chat Section */}
+                <div id="ai-chat" className="mt-8">
+                  <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
+                    AI Training Assistant
+                  </h2>
               <div className="bg-white rounded-xl border border-[#eee] overflow-hidden">
                 <div 
                   ref={chatContainerRef}
@@ -975,6 +1037,8 @@ Your program is now being saved and you'll be redirected to view the full detail
                 </div>
               </div>
             )}
+              </>
+            )}
           </div>
 
           {showProgramCreator && (
@@ -982,6 +1046,14 @@ Your program is now being saved and you'll be redirected to view the full detail
               onClose={() => setShowProgramCreator(false)}
               onSuccess={handleProgramCreated}
               initialType={currentGoalType}
+            />
+          )}
+
+          {showProgramCreationModal && (
+            <ProgramCreationModal
+              isOpen={showProgramCreationModal}
+              onClose={() => setShowProgramCreationModal(false)}
+              onCreateProgram={handleCreateDynamicProgram}
             />
           )}
 
