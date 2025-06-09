@@ -5,6 +5,9 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { dailyTrainingService } from '@/lib/services/dailyTrainingService';
 import { canGenerateTrainingDay } from '@/app/components/auth/userProfileService';
 
+// Force this route to be dynamic since it uses request.url
+export const dynamic = 'force-dynamic';
+
 let genAI: GoogleGenerativeAI | null = null;
 
 if (process.env.GOOGLE_GEMINI_API_KEY) {

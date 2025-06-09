@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { chatService } from '@/lib/services/chatService';
 
+// Force this route to be dynamic since it uses request.url
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: Request) {
   try {
     console.log('🔍 Chat history API called');

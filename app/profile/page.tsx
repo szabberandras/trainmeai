@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import LayoutClientWrapper from '@/app/components/LayoutClientWrapper';
+
 import PersonaCard from '@/app/components/dashboard/PersonaCard';
 import PersonaSwitchModal from '@/app/components/dashboard/PersonaSwitchModal';
 import { User } from 'firebase/auth';
@@ -178,8 +178,8 @@ export default function ProfilePage() {
       // Invalidate cache after update
       cache.invalidate(`userProfile:${user.uid}`);
       
-      // Force reload to ensure clean state
-      window.location.href = '/dashboard';
+      // Use Next.js router for smoother navigation
+      router.push('/dashboard');
     } catch (error) {
       await logError(error, {
         context: 'onboarding-reset',
@@ -225,29 +225,27 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <LayoutClientWrapper>
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
-          <p className="ml-3">Loading profile...</p>
-        </div>
-      </LayoutClientWrapper>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
+        <p className="ml-3">Loading profile...</p>
+      </div>
     );
   }
 
   if (!user) return null;
 
   return (
-    <LayoutClientWrapper>
+    <div className="min-h-screen bg-white">
       <div className="px-40 flex flex-1 justify-center py-5">
         <div className="flex flex-col max-w-[960px] flex-1">
           <div className="pb-3">
-            <div className="flex border-b border-[#dbdfe6] px-4 gap-8">
+            <div className="flex border-b border-gray-200 px-4 gap-8">
               <button
                 onClick={() => setActiveTab('profile')}
                 className={`flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 ${
                   activeTab === 'profile'
-                    ? 'border-b-[#111318] text-[#111318]'
-                    : 'border-b-transparent text-[#617089]'
+                    ? 'border-b-blue-600 text-gray-900'
+                    : 'border-b-transparent text-gray-500'
                 }`}
               >
                 <p className="text-sm font-bold leading-normal tracking-[0.015em]">Profile</p>
@@ -256,8 +254,8 @@ export default function ProfilePage() {
                 onClick={() => setActiveTab('notifications')}
                 className={`flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 ${
                   activeTab === 'notifications'
-                    ? 'border-b-[#111318] text-[#111318]'
-                    : 'border-b-transparent text-[#617089]'
+                    ? 'border-b-blue-600 text-gray-900'
+                    : 'border-b-transparent text-gray-500'
                 }`}
               >
                 <p className="text-sm font-bold leading-normal tracking-[0.015em]">Notifications</p>
@@ -266,8 +264,8 @@ export default function ProfilePage() {
                 onClick={() => setActiveTab('coach')}
                 className={`flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 ${
                   activeTab === 'coach'
-                    ? 'border-b-[#111318] text-[#111318]'
-                    : 'border-b-transparent text-[#617089]'
+                    ? 'border-b-blue-600 text-gray-900'
+                    : 'border-b-transparent text-gray-500'
                 }`}
               >
                 <p className="text-sm font-bold leading-normal tracking-[0.015em]">Coach Settings</p>
@@ -276,8 +274,8 @@ export default function ProfilePage() {
                 onClick={() => setActiveTab('privacy')}
                 className={`flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 ${
                   activeTab === 'privacy'
-                    ? 'border-b-[#111318] text-[#111318]'
-                    : 'border-b-transparent text-[#617089]'
+                    ? 'border-b-blue-600 text-gray-900'
+                    : 'border-b-transparent text-gray-500'
                 }`}
               >
                 <p className="text-sm font-bold leading-normal tracking-[0.015em]">Privacy</p>
@@ -286,8 +284,8 @@ export default function ProfilePage() {
                 onClick={() => setActiveTab('settings')}
                 className={`flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 ${
                   activeTab === 'settings'
-                    ? 'border-b-[#111318] text-[#111318]'
-                    : 'border-b-transparent text-[#617089]'
+                    ? 'border-b-blue-600 text-gray-900'
+                    : 'border-b-transparent text-gray-500'
                 }`}
               >
                 <p className="text-sm font-bold leading-normal tracking-[0.015em]">Settings</p>
@@ -295,7 +293,7 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+          <h2 className="text-gray-900 text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
             {activeTab === 'profile' && 'Profile Information'}
             {activeTab === 'notifications' && 'Notification Settings'}
             {activeTab === 'coach' && 'AI Coach Settings'}
@@ -307,9 +305,9 @@ export default function ProfilePage() {
             <>
               <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
-                  <p className="text-[#111318] text-base font-medium leading-normal pb-2">Name</p>
+                  <p className="text-gray-900 text-base font-medium leading-normal pb-2">Name</p>
                   <input
-                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111318] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#617089] p-4 text-base font-normal leading-normal"
+                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-900 focus:outline-0 focus:ring-0 border border-gray-200 bg-white focus:border-blue-500 h-14 placeholder:text-gray-400 p-4 text-base font-normal leading-normal"
                     value={profile.name}
                     onChange={(e) => setProfile({ ...profile, name: e.target.value })}
                   />
@@ -317,9 +315,9 @@ export default function ProfilePage() {
               </div>
               <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
-                  <p className="text-[#111318] text-base font-medium leading-normal pb-2">Email</p>
+                  <p className="text-gray-900 text-base font-medium leading-normal pb-2">Email</p>
                   <input
-                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111318] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#617089] p-4 text-base font-normal leading-normal"
+                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-900 focus:outline-0 focus:ring-0 border border-gray-200 bg-gray-50 focus:border-blue-500 h-14 placeholder:text-gray-400 p-4 text-base font-normal leading-normal"
                     value={profile.email}
                     disabled
                   />
@@ -327,9 +325,9 @@ export default function ProfilePage() {
               </div>
               <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
-                  <p className="text-[#111318] text-base font-medium leading-normal pb-2">Height</p>
+                  <p className="text-gray-900 text-base font-medium leading-normal pb-2">Height</p>
                   <input
-                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111318] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#617089] p-4 text-base font-normal leading-normal"
+                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-900 focus:outline-0 focus:ring-0 border border-gray-200 bg-white focus:border-blue-500 h-14 placeholder:text-gray-400 p-4 text-base font-normal leading-normal"
                     value={profile.height}
                     onChange={(e) => setProfile({ ...profile, height: e.target.value })}
                     placeholder="e.g. 175 cm"
@@ -338,9 +336,9 @@ export default function ProfilePage() {
               </div>
               <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
-                  <p className="text-[#111318] text-base font-medium leading-normal pb-2">Weight</p>
+                  <p className="text-gray-900 text-base font-medium leading-normal pb-2">Weight</p>
                   <input
-                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111318] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#617089] p-4 text-base font-normal leading-normal"
+                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-900 focus:outline-0 focus:ring-0 border border-gray-200 bg-white focus:border-blue-500 h-14 placeholder:text-gray-400 p-4 text-base font-normal leading-normal"
                     value={profile.weight}
                     onChange={(e) => setProfile({ ...profile, weight: e.target.value })}
                     placeholder="e.g. 70 kg"
@@ -349,10 +347,10 @@ export default function ProfilePage() {
               </div>
               <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label className="flex flex-col min-w-40 flex-1">
-                  <p className="text-[#111318] text-base font-medium leading-normal pb-2">Birth Date</p>
+                  <p className="text-gray-900 text-base font-medium leading-normal pb-2">Birth Date</p>
                   <input
                     type="date"
-                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111318] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#617089] p-4 text-base font-normal leading-normal"
+                    className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-900 focus:outline-0 focus:ring-0 border border-gray-200 bg-white focus:border-blue-500 h-14 placeholder:text-gray-400 p-4 text-base font-normal leading-normal"
                     value={profile.birthdate}
                     onChange={(e) => setProfile({ ...profile, birthdate: e.target.value })}
                   />
@@ -365,7 +363,7 @@ export default function ProfilePage() {
             <div className="px-4 py-3">
               <div className="flex max-w-[480px] flex-col gap-4">
                 <label className="flex items-center justify-between">
-                  <span className="text-[#111318] text-base font-medium">Workout Reminders</span>
+                  <span className="text-gray-900 text-base font-medium">Workout Reminders</span>
                   <input
                     type="checkbox"
                     checked={profile.notifications.workoutReminders}
@@ -379,7 +377,7 @@ export default function ProfilePage() {
                   />
                 </label>
                 <label className="flex items-center justify-between">
-                  <span className="text-[#111318] text-base font-medium">Progress Updates</span>
+                  <span className="text-gray-900 text-base font-medium">Progress Updates</span>
                   <input
                     type="checkbox"
                     checked={profile.notifications.progressUpdates}
@@ -393,7 +391,7 @@ export default function ProfilePage() {
                   />
                 </label>
                 <label className="flex items-center justify-between">
-                  <span className="text-[#111318] text-base font-medium">Community Messages</span>
+                  <span className="text-gray-900 text-base font-medium">Community Messages</span>
                   <input
                     type="checkbox"
                     checked={profile.notifications.communityMessages}
@@ -414,7 +412,7 @@ export default function ProfilePage() {
             <div className="px-4 py-3">
               <div className="max-w-[600px]">
                 <div className="mb-6">
-                  <p className="text-[#617089] text-sm leading-normal mb-4">
+                  <p className="text-gray-600 text-sm leading-normal mb-4">
                     Your AI coach adapts its communication style and training approach based on your selected persona. 
                     You can switch between different coaching styles at any time.
                   </p>
@@ -434,7 +432,7 @@ export default function ProfilePage() {
             <div className="px-4 py-3">
               <div className="flex max-w-[480px] flex-col gap-4">
                 <label className="flex items-center justify-between">
-                  <span className="text-[#111318] text-base font-medium">Show Progress to Community</span>
+                  <span className="text-gray-900 text-base font-medium">Show Progress to Community</span>
                   <input
                     type="checkbox"
                     checked={profile.privacy.showProgress}
@@ -448,7 +446,7 @@ export default function ProfilePage() {
                   />
                 </label>
                 <label className="flex items-center justify-between">
-                  <span className="text-[#111318] text-base font-medium">Share Workouts</span>
+                  <span className="text-gray-900 text-base font-medium">Share Workouts</span>
                   <input
                     type="checkbox"
                     checked={profile.privacy.showWorkouts}
@@ -462,7 +460,7 @@ export default function ProfilePage() {
                   />
                 </label>
                 <label className="flex items-center justify-between">
-                  <span className="text-[#111318] text-base font-medium">Public Profile</span>
+                  <span className="text-gray-900 text-base font-medium">Public Profile</span>
                   <input
                     type="checkbox"
                     checked={profile.privacy.publicProfile}
@@ -536,6 +534,6 @@ export default function ProfilePage() {
           onPersonaSelect={handlePersonaSwitch}
         />
       )}
-    </LayoutClientWrapper>
+    </div>
   );
 } 

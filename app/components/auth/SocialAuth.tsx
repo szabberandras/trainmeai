@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { getAuthErrorMessage } from './authUtils';
+import { createUserProfile } from './userProfileService';
 import Image from 'next/image';
 
 interface SocialAuthProps {
@@ -22,7 +23,12 @@ export const SocialAuth: React.FC<SocialAuthProps> = ({
     setIsAuthenticating(true);
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      
+      // Create user profile for new users (this will only create if it doesn't exist)
+      await createUserProfile(user);
+      
       router.push('/dashboard');
     } catch (err: any) {
       console.error('Google Sign-In Error:', err);

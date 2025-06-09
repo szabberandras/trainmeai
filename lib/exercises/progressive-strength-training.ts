@@ -73,7 +73,7 @@ export const PROGRESSIVE_STRENGTH_EXERCISES: Record<string, ProgressiveExercise>
       'Feeling stable when carrying things'
     ],
     progressionPath: {
-      nextExercise: 'incline-push-up',
+      nextExercise: 'incline-push-ups',
       whenToProgress: 'When you can do 15 wall push-ups with perfect form'
     },
     modifications: {
@@ -132,7 +132,7 @@ export const PROGRESSIVE_STRENGTH_EXERCISES: Record<string, ProgressiveExercise>
       'Playing with kids or grandkids on the floor'
     ],
     progressionPath: {
-      nextExercise: 'bodyweight-squat',
+      nextExercise: 'squat',
       whenToProgress: 'When you can do 12 chair squats without touching the chair'
     },
     modifications: {
@@ -163,8 +163,8 @@ export const PROGRESSIVE_STRENGTH_EXERCISES: Record<string, ProgressiveExercise>
 
   // ===== LEVEL 2: BUILDING CONFIDENCE =====
 
-  'incline-push-up': {
-    id: 'incline-push-up',
+  'incline-push-ups': {
+    id: 'incline-push-ups',
     name: 'Incline Push-Up',
     aspirationalName: 'Elevating Your Strength Game',
     category: 'strength',
@@ -196,7 +196,7 @@ export const PROGRESSIVE_STRENGTH_EXERCISES: Record<string, ProgressiveExercise>
     ],
     progressionPath: {
       previousExercise: 'wall-push',
-      nextExercise: 'knee-push-up',
+      nextExercise: 'push-up',
       whenToProgress: 'When you can do 12 incline push-ups with perfect form'
     },
     modifications: {
@@ -225,8 +225,8 @@ export const PROGRESSIVE_STRENGTH_EXERCISES: Record<string, ProgressiveExercise>
     }
   },
 
-  'bodyweight-squat': {
-    id: 'bodyweight-squat',
+  'squat': {
+    id: 'squat',
     name: 'Bodyweight Squat',
     aspirationalName: 'Unleashing Your Lower Body Power',
     category: 'strength',
@@ -294,7 +294,7 @@ export const PROGRESSIVE_STRENGTH_EXERCISES: Record<string, ProgressiveExercise>
     category: 'strength',
     progressionLevel: 3,
     equipment: ['dumbbell', 'kettlebell'],
-    muscleGroups: ['quadriceps', 'glutes', 'hamstrings', 'core', 'upper-back'],
+    muscleGroups: ['quadriceps', 'glutes', 'hamstrings', 'core', 'upper-back-rotations'],
     difficulty: 3,
     instructions: [
       'Hold a dumbbell or kettlebell at chest level',
@@ -319,7 +319,7 @@ export const PROGRESSIVE_STRENGTH_EXERCISES: Record<string, ProgressiveExercise>
       'Feeling strong and capable in any situation'
     ],
     progressionPath: {
-      previousExercise: 'bodyweight-squat',
+      previousExercise: 'squat',
       nextExercise: 'dumbbell-romanian-deadlift',
       whenToProgress: 'When you can do 12 goblet squats with 15-20 lbs'
     },

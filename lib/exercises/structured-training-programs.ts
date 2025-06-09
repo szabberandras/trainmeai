@@ -80,7 +80,7 @@ export const BEGINNER_FAT_LOSS: TrainingProgram = {
           notes: 'Modify on knees if needed'
         },
         {
-          exercise: 'bent-over-dumbbell-row',
+          exercise: 'dumbbell-row',
           sets: 3,
           reps: 10,
           rest: '60s',
@@ -94,7 +94,7 @@ export const BEGINNER_FAT_LOSS: TrainingProgram = {
           notes: 'Maintain straight line from head to heels'
         },
         {
-          exercise: 'glute-bridges',
+          exercise: 'glute-bridge',
           sets: 3,
           reps: 15,
           rest: '45s',
@@ -119,14 +119,14 @@ export const BEGINNER_FAT_LOSS: TrainingProgram = {
           notes: 'Maintain conversational pace'
         },
         {
-          exercise: 'russian-twists',
+          exercise: 'russian-twist',
           sets: 3,
           reps: 20,
           rest: '45s',
           notes: 'Control the rotation'
         },
         {
-          exercise: 'leg-raises',
+          exercise: 'leg-raise',
           sets: 3,
           reps: 12,
           rest: '45s',
@@ -153,22 +153,22 @@ export const BEGINNER_FAT_LOSS: TrainingProgram = {
       estimated_duration: '25-35 minutes',
       exercises: [
         {
-          exercise: 'air-squats',
+          exercise: 'squat',
           reps: 15,
           notes: 'Full depth, explosive up'
         },
         {
-          exercise: 'modified-burpees',
+          exercise: 'burpee',
           reps: 8,
           notes: 'Step back instead of jumping if needed'
         },
         {
-          exercise: 'mountain-climbers',
+          exercise: 'mountain-climber',
           reps: 20,
           notes: 'Keep hips level'
         },
         {
-          exercise: 'kettlebell-swings',
+          exercise: 'kettlebell-swing',
           reps: 12,
           notes: 'Hip hinge movement, not squat'
         },
@@ -224,7 +224,7 @@ export const BEGINNER_GENERAL_FITNESS: TrainingProgram = {
       estimated_duration: '30-40 minutes',
       exercises: [
         {
-          exercise: 'wall-push-ups',
+          exercise: 'push-up',
           sets: 3,
           reps: 12,
           rest: '60s',
@@ -238,14 +238,14 @@ export const BEGINNER_GENERAL_FITNESS: TrainingProgram = {
           notes: 'Start light, focus on control'
         },
         {
-          exercise: 'bent-over-dumbbell-row',
+          exercise: 'dumbbell-row',
           sets: 3,
           reps: 10,
           rest: '60s',
           notes: 'Hinge at hips, keep back straight'
         },
         {
-          exercise: 'tricep-dips-chair',
+          exercise: 'tricep-dips',
           sets: 3,
           reps: 8,
           rest: '60s',
@@ -265,21 +265,21 @@ export const BEGINNER_GENERAL_FITNESS: TrainingProgram = {
       estimated_duration: '30-40 minutes',
       exercises: [
         {
-          exercise: 'chair-assisted-squats',
+          exercise: 'squat',
           sets: 3,
           reps: 12,
           rest: '60s',
           notes: 'Lightly touch chair, don\'t sit'
         },
         {
-          exercise: 'stationary-lunges',
+          exercise: 'lunge',
           sets: 3,
           reps: '8 each leg',
           rest: '60s',
           notes: 'Step back into lunge position'
         },
         {
-          exercise: 'glute-bridges',
+          exercise: 'glute-bridge',
           sets: 3,
           reps: 15,
           rest: '45s',
@@ -306,7 +306,7 @@ export const BEGINNER_GENERAL_FITNESS: TrainingProgram = {
       estimated_duration: '35-45 minutes',
       exercises: [
         {
-          exercise: 'bodyweight-squats',
+          exercise: 'squat',
           sets: 3,
           reps: 10,
           rest: '60s',
@@ -423,7 +423,7 @@ export const INTERMEDIATE_HYPERTROPHY: TrainingProgram = {
           notes: 'Add weight if bodyweight is easy'
         },
         {
-          exercise: 'overhead-tricep-extension',
+          exercise: 'ez-bar-overhead-tricep-extension',
           sets: 3,
           reps: 12,
           rest: '60s',
@@ -472,14 +472,14 @@ export const INTERMEDIATE_HYPERTROPHY: TrainingProgram = {
           notes: 'High elbows, external rotation'
         },
         {
-          exercise: 'barbell-curls',
+          exercise: 'barbell-curl',
           sets: 3,
           reps: 12,
           rest: '60s',
           notes: 'Control the negative'
         },
         {
-          exercise: 'hammer-curls',
+          exercise: 'hammer-curl',
           sets: 3,
           reps: 12,
           rest: '60s',
@@ -499,7 +499,7 @@ export const INTERMEDIATE_HYPERTROPHY: TrainingProgram = {
       estimated_duration: '60-75 minutes',
       exercises: [
         {
-          exercise: 'back-squat',
+          exercise: 'barbell-back-squat',
           sets: 4,
           reps: 8,
           rest: '3min',
@@ -562,7 +562,7 @@ export const INTERMEDIATE_HYPERTROPHY: TrainingProgram = {
           notes: 'Hands shoulder-width apart'
         },
         {
-          exercise: 'preacher-curls',
+          exercise: 'preacher-curl',
           sets: 3,
           reps: 12,
           rest: '90s',
@@ -642,7 +642,7 @@ export const ADVANCED_FUNCTIONAL_STRENGTH: TrainingProgram = {
       estimated_duration: '75-90 minutes',
       exercises: [
         {
-          exercise: 'weighted-pull-ups',
+          exercise: 'pull-ups',
           sets: 4,
           reps: 5,
           rest: '3-4min',
@@ -658,7 +658,7 @@ export const ADVANCED_FUNCTIONAL_STRENGTH: TrainingProgram = {
           notes: 'Strict press, no leg drive'
         },
         {
-          exercise: 'ring-rows',
+          exercise: 'ring-row',
           sets: 3,
           reps: 12,
           rest: '90s',
@@ -692,7 +692,7 @@ export const ADVANCED_FUNCTIONAL_STRENGTH: TrainingProgram = {
       estimated_duration: '60-75 minutes',
       exercises: [
         {
-          exercise: 'box-jumps',
+          exercise: 'box-jump',
           sets: 5,
           reps: 3,
           rest: '2-3min',
@@ -715,7 +715,7 @@ export const ADVANCED_FUNCTIONAL_STRENGTH: TrainingProgram = {
           notes: 'Heavy load, drive through legs'
         },
         {
-          exercise: 'kettlebell-swings',
+          exercise: 'kettlebell-swing',
           sets: 3,
           reps: 20,
           rest: '90s',
@@ -788,7 +788,7 @@ export const ADVANCED_FUNCTIONAL_STRENGTH: TrainingProgram = {
           notes: 'Work up to heavy 3RM'
         },
         {
-          exercise: 'bulgarian-split-squats',
+          exercise: 'bulgarian-split-squat',
           sets: 4,
           reps: '8 each leg',
           rest: '2min',
@@ -809,7 +809,7 @@ export const ADVANCED_FUNCTIONAL_STRENGTH: TrainingProgram = {
           notes: 'Add weight for challenge'
         },
         {
-          exercise: 'plank-variations',
+          exercise: 'plank',
           sets: 3,
           duration: '45s',
           rest: '60s',

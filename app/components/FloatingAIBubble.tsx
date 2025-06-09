@@ -56,19 +56,27 @@ export default function FloatingAIBubble({
   useEffect(() => {
     if (!userPersonalization || !isVisible) return;
 
-    // Show a contextual prompt after a delay
+    // Show a contextual prompt after a longer delay to be less intrusive
+    // Only show if user hasn't interacted with the bubble recently
     const promptTimer = setTimeout(() => {
-      const aiTone = userPersonalization.aiTone || 'supportive';
-      const prompts = AI_PROMPTS[aiTone];
-      const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-      setCurrentPrompt(randomPrompt);
-      setShowPrompt(true);
+      // Check if user has been inactive (no recent interactions)
+      const lastInteraction = sessionStorage.getItem('lastAIBubbleInteraction');
+      const now = Date.now();
+      const fiveMinutesAgo = now - (5 * 60 * 1000);
+      
+      if (!lastInteraction || parseInt(lastInteraction) < fiveMinutesAgo) {
+        const aiTone = userPersonalization.aiTone || 'supportive';
+        const prompts = AI_PROMPTS[aiTone];
+        const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+        setCurrentPrompt(randomPrompt);
+        setShowPrompt(true);
 
-      // Hide prompt after 5 seconds
-      setTimeout(() => {
-        setShowPrompt(false);
-      }, 5000);
-    }, 3000);
+        // Hide prompt after 8 seconds (longer to be less annoying)
+        setTimeout(() => {
+          setShowPrompt(false);
+        }, 8000);
+      }
+    }, 10000); // Increased delay to 10 seconds
 
     return () => clearTimeout(promptTimer);
   }, [userPersonalization, isVisible]);
@@ -78,6 +86,8 @@ export default function FloatingAIBubble({
       onSendMessage(message.trim());
       setMessage('');
       setIsExpanded(false);
+      // Track interaction to prevent auto-prompts
+      sessionStorage.setItem('lastAIBubbleInteraction', Date.now().toString());
     }
   };
 
@@ -86,6 +96,8 @@ export default function FloatingAIBubble({
       onSendMessage(currentPrompt);
       setShowPrompt(false);
       setIsExpanded(false);
+      // Track interaction to prevent auto-prompts
+      sessionStorage.setItem('lastAIBubbleInteraction', Date.now().toString());
     }
   };
 

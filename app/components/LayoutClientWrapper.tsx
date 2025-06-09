@@ -41,25 +41,45 @@ export default function LayoutClientWrapper({ children }: LayoutClientWrapperPro
     const checkUserOnboardingStatus = async () => {
       if (!loading && user) {
         try {
+          console.log('🔍 Checking onboarding status for user:', user.uid);
+          
+          // Add a small delay to ensure user profile creation has completed
+          await new Promise(resolve => setTimeout(resolve, 500));
+          
           const userDoc = await getDoc(doc(db, 'users', user.uid));
           if (userDoc.exists()) {
             const userData = userDoc.data();
-            if (userData.hasCompletedOnboarding) {
-              // User has completed onboarding
+            console.log('📄 User document exists, hasCompletedOnboarding:', userData.hasCompletedOnboarding);
+            
+            if (userData.hasCompletedOnboarding === true) {
+              // User has explicitly completed onboarding
               setUserPersonalization(userData as UserPersonalization);
               setShowOnboarding(false);
+              console.log('✅ User has completed onboarding, skipping');
             } else {
-              // User needs onboarding
-              setShowOnboarding(true);
+              // User needs onboarding - redirect to onboarding page
+              if (pathname !== '/onboarding') {
+                console.log('🎯 User needs onboarding, redirecting to onboarding page');
+                router.push('/onboarding');
+                return;
+              }
+              setShowOnboarding(false); // Don't show inline onboarding
             }
           } else {
-            // New user, show onboarding
-            setShowOnboarding(true);
+            // New user, redirect to onboarding page
+            if (pathname !== '/onboarding') {
+              console.log('🆕 New user detected, redirecting to onboarding page');
+              router.push('/onboarding');
+              return;
+            }
+            setShowOnboarding(false); // Don't show inline onboarding
           }
         } catch (error) {
-          console.error('Error checking onboarding status:', error);
-          // On error, proceed without onboarding
-          setShowOnboarding(false);
+          console.error('❌ Error checking onboarding status:', error);
+          // On error, redirect to onboarding to be safe
+          if (pathname !== '/onboarding') {
+            router.push('/onboarding');
+          }
         }
       }
     };
@@ -70,10 +90,8 @@ export default function LayoutClientWrapper({ children }: LayoutClientWrapperPro
         router.push('/');
       } else if (user && pathname === '/') {
         console.log("LayoutClientWrapper: User logged in, checking onboarding status");
-        // Only redirect after a small delay to allow user to see they're logged in
-        setTimeout(() => {
-          checkUserOnboardingStatus();
-        }, 1000);
+        // Check onboarding status immediately - no need for delay
+        checkUserOnboardingStatus();
       } else if (user) {
         // User is logged in and on a protected route, check onboarding
         checkUserOnboardingStatus();
@@ -121,7 +139,7 @@ export default function LayoutClientWrapper({ children }: LayoutClientWrapperPro
     );
   }
 
-  const showGlobalHeaderFooter = user && !loading && pathname !== '/';
+  const showGlobalHeaderFooter = user && !loading && pathname !== '/' && pathname !== '/onboarding';
 
   if (loading) {
     return (

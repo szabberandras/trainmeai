@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { auth } from '@/lib/firebase';
 import { applyActionCode, checkActionCode } from 'firebase/auth';
 import { CheckCircle, XCircle, Loader2 } from 'lucide-react';
 
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -138,4 +138,25 @@ export default function VerifyEmailPage() {
       </div>
     </div>
   );
-} 
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            <div className="text-center">
+              <Loader2 className="mx-auto h-12 w-12 text-blue-600 animate-spin" />
+              <h2 className="mt-4 text-xl font-semibold text-gray-900">
+                Loading...
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    }>
+      <VerifyEmailContent />
+    </Suspense>
+  );
+}

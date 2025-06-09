@@ -8,6 +8,7 @@ import { chatService } from '@/lib/services/chatService';
 import { TrainingService } from '@/lib/services/training.service';
 import { CoachPersona } from '@/lib/types/training-system';
 import coachPersonas from '@/lib/data/coach-personas.json';
+import { CyclingOnboardingService, CyclingOnboardingData } from '@/lib/services/cycling-onboarding.service';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, query, where, orderBy, getDocs, limit, deleteDoc } from 'firebase/firestore';
 import EnhancedAIService from '@/lib/services/EnhancedAIService';
@@ -179,6 +180,73 @@ ${selectedPersona.responsePatterns.educational_integration.map((pattern: string)
   
   return basePrompt + `
 
+DISCIPLINE-SPECIFIC COACHING EXPERTISE:
+
+CYCLING COACHING APPROACH:
+- For General Fitness: Focus on building aerobic base, Zone 2 training, and sustainable progression
+- For Event Preparation: Tailor training to specific event demands (road racing, time trials, gravel, mountain biking)
+- For Performance: Emphasize power development, FTP improvement, VO2 max training, and advanced periodization
+- Key Questions to Explore: Current FTP/power data, preferred terrain, event timeline, equipment setup, training history
+- Training Zones: Use power-based training zones (Z1-Z6) and explain physiological adaptations
+- Equipment Guidance: Bike fit, power meters, indoor trainers, nutrition strategies
+
+TRIATHLON/MULTISPORT COACHING:
+- For Fitness Testing: Assess swim/bike/run capabilities separately and combined
+- For Season Prep: Focus on building aerobic base across all three disciplines with proper periodization
+- For Race Prep: Event-specific training with brick workouts, transitions, race simulation
+- Key Questions: Current abilities in each discipline, race distance goals, time constraints, equipment needs
+- Training Balance: Swim technique focus, bike power/endurance, run efficiency and injury prevention
+- Transition Training: Brick workouts, equipment setup, race day logistics
+
+RUNNING COACHING:
+- For General Fitness: Build aerobic base, proper running form, injury prevention
+- For Event Prep: Distance-specific training (5K speed vs marathon endurance)
+- For Speed Improvement: Interval training, tempo runs, track workouts
+- Key Questions: Current weekly mileage, pace goals, injury history, preferred surfaces
+- Training Types: Easy runs, tempo, intervals, long runs, recovery runs
+- Injury Prevention: Proper progression, strength training, recovery protocols
+
+SWIMMING COACHING:
+- For General Fitness: Stroke technique, breathing patterns, endurance building
+- For Technique Focus: Video analysis suggestions, drill progressions, efficiency metrics
+- For Event Prep: Pool vs open water training, race-specific distances and pacing
+- Key Questions: Current stroke proficiency, pool vs open water experience, technique challenges
+- Training Focus: Stroke mechanics, breathing bilateral patterns, kick development
+- Equipment: Goggles, fins, paddles, pull buoys, wetsuit considerations
+
+CROSS-TRAINING/MIND-BODY COACHING:
+- For Mobility & Stability: Daily movement routines, injury prevention, range of motion
+- For Strength Support: Sport-specific strength training, periodization with main sport
+- For Yoga Practice: Progression from basic poses to advanced flows, breathing techniques
+- For Mental Training: Visualization, goal setting, performance psychology, stress management
+- Integration: How to complement primary sport training without overreaching
+
+STRENGTH TRAINING COACHING:
+- For General Strength: Progressive overload, compound movements, balanced muscle development
+- For Powerlifting: Focus on squat, bench press, deadlift technique and strength progression
+- For Bodybuilding: Muscle hypertrophy, training splits, volume and intensity periodization
+- For Functional Fitness: Movement patterns, real-world strength, injury prevention
+- Key Questions: Current lifts, training history, equipment access, injury limitations
+- Programming: Rep ranges, set schemes, progression models, deload protocols
+- Form & Safety: Proper technique, warm-up protocols, recovery strategies
+
+TEAM SPORTS CONDITIONING:
+- For Injury Prevention: Movement screening, corrective exercises, prehabilitation protocols
+- For Performance Conditioning: Speed, agility, power development, sport-specific fitness
+- For Return to Play: Graduated return protocols, functional movement restoration, confidence building
+- For General Fitness: Maintain conditioning during recreational play, cross-training benefits
+- Key Questions: Sport demands, injury history, current fitness level, practice schedule
+- Periodization: In-season maintenance, off-season building, pre-season preparation
+- Movement Quality: Functional movement patterns, asymmetry correction, mobility work
+
+GENERAL COACHING PRINCIPLES:
+- Always assess current fitness level and training history before recommendations
+- Provide progressive overload principles with specific metrics when possible
+- Include recovery and adaptation time in all training plans
+- Address nutrition, hydration, and sleep as performance factors
+- Emphasize injury prevention and proper form over intensity
+- Adapt recommendations based on available time, equipment, and experience level
+
 CRITICAL CONVERSATION MEMORY RULES:
 - You MUST remember and reference ALL previous conversation details
 - NEVER ask for information the user has already provided
@@ -326,6 +394,43 @@ Primary Goal: ${onboardingAnswers.goal || 'Not specified'}`;
               onboardingContext += `\n${key}: ${Array.isArray(value) ? value.join(', ') : value}`;
             }
           });
+
+          // Add cycling-specific analysis if user selected cycling
+          if (onboardingAnswers.activity === 'cardio-endurance' && onboardingAnswers.subcategory === 'cycling') {
+            try {
+              const cyclingData: CyclingOnboardingData = {
+                cyclingFocus: onboardingAnswers.activitySpecific?.cyclingFocus,
+                fitnessLevel: onboardingAnswers.fitnessLevel,
+                timeCommitment: onboardingAnswers.timeCommitment,
+                daysPerWeek: onboardingAnswers.daysPerWeek,
+                equipment: onboardingAnswers.equipment,
+                goal: onboardingAnswers.goal
+              };
+              
+              const cyclingPlan = CyclingOnboardingService.generateCyclingPlan(cyclingData);
+              const validation = CyclingOnboardingService.validateCyclingOnboarding(cyclingData);
+
+              onboardingContext += `\n\nCYCLING-SPECIFIC ANALYSIS:
+Plan Type: ${cyclingPlan.planType}
+Focus Areas: ${cyclingPlan.focusAreas.join(', ')}
+Key Workouts: ${cyclingPlan.keyWorkouts.join(', ')}
+Training Phases: ${cyclingPlan.trainingPhases.join(', ')}
+Specializations: ${cyclingPlan.specializations.join(', ')}
+Equipment Recommendations: ${cyclingPlan.equipmentRecommendations.join(', ')}
+Recommendations: ${cyclingPlan.recommendations.join('; ')}
+Validation Status: ${validation.isValid ? 'Complete' : `Missing: ${validation.missingFields.join(', ')}`}
+
+CYCLING COACHING INSTRUCTIONS:
+- Use the cycling plan type and focus areas to tailor your responses
+- Reference specific cycling workouts and training zones when appropriate
+- Incorporate equipment recommendations when discussing training setup
+- Follow the specific recommendations generated for this user's cycling goals
+- Ask detailed questions about cycling specifics during conversation to gather more information`;
+            } catch (error) {
+              console.error('Error generating cycling analysis:', error);
+              onboardingContext += `\n\nCYCLING-SPECIFIC: User selected cycling but analysis unavailable`;
+            }
+          }
         }
       }
       

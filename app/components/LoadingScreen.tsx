@@ -55,7 +55,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
               className="fill-gray-400 text-sm font-bold tracking-widest font-space-grotesk"
             >
               <textPath href="#circle-path" startOffset="0%">
-                MY FITNESS APP • YOUR AI-POWERED FITNESS COMPANION • MY FITNESS APP • 
+                MYPACE • YOUR AI-POWERED FITNESS COMPANION • MYPACE • 
               </textPath>
             </text>
           </svg>
@@ -64,7 +64,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
           <div className="relative z-10 text-center">
             <img 
               src="https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Logo%2F317ecd07-214d-4ac0-99a8-4e19c2ed8ebd.png?alt=media&token=de760234-5f32-470d-b88d-d55368799d36" 
-              alt="My Fitness App Logo" 
+                              alt="MyPace Logo" 
               className="w-16 h-16 mx-auto mb-3 animate-pulse-slow"
             />
             <h1 
@@ -74,7 +74,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
                 lineHeight: '1'
               }}
             >
-              My Fitness App
+              MyPace
             </h1>
             <div className="w-8 h-0.5 bg-blue-600 mx-auto rounded-full animate-pulse mt-2"></div>
           </div>

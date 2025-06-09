@@ -3,11 +3,13 @@ import './globals.css';
 import { Inter, Sora, Space_Grotesk } from 'next/font/google';
 import { Providers } from './providers';
 import LayoutClientWrapper from './components/LayoutClientWrapper';
+import type { Metadata } from 'next'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  preload: true,
 });
 
 const sora = Sora({
@@ -22,9 +24,12 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 });
 
-export const metadata = {
-  title: 'My Fitness App',
+export const metadata: Metadata = {
+  title: 'MyPace',
   description: 'Your personal AI-powered fitness companion',
+  other: {
+    'X-DNS-Prefetch-Control': 'on',
+  },
 };
 
 export default function RootLayout({
@@ -34,9 +39,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com" />
+      </head>
       <body className="font-sans bg-gray-50">
         <Providers>
-          {children}
+          <LayoutClientWrapper>
+            {children}
+          </LayoutClientWrapper>
         </Providers>
       </body>
     </html>

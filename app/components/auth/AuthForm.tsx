@@ -143,6 +143,11 @@ export default function AuthForm({ isRegistering, onToggleMode }: AuthFormProps)
         const { user } = await createUserWithEmailAndPassword(auth, email, password);
         console.log('✅ User created successfully:', user.uid);
         
+        // Create user profile in Firestore
+        console.log('📄 Creating user profile...');
+        await createUserProfile(user);
+        console.log('✅ User profile created successfully');
+        
         // DISABLED FOR DEVELOPMENT - Email verification sending
         /*
         console.log('📧 Sending email verification...');

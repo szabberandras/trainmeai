@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ChevronLeft, ChevronRight, Plus, Target, Dumbbell, Heart, Zap, Trophy, Users } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus, Target, Dumbbell, Heart, Zap, Trophy, Users, Calendar } from 'lucide-react';
 
 interface TrainingProgram {
   id: string;
@@ -124,13 +124,22 @@ const TrainingProgramNavBar: React.FC<TrainingProgramNavBarProps> = ({
         <p className="text-gray-500 mb-4 max-w-sm">
           Create your first training program to start your fitness journey
         </p>
-        <button
-          onClick={onCreateNew}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
-        >
-          <Plus className="w-4 h-4" />
-          Create Program
-        </button>
+        <div className="flex gap-2 justify-center">
+          <button
+            onClick={() => router.push('/dashboard#ai-chat')}
+            className="inline-flex items-center gap-2 px-3 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm"
+          >
+            <Plus className="w-4 h-4" />
+            Chat with AI
+          </button>
+          <button
+            onClick={onCreateNew}
+            className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+          >
+            <Plus className="w-4 h-4" />
+            Create Program
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -150,13 +159,22 @@ const TrainingProgramNavBar: React.FC<TrainingProgramNavBarProps> = ({
       <div className="px-6 py-4">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-medium text-gray-900">Training Programs</h2>
-          <button
-            onClick={onCreateNew}
-            className="inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors"
-          >
-            <Plus className="w-4 h-4" />
-            New Program
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => router.push('/training-calendar')}
+              className="inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+            >
+              <Calendar className="w-4 h-4" />
+              Calendar View
+            </button>
+            <button
+              onClick={onCreateNew || (() => router.push('/training-plans/new'))}
+              className="inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+            >
+              <Plus className="w-4 h-4" />
+              New Program
+            </button>
+          </div>
         </div>
         
         <div className="relative">
@@ -189,63 +207,42 @@ const TrainingProgramNavBar: React.FC<TrainingProgramNavBarProps> = ({
                   key={program.id}
                   onClick={() => router.push(`/training/${program.id}`)}
                   className={`
-                    flex-shrink-0 cursor-pointer transition-all duration-200 rounded-2xl border-2 p-4 min-w-[200px]
+                    flex-shrink-0 w-64 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200
                     ${isActive 
-                      ? 'border-blue-500 bg-blue-50 shadow-lg scale-105' 
-                      : `${statusColor} hover:shadow-md hover:scale-102`
+                      ? 'border-blue-500 bg-blue-50 shadow-md' 
+                      : `${statusColor} hover:shadow-md hover:border-gray-300`
                     }
                   `}
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className={`w-8 h-8 ${program.color} rounded-lg flex items-center justify-center text-white`}>
+                    <div className={`w-10 h-10 rounded-lg ${program.color} flex items-center justify-center text-white`}>
                       {program.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className={`font-medium truncate ${isActive ? 'text-blue-900' : 'text-gray-900'}`}>
-                        {program.name}
-                      </h3>
-                      <p className={`text-sm ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>
-                        {program.type}
-                      </p>
+                      <h3 className="font-semibold text-gray-900 truncate">{program.name}</h3>
+                      <p className="text-sm text-gray-600">{program.type}</p>
+                    </div>
+                    <div className={`
+                      px-2 py-1 rounded-full text-xs font-medium
+                      ${program.status === 'active' ? 'bg-green-100 text-green-800' :
+                        program.status === 'completed' ? 'bg-blue-100 text-blue-800' :
+                        'bg-gray-100 text-gray-800'}
+                    `}>
+                      {program.status}
                     </div>
                   </div>
                   
-                  {/* Progress Bar */}
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className={`text-xs font-medium ${isActive ? 'text-blue-700' : 'text-gray-600'}`}>
-                        Progress
-                      </span>
-                      <span className={`text-xs font-bold ${isActive ? 'text-blue-700' : 'text-gray-700'}`}>
-                        {program.progress}%
-                      </span>
+                      <span className="text-sm text-gray-600">Progress</span>
+                      <span className="text-sm font-medium text-gray-900">{program.progress}%</span>
                     </div>
-                    <div className={`w-full h-2 rounded-full ${isActive ? 'bg-blue-200' : 'bg-gray-200'}`}>
-                      <div
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          isActive ? 'bg-blue-600' : program.color.replace('bg-', 'bg-')
-                        }`}
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="bg-blue-500 h-2 rounded-full transition-all duration-300"
                         style={{ width: `${program.progress}%` }}
                       />
                     </div>
-                  </div>
-
-                  {/* Status Badge */}
-                  <div className="mt-3 flex justify-between items-center">
-                    <span className={`
-                      inline-flex items-center px-2 py-1 rounded-full text-xs font-medium
-                      ${program.status === 'active' 
-                        ? 'bg-green-100 text-green-800' 
-                        : program.status === 'completed'
-                        ? 'bg-blue-100 text-blue-800'
-                        : 'bg-gray-100 text-gray-800'
-                      }
-                    `}>
-                      {program.status.charAt(0).toUpperCase() + program.status.slice(1)}
-                    </span>
-                    {isActive && (
-                      <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
-                    )}
                   </div>
                 </div>
               );

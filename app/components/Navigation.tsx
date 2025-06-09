@@ -1,3 +1,5 @@
+'use client';
+
 import { Bell, Settings, LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -60,6 +62,14 @@ export default function Navigation() {
               }`}
             >
               Dashboard
+            </Link>
+            <Link 
+              href="/training-calendar" 
+              className={`text-sm font-medium leading-normal ${
+                isActive('/training-calendar') ? 'text-blue-600' : 'text-[#111418]'
+              }`}
+            >
+              Training
             </Link>
             <Link 
               href="/programs" 

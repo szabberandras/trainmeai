@@ -11708,23 +11708,1634 @@ export const EXERCISE_DATABASE: Record<string, Exercise> = {
       ],
       breathing: 'Inhale as you lift the ball, exhale forcefully as you slam.'
     }
+  },
+
+  // ===== NEW TRICEP EXERCISES =====
+  'loop-band-standing-tricep-extension': {
+    id: 'loop-band-standing-tricep-extension',
+    name: 'Loop Band Standing Tricep Extension',
+    category: 'strength',
+    equipment: ['Loop Band'],
+    muscleGroups: ['Triceps'],
+    difficulty: 1,
+    instructions: [
+      'Anchor a loop band securely to a high point, like the top of a door or power rack.',
+      'Stand facing the anchor point and grab the bottom of the band with both hands, using an overhand grip.',
+      'Step back to create tension in the band. Stagger your feet for stability and hinge slightly at your hips.',
+      'Start with your elbows bent and your hands near your chest.',
+      'Keeping your elbows pinned to your sides, extend your arms fully downwards, squeezing your triceps at the bottom of the movement.',
+      'Slowly return to the starting position with control.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: [
+      'Ensure the band is securely anchored before beginning.',
+      'Keep your elbows stationary; the movement should only come from the forearm.',
+      'Control the band on the way up; do not let it snap back.'
+    ],
+    modifications: {
+      beginner: 'Use a lighter resistance band. Stand closer to the anchor point.',
+      advanced: 'Use a heavier resistance band. Take a step further back to increase tension.',
+      equipment_alternatives: {
+        'dumbbells': 'Overhead dumbbell tricep extension',
+        'cable-machine': 'Cable tricep pushdowns',
+        'bodyweight': 'Diamond push-ups'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: [
+        'Anchor band high. Grab with both hands and step back to create tension.',
+        'Keep elbows tucked in at your sides.'
+      ],
+      execution: [
+        'Press the band straight down until your arms are fully extended.',
+        'Squeeze your triceps hard at the bottom.',
+        'Slowly control the band back to the starting position.'
+      ],
+      common_mistakes: [
+        'Letting the elbows flare out.',
+        'Using body momentum to press the band down.',
+        'Letting the band snap back up.'
+      ],
+      breathing: 'Exhale as you press down, inhale as you return.'
+    }
+  },
+
+  'tate-press': {
+    id: 'tate-press',
+    name: 'Tate Press',
+    category: 'strength',
+    equipment: ['Dumbbells', 'Flat Bench'],
+    muscleGroups: ['Triceps', 'Chest', 'Shoulders'],
+    difficulty: 2,
+    instructions: [
+      'Lie flat on a bench with your feet firmly on the floor.',
+      'Hold a dumbbell in each hand and press them up above your chest, similar to a dumbbell bench press starting position.',
+      'Turn the dumbbells so your palms face your feet and the ends of the dumbbells touch.',
+      'Keeping your upper arms stationary, bend at the elbows and lower the dumbbells towards the center of your chest.',
+      'Your elbows should flare out to the sides.',
+      'When the dumbbells are close to your chest, press them back up to the starting position by extending your elbows, squeezing your triceps.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: [
+      'Use a weight you can control to avoid injury to the elbow joint.',
+      'Keep the movement smooth and controlled, avoiding jerky motions.',
+      'Ensure your back and hips remain on the bench.'
+    ],
+    modifications: {
+      beginner: 'Use very light dumbbells to master the form.',
+      advanced: 'Increase the weight. Add a pause at the bottom of the movement.',
+      equipment_alternatives: {
+        'cable-machine': 'Cable tricep pushdowns',
+        'resistance-bands': 'Loop band tricep extensions',
+        'bodyweight': 'Diamond push-ups'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: [
+        'Lie on a bench, dumbbells pressed up over your chest.',
+        'Palms face forward, dumbbells touching.'
+      ],
+      execution: [
+        'Bend your elbows, lowering the dumbbells to your mid-chest.',
+        'Allow your elbows to point outwards.',
+        'Powerfully extend your elbows to press the weight back up.',
+        'Focus on the tricep contraction.'
+      ],
+      common_mistakes: [
+        'Moving the upper arms (shoulders).',
+        'Lowering the weight too quickly.',
+        'Not getting a full range of motion.'
+      ],
+      breathing: 'Inhale as you lower the dumbbells, exhale as you press up.'
+    }
+  },
+
+  'machine-tricep-dip': {
+    id: 'machine-tricep-dip',
+    name: 'Machine Tricep Dip',
+    category: 'strength',
+    equipment: ['Tricep Dip Machine'],
+    muscleGroups: ['Triceps', 'Chest', 'Shoulders'],
+    difficulty: 1,
+    instructions: [
+      'Sit on the tricep dip machine and adjust the seat so the handles are at chest level.',
+      'Grasp the handles with a neutral grip (palms facing each other).',
+      'Keep your chest up and your back straight against the pad.',
+      'Press down on the handles until your arms are fully extended, but not locked out.',
+      'Squeeze your triceps at the bottom of the movement.',
+      'Slowly allow the handles to rise back to the starting position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: [
+      'Set the weight appropriately. Do not use a weight so heavy that it compromises your form.',
+      'Avoid letting your shoulders rise up towards your ears.',
+      'Maintain a controlled movement throughout.'
+    ],
+    modifications: {
+      beginner: 'Use a lighter weight.',
+      advanced: 'Use a heavier weight. Slow down the eccentric (upward) phase of the movement.',
+      equipment_alternatives: {
+        'dumbbells': 'Dumbbell tricep extensions',
+        'resistance-bands': 'Loop band tricep extensions',
+        'bodyweight': 'Diamond push-ups'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: [
+        'Adjust the seat and select your weight.',
+        'Sit with your chest up and grab the handles.'
+      ],
+      execution: [
+        'Press down until your arms are straight.',
+        'Focus on squeezing the triceps.',
+        'Control the weight as you return to the start.',
+        'Keep your shoulders down and back.'
+      ],
+      common_mistakes: [
+        'Using momentum.',
+        'Shrugging the shoulders.',
+        'Performing partial reps.'
+      ],
+      breathing: 'Exhale as you press down, inhale as you return.'
+    }
+  },
+
+  'ez-bar-overhead-tricep-extension': {
+    id: 'ez-bar-overhead-tricep-extension',
+    name: 'EZ-Bar Overhead Tricep Extension',
+    category: 'strength',
+    equipment: ['EZ Bar', 'Bench (optional)'],
+    muscleGroups: ['Triceps'],
+    difficulty: 2,
+    instructions: [
+      'This can be performed standing or seated on a bench with back support.',
+      'Grasp an EZ-bar with a close, overhand grip (hands about 6 inches apart).',
+      'Lift the bar overhead so your arms are fully extended.',
+      'Keeping your upper arms stationary and close to your head, slowly lower the bar behind your head by bending your elbows.',
+      'Lower the bar as far as your mobility allows to get a good stretch in the triceps.',
+      'Extend your elbows to raise the bar back to the starting position.',
+      'Squeeze your triceps at the top.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: [
+      'Keep your core engaged to prevent your back from arching.',
+      'The movement should be controlled, especially when lowering the bar.',
+      'Keep your elbows tucked in, not flaring out wide.'
+    ],
+    modifications: {
+      beginner: 'Use a lighter weight. Perform seated with back support.',
+      advanced: 'Increase the weight. Perform standing to engage more core stability.',
+      equipment_alternatives: {
+        'dumbbells': 'Dumbbell overhead tricep extension',
+        'cable-machine': 'Cable overhead tricep extension',
+        'resistance-bands': 'Loop band tricep extensions'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: [
+        'Grasp the EZ-bar and lift it overhead with arms straight.',
+        'Keep upper arms vertical and close to your head.'
+      ],
+      execution: [
+        'Bend only at the elbows, lowering the bar behind your head.',
+        'Get a deep stretch in your triceps.',
+        'Extend your arms to lift the bar back to the start.',
+        'Flex your triceps at the top.'
+      ],
+      common_mistakes: [
+        'Flaring the elbows out too wide.',
+        'Arching the lower back.',
+        'Moving the upper arms during the lift.'
+      ],
+      breathing: 'Inhale as you lower the bar, exhale as you extend your arms.'
+    }
+  },
+
+  'incline-barbell-skull-crusher': {
+    id: 'incline-barbell-skull-crusher',
+    name: 'Incline Barbell Skull Crusher',
+    category: 'strength',
+    equipment: ['Incline Bench', 'Barbell or EZ Bar'],
+    muscleGroups: ['Triceps'],
+    difficulty: 2,
+    instructions: [
+      'Set a bench to a 30-45 degree incline.',
+      'Lie on the incline bench and hold a barbell or EZ-bar with a narrow, overhand grip.',
+      'Extend your arms straight up over your chest.',
+      'Keeping your upper arms stationary, bend at the elbows and slowly lower the bar towards the top of your forehead.',
+      'Lower the bar until you feel a deep stretch in your triceps.',
+      'Powerfully extend your elbows to press the bar back to the starting position.',
+      'Squeeze your triceps at the top.',
+      'Repeat for reps.'
+    ],
+    safetyNotes: [
+      'Use a spotter if you are using a heavy weight.',
+      'Control the weight at all times, especially when lowering it towards your head.',
+      'Keep your elbows from flaring out too much.'
+    ],
+    modifications: {
+      beginner: 'Use a light weight or an empty bar to learn the movement.',
+      advanced: 'Increase the weight. Use a steeper incline for a greater stretch.',
+      equipment_alternatives: {
+        'dumbbells': 'Incline dumbbell tricep extension',
+        'cable-machine': 'Cable tricep pushdowns',
+        'resistance-bands': 'Loop band tricep extensions'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      progressionRate: 0.1,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: [
+        'Lie on an incline bench, bar extended over your chest.',
+        'Keep upper arms perpendicular to the floor.'
+      ],
+      execution: [
+        'Bend only at the elbows, lowering the bar toward your forehead.',
+        'Feel a good stretch in the triceps.',
+        'Extend your elbows to press the bar back up.',
+        'Focus on the tricep contraction.'
+      ],
+      common_mistakes: [
+        'Moving the upper arms.',
+        'Flaring elbows excessively.',
+        'Lowering the weight too fast.'
+      ],
+      breathing: 'Inhale as you lower, exhale as you press up.'
+    }
+  },
+
+  'dumbbell-tricep-extension': {
+    id: 'dumbbell-tricep-extension',
+    name: 'Dumbbell Tricep Extension',
+    category: 'strength',
+    equipment: ['Dumbbell', 'Flat Bench'],
+    muscleGroups: ['Triceps'],
+    difficulty: 2,
+    instructions: [
+      'This can be performed seated (as pictured) or standing.',
+      'Sit on a bench, holding one dumbbell with both hands, gripping the top end of the dumbbell so it hangs vertically (cup the dumbbell head).',
+      'Raise the dumbbell overhead so your arms are fully extended.',
+      'Keeping your upper arms stationary and close to your head, slowly lower the dumbbell behind your head by bending your elbows.',
+      'Lower the dumbbell as far as you can to get a deep stretch in the triceps.',
+      'Extend your elbows to raise the dumbbell back to the starting position.',
+      'Squeeze your triceps at the top.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: [
+      'Keep your core engaged to prevent your back from arching.',
+      'The movement should be controlled, especially when lowering the dumbbell.',
+      'Keep your elbows tucked in, not flaring out wide.'
+    ],
+    modifications: {
+      beginner: 'Use a lighter dumbbell. Perform seated with back support.',
+      advanced: 'Increase the weight. Perform with two separate dumbbells.',
+      equipment_alternatives: {
+        'ez-bar': 'EZ-bar overhead tricep extension',
+        'cable-machine': 'Cable overhead tricep extension',
+        'resistance-bands': 'Loop band tricep extensions'
+      }
+    },
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      progressionRate: 0.1,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: [
+        'Sit tall, holding one dumbbell overhead with both hands.',
+        'Keep upper arms vertical and close to your head.'
+      ],
+      execution: [
+        'Bend your elbows to lower the dumbbell behind your head.',
+        'Feel the stretch.',
+        'Press up by straightening your arms.',
+        'Squeeze triceps at the top.'
+      ],
+      common_mistakes: [
+        'Flaring elbows out.',
+        'Arching the lower back.',
+        'Not using a full range of motion.'
+      ],
+      breathing: 'Inhale as you lower, exhale as you press.'
+    }
+  },
+
+  // ===== NEW CHEST AND FLEXIBILITY EXERCISES =====
+  'foam-roll-chest-alternative': {
+    id: 'foam-roll-chest-alternative',
+    name: 'Foam Roll Chest - Alternative',
+    category: 'flexibility',
+    equipment: ['Foam Roller'],
+    muscleGroups: ['Chest (Pectorals)', 'Shoulders (Anterior Deltoid)'],
+    difficulty: 1,
+    instructions: [
+      'Lie face down on the floor.',
+      'Place a foam roller under the right side of your chest, positioned diagonally.',
+      'Extend your right arm out to the side.',
+      'Support your upper body with your left forearm.',
+      'Gently roll your body side-to-side to massage the pectoral muscle.',
+      'To increase the stretch, you can slowly raise and lower your extended arm.',
+      'Continue for the desired duration, then switch sides.'
+    ],
+    safetyNotes: ['Avoid rolling directly over the shoulder joint.', 'The pressure should be gentle and tolerable.', 'Breathe deeply to help the muscle relax.'],
+    modifications: {
+      beginner: 'Apply very light pressure.',
+      advanced: 'Use a firmer foam roller or a lacrosse ball for more targeted pressure.',
+      equipment_alternatives: {
+        'tennis-ball': 'Use a tennis ball for more targeted pressure',
+        'lacrosse-ball': 'Use a lacrosse ball for deeper tissue work',
+        'massage-stick': 'Use a massage stick for similar benefits'
+      }
+    },
+    metrics: { type: 'time', defaultValue: 60, progressionRate: 0.1, unit: 'seconds per side' },
+    coaching: {
+      setup: ['Lie face down and place the foam roller under one side of your chest.'],
+      execution: ['Gently roll across the muscle fibers of your chest.', 'Pause on tender spots and breathe.', 'Keep the rest of your body relaxed.'],
+      common_mistakes: ['Rolling too quickly.', 'Applying too much pressure.', 'Holding your breath.'],
+      breathing: 'Breathe deeply and consistently to promote muscle relaxation.'
+    }
+  },
+
+  'dumbbell-squeeze-press': {
+    id: 'dumbbell-squeeze-press',
+    name: 'Dumbbell Squeeze Press',
+    category: 'strength',
+    equipment: ['Dumbbells', 'Flat Bench'],
+    muscleGroups: ['Chest', 'Triceps'],
+    difficulty: 2,
+    instructions: [
+      'Lie flat on a bench with your feet firmly on the floor.',
+      'Hold a dumbbell in each hand with a neutral grip (palms facing each other) and press them together over your chest.',
+      'Actively squeeze the dumbbells together throughout the entire movement.',
+      'Slowly lower the dumbbells to your chest, keeping them pressed together.',
+      'When the dumbbells touch your chest, press them back up to the starting position.',
+      'Maintain the inward squeeze on the dumbbells at all times.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Focus on the squeeze to maintain tension; the weight of the dumbbells may be lighter than your standard dumbbell press.', 'Keep the movement controlled.', 'Ensure your back remains flat on the bench.'],
+    modifications: {
+      beginner: 'Use light dumbbells to master the squeezing motion.',
+      advanced: 'Increase the weight. Perform on an incline bench to target the upper chest.',
+      equipment_alternatives: {
+        'weight-plates': 'Use weight plates pressed together (Svend press variation)',
+        'resistance-bands': 'Use resistance bands with inward tension',
+        'cable-machine': 'Cable fly with inward squeeze'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 12, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Lie on the bench and hold two dumbbells together over your chest.', 'Begin squeezing the dumbbells together.'],
+      execution: ['While squeezing, lower the dumbbells to your chest.', 'Press them back up to the start, never releasing the inward pressure.', 'Focus on the chest contraction.'],
+      common_mistakes: ['Stopping the squeeze at any point.', 'Letting the dumbbells drift apart.', 'Arching the back excessively.'],
+      breathing: 'Inhale as you lower, exhale as you press.'
+    }
+  },
+
+  'svend-press': {
+    id: 'svend-press',
+    name: 'Svend Press',
+    category: 'strength',
+    equipment: ['Weight Plates'],
+    muscleGroups: ['Chest'],
+    difficulty: 1,
+    instructions: [
+      'Stand tall with your feet shoulder-width apart.',
+      'Hold two small weight plates (e.g., 2.5kg or 5kg) and press them together between your flat palms at chest height.',
+      'Your elbows should be bent and tucked in.',
+      'Squeeze the plates together as hard as possible to create isometric tension in your chest.',
+      'While maintaining the squeeze, press the plates straight out in front of you until your arms are fully extended.',
+      'Slowly bring the plates back to your chest, never losing the inward pressure.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['The focus is on tension, not heavy weight. Start with light plates.', 'Keep your shoulders down and back; do not shrug.'],
+    modifications: {
+      beginner: 'Use just one light plate or even just press your palms together.',
+      advanced: 'Use slightly heavier plates. Hold the extended position for a 2-second count.',
+      equipment_alternatives: {
+        'dumbbells': 'Dumbbell squeeze press',
+        'medicine-ball': 'Medicine ball squeeze press',
+        'bodyweight': 'Palm press (hands together without weight)'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 15, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Stand tall, holding two plates between your palms at your chest.', 'Squeeze the plates together forcefully.'],
+      execution: ['Press the plates straight out, maintaining the squeeze.', 'Extend your arms fully.', 'Slowly pull the plates back to your chest.', 'The tension in your chest should be constant.'],
+      common_mistakes: ['Relaxing the squeeze.', 'Shrugging the shoulders.', 'Using momentum.'],
+      breathing: 'Exhale as you press out, inhale as you return.'
+    }
+  },
+
+  'push-up-on-knees': {
+    id: 'push-up-on-knees',
+    name: 'Push Up on Knees',
+    category: 'strength',
+    equipment: ['Mat (optional)'],
+    muscleGroups: ['Chest', 'Triceps', 'Shoulders', 'Core'],
+    difficulty: 1,
+    instructions: [
+      'Start on all fours, then walk your hands forward until your body forms a straight line from your head to your knees.',
+      'Your hands should be slightly wider than your shoulders.',
+      'Engage your core to keep your back flat.',
+      'Lower your body by bending your elbows, keeping them at about a 45-degree angle from your body.',
+      'Lower until your chest is close to the floor.',
+      'Press through your palms to push your body back up to the starting position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Do not let your hips sag or pike up; maintain a straight line.', 'Keep your neck in a neutral position by looking slightly ahead on the floor.'],
+    modifications: {
+      beginner: 'Perform against a wall or an elevated surface like a bench.',
+      advanced: 'Progress to a standard push-up on your toes.',
+      equipment_alternatives: {
+        'resistance-bands': 'Assisted push-ups with bands',
+        'trx': 'TRX assisted push-ups',
+        'wall': 'Wall push-ups for easier progression'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Get into position with your body straight from head to knees.', 'Hands are placed slightly wider than shoulders.'],
+      execution: ['Lower your chest towards the floor.', 'Keep your core tight and back flat.', 'Push back up to the starting position.'],
+      common_mistakes: ['Sagging hips.', 'Flaring elbows out too wide.', 'Not achieving full range of motion.'],
+      breathing: 'Inhale as you lower, exhale as you push up.'
+    }
+  },
+
+  'dumbbell-pull-over': {
+    id: 'dumbbell-pull-over',
+    name: 'Dumbbell Pull Over',
+    category: 'strength',
+    equipment: ['Dumbbell', 'Flat Bench'],
+    muscleGroups: ['Chest', 'Lats (Back)', 'Triceps', 'Serratus Anterior'],
+    difficulty: 2,
+    instructions: [
+      'Lie on a flat bench with your head and upper back supported, and your feet firmly on the floor.',
+      'Hold one dumbbell with both hands, cupping the top head of the dumbbell with your palms facing up.',
+      'Position the dumbbell over your chest with a slight bend in your elbows.',
+      'Keeping the slight bend in your elbows, slowly lower the dumbbell in an arc back behind your head.',
+      'Lower it until you feel a good stretch in your chest and lats.',
+      'Use your chest and lats to pull the dumbbell back up in the same arc to the starting position over your chest.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Use a weight you can control throughout the entire range of motion.', 'Do not allow your hips to rise off the bench.', 'Keep the bend in your elbows constant to avoid turning the exercise into a tricep extension.'],
+    modifications: {
+      beginner: 'Use a lighter weight. Reduce the range of motion.',
+      advanced: 'Increase the weight. Slow down the eccentric (lowering) phase.',
+      equipment_alternatives: {
+        'barbell': 'Barbell pull-over',
+        'cable-machine': 'Cable pull-over',
+        'kettlebell': 'Kettlebell pull-over'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 12, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Lie on the bench, cupping one dumbbell over your chest.', 'Maintain a slight bend in your elbows.'],
+      execution: ['Lower the dumbbell in an arc behind your head.', 'Feel a deep stretch in your chest and lats.', 'Pull the weight back over your chest using your chest and back muscles.', 'Keep the movement smooth and deliberate.'],
+      common_mistakes: ['Bending the elbows too much.', 'Arching the lower back excessively.', 'Using a weight that is too heavy, causing loss of control.'],
+      breathing: 'Inhale as you lower the dumbbell, exhale as you pull it over.'
+    }
+  },
+
+  'leg-raise-with-dumbbell-pull-over': {
+    id: 'leg-raise-with-dumbbell-pull-over',
+    name: 'Leg Raise With Dumbbell Pull Over',
+    category: 'strength',
+    equipment: ['Dumbbell', 'Flat Bench'],
+    muscleGroups: ['Abs (Core)', 'Chest', 'Lats (Back)'],
+    difficulty: 3,
+    instructions: [
+      'Lie flat on a bench holding a light dumbbell in the pull-over position over your chest. Your legs should be extended straight off the end of the bench.',
+      'Simultaneously perform a pull-over and a leg raise.',
+      'As you lower the dumbbell in an arc behind your head, raise your straight legs up until they are perpendicular to the floor.',
+      'As you pull the dumbbell back over your chest, slowly lower your legs back to the starting position.',
+      'The goal is to keep your core engaged and your lower back from arching excessively.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['This is an advanced exercise. Master both movements separately first.', 'Use a light dumbbell.', 'Keep your core braced to protect your lower back. If you feel back strain, bend your knees.'],
+    modifications: {
+      beginner: 'Perform with bent knees instead of straight legs.',
+      advanced: 'Try to keep the dumbbell and your feet from touching the bench/floor to maintain constant tension.',
+      equipment_alternatives: {
+        'cable-machine': 'Cable pull-over with leg raises',
+        'resistance-bands': 'Band pull-over with leg raises',
+        'bodyweight': 'Leg raises with arm movements'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Lie on the bench with legs extended, holding a light dumbbell over your chest.'],
+      execution: ['Lower the dumbbell behind your head while raising your legs.', 'Pull the dumbbell over your chest while lowering your legs.', 'Keep the movement synchronized and controlled.', 'Brace your core throughout.'],
+      common_mistakes: ['Arching the lower back.', 'Using momentum.', 'Losing coordination between the upper and lower body movements.'],
+      breathing: 'Exhale as you raise your legs and lower the dumbbell; inhale as you reverse the motion.'
+    }
+  },
+
+  'barbell-decline-bench-press': {
+    id: 'barbell-decline-bench-press',
+    name: 'Barbell Decline Bench Press',
+    category: 'strength',
+    equipment: ['Barbell', 'Decline Bench'],
+    muscleGroups: ['Chest (Lower Pectorals)', 'Triceps', 'Shoulders'],
+    difficulty: 2,
+    instructions: [
+      'Lie on a decline bench, securing your legs at the end.',
+      'Grasp the barbell with a grip slightly wider than shoulder-width.',
+      'Unrack the barbell and hold it straight over your lower chest with your arms locked.',
+      'Slowly lower the barbell down to your lower chest, keeping your elbows tucked at about a 45-degree angle.',
+      'Lightly touch the bar to your chest.',
+      'Press the barbell back up to the starting position, squeezing your chest.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Using a spotter is highly recommended for this exercise.', 'Ensure your legs are securely locked in place to prevent sliding.', 'Control the weight on the descent; do not bounce it off your chest.'],
+    modifications: {
+      beginner: 'Use lighter weight. Use dumbbells for greater stability.',
+      advanced: 'Increase the weight. Add a pause at the chest.',
+      equipment_alternatives: {
+        'dumbbells': 'Decline dumbbell press',
+        'smith-machine': 'Smith machine decline press',
+        'cable-machine': 'Decline cable press'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 8, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Secure your legs on the decline bench.', 'Take a slightly wider than shoulder-width grip on the bar.', 'Unrack the weight over your lower chest.'],
+      execution: ['Lower the bar with control to your lower chest.', 'Keep elbows tucked.', 'Drive the bar back up to the starting position.', 'Focus on contracting the lower part of your chest.'],
+      common_mistakes: ['Bouncing the bar off the chest.', 'Flaring the elbows too wide.', 'Not controlling the eccentric phase.'],
+      breathing: 'Inhale as you lower the bar, exhale as you press.'
+    }
+  },
+
+  // ===== NEW BICEP EXERCISES =====
+  'incline-ez-bar-curl': {
+    id: 'incline-ez-bar-curl',
+    name: 'Incline EZ-Bar Curl',
+    category: 'strength',
+    equipment: ['Incline Bench', 'EZ Bar'],
+    muscleGroups: ['Biceps (Long Head)', 'Forearms'],
+    difficulty: 2,
+    instructions: [
+      'Set a bench to a 45-60 degree incline.',
+      'Sit back on the incline bench with an EZ-bar resting on your thighs.',
+      'Grasp the bar with an underhand grip, hands about shoulder-width apart.',
+      'Allow your arms to hang straight down, perpendicular to the floor. This is your starting position.',
+      'Keeping your upper arms stationary, curl the bar upwards towards your shoulders by contracting your biceps.',
+      'Squeeze your biceps at the peak of the contraction.',
+      'Slowly lower the bar back to the starting position with control.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Ensure your back is firmly pressed against the bench.', 'Avoid using momentum or swinging your body to lift the weight.', 'The incline places a great stretch on the bicep; use a lighter weight than you would for a standard curl to prevent injury.'],
+    modifications: {
+      beginner: 'Use a lower incline or dumbbells for easier handling.',
+      advanced: 'Slow down the eccentric (lowering) phase to 3-4 seconds.',
+      equipment_alternatives: {
+        'dumbbells': 'Incline dumbbell curls',
+        'cable-machine': 'Incline cable curls',
+        'resistance-bands': 'Incline resistance band curls'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Sit back on an incline bench, holding the EZ-bar.', 'Let your arms hang straight down.'],
+      execution: ['Keeping upper arms still, curl the weight up.', 'Squeeze the biceps at the top.', 'Lower the bar slowly and with control.', 'Feel the stretch at the bottom.'],
+      common_mistakes: ['Lifting the shoulders off the bench.', 'Swinging the elbows forward.', 'Dropping the weight instead of lowering it with control.'],
+      breathing: 'Exhale as you curl up, inhale as you lower.'
+    }
+  },
+
+  'wide-grip-barbell-curl': {
+    id: 'wide-grip-barbell-curl',
+    name: 'Wide Grip Barbell Curl',
+    category: 'strength',
+    equipment: ['Barbell'],
+    muscleGroups: ['Biceps (Short Head)', 'Forearms'],
+    difficulty: 2,
+    instructions: [
+      'Stand tall with your feet shoulder-width apart, holding a barbell with a wide, underhand grip (hands wider than your shoulders).',
+      'Keep your chest up and your shoulders back.',
+      'Your arms should be fully extended with the barbell resting against your thighs.',
+      'Keeping your upper arms stationary, curl the barbell up towards your shoulders.',
+      'Focus on contracting your biceps, particularly the inner part (short head).',
+      'Squeeze at the top of the movement.',
+      'Slowly lower the barbell back to the starting position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Avoid using momentum or leaning back to lift the weight.', 'A wide grip can put more strain on the wrists; use a weight you can manage with good form.', 'Keep the movement strict.'],
+    modifications: {
+      beginner: 'Use a lighter weight or an empty barbell.',
+      advanced: 'Increase the weight. Pause at the peak contraction for 2 seconds.',
+      equipment_alternatives: {
+        'dumbbells': 'Wide grip dumbbell curls',
+        'cable-machine': 'Wide grip cable curls',
+        'ez-bar': 'Wide grip EZ-bar curls'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Stand tall, holding a barbell with a wide underhand grip.'],
+      execution: ['Curl the bar up while keeping your elbows pinned to your sides.', 'Focus the contraction on the short head of the bicep.', 'Lower the bar with full control.'],
+      common_mistakes: ['Swinging the body.', 'Elbows coming too far forward.', 'Not using a full range of motion.'],
+      breathing: 'Exhale as you curl up, inhale as you lower.'
+    }
+  },
+
+  'barbell-bicep-drag-curl': {
+    id: 'barbell-bicep-drag-curl',
+    name: 'Barbell Bicep Drag Curl',
+    category: 'strength',
+    equipment: ['Barbell'],
+    muscleGroups: ['Biceps', 'Brachialis'],
+    difficulty: 2,
+    instructions: [
+      'Stand holding a barbell with an underhand, shoulder-width grip.',
+      'Instead of curling the bar in an arc, focus on pulling your elbows back as you lift the bar.',
+      'Drag the barbell straight up along the front of your torso.',
+      'Keep the bar as close to your body as possible throughout the movement.',
+      'Lift the bar as high as you can, which will likely be to your lower chest.',
+      'Squeeze your biceps at the top.',
+      'Slowly lower the bar by reversing the motion, keeping it close to your body.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['This exercise emphasizes peak contraction, so use a lighter weight than a standard barbell curl.', 'Focus on pulling the elbows back, not shrugging the shoulders.', 'The range of motion will be shorter than a standard curl.'],
+    modifications: {
+      beginner: 'Use an empty barbell to master the unique path of the bar.',
+      advanced: 'Hold the peak contraction at the top for 2-3 seconds.',
+      equipment_alternatives: {
+        'dumbbells': 'Dumbbell drag curls',
+        'cable-machine': 'Cable drag curls',
+        'smith-machine': 'Smith machine drag curls'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 12, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Stand tall, holding the barbell at your thighs.', 'Keep your chest up.'],
+      execution: ['Pull your elbows back and drag the bar up your body.', 'Keep the bar close.', 'Squeeze your biceps hard at the highest point.', 'Lower with the same controlled dragging motion.'],
+      common_mistakes: ['Letting the bar drift away from the body.', 'Curling in an arc instead of dragging.', 'Using too much weight.'],
+      breathing: 'Exhale as you drag the bar up, inhale as you lower.'
+    }
+  },
+
+  'spider-curls': {
+    id: 'spider-curls',
+    name: 'Spider Curls',
+    category: 'strength',
+    equipment: ['Incline Bench', 'Dumbbells or Barbell'],
+    muscleGroups: ['Biceps (Short Head)'],
+    difficulty: 2,
+    instructions: [
+      'Set an incline bench to about 45 degrees.',
+      'Lie with your chest and stomach against the incline, with your feet planted firmly on the floor.',
+      'Hold a dumbbell in each hand (or a barbell) with your arms hanging straight down, perpendicular to the floor.',
+      'This is the starting position.',
+      'Keeping your upper arms stationary, curl the weights up towards your shoulders.',
+      'Focus on a strong contraction at the top of the movement.',
+      'Slowly lower the weights back to the starting position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Because your chest is supported, it\'s difficult to cheat. Use a moderate weight.', 'Do not let your shoulders roll forward at the bottom of the movement.', 'Ensure a full range of motion, fully extending your arms at the bottom.'],
+    modifications: {
+      beginner: 'Use light dumbbells.',
+      advanced: 'Alternate arms. Pause at the top for a 2-second squeeze.',
+      equipment_alternatives: {
+        'preacher-bench': 'Preacher curls',
+        'cable-machine': 'Cable spider curls',
+        'resistance-bands': 'Resistance band spider curls'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 12, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Lie chest-down on an incline bench.', 'Let your arms hang straight towards the floor holding the weights.'],
+      execution: ['Curl the weights up without moving your upper arms.', 'Achieve a strong peak contraction.', 'Lower the weights all the way down until your arms are straight.'],
+      common_mistakes: ['Swinging the weights.', 'Not using a full range of motion.', 'Lifting the chest off the bench.'],
+      breathing: 'Exhale as you curl, inhale as you lower.'
+    }
+  },
+
+  'concentration-curl': {
+    id: 'concentration-curl',
+    name: 'Concentration Curl',
+    category: 'strength',
+    equipment: ['Dumbbell', 'Bench'],
+    muscleGroups: ['Biceps'],
+    difficulty: 2,
+    instructions: [
+      'Sit on the edge of a bench with your feet flat on the floor and your knees wide apart.',
+      'Hold a dumbbell in your right hand and lean forward, bracing the back of your right upper arm (tricep) against your right inner thigh.',
+      'Your arm should be fully extended towards the floor. This is the starting position.',
+      'Slowly curl the dumbbell up towards your shoulder, keeping your upper arm pressed against your thigh.',
+      'Squeeze your bicep hard at the top of the curl.',
+      'Slowly lower the dumbbell back to the starting position with full control.',
+      'Complete all reps on one side before switching to the other.'
+    ],
+    safetyNotes: ['The braced arm position eliminates momentum, so use a moderate weight.', 'Avoid any swinging or body movement; the work should be done entirely by the bicep.', 'Do not rest your elbow on your thigh, but rather the back of the arm.'],
+    modifications: {
+      beginner: 'Use a lighter weight to perfect the form and isolation.',
+      advanced: 'Add a supination twist as you curl (start with palm neutral, end with palm facing you).',
+      equipment_alternatives: {
+        'cable-machine': 'Cable concentration curls',
+        'resistance-bands': 'Resistance band concentration curls',
+        'kettlebell': 'Kettlebell concentration curls'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 0.1, unit: 'repetitions per side' },
+    coaching: {
+      setup: ['Sit on a bench, lean forward, and brace your upper arm against your inner thigh.', 'Let the dumbbell hang straight down.'],
+      execution: ['Curl the weight up towards your shoulder.', 'Keep your upper arm completely still.', 'Squeeze the bicep at the top.', 'Lower slowly and completely.'],
+      common_mistakes: ['Lifting the upper arm off the thigh.', 'Swinging the weight.', 'Not getting a full stretch at the bottom.'],
+      breathing: 'Exhale as you curl, inhale as you lower.'
+    }
+  },
+
+  'zottman-curl': {
+    id: 'zottman-curl',
+    name: 'Zottman Curl',
+    category: 'strength',
+    equipment: ['Dumbbells'],
+    muscleGroups: ['Biceps', 'Brachialis', 'Forearms'],
+    difficulty: 2,
+    instructions: [
+      'Stand tall holding a dumbbell in each hand at your sides with an underhand grip (palms facing forward).',
+      'Perform a standard bicep curl, bringing the dumbbells up towards your shoulders.',
+      'At the top of the curl, pause and rotate your wrists so your palms are now facing forward (overhand grip).',
+      'Slowly lower the dumbbells back to the starting position using this overhand grip. This is the eccentric reverse curl portion.',
+      'At the bottom, rotate your wrists back to an underhand grip to begin the next rep.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Use a lighter weight than you would for a standard bicep curl, as the eccentric portion is more challenging.', 'Control the rotation at the top and bottom of the movement.', 'Keep elbows tucked to your sides.'],
+    modifications: {
+      beginner: 'Perform seated to focus on the arm path.',
+      advanced: 'Slow down the eccentric (lowering) phase to 4-5 seconds.',
+      equipment_alternatives: {
+        'cable-machine': 'Cable Zottman curls',
+        'resistance-bands': 'Resistance band Zottman curls',
+        'barbell': 'Barbell Zottman curls'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Stand holding dumbbells with palms facing forward.'],
+      execution: ['Curl the dumbbells up normally.', 'At the top, rotate your palms to face forward.', 'Lower the dumbbells slowly with the overhand grip.', 'At the bottom, rotate back to the start.'],
+      common_mistakes: ['Rushing the rotation.', 'Using momentum.', 'Not controlling the eccentric portion.'],
+      breathing: 'Exhale on the curl, inhale during the lowering phase.'
+    }
+  },
+
+  'waiter-curls': {
+    id: 'waiter-curls',
+    name: 'Waiter Curls',
+    category: 'strength',
+    equipment: ['Dumbbell'],
+    muscleGroups: ['Biceps'],
+    difficulty: 1,
+    instructions: [
+      'Stand tall holding a single dumbbell horizontally with both hands, placing your palms flat against the underside of the top dumbbell head, as if carrying a tray.',
+      'Your elbows should be bent at 90 degrees and kept tight to your sides.',
+      'This is the starting position.',
+      'Keeping your palms up and elbows stationary, curl the dumbbell up towards your chin.',
+      'Focus on squeezing the biceps.',
+      'Slowly lower the dumbbell back to the 90-degree starting position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Use a lighter dumbbell, as the grip is the main challenge.', 'Keep your wrists straight and strong; do not let them bend back.', 'The range of motion is shorter than a standard curl.'],
+    modifications: {
+      beginner: 'Use a very light dumbbell or even a weight plate.',
+      advanced: 'Increase the weight. Pause at the peak contraction.',
+      equipment_alternatives: {
+        'weight-plate': 'Weight plate waiter curls',
+        'kettlebell': 'Kettlebell waiter curls',
+        'medicine-ball': 'Medicine ball waiter curls'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 15, progressionRate: 0.1, unit: 'repetitions' },
+    coaching: {
+      setup: ['Hold a dumbbell like a tray with both palms flat underneath.', 'Start with elbows at 90 degrees, tucked in.'],
+      execution: ['Curl the dumbbell upwards.', 'Keep palms flat and wrists straight.', 'Squeeze the biceps at the top.', 'Lower back to the 90-degree start with control.'],
+      common_mistakes: ['Letting the wrists break.', 'Using momentum.', 'Letting elbows drift forward.'],
+      breathing: 'Exhale as you curl up, inhale as you lower.'
+    }
+  },
+
+  // New hamstring exercises
+  'muscle-snatch': {
+    id: 'muscle-snatch',
+    name: 'Muscle Snatch',
+    category: 'strength',
+    equipment: ['Barbell'],
+    muscleGroups: ['Shoulders', 'Hamstrings', 'Glutes', 'Traps'],
+    difficulty: 3,
+    instructions: [
+      'Stand with your feet hip-width apart and grab a barbell with a wide snatch grip.',
+      'Start with the barbell at your hips.',
+      'Initiate the movement by explosively extending your hips and knees, shrugging your shoulders powerfully.',
+      'As the bar travels upwards, keep it close to your body.',
+      'Unlike a power snatch, you do not re-bend the knees to catch the bar. Instead, you pull the bar all the way up into an overhead position with locked arms.',
+      'The movement is slower and more controlled than a traditional snatch, focusing on muscular strength rather than explosive power.',
+      'Lower the bar back to the starting position with control.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['This is an advanced technical lift. Master the components with a very light weight or PVC pipe first.', 'Maintain a neutral spine.', 'Focus on keeping the bar close to your body.'],
+    modifications: {
+      beginner: 'Use a PVC pipe or empty barbell. Practice the movement in segments.',
+      advanced: 'Increase the weight.',
+      equipment_alternatives: {
+        'Barbell': 'Dumbbell High Pull'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 5, progressionRate: 10, unit: 'repetitions' },
+    coaching: {
+      setup: ['Hold the barbell at your hips with a wide snatch grip.', 'Feet are hip-width apart.'],
+      execution: ['Explode through the hips to drive the bar up.', 'Keep the bar close to your torso.', 'Use your arms and shoulders to pull the bar into the final overhead position.', 'Do not drop under the bar to catch it.'],
+      common_mistakes: ['Letting the bar drift away from the body.', 'Trying to lift too much with just the arms.', 'Turning it into a reverse curl.'],
+      breathing: 'Exhale forcefully as you drive the bar up.'
+    }
+  },
+
+  'landmine-single-leg-romanian-deadlift': {
+    id: 'landmine-single-leg-romanian-deadlift',
+    name: 'Landmine Single Leg Romanian Deadlift',
+    category: 'strength',
+    equipment: ['Barbell', 'Landmine Attachment'],
+    muscleGroups: ['Hamstrings', 'Glutes', 'Core'],
+    difficulty: 2,
+    instructions: [
+      'Place one end of a barbell into a landmine attachment. Hold the other end (the sleeve) with the hand on the same side as your standing leg.',
+      'Stand on one leg, keeping it slightly bent.',
+      'Hinge at your hip, lowering the end of the barbell towards the floor while extending your other leg straight back for balance.',
+      'Keep your back straight and your core engaged.',
+      'Lower until you feel a good stretch in your standing hamstring.',
+      'Drive your hip forward to return to the starting position.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: ['The fixed path of the landmine provides more stability than a dumbbell.', 'Focus on the hip hinge, not on rounding your back.', 'Keep the movement slow and controlled.'],
+    modifications: {
+      beginner: 'Use just the barbell with no added weight.',
+      advanced: 'Add weight to the barbell.',
+      equipment_alternatives: {
+        'Landmine Attachment': 'Single Leg Romanian Deadlift'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 8, progressionRate: 15, unit: 'repetitions per side' },
+    coaching: {
+      setup: ['Stand on one leg, holding the end of the landmine barbell.', 'Maintain a soft knee.'],
+      execution: ['Hinge forward, keeping your back flat.', 'Lower the bar along a fixed path.', 'Feel the stretch in the hamstring of your standing leg.', 'Squeeze your glute to return to the start.'],
+      common_mistakes: ['Bending the back.', 'Losing balance.', 'Bending the knee too much.'],
+      breathing: 'Inhale as you lower, exhale as you stand up.'
+    }
+  },
+
+  'deadlift-to-calf-raise': {
+    id: 'deadlift-to-calf-raise',
+    name: 'Deadlift to Calf Raise',
+    category: 'strength',
+    equipment: ['Barbell', 'Dumbbells'],
+    muscleGroups: ['Hamstrings', 'Glutes', 'Lower Back', 'Calves'],
+    difficulty: 2,
+    instructions: [
+      'Stand with your feet hip-width apart, with a loaded barbell on the floor in front of you.',
+      'Hinge at your hips and bend your knees to grip the bar with an overhand grip, hands just outside your shins.',
+      'Keeping your back straight and chest up, drive through your heels to lift the weight, extending your hips and knees simultaneously.',
+      'Once you are standing fully upright, perform a calf raise by rising onto the balls of your feet.',
+      'Squeeze your calves at the top.',
+      'Lower your heels back to the floor with control.',
+      'Reverse the deadlift motion by hinging at your hips to lower the bar back to the floor.',
+      'Repeat.'
+    ],
+    safetyNotes: ['Maintain proper deadlift form at all times to protect your back.', 'The calf raise should be performed only after you are in a stable, upright position.', 'Control the entire movement.'],
+    modifications: {
+      beginner: 'Use a lighter weight. Practice the deadlift and calf raise separately first.',
+      advanced: 'Increase the weight. Hold the peak contraction of the calf raise.',
+      equipment_alternatives: {
+        'Barbell': 'Dumbbell Romanian Deadlift to Calf Raise'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 8, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Set up for a conventional deadlift.', 'Back flat, chest up, hips down.'],
+      execution: ['Lift the weight by driving through the floor.', 'Once you are standing tall, rise onto your toes.', 'Lower your heels with control.', 'Hinge to lower the weight back to the floor.'],
+      common_mistakes: ['Rounding the back during the deadlift.', 'Being unstable during the calf raise.', 'Rushing the movement.'],
+      breathing: 'Exhale as you lift, inhale and hold during calf raise, exhale as you lower the weight.'
+    }
+  },
+
+  // New abs exercises
+  'alternating-heel-touch': {
+    id: 'alternating-heel-touch',
+    name: 'Alternating Heel Touch',
+    category: 'strength',
+    equipment: ['Mat (optional)'],
+    muscleGroups: ['Obliques', 'Abs'],
+    difficulty: 1,
+    instructions: [
+      'Lie on your back with your knees bent and your feet flat on the floor, about hip-width apart.',
+      'Place your arms by your sides.',
+      'Lift your head and shoulder blades slightly off the floor, engaging your abs.',
+      'Reach your right hand to touch your right heel by crunching your right obliques.',
+      'Return to the center and then reach your left hand to touch your left heel.',
+      'Continue alternating sides in a controlled manner.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Keep your lower back on the floor.', 'The movement is a side-bend, not a twist.', 'Keep your neck in a neutral position; don\'t strain it.'],
+    modifications: {
+      beginner: 'Place your feet closer to your body to make the reach shorter.',
+      advanced: 'Place your feet further away to increase the range of motion and difficulty.',
+      equipment_alternatives: {}
+    },
+    metrics: { type: 'reps', defaultValue: 20, progressionRate: 25, unit: 'repetitions (10 per side)' },
+    coaching: {
+      setup: ['Lie on your back, knees bent, feet flat.', 'Lift your head and shoulders off the floor.'],
+      execution: ['Crunch to the side to touch your right hand to your right heel.', 'Return to center.', 'Crunch to the left side to touch your left heel.', 'Keep your abs engaged throughout.'],
+      common_mistakes: ['Pulling with the neck.', 'Lifting the lower back.', 'Rocking the hips.'],
+      breathing: 'Exhale as you reach to the side.'
+    }
+  },
+
+  'side-bridge': {
+    id: 'side-bridge',
+    name: 'Side Bridge',
+    category: 'strength',
+    equipment: ['Mat (optional)'],
+    muscleGroups: ['Obliques', 'Core'],
+    difficulty: 1,
+    instructions: [
+      'Lie on your side with your knees bent and stacked.',
+      'Prop your upper body up on your forearm, ensuring your elbow is directly under your shoulder.',
+      'Engage your core and lift your hips off the floor until your body forms a straight line from your head to your knees.',
+      'Hold this position, focusing on keeping your hips high and not letting them sag.',
+      'Hold for the desired duration, then switch sides.'
+    ],
+    safetyNotes: ['Keep your elbow directly beneath your shoulder to protect the joint.', 'Don\'t let your hips rotate forward or backward.'],
+    modifications: {
+      beginner: 'Hold for a shorter duration.',
+      advanced: 'Progress to a full Side Plank by straightening your legs instead of bending them.',
+      equipment_alternatives: {}
+    },
+    metrics: { type: 'time', defaultValue: 30, progressionRate: 15, unit: 'seconds per side' },
+    coaching: {
+      setup: ['Lie on your side, propped on your forearm with knees bent.'],
+      execution: ['Lift your hips off the floor.', 'Create a straight line from your head to your knees.', 'Hold the position.', 'Don\'t let your hips drop.'],
+      common_mistakes: ['Sagging hips.', 'Shoulder not aligned with elbow.', 'Holding breath.'],
+      breathing: 'Breathe steadily throughout the hold.'
+    }
+  },
+
+  'cocoon-crunch': {
+    id: 'cocoon-crunch',
+    name: 'Cocoon Crunch',
+    category: 'strength',
+    equipment: ['Mat (optional)'],
+    muscleGroups: ['Abs (Rectus Abdominis)'],
+    difficulty: 2,
+    instructions: [
+      'Lie on your back with your legs extended straight and your arms extended overhead.',
+      'This is the starting position.',
+      'Simultaneously lift your knees and your upper body, bringing your knees towards your chest and your arms towards your shins, as if curling into a ball.',
+      'Focus on contracting your abs to bring everything together.',
+      'Slowly lower back to the starting position with control.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['The movement should be driven by your abdominal muscles, not by pulling with your neck or swinging your arms.', 'Control the eccentric (lowering) phase.'],
+    modifications: {
+      beginner: 'Keep your hands on the floor for support. Reduce the range of motion.',
+      advanced: 'Try to touch your toes in a full V-Up or Jackknife Sit-Up.',
+      equipment_alternatives: {}
+    },
+    metrics: { type: 'reps', defaultValue: 15, progressionRate: 20, unit: 'repetitions' },
+    coaching: {
+      setup: ['Lie on your back with legs and arms extended.', 'Keep your lower back pressed to the floor.'],
+      execution: ['Simultaneously lift your knees and upper body.', 'Bring your knees to your chest and arms to your shins.', 'Contract your abs to curl into a ball.', 'Lower back to start with control.'],
+      common_mistakes: ['Using momentum instead of muscle control.', 'Pulling with the neck.', 'Not engaging the core properly.'],
+      breathing: 'Exhale as you crunch up, inhale as you lower.'
+    }
+  },
+
+  // New back/strength exercises
+  'inverted-row': {
+    id: 'inverted-row',
+    name: 'Inverted Row',
+    category: 'strength',
+    equipment: ['Barbell', 'Power Rack or Smith Machine'],
+    muscleGroups: ['Back (Lats, Rhomboids, Traps)', 'Biceps', 'Core'],
+    difficulty: 2,
+    instructions: [
+      'Set a barbell in a power rack or Smith machine at about hip height.',
+      'Lie on the floor under the bar. Grab the bar with an overhand grip, slightly wider than your shoulders.',
+      'Position your body so it\'s in a straight line from your head to your heels, with your heels on the ground and arms fully extended.',
+      'Engage your core and glutes.',
+      'Pull your chest up towards the bar by retracting your shoulder blades and bending your elbows.',
+      'Pause at the top when your chest touches or is close to the bar.',
+      'Slowly lower your body back to the starting position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Keep your body rigid like a plank throughout the movement; do not let your hips sag.', 'The higher the bar is set, the easier the exercise will be.'],
+    modifications: {
+      beginner: 'Set the bar higher to make the angle more vertical. Bend your knees to 90 degrees with feet flat on the floor.',
+      advanced: 'Lower the bar to be closer to the ground. Elevate your feet on a bench.',
+      equipment_alternatives: {
+        'Power Rack': 'TRX Rows',
+        'Smith Machine': 'Suspension Trainer Rows'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Position yourself under a fixed bar, grabbing it with an overhand grip.', 'Form a straight line with your body, heels on the floor.'],
+      execution: ['Pull your chest towards the bar.', 'Squeeze your shoulder blades together at the top.', 'Lower yourself with full control.', 'Keep your body rigid.'],
+      common_mistakes: ['Sagging hips.', 'Not pulling through a full range of motion.', 'Using momentum to jerk the body up.'],
+      breathing: 'Exhale as you pull up, inhale as you lower.'
+    }
+  },
+
+  't-bar-row': {
+    id: 't-bar-row',
+    name: 'T-Bar Row',
+    category: 'strength',
+    equipment: ['T-Bar Row Machine or Barbell with Landmine'],
+    muscleGroups: ['Back (Lats, Rhomboids)', 'Biceps', 'Lower Back'],
+    difficulty: 2,
+    instructions: [
+      'Load the T-bar with the desired weight.',
+      'Stand on the platform with your feet shoulder-width apart, straddling the bar.',
+      'Hinge at your hips and bend your knees to grab the handles with a neutral or overhand grip.',
+      'Keep your back straight and your chest up. This is the starting position.',
+      'Pull the weight up towards your chest by driving your elbows back and squeezing your shoulder blades together.',
+      'Keep your torso stationary.',
+      'Pause at the peak contraction.',
+      'Slowly lower the weight back to the starting position with control.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Maintain a flat back throughout the exercise to protect your spine.', 'Avoid using excessive momentum or jerking the weight up.', 'Start with a lighter weight to ensure proper form.'],
+    modifications: {
+      beginner: 'Use a lighter weight. Focus on the mind-muscle connection with your back.',
+      advanced: 'Increase the weight. Use different handle attachments to vary the grip and muscle emphasis.',
+      equipment_alternatives: {
+        'T-Bar Row Machine': 'Barbell Bent Over Row',
+        'Landmine': 'Dumbbell Bent Over Row'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Straddle the bar, hinge at your hips, and grab the handles with a flat back.'],
+      execution: ['Pull the handles towards your chest.', 'Drive your elbows back and squeeze your lats.', 'Keep your chest up and torso still.', 'Lower the weight under full control.'],
+      common_mistakes: ['Rounding the back.', 'Standing too upright.', 'Pulling with the arms instead of the back.'],
+      breathing: 'Exhale as you row, inhale as you lower.'
+    }
+  },
+
+  'renegade-row': {
+    id: 'renegade-row',
+    name: 'Renegade Row',
+    category: 'strength',
+    equipment: ['Dumbbells (hexagonal preferred)'],
+    muscleGroups: ['Back (Lats)', 'Core', 'Shoulders', 'Biceps'],
+    difficulty: 3,
+    instructions: [
+      'Place two dumbbells on the floor, about shoulder-width apart.',
+      'Get into a high plank position, gripping the dumbbells with a neutral grip.',
+      'Your feet should be wider than usual to create a stable base.',
+      'Keeping your core tight and your body stable, row one dumbbell up towards your chest, leading with your elbow.',
+      'Minimize rotation in your hips and torso.',
+      'Lower the dumbbell back to the floor with control.',
+      'Repeat the row on the other side.',
+      'Continue alternating sides.'
+    ],
+    safetyNotes: ['Use hexagonal dumbbells for stability; round dumbbells can roll.', 'The primary challenge is anti-rotation; focus on keeping your torso parallel to the floor.', 'Use a lighter weight than you would for a standard dumbbell row.'],
+    modifications: {
+      beginner: 'Widen your stance significantly for more stability. Perform without dumbbells, just lifting your hand.',
+      advanced: 'Add a push-up between each row.',
+      equipment_alternatives: {
+        'Dumbbells': 'Kettlebell Renegade Row'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 16, progressionRate: 20, unit: 'repetitions (8 per side)' },
+    coaching: {
+      setup: ['Start in a high plank position, holding onto dumbbells.', 'Widen your feet for balance.'],
+      execution: ['Row one dumbbell up to your side.', 'Keep your body as still as possible, avoid twisting.', 'Lower the dumbbell with control.', 'Alternate sides.'],
+      common_mistakes: ['Twisting the hips and shoulders excessively.', 'Rushing the movement.', 'Using dumbbells that are too heavy, causing a loss of form.'],
+      breathing: 'Exhale as you row, inhale as you lower.'
+    }
+  },
+
+  'prone-ws': {
+    id: 'prone-ws',
+    name: 'Prone W\'s',
+    category: 'strength',
+    equipment: ['Mat (optional)'],
+    muscleGroups: ['Upper Back (Rhomboids, Lower Traps)', 'Shoulders (Rotator Cuff)'],
+    difficulty: 1,
+    instructions: [
+      'Lie face down on a mat with your forehead resting on the floor or a small towel.',
+      'Extend your arms overhead and out to the sides, then bend your elbows to form a \'W\' shape with your arms.',
+      'Your palms should be facing down.',
+      'Keeping your neck relaxed, engage your upper back muscles to lift your arms off the floor.',
+      'Squeeze your shoulder blades together and down.',
+      'Hold the contraction for a moment.',
+      'Slowly lower your arms back to the floor.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Keep your neck neutral and your forehead on the floor to avoid straining your neck.', 'The movement should be small and controlled, initiated from your back muscles.'],
+    modifications: {
+      beginner: 'Perform the movement with no hold at the top.',
+      advanced: 'Hold the top position for 3-5 seconds. Hold very light weights (e.g., 0.5kg plates).',
+      equipment_alternatives: {}
+    },
+    metrics: { type: 'reps', defaultValue: 15, progressionRate: 20, unit: 'repetitions' },
+    coaching: {
+      setup: ['Lie face down, arms in a \'W\' shape, palms down.'],
+      execution: ['Squeeze your shoulder blades together to lift your arms off the floor.', 'Keep your head and neck relaxed.', 'Hold the squeeze.', 'Lower with control.'],
+      common_mistakes: ['Lifting the chest or head.', 'Shrugging the shoulders up towards the ears.', 'Using momentum.'],
+      breathing: 'Exhale as you lift your arms, inhale as you lower.'
+    }
+  },
+
+  'straight-arm-pulldown': {
+    id: 'straight-arm-pulldown',
+    name: 'Straight-Arm Pulldown',
+    category: 'strength',
+    equipment: ['Cable Machine', 'Straight Bar or Rope Attachment'],
+    muscleGroups: ['Lats (Back)'],
+    difficulty: 2,
+    instructions: [
+      'Attach a straight bar or rope to a high pulley on a cable machine.',
+      'Stand facing the machine, a few feet back, and grab the attachment with an overhand grip.',
+      'Hinge slightly at your hips with your feet shoulder-width apart. Your arms should be extended in front of you.',
+      'Keeping your arms straight with a very slight bend in the elbows, engage your lats to pull the bar down in an arc towards your thighs.',
+      'Squeeze your lats at the bottom of the movement.',
+      'Slowly return the bar to the starting position with control, feeling a stretch in your lats.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['This is an isolation exercise; keep your arms straight throughout. Do not turn it into a tricep pushdown.', 'The movement should be initiated by your back muscles, not your arms.'],
+    modifications: {
+      beginner: 'Use a lighter weight to focus on the mind-muscle connection.',
+      advanced: 'Hold the peak contraction at the bottom for 2 seconds.',
+      equipment_alternatives: {
+        'Cable Machine': 'Resistance Band Pulldown'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 12, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Grab the bar from a high pulley and step back.', 'Hinge slightly at the hips, arms extended in front of you.'],
+      execution: ['With straight arms, pull the bar down to your thighs.', 'Focus on using your lats to create the movement.', 'Squeeze your back at the bottom.', 'Control the bar back to the start.'],
+      common_mistakes: ['Bending the elbows.', 'Using body momentum.', 'Standing too upright.'],
+      breathing: 'Exhale as you pull down, inhale as you return.'
+    }
+  },
+
+  'bird-dog-rows': {
+    id: 'bird-dog-rows',
+    name: 'Bird Dog Rows',
+    category: 'strength',
+    equipment: ['Dumbbell', 'Flat Bench'],
+    muscleGroups: ['Back (Lats)', 'Core', 'Glutes', 'Shoulders'],
+    difficulty: 3,
+    instructions: [
+      'Place your left knee and left hand on a flat bench. Hold a dumbbell in your right hand.',
+      'Extend your right leg straight back behind you, keeping it parallel to the floor.',
+      'Your torso should also be parallel to the floor, forming a stable \'tabletop\' position. This is the starting position.',
+      'Engage your core to maintain balance.',
+      'Perform a row by pulling the dumbbell up towards your chest, leading with your elbow.',
+      'Keep your back straight and avoid rotation.',
+      'Lower the dumbbell with control.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: ['This is an advanced exercise that requires significant core stability and balance.', 'Start with a very light weight.', 'Focus on keeping your hips and shoulders square to the floor.'],
+    modifications: {
+      beginner: 'Master the standard Bird Dog and standard Dumbbell Row separately first. Perform without weight to practice the balance.',
+      advanced: 'Increase the weight.',
+      equipment_alternatives: {
+        'Flat Bench': 'Floor Bird Dog Rows'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 15, unit: 'repetitions per side' },
+    coaching: {
+      setup: ['Get into a Bird Dog position on a bench, one knee and one hand supporting you.', 'Hold a dumbbell in the free hand, and extend the opposite leg back.'],
+      execution: ['Row the dumbbell up to your side.', 'Maintain balance and keep your core incredibly tight.', 'Don\'t let your hip or torso twist.', 'Lower with control.'],
+      common_mistakes: ['Losing balance.', 'Twisting the torso.', 'Letting the extended leg drop.'],
+      breathing: 'Exhale as you row, inhale as you lower.'
+    }
+  },
+
+  // New mobility exercise
+  'bench-t-spine-stretch': {
+    id: 'bench-t-spine-stretch',
+    name: 'Bench T-Spine Stretch',
+    category: 'mobility',
+    equipment: ['Bench'],
+    muscleGroups: ['Thoracic Spine (Upper Back)', 'Lats', 'Shoulders'],
+    difficulty: 1,
+    instructions: [
+      'Kneel on the floor in front of a flat bench.',
+      'Place your elbows on the edge of the bench, about shoulder-width apart.',
+      'You can clasp your hands together or hold a small stick.',
+      'Slowly lower your head and chest towards the floor, allowing your upper back to extend and your chest to open.',
+      'Sit your hips back towards your heels to deepen the stretch.',
+      'You should feel a deep stretch in your lats, triceps, and especially your upper/mid-back.',
+      'Hold the stretch, breathing deeply.',
+      'To come out, gently walk your knees forward.'
+    ],
+    safetyNotes: ['The movement should be gentle. Do not force your chest to the floor.', 'Avoid arching excessively in the lower back; focus the extension on the upper back.'],
+    modifications: {
+      beginner: 'Use a higher surface if a bench is too low. Don\'t sink as deep into the stretch.',
+      advanced: 'Hold a light weight or PVC pipe to add a gentle pull into the stretch.',
+      equipment_alternatives: {
+        'Bench': 'Chair or Couch'
+      }
+    },
+    metrics: { type: 'time', defaultValue: 60, progressionRate: 15, unit: 'seconds' },
+    coaching: {
+      setup: ['Kneel in front of a bench.', 'Place your elbows on the edge.'],
+      execution: ['Drop your chest and head towards the floor.', 'Sit your hips back to your heels.', 'Breathe into your upper back and feel it open up.', 'Relax into the stretch.'],
+      common_mistakes: ['Arching the low back instead of the upper back.', 'Holding your breath.', 'Being too tense.'],
+      breathing: 'Breathe deeply and slowly to help the muscles release.'
+    }
+  },
+
+  // New strength exercises
+  'australian-chin-up': {
+    id: 'australian-chin-up',
+    name: 'Australian Chin Up',
+    category: 'strength',
+    equipment: ['Barbell', 'Squat Rack or Smith Machine'],
+    muscleGroups: ['Back (Lats)', 'Biceps', 'Shoulders'],
+    difficulty: 1,
+    instructions: [
+      'Set a bar in a squat rack or Smith machine at about waist height.',
+      'Lie on the floor underneath the bar.',
+      'Grasp the bar with an underhand (supinated) grip, about shoulder-width apart.',
+      'Position your body in a straight line from head to heels, with your arms fully extended. Your body will be at an angle to the floor.',
+      'Engage your core and glutes to keep your body rigid.',
+      'Pull your chest towards the bar by driving your elbows down and back.',
+      'Squeeze your biceps and back muscles at the top of the movement.',
+      'Slowly lower your body back to the starting position with control.',
+      'This is essentially an inverted row with an underhand grip.'
+    ],
+    safetyNotes: ['Keep your body in a straight line; do not let your hips sag.', 'A lower bar height increases the difficulty.', 'Control the movement, especially the lowering (eccentric) phase.'],
+    modifications: {
+      beginner: 'Set the bar higher to create a more upright body angle. Bend your knees to 90 degrees.',
+      advanced: 'Lower the bar. Elevate your feet on a bench to make your body parallel to the floor.',
+      equipment_alternatives: {
+        'Squat Rack or Smith Machine': 'TRX Straps or Gymnastic Rings'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 10, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Position yourself under a fixed bar with an underhand grip.', 'Form a rigid plank with your body.'],
+      execution: ['Pull your chest to the bar.', 'Focus on squeezing your biceps and back.', 'Lower with control.', 'Keep your body straight.'],
+      common_mistakes: ['Sagging hips.', 'Using momentum.', 'Not achieving a full range of motion.'],
+      breathing: 'Exhale as you pull up, inhale as you lower.'
+    }
+  },
+
+  'chin-up': {
+    id: 'chin-up',
+    name: 'Chin Up',
+    category: 'strength',
+    equipment: ['Pull Up Bar'],
+    muscleGroups: ['Biceps', 'Back (Lats)'],
+    difficulty: 2,
+    instructions: [
+      'Grasp a pull-up bar with an underhand (supinated) grip, with your hands about shoulder-width apart.',
+      'Hang from the bar with your arms fully extended. You can keep your legs straight or bend your knees.',
+      'Engage your core and pull your shoulder blades down and back.',
+      'Pull your body up by driving your elbows down towards the floor.',
+      'Continue until your chin is over the bar.',
+      'Focus on a strong contraction in your biceps and lats.',
+      'Slowly lower your body back to the fully extended starting position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Avoid using a kipping or swinging motion unless specifically training for it.', 'Start from a dead hang (full extension) to ensure full range of motion.', 'Control the descent; do not just drop.'],
+    modifications: {
+      beginner: 'Use an assisted pull-up machine or a loop band for assistance.',
+      advanced: 'Add weight using a dip belt or a weighted vest.',
+      equipment_alternatives: {
+        'Pull Up Bar': 'TRX Straps or Gymnastic Rings'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 8, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Grab the bar with a shoulder-width, underhand grip.', 'Hang with arms fully extended.'],
+      execution: ['Drive your elbows down to pull your chin over the bar.', 'Lead with your chest.', 'Squeeze your biceps at the top.', 'Lower yourself all the way down with control.'],
+      common_mistakes: ['Partial reps (not going all the way down).', 'Swinging.', 'Shoulders shrugging up by the ears.'],
+      breathing: 'Exhale as you pull up, inhale as you lower.'
+    }
+  },
+
+  'mixed-grip-pull-up': {
+    id: 'mixed-grip-pull-up',
+    name: 'Mixed Grip Pull Up',
+    category: 'strength',
+    equipment: ['Pull Up Bar'],
+    muscleGroups: ['Back (Lats)', 'Biceps', 'Forearms'],
+    difficulty: 2,
+    instructions: [
+      'Grasp a pull-up bar with one hand in an overhand (pronated) grip and the other in an underhand (supinated) grip.',
+      'Your hands should be about shoulder-width apart.',
+      'Hang from the bar with your arms fully extended.',
+      'Engage your core and pull your body upwards until your chin clears the bar.',
+      'Slowly lower your body back to the starting position with control.',
+      'Switch your grip on the next set to ensure balanced development.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['This grip can challenge the body asymmetrically, so focus on pulling evenly with both arms.', 'Always switch your grip between sets.', 'Avoid swinging or using momentum.'],
+    modifications: {
+      beginner: 'Use a loop band or an assisted pull-up machine.',
+      advanced: 'Add weight with a weighted vest or dip belt.',
+      equipment_alternatives: {
+        'Pull Up Bar': 'TRX Straps or Gymnastic Rings'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 6, progressionRate: 15, unit: 'repetitions per grip position' },
+    coaching: {
+      setup: ['Grab the bar with one palm facing you and one palm facing away.', 'Hang with arms fully extended.'],
+      execution: ['Pull up until your chin is over the bar.', 'Try to pull evenly with both sides.', 'Lower yourself with full control.', 'Remember to switch your grip for the next set.'],
+      common_mistakes: ['Twisting the body during the pull.', 'Uneven pulling.', 'Not using a full range of motion.'],
+      breathing: 'Exhale as you pull, inhale as you lower.'
+    }
+  },
+
+  'ring-row': {
+    id: 'ring-row',
+    name: 'Ring Row',
+    category: 'strength',
+    equipment: ['Gymnastic Rings'],
+    muscleGroups: ['Back (Lats, Rhomboids)', 'Biceps', 'Core'],
+    difficulty: 2,
+    instructions: [
+      'Set up gymnastic rings at about waist height.',
+      'Grasp the rings and walk your feet forward until your body is at an incline.',
+      'Start with your arms fully extended and your body in a straight plank position.',
+      'Initiate the movement by pulling your chest towards your hands, retracting your shoulder blades.',
+      'You can allow your hands to rotate naturally from a pronated to a neutral grip as you pull.',
+      'Squeeze your back muscles at the top.',
+      'Slowly lower yourself back to the starting position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['The instability of the rings requires greater core engagement.', 'Keep your body rigid; do not let your hips sag.', 'The more horizontal your body, the harder the exercise.'],
+    modifications: {
+      beginner: 'Stand more upright to decrease the resistance.',
+      advanced: 'Walk your feet further forward to make your body more parallel to the floor. Elevate your feet on a box.',
+      equipment_alternatives: {
+        'Gymnastic Rings': 'TRX Straps or Suspension Trainer'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 12, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Grab the rings and lean back to create an incline.', 'Form a straight line from head to heels.'],
+      execution: ['Pull your chest towards the rings.', 'Let your hands rotate naturally.', 'Squeeze your shoulder blades together.', 'Keep your body in a tight plank.', 'Lower with control.'],
+      common_mistakes: ['Sagging hips.', 'Using a jerky motion.', 'Not getting a full range of motion.'],
+      breathing: 'Exhale on the pull, inhale on the return.'
+    }
+  },
+
+  'archer-pull-up': {
+    id: 'archer-pull-up',
+    name: 'Archer Pull Up',
+    category: 'strength',
+    equipment: ['Pull Up Bar'],
+    muscleGroups: ['Back (Lats)', 'Biceps', 'Shoulders'],
+    difficulty: 3,
+    instructions: [
+      'Grasp a pull-up bar with a wide overhand grip.',
+      'Initiate a pull-up, but as you pull, focus on moving your body towards one hand.',
+      'Pull your body up and over to the right side, aiming to get your chin near your right hand. Your left arm will be mostly straight at the top.',
+      'Lower yourself back to the center starting position.',
+      'On the next rep, pull up and over to the left side.',
+      'Continue alternating sides.',
+      'This is an advanced variation that places more load on one arm at a time.'
+    ],
+    safetyNotes: ['This is an advanced exercise. Ensure you can comfortably perform wide grip pull-ups first.', 'The movement requires significant shoulder stability and strength.', 'Control the movement; avoid jerky motions.'],
+    modifications: {
+      beginner: 'Practice by pulling slightly off-center during a regular pull-up. Use a resistance band.',
+      advanced: 'Try to get your chest to touch your hand at the top. Keep the non-pulling arm as straight as possible.',
+      equipment_alternatives: {
+        'Pull Up Bar': 'Gymnastic Rings (more challenging due to instability)'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 6, progressionRate: 15, unit: 'repetitions (3 per side)' },
+    coaching: {
+      setup: ['Take a wide grip on the pull-up bar.', 'Hang from a dead hang.'],
+      execution: ['Pull your body up and towards your right hand.', 'Your left arm should straighten out.', 'Lower to the center.', 'Pull up and towards your left hand.', 'Control the entire movement.'],
+      common_mistakes: ['Not achieving full range of motion.', 'Bending the \'assisting\' arm too much.', 'Losing control on the descent.'],
+      breathing: 'Exhale as you pull up, inhale as you lower.'
+    }
+  },
+
+  // Additional strength exercises
+  'front-squat': {
+    id: 'front-squat',
+    name: 'Front Squat',
+    category: 'strength',
+    equipment: ['Barbell', 'Squat Rack'],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Core', 'Upper Back'],
+    difficulty: 3,
+    instructions: [
+      'Set up a barbell in a squat rack at about shoulder height.',
+      'Approach the bar and position it across the front of your shoulders. You can use a \'clean\' grip (fingertips under the bar, elbows high) or a \'bodybuilder\' grip (arms crossed, hands on top of the bar).',
+      'Stand up to unrack the bar and take a couple of steps back.',
+      'Place your feet shoulder-width apart, with toes pointing slightly out.',
+      'Keeping your chest up and your back straight, descend into a squat by bending your knees and hips.',
+      'Keep your elbows high throughout the movement.',
+      'Go as deep as you can comfortably, ideally until your hips are below your knees.',
+      'Drive through your heels to return to the standing position.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['The front rack position requires good mobility. If you have wrist or shoulder pain, work on mobility or use a different squat variation.', 'Focus on keeping your torso upright.', 'Use a weight you can control with perfect form.'],
+    modifications: {
+      beginner: 'Practice with an empty barbell. Use a goblet squat with a dumbbell as a precursor.',
+      advanced: 'Increase the weight. Add a pause at the bottom of the squat.',
+      equipment_alternatives: {
+        'Barbell': 'Dumbbells (Goblet Squat)',
+        'Squat Rack': 'Clean the weight from the floor'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 8, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Set the bar on the front of your shoulders, elbows high.', 'Unrack the weight and set your stance.'],
+      execution: ['Sit your hips straight down.', 'Keep your chest tall and elbows pointed forward.', 'Drive up through your feet.', 'Maintain an upright torso.'],
+      common_mistakes: ['Letting the elbows drop, causing the bar to roll forward.', 'Rounding the upper back.', 'Not squatting to full depth.'],
+      breathing: 'Inhale as you descend, exhale as you drive up.'
+    }
+  },
+
+  'hack-squat': {
+    id: 'hack-squat',
+    name: 'Hack Squat',
+    category: 'strength',
+    equipment: ['Hack Squat Machine'],
+    muscleGroups: ['Quadriceps', 'Glutes'],
+    difficulty: 2,
+    instructions: [
+      'Position yourself in the hack squat machine with your back against the pad and your shoulders under the shoulder pads.',
+      'Place your feet on the platform about shoulder-width apart.',
+      'Release the safety handles.',
+      'Slowly lower the weight by bending your knees until they reach about a 90-degree angle.',
+      'Keep your back pressed firmly against the pad.',
+      'Push through your heels to extend your legs and return to the starting position.',
+      'Do not lock your knees at the top.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Ensure your back remains in contact with the pad throughout the movement.', 'Control the descent; don\'t let the weight drop.', 'Adjust foot position to target different areas (higher for glutes/hams, lower for quads).'],
+    modifications: {
+      beginner: 'Use light weight or just the sled.',
+      advanced: 'Increase the weight. Slow down the eccentric (lowering) phase.',
+      equipment_alternatives: {
+        'Hack Squat Machine': 'Barbell Hack Squat or Goblet Squat'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 12, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Position your body in the machine, feet shoulder-width apart on the platform.', 'Release the safety catches.'],
+      execution: ['Lower the weight under control until your knees are at 90 degrees.', 'Keep your back flat against the pad.', 'Press the platform away by driving through your feet.', 'Squeeze your quads at the top.'],
+      common_mistakes: ['Knees caving inward.', 'Lowering the weight too quickly.', 'Not using a full range of motion.'],
+      breathing: 'Inhale as you lower, exhale as you press.'
+    }
+  },
+
+  'trap-bar-deadlift': {
+    id: 'trap-bar-deadlift',
+    name: 'Trap Bar Deadlift',
+    category: 'strength',
+    equipment: ['Trap Bar'],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Hamstrings', 'Lower Back', 'Traps'],
+    difficulty: 2,
+    instructions: [
+      'Stand in the center of a loaded trap bar with your feet hip-width apart.',
+      'Hinge at your hips and bend your knees to grip the handles at your sides.',
+      'Lower your hips so your back is straight, your chest is up, and your shoulders are over the bar.',
+      'Keeping your back straight, drive through your heels and extend your hips and knees to stand up with the weight.',
+      'Squeeze your glutes at the top.',
+      'Reverse the motion by hinging at your hips first, then bending your knees to lower the bar back to the floor with control.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Maintain a flat back throughout the lift to prevent injury.', 'Keep the weight balanced and centered.', 'The neutral grip and mechanics make this generally safer on the lower back than a conventional deadlift.'],
+    modifications: {
+      beginner: 'Use a light weight to perfect the form. Use the higher handles if available.',
+      advanced: 'Increase the weight. Use the lower handles to increase the range of motion.',
+      equipment_alternatives: {
+        'Trap Bar': 'Conventional Deadlift or Dumbbell Deadlift'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 8, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Step inside the trap bar, feet hip-width apart.', 'Hinge and grip the handles, keeping your back flat and chest up.'],
+      execution: ['Drive the floor away with your feet.', 'Stand up tall, pulling the weight with you.', 'Squeeze your glutes at the top.', 'Lower the bar with control by pushing your hips back.'],
+      common_mistakes: ['Rounding the back.', 'Jerking the weight off the floor.', 'Letting the hips rise faster than the chest.'],
+      breathing: 'Take a deep breath and brace at the bottom, exhale near the top of the lift.'
+    }
+  },
+
+  'star-jump': {
+    id: 'star-jump',
+    name: 'Star Jump',
+    category: 'plyometric',
+    equipment: [],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Calves', 'Core'],
+    difficulty: 1,
+    instructions: [
+      'Stand with your feet together and your knees slightly bent.',
+      'Squat down slightly to load the jump.',
+      'Explosively jump straight up.',
+      'As you jump, extend your arms and legs out to the sides, forming a \'star\' or \'X\' shape with your body in mid-air.',
+      'As you descend, bring your arms and legs back in.',
+      'Land softly with your knees bent to absorb the impact, returning to the starting position.',
+      'Immediately go into the next jump.',
+      'Repeat for the desired duration or number of repetitions.'
+    ],
+    safetyNotes: ['Focus on a soft landing to protect your joints.', 'Ensure you have enough overhead and side clearance.', 'Keep your core engaged.'],
+    modifications: {
+      beginner: 'Perform a standard jumping jack.',
+      advanced: 'Increase the speed and height of the jumps.',
+      equipment_alternatives: {}
+    },
+    metrics: { type: 'time', defaultValue: 30, progressionRate: 15, unit: 'seconds' },
+    coaching: {
+      setup: ['Stand with feet together, knees slightly bent.'],
+      execution: ['Jump up explosively.', 'Spread your arms and legs out into a star shape at the peak.', 'Bring limbs back in before landing.', 'Land softly and quietly.'],
+      common_mistakes: ['Landing with stiff legs.', 'Not extending fully into the star shape.', 'Losing control and balance.'],
+      breathing: 'Exhale as you jump, inhale as you land.'
+    }
+  },
+
+  'trx-squat': {
+    id: 'trx-squat',
+    name: 'TRX Squat',
+    category: 'strength',
+    equipment: ['TRX'],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Hamstrings'],
+    difficulty: 1,
+    instructions: [
+      'Adjust the TRX straps to about mid-length.',
+      'Stand facing the anchor point, holding the handles with your palms facing each other.',
+      'Lean back slightly until there is light tension on the straps, with your arms extended.',
+      'Position your feet shoulder-width apart.',
+      'Keeping your chest up, lower your hips down and back into a squat.',
+      'Use the TRX straps for balance and support.',
+      'Go as deep as you comfortably can.',
+      'Drive through your heels to return to the starting position, pulling lightly on the straps to assist if needed.',
+      'Repeat for the desired number of repetitions.'
+    ],
+    safetyNotes: ['Keep light tension on the straps throughout; do not let them go slack.', 'Maintain a straight back and an upright chest.', 'The TRX provides support, allowing for a deeper and more controlled squat.'],
+    modifications: {
+      beginner: 'Rely more on the straps for support. Don\'t squat as deep.',
+      advanced: 'Progress to a single-leg TRX squat. Use the straps for balance only, not for assistance in pulling yourself up.',
+      equipment_alternatives: {
+        'TRX': 'Gymnastic Rings or Suspension Trainer'
+      }
+    },
+    metrics: { type: 'reps', defaultValue: 15, progressionRate: 15, unit: 'repetitions' },
+    coaching: {
+      setup: ['Hold TRX handles and lean back with light tension.', 'Set your feet for a squat.'],
+      execution: ['Sit back and down into a deep squat.', 'Keep your chest up and use the straps for balance.', 'Drive through your feet to stand back up.', 'Keep your arms relatively straight.'],
+      common_mistakes: ['Pulling too much with the arms.', 'Leaning too far forward.', 'Letting the knees collapse inward.'],
+      breathing: 'Inhale as you squat down, exhale as you stand up.'
+    }
   }
 
 };
 
 // Exercise categories for easy filtering
 export const EXERCISE_CATEGORIES = {
-  strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'walking-lunges', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'warrior-ii', 'hip-bridge-lift', 'lateral-leg-lift', 'hamstring-bridge-with-chair', 'frog-pumps', 'supine-abductions-with-miniband', 'lateral-wrist-curls-with-dumbbells', 'standing-fire-hydrant', 'prone-frog-lifts', 'standing-hamstring-curl', 'lateral-walk', 'clamshells', 'dumbbell-good-morning', 'squat-to-overhead-press', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'alternating-jump-lunges', 'squat-to-calf-raise', 'diagonal-lunge', '90-degree-squats', 'sumo-squat', 'fire-hydrants', 'adductor-lifts', 'half-kneeling-rotation-with-block-and-dumbbell', 'skater-squats', 'monster-walks-with-miniband', 'fire-hydrants-with-internal-rotation', 'prone-y-raises', 'snatch-pull'],
-  core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'bird-dog', 'tick-tocks-with-miniband', 'vacuums', 'flutter-kicks', 'side-plank', 'side-plank-leg-lift', 'standing-crunch', 'supermans', 'chin-tucks', 'staff-pose', 'superman-sequence', 'decline-plank-with-chair', 'side-plank-hip-dip', 'v-sit'],
-  cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'a-skip', 'b-skip', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs', 'high-knees', 'reverse-lunge-knee-drive', 'run-in-place'],
-  plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'swim-plyometric-box-jumps', 'high-skip', 'box-jump', 'depth-jump', 'standing-broad-jump', 'bounding', 'hurdle-hops', 'medicine-ball-slam', 'depth-jump-to-box', 'lateral-bounds', 'tuck-jump', 'ankle-hops'],
-  mobility: ['arm-circles', 'dynamic-star', 'alternating-step-and-squat', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'froggers', 'ankle-rocks', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'plank-calf-press', 'dynamic-side-body-stretch', 'shoulder-openers', 'lizard-circles', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'dynamic-baby-cobra', '90-90-stretch', 'activated-hip-flexor-stretch-with-block', 'wide-dynamic-cobra', 'upper-body-around-the-world', 'single-leg-hip-flexor-extension-with-pole', 'seated-toe-rainbows-with-chair', 'knee-hug-rock', 'hand-and-wrist-sequence', 'z-stretch', 'knee-hug-to-happy-baby'],
-  flexibility: ['standing-calf-stretch', 'foam-roll-hip-abductors', 'childs-pose', 'tricep-and-lat-stretch', 'pigeon-pose', 'forward-fold', 'chest-stretch', 'seated-twist', 'single-leg-hamstring-stretch', 'frog-stretch', 'upper-back-stretch', 'release-lats-with-foam-roller', 'leaning-quad-stretch', 'elevated-pigeon-with-chair', 'standing-chest-stretch', 'cross-body-hamstring-stretch', 'supine-criss-cross', 'toe-grab-calf-stretch', 'half-camel-pose', 'advanced-gate-pose', 'center-stretch-static', 'standing-glute-stretch', 'half-frog-stretch'],
-  technique: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill', 'kickboard-swim-drill', 'underwater-kick', 'stride-outs'],
-  endurance: ['bike-hill-climbs-intervals', 'long-run', 'tempo-run', 'fartlek-run', 'hill-repeats', 'cycling-steady', 'swim-intervals'],
-  triathlon: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals'],
+  strength: ['push-up', 'diamond-push-up', 'squat', 'lunge', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'sled-push', 'sled-pull', 'farmers-carry', 'sandbag-lunges', 'grip-endurance-circuit', 'sled-conditioning', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'walking-lunges', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'warrior-ii', 'hip-bridge-lift', 'lateral-leg-lift', 'hamstring-bridge-with-chair', 'frog-pumps', 'supine-abductions-with-miniband', 'lateral-wrist-curls-with-dumbbells', 'standing-fire-hydrant', 'prone-frog-lifts', 'standing-hamstring-curl', 'lateral-walk', 'clamshells', 'dumbbell-good-morning', 'squat-to-overhead-press', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'alternating-jump-lunges', 'squat-to-calf-raise', 'diagonal-lunge', '90-degree-squats', 'sumo-squat', 'fire-hydrants', 'adductor-lifts', 'half-kneeling-rotation-with-block-and-dumbbell', 'skater-squats', 'monster-walks-with-miniband', 'fire-hydrants-with-internal-rotation', 'prone-y-raises', 'snatch-pull', 'loop-band-standing-tricep-extension', 'tate-press', 'machine-tricep-dip', 'ez-bar-overhead-tricep-extension', 'incline-barbell-skull-crusher', 'dumbbell-tricep-extension', 'dumbbell-squeeze-press', 'svend-press', 'push-up-on-knees', 'dumbbell-pull-over', 'leg-raise-with-dumbbell-pull-over', 'barbell-decline-bench-press', 'incline-ez-bar-curl', 'wide-grip-barbell-curl', 'barbell-bicep-drag-curl', 'spider-curls', 'concentration-curl', 'zottman-curl', 'waiter-curls', 'muscle-snatch', 'landmine-single-leg-romanian-deadlift', 'deadlift-to-calf-raise', 'alternating-heel-touch', 'side-bridge', 'cocoon-crunch', 'inverted-row', 't-bar-row', 'renegade-row', 'prone-ws', 'straight-arm-pulldown', 'bird-dog-rows', 'australian-chin-up', 'chin-up', 'mixed-grip-pull-up', 'ring-row', 'archer-pull-up', 'front-squat', 'hack-squat', 'trap-bar-deadlift', 'trx-squat', 'arnold-press', 'band-face-pulls', 'band-pull-aparts', 'barbell-rows', 'cable-curls', 'cable-tricep-pushdowns', 'calf-raises', 'close-grip-bench-press', 'face-pulls', 'farmer-walks', 'goblet-squat', 'incline-dumbbell-press', 'lateral-raises', 'leg-curls', 'leg-press', 'seated-dumbbell-press', 'single-arm-dumbbell-press', 'single-leg-rdl', 'tricep-dips', 'turkish-get-ups', 'bulgarian-split-squat', 'incline-push-ups', 'kettlebell-turkish-get-up', 'push-press', 'landmine-press', 'muscle-clean', 'iron-cross', 'kettlebell-snatch', 'kettlebell-overhead-press', 'scapular-pull-up', 'kettlebell-sumo-high-pull', 'machine-shoulder-shrug', 'palms-down-barbell-wrist-curl', 'plate-pinch', 'loop-band-superman-press', 'bridge-up-up-down-down', 'bridge-side-to-side', 'dumbbell-superman'],
+  core: ['plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'bird-dog', 'tick-tocks-with-miniband', 'vacuums', 'flutter-kicks', 'side-plank', 'side-plank-leg-lift', 'standing-crunch', 'supermans', 'chin-tucks', 'staff-pose', 'superman-sequence', 'decline-plank-with-chair', 'side-plank-hip-dip', 'v-sit', 'alternating-heel-touch', 'side-bridge', 'cocoon-crunch'],
+  cardio: ['jumping-jacks', 'mountain-climber', 'a-skips', 'b-skips', 'a-skip', 'b-skip', 'carioca', 'step-ups', 'marching-in-place', 'skierg', 'rowing-erg', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'zone-2-recovery-run', 'hyrox-pace-runs', 'high-knees', 'reverse-lunge-knee-drive', 'run-in-place', 'battle-ropes', 'rowing-steady-state', 'rowing-intervals', 'elliptical-steady', 'elliptical-intervals', 'stair-climbing-steady', 'stair-climbing-intervals', 'treadmill-incline-walk', 'outdoor-hiking', 'cross-country-skiing', 'snowshoeing', 'kayaking-distance', 'stand-up-paddleboarding'],
+  plyometric: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'swim-plyometric-box-jumps', 'high-skip', 'box-jump', 'depth-jump', 'standing-broad-jump', 'bounding', 'hurdle-hops', 'medicine-ball-slam', 'depth-jump-to-box', 'lateral-bounds', 'tuck-jump', 'ankle-hops', 'star-jump', 'medicine-ball-throws'],
+  mobility: ['arm-circles', 'dynamic-star', 'alternating-step-and-squat', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'froggers', 'ankle-rocks', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'plank-calf-press', 'dynamic-side-body-stretch', 'shoulder-openers', 'lizard-circles', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'dynamic-baby-cobra', '90-90-stretch', 'activated-hip-flexor-stretch-with-block', 'wide-dynamic-cobra', 'upper-body-around-the-world', 'single-leg-hip-flexor-extension-with-pole', 'seated-toe-rainbows-with-chair', 'knee-hug-rock', 'hand-and-wrist-sequence', 'z-stretch', 'knee-hug-to-happy-baby', 'bench-t-spine-stretch', 'kettlebell-halo', 'pvc-windmill'],
+  flexibility: ['standing-calf-stretch', 'foam-roll-hip-abductors', 'childs-pose', 'tricep-and-lat-stretch', 'pigeon-pose', 'forward-fold', 'chest-stretch', 'seated-twist', 'single-leg-hamstring-stretch', 'frog-stretch', 'upper-back-stretch', 'release-lats-with-foam-roller', 'leaning-quad-stretch', 'elevated-pigeon-with-chair', 'standing-chest-stretch', 'cross-body-hamstring-stretch', 'supine-criss-cross', 'toe-grab-calf-stretch', 'half-camel-pose', 'advanced-gate-pose', 'center-stretch-static', 'standing-glute-stretch', 'half-frog-stretch', 'foam-roll-chest-alternative', 'lower-back-stretch'],
+  technique: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill', 'kickboard-swim-drill', 'underwater-kick', 'stride-outs', 'catch-up-drill', 'fingertip-drag-drill', 'high-elbow-catch-drill', 'bilateral-breathing-drill', 'streamline-drill', 'flip-turn-practice', 'open-turn-practice', 'bike-cornering-drills', 'bike-cadence-drills', 'bike-standing-climbing', 'balance-beam-walk', 'single-leg-stance', 'running-form-drills', 'high-knees-drill', 'butt-kicks-drill', 'A-skip-drill', 'B-skip-drill', 'carioca-drill', 'straight-leg-bounds', 'heel-walk-drill', 'toe-walk-drill'],
+  endurance: ['bike-hill-climbs-intervals', 'long-run', 'tempo-run', 'fartlek-run', 'hill-repeats', 'cycling-steady', 'swim-intervals', 'easy-run', 'recovery-run', 'progression-run', 'threshold-run', 'interval-run', 'long-slow-distance-run', 'trail-running', 'track-running-intervals', 'bike-endurance-ride', 'bike-tempo-intervals', 'bike-pyramid-intervals', 'bike-recovery-ride', 'road-cycling-group-ride', 'indoor-cycling-endurance', 'swim-distance-set', 'swim-tempo-set', 'swim-pyramid-set', 'open-water-swim', 'pool-swim-continuous', 'swim-recovery-swim', 'aqua-jogging'],
+  triathlon: ['swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'catch-up-drill', 'fingertip-drag-drill', 'high-elbow-catch-drill', 'bilateral-breathing-drill', 'streamline-drill', 'flip-turn-practice', 'open-turn-practice', 'kickboard-swim-drill', 'underwater-kick', 'bike-cornering-drills', 'bike-cadence-drills', 'bike-standing-climbing'],
+  swimming: ['swim-freestyle-drills', 'swim-open-water-sighting-drills', 'kickboard-swim-drill', 'underwater-kick', 'catch-up-drill', 'fingertip-drag-drill', 'high-elbow-catch-drill', 'bilateral-breathing-drill', 'streamline-drill', 'flip-turn-practice', 'open-turn-practice', 'swim-intervals', 'swim-distance-set', 'swim-tempo-set', 'swim-pyramid-set', 'open-water-swim', 'pool-swim-continuous', 'swim-recovery-swim', 'aqua-jogging', 'swim-distance-freestyle', 'swim-interval-freestyle', 'swim-tempo-freestyle', 'swim-backstroke-technique', 'swim-breaststroke-technique', 'swim-butterfly-technique', 'swim-individual-medley', 'swim-pull-sets', 'swim-kick-sets', 'swim-bilateral-breathing', 'swim-sighting-practice', 'swim-wetsuit-practice', 'swim-mass-start-practice', 'swim-exit-practice'],
+  cycling: ['bike-single-leg-pedaling', 'bike-spin-ups-intervals', 'bike-hill-climbs-intervals', 'bike-cornering-drills', 'bike-cadence-drills', 'bike-standing-climbing', 'cycling-steady', 'bike-endurance-ride', 'bike-tempo-intervals', 'bike-pyramid-intervals', 'bike-recovery-ride', 'road-cycling-group-ride', 'indoor-cycling-endurance', 'bike-aerobic-base', 'bike-threshold-intervals', 'bike-VO2-max-intervals', 'bike-climbing-repeats', 'bike-time-trial-pace', 'bike-brick-workout', 'bike-cadence-work', 'bike-power-intervals', 'bike-recovery-spin', 'bike-group-ride'],
+  running: ['long-run', 'tempo-run', 'fartlek-run', 'hill-repeats', 'stride-outs', 'running-form-drills', 'high-knees-drill', 'butt-kicks-drill', 'A-skip-drill', 'B-skip-drill', 'carioca-drill', 'straight-leg-bounds', 'heel-walk-drill', 'toe-walk-drill', 'easy-run', 'recovery-run', 'progression-run', 'threshold-run', 'interval-run', 'long-slow-distance-run', 'trail-running', 'track-running-intervals'],
+  balance: ['balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill', 'balance-beam-walk', 'single-leg-stance'],
   crossfit: ['burpee', 'jump-squat', 'burpee-broad-jumps', 'wall-balls', 'deadlift', 'kettlebell-swing', 'farmers-carry', 'box-step-ups', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'barbell-hip-thrust', 'dumbbell-hip-thrust', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension'],
-  none: ['push-up', 'diamond-push-up', 'squat', 'jump-squat', 'lunge', 'plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'jumping-jacks', 'burpee', 'mountain-climber', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'a-skips', 'b-skips', 'a-skip', 'b-skip', 'carioca', 'step-ups', 'marching-in-place', 'arm-circles', 'skierg', 'sled-push', 'sled-pull', 'burpee-broad-jumps', 'rowing-erg', 'farmers-carry', 'sandbag-lunges', 'wall-balls', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'grip-endurance-circuit', 'sled-conditioning', 'zone-2-recovery-run', 'hyrox-pace-runs', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'high-knees', 'walking-lunges', 'bird-dog', 'standing-calf-stretch', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'foam-roll-hip-abductors', 'swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'dynamic-star', 'alternating-step-and-squat', 'tricep-and-lat-stretch', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'hip-bridge-lift', 'vacuums', 'lateral-leg-lift', 'frog-pumps', 'flutter-kicks', 'prone-frog-lifts', 'froggers', 'standing-hamstring-curl', 'clamshells', 'side-plank', 'side-plank-leg-lift', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'supermans', 'alternating-jump-lunges', 'reverse-lunge-knee-drive', 'squat-to-calf-raise', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'dynamic-side-body-stretch', 'shoulder-openers', 'standing-crunch', 'run-in-place', 'diagonal-lunge', 'high-skip', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill', 'standing-broad-jump', 'bounding', 'long-run', 'tempo-run', 'fartlek-run', 'hill-repeats']
+  none: ['push-up', 'diamond-push-up', 'squat', 'jump-squat', 'lunge', 'plank', 'crunches', 'russian-twist', 'leg-raise', 'bicycle-crunch', 'dead-bug', 'reverse-crunch', 'oblique-crunch', 'jumping-jacks', 'burpee', 'mountain-climber', 'lat-pulldown', 'dumbbell-row', 'cable-row', 'dumbbell-bent-over-row', 'bent-over-barbell-row', 'kettlebell-row', 'landmine-row', 'seated-leg-curl', 'dumbbell-romanian-deadlift', 'romanian-deadlift', 'lying-hamstrings-curl', 'single-leg-romanian-deadlift', 'good-morning', 'deadlift', 'kettlebell-swing', 'hip-thrust', 'barbell-hip-thrust', 'glute-bridge', 'single-leg-glute-bridge', 'side-leg-raises', 'barbell-curl', 'dumbbell-curl', 'hammer-curl', 'preacher-curl', 'a-skips', 'b-skips', 'a-skip', 'b-skip', 'carioca', 'step-ups', 'marching-in-place', 'arm-circles', 'skierg', 'sled-push', 'sled-pull', 'burpee-broad-jumps', 'rowing-erg', 'farmers-carry', 'sandbag-lunges', 'wall-balls', 'compromised-running', 'station-transitions', 'running-sandwich', 'mock-hyrox', 'grip-endurance-circuit', 'sled-conditioning', 'zone-2-recovery-run', 'hyrox-pace-runs', 'machine-row', 'hammerstrength-high-row', 'hammerstrength-iso-row', 'incline-dumbbell-row', 'shotgun-row', 'kettlebell-alternating-row', 'cable-lateral-raise', 'dumbbell-rear-delt-raise', 'dumbbell-lateral-raise', 'dumbbell-shoulder-press', 'dumbbell-front-raise', 'straight-leg-kickback', 'medicine-ball-curtsy-lunge', 'medicine-ball-hip-thrusts', 'single-leg-kickback', 'elevated-hip-bridge', 'dumbbell-hip-thrust', 'glute-kickback-machine', 'high-knees', 'walking-lunges', 'bird-dog', 'standing-calf-stretch', 'box-step-ups', 'calf-press', 'standing-dumbbell-calf-raise', 'seated-machine-calf-press', 'seated-dumbbell-calf-raise', 'standing-barbell-calf-raise', 'standing-kettlebell-calf-raise', 'stiff-legged-barbell-good-morning', 'incline-back-extension', 'foam-roll-hip-abductors', 'swim-freestyle-drills', 'bike-single-leg-pedaling', 'swim-plyometric-box-jumps', 'bike-hill-climbs-intervals', 'swim-open-water-sighting-drills', 'bike-spin-ups-intervals', 'dynamic-star', 'alternating-step-and-squat', 'tricep-and-lat-stretch', 'pelvic-tilts', 'upper-back-rotations', 'kneeling-pelvic-tilts', 'hip-bridge-lift', 'vacuums', 'lateral-leg-lift', 'frog-pumps', 'flutter-kicks', 'prone-frog-lifts', 'froggers', 'standing-hamstring-curl', 'clamshells', 'side-plank', 'side-plank-leg-lift', 'speed-skater-lunges', 'single-leg-deadlift-to-hop', 'single-leg-calf-raise', 'supermans', 'alternating-jump-lunges', 'reverse-lunge-knee-drive', 'squat-to-calf-raise', 'single-leg-shin-sequence', 'standing-fours', 'kang-squats', 'dynamic-quad-stretch', 'dynamic-side-body-stretch', 'shoulder-openers', 'standing-crunch', 'run-in-place', 'diagonal-lunge', 'high-skip', 'boot-strappers', 'standing-hip-open-and-close', 'standing-cat-cow', 'balance-and-change-of-support-drill', 'pony-drill', 'hopping-drills', 'advanced-jump-drill', 'standing-broad-jump', 'bounding', 'long-run', 'tempo-run', 'fartlek-run', 'hill-repeats', 'loop-band-standing-tricep-extension', 'tate-press', 'machine-tricep-dip', 'ez-bar-overhead-tricep-extension', 'incline-barbell-skull-crusher', 'dumbbell-tricep-extension', 'foam-roll-chest-alternative', 'dumbbell-squeeze-press', 'svend-press', 'push-up-on-knees', 'dumbbell-pull-over', 'leg-raise-with-dumbbell-pull-over', 'barbell-decline-bench-press', 'incline-ez-bar-curl', 'wide-grip-barbell-curl', 'barbell-bicep-drag-curl', 'spider-curls', 'concentration-curl', 'zottman-curl', 'waiter-curls', 'muscle-snatch', 'landmine-single-leg-romanian-deadlift', 'deadlift-to-calf-raise', 'alternating-heel-touch', 'side-bridge', 'cocoon-crunch', 'inverted-row', 't-bar-row', 'renegade-row', 'prone-ws', 'straight-arm-pulldown', 'bird-dog-rows', 'bench-t-spine-stretch', 'australian-chin-up', 'chin-up', 'mixed-grip-pull-up', 'ring-row', 'archer-pull-up', 'front-squat', 'hack-squat', 'trap-bar-deadlift', 'star-jump', 'trx-squat', 'iron-cross', 'kettlebell-snatch', 'kettlebell-overhead-press', 'scapular-pull-up', 'kettlebell-sumo-high-pull', 'machine-shoulder-shrug', 'palms-down-barbell-wrist-curl', 'plate-pinch', 'pvc-windmill', 'loop-band-superman-press', 'lower-back-stretch', 'bridge-up-up-down-down', 'bridge-side-to-side', 'dumbbell-superman', 'catch-up-drill', 'fingertip-drag-drill', 'high-elbow-catch-drill', 'bilateral-breathing-drill', 'streamline-drill', 'flip-turn-practice', 'open-turn-practice', 'bike-cornering-drills', 'bike-cadence-drills', 'bike-standing-climbing', 'balance-beam-walk', 'single-leg-stance', 'running-form-drills', 'high-knees-drill', 'butt-kicks-drill', 'A-skip-drill', 'B-skip-drill', 'carioca-drill', 'straight-leg-bounds', 'heel-walk-drill', 'toe-walk-drill']
 };
 
 // Helper functions
@@ -13829,8 +15440,7244 @@ const SPORT_SPECIFIC_EXERCISES = {
       common_mistakes: ['Overstriding', 'Tight shoulders'],
       breathing: 'Exhale as speed increases'
     }
+  },
+
+  'arnold-press': {
+      "id": "arnold-press",
+      "name": "Arnold Press",
+      "category": "strength",
+      "equipment": [
+          "dumbbells"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "triceps"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Sit on a bench with back support, holding dumbbells at shoulder height",
+          "Start with palms facing toward you (like the top of a bicep curl)",
+          "Press the weights up while rotating your wrists outward",
+          "At the top, palms should face forward",
+          "Reverse the motion on the way down"
+      ],
+      "safetyNotes": [
+          "Use controlled movements throughout the entire range of motion",
+          "Don't use excessive weight that compromises form",
+          "Keep core engaged for stability"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weights and focus on the rotation pattern",
+          "advanced": "Add pause at the top or use single-arm variation"
+      },
+      "equipment_alternatives": [
+          "resistance bands"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'band-face-pulls':   {
+      "id": "band-face-pulls",
+      "name": "Band Face Pulls",
+      "category": "strength",
+      "equipment": [
+          "resistance_band"
+      ],
+      "muscleGroups": [
+          "rear_delts",
+          "rhomboids",
+          "middle_traps"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Attach resistance band at chest height",
+          "Hold handles with arms extended forward",
+          "Pull band toward your face, separating hands",
+          "Squeeze shoulder blades together",
+          "Return to starting position with control"
+      ],
+      "safetyNotes": [
+          "Keep elbows high throughout the movement",
+          "Focus on squeezing shoulder blades together",
+          "Don't let band snap back uncontrolled"
+      ],
+      "modifications": {
+          "beginner": "Use lighter resistance band",
+          "advanced": "Use heavier band or add pause at peak contraction"
+      },
+      "equipment_alternatives": [
+          "cable_machine"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'band-pull-aparts':   {
+      "id": "band-pull-aparts",
+      "name": "Band Pull-Aparts",
+      "category": "strength",
+      "equipment": [
+          "resistance_band"
+      ],
+      "muscleGroups": [
+          "rear_delts",
+          "rhomboids"
+      ],
+      "difficulty": 1,
+      "instructions": [
+          "Hold resistance band with arms extended in front",
+          "Keep arms straight and pull band apart",
+          "Squeeze shoulder blades together",
+          "Return to starting position slowly"
+      ],
+      "safetyNotes": [
+          "Keep shoulders down and back",
+          "Maintain straight arms throughout",
+          "Control the return movement"
+      ],
+      "modifications": {
+          "beginner": "Use lighter resistance",
+          "advanced": "Use heavier band or add holds"
+      },
+      "equipment_alternatives": [
+          "cable_machine"
+      ],
+      "progressionRate": 0.02
+  },
+
+  'barbell-rows':   {
+      "id": "barbell-rows",
+      "name": "Barbell Rows",
+      "category": "strength",
+      "equipment": [
+          "barbell"
+      ],
+      "muscleGroups": [
+          "lats",
+          "rhomboids",
+          "middle_traps",
+          "biceps"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Stand with feet hip-width apart, holding barbell",
+          "Hinge at hips, keeping back straight",
+          "Pull barbell to lower chest/upper abdomen",
+          "Squeeze shoulder blades together",
+          "Lower with control"
+      ],
+      "safetyNotes": [
+          "Keep back straight throughout movement",
+          "Don't round shoulders or back",
+          "Use appropriate weight for your strength level"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weight or dumbbells",
+          "advanced": "Add pause at top or use underhand grip"
+      },
+      "equipment_alternatives": [
+          "dumbbells",
+          "cable_machine"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'battle-ropes':   {
+      "id": "battle-ropes",
+      "name": "Battle Ropes",
+      "category": "cardio",
+      "equipment": [
+          "battle_ropes"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "core",
+          "arms"
+      ],
+      "difficulty": 4,
+      "instructions": [
+          "Stand with feet shoulder-width apart",
+          "Hold rope ends in each hand",
+          "Create waves by alternating arm movements",
+          "Keep core engaged throughout",
+          "Maintain steady rhythm"
+      ],
+      "safetyNotes": [
+          "Start with shorter intervals",
+          "Maintain proper posture",
+          "Stay hydrated during intense sessions"
+      ],
+      "modifications": {
+          "beginner": "Use lighter ropes or shorter intervals",
+          "advanced": "Increase intensity or add movement patterns"
+      },
+      "equipment_alternatives": [
+          "none"
+      ],
+      "progressionRate": 0.1
+  },
+
+  'cable-curls':   {
+      "id": "cable-curls",
+      "name": "Cable Curls",
+      "category": "strength",
+      "equipment": [
+          "cable_machine"
+      ],
+      "muscleGroups": [
+          "biceps"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Stand facing cable machine with low pulley",
+          "Hold cable handle with underhand grip",
+          "Keep elbows at sides",
+          "Curl weight up by flexing biceps",
+          "Lower with control"
+      ],
+      "safetyNotes": [
+          "Keep elbows stationary",
+          "Don't swing or use momentum",
+          "Control the negative portion"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weight",
+          "advanced": "Use single arm or different angles"
+      },
+      "equipment_alternatives": [
+          "dumbbells",
+          "barbell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'cable-tricep-pushdowns':   {
+      "id": "cable-tricep-pushdowns",
+      "name": "Cable Tricep Pushdowns",
+      "category": "strength",
+      "equipment": [
+          "cable_machine"
+      ],
+      "muscleGroups": [
+          "triceps"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Stand facing cable machine with high pulley",
+          "Hold rope or bar with overhand grip",
+          "Keep elbows at sides",
+          "Push weight down by extending arms",
+          "Return to starting position with control"
+      ],
+      "safetyNotes": [
+          "Keep elbows stationary at sides",
+          "Don't lean forward excessively",
+          "Control the weight on the way up"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weight",
+          "advanced": "Use single arm or different attachments"
+      },
+      "equipment_alternatives": [
+          "resistance_band"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'calf-raises':   {
+      "id": "calf-raises",
+      "name": "Calf Raises",
+      "category": "strength",
+      "equipment": [
+          "none"
+      ],
+      "muscleGroups": [
+          "calves"
+      ],
+      "difficulty": 1,
+      "instructions": [
+          "Stand with feet hip-width apart",
+          "Rise up onto balls of feet",
+          "Hold briefly at the top",
+          "Lower slowly to starting position"
+      ],
+      "safetyNotes": [
+          "Use wall or rail for balance if needed",
+          "Don't bounce at the bottom",
+          "Control the movement"
+      ],
+      "modifications": {
+          "beginner": "Hold onto something for balance",
+          "advanced": "Add weight or do single-leg version"
+      },
+      "equipment_alternatives": [
+          "dumbbells",
+          "barbell"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'close-grip-bench-press':   {
+      "id": "close-grip-bench-press",
+      "name": "Close-Grip Bench Press",
+      "category": "strength",
+      "equipment": [
+          "barbell",
+          "bench"
+      ],
+      "muscleGroups": [
+          "triceps",
+          "chest",
+          "shoulders"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Lie on bench with hands closer than shoulder-width",
+          "Lower barbell to chest with control",
+          "Keep elbows closer to body than regular bench press",
+          "Press weight back to starting position",
+          "Maintain tight core throughout"
+      ],
+      "safetyNotes": [
+          "Use spotter for heavy weights",
+          "Don't grip too narrow (risk of wrist injury)",
+          "Keep feet planted on floor"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weight or dumbbells",
+          "advanced": "Add pause at chest or use chains"
+      },
+      "equipment_alternatives": [
+          "dumbbells"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'face-pulls':   {
+      "id": "face-pulls",
+      "name": "Face Pulls",
+      "category": "strength",
+      "equipment": [
+          "cable_machine"
+      ],
+      "muscleGroups": [
+          "rear_delts",
+          "rhomboids",
+          "middle_traps"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Set cable at face height with rope attachment",
+          "Pull rope toward face, separating hands",
+          "Keep elbows high",
+          "Squeeze shoulder blades together",
+          "Return to starting position with control"
+      ],
+      "safetyNotes": [
+          "Keep elbows high throughout movement",
+          "Don't use too much weight",
+          "Focus on form over weight"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weight",
+          "advanced": "Add pause or use single arm"
+      },
+      "equipment_alternatives": [
+          "resistance_band"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'farmer-walks':   {
+      "id": "farmer-walks",
+      "name": "Farmer Walks",
+      "category": "strength",
+      "equipment": [
+          "dumbbells"
+      ],
+      "muscleGroups": [
+          "traps",
+          "forearms",
+          "core",
+          "legs"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Hold heavy weights in each hand",
+          "Stand tall with shoulders back",
+          "Walk forward with controlled steps",
+          "Keep core engaged",
+          "Maintain upright posture throughout"
+      ],
+      "safetyNotes": [
+          "Start with manageable weight",
+          "Keep path clear of obstacles",
+          "Don't let shoulders roll forward"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weights or shorter distance",
+          "advanced": "Increase weight or distance"
+      },
+      "equipment_alternatives": [
+          "kettlebells",
+          "barbell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'goblet-squat':   {
+      "id": "goblet-squat",
+      "name": "Goblet Squat",
+      "category": "strength",
+      "equipment": [
+          "dumbbell"
+      ],
+      "muscleGroups": [
+          "quadriceps",
+          "glutes",
+          "core"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Hold dumbbell at chest level with both hands",
+          "Stand with feet shoulder-width apart",
+          "Lower into squat position",
+          "Keep chest up and knees tracking over toes",
+          "Return to standing position"
+      ],
+      "safetyNotes": [
+          "Keep weight close to chest",
+          "Don't let knees cave inward",
+          "Maintain neutral spine"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weight or bodyweight only",
+          "advanced": "Use heavier weight or add pause"
+      },
+      "equipment_alternatives": [
+          "kettlebell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'incline-dumbbell-press':   {
+      "id": "incline-dumbbell-press",
+      "name": "Incline Dumbbell Press",
+      "category": "strength",
+      "equipment": [
+          "dumbbells",
+          "incline_bench"
+      ],
+      "muscleGroups": [
+          "upper_chest",
+          "shoulders",
+          "triceps"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Set bench to 30-45 degree incline",
+          "Hold dumbbells at chest level",
+          "Press weights up and slightly together",
+          "Lower with control to chest level",
+          "Maintain contact with bench throughout"
+      ],
+      "safetyNotes": [
+          "Don't arch back excessively",
+          "Keep feet planted on floor",
+          "Use spotter for heavy weights"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weights",
+          "advanced": "Add pause at bottom or use single arm"
+      },
+      "equipment_alternatives": [
+          "barbell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'lateral-raises':   {
+      "id": "lateral-raises",
+      "name": "Lateral Raises",
+      "category": "strength",
+      "equipment": [
+          "dumbbells"
+      ],
+      "muscleGroups": [
+          "side_delts"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Stand with dumbbells at sides",
+          "Raise arms out to sides until parallel to floor",
+          "Keep slight bend in elbows",
+          "Lower with control",
+          "Don't swing or use momentum"
+      ],
+      "safetyNotes": [
+          "Don't raise arms above shoulder height",
+          "Keep core engaged",
+          "Use controlled movements"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weights",
+          "advanced": "Add pause at top or use single arm"
+      },
+      "equipment_alternatives": [
+          "resistance_band"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'leg-curls':   {
+      "id": "leg-curls",
+      "name": "Leg Curls",
+      "category": "strength",
+      "equipment": [
+          "leg_curl_machine"
+      ],
+      "muscleGroups": [
+          "hamstrings"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Lie face down on leg curl machine",
+          "Position pad just above ankles",
+          "Curl heels toward glutes",
+          "Squeeze hamstrings at top",
+          "Lower with control"
+      ],
+      "safetyNotes": [
+          "Don't use excessive weight",
+          "Keep hips pressed down",
+          "Control the negative portion"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weight",
+          "advanced": "Add pause or use single leg"
+      },
+      "equipment_alternatives": [
+          "resistance_band"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'leg-press':   {
+      "id": "leg-press",
+      "name": "Leg Press",
+      "category": "strength",
+      "equipment": [
+          "leg_press_machine"
+      ],
+      "muscleGroups": [
+          "quadriceps",
+          "glutes"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Sit in leg press machine with back against pad",
+          "Place feet on platform shoulder-width apart",
+          "Lower weight by bending knees to 90 degrees",
+          "Press weight back to starting position",
+          "Don't lock knees completely"
+      ],
+      "safetyNotes": [
+          "Keep back against pad",
+          "Don't let knees cave inward",
+          "Use safety stops"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weight",
+          "advanced": "Use single leg or different foot positions"
+      },
+      "equipment_alternatives": [
+          "squat"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'medicine-ball-throws':   {
+      "id": "medicine-ball-throws",
+      "name": "Medicine Ball Throws",
+      "category": "plyometric",
+      "equipment": [
+          "medicine_ball"
+      ],
+      "muscleGroups": [
+          "core",
+          "shoulders",
+          "legs"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Hold medicine ball at chest level",
+          "Engage core and throw ball explosively",
+          "Can throw overhead, to wall, or to partner",
+          "Catch and repeat",
+          "Focus on explosive movement"
+      ],
+      "safetyNotes": [
+          "Ensure clear throwing area",
+          "Start with lighter ball",
+          "Warm up thoroughly before explosive movements"
+      ],
+      "modifications": {
+          "beginner": "Use lighter ball or shorter throws",
+          "advanced": "Use heavier ball or add jumping"
+      },
+      "equipment_alternatives": [
+          "none"
+      ],
+      "progressionRate": 0.1
+  },
+
+  'seated-dumbbell-press':   {
+      "id": "seated-dumbbell-press",
+      "name": "Seated Dumbbell Press",
+      "category": "strength",
+      "equipment": [
+          "dumbbells",
+          "bench"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "triceps"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Sit on bench with back support",
+          "Hold dumbbells at shoulder height",
+          "Press weights straight up overhead",
+          "Lower with control to starting position",
+          "Keep core engaged throughout"
+      ],
+      "safetyNotes": [
+          "Don't arch back excessively",
+          "Keep feet planted on floor",
+          "Use controlled movements"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weights",
+          "advanced": "Use single arm or add pause"
+      },
+      "equipment_alternatives": [
+          "barbell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'single-arm-dumbbell-press':   {
+      "id": "single-arm-dumbbell-press",
+      "name": "Single-Arm Dumbbell Press",
+      "category": "strength",
+      "equipment": [
+          "dumbbell"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "triceps",
+          "core"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Stand or sit holding dumbbell in one hand",
+          "Press weight straight up overhead",
+          "Keep core engaged for stability",
+          "Lower with control",
+          "Complete set before switching arms"
+      ],
+      "safetyNotes": [
+          "Engage core to prevent leaning",
+          "Don't arch back excessively",
+          "Use appropriate weight"
+      ],
+      "modifications": {
+          "beginner": "Use lighter weight or seated position",
+          "advanced": "Stand on one leg or use heavier weight"
+      },
+      "equipment_alternatives": [
+          "kettlebell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'single-leg-rdl':   {
+      "id": "single-leg-rdl",
+      "name": "Single-Leg Romanian Deadlift",
+      "category": "strength",
+      "equipment": [
+          "dumbbell"
+      ],
+      "muscleGroups": [
+          "hamstrings",
+          "glutes",
+          "core"
+      ],
+      "difficulty": 4,
+      "instructions": [
+          "Stand on one leg holding dumbbell",
+          "Hinge at hip, extending free leg behind",
+          "Lower weight toward ground",
+          "Keep back straight throughout",
+          "Return to starting position"
+      ],
+      "safetyNotes": [
+          "Start with bodyweight only",
+          "Use wall or rail for balance if needed",
+          "Keep movements controlled"
+      ],
+      "modifications": {
+          "beginner": "Hold onto something for balance",
+          "advanced": "Use heavier weight or close eyes"
+      },
+      "equipment_alternatives": [
+          "kettlebell",
+          "barbell"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'tricep-dips':   {
+      "id": "tricep-dips",
+      "name": "Tricep Dips",
+      "category": "strength",
+      "equipment": [
+          "dip_bars"
+      ],
+      "muscleGroups": [
+          "triceps",
+          "chest",
+          "shoulders"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Support body weight on dip bars",
+          "Lower body by bending elbows",
+          "Keep elbows close to body",
+          "Push back up to starting position",
+          "Maintain upright posture"
+      ],
+      "safetyNotes": [
+          "Don't go too low (shoulder discomfort)",
+          "Keep shoulders down and back",
+          "Use assistance if needed"
+      ],
+      "modifications": {
+          "beginner": "Use assisted dip machine or chair",
+          "advanced": "Add weight or increase range of motion"
+      },
+      "equipment_alternatives": [
+          "chair"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'turkish-get-ups':   {
+      "id": "turkish-get-ups",
+      "name": "Turkish Get-Ups",
+      "category": "strength",
+      "equipment": [
+          "kettlebell"
+      ],
+      "muscleGroups": [
+          "core",
+          "shoulders",
+          "legs"
+      ],
+      "difficulty": 5,
+      "instructions": [
+          "Lie on back holding kettlebell overhead",
+          "Follow complex sequence to standing position",
+          "Keep weight overhead throughout",
+          "Reverse movement to return to lying",
+          "Practice movement pattern thoroughly"
+      ],
+      "safetyNotes": [
+          "Learn movement without weight first",
+          "Use light weight initially",
+          "Focus on form over speed"
+      ],
+      "modifications": {
+          "beginner": "Practice without weight",
+          "advanced": "Use heavier weight or add complexity"
+      },
+      "equipment_alternatives": [
+          "dumbbell"
+      ],
+      "progressionRate": 0.02
+  },
+
+
+  'bulgarian-split-squat':   {
+      "id": "bulgarian-split-squat",
+      "name": "Bulgarian Split Squat",
+      "category": "strength",
+      "equipment": [
+          "none"
+      ],
+      "muscleGroups": [
+          "quadriceps",
+          "glutes",
+          "calves"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Stand 2-3 feet in front of a bench or chair",
+          "Place top of one foot behind you on the bench",
+          "Lower your body until front thigh is parallel to floor",
+          "Keep most weight on front leg",
+          "Push through front heel to return to start",
+          "Complete all reps before switching legs"
+      ],
+      "safetyNotes": [
+          "Keep front knee aligned over ankle",
+          "Don't let front knee cave inward",
+          "Control the descent - don't drop down"
+      ],
+      "modifications": {
+          "beginner": "Hold onto something for balance or reduce range of motion",
+          "advanced": "Add dumbbells or elevate front foot"
+      },
+      "equipment_alternatives": [
+          "dumbbells"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'incline-push-ups':   {
+      "id": "incline-push-ups",
+      "name": "Incline Push-Ups",
+      "category": "strength",
+      "equipment": [
+          "bench"
+      ],
+      "muscleGroups": [
+          "chest",
+          "shoulders",
+          "triceps"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Place hands on elevated surface (bench, step, etc.)",
+          "Walk feet back until body is in straight line",
+          "Lower chest toward the elevated surface",
+          "Push back up to starting position",
+          "Keep core engaged throughout"
+      ],
+      "safetyNotes": [
+          "Keep body in straight line from head to heels",
+          "Don't let hips sag or pike up",
+          "Control the movement both up and down"
+      ],
+      "modifications": {
+          "beginner": "Use higher surface (wall push-ups)",
+          "advanced": "Lower the surface height or add weight"
+      },
+      "equipment_alternatives": [
+          "wall",
+          "chair"
+      ],
+      "progressionRate": 0.05
+  },
+
+
+  'kettlebell-turkish-get-up':   {
+      "id": "kettlebell-turkish-get-up",
+      "name": "Kettlebell Turkish Get Up",
+      "category": "strength",
+      "equipment": [
+          "kettlebell"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "core",
+          "glutes",
+          "quadriceps"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Lie on your back. Hold a kettlebell in your right hand, with your right knee bent and foot flat on the floor. Your left arm and leg should be extended out to the side at a 45-degree angle.",
+          "Press the kettlebell up towards the ceiling, locking your elbow.",
+          "Keeping your eyes on the kettlebell, push off your right foot and roll onto your left forearm.",
+          "Straighten your left arm to push up to a seated position.",
+          "Lift your hips off the floor, supporting your weight on your left hand and right foot.",
+          "Sweep your left leg under your body and place your left knee on the floor.",
+          "Lift your torso to an upright, half-kneeling position.",
+          "Stand up by driving off your front foot.",
+          "Reverse the entire sequence step-by-step to return to the starting position on your back.",
+          "Complete the rep on one side before switching."
+      ],
+      "safetyNotes": [
+          "This is a highly technical, full-body exercise. Master each step with no weight or a very light weight before progressing.",
+          "Keep your eyes on the kettlebell at all times to maintain stability and awareness.",
+          "The movement should be slow, deliberate, and controlled."
+      ],
+      "modifications": {
+          "beginner": "Practice without any weight, or by balancing a shoe on your fist. Break the movement down into partials (e.g., floor to elbow, elbow to hand).",
+          "advanced": "Increase the weight of the kettlebell."
+      },
+      "equipment_alternatives": [
+          "dumbbell"
+      ],
+      "progressionRate": 0.02
+  },
+
+  'push-press':   {
+      "id": "push-press",
+      "name": "Push Press",
+      "category": "strength",
+      "equipment": [
+          "barbell"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "triceps",
+          "glutes",
+          "quadriceps"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Stand with your feet shoulder-width apart, holding a barbell in a front rack position across your shoulders.",
+          "Keep your torso upright and your core engaged.",
+          "Initiate the movement with a quick, shallow dip by bending your knees and hips.",
+          "Immediately reverse the motion, explosively driving up with your legs to create upward momentum on the bar.",
+          "As the bar leaves your shoulders, press it forcefully overhead until your arms are fully locked out.",
+          "Lower the bar back to the front rack position with control.",
+          "Repeat for the desired number of repetitions."
+      ],
+      "safetyNotes": [
+          "The power comes from the leg drive, not from a deep squat.",
+          "Maintain a vertical torso throughout the dip and drive.",
+          "Ensure you have a stable core to transfer force from your legs to the bar."
+      ],
+      "modifications": {
+          "beginner": "Use a lighter weight or dumbbells to learn the timing.",
+          "advanced": "Increase the weight."
+      },
+      "equipment_alternatives": [
+          "dumbbells",
+          "kettlebells"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'kettlebell-halo':   {
+      "id": "kettlebell-halo",
+      "name": "Kettlebell Halo",
+      "category": "mobility",
+      "equipment": [
+          "kettlebell"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "upper_back",
+          "core"
+      ],
+      "difficulty": 1,
+      "instructions": [
+          "Stand or kneel, holding a kettlebell with both hands by the 'horns' (the sides of the handle), with the bell part facing up.",
+          "Hold the kettlebell at chest height.",
+          "Slowly and smoothly, circle the kettlebell around your head, keeping it as close as possible without hitting yourself.",
+          "Circle it one way, bringing it behind your head and back to the front.",
+          "Then, reverse the direction for the next repetition or complete all reps in one direction before switching.",
+          "Keep your core tight and try to minimize movement in your torso.",
+          "Repeat for the desired number of repetitions."
+      ],
+      "safetyNotes": [
+          "Start with a light kettlebell to get used to the motion.",
+          "Move slowly and with control to avoid hitting your head.",
+          "Keep your neck in a neutral position; don't crane it to follow the kettlebell."
+      ],
+      "modifications": {
+          "beginner": "Use a very light weight or no weight at all. Make a wider circle around your head.",
+          "advanced": "Use a heavier kettlebell. Perform from a half-kneeling position for a core stability challenge."
+      },
+      "equipment_alternatives": [
+          "dumbbell"
+      ],
+      "progressionRate": 0.02
+  },
+
+  'landmine-press':   {
+      "id": "landmine-press",
+      "name": "Landmine Press",
+      "category": "strength",
+      "equipment": [
+          "barbell",
+          "landmine_attachment"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "upper_chest",
+          "triceps"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Place one end of a barbell into a landmine attachment.",
+          "Load the other end with weight. Kneel on one knee (the same side as your pressing arm) or stand in a staggered stance.",
+          "Cup the weighted end of the barbell with one hand.",
+          "Start with the end of the barbell at your shoulder.",
+          "Keeping your core tight, press the barbell up and away from you until your arm is fully extended.",
+          "The bar will travel in a natural upward arc.",
+          "Slowly lower the barbell back to the starting shoulder position with control.",
+          "Complete all reps on one side before switching."
+      ],
+      "safetyNotes": [
+          "The arcing motion is friendlier on the shoulder joint than a strict vertical press.",
+          "Brace your core to prevent your torso from twisting.",
+          "Control the weight on the way down."
+      ],
+      "modifications": {
+          "beginner": "Use a lighter weight. Perform from a kneeling position for more stability.",
+          "advanced": "Increase the weight. Perform from a standing position."
+      },
+      "equipment_alternatives": [
+          "dumbbell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'muscle-clean':   {
+      "id": "muscle-clean",
+      "name": "Muscle Clean",
+      "category": "strength",
+      "equipment": [
+          "barbell"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "traps",
+          "biceps",
+          "forearms"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Stand with your feet hip-width apart, holding a barbell with an overhand grip just outside your thighs.",
+          "Initiate the movement by shrugging your shoulders and pulling the bar upwards with your arms, keeping it close to your body.",
+          "Unlike a power clean, there is no explosive hip drive or re-bending of the knees.",
+          "The movement is a strict, muscle-driven pull from the hang position up to the shoulders.",
+          "As the bar reaches chest height, quickly rotate your elbows under the bar to catch it in a front rack position.",
+          "Stand up straight.",
+          "Lower the bar back to the starting position with control.",
+          "Repeat."
+      ],
+      "safetyNotes": [
+          "This is a technique drill to build strength and proper bar path for the clean. Use a lighter weight.",
+          "Focus on keeping the bar as close to your body as possible.",
+          "The elbow turnover needs to be fast."
+      ],
+      "modifications": {
+          "beginner": "Use a PVC pipe or empty barbell.",
+          "advanced": "Increase the weight, but prioritize form over load."
+      },
+      "equipment_alternatives": [
+          "dumbbells"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'iron-cross':   {
+      "id": "iron-cross",
+      "name": "Iron Cross",
+      "category": "strength",
+      "equipment": [
+          "dumbbells"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "chest",
+          "core"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Stand with your feet shoulder-width apart, holding a light dumbbell in each hand.",
+          "Raise your arms out to your sides at shoulder height, with your palms facing forward or down. This is the starting position.",
+          "Keeping your arms straight, bring the dumbbells together in front of your chest.",
+          "Squeeze your chest at the point of peak contraction.",
+          "Slowly return the dumbbells to the starting position out at your sides.",
+          "The movement is similar to a cable crossover or a dumbbell fly, but performed standing."
+      ],
+      "safetyNotes": [
+          "Use a light weight to ensure you can maintain form and not strain your shoulder joints.",
+          "Keep your core engaged to stabilize your torso.",
+          "Avoid using momentum; the movement should be slow and controlled."
+      ],
+      "modifications": {
+          "beginner": "Use very light dumbbells or no weight at all. Perform a standing chest stretch to learn the movement pattern.",
+          "advanced": "Increase the weight slightly. Pause for a second at the peak contraction."
+      },
+      "equipment_alternatives": [
+          "resistance_band"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'kettlebell-snatch':   {
+      "id": "kettlebell-snatch",
+      "name": "Kettlebell Snatch",
+      "category": "strength",
+      "equipment": [
+          "kettlebell"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "glutes",
+          "hamstrings",
+          "back"
+      ],
+      "difficulty": 3,
+      "instructions": [
+          "Stand with your feet slightly wider than shoulder-width, with a kettlebell on the floor between your feet.",
+          "Hinge at your hips and grab the kettlebell with one hand.",
+          "Hike the kettlebell back between your legs.",
+          "Explosively drive your hips forward to swing the kettlebell upwards.",
+          "As the kettlebell travels up, keep it close to your body. As it reaches chest height, punch your hand up and through the kettlebell to catch it in an overhead position.",
+          "The kettlebell should rest gently on the back of your forearm, not slap it.",
+          "Stand tall with the kettlebell stable overhead.",
+          "Return the kettlebell to the starting position by reversing the motion or in a controlled swing.",
+          "Complete all reps on one side before switching."
+      ],
+      "safetyNotes": [
+          "This is a highly technical lift. Master the kettlebell swing and high pull first.",
+          "The 'punch through' motion is key to avoiding the kettlebell slamming onto your forearm.",
+          "Keep your back straight and use the power from your hips, not your arm."
+      ],
+      "modifications": {
+          "beginner": "Practice with a very light kettlebell. Break the movement down into a high pull.",
+          "advanced": "Increase the weight. Perform for high reps or in a flow with other movements."
+      },
+      "equipment_alternatives": [
+          "dumbbell"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'kettlebell-overhead-press':   {
+      "id": "kettlebell-overhead-press",
+      "name": "Kettlebell Overhead Press",
+      "category": "strength",
+      "equipment": [
+          "kettlebell"
+      ],
+      "muscleGroups": [
+          "shoulders",
+          "triceps",
+          "core"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Clean a kettlebell to the front rack position, with the bell resting on the back of your forearm and your hand tucked at your chest.",
+          "Stand with your feet shoulder-width apart and your core braced.",
+          "Keeping your torso upright, press the kettlebell straight overhead until your arm is fully locked out.",
+          "Keep your bicep close to your ear at the top.",
+          "Slowly lower the kettlebell back to the rack position with control.",
+          "Complete all reps on one side before switching."
+      ],
+      "safetyNotes": [
+          "Do not lean back as you press; keep your ribcage down and your core tight.",
+          "Press in a straight vertical line.",
+          "Control the kettlebell on the descent."
+      ],
+      "modifications": {
+          "beginner": "Use a lighter kettlebell. Perform from a seated or half-kneeling position for more stability.",
+          "advanced": "Increase the weight. Use two kettlebells at once."
+      },
+      "equipment_alternatives": [
+          "dumbbell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'scapular-pull-up':   {
+      "id": "scapular-pull-up",
+      "name": "Scapular Pull Up",
+      "category": "strength",
+      "equipment": [
+          "pull_up_bar"
+      ],
+      "muscleGroups": [
+          "upper_back",
+          "lats"
+      ],
+      "difficulty": 1,
+      "instructions": [
+          "Hang from a pull-up bar with an overhand grip, hands slightly wider than your shoulders.",
+          "Start from a 'dead hang' position, fully relaxed with your shoulders shrugged up to your ears.",
+          "Without bending your arms, engage your back muscles to depress and retract your shoulder blades.",
+          "This will cause your body to lift up slightly.",
+          "Think of pulling your shoulders down and away from your ears.",
+          "Hold the contracted position for a moment.",
+          "Slowly return to the dead hang starting position.",
+          "Repeat for the desired number of repetitions."
+      ],
+      "safetyNotes": [
+          "The movement should be small and isolated to the scapulae (shoulder blades).",
+          "Your arms should remain straight throughout the entire exercise.",
+          "This is an activation drill, not a full pull-up."
+      ],
+      "modifications": {
+          "beginner": "If hanging is too difficult, perform a similar motion on a lat pulldown machine with light weight.",
+          "advanced": "Hold the peak contraction for a longer duration (3-5 seconds)."
+      },
+      "equipment_alternatives": [
+          "lat_pulldown_machine"
+      ],
+      "progressionRate": 0.02
+  },
+
+  'kettlebell-sumo-high-pull':   {
+      "id": "kettlebell-sumo-high-pull",
+      "name": "Kettlebell Sumo High Pull",
+      "category": "strength",
+      "equipment": [
+          "kettlebell"
+      ],
+      "muscleGroups": [
+          "traps",
+          "shoulders",
+          "glutes",
+          "hamstrings"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Stand in a wide 'sumo' stance with your toes pointed out, with a kettlebell on the floor between your feet.",
+          "Hinge at your hips and bend your knees to grip the kettlebell handle with both hands.",
+          "Keeping your back straight and chest up, drive explosively through your legs to stand up.",
+          "As the kettlebell travels upwards from the hip drive, pull it up towards your chin by leading with your elbows.",
+          "Your elbows should be higher than your hands at the top of the movement.",
+          "Reverse the motion with control to lower the kettlebell back to the floor.",
+          "Repeat for the desired number of repetitions."
+      ],
+      "safetyNotes": [
+          "The power comes from the legs and hips, not from pulling with the arms.",
+          "Keep the kettlebell close to your body.",
+          "Ensure your elbows travel high and outside."
+      ],
+      "modifications": {
+          "beginner": "Practice the sumo deadlift and an upright row separately first. Use a lighter kettlebell.",
+          "advanced": "Increase the weight and the explosive power of the movement."
+      },
+      "equipment_alternatives": [
+          "dumbbell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'machine-shoulder-shrug':   {
+      "id": "machine-shoulder-shrug",
+      "name": "Machine Shoulder Shrug",
+      "category": "strength",
+      "equipment": [
+          "shoulder_shrug_machine"
+      ],
+      "muscleGroups": [
+          "traps"
+      ],
+      "difficulty": 1,
+      "instructions": [
+          "Position yourself in the shoulder shrug machine, standing on the platform and gripping the handles.",
+          "Stand up straight with your arms fully extended.",
+          "Without bending your arms, elevate your shoulders as high as possible towards your ears.",
+          "Focus on squeezing your trapezius muscles.",
+          "Hold the peak contraction for a moment.",
+          "Slowly lower your shoulders back to the starting position, feeling a stretch in your traps.",
+          "Repeat for the desired number of repetitions."
+      ],
+      "safetyNotes": [
+          "Avoid rolling your shoulders forward or backward; the movement should be straight up and down.",
+          "Do not use momentum or bend your elbows."
+      ],
+      "modifications": {
+          "beginner": "Use a lighter weight.",
+          "advanced": "Increase the weight. Hold the peak contraction for 3-5 seconds."
+      },
+      "equipment_alternatives": [
+          "dumbbells",
+          "barbell"
+      ],
+      "progressionRate": 0.05
+  },
+
+  'palms-down-barbell-wrist-curl':   {
+      "id": "palms-down-barbell-wrist-curl",
+      "name": "Palms-Down Barbell Wrist Curl",
+      "category": "strength",
+      "equipment": [
+          "barbell",
+          "bench"
+      ],
+      "muscleGroups": [
+          "forearms"
+      ],
+      "difficulty": 1,
+      "instructions": [
+          "Sit on a bench and hold a barbell with an overhand (palms down) grip, hands about shoulder-width apart.",
+          "Rest your forearms on your thighs or on the bench in front of you, with your hands and the barbell extending just past your knees.",
+          "Allow your wrists to bend down so the barbell hangs towards the floor.",
+          "Keeping your forearms stationary, extend your wrists to curl the barbell upwards as high as possible.",
+          "Squeeze your forearm extensors at the top.",
+          "Slowly lower the barbell back to the starting position.",
+          "Repeat for the desired number of repetitions."
+      ],
+      "safetyNotes": [
+          "Use a light weight; the wrist extensors are smaller muscles.",
+          "The movement should be isolated to the wrist joint.",
+          "Keep your forearms pressed against the bench/thighs."
+      ],
+      "modifications": {
+          "beginner": "Use an empty barbell or light dumbbells.",
+          "advanced": "Increase the weight."
+      },
+      "equipment_alternatives": [
+          "dumbbells"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'plate-pinch':   {
+      "id": "plate-pinch",
+      "name": "Plate Pinch",
+      "category": "strength",
+      "equipment": [
+          "weight_plates"
+      ],
+      "muscleGroups": [
+          "forearms"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Place two weight plates together with their smooth sides facing out.",
+          "Grip the plates with your fingers on one side and your thumb on the other.",
+          "This is a 'pinch' grip.",
+          "Lift the plates off the floor and hold them at your side.",
+          "Hold for as long as you can maintain a secure grip.",
+          "Lower the plates with control.",
+          "Repeat with the other hand or use both hands at once."
+      ],
+      "safetyNotes": [
+          "Be prepared to drop the plates; do this in an area where the floor won't be damaged and keep your feet clear.",
+          "Start with lighter plates (e.g., two 5kg plates)."
+      ],
+      "modifications": {
+          "beginner": "Use lighter plates. Hold for a shorter duration.",
+          "advanced": "Use heavier plates or add a third plate. Try to walk while pinching the plates."
+      },
+      "equipment_alternatives": [
+          "dumbbells"
+      ],
+      "progressionRate": 0.02
+  },
+
+  'pvc-windmill':   {
+      "id": "pvc-windmill",
+      "name": "PVC Windmill",
+      "category": "mobility",
+      "equipment": [
+          "pvc_pipe"
+      ],
+      "muscleGroups": [
+          "lower_back",
+          "hamstrings",
+          "obliques",
+          "shoulders"
+      ],
+      "difficulty": 1,
+      "instructions": [
+          "Stand with your feet wider than shoulder-width apart, with the toes of your left foot pointing forward and the toes of your right foot pointing out to the right.",
+          "Hold a PVC pipe overhead with a wide grip.",
+          "Keeping your right leg straight, hinge at your right hip and slide your hips to the left.",
+          "Lower your torso towards your right foot, keeping the PVC pipe perpendicular to the floor as much as possible.",
+          "Your left arm will be pointing towards the ceiling and your right hand towards your right foot.",
+          "Go as low as your flexibility allows while keeping your back straight.",
+          "Return to the starting position by engaging your obliques and glutes.",
+          "Complete all reps on one side before switching."
+      ],
+      "safetyNotes": [
+          "This is a mobility drill, not a strength exercise. Perform it slowly and with control.",
+          "The goal is to rotate the torso while hinging at the hip.",
+          "Keep a soft bend in the front knee if your hamstrings are tight."
+      ],
+      "modifications": {
+          "beginner": "Perform without the PVC pipe, just using your arms.",
+          "advanced": "Progress to performing the exercise with a light kettlebell (Kettlebell Windmill)."
+      },
+      "equipment_alternatives": [
+          "broomstick",
+          "resistance_band"
+      ],
+      "progressionRate": 0.02
+  },
+
+  'loop-band-superman-press':   {
+      "id": "loop-band-superman-press",
+      "name": "Loop Band Superman Press",
+      "category": "strength",
+      "equipment": [
+          "loop_band",
+          "mat"
+      ],
+      "muscleGroups": [
+          "lower_back",
+          "upper_back",
+          "shoulders",
+          "glutes"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Lie face down with a light loop band held between your hands, arms extended in front of you.",
+          "Engage your glutes and lower back to lift your chest, arms, and legs off the floor into a 'superman' position.",
+          "While holding this position, pull your hands apart to create tension in the band.",
+          "Then, pull your elbows down and back towards your sides, as if performing a lat pulldown, stretching the band.",
+          "Press your arms back to the extended starting position while maintaining the hold.",
+          "Lower your body back to the floor.",
+          "Repeat for the desired number of repetitions."
+      ],
+      "safetyNotes": [
+          "Keep your neck in a neutral position by looking at the floor.",
+          "The movement should be controlled.",
+          "Use a light resistance band; the focus is on muscular activation."
+      ],
+      "modifications": {
+          "beginner": "Perform the superman hold and the band pull-apart as separate exercises first.",
+          "advanced": "Hold the superman position for the entire set, only moving your arms."
+      },
+      "equipment_alternatives": [
+          "resistance_band"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'lower-back-stretch':   {
+      "id": "lower-back-stretch",
+      "name": "Lower Back Stretch",
+      "category": "flexibility",
+      "equipment": [
+          "squat_rack"
+      ],
+      "muscleGroups": [
+          "lower_back",
+          "lats"
+      ],
+      "difficulty": 1,
+      "instructions": [
+          "Stand facing a stable vertical post, like the upright of a squat rack.",
+          "Grasp the post with both hands at about chest height.",
+          "Walk your feet back and sit your hips back, keeping your arms straight.",
+          "Allow your head to drop between your arms and your back to round.",
+          "You should feel a deep stretch along the sides of your back (lats) and in your lower back.",
+          "You can gently shift your hips from side to side to deepen the stretch on each side.",
+          "Hold for the desired duration."
+      ],
+      "safetyNotes": [
+          "Ensure the object you are holding onto is extremely stable.",
+          "The stretch should feel good; avoid any sharp pain.",
+          "This is a passive stretch, so relax into it."
+      ],
+      "modifications": {
+          "beginner": "Don't sit as far back.",
+          "advanced": "Sit further back and try to 'hang' off the post to increase the traction-like stretch."
+      },
+      "equipment_alternatives": [
+          "pull_up_bar",
+          "door_frame"
+      ],
+      "progressionRate": 0.01
+  },
+
+  'bridge-up-up-down-down':   {
+      "id": "bridge-up-up-down-down",
+      "name": "Bridge Up Up Down Down",
+      "category": "strength",
+      "equipment": [
+          "mat"
+      ],
+      "muscleGroups": [
+          "glutes",
+          "hamstrings",
+          "core"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Start by lying on your back with your knees bent and feet flat on the floor, hip-width apart.",
+          "Engage your glutes to lift your hips into a standard bridge position.",
+          "From the top of the bridge, extend your right arm straight up towards the ceiling.",
+          "Then extend your left arm straight up.",
+          "Lower your right arm back to the floor.",
+          "Lower your left arm back to the floor, all while holding the bridge.",
+          "This constitutes one repetition. Repeat, alternating the leading arm."
+      ],
+      "safetyNotes": [
+          "Keep your hips high and stable throughout the arm movements.",
+          "The goal is to prevent your hips from dropping or twisting.",
+          "Move your arms in a slow, controlled manner."
+      ],
+      "modifications": {
+          "beginner": "Practice holding a standard bridge first. Start by lifting one arm for a few seconds before moving to the full sequence.",
+          "advanced": "Hold light dumbbells in each hand."
+      },
+      "equipment_alternatives": [
+          "dumbbells"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'bridge-side-to-side':   {
+      "id": "bridge-side-to-side",
+      "name": "Bridge Side to Side",
+      "category": "strength",
+      "equipment": [
+          "mat"
+      ],
+      "muscleGroups": [
+          "glutes",
+          "hamstrings",
+          "core"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Start by lying on your back and lifting your hips into a standard glute bridge position.",
+          "Keeping your hips lifted, slowly shift your weight and dip your right hip down towards the floor.",
+          "Before it touches, use your glutes to pull it back up to the level starting position.",
+          "Then, slowly dip your left hip down towards the floor.",
+          "Pull it back up to the starting position.",
+          "Continue alternating sides in a controlled, rocking motion.",
+          "Repeat for the desired number of repetitions."
+      ],
+      "safetyNotes": [
+          "The movement should be initiated by the glutes.",
+          "Keep your core engaged to maintain stability.",
+          "The movement should be controlled, not a jerky drop."
+      ],
+      "modifications": {
+          "beginner": "Start with a smaller range of motion (smaller dips).",
+          "advanced": "Perform a single-leg bridge and perform small hip dips on the supporting side."
+      },
+      "equipment_alternatives": [
+          "resistance_band"
+      ],
+      "progressionRate": 0.03
+  },
+
+  'dumbbell-superman':   {
+      "id": "dumbbell-superman",
+      "name": "Dumbbell Superman",
+      "category": "strength",
+      "equipment": [
+          "dumbbells"
+      ],
+      "muscleGroups": [
+          "lower_back",
+          "glutes",
+          "shoulders"
+      ],
+      "difficulty": 2,
+      "instructions": [
+          "Lie face down on the floor, holding a light dumbbell in each hand with your arms extended in front of you.",
+          "Your legs should be straight behind you.",
+          "Keeping your neck neutral by looking at the floor, simultaneously lift your arms, chest, and legs off the floor.",
+          "Focus on squeezing your lower back, glutes, and upper back muscles.",
+          "Hold the peak contraction for a moment.",
+          "Slowly lower your limbs back to the floor with control.",
+          "Repeat for the desired number of repetitions."
+      ],
+      "safetyNotes": [
+          "Use very light dumbbells. The added weight significantly increases the difficulty.",
+          "Lift with your muscles, not by arching your neck.",
+          "The movement should be smooth and controlled."
+      ],
+      "modifications": {
+          "beginner": "Perform the superman without any weight.",
+          "advanced": "Hold the top position for a longer duration."
+      },
+      "equipment_alternatives": [
+          "water_bottles",
+          "resistance_band"
+      ],
+      "progressionRate": 0.03
+  },
+
+  // Swimming Drills
+  'catch-up-drill': {
+    id: 'catch-up-drill',
+    name: 'Catch-Up Drill',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['shoulders', 'arms', 'core'],
+    difficulty: 2,
+    instructions: [
+      'Start with both arms extended in front in streamlined position.',
+      'Pull with one arm while keeping the other extended.',
+      'Complete full stroke cycle with one arm.',
+      'Touch hands together in front before starting next stroke.',
+      'Alternate arms, maintaining catch-up timing.',
+      'Focus on high elbow catch and complete follow-through.',
+      'Maintain steady kick throughout drill.'
+    ],
+    safetyNotes: [
+      'Don\'t rush the timing.',
+      'Maintain proper shoulder mobility.',
+      'Stop if experiencing shoulder discomfort.'
+    ],
+    modifications: {
+      beginner: 'Use kickboard between hands for support. Take extra pause between strokes.',
+      advanced: 'Increase stroke rate while maintaining technique. Add breathing pattern variations.'
+    },
+    equipment_alternatives: ['kickboard'],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'distance',
+      defaultValue: 100,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Start in streamlined position', 'Both arms extended forward'],
+      execution: ['One arm pulls completely while other waits', 'Touch hands before next stroke', 'Focus on catch and pull technique'],
+      common_mistakes: ['Starting next stroke too early', 'Poor catch position', 'Dropping elbow during pull'],
+      breathing: 'Breathe during the stroking arm\'s recovery phase.'
+    }
+  },
+
+  'fingertip-drag-drill': {
+    id: 'fingertip-drag-drill',
+    name: 'Fingertip Drag Drill',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['shoulders', 'arms', 'core'],
+    difficulty: 2,
+    instructions: [
+      'Swim freestyle with normal underwater pull.',
+      'During recovery phase, drag fingertips along water surface.',
+      'Keep elbow high while fingertips trail in water.',
+      'Focus on proper elbow position and rotation.',
+      'Maintain normal kick and breathing pattern.',
+      'Ensure hand enters water fingertips first.',
+      'Practice with both arms maintaining drill technique.'
+    ],
+    safetyNotes: [
+      'Keep elbow relaxed to avoid strain.',
+      'Don\'t force the fingertip drag if causing discomfort.',
+      'Maintain natural stroke rhythm.'
+    ],
+    modifications: {
+      beginner: 'Practice with one arm at a time. Use kickboard for support.',
+      advanced: 'Combine with bilateral breathing patterns. Increase stroke rate while maintaining form.'
+    },
+    equipment_alternatives: ['kickboard'],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'distance',
+      defaultValue: 50,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Normal freestyle starting position', 'Focus on recovery phase'],
+      execution: ['High elbow recovery', 'Fingertips lightly touch water surface', 'Smooth entry after drag'],
+      common_mistakes: ['Low elbow during recovery', 'Forcing fingertips too deep', 'Disrupting stroke rhythm'],
+      breathing: 'Maintain normal breathing pattern throughout the drill.'
+    }
+  },
+
+  'high-elbow-catch-drill': {
+    id: 'high-elbow-catch-drill',
+    name: 'High Elbow Catch Drill',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['shoulders', 'lats', 'arms', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Start with arm extended in front of body underwater.',
+      'Begin catch by bending elbow while keeping it high.',
+      'Feel water pressure against palm and forearm.',
+      'Pull with high elbow position through to hip.',
+      'Focus on vertical forearm position during pull.',
+      'Practice one arm at a time initially.',
+      'Integrate into full stroke when technique is solid.'
+    ],
+    safetyNotes: [
+      'Build up gradually to avoid shoulder strain.',
+      'Don\'t force the high elbow if causing pain.',
+      'Focus on feeling water pressure, not force.'
+    ],
+    modifications: {
+      beginner: 'Practice stationary in pool holding wall. Use pullbuoy for leg support.',
+      advanced: 'Add paddle resistance. Combine with sprint intervals.'
+    },
+    equipment_alternatives: ['pullbuoy', 'paddles'],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 20,
+      unit: 'catch repetitions per arm'
+    },
+    coaching: {
+      setup: ['Arm extended underwater', 'Hand slightly below surface'],
+      execution: ['Elbow stays high during catch', 'Feel water pressure on palm and forearm', 'Pull straight back toward hip'],
+      common_mistakes: ['Dropping elbow during catch', 'Pulling with straight arm', 'Rushing the catch phase'],
+      breathing: 'Focus on technique over breathing initially, add breathing as drill improves.'
+    }
+  },
+
+  'bilateral-breathing-drill': {
+    id: 'bilateral-breathing-drill',
+    name: 'Bilateral Breathing Drill',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['core', 'neck', 'full_body'],
+    difficulty: 2,
+    instructions: [
+      'Swim freestyle breathing every 3 strokes (left-right-left pattern).',
+      'Maintain same stroke technique on both sides.',
+      'Rotate head and body as one unit when breathing.',
+      'Keep one goggle in water during breath.',
+      'Practice 5-stroke breathing for longer intervals.',
+      'Focus on symmetrical stroke development.',
+      'Gradually increase distance while maintaining pattern.'
+    ],
+    safetyNotes: [
+      'Don\'t hold breath underwater between breathing strokes.',
+      'Start with shorter intervals if getting winded.',
+      'Maintain stroke rhythm even when learning new pattern.'
+    ],
+    modifications: {
+      beginner: 'Start with breathing every 2 strokes on alternating sides. Use kickboard for support.',
+      advanced: 'Practice 5, 7, or 9 stroke breathing patterns. Add hypoxic training sets.'
+    },
+    equipment_alternatives: ['kickboard'],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'distance',
+      defaultValue: 200,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Start with comfortable freestyle stroke', 'Plan breathing pattern in advance'],
+      execution: ['Breathe alternating sides every 3 strokes', 'Maintain stroke symmetry', 'Smooth head rotation'],
+      common_mistakes: ['Favoring one side over the other', 'Lifting head too high', 'Disrupting stroke rhythm when changing sides'],
+      breathing: 'Exhale continuously underwater, quick inhale during rotation. Alternate breathing sides consistently.'
+    }
+  },
+
+  'streamline-drill': {
+    id: 'streamline-drill',
+    name: 'Streamline Drill',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['core', 'shoulders', 'full_body'],
+    difficulty: 1,
+    instructions: [
+      'Push off wall with arms overhead, one hand over the other.',
+      'Squeeze arms against head, covering ears.',
+      'Keep head neutral, looking down.',
+      'Engage core to maintain straight body line.',
+      'Hold position as long as comfortable underwater.',
+      'Glide without kicking to feel water resistance.',
+      'Practice push-offs from different depths.'
+    ],
+    safetyNotes: [
+      'Don\'t hold breath longer than comfortable.',
+      'Push off feet first, not head first.',
+      'Be aware of pool depth and other swimmers.'
+    ],
+    modifications: {
+      beginner: 'Practice position standing in shallow water first. Shorter glide distances.',
+      advanced: 'Add kicks while maintaining streamline. Practice from diving blocks.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'distance',
+      defaultValue: 10,
+      unit: 'meters glide distance'
+    },
+    coaching: {
+      setup: ['Position at pool wall', 'Arms overhead, hands stacked'],
+      execution: ['Strong push off from wall', 'Maintain tight body position', 'Head neutral between arms'],
+      common_mistakes: ['Arms too wide', 'Head position too high or low', 'Loose core engagement'],
+      breathing: 'Take deep breath before push off, surface when needed.'
+    }
+  },
+
+  'flip-turn-practice': {
+    id: 'flip-turn-practice',
+    name: 'Flip Turn Practice',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['core', 'legs', 'full_body'],
+    difficulty: 3,
+    instructions: [
+      'Approach wall at normal swimming speed.',
+      'Begin somersault when arm reaches toward wall.',
+      'Tuck chin to chest and roll forward.',
+      'Plant feet on wall in streamlined position.',
+      'Push off explosively in streamlined position.',
+      'Begin swimming stroke after gliding underwater.',
+      'Practice timing and positioning repeatedly.'
+    ],
+    safetyNotes: [
+      'Practice in deep enough water to avoid hitting bottom.',
+      'Don\'t attempt if experiencing dizziness.',
+      'Be aware of other swimmers when practicing.'
+    ],
+    modifications: {
+      beginner: 'Practice somersaults in open water first. Use hand touch turns initially.',
+      advanced: 'Focus on speed and efficiency. Practice with different approach speeds.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      unit: 'flip turns'
+    },
+    coaching: {
+      setup: ['Approach wall at steady pace', 'Time the flip as hand reaches forward'],
+      execution: ['Quick somersault with tight tuck', 'Feet plant firmly on wall', 'Explosive push off in streamline'],
+      common_mistakes: ['Flipping too early or too late', 'Loose tuck during somersault', 'Poor streamline off the wall'],
+      breathing: 'Take breath before turn, hold through flip and push off.'
+    }
+  },
+
+  'open-turn-practice': {
+    id: 'open-turn-practice',
+    name: 'Open Turn Practice',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['arms', 'core', 'legs'],
+    difficulty: 2,
+    instructions: [
+      'Approach wall with normal stroke pattern.',
+      'Touch wall with fingertips of lead hand.',
+      'Immediately begin turning body toward breathing side.',
+      'Bring knees toward chest while turning.',
+      'Plant feet on wall beneath body.',
+      'Push off in streamlined position.',
+      'Surface and begin next stroke cycle.'
+    ],
+    safetyNotes: [
+      'Ensure solid wall touch before turning.',
+      'Don\'t push off too deep to avoid hitting pool bottom.',
+      'Control turning speed to avoid injury.'
+    ],
+    modifications: {
+      beginner: 'Practice wall touches first. Take extra time to set up push off.',
+      advanced: 'Focus on minimizing turn time. Practice with sprint pace approaches.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      unit: 'open turns'
+    },
+    coaching: {
+      setup: ['Approach wall with normal stroke', 'Prepare for solid wall touch'],
+      execution: ['Quick hand touch', 'Fast body rotation', 'Efficient push off position'],
+      common_mistakes: ['Weak wall touch', 'Slow body rotation', 'Poor push off angle'],
+      breathing: 'Breathe during approach, hold breath through turn and push off.'
+    }
+  },
+
+  // Cycling Drills
+  'bike-cornering-drills': {
+    id: 'bike-cornering-drills',
+    name: 'Bike Cornering Drills',
+    category: 'cycling',
+    equipment: ['bike'],
+    muscleGroups: ['core', 'legs', 'balance'],
+    difficulty: 3,
+    instructions: [
+      'Find safe area with gentle turns or set up cone course.',
+      'Approach turn at moderate speed.',
+      'Look through the turn to exit point.',
+      'Shift weight to outside pedal in bottom position.',
+      'Lean bike while keeping body more upright.',
+      'Maintain steady pressure on outside pedal.',
+      'Accelerate smoothly out of turn.',
+      'Practice both left and right turns equally.'
+    ],
+    safetyNotes: [
+      'Practice in traffic-free environment.',
+      'Start with wide, gentle turns before tighter ones.',
+      'Wear appropriate safety gear.',
+      'Be aware of road surface conditions.'
+    ],
+    modifications: {
+      beginner: 'Practice on very gentle turns at low speed. Focus on body position first.',
+      advanced: 'Practice at race speeds. Add emergency cornering scenarios.'
+    },
+    equipment_alternatives: ['cones'],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      unit: 'corner repetitions each direction'
+    },
+    coaching: {
+      setup: ['Safe practice area', 'Moderate approach speed'],
+      execution: ['Look through turn', 'Weight outside pedal', 'Lean bike, not body'],
+      common_mistakes: ['Looking at ground instead of exit', 'Leaning body too much', 'Braking in the turn'],
+      breathing: 'Breathe normally, don\'t hold breath through turns.'
+    }
+  },
+
+  'bike-cadence-drills': {
+    id: 'bike-cadence-drills',
+    name: 'Bike Cadence Drills',
+    category: 'cycling',
+    equipment: ['bike'],
+    muscleGroups: ['legs', 'cardiovascular', 'neuromuscular'],
+    difficulty: 2,
+    instructions: [
+      'Set target cadence ranges for different intervals.',
+      'Practice maintaining 90-95 RPM for endurance pace.',
+      'Include intervals at 100-110 RPM for efficiency.',
+      'Practice low cadence (70-80 RPM) strength intervals.',
+      'Use gearing to maintain target cadence at different speeds.',
+      'Focus on smooth, round pedal stroke at all cadences.',
+      'Monitor with cadence sensor or count for 15 seconds x 4.'
+    ],
+    safetyNotes: [
+      'Don\'t sacrifice smoothness for specific numbers.',
+      'Adjust gearing appropriately for terrain.',
+      'Build up high cadence work gradually.'
+    ],
+    modifications: {
+      beginner: 'Focus on maintaining any consistent cadence. Use easier gears.',
+      advanced: 'Practice rapid cadence changes. Include variable terrain.'
+    },
+    equipment_alternatives: ['cadence_monitor'],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes of cadence work'
+    },
+    coaching: {
+      setup: ['Flat or trainer setup', 'Appropriate gearing available'],
+      execution: ['Count or monitor cadence', 'Adjust gears to maintain RPM', 'Focus on smoothness'],
+      common_mistakes: ['Choosing wrong gear for target cadence', 'Sacrificing smoothness for speed', 'Ignoring terrain changes'],
+      breathing: 'Coordinate breathing with pedal rhythm at lower cadences.'
+    }
+  },
+
+  'bike-standing-climbing': {
+    id: 'bike-standing-climbing',
+    name: 'Bike Standing Climbing Drill',
+    category: 'cycling',
+    equipment: ['bike'],
+    muscleGroups: ['legs', 'core', 'glutes', 'arms'],
+    difficulty: 3,
+    instructions: [
+      'Find moderate grade hill or increase trainer resistance.',
+      'Shift to appropriate gear before standing.',
+      'Rise smoothly from saddle, hands on brake hoods.',
+      'Keep bike relatively stable beneath body.',
+      'Rock bike slightly side to side with pedal stroke.',
+      'Maintain steady rhythm and cadence.',
+      'Practice transitioning smoothly between sitting and standing.',
+      'Focus on efficiency rather than power.'
+    ],
+    safetyNotes: [
+      'Practice gear selection before standing.',
+      'Maintain control of bike at all times.',
+      'Don\'t stand in highest gears initially.'
+    ],
+    modifications: {
+      beginner: 'Practice on gentle grades. Keep standing periods short (30-60 seconds).',
+      advanced: 'Practice on steeper grades. Include out-of-saddle sprints.'
+    },
+    equipment_alternatives: ['trainer'],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'time',
+      defaultValue: 90,
+      unit: 'seconds standing'
+    },
+    coaching: {
+      setup: ['Appropriate gear selection', 'Hands on brake hoods'],
+      execution: ['Smooth rise from saddle', 'Slight bike sway with pedal stroke', 'Maintain cadence'],
+      common_mistakes: ['Standing in too hard a gear', 'Excessive bike movement', 'Poor transition timing'],
+      breathing: 'Increase breathing rate naturally with increased effort.'
+    }
+  },
+
+  // Balance Drills
+  'balance-beam-walk': {
+    id: 'balance-beam-walk',
+    name: 'Balance Beam Walk',
+    category: 'balance',
+    equipment: [],
+    muscleGroups: ['core', 'legs', 'stabilizers'],
+    difficulty: 2,
+    instructions: [
+      'Start by walking along a straight line on ground.',
+      'Place one foot directly in front of the other.',
+      'Keep arms out to sides for balance.',
+      'Look ahead, not down at feet.',
+      'Take slow, controlled steps.',
+      'Progress to actual balance beam when comfortable.',
+      'Practice walking backward when forward is mastered.',
+      'Add arm movements or eyes closed for challenge.'
+    ],
+    safetyNotes: [
+      'Start with line on ground before elevated beam.',
+      'Have spotter nearby for elevated versions.',
+      'Practice falling safely if using elevated beam.'
+    ],
+    modifications: {
+      beginner: 'Use wide tape line on ground. Allow toe-to-heel stepping.',
+      advanced: 'Use narrow beam. Add dynamic movements like turns.'
+    },
+    equipment_alternatives: ['balance_beam', 'tape'],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'distance',
+      defaultValue: 10,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Clear, straight path', 'Start at easy level'],
+      execution: ['Direct foot placement', 'Eyes looking ahead', 'Arms for balance'],
+      common_mistakes: ['Looking down at feet', 'Rushing the movement', 'Not using arms for balance'],
+      breathing: 'Calm, steady breathing to maintain focus.'
+    }
+  },
+
+  'single-leg-stance': {
+    id: 'single-leg-stance',
+    name: 'Single Leg Stance',
+    category: 'balance',
+    equipment: [],
+    muscleGroups: ['core', 'legs', 'ankles', 'stabilizers'],
+    difficulty: 2,
+    instructions: [
+      'Stand with feet hip-width apart.',
+      'Lift one knee to 90 degrees in front of body.',
+      'Balance on standing leg for target duration.',
+      'Keep standing leg slightly bent, not locked.',
+      'Engage core muscles for stability.',
+      'Arms can move freely for balance.',
+      'Switch legs and repeat for equal time.',
+      'Progress to eyes closed or unstable surface.'
+    ],
+    safetyNotes: [
+      'Practice near wall or support initially.',
+      'Don\'t lock standing knee completely.',
+      'Progress difficulty gradually.'
+    ],
+    modifications: {
+      beginner: 'Hold wall or chair for support. Start with shorter durations.',
+      advanced: 'Close eyes, stand on foam pad, or add movement challenges.'
+    },
+    equipment_alternatives: ['foam_pad', 'wall'],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'seconds per leg'
+    },
+    coaching: {
+      setup: ['Stable surface', 'Support available if needed'],
+      execution: ['Engage core muscles', 'Slight bend in standing leg', 'Focus point ahead'],
+      common_mistakes: ['Locking standing knee', 'Not engaging core', 'Allowing lifted leg to touch down'],
+      breathing: 'Steady, calm breathing to maintain focus and stability.'
+    }
+  },
+
+  // Running Drills
+  'running-form-drills': {
+    id: 'running-form-drills',
+    name: 'Running Form Drills',
+    category: 'running',
+    equipment: [],
+    muscleGroups: ['full_body', 'core', 'legs'],
+    difficulty: 2,
+    instructions: [
+      'Include variety of movement patterns.',
+      'Practice high knees for hip flexor activation.',
+      'Include butt kicks for hamstring engagement.',
+      'Add skipping patterns for coordination.',
+      'Practice leg swings for dynamic flexibility.',
+      'Focus on posture and arm swing.',
+      'Perform each drill for 20-30 meters.',
+      'Complete 2-3 rounds of the full sequence.'
+    ],
+    safetyNotes: [
+      'Start with gentle intensity.',
+      'Focus on quality over speed.',
+      'Stop if experiencing unusual fatigue.'
+    ],
+    modifications: {
+      beginner: 'Slower pace, shorter distances. Focus on one drill at a time.',
+      advanced: 'Increase intensity and distance. Add sport-specific variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 15,
+      unit: 'minutes total drill time'
+    },
+    coaching: {
+      setup: ['Clear running area', 'Light warm-up completed'],
+      execution: ['Focus on specific movement patterns', 'Maintain good posture', 'Coordinate arms and legs'],
+      common_mistakes: ['Rushing through movements', 'Poor posture', 'Neglecting arm movement'],
+      breathing: 'Light, natural breathing throughout drill sequence.'
+    }
+  },
+
+  'high-knees-drill': {
+    id: 'high-knees-drill',
+    name: 'High Knees Drill',
+    category: 'running',
+    equipment: [],
+    muscleGroups: ['hip_flexors', 'core', 'calves'],
+    difficulty: 2,
+    instructions: [
+      'Start in standing position with good posture.',
+      'Lift knees toward chest alternately.',
+      'Aim for 90-degree angle at hip and knee.',
+      'Stay light on balls of feet.',
+      'Pump arms in opposition to legs.',
+      'Maintain upright torso throughout.',
+      'Focus on quick, light contacts with ground.',
+      'Perform in place or with forward movement.'
+    ],
+    safetyNotes: [
+      'Start with moderate intensity.',
+      'Don\'t overextend if hip flexors are tight.',
+      'Land softly on balls of feet.'
+    ],
+    modifications: {
+      beginner: 'Lower knee lift, slower pace. Perform in place only.',
+      advanced: 'Higher knee lift, faster pace. Add forward movement.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: ['Good posture', 'Start with slow rhythm'],
+      execution: ['Lift knees toward chest', 'Light foot contacts', 'Coordinated arm swing'],
+      common_mistakes: ['Leaning backward', 'Heavy foot strikes', 'Arms not coordinated'],
+      breathing: 'Quick, light breathing matching the drill rhythm.'
+    }
+  },
+
+  'butt-kicks-drill': {
+    id: 'butt-kicks-drill',
+    name: 'Butt Kicks Drill',
+    category: 'running',
+    equipment: [],
+    muscleGroups: ['hamstrings', 'glutes', 'calves'],
+    difficulty: 2,
+    instructions: [
+      'Start jogging in place or with slight forward movement.',
+      'Kick heels up toward glutes alternately.',
+      'Focus on pulling heel to glute, not just kicking back.',
+      'Maintain upright posture and engaged core.',
+      'Keep knees pointing down toward ground.',
+      'Use quick, light rhythm.',
+      'Coordinate arm swing with leg movement.',
+      'Land softly on balls of feet.'
+    ],
+    safetyNotes: [
+      'Don\'t force heel to touch glute if flexibility limited.',
+      'Start with moderate intensity.',
+      'Maintain balance throughout movement.'
+    ],
+    modifications: {
+      beginner: 'Lower heel lift, slower pace. Focus on form over height.',
+      advanced: 'Higher heel lift, faster pace. Add forward movement.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: ['Light jogging starting position', 'Upright posture'],
+      execution: ['Pull heels toward glutes', 'Quick, light rhythm', 'Coordinated arm movement'],
+      common_mistakes: ['Kicking back instead of pulling up', 'Leaning forward', 'Knees coming up too high'],
+      breathing: 'Light, rhythmic breathing matching drill pace.'
+    }
+  },
+
+  'A-skip-drill': {
+    id: 'A-skip-drill',
+    name: 'A-Skip Drill',
+    category: 'running',
+    equipment: [],
+    muscleGroups: ['hip_flexors', 'calves', 'core', 'coordination'],
+    difficulty: 3,
+    instructions: [
+      'Start with gentle skipping motion.',
+      'Lift knee to 90 degrees while hopping on opposite foot.',
+      'Land on ball of foot with slight pawing motion.',
+      'Maintain upright posture with slight forward lean.',
+      'Coordinate opposite arm and leg movement.',
+      'Focus on rhythm and coordination over speed.',
+      'Take small forward movement with each skip.',
+      'Keep ground contact time minimal.'
+    ],
+    safetyNotes: [
+      'Start slowly to develop coordination.',
+      'Focus on form before increasing pace.',
+      'Land softly to protect joints.'
+    ],
+    modifications: {
+      beginner: 'Practice marching in place first. Slower rhythm, lower knee lift.',
+      advanced: 'Increase pace and distance. Add emphasis on forward movement.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'distance',
+      defaultValue: 30,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Start with slow skipping rhythm', 'Focus on coordination'],
+      execution: ['High knee lift with skip', 'Light ground contacts', 'Opposite arm coordination'],
+      common_mistakes: ['Too much vertical movement', 'Poor arm coordination', 'Heavy landings'],
+      breathing: 'Rhythmic breathing coordinated with skipping pattern.'
+    }
+  },
+
+  'B-skip-drill': {
+    id: 'B-skip-drill',
+    name: 'B-Skip Drill',
+    category: 'running',
+    equipment: [],
+    muscleGroups: ['hamstrings', 'hip_flexors', 'core', 'coordination'],
+    difficulty: 4,
+    instructions: [
+      'Start with A-skip position (knee at 90 degrees).',
+      'Extend leg forward from knee while hopping on support leg.',
+      'Pull extended leg back down with pawing motion.',
+      'Land on ball of foot directly under body.',
+      'Maintain upright posture throughout.',
+      'Coordinate opposite arm and leg movement.',
+      'Focus on hamstring engagement during pull-down.',
+      'Take minimal forward movement with each rep.'
+    ],
+    safetyNotes: [
+      'Master A-skip before progressing to B-skip.',
+      'Start with slow, controlled movements.',
+      'Don\'t overextend leg forward.'
+    ],
+    modifications: {
+      beginner: 'Practice leg extension without skipping first. Very slow pace.',
+      advanced: 'Increase pace while maintaining form. Add more forward movement.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'distance',
+      defaultValue: 30,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Master A-skip first', 'Start with slow, controlled movement'],
+      execution: ['Extend leg then pull down', 'Pawing motion on ground contact', 'Minimal forward movement'],
+      common_mistakes: ['Overextending leg forward', 'Not engaging hamstrings on pull-down', 'Too much forward movement'],
+      breathing: 'Controlled breathing, don\'t hold breath during complex coordination.'
+    }
+  },
+
+  'carioca-drill': {
+    id: 'carioca-drill',
+    name: 'Carioca Drill',
+    category: 'running',
+    equipment: [],
+    muscleGroups: ['hips', 'core', 'legs', 'coordination'],
+    difficulty: 3,
+    instructions: [
+      'Start standing sideways to direction of travel.',
+      'Cross trailing leg in front of lead leg.',
+      'Step out with lead leg to side.',
+      'Cross trailing leg behind lead leg.',
+      'Continue pattern: front cross, side step, back cross.',
+      'Maintain upright posture and engaged core.',
+      'Keep arms relaxed and moving naturally.',
+      'Practice equal distance in both directions.'
+    ],
+    safetyNotes: [
+      'Start slowly to develop coordination.',
+      'Be aware of foot placement to avoid tripping.',
+      'Practice on flat, clear surface.'
+    ],
+    modifications: {
+      beginner: 'Very slow pace, focus on stepping pattern. Use arm guidance.',
+      advanced: 'Increase pace, add rhythm variations, include in sport-specific patterns.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'distance',
+      defaultValue: 20,
+      unit: 'meters each direction'
+    },
+    coaching: {
+      setup: ['Sideways starting position', 'Clear pathway'],
+      execution: ['Cross front, step side, cross back', 'Maintain upright posture', 'Smooth rhythm'],
+      common_mistakes: ['Crossing feet too close together', 'Looking down at feet', 'Losing rhythm'],
+      breathing: 'Natural breathing, coordinate with movement rhythm.'
+    }
+  },
+
+  'straight-leg-bounds': {
+    id: 'straight-leg-bounds',
+    name: 'Straight Leg Bounds',
+    category: 'running',
+    equipment: [],
+    muscleGroups: ['hamstrings', 'glutes', 'calves', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Start with light jogging forward momentum.',
+      'Extend one leg straight out in front with flexed foot.',
+      'Land on heel and immediately push off with same leg.',
+      'Bound forward while switching to opposite leg.',
+      'Keep legs relatively straight throughout movement.',
+      'Maintain upright posture with slight forward lean.',
+      'Focus on covering distance with each bound.',
+      'Land with pawing motion, not reaching.'
+    ],
+    safetyNotes: [
+      'Adequate warm-up essential for hamstring safety.',
+      'Start with moderate intensity.',
+      'Focus on form over distance initially.'
+    ],
+    modifications: {
+      beginner: 'Shorter bounds, less leg extension. Focus on rhythm.',
+      advanced: 'Longer bounds, emphasis on distance. Add speed component.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'distance',
+      defaultValue: 30,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Light forward momentum', 'Adequate hamstring warm-up'],
+      execution: ['Straight leg extension', 'Pawing ground contact', 'Bound forward with opposite leg'],
+      common_mistakes: ['Reaching too far forward', 'Bending legs during extension', 'Poor ground contact'],
+      breathing: 'Rhythmic breathing matching bounding pattern.'
+    }
+  },
+
+  'heel-walk-drill': {
+    id: 'heel-walk-drill',
+    name: 'Heel Walk Drill',
+    category: 'running',
+    equipment: [],
+    muscleGroups: ['shins', 'ankles', 'calves'],
+    difficulty: 1,
+    instructions: [
+      'Start standing with good posture.',
+      'Lift toes up as high as possible.',
+      'Walk forward landing only on heels.',
+      'Keep toes pulled up toward shins throughout.',
+      'Maintain normal arm swing.',
+      'Take normal length steps.',
+      'Focus on controlled heel strikes.',
+      'Keep core engaged for balance.'
+    ],
+    safetyNotes: [
+      'Start with short distances to avoid shin fatigue.',
+      'Walk on flat, even surface.',
+      'Stop if experiencing excessive shin discomfort.'
+    ],
+    modifications: {
+      beginner: 'Shorter distances, slower pace. Focus on toe position.',
+      advanced: 'Longer distances, add slight incline or speed.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.01,
+    metrics: {
+      type: 'distance',
+      defaultValue: 20,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Good upright posture', 'Flat walking surface'],
+      execution: ['Toes pulled up high', 'Land only on heels', 'Normal step length'],
+      common_mistakes: ['Letting toes drop', 'Taking too short steps', 'Leaning backward'],
+      breathing: 'Natural breathing, don\'t hold breath.'
+    }
+  },
+
+  'toe-walk-drill': {
+    id: 'toe-walk-drill',
+    name: 'Toe Walk Drill',
+    category: 'running',
+    equipment: [],
+    muscleGroups: ['calves', 'ankles', 'core'],
+    difficulty: 2,
+    instructions: [
+      'Start standing on balls of feet (toes).',
+      'Walk forward staying up on toes throughout.',
+      'Take small, controlled steps.',
+      'Maintain tall, upright posture.',
+      'Keep core engaged for balance.',
+      'Don\'t let heels touch ground.',
+      'Use arms naturally for balance.',
+      'Focus on control rather than speed.'
+    ],
+    safetyNotes: [
+      'Start with short distances to avoid calf cramping.',
+      'Don\'t force heel height if causing pain.',
+      'Practice near support if balance is challenging.'
+    ],
+    modifications: {
+      beginner: 'Shorter distances, allow brief heel touches if needed.',
+      advanced: 'Longer distances, higher heel lift, add direction changes.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'distance',
+      defaultValue: 20,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Start on balls of feet', 'Tall posture'],
+      execution: ['Stay high on toes', 'Small, controlled steps', 'No heel contact'],
+      common_mistakes: ['Letting heels drop', 'Leaning forward', 'Taking steps too large'],
+      breathing: 'Light, natural breathing throughout.'
+    }
+  },
+
+  // Endurance Training Exercises
+  'easy-run': {
+    id: 'easy-run',
+    name: 'Easy Run',
+    category: 'endurance',
+    equipment: [],
+    muscleGroups: ['legs', 'cardiovascular'],
+    difficulty: 1,
+    instructions: [
+      'Run at comfortable, conversational pace.',
+      'Should feel effortless and sustainable.',
+      'Focus on time rather than pace.',
+      'Maintain relaxed form and breathing.',
+      'This should be majority of weekly running volume.',
+      'Use for recovery between harder sessions.',
+      'Can include brief walk breaks if needed.',
+      'End feeling like you could continue running.'
+    ],
+    safetyNotes: [
+      'Don\'t turn easy runs into tempo efforts.',
+      'Listen to body and adjust pace accordingly.',
+      'Perfect opportunity to focus on form.'
+    ],
+    modifications: {
+      beginner: 'Include walk breaks as needed. Focus on time rather than distance.',
+      advanced: 'Longer durations. Can include strides at the end.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['No pressure on pace', 'Comfortable route'],
+      execution: ['Conversational effort', 'Relaxed form', 'Enjoyable pace'],
+      common_mistakes: ['Running too fast', 'Competing with others on easy days', 'Ignoring fatigue signals'],
+      breathing: 'Easy, natural breathing. Should be able to sing or speak easily.'
+    }
+  },
+
+  'recovery-run': {
+    id: 'recovery-run',
+    name: 'Recovery Run',
+    category: 'endurance',
+    equipment: [],
+    muscleGroups: ['legs', 'cardiovascular'],
+    difficulty: 1,
+    instructions: [
+      'Run at very easy pace, slower than normal easy runs.',
+      'Purpose is active recovery, not fitness building.',
+      'Keep duration short, typically 20-40 minutes.',
+      'Focus on gentle movement and blood flow.',
+      'Should feel refreshed, not tired after completion.',
+      'Include walking breaks if needed.',
+      'Perfect time to focus on running form.',
+      'Schedule after hard training days.'
+    ],
+    safetyNotes: [
+      'Skip if feeling overly fatigued or sore.',
+      'No pressure to maintain any specific pace.',
+      'Listen to body - walk if needed.'
+    ],
+    modifications: {
+      beginner: 'Walk-run combination acceptable. Very short duration.',
+      advanced: 'Still very easy pace. Can be used for technique focus.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Day after hard workout', 'No pace pressure'],
+      execution: ['Very gentle effort', 'Focus on movement quality', 'Feel good finish'],
+      common_mistakes: ['Running too fast', 'Making it a workout', 'Running when should be resting'],
+      breathing: 'Very easy, natural breathing. Should be completely comfortable.'
+    }
+  },
+
+  'progression-run': {
+    id: 'progression-run',
+    name: 'Progression Run',
+    category: 'endurance',
+    equipment: [],
+    muscleGroups: ['legs', 'cardiovascular', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Start at easy, comfortable pace.',
+      'Gradually increase pace throughout run.',
+      'Divide run into thirds: easy, moderate, moderately hard.',
+      'Each segment should feel progressively more challenging.',
+      'Final pace should be tempo to threshold effort.',
+      'Focus on smooth transitions between paces.',
+      'Maintain good form as pace increases.',
+      'Can also be structured as negative splits.'
+    ],
+    safetyNotes: [
+      'Don\'t increase pace too quickly early in run.',
+      'Build progression gradually over time.',
+      'Monitor effort to avoid going anaerobic too early.'
+    ],
+    modifications: {
+      beginner: 'Gentle progression from easy to moderate. Shorter total duration.',
+      advanced: 'Longer duration with more dramatic pace changes. Include threshold pace.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'time',
+      defaultValue: 50,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Plan pace progression', 'Start conservatively'],
+      execution: ['Gradual pace increases', 'Smooth transitions', 'Strong finish'],
+      common_mistakes: ['Progressing too quickly', 'Starting too fast', 'Not building through gears'],
+      breathing: 'Progressive breathing intensity matching pace increases.'
+    }
+  },
+
+  'threshold-run': {
+    id: 'threshold-run',
+    name: 'Threshold Run',
+    category: 'endurance',
+    equipment: [],
+    muscleGroups: ['legs', 'cardiovascular', 'core'],
+    difficulty: 4,
+    instructions: [
+      'Warm up thoroughly with 15-20 minutes easy running.',
+      'Run at lactate threshold pace - about 15-30K race effort.',
+      'Should feel comfortably hard but sustainable.',
+      'Breathing should be elevated but controlled.',
+      'Can be done as continuous run or broken intervals.',
+      'Maintain consistent effort throughout.',
+      'Focus on efficiency and relaxation at intensity.',
+      'Cool down with easy running.'
+    ],
+    safetyNotes: [
+      'Requires adequate fitness base before attempting.',
+      'Monitor effort closely - shouldn\'t be anaerobic.',
+      'Build duration gradually over time.'
+    ],
+    modifications: {
+      beginner: 'Start with 10-15 minutes threshold. Break into intervals if needed.',
+      advanced: '30-60+ minutes continuous. Include race pace variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 20,
+      unit: 'minutes at threshold'
+    },
+    coaching: {
+      setup: ['Adequate warm-up essential', 'Flat to rolling terrain'],
+      execution: ['Comfortably hard effort', 'Sustainable intensity', 'Controlled breathing'],
+      common_mistakes: ['Going too hard too early', 'Inadequate warm-up', 'Trying to negative split'],
+      breathing: 'Elevated but controlled. Should be able to speak short phrases.'
+    }
+  },
+
+  'interval-run': {
+    id: 'interval-run',
+    name: 'Interval Run',
+    category: 'endurance',
+    equipment: ['timer'],
+    muscleGroups: ['legs', 'cardiovascular', 'power'],
+    difficulty: 4,
+    instructions: [
+      'Warm up with 15-20 minutes easy running plus strides.',
+      'Run intervals at 3K to 5K race pace effort.',
+      'Interval length typically 3-8 minutes.',
+      'Take active recovery between intervals (easy jogging).',
+      'Recovery should be 50-100% of interval time.',
+      'Maintain consistent pace across all intervals.',
+      'Focus on smooth, efficient form at speed.',
+      'Cool down with easy running.'
+    ],
+    safetyNotes: [
+      'Requires thorough warm-up including dynamic movements.',
+      'Monitor pace to avoid going out too fast.',
+      'Allow adequate recovery between intervals.'
+    ],
+    modifications: {
+      beginner: 'Shorter intervals (2-3 minutes). Longer recovery periods.',
+      advanced: 'Longer intervals or shorter recovery. Include pace variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.06,
+    metrics: {
+      type: 'sets',
+      defaultValue: 5,
+      unit: 'intervals'
+    },
+    coaching: {
+      setup: ['Thorough warm-up including strides', 'Track or measured course'],
+      execution: ['Fast but controlled effort', 'Consistent pacing', 'Active recovery'],
+      common_mistakes: ['Going out too fast on first interval', 'Inadequate recovery', 'Poor pacing strategy'],
+      breathing: 'Hard breathing during intervals. Recover breathing during rest periods.'
+    }
+  },
+
+  'long-slow-distance-run': {
+    id: 'long-slow-distance-run',
+    name: 'Long Slow Distance Run',
+    category: 'endurance',
+    equipment: ['hydration'],
+    muscleGroups: ['legs', 'cardiovascular', 'endurance'],
+    difficulty: 2,
+    instructions: [
+      'Run at very comfortable, sustainable pace.',
+      'Focus on building aerobic capacity and endurance.',
+      'Pace should be 60-90 seconds slower than marathon pace.',
+      'Emphasize time on feet rather than speed.',
+      'Practice fueling and hydration strategies.',
+      'Build mental toughness and confidence.',
+      'Maintain relaxed form throughout.',
+      'Can include brief walk breaks on hills or aid stations.'
+    ],
+    safetyNotes: [
+      'Build distance very gradually (10% rule).',
+      'Carry identification and emergency contact.',
+      'Plan route with facilities for longer runs.'
+    ],
+    modifications: {
+      beginner: 'Start with 60-90 minutes. Include walk breaks as needed.',
+      advanced: '2-4+ hours. Practice race simulation conditions.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.08,
+    metrics: {
+      type: 'time',
+      defaultValue: 120,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Conservative pace plan', 'Hydration/fuel strategy'],
+      execution: ['Very sustainable effort', 'Consistent rhythm', 'Practice race tactics'],
+      common_mistakes: ['Running too fast', 'Inadequate fueling', 'Not building distance gradually'],
+      breathing: 'Easy, conversational breathing throughout.'
+    }
+  },
+
+  'trail-running': {
+    id: 'trail-running',
+    name: 'Trail Running',
+    category: 'endurance',
+    equipment: ['trail-running-shoes', 'hydration', 'navigation-aids'],
+    muscleGroups: ['full-body', 'core', 'balance', 'legs'],
+    difficulty: 3,
+    instructions: [
+      'Adjust pace for terrain - effort-based rather than pace-based.',
+      'Use shorter stride on uphills, power hike steep sections.',
+      'Focus on foot placement and stability.',
+      'Use arms for balance on technical terrain.',
+      'Look ahead to plan footing and line choice.',
+      'Practice controlled descents with slight forward lean.',
+      'Carry water and emergency supplies for longer runs.',
+      'Be prepared for weather and terrain changes.'
+    ],
+    safetyNotes: [
+      'Tell someone your route and expected return time.',
+      'Carry emergency supplies for remote areas.',
+      'Be aware of wildlife and weather conditions.',
+      'Start with familiar trails before exploring new areas.'
+    ],
+    modifications: {
+      beginner: 'Start on well-marked, less technical trails. Shorter distances.',
+      advanced: 'More technical terrain, longer distances, navigation challenges.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.06,
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Check trail conditions', 'Plan safety measures'],
+      execution: ['Effort-based pacing', 'Focus on foot placement', 'Adapt to terrain'],
+      common_mistakes: ['Trying to maintain road pace', 'Poor descending technique', 'Inadequate preparation'],
+      breathing: 'Variable breathing matching terrain demands.'
+    }
+  },
+
+  'track-running-intervals': {
+    id: 'track-running-intervals',
+    name: 'Track Running Intervals',
+    category: 'endurance',
+    equipment: ['timer'],
+    muscleGroups: ['legs', 'cardiovascular', 'speed'],
+    difficulty: 4,
+    instructions: [
+      'Warm up with easy jogging and dynamic drills.',
+      'Run prescribed distance at target pace.',
+      'Common distances: 200m, 400m, 800m, 1200m, 1600m.',
+      'Take measured recovery between intervals.',
+      'Focus on consistent splits across all intervals.',
+      'Use track markings for precise distance measurement.',
+      'Practice race tactics and positioning.',
+      'Cool down with easy jogging and stretching.'
+    ],
+    safetyNotes: [
+      'Share track courteously with other users.',
+      'Adequate warm-up essential for speed work.',
+      'Monitor fatigue levels throughout session.'
+    ],
+    modifications: {
+      beginner: 'Shorter intervals (200-400m). Longer recovery periods.',
+      advanced: 'Longer intervals or complex sets. Shorter recovery ratios.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'sets',
+      defaultValue: 6,
+      unit: 'intervals'
+    },
+    coaching: {
+      setup: ['Track availability', 'Clear interval plan'],
+      execution: ['Consistent pacing', 'Proper lane usage', 'Controlled effort'],
+      common_mistakes: ['Going out too fast', 'Poor pacing strategy', 'Inadequate warm-up'],
+      breathing: 'Hard breathing during fast intervals. Full recovery between efforts.'
+    }
+  },
+
+  // Cycling Endurance Exercises
+  'bike-endurance-ride': {
+    id: 'bike-endurance-ride',
+    name: 'Bike Endurance Ride',
+    category: 'cycling',
+    equipment: ['bike', 'hydration', 'nutrition'],
+    muscleGroups: ['legs', 'cardiovascular', 'core', 'endurance'],
+    difficulty: 3,
+    instructions: [
+      'Ride at sustainable aerobic pace for extended duration.',
+      'Practice fueling every 45-60 minutes on longer rides.',
+      'Maintain steady power output or heart rate zone.',
+      'Include variety in terrain when possible.',
+      'Focus on efficiency and comfort over speed.',
+      'Practice race-day equipment and clothing.',
+      'Build mental toughness and confidence.',
+      'Plan rest stops and fuel stations for very long rides.'
+    ],
+    safetyNotes: [
+      'Inform others of route and expected return time.',
+      'Carry emergency repair kit and first aid supplies.',
+      'Plan routes with food/water resupply options.'
+    ],
+    modifications: {
+      beginner: '2-3 hours. Focus on comfortable sustainable pace.',
+      advanced: '4-7+ hours. Include race simulation and varied terrain.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.08,
+    metrics: {
+      type: 'time',
+      defaultValue: 180,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Plan detailed route', 'Prepare nutrition strategy'],
+      execution: ['Sustainable aerobic effort', 'Regular fueling', 'Efficient riding position'],
+      common_mistakes: ['Starting too hard', 'Poor nutrition timing', 'Inadequate preparation'],
+      breathing: 'Steady, controlled breathing throughout long duration.'
+    }
+  },
+
+  'bike-tempo-intervals': {
+    id: 'bike-tempo-intervals',
+    name: 'Bike Tempo Intervals',
+    category: 'cycling',
+    equipment: ['bike', 'power-meter'],
+    muscleGroups: ['legs', 'cardiovascular', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Warm up with 15-20 minutes progressive spinning.',
+      'Ride intervals at tempo pace (steady, comfortably hard).',
+      'Target about 85-90% of threshold power or heart rate.',
+      'Intervals typically 8-20 minutes in length.',
+      'Take 2-5 minutes easy spinning recovery between intervals.',
+      'Maintain consistent power/effort throughout each interval.',
+      'Focus on smooth, efficient pedaling technique.',
+      'Cool down with easy spinning.'
+    ],
+    safetyNotes: [
+      'Build up interval duration gradually over time.',
+      'Monitor power/heart rate to avoid going too hard.',
+      'Ensure adequate recovery between intervals.'
+    ],
+    modifications: {
+      beginner: 'Start with 2-3 x 8-10 minutes. Longer recovery periods.',
+      advanced: '3-4 x 15-20 minutes. Shorter recovery between efforts.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'sets',
+      defaultValue: 3,
+      unit: 'tempo intervals'
+    },
+    coaching: {
+      setup: ['Power meter calibrated', 'Flat to rolling course'],
+      execution: ['Consistent tempo effort', 'Smooth pedaling', 'Controlled intensity'],
+      common_mistakes: ['Going too hard early', 'Inconsistent pacing', 'Inadequate warm-up'],
+      breathing: 'Elevated but controlled breathing during intervals.'
+    }
+  },
+
+  'bike-pyramid-intervals': {
+    id: 'bike-pyramid-intervals',
+    name: 'Bike Pyramid Intervals',
+    category: 'cycling',
+    equipment: ['bike', 'timer', 'power-meter'],
+    muscleGroups: ['legs', 'cardiovascular', 'power'],
+    difficulty: 4,
+    instructions: [
+      'Warm up thoroughly with progressive efforts.',
+      'Structure intervals in pyramid format: build up then down.',
+      'Example: 1-2-3-4-3-2-1 minutes or 2-4-6-4-2 minutes.',
+      'Intensity typically threshold to VO2 max effort.',
+      'Take recovery equal to 50-100% of interval time.',
+      'Maintain target power/heart rate for each interval.',
+      'Focus on consistency across similar length intervals.',
+      'Cool down with easy spinning.'
+    ],
+    safetyNotes: [
+      'Requires good fitness base before attempting.',
+      'Monitor fatigue levels as workout progresses.',
+      'Adjust intensity if unable to complete pyramid.'
+    ],
+    modifications: {
+      beginner: 'Shorter pyramid (1-2-3-2-1 min). Lower intensity zones.',
+      advanced: 'Longer pyramid or multiple sets. Higher intensity efforts.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.06,
+    metrics: {
+      type: 'sets',
+      defaultValue: 1,
+      unit: 'pyramid sequence'
+    },
+    coaching: {
+      setup: ['Plan pyramid structure', 'Target power zones'],
+      execution: ['Progressive then regressive intervals', 'Consistent effort', 'Active recovery'],
+      common_mistakes: ['Going too hard on early intervals', 'Not adjusting for fatigue', 'Poor pacing strategy'],
+      breathing: 'Variable breathing intensity matching interval progression.'
+    }
+  },
+
+  'bike-recovery-ride': {
+    id: 'bike-recovery-ride',
+    name: 'Bike Recovery Ride',
+    category: 'cycling',
+    equipment: ['bike'],
+    muscleGroups: ['legs', 'active-recovery'],
+    difficulty: 1,
+    instructions: [
+      'Ride at very easy, comfortable pace.',
+      'Focus on active recovery and blood flow promotion.',
+      'Maintain high cadence (90-100+ RPM) with low resistance.',
+      'Duration typically 30-60 minutes.',
+      'Should feel refreshed, not tired after completion.',
+      'Perfect opportunity to work on pedaling technique.',
+      'Keep heart rate in easy aerobic zone.',
+      'Include gentle spinning in small chainring.'
+    ],
+    safetyNotes: [
+      'No pressure to maintain any specific pace or power.',
+      'Skip if feeling overly fatigued.',
+      'Focus on enjoyment and gentle movement.'
+    ],
+    modifications: {
+      beginner: '20-30 minutes very easy spinning.',
+      advanced: 'Can be longer but always at recovery intensity.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Day after hard training', 'Easy gear selection'],
+      execution: ['Very gentle effort', 'High cadence', 'Focus on technique'],
+      common_mistakes: ['Riding too hard', 'Making it a workout', 'Low cadence grinding'],
+      breathing: 'Easy, natural breathing throughout.'
+    }
+  },
+
+  'road-cycling-group-ride': {
+    id: 'road-cycling-group-ride',
+    name: 'Road Cycling Group Ride',
+    category: 'cycling',
+    equipment: ['bike', 'safety-gear', 'communication'],
+    muscleGroups: ['legs', 'cardiovascular', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Join organized group ride appropriate for your fitness level.',
+      'Practice drafting and paceline skills safely.',
+      'Communicate with hand signals and verbal calls.',
+      'Share pulling duties at front of group.',
+      'Maintain consistent spacing from other riders.',
+      'Follow group etiquette and safety protocols.',
+      'Practice bike handling skills in group setting.',
+      'Adapt effort to group pace and dynamics.'
+    ],
+    safetyNotes: [
+      'Start with beginner-friendly groups.',
+      'Always wear helmet and follow traffic laws.',
+      'Communicate clearly with other riders.',
+      'Be predictable in movements and positioning.'
+    ],
+    modifications: {
+      beginner: 'Join no-drop or beginner groups. Focus on safety and skills.',
+      advanced: 'Join competitive groups. Practice race tactics and high-intensity efforts.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'time',
+      defaultValue: 120,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Choose appropriate group level', 'Review group riding skills'],
+      execution: ['Safe group positioning', 'Smooth paceline work', 'Clear communication'],
+      common_mistakes: ['Riding above fitness level', 'Poor communication', 'Unsafe positioning'],
+      breathing: 'Variable breathing matching group pace changes.'
+    }
+  },
+
+  'indoor-cycling-endurance': {
+    id: 'indoor-cycling-endurance',
+    name: 'Indoor Cycling Endurance',
+    category: 'cycling',
+    equipment: ['indoor-trainer', 'bike', 'fan', 'entertainment'],
+    muscleGroups: ['legs', 'cardiovascular', 'core'],
+    difficulty: 2,
+    instructions: [
+      'Set up trainer in well-ventilated area with fan.',
+      'Maintain steady, moderate effort throughout session.',
+      'Use entertainment or structured workout to maintain focus.',
+      'Practice different cadences and positions.',
+      'Include some standing and position changes.',
+      'Focus on smooth pedal stroke and efficiency.',
+      'Stay well hydrated due to limited air circulation.',
+      'Can simulate outdoor routes with apps/videos.'
+    ],
+    safetyNotes: [
+      'Ensure adequate ventilation and cooling.',
+      'Stay well hydrated throughout session.',
+      'Take breaks if overheating occurs.'
+    ],
+    modifications: {
+      beginner: 'Start with 30-45 minutes. Include frequent breaks.',
+      advanced: '90+ minutes. Include varied intensities and position changes.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 75,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Proper trainer setup', 'Adequate cooling'],
+      execution: ['Consistent moderate effort', 'Hydration focus', 'Position variety'],
+      common_mistakes: ['Inadequate cooling', 'Poor hydration', 'Monotonous positioning'],
+      breathing: 'Steady breathing with emphasis on cooling.'
+    }
+  },
+
+  // Swimming Endurance Exercises
+  'swim-distance-set': {
+    id: 'swim-distance-set',
+    name: 'Swim Distance Set',
+    category: 'swimming',
+    equipment: ['pool', 'kickboard', 'pullbuoy'],
+    muscleGroups: ['full-body', 'cardiovascular', 'endurance'],
+    difficulty: 3,
+    instructions: [
+      'Warm up with easy swimming and technique drills.',
+      'Swim continuous distance at sustainable pace.',
+      'Focus on consistent stroke rate and technique.',
+      'Common distances: 800m, 1500m, 3000m+.',
+      'Practice bilateral breathing and sighting skills.',
+      'Mental focus on rhythm and relaxation.',
+      'Can break into smaller sets with brief rest.',
+      'Cool down with easy swimming and stretching.'
+    ],
+    safetyNotes: [
+      'Build distance gradually over time.',
+      'Monitor stroke technique for efficiency.',
+      'Take breaks if experiencing shoulder fatigue.'
+    ],
+    modifications: {
+      beginner: 'Start with 400-800m continuous. Include rest as needed.',
+      advanced: '1500m+ continuous. Practice race pace and tactics.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.06,
+    metrics: {
+      type: 'distance',
+      defaultValue: 1000,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Plan distance and pace', 'Focus on technique'],
+      execution: ['Sustainable pace', 'Consistent technique', 'Mental focus'],
+      common_mistakes: ['Starting too fast', 'Technique deterioration', 'Poor pacing'],
+      breathing: 'Consistent breathing pattern throughout distance.'
+    }
+  },
+
+  'swim-tempo-set': {
+    id: 'swim-tempo-set',
+    name: 'Swim Tempo Set',
+    category: 'swimming',
+    equipment: ['pool', 'tempo-trainer', 'pace-clock'],
+    muscleGroups: ['full-body', 'cardiovascular', 'technique'],
+    difficulty: 3,
+    instructions: [
+      'Warm up with technique-focused swimming.',
+      'Set tempo trainer to target stroke rate.',
+      'Swim at moderately hard pace (tempo effort).',
+      'Focus on stroke efficiency at prescribed rate.',
+      'Maintain consistent distance per stroke.',
+      'Common set: 6 x 200m or 4 x 400m at tempo.',
+      'Take moderate rest between repeats (15-30 seconds).',
+      'Cool down with easy swimming.'
+    ],
+    safetyNotes: [
+      'Don\'t sacrifice technique for tempo.',
+      'Build up tempo training gradually.',
+      'Monitor stroke efficiency throughout set.'
+    ],
+    modifications: {
+      beginner: 'Lower stroke rate, shorter distances. Focus on consistency.',
+      advanced: 'Higher stroke rates, longer distances. Minimal rest.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'sets',
+      defaultValue: 5,
+      unit: 'tempo repeats'
+    },
+    coaching: {
+      setup: ['Set appropriate stroke rate', 'Plan distance and rest'],
+      execution: ['Consistent stroke rate', 'Maintain efficiency', 'Controlled effort'],
+      common_mistakes: ['Tempo too high for fitness', 'Efficiency loss', 'Poor distance per stroke'],
+      breathing: 'Consistent breathing pattern matching stroke tempo.'
+    }
+  },
+
+  'swim-pyramid-set': {
+    id: 'swim-pyramid-set',
+    name: 'Swim Pyramid Set',
+    category: 'swimming',
+    equipment: ['pool', 'pace-clock'],
+    muscleGroups: ['full-body', 'cardiovascular', 'power'],
+    difficulty: 4,
+    instructions: [
+      'Warm up thoroughly with progressive swimming.',
+      'Structure swim distances in pyramid format.',
+      'Example: 100-200-300-400-300-200-100m.',
+      'Descend time as distance increases (negative split).',
+      'Take rest proportional to swim distance.',
+      'Focus on building speed through the pyramid.',
+      'Maintain technique as intensity increases.',
+      'Cool down with easy swimming.'
+    ],
+    safetyNotes: [
+      'Requires good swimming fitness base.',
+      'Monitor technique as fatigue increases.',
+      'Adjust pace if unable to complete pyramid.'
+    ],
+    modifications: {
+      beginner: 'Smaller pyramid (50-100-150-100-50m). Longer rest.',
+      advanced: 'Larger pyramid or multiple sets. Faster paces.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'sets',
+      defaultValue: 1,
+      unit: 'pyramid sequence'
+    },
+    coaching: {
+      setup: ['Plan pyramid structure', 'Set pace targets'],
+      execution: ['Progressive effort increase', 'Maintain technique', 'Consistent improvement'],
+      common_mistakes: ['Going too fast early', 'Poor pacing strategy', 'Technique breakdown'],
+      breathing: 'Controlled breathing adjusting to increasing intensity.'
+    }
+  },
+
+  'open-water-swim': {
+    id: 'open-water-swim',
+    name: 'Open Water Swim',
+    category: 'swimming',
+    equipment: ['wetsuit', 'goggles', 'safety-equipment'],
+    muscleGroups: ['full-body', 'navigation', 'balance'],
+    difficulty: 4,
+    instructions: [
+      'Enter water gradually to acclimate to temperature.',
+      'Practice sighting every 6-10 strokes initially.',
+      'Swim straight lines using landmarks for navigation.',
+      'Adjust stroke for waves and current conditions.',
+      'Practice drafting behind other swimmers when appropriate.',
+      'Focus on rhythm and relaxation in variable conditions.',
+      'Include practice exits and entries from water.',
+      'Build confidence in open water environment.'
+    ],
+    safetyNotes: [
+      'Never swim alone - use buddy system or supervised sessions.',
+      'Be aware of water conditions, currents, and marine life.',
+      'Wear bright swim cap and consider safety buoy.',
+      'Check local regulations and hazards.'
+    ],
+    modifications: {
+      beginner: 'Stay close to shore, calm conditions. Use guided sessions.',
+      advanced: 'Longer distances, varied conditions. Practice race scenarios.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.06,
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Safety first - buddy system', 'Check conditions'],
+      execution: ['Regular sighting', 'Adapt to conditions', 'Relaxed swimming'],
+      common_mistakes: ['Poor sighting frequency', 'Fighting conditions', 'Inadequate safety measures'],
+      breathing: 'Bilateral breathing for navigation. Adapt to wave patterns.'
+    }
+  },
+
+  'pool-swim-continuous': {
+    id: 'pool-swim-continuous',
+    name: 'Pool Swim Continuous',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['full-body', 'cardiovascular', 'endurance'],
+    difficulty: 2,
+    instructions: [
+      'Warm up with easy swimming and drills.',
+      'Swim continuously at sustainable aerobic pace.',
+      'Focus on stroke efficiency and technique.',
+      'Maintain consistent stroke rate throughout.',
+      'Practice breathing patterns and rhythm.',
+      'Mental focus on relaxation and flow.',
+      'Can vary strokes for active recovery.',
+      'Build duration gradually over time.'
+    ],
+    safetyNotes: [
+      'Monitor stroke technique for efficiency.',
+      'Take rest if experiencing unusual fatigue.',
+      'Build distance gradually to prevent overuse.'
+    ],
+    modifications: {
+      beginner: 'Start with 10-20 minutes continuous. Include rest as needed.',
+      advanced: '45+ minutes continuous. Include pace changes.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Sustainable pace planned', 'Focus on technique'],
+      execution: ['Consistent rhythm', 'Efficient technique', 'Relaxed effort'],
+      common_mistakes: ['Swimming too fast', 'Technique deterioration', 'Mental fatigue'],
+      breathing: 'Consistent, relaxed breathing pattern throughout.'
+    }
+  },
+
+  'swim-recovery-swim': {
+    id: 'swim-recovery-swim',
+    name: 'Swim Recovery Swim',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['full-body', 'active-recovery'],
+    difficulty: 1,
+    instructions: [
+      'Swim at very easy, comfortable pace.',
+      'Focus on technique and form over intensity.',
+      'Include variety of strokes for active recovery.',
+      'Practice drills at slow, controlled pace.',
+      'Duration typically 20-40 minutes.',
+      'Should feel refreshed after completion.',
+      'Perfect time to work on weak technique areas.',
+      'Include gentle stretching in water.'
+    ],
+    safetyNotes: [
+      'No pressure to maintain pace or distance.',
+      'Stop if feeling overly fatigued.',
+      'Focus on enjoyment and gentle movement.'
+    ],
+    modifications: {
+      beginner: '15-20 minutes very easy swimming.',
+      advanced: 'Can be longer but always at recovery intensity.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Day after hard training', 'No intensity pressure'],
+      execution: ['Very gentle effort', 'Focus on technique', 'Variety of movements'],
+      common_mistakes: ['Swimming too hard', 'Making it a workout', 'Ignoring fatigue signals'],
+      breathing: 'Easy, natural breathing throughout.'
+    }
+  },
+
+  'aqua-jogging': {
+    id: 'aqua-jogging',
+    name: 'Aqua Jogging',
+    category: 'swimming',
+    equipment: ['pool', 'flotation-belt'],
+    muscleGroups: ['legs', 'core', 'cardiovascular'],
+    difficulty: 2,
+    instructions: [
+      'Wear flotation belt in deep water section.',
+      'Mimic running motion while suspended in water.',
+      'Maintain upright posture with slight forward lean.',
+      'Drive knees up and push back with legs.',
+      'Use arms in opposition like normal running.',
+      'Can include intervals and easy recovery periods.',
+      'Focus on cadence similar to land running.',
+      'Excellent for injury recovery or cross-training.'
+    ],
+    safetyNotes: [
+      'Ensure flotation belt fits properly.',
+      'Stay in designated deep water areas.',
+      'Monitor intensity - can be more challenging than expected.'
+    ],
+    modifications: {
+      beginner: 'Shorter sessions, focus on movement pattern. Use pool edge if needed.',
+      advanced: 'Longer sessions, include interval training and varied movements.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Proper flotation belt fit', 'Deep water area'],
+      execution: ['Running motion in water', 'Upright posture', 'Natural cadence'],
+      common_mistakes: ['Leaning too far forward', 'Arms moving incorrectly', 'Too fast cadence'],
+      breathing: 'Natural breathing, adjust for water resistance.'
+    }
+  },
+
+  // Alternative Cardio Exercises
+  'rowing-steady-state': {
+    id: 'rowing-steady-state',
+    name: 'Rowing Steady State',
+    category: 'cardio',
+    equipment: ['rowing-machine'],
+    muscleGroups: ['full-body', 'legs', 'back', 'arms'],
+    difficulty: 2,
+    instructions: [
+      'Set up proper rowing technique and posture.',
+      'Row at sustainable, moderate intensity.',
+      'Focus on consistent stroke rate (18-22 strokes/min).',
+      'Maintain proper sequence: legs, back, arms.',
+      'Keep consistent split time throughout workout.',
+      'Focus on long, powerful strokes.',
+      'Breathe rhythmically with stroke pattern.',
+      'Build duration gradually over time.'
+    ],
+    safetyNotes: [
+      'Learn proper rowing technique to prevent injury.',
+      'Don\'t rush the stroke rate initially.',
+      'Monitor back position throughout workout.'
+    ],
+    modifications: {
+      beginner: 'Start with 15-20 minutes. Focus on technique over intensity.',
+      advanced: '45+ minutes. Include negative splits and pace variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Proper machine setup', 'Review technique'],
+      execution: ['Consistent stroke rate', 'Full body engagement', 'Smooth rhythm'],
+      common_mistakes: ['Rushing the stroke', 'Poor posture', 'Arms-only rowing'],
+      breathing: 'Exhale on drive, inhale on recovery.'
+    }
+  },
+
+  'rowing-intervals': {
+    id: 'rowing-intervals',
+    name: 'Rowing Intervals',
+    category: 'cardio',
+    equipment: ['rowing-machine'],
+    muscleGroups: ['full-body', 'power', 'cardiovascular'],
+    difficulty: 3,
+    instructions: [
+      'Warm up with 10 minutes easy rowing.',
+      'Row intervals at high intensity (85-95% effort).',
+      'Common intervals: 250m, 500m, 1000m, 2000m.',
+      'Take active recovery rowing between intervals.',
+      'Focus on powerful, consistent strokes.',
+      'Monitor split time and stroke rate.',
+      'Maintain technique even when fatigued.',
+      'Cool down with easy rowing.'
+    ],
+    safetyNotes: [
+      'Ensure proper warm-up before high intensity.',
+      'Monitor technique to prevent injury.',
+      'Allow adequate recovery between intervals.'
+    ],
+    modifications: {
+      beginner: 'Shorter intervals (250-500m). Longer recovery periods.',
+      advanced: 'Longer intervals or shorter recovery. Higher stroke rates.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.06,
+    metrics: {
+      type: 'sets',
+      defaultValue: 6,
+      unit: 'intervals'
+    },
+    coaching: {
+      setup: ['Proper technique established', 'Interval plan clear'],
+      execution: ['High intensity effort', 'Maintain technique', 'Consistent pacing'],
+      common_mistakes: ['Poor pacing strategy', 'Technique breakdown', 'Inadequate recovery'],
+      breathing: 'Hard breathing during intervals, recover during rest.'
+    }
+  },
+
+  'elliptical-steady': {
+    id: 'elliptical-steady',
+    name: 'Elliptical Steady State',
+    category: 'cardio',
+    equipment: ['elliptical-machine'],
+    muscleGroups: ['full-body', 'legs', 'arms', 'cardiovascular'],
+    difficulty: 2,
+    instructions: [
+      'Set up machine with appropriate resistance level.',
+      'Maintain steady, moderate effort throughout workout.',
+      'Use both arms and legs in coordinated motion.',
+      'Keep consistent cadence (60-80 strides/min).',
+      'Maintain upright posture throughout.',
+      'Can vary resistance to simulate hills.',
+      'Focus on smooth, controlled movements.',
+      'Build duration gradually over time.'
+    ],
+    safetyNotes: [
+      'Start with lower resistance to learn movement pattern.',
+      'Don\'t lean heavily on handrails.',
+      'Stop if experiencing unusual joint discomfort.'
+    ],
+    modifications: {
+      beginner: 'Start with 15-20 minutes. Lower resistance levels.',
+      advanced: '45+ minutes. Include resistance and incline variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'time',
+      defaultValue: 35,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Appropriate resistance setting', 'Good posture'],
+      execution: ['Consistent moderate effort', 'Full body engagement', 'Smooth motion'],
+      common_mistakes: ['Leaning on handrails', 'Poor posture', 'Inconsistent effort'],
+      breathing: 'Steady, rhythmic breathing throughout.'
+    }
+  },
+
+  'elliptical-intervals': {
+    id: 'elliptical-intervals',
+    name: 'Elliptical Intervals',
+    category: 'cardio',
+    equipment: ['elliptical-machine'],
+    muscleGroups: ['full-body', 'cardiovascular', 'power'],
+    difficulty: 3,
+    instructions: [
+      'Warm up with 10 minutes easy effort.',
+      'Alternate between high intensity and recovery periods.',
+      'High intensity: increase resistance and/or cadence.',
+      'Common pattern: 2-4 minutes hard, 1-2 minutes easy.',
+      'Maintain good form throughout intervals.',
+      'Use both resistance and incline variations.',
+      'Monitor heart rate or perceived effort.',
+      'Cool down with easy effort.'
+    ],
+    safetyNotes: [
+      'Build up interval intensity gradually.',
+      'Don\'t sacrifice form for intensity.',
+      'Allow adequate recovery between hard efforts.'
+    ],
+    modifications: {
+      beginner: 'Shorter intervals (1-2 min). Longer recovery periods.',
+      advanced: 'Longer intervals or shorter recovery. Higher resistance levels.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'sets',
+      defaultValue: 6,
+      unit: 'intervals'
+    },
+    coaching: {
+      setup: ['Plan interval structure', 'Resistance settings ready'],
+      execution: ['High intensity efforts', 'Active recovery', 'Maintain form'],
+      common_mistakes: ['Going too hard too early', 'Poor recovery efforts', 'Form breakdown'],
+      breathing: 'Hard breathing during intervals, controlled during recovery.'
+    }
+  },
+
+  'stair-climbing-steady': {
+    id: 'stair-climbing-steady',
+    name: 'Stair Climbing Steady',
+    category: 'cardio',
+    equipment: ['stairs'],
+    muscleGroups: ['legs', 'glutes', 'cardiovascular', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Set consistent, sustainable pace on stairs.',
+      'Use proper form: whole foot on step, upright posture.',
+      'Maintain steady rhythm throughout workout.',
+      'Use handrails for balance, not support.',
+      'Focus on pushing through legs and glutes.',
+      'Take consistent step depth and height.',
+      'Build duration gradually over time.',
+      'Cool down with easy walking.'
+    ],
+    safetyNotes: [
+      'Use handrails for balance only, not weight support.',
+      'Be aware of foot placement on each step.',
+      'Start with shorter durations to avoid overuse.'
+    ],
+    modifications: {
+      beginner: 'Start with 10-15 minutes. Use lighter, slower pace.',
+      advanced: '30+ minutes. Include two-at-a-time or lateral movements.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'time',
+      defaultValue: 20,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Proper stair safety', 'Consistent starting pace'],
+      execution: ['Steady climbing rhythm', 'Full foot placement', 'Upright posture'],
+      common_mistakes: ['Leaning on handrails', 'Inconsistent step pattern', 'Going too fast initially'],
+      breathing: 'Controlled breathing matching step rhythm.'
+    }
+  },
+
+  'stair-climbing-intervals': {
+    id: 'stair-climbing-intervals',
+    name: 'Stair Climbing Intervals',
+    category: 'cardio',
+    equipment: ['stairs'],
+    muscleGroups: ['legs', 'glutes', 'power', 'cardiovascular'],
+    difficulty: 4,
+    instructions: [
+      'Warm up with easy climbing for 5-10 minutes.',
+      'Alternate between high intensity and recovery climbing.',
+      'High intensity: faster pace, two steps at a time, or lateral movements.',
+      'Recovery: slow, controlled climbing or walking.',
+      'Maintain proper form even during high intensity.',
+      'Common pattern: 1-3 minutes hard, 1-2 minutes easy.',
+      'Focus on power and control during hard efforts.',
+      'Cool down with easy walking.'
+    ],
+    safetyNotes: [
+      'Ensure secure footing during high intensity efforts.',
+      'Don\'t sacrifice safety for speed.',
+      'Build intensity gradually over several sessions.'
+    ],
+    modifications: {
+      beginner: 'Single step focus, shorter intervals. Longer recovery.',
+      advanced: 'Complex movement patterns, longer intervals, higher intensity.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'sets',
+      defaultValue: 8,
+      unit: 'intervals'
+    },
+    coaching: {
+      setup: ['Safe stair environment', 'Interval plan ready'],
+      execution: ['Controlled high intensity', 'Secure foot placement', 'Active recovery'],
+      common_mistakes: ['Poor foot placement', 'Too aggressive early intervals', 'Inadequate recovery'],
+      breathing: 'Variable breathing matching interval intensity.'
+    }
+  },
+
+  'treadmill-incline-walk': {
+    id: 'treadmill-incline-walk',
+    name: 'Treadmill Incline Walk',
+    category: 'cardio',
+    equipment: ['treadmill'],
+    muscleGroups: ['legs', 'glutes', 'cardiovascular', 'core'],
+    difficulty: 2,
+    instructions: [
+      'Set treadmill to walking pace (3-4.5 mph).',
+      'Gradually increase incline to challenging but sustainable level.',
+      'Maintain natural walking stride and arm swing.',
+      'Keep upright posture, avoid leaning on handrails.',
+      'Focus on pushing through glutes and legs.',
+      'Can vary incline throughout workout.',
+      'Build duration and incline gradually.',
+      'Cool down with flat walking.'
+    ],
+    safetyNotes: [
+      'Don\'t hold onto handrails for support.',
+      'Start with moderate inclines and build gradually.',
+      'Stop if experiencing unusual joint discomfort.'
+    ],
+    modifications: {
+      beginner: 'Start with 5-8% incline. Shorter durations (15-20 min).',
+      advanced: 'Higher inclines (12-15%+). Longer durations or intervals.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Start with gradual incline increase', 'Natural walking pace'],
+      execution: ['Upright posture', 'Natural arm swing', 'Consistent effort'],
+      common_mistakes: ['Holding handrails', 'Leaning forward', 'Starting incline too high'],
+      breathing: 'Elevated but controlled breathing throughout.'
+    }
+  },
+
+  'outdoor-hiking': {
+    id: 'outdoor-hiking',
+    name: 'Outdoor Hiking',
+    category: 'cardio',
+    equipment: ['hiking-boots', 'backpack', 'navigation', 'water'],
+    muscleGroups: ['legs', 'core', 'cardiovascular', 'full-body'],
+    difficulty: 3,
+    instructions: [
+      'Choose trail appropriate for fitness level and experience.',
+      'Pack essential safety gear and sufficient water/food.',
+      'Maintain steady, sustainable pace for terrain.',
+      'Use trekking poles if available for stability and power.',
+      'Take shorter steps on steep uphill sections.',
+      'Control descent with bent knees and careful foot placement.',
+      'Take breaks as needed for rest and hydration.',
+      'Be aware of weather and environmental conditions.'
+    ],
+    safetyNotes: [
+      'Inform others of hiking plans and expected return.',
+      'Carry emergency supplies and first aid kit.',
+      'Check weather conditions and trail status.',
+      'Stay on marked trails and follow Leave No Trace principles.'
+    ],
+    modifications: {
+      beginner: 'Choose well-marked, shorter trails with moderate elevation.',
+      advanced: 'Longer distances, higher elevation gain, technical terrain.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.06,
+    metrics: {
+      type: 'time',
+      defaultValue: 120,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Proper trail selection', 'Essential gear packed'],
+      execution: ['Sustainable pace', 'Careful foot placement', 'Regular hydration'],
+      common_mistakes: ['Inadequate preparation', 'Poor pacing', 'Ignoring weather conditions'],
+      breathing: 'Variable breathing adjusting to terrain demands.'
+    }
+  },
+
+  'cross-country-skiing': {
+    id: 'cross-country-skiing',
+    name: 'Cross Country Skiing',
+    category: 'cardio',
+    equipment: ['skis', 'boots', 'poles', 'weather-appropriate-clothing'],
+    muscleGroups: ['full-body', 'core', 'legs', 'arms'],
+    difficulty: 3,
+    instructions: [
+      'Learn proper classic or skate skiing technique.',
+      'Start on groomed, relatively flat terrain.',
+      'Focus on coordinated arm and leg movements.',
+      'Maintain forward momentum through efficient technique.',
+      'Use poles for propulsion and balance.',
+      'Dress in layers for temperature regulation.',
+      'Practice on varied terrain as skills develop.',
+      'Build endurance gradually with longer sessions.'
+    ],
+    safetyNotes: [
+      'Learn basic techniques before venturing onto trails.',
+      'Be aware of weather conditions and avalanche risk.',
+      'Carry emergency supplies for backcountry skiing.',
+      'Ski with others, especially in remote areas.'
+    ],
+    modifications: {
+      beginner: 'Start with lessons on groomed tracks. Focus on technique.',
+      advanced: 'Longer distances, varied terrain, racing techniques.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Proper equipment fit', 'Appropriate terrain selection'],
+      execution: ['Coordinated movement', 'Efficient technique', 'Consistent rhythm'],
+      common_mistakes: ['Poor timing of arm/leg coordination', 'Inadequate clothing', 'Starting on terrain too difficult'],
+      breathing: 'Rhythmic breathing coordinated with skiing movement.'
+    }
+  },
+
+  'snowshoeing': {
+    id: 'snowshoeing',
+    name: 'Snowshoeing',
+    category: 'cardio',
+    equipment: ['snowshoes', 'boots', 'poles', 'winter-clothing'],
+    muscleGroups: ['legs', 'core', 'cardiovascular'],
+    difficulty: 2,
+    instructions: [
+      'Attach snowshoes properly to boots.',
+      'Take wider stance than normal walking to accommodate snowshoes.',
+      'Lift feet slightly higher to avoid catching snowshoe edges.',
+      'Use trekking poles for balance and additional propulsion.',
+      'Maintain steady pace appropriate for snow conditions.',
+      'Take frequent breaks for hydration and energy.',
+      'Choose route based on snow conditions and avalanche risk.',
+      'Practice techniques on easier terrain first.'
+    ],
+    safetyNotes: [
+      'Check avalanche conditions in mountainous areas.',
+      'Dress appropriately for cold weather conditions.',
+      'Carry emergency supplies and communication device.',
+      'Start with shorter distances to build fitness.'
+    ],
+    modifications: {
+      beginner: 'Flat to gentle terrain. Shorter distances (30-60 min).',
+      advanced: 'Steeper terrain, longer distances, varied snow conditions.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'time',
+      defaultValue: 75,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Proper snowshoe fit', 'Appropriate clothing layers'],
+      execution: ['Wider stance', 'Higher foot lift', 'Use poles for balance'],
+      common_mistakes: ['Stepping on snowshoe edges', 'Poor clothing choices', 'Inadequate hydration'],
+      breathing: 'Adjust breathing for cold air and increased effort.'
+    }
+  },
+
+  'kayaking-distance': {
+    id: 'kayaking-distance',
+    name: 'Kayaking Distance',
+    category: 'cardio',
+    equipment: ['kayak', 'paddle', 'pfd', 'safety-gear'],
+    muscleGroups: ['arms', 'core', 'back', 'shoulders'],
+    difficulty: 3,
+    instructions: [
+      'Launch kayak safely and adjust seating position.',
+      'Paddle at sustainable pace for extended duration.',
+      'Use proper paddling technique: torso rotation, not just arms.',
+      'Maintain consistent stroke rate and rhythm.',
+      'Practice efficient forward stroke and steering.',
+      'Take breaks as needed for hydration and rest.',
+      'Be aware of weather, water conditions, and traffic.',
+      'Plan route with safe landing spots.'
+    ],
+    safetyNotes: [
+      'Always wear properly fitted personal flotation device.',
+      'Check weather and water conditions before launching.',
+      'Inform others of paddling plans and expected return.',
+      'Stay within skill level and close to shore if inexperienced.'
+    ],
+    modifications: {
+      beginner: 'Calm water, shorter distances. Focus on technique.',
+      advanced: 'Longer distances, varied conditions, open water.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 90,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Proper safety gear', 'Route planning'],
+      execution: ['Efficient paddle technique', 'Steady pace', 'Torso rotation'],
+      common_mistakes: ['Poor paddling technique', 'Inadequate safety preparation', 'Overestimating abilities'],
+      breathing: 'Rhythmic breathing coordinated with paddle strokes.'
+    }
+  },
+
+  'stand-up-paddleboarding': {
+    id: 'stand-up-paddleboarding',
+    name: 'Stand Up Paddleboarding',
+    category: 'cardio',
+    equipment: ['sup-board', 'paddle', 'pfd', 'leash'],
+    muscleGroups: ['core', 'balance', 'arms', 'legs'],
+    difficulty: 3,
+    instructions: [
+      'Start on knees in center of board, then slowly stand.',
+      'Keep knees slightly bent and core engaged for balance.',
+      'Paddle on alternating sides to maintain straight direction.',
+      'Use core rotation for power, not just arms.',
+      'Look ahead, not down at board or water.',
+      'Practice falling and remounting board safely.',
+      'Build balance and endurance gradually.',
+      'Stay aware of wind, current, and water conditions.'
+    ],
+    safetyNotes: [
+      'Always wear leash to stay connected to board.',
+      'Start in calm, shallow water conditions.',
+      'Learn to fall safely away from board.',
+      'Be aware of other water users and obstacles.'
+    ],
+    modifications: {
+      beginner: 'Start on knees, calm water. Focus on balance and basic paddling.',
+      advanced: 'Standing paddle, varied conditions, longer distances.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Calm water conditions', 'Proper safety equipment'],
+      execution: ['Balanced stance', 'Core engagement', 'Efficient paddling'],
+      common_mistakes: ['Looking down', 'Poor paddle technique', 'Inadequate safety preparation'],
+      breathing: 'Steady breathing while maintaining balance and paddling rhythm.'
+    }
+  },
+
+  // Swimming Technique Exercises
+  'swim-distance-freestyle': {
+    id: 'swim-distance-freestyle',
+    name: 'Distance Freestyle Swimming',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['full-body', 'cardiovascular', 'endurance'],
+    difficulty: 3,
+    instructions: [
+      'Warm up with easy swimming and technique drills.',
+      'Swim continuous freestyle at aerobic pace.',
+      'Focus on efficient stroke technique and breathing.',
+      'Maintain consistent stroke rate throughout distance.',
+      'Practice bilateral breathing every 3-5 strokes.',
+      'Build distance gradually over training cycles.',
+      'Mental focus on rhythm and relaxation.',
+      'Cool down with easy swimming and stretching.'
+    ],
+    safetyNotes: [
+      'Build distance gradually to prevent overuse injuries.',
+      'Monitor stroke technique for efficiency.',
+      'Take rest breaks if experiencing unusual fatigue.'
+    ],
+    modifications: {
+      beginner: 'Start with 400-800m continuous. Include rest as needed.',
+      advanced: '1500m+ continuous. Practice negative splitting and pace control.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'distance',
+      defaultValue: 1000,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Plan target distance', 'Focus on sustainable pace'],
+      execution: ['Consistent technique', 'Rhythmic breathing', 'Steady effort'],
+      common_mistakes: ['Starting too fast', 'Stroke technique deterioration', 'Poor breathing rhythm'],
+      breathing: 'Bilateral breathing pattern every 3-5 strokes for balance.'
+    }
+  },
+
+  'swim-interval-freestyle': {
+    id: 'swim-interval-freestyle',
+    name: 'Freestyle Interval Training',
+    category: 'swimming',
+    equipment: ['pool', 'pace-clock'],
+    muscleGroups: ['full-body', 'cardiovascular', 'speed'],
+    difficulty: 4,
+    instructions: [
+      'Warm up thoroughly with easy swimming and build sets.',
+      'Swim freestyle intervals at prescribed pace (85-95% effort).',
+      'Common sets: 8x100m, 5x200m, 4x400m on specific send-offs.',
+      'Focus on consistent splits across all intervals.',
+      'Maintain stroke technique even when fatigued.',
+      'Take prescribed rest between intervals (10-60 seconds).',
+      'Use pace clock to monitor send-off times.',
+      'Cool down with easy swimming.'
+    ],
+    safetyNotes: [
+      'Ensure adequate warm-up before high intensity.',
+      'Monitor stroke technique to prevent shoulder strain.',
+      'Adjust intervals if unable to maintain target times.'
+    ],
+    modifications: {
+      beginner: 'Longer rest intervals, moderate pace targets.',
+      advanced: 'Shorter rest, faster pace targets, longer intervals.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'sets',
+      defaultValue: 8,
+      unit: 'intervals'
+    },
+    coaching: {
+      setup: ['Clear pace targets', 'Understand send-off times'],
+      execution: ['Consistent pacing', 'Maintain technique', 'Hit target times'],
+      common_mistakes: ['Going out too fast', 'Poor pacing strategy', 'Technique breakdown'],
+      breathing: 'Controlled breathing pattern, adjust for intensity.'
+    }
+  },
+
+  'swim-tempo-freestyle': {
+    id: 'swim-tempo-freestyle',
+    name: 'Freestyle Tempo Training',
+    category: 'swimming',
+    equipment: ['pool', 'tempo-trainer'],
+    muscleGroups: ['full-body', 'technique', 'endurance'],
+    difficulty: 3,
+    instructions: [
+      'Set tempo trainer to target stroke rate (strokes per minute).',
+      'Swim freestyle maintaining prescribed stroke rate.',
+      'Focus on distance per stroke while hitting tempo.',
+      'Common tempo ranges: 60-80 strokes per minute.',
+      'Practice different tempos for various race distances.',
+      'Maintain efficient catch and pull at all stroke rates.',
+      'Build ability to change tempo during swims.',
+      'Monitor stroke count per length.'
+    ],
+    safetyNotes: [
+      'Don\'t sacrifice technique for tempo.',
+      'Build tempo training gradually.',
+      'Stop if experiencing shoulder discomfort.'
+    ],
+    modifications: {
+      beginner: 'Start with lower stroke rates (60-65 SPM). Focus on consistency.',
+      advanced: 'Higher stroke rates (75-80+ SPM). Include tempo changes within sets.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes at tempo'
+    },
+    coaching: {
+      setup: ['Set appropriate stroke rate', 'Understand tempo trainer'],
+      execution: ['Consistent stroke rate', 'Maintain efficiency', 'Monitor distance per stroke'],
+      common_mistakes: ['Tempo too high for technique', 'Losing distance per stroke', 'Poor rhythm'],
+      breathing: 'Breathing pattern that supports stroke rate rhythm.'
+    }
+  },
+
+  'swim-backstroke-technique': {
+    id: 'swim-backstroke-technique',
+    name: 'Backstroke Technique Training',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['back', 'shoulders', 'core', 'legs'],
+    difficulty: 3,
+    instructions: [
+      'Start in streamlined position on back.',
+      'Initiate catch with high elbow and fingertip entry.',
+      'Rotate body with each stroke, driven from core.',
+      'Maintain steady flutter kick with pointed toes.',
+      'Keep head stable, eyes looking up.',
+      'Practice backstroke starts and turns.',
+      'Focus on continuous arm stroke rhythm.',
+      'Use backstroke flags for turn timing.'
+    ],
+    safetyNotes: [
+      'Be aware of pool walls and other swimmers.',
+      'Don\'t strain neck by lifting head.',
+      'Practice open turns before attempting flip turns.'
+    ],
+    modifications: {
+      beginner: 'Focus on body position and basic stroke. Use kickboard on back.',
+      advanced: 'Perfect turn technique and underwater dolphin kick.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'distance',
+      defaultValue: 400,
+      unit: 'meters technique focus'
+    },
+    coaching: {
+      setup: ['Clear pool lane', 'Understand backstroke flags'],
+      execution: ['High elbow catch', 'Body rotation', 'Steady head position'],
+      common_mistakes: ['Lifting head', 'Poor body rotation', 'Inconsistent kick'],
+      breathing: 'Breathe freely since face is above water.'
+    }
+  },
+
+  'swim-breaststroke-technique': {
+    id: 'swim-breaststroke-technique',
+    name: 'Breaststroke Technique Training',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['chest', 'arms', 'legs', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Start in streamlined position.',
+      'Execute pull with hands sweeping out and back.',
+      'Lift head and shoulders for breathing during pull.',
+      'Perform frog kick with heels to glutes, then snap together.',
+      'Glide in streamlined position between strokes.',
+      'Coordinate timing: pull, breathe, kick, glide.',
+      'Practice legal breaststroke turns (two-hand touch).',
+      'Focus on powerful kick for forward propulsion.'
+    ],
+    safetyNotes: [
+      'Learn proper kick technique to avoid knee strain.',
+      'Don\'t hold breath underwater during glide phase.',
+      'Build intensity gradually to prevent muscle strain.'
+    ],
+    modifications: {
+      beginner: 'Practice kick and pull separately. Focus on timing coordination.',
+      advanced: 'Work on underwater pullouts and race pace timing.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'distance',
+      defaultValue: 300,
+      unit: 'meters technique focus'
+    },
+    coaching: {
+      setup: ['Focus on stroke timing', 'Practice individual components'],
+      execution: ['Coordinated pull-breathe-kick-glide', 'Powerful kick', 'Streamlined glide'],
+      common_mistakes: ['Poor timing', 'Weak kick', 'Lifting head too high'],
+      breathing: 'Breathe during every stroke cycle, head forward.'
+    }
+  },
+
+  'swim-butterfly-technique': {
+    id: 'swim-butterfly-technique',
+    name: 'Butterfly Technique Training',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['shoulders', 'core', 'full-body', 'power'],
+    difficulty: 4,
+    instructions: [
+      'Start with dolphin kick body wave motion.',
+      'Execute simultaneous arm stroke with high elbow catch.',
+      'Coordinate two kicks per arm cycle (down-up pattern).',
+      'Breathe forward during arm recovery, head down during catch.',
+      'Maintain undulating body motion throughout stroke.',
+      'Practice butterfly turns with two-hand wall touch.',
+      'Focus on rhythm and timing over speed initially.',
+      'Build endurance gradually due to high energy demands.'
+    ],
+    safetyNotes: [
+      'High intensity stroke - build gradually.',
+      'Stop if experiencing shoulder pain.',
+      'Requires good shoulder flexibility and strength.'
+    ],
+    modifications: {
+      beginner: 'Practice dolphin kick and arm stroke separately. Use fins for assistance.',
+      advanced: 'Focus on sprint butterfly and underwaters.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'distance',
+      defaultValue: 200,
+      unit: 'meters technique focus'
+    },
+    coaching: {
+      setup: ['Master dolphin kick first', 'Focus on rhythm'],
+      execution: ['Body wave motion', 'Simultaneous arm stroke', 'Coordinated breathing'],
+      common_mistakes: ['Poor kick timing', 'Lifting head too high', 'Arm stroke timing off'],
+      breathing: 'Breathe every stroke or every other stroke cycle.'
+    }
+  },
+
+  'swim-individual-medley': {
+    id: 'swim-individual-medley',
+    name: 'Individual Medley Training',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['full-body', 'cardiovascular', 'technique'],
+    difficulty: 4,
+    instructions: [
+      'Swim all four strokes in order: butterfly, backstroke, breaststroke, freestyle.',
+      'Practice proper stroke transitions and turns.',
+      'Maintain stroke technique across all four strokes.',
+      'Work on pacing strategy for each stroke segment.',
+      'Practice IM starts and stroke-specific turns.',
+      'Build endurance for longer IM distances.',
+      'Focus on stroke efficiency in fatigue states.',
+      'Include IM-specific drill sets.'
+    ],
+    safetyNotes: [
+      'Requires proficiency in all four competitive strokes.',
+      'High physical and mental demands.',
+      'Build IM distance gradually.'
+    ],
+    modifications: {
+      beginner: 'Short IM (100m). Focus on legal stroke technique and transitions.',
+      advanced: 'Longer IM distances (400m+). Race pace and strategy work.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'distance',
+      defaultValue: 200,
+      unit: 'meters IM'
+    },
+    coaching: {
+      setup: ['Master all four strokes', 'Understand IM rules'],
+      execution: ['Legal stroke techniques', 'Smooth transitions', 'Consistent pacing'],
+      common_mistakes: ['Stroke violations', 'Poor transitions', 'Uneven pacing'],
+      breathing: 'Stroke-specific breathing patterns for each segment.'
+    }
+  },
+
+  'swim-pull-sets': {
+    id: 'swim-pull-sets',
+    name: 'Swimming Pull Sets',
+    category: 'swimming',
+    equipment: ['pool', 'pull-buoy', 'paddles'],
+    muscleGroups: ['arms', 'shoulders', 'back', 'core'],
+    difficulty: 3,
+    instructions: [
+      'Use pull buoy between legs to isolate upper body.',
+      'Focus on catch, pull, and recovery arm movements.',
+      'Maintain body position and rotation without kick.',
+      'Practice high elbow catch and powerful pull-through.',
+      'Add paddles for increased resistance (advanced).',
+      'Include various stroke rates and intensities.',
+      'Focus on distance per stroke efficiency.',
+      'Cool down with easy swimming without equipment.'
+    ],
+    safetyNotes: [
+      'Build pull set volume gradually.',
+      'Monitor shoulder fatigue and stop if pain occurs.',
+      'Don\'t rely solely on pull sets - maintain full stroke training.'
+    ],
+    modifications: {
+      beginner: 'Shorter pull sets (200-400m). Focus on technique over intensity.',
+      advanced: 'Longer sets (800m+). Add paddles and varied intensities.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'distance',
+      defaultValue: 600,
+      unit: 'meters pulling'
+    },
+    coaching: {
+      setup: ['Proper pull buoy placement', 'Focus on upper body'],
+      execution: ['High elbow catch', 'Powerful pull-through', 'Maintain body position'],
+      common_mistakes: ['Poor body position', 'Rushing stroke rate', 'Inadequate catch'],
+      breathing: 'Maintain normal breathing pattern without kick interference.'
+    }
+  },
+
+  'swim-kick-sets': {
+    id: 'swim-kick-sets',
+    name: 'Swimming Kick Sets',
+    category: 'swimming',
+    equipment: ['pool', 'kickboard', 'fins'],
+    muscleGroups: ['legs', 'core', 'hip-flexors'],
+    difficulty: 3,
+    instructions: [
+      'Use kickboard to isolate leg movement.',
+      'Practice freestyle flutter kick with straight legs.',
+      'Kick from hips, not knees, with relaxed ankles.',
+      'Maintain consistent kick rate and depth.',
+      'Include other stroke kicks: backstroke, breaststroke, butterfly.',
+      'Add fins for increased resistance and speed (advanced).',
+      'Focus on kick efficiency and propulsion.',
+      'Include vertical kicking for core strength.'
+    ],
+    safetyNotes: [
+      'Build kick set intensity gradually.',
+      'Stop if experiencing hip flexor or ankle cramping.',
+      'Maintain proper body position throughout.'
+    ],
+    modifications: {
+      beginner: 'Shorter kick sets (100-200m). Focus on technique over speed.',
+      advanced: 'Longer sets (400m+). Add fins and vertical kicking.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'distance',
+      defaultValue: 400,
+      unit: 'meters kicking'
+    },
+    coaching: {
+      setup: ['Proper kickboard position', 'Focus on leg movement'],
+      execution: ['Kick from hips', 'Straight legs', 'Consistent rate'],
+      common_mistakes: ['Kicking from knees', 'Too deep kick', 'Irregular rhythm'],
+      breathing: 'Natural breathing, head can rest comfortably on arms.'
+    }
+  },
+
+  'swim-bilateral-breathing': {
+    id: 'swim-bilateral-breathing',
+    name: 'Bilateral Breathing Training',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['core', 'neck', 'symmetry'],
+    difficulty: 2,
+    instructions: [
+      'Practice breathing to both left and right sides equally.',
+      'Start with breathing every 3 strokes (left-right-left pattern).',
+      'Focus on symmetrical stroke technique on both sides.',
+      'Rotate head and body as one unit during breathing.',
+      'Practice 5-stroke and 7-stroke breathing patterns.',
+      'Include hypoxic training sets gradually.',
+      'Work on sighting while maintaining bilateral breathing.',
+      'Build comfort and efficiency with both-sided breathing.'
+    ],
+    safetyNotes: [
+      'Build hypoxic training gradually.',
+      'Don\'t hold breath excessively underwater.',
+      'Stop if feeling dizzy or overly winded.'
+    ],
+    modifications: {
+      beginner: 'Start with every 2 strokes alternating sides. Build to 3-stroke pattern.',
+      advanced: 'Include 5, 7, 9 stroke patterns. Add hypoxic training.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'distance',
+      defaultValue: 500,
+      unit: 'meters bilateral breathing'
+    },
+    coaching: {
+      setup: ['Start with comfortable pace', 'Focus on symmetry'],
+      execution: ['Equal breathing both sides', 'Maintain stroke technique', 'Smooth head rotation'],
+      common_mistakes: ['Favoring one side', 'Disrupting stroke rhythm', 'Lifting head too high'],
+      breathing: 'Exhale continuously underwater, quick inhale alternating sides.'
+    }
+  },
+
+  'swim-sighting-practice': {
+    id: 'swim-sighting-practice',
+    name: 'Swimming Sighting Practice',
+    category: 'swimming',
+    equipment: ['pool', 'visual-targets'],
+    muscleGroups: ['neck', 'core', 'navigation'],
+    difficulty: 3,
+    instructions: [
+      'Set visual targets at far end of pool for sighting practice.',
+      'Swim with eyes closed for 6-10 strokes between sights.',
+      'Practice lifting head minimally during stroke for quick look.',
+      'Integrate sighting with normal breathing pattern when possible.',
+      'Vary sighting frequency based on conditions (every 6-12 strokes).',
+      'Practice alligator eyes technique - minimal head lift.',
+      'Include navigation around obstacles or lane changes.',
+      'Build confidence in directional swimming.'
+    ],
+    safetyNotes: [
+      'Practice in controlled pool environment first.',
+      'Don\'t strain neck with excessive head lifting.',
+      'Be aware of other swimmers when changing direction.'
+    ],
+    modifications: {
+      beginner: 'Frequent sighting (every 4-6 strokes). Use larger targets.',
+      advanced: 'Less frequent sighting. Practice in varied light conditions.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'distance',
+      defaultValue: 400,
+      unit: 'meters with sighting'
+    },
+    coaching: {
+      setup: ['Clear visual targets', 'Practice minimal head lift'],
+      execution: ['Quick sighting glances', 'Maintain stroke rhythm', 'Navigate effectively'],
+      common_mistakes: ['Lifting head too high', 'Sighting too frequently', 'Disrupting stroke'],
+      breathing: 'Coordinate sighting with breathing when possible.'
+    }
+  },
+
+  'swim-wetsuit-practice': {
+    id: 'swim-wetsuit-practice',
+    name: 'Wetsuit Swimming Practice',
+    category: 'swimming',
+    equipment: ['pool', 'wetsuit', 'anti-chafe-cream'],
+    muscleGroups: ['full-body', 'adaptation'],
+    difficulty: 3,
+    instructions: [
+      'Apply anti-chafe cream to neck, arms, and ankles.',
+      'Enter water gradually to allow wetsuit to flood and warm.',
+      'Practice swimming technique with altered buoyancy.',
+      'Adjust stroke rate for increased buoyancy and restriction.',
+      'Practice wetsuit removal techniques for transitions.',
+      'Include sighting practice while wearing wetsuit.',
+      'Build comfort with different body position in water.',
+      'Practice various swimming intensities in wetsuit.'
+    ],
+    safetyNotes: [
+      'Ensure proper wetsuit fit to avoid restriction.',
+      'Practice removal techniques to avoid panic in race.',
+      'Be aware of overheating in warm conditions.'
+    ],
+    modifications: {
+      beginner: 'Short sessions (15-20 min). Focus on comfort and basic technique.',
+      advanced: 'Longer sessions. Practice race pace and transition techniques.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes in wetsuit'
+    },
+    coaching: {
+      setup: ['Proper wetsuit fit', 'Anti-chafe application'],
+      execution: ['Adapt stroke to buoyancy', 'Practice transitions', 'Maintain comfort'],
+      common_mistakes: ['Poor wetsuit fit', 'Not practicing removal', 'Overheating'],
+      breathing: 'May need to adjust breathing pattern due to chest restriction.'
+    }
+  },
+
+  'swim-mass-start-practice': {
+    id: 'swim-mass-start-practice',
+    name: 'Mass Start Swimming Practice',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['full-body', 'mental-toughness'],
+    difficulty: 4,
+    instructions: [
+      'Practice swimming in crowded conditions with other swimmers.',
+      'Start multiple swimmers simultaneously to simulate race start.',
+      'Practice dealing with contact and being bumped.',
+      'Work on finding clear water and positioning.',
+      'Practice different start positions (front, side, back).',
+      'Include drafting practice behind other swimmers.',
+      'Build mental toughness for chaotic race conditions.',
+      'Practice staying calm and focused in crowds.'
+    ],
+    safetyNotes: [
+      'Ensure all participants understand contact may occur.',
+      'Practice with experienced swimmers in controlled environment.',
+      'Have safety personnel present for group training.'
+    ],
+    modifications: {
+      beginner: 'Start with 2-3 swimmers. Focus on comfort with contact.',
+      advanced: 'Larger groups. Practice race-specific tactics and positioning.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      unit: 'mass start simulations'
+    },
+    coaching: {
+      setup: ['Multiple swimmers', 'Controlled environment'],
+      execution: ['Stay calm in crowds', 'Find clear water', 'Practice positioning'],
+      common_mistakes: ['Panic in contact', 'Poor positioning', 'Fighting instead of adapting'],
+      breathing: 'Stay calm and maintain breathing rhythm despite chaos.'
+    }
+  },
+
+  'swim-exit-practice': {
+    id: 'swim-exit-practice',
+    name: 'Swimming Exit Practice',
+    category: 'swimming',
+    equipment: ['pool'],
+    muscleGroups: ['legs', 'balance', 'transition'],
+    difficulty: 2,
+    instructions: [
+      'Practice exiting water smoothly and efficiently.',
+      'For beach exits: time final strokes to catch waves.',
+      'Stand up when water is chest-deep, not before.',
+      'Run through shallow water with high knees.',
+      'Practice running on unstable surfaces (sand, rocks).',
+      'Include wetsuit removal while moving.',
+      'Practice orientation after swimming (may feel dizzy).',
+      'Build leg strength for efficient water-to-land transition.'
+    ],
+    safetyNotes: [
+      'Be aware of waves, currents, and bottom conditions.',
+      'Practice in safe, supervised environments.',
+      'Don\'t attempt to stand in waves that might knock you down.'
+    ],
+    modifications: {
+      beginner: 'Practice in calm conditions. Focus on basic exit technique.',
+      advanced: 'Practice in various conditions including waves and currents.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      unit: 'exit practices'
+    },
+    coaching: {
+      setup: ['Safe exit area', 'Various conditions'],
+      execution: ['Time standing correctly', 'High knee running', 'Smooth transition'],
+      common_mistakes: ['Standing too early', 'Poor balance on exit', 'Slow transition'],
+      breathing: 'Maintain controlled breathing during disorientation of exit.'
+    }
+  },
+
+  'bike-brick-workout': {
+    id: 'bike-brick-workout',
+    name: 'Bike-Run Brick Workout',
+    category: 'cycling',
+    equipment: ['bike', 'running-shoes', 'transition-area'],
+    muscleGroups: ['full-body', 'transition-adaptation'],
+    difficulty: 4,
+    instructions: [
+      'Complete bike segment at race pace intensity.',
+      'Immediately transition to running without extended rest.',
+      'Practice efficient bike-to-run transition procedures.',
+      'Run at target race pace despite heavy legs.',
+      'Include various bike and run durations.',
+      'Practice nutrition and hydration timing.',
+      'Focus on mental preparation for discomfort.',
+      'Build adaptation to bike-run muscle transition.'
+    ],
+    safetyNotes: [
+      'Start with shorter durations and build gradually.',
+      'Be prepared for initial run discomfort and adaptation.',
+      'Practice transitions in safe environment.'
+    ],
+    modifications: {
+      beginner: 'Short bike (20-30 min) + short run (10-15 min).',
+      advanced: 'Race simulation distances and intensities.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 90,
+      unit: 'minutes total (bike + run)'
+    },
+    coaching: {
+      setup: ['Race pace planning', 'Transition practice'],
+      execution: ['Consistent bike effort', 'Quick transition', 'Adapt to run feeling'],
+      common_mistakes: ['Too hard bike effort', 'Slow transitions', 'Poor run adaptation'],
+      breathing: 'Manage breathing through intensity and transition changes.'
+    }
+  },
+
+  'bike-cadence-work': {
+    id: 'bike-cadence-work',
+    name: 'Bike Cadence Training',
+    category: 'cycling',
+    equipment: ['bike', 'cadence-monitor'],
+    muscleGroups: ['legs', 'neuromuscular', 'efficiency'],
+    difficulty: 2,
+    instructions: [
+      'Practice different cadence ranges systematically.',
+      'Include low cadence (60-70 RPM) strength work.',
+      'Practice high cadence (100-120+ RPM) spin-ups.',
+      'Work on optimal cadence (85-95 RPM) efficiency.',
+      'Use different gears to achieve target cadences.',
+      'Focus on smooth, round pedal stroke at all cadences.',
+      'Include cadence changes within rides.',
+      'Monitor power output at different cadences.'
+    ],
+    safetyNotes: [
+      'Build high cadence work gradually.',
+      'Don\'t sacrifice smoothness for specific numbers.',
+      'Listen to body for optimal cadence range.'
+    ],
+    modifications: {
+      beginner: 'Focus on finding comfortable natural cadence (80-90 RPM).',
+      advanced: 'Include complex cadence protocols and efficiency testing.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      unit: 'minutes cadence work'
+    },
+    coaching: {
+      setup: ['Cadence monitor available', 'Various gear options'],
+      execution: ['Target specific cadences', 'Maintain smooth pedaling', 'Monitor efficiency'],
+      common_mistakes: ['Forcing unnatural cadences', 'Poor gear selection', 'Sacrificing smoothness'],
+      breathing: 'Coordinate breathing with different cadence rhythms.'
+    }
+  },
+
+  'bike-power-intervals': {
+    id: 'bike-power-intervals',
+    name: 'Bike Power Intervals',
+    category: 'cycling',
+    equipment: ['bike', 'power-meter'],
+    muscleGroups: ['legs', 'power', 'neuromuscular'],
+    difficulty: 4,
+    instructions: [
+      'Warm up thoroughly including progressive efforts.',
+      'Perform short, high-intensity power intervals.',
+      'Target 120-150%+ of threshold power.',
+      'Intervals typically 15 seconds to 2 minutes.',
+      'Take long recovery between intervals (1:3-1:5 ratio).',
+      'Focus on explosive power and neuromuscular recruitment.',
+      'Include both seated and standing power efforts.',
+      'Cool down with extended easy spinning.'
+    ],
+    safetyNotes: [
+      'Requires excellent warm-up and recovery ability.',
+      'Very high intensity - limit frequency of sessions.',
+      'Monitor fatigue levels carefully.'
+    ],
+    modifications: {
+      beginner: 'Shorter intervals (15-30 sec). Longer recovery periods.',
+      advanced: 'Longer intervals or complex sets. Sport-specific power work.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.01,
+    metrics: {
+      type: 'sets',
+      defaultValue: 8,
+      unit: 'power intervals'
+    },
+    coaching: {
+      setup: ['Excellent warm-up', 'Power targets clear'],
+      execution: ['Explosive efforts', 'Full recovery', 'Neuromuscular focus'],
+      common_mistakes: ['Inadequate warm-up', 'Insufficient recovery', 'Too many intervals'],
+      breathing: 'Very hard breathing during efforts. Complete recovery between.'
+    }
+  },
+
+  'bike-recovery-spin': {
+    id: 'bike-recovery-spin',
+    name: 'Bike Recovery Spin',
+    category: 'cycling',
+    equipment: ['bike'],
+    muscleGroups: ['legs', 'active-recovery'],
+    difficulty: 1,
+    instructions: [
+      'Ride at very easy, comfortable intensity.',
+      'Focus on gentle movement and blood flow promotion.',
+      'Maintain high cadence (90-100+ RPM) with minimal resistance.',
+      'Duration typically 30-75 minutes.',
+      'Should feel refreshed and loosened up after ride.',
+      'Perfect opportunity for technique and position work.',
+      'Include gentle spinning in small chainring only.',
+      'No power or heart rate targets - just feel good.'
+    ],
+    safetyNotes: [
+      'No pressure to maintain pace or power.',
+      'Skip if feeling overly fatigued.',
+      'Focus on enjoyment and gentle movement.'
+    ],
+    modifications: {
+      beginner: '20-30 minutes very easy spinning.',
+      advanced: 'Can be longer but always at recovery intensity.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Day after hard training', 'Easy gear only'],
+      execution: ['Very gentle effort', 'High cadence', 'Focus on feel'],
+      common_mistakes: ['Riding too hard', 'Making it a workout', 'Low cadence grinding'],
+      breathing: 'Easy, natural breathing throughout.'
+    }
+  },
+
+  'bike-group-ride': {
+    id: 'bike-group-ride',
+    name: 'Bike Group Ride',
+    category: 'cycling',
+    equipment: ['bike', 'safety-gear'],
+    muscleGroups: ['legs', 'cardiovascular', 'skills'],
+    difficulty: 3,
+    instructions: [
+      'Join group ride appropriate for fitness level.',
+      'Practice safe group riding skills and etiquette.',
+      'Learn drafting techniques and paceline rotation.',
+      'Communicate clearly with hand signals and calls.',
+      'Share workload at front of group appropriately.',
+      'Practice bike handling in close proximity to others.',
+      'Adapt to group pace and dynamics.',
+      'Include social and competitive elements.'
+    ],
+    safetyNotes: [
+      'Always prioritize safety over performance.',
+      'Follow group rules and local traffic laws.',
+      'Communicate clearly and predictably.',
+      'Start with beginner-friendly groups.'
+    ],
+    modifications: {
+      beginner: 'No-drop groups, focus on safety and basic skills.',
+      advanced: 'Competitive groups, race simulation, advanced tactics.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'time',
+      defaultValue: 120,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Choose appropriate group', 'Review safety protocols'],
+      execution: ['Safe positioning', 'Clear communication', 'Share workload'],
+      common_mistakes: ['Poor communication', 'Unsafe positioning', 'Not sharing work'],
+      breathing: 'Variable breathing matching group pace changes.'
+    }
+  },
+
+  // Running Advanced Exercises
+  'run-base-building': {
+    id: 'run-base-building',
+    name: 'Run Base Building',
+    category: 'running',
+    equipment: ['running-shoes'],
+    muscleGroups: ['legs', 'cardiovascular', 'endurance'],
+    difficulty: 2,
+    instructions: [
+      'Run at easy, conversational pace for aerobic development.',
+      'Focus on time rather than pace or distance.',
+      'Build weekly mileage gradually (10% rule).',
+      'Include variety in routes and terrain.',
+      'Emphasize consistency over intensity.',
+      'Run 6-7 days per week with easy effort.',
+      'Include one longer run per week.',
+      'Focus on building aerobic engine and running economy.'
+    ],
+    safetyNotes: [
+      'Build volume very gradually to prevent injury.',
+      'Listen to body and take rest days when needed.',
+      'Don\'t rush the base building phase.'
+    ],
+    modifications: {
+      beginner: 'Start with 3-4 runs per week. Build slowly.',
+      advanced: 'Higher weekly mileage. Include varied terrain.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      unit: 'minutes per run'
+    },
+    coaching: {
+      setup: ['Plan gradual progression', 'Focus on consistency'],
+      execution: ['Easy conversational effort', 'Consistent frequency', 'Gradual progression'],
+      common_mistakes: ['Building too quickly', 'Running too hard', 'Skipping rest days'],
+      breathing: 'Easy, conversational breathing throughout.'
+    }
+  },
+
+  'run-tempo-workout': {
+    id: 'run-tempo-workout',
+    name: 'Run Tempo Workout',
+    category: 'running',
+    equipment: ['running-shoes'],
+    muscleGroups: ['legs', 'cardiovascular', 'lactate-system'],
+    difficulty: 3,
+    instructions: [
+      'Warm up with 15-20 minutes easy running.',
+      'Run tempo segment at comfortably hard pace.',
+      'Target about 85-90% effort or 15K-half marathon pace.',
+      'Should feel challenging but sustainable.',
+      'Common tempo runs: 20-40 minutes continuous.',
+      'Can be broken into intervals with brief recovery.',
+      'Focus on rhythm and relaxation at intensity.',
+      'Cool down with easy running.'
+    ],
+    safetyNotes: [
+      'Adequate warm-up essential before tempo effort.',
+      'Monitor effort level - should not be anaerobic.',
+      'Build tempo duration gradually.'
+    ],
+    modifications: {
+      beginner: 'Start with 15-20 minutes tempo. Can break into intervals.',
+      advanced: '30-60+ minutes continuous tempo. Include variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'time',
+      defaultValue: 25,
+      unit: 'minutes at tempo pace'
+    },
+    coaching: {
+      setup: ['Thorough warm-up', 'Know tempo pace'],
+      execution: ['Comfortably hard effort', 'Consistent pace', 'Relaxed form'],
+      common_mistakes: ['Starting too fast', 'Inadequate warm-up', 'Going anaerobic'],
+      breathing: 'Controlled but elevated breathing throughout.'
+    }
+  },
+
+  'run-interval-training': {
+    id: 'run-interval-training',
+    name: 'Run Interval Training',
+    category: 'running',
+    equipment: ['running-shoes', 'track'],
+    muscleGroups: ['legs', 'cardiovascular', 'speed'],
+    difficulty: 4,
+    instructions: [
+      'Warm up thoroughly including dynamic drills and strides.',
+      'Run intervals at 3K-5K race pace effort.',
+      'Common intervals: 400m, 800m, 1200m, 1600m.',
+      'Take recovery jog between intervals (1:1 to 1:2 ratio).',
+      'Focus on consistent splits across all intervals.',
+      'Maintain good running form at speed.',
+      'Build interval training volume gradually.',
+      'Cool down with easy jogging.'
+    ],
+    safetyNotes: [
+      'Requires thorough warm-up including strides.',
+      'Monitor pace to avoid going out too fast.',
+      'Allow adequate recovery between hard sessions.'
+    ],
+    modifications: {
+      beginner: 'Shorter intervals (200-400m). Longer recovery periods.',
+      advanced: 'Longer intervals or complex sets. Shorter recovery.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'sets',
+      defaultValue: 6,
+      unit: 'intervals'
+    },
+    coaching: {
+      setup: ['Excellent warm-up', 'Know target paces'],
+      execution: ['Consistent pacing', 'Good form', 'Adequate recovery'],
+      common_mistakes: ['Going out too fast', 'Poor pacing strategy', 'Inadequate warm-up'],
+      breathing: 'Hard breathing during intervals. Recover during rest.'
+    }
+  },
+
+  'run-hill-training': {
+    id: 'run-hill-training',
+    name: 'Run Hill Training',
+    category: 'running',
+    equipment: ['running-shoes'],
+    muscleGroups: ['legs', 'glutes', 'power', 'strength'],
+    difficulty: 3,
+    instructions: [
+      'Find hill with 4-8% grade, appropriate length for workout.',
+      'Warm up thoroughly with easy running on flat ground.',
+      'Run uphill at 5K to 10K effort, focus on form.',
+      'Pump arms, lean slightly forward, maintain cadence.',
+      'Recover with easy jog or walk down the hill.',
+      'Include various hill lengths and intensities.',
+      'Practice both short power hills and longer climbs.',
+      'Cool down with easy running on flat ground.'
+    ],
+    safetyNotes: [
+      'Start with fewer repetitions and build gradually.',
+      'Focus on effort level rather than pace.',
+      'Be cautious on descent to avoid injury.'
+    ],
+    modifications: {
+      beginner: 'Moderate grades, shorter hills (30-60 seconds).',
+      advanced: 'Steeper grades, longer hills (2-5+ minutes).'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'hill repeats'
+    },
+    coaching: {
+      setup: ['Appropriate hill selection', 'Thorough warm-up'],
+      execution: ['Maintain form uphill', 'Controlled effort', 'Active recovery'],
+      common_mistakes: ['Going too hard early', 'Poor uphill form', 'Inadequate recovery'],
+      breathing: 'Hard but controlled breathing uphill. Recover on descent.'
+    }
+  },
+
+  'run-fartlek-training': {
+    id: 'run-fartlek-training',
+    name: 'Fartlek Training',
+    category: 'running',
+    equipment: ['running-shoes'],
+    muscleGroups: ['cardiovascular', 'legs', 'speed-endurance'],
+    difficulty: 3,
+    instructions: [
+      'Begin with 10-15 minute warm-up at easy pace.',
+      'Run at varying intensities based on feel or landmarks.',
+      'Mix fast segments (30 seconds to 5 minutes) with recovery.',
+      'Use natural terrain features as guides for pace changes.',
+      'No strict structure - run by feel and intuition.',
+      'Include surges, steady efforts, and recovery periods.',
+      'Cool down with easy running for 10-15 minutes.',
+      'Focus on speed and endurance combination.'
+    ],
+    safetyNotes: [
+      'Listen to your body for intensity changes.',
+      'Ensure adequate recovery between hard efforts.',
+      'Be aware of terrain changes and safety.'
+    ],
+    modifications: {
+      beginner: 'Shorter fast segments, more recovery time.',
+      advanced: 'Longer fast segments, less recovery, varied terrain.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 35,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Varied terrain', 'Flexible mindset'],
+      execution: ['Intuitive pacing', 'Natural speed changes', 'Terrain adaptation'],
+      common_mistakes: ['Too structured approach', 'Inadequate recovery', 'Ignoring terrain'],
+      breathing: 'Adaptive breathing matching effort changes.'
+    }
+  },
+
+  'run-long-slow-distance': {
+    id: 'run-long-slow-distance',
+    name: 'Long Slow Distance',
+    category: 'running',
+    equipment: ['running-shoes', 'hydration', 'nutrition'],
+    muscleGroups: ['cardiovascular', 'endurance', 'mental-resilience'],
+    difficulty: 3,
+    instructions: [
+      'Start at conversational pace - should be able to talk.',
+      'Maintain steady, comfortable effort throughout run.',
+      'Focus on time on feet rather than speed.',
+      'Stay relaxed and efficient in running form.',
+      'Hydrate regularly, especially on longer runs.',
+      'Consider nutrition for runs over 90 minutes.',
+      'Build distance gradually week by week.',
+      'Finish feeling like you could continue running.'
+    ],
+    safetyNotes: [
+      'Build distance gradually (follow 10% rule).',
+      'Carry identification and emergency contact.',
+      'Plan route with water/bathroom access.',
+      'Consider weather conditions and dress appropriately.'
+    ],
+    modifications: {
+      beginner: 'Start with 30-45 minutes, walk breaks as needed.',
+      advanced: 'Extend to 2+ hours, practice race nutrition.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.1,
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Comfortable pace', 'Proper hydration plan'],
+      execution: ['Steady effort', 'Relaxed form', 'Mental engagement'],
+      common_mistakes: ['Starting too fast', 'Inadequate fueling', 'Poor pacing'],
+      breathing: 'Comfortable, conversational breathing rate.'
+    }
+  },
+
+  'run-recovery-run': {
+    id: 'run-recovery-run',
+    name: 'Recovery Run',
+    category: 'running',
+    equipment: ['running-shoes'],
+    muscleGroups: ['active-recovery', 'blood-flow', 'movement-quality'],
+    difficulty: 1,
+    instructions: [
+      'Run at very easy, comfortable pace.',
+      'Should feel effortless and relaxed throughout.',
+      'Focus on form and movement quality over speed.',
+      'Keep duration short to moderate.',
+      'Use as active recovery between harder training sessions.',
+      'Listen to body - skip if feeling overly fatigued.',
+      'Maintain conversational pace throughout entire run.',
+      'End feeling refreshed, not tired.'
+    ],
+    safetyNotes: [
+      'Truly easy effort - err on side of too slow.',
+      'Skip if experiencing pain or excessive fatigue.',
+      'Focus on recovery, not fitness gains.'
+    ],
+    modifications: {
+      beginner: '15-20 minutes, walk breaks if needed.',
+      advanced: '30-45 minutes, maintain easy effort.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 25,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Very easy effort', 'Recovery mindset'],
+      execution: ['Effortless pace', 'Form focus', 'Relaxed breathing'],
+      common_mistakes: ['Running too fast', 'Ignoring fatigue signals', 'Too long duration'],
+      breathing: 'Easy, natural breathing pattern.'
+    }
+  },
+
+  'run-strides': {
+    id: 'run-strides',
+    name: 'Strides',
+    category: 'running',
+    equipment: ['running-shoes'],
+    muscleGroups: ['speed', 'form', 'neuromuscular'],
+    difficulty: 2,
+    instructions: [
+      'After easy run, find flat 80-100m stretch.',
+      'Gradually accelerate to 85-90% effort over first 20m.',
+      'Maintain fast pace for middle 60m.',
+      'Gradually decelerate over final 20m.',
+      'Focus on form: quick turnover, relaxed shoulders.',
+      'Walk back to start for full recovery.',
+      'Repeat 4-8 times depending on fitness level.',
+      'Should feel smooth and controlled, not all-out.'
+    ],
+    safetyNotes: [
+      'Ensure adequate warm-up before strides.',
+      'Focus on form over pure speed.',
+      'Allow full recovery between repetitions.'
+    ],
+    modifications: {
+      beginner: '4 strides, focus on form over speed.',
+      advanced: '6-8 strides, maintain excellent form at higher speeds.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Proper warm-up', 'Flat surface', 'Relaxed mindset'],
+      execution: ['Gradual acceleration', 'Form focus', 'Controlled effort'],
+      common_mistakes: ['Too fast too early', 'Tense running', 'Insufficient recovery'],
+      breathing: 'Controlled breathing, avoid holding breath.'
+    }
+  },
+
+  'run-track-intervals': {
+    id: 'run-track-intervals',
+    name: 'Track Intervals',
+    category: 'running',
+    equipment: ['running-shoes', 'track'],
+    muscleGroups: ['speed', 'vo2-max', 'lactate-threshold'],
+    difficulty: 4,
+    instructions: [
+      'Warm up with 15-20 minutes easy running.',
+      'Run specified distance at target pace.',
+      'Common intervals: 400m, 800m, 1200m, 1600m.',
+      'Take prescribed recovery between intervals.',
+      'Maintain consistent pace across all intervals.',
+      'Focus on even pacing and good form.',
+      'Cool down with easy running for 10-15 minutes.',
+      'Track times for progression monitoring.'
+    ],
+    safetyNotes: [
+      'Adequate warm-up essential for speed work.',
+      'Start conservatively with pacing.',
+      'Allow proper recovery between intervals.',
+      'Be aware of other track users.'
+    ],
+    modifications: {
+      beginner: 'Shorter intervals, longer recovery, focus on completion.',
+      advanced: 'Longer intervals, shorter recovery, precise pace targets.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Proper warm-up', 'Pace targets', 'Recovery plan'],
+      execution: ['Even pacing', 'Form maintenance', 'Controlled effort'],
+      common_mistakes: ['Starting too fast', 'Inadequate warm-up', 'Poor pacing strategy'],
+      breathing: 'Rhythmic breathing matching pace intensity.'
+    }
+  },
+
+  // Triathlon Specific Exercises
+  'transition-practice-T1': {
+    id: 'transition-practice-T1',
+    name: 'Swim-to-Bike Transition (T1)',
+    category: 'triathlon',
+    equipment: ['wetsuit', 'bike', 'helmet', 'shoes', 'transition-setup'],
+    muscleGroups: ['full-body', 'transition-skills'],
+    difficulty: 3,
+    instructions: [
+      'Practice complete swim exit and transition sequence.',
+      'Remove wetsuit efficiently while moving.',
+      'Put on helmet, sunglasses, and bike shoes quickly.',
+      'Mount bike smoothly and begin cycling.',
+      'Practice various wetsuit removal techniques.',
+      'Include nutrition and hydration pickup if needed.',
+      'Time transitions and work on efficiency.',
+      'Practice in race-day clothing and conditions.'
+    ],
+    safetyNotes: [
+      'Practice in safe, controlled environment.',
+      'Ensure helmet is properly secured before mounting bike.',
+      'Be aware of other athletes during practice.'
+    ],
+    modifications: {
+      beginner: 'Focus on each step individually, then combine.',
+      advanced: 'Race simulation with time pressure and multiple transitions.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 90,
+      unit: 'seconds transition time'
+    },
+    coaching: {
+      setup: ['Organized transition area', 'All equipment ready'],
+      execution: ['Smooth, efficient movements', 'No wasted motion', 'Safety first'],
+      common_mistakes: ['Poor organization', 'Rushing and making errors', 'Forgetting helmet'],
+      breathing: 'Stay calm and controlled during transition stress.'
+    }
+  },
+
+  'transition-practice-T2': {
+    id: 'transition-practice-T2',
+    name: 'Bike-to-Run Transition (T2)',
+    category: 'triathlon',
+    equipment: ['bike', 'running-shoes', 'hat', 'transition-setup'],
+    muscleGroups: ['legs', 'transition-skills'],
+    difficulty: 2,
+    instructions: [
+      'Practice dismounting bike smoothly and safely.',
+      'Rack bike quickly and efficiently.',
+      'Change from bike shoes to running shoes rapidly.',
+      'Put on running hat/visor and grab nutrition if needed.',
+      'Begin running despite initial leg heaviness.',
+      'Practice running on legs immediately after cycling.',
+      'Include elastic laces or other time-saving devices.',
+      'Work on smooth, efficient movements.'
+    ],
+    safetyNotes: [
+      'Practice safe bike dismounting.',
+      'Don\'t rush to the point of making errors.',
+      'Be aware of other athletes in transition area.'
+    ],
+    modifications: {
+      beginner: 'Focus on smooth, safe transitions over speed.',
+      advanced: 'Race simulation with time goals and pressure.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'time',
+      defaultValue: 60,
+      unit: 'seconds transition time'
+    },
+    coaching: {
+      setup: ['Organized transition setup', 'Efficient layout'],
+      execution: ['Quick bike racking', 'Fast shoe change', 'Smooth exit to run'],
+      common_mistakes: ['Poor bike racking', 'Slow shoe change', 'Forgetting race items'],
+      breathing: 'Stay calm and efficient during transition.'
+    }
+  },
+
+  'open-water-swim-practice': {
+    id: 'open-water-swim-practice',
+    name: 'Open Water Swimming Practice',
+    category: 'triathlon',
+    equipment: ['open-water', 'wetsuit', 'safety-equipment'],
+    muscleGroups: ['full-body', 'navigation', 'confidence'],
+    difficulty: 4,
+    instructions: [
+      'Practice swimming in race-like open water conditions.',
+      'Work on sighting, navigation, and straight-line swimming.',
+      'Practice mass start simulations with other swimmers.',
+      'Include various weather and water conditions.',
+      'Practice wetsuit swimming and removal.',
+      'Work on drafting techniques and positioning.',
+      'Include race pace efforts in open water.',
+      'Build comfort and confidence in open water environment.'
+    ],
+    safetyNotes: [
+      'Never swim alone - use buddy system or guided sessions.',
+      'Be aware of water conditions, currents, and hazards.',
+      'Use proper safety equipment and protocols.',
+      'Check local regulations and conditions.'
+    ],
+    modifications: {
+      beginner: 'Calm conditions, close to shore, guided sessions.',
+      advanced: 'Varied conditions, longer distances, race simulations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 45,
+      unit: 'minutes open water'
+    },
+    coaching: {
+      setup: ['Safety first - proper supervision', 'Check conditions'],
+      execution: ['Regular sighting', 'Straight line swimming', 'Build confidence'],
+      common_mistakes: ['Poor sighting technique', 'Swimming off course', 'Inadequate safety'],
+      breathing: 'Bilateral breathing for navigation, adapt to conditions.'
+    }
+  },
+
+  'triathlon-simulation': {
+    id: 'triathlon-simulation',
+    name: 'Full Triathlon Simulation',
+    category: 'triathlon',
+    equipment: ['full-race-equipment'],
+    muscleGroups: ['full-body', 'race-preparation'],
+    difficulty: 4,
+    instructions: [
+      'Complete swim, bike, run in sequence at race intensities.',
+      'Practice all transitions and race-day procedures.',
+      'Include race-day nutrition and hydration strategies.',
+      'Wear race-day clothing and equipment.',
+      'Practice pacing strategies for each discipline.',
+      'Include mental preparation and race tactics.',
+      'Simulate race-day timing and logistics.',
+      'Build confidence for race-day execution.'
+    ],
+    safetyNotes: [
+      'Requires excellent fitness base and recovery ability.',
+      'Allow adequate recovery after simulation sessions.',
+      'Practice in safe, controlled environments.'
+    ],
+    modifications: {
+      beginner: 'Shorter distances, focus on completion over time.',
+      advanced: 'Full race distances at race intensities.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.01,
+    metrics: {
+      type: 'time',
+      defaultValue: 180,
+      unit: 'minutes total race time'
+    },
+    coaching: {
+      setup: ['Complete race day preparation', 'All systems tested'],
+      execution: ['Race-day strategies', 'Proper pacing', 'Efficient transitions'],
+      common_mistakes: ['Going too hard early', 'Poor transitions', 'Inadequate fueling'],
+      breathing: 'Race-specific breathing patterns for each discipline.'
+    }
+  },
+
+  // Cycling Advanced Exercises
+  'bike-aerobic-base': {
+    id: 'bike-aerobic-base',
+    name: 'Bike Aerobic Base Building',
+    category: 'cycling',
+    equipment: ['bike'],
+    muscleGroups: ['legs', 'cardiovascular', 'endurance'],
+    difficulty: 2,
+    instructions: [
+      'Ride at sustainable aerobic intensity (Zone 2).',
+      'Maintain conversational effort level throughout.',
+      'Focus on building aerobic engine and fat burning capacity.',
+      'Include variety in terrain and duration.',
+      'Ride 3-6 hours depending on fitness and goals.',
+      'Practice nutrition and hydration strategies.',
+      'Build weekly volume gradually over time.',
+      'Focus on enjoyment and consistency.'
+    ],
+    safetyNotes: [
+      'Monitor effort to stay in aerobic zone.',
+      'Build volume gradually to prevent overuse.',
+      'Ensure adequate nutrition for longer rides.'
+    ],
+    modifications: {
+      beginner: 'Start with 1-2 hours. Focus on comfort and bike handling.',
+      advanced: '4-6+ hours. Include varied terrain and conditions.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'time',
+      defaultValue: 180,
+      unit: 'minutes'
+    },
+    coaching: {
+      setup: ['Plan sustainable pace', 'Prepare nutrition'],
+      execution: ['Conversational effort', 'Consistent power', 'Efficient pedaling'],
+      common_mistakes: ['Riding too hard', 'Poor nutrition planning', 'Inconsistent effort'],
+      breathing: 'Easy, conversational breathing throughout.'
+    }
+  },
+
+  'bike-threshold-intervals': {
+    id: 'bike-threshold-intervals',
+    name: 'Bike Threshold Intervals',
+    category: 'cycling',
+    equipment: ['bike', 'power-meter'],
+    muscleGroups: ['legs', 'cardiovascular', 'lactate-system'],
+    difficulty: 4,
+    instructions: [
+      'Warm up thoroughly with progressive efforts.',
+      'Ride intervals at functional threshold power/pace.',
+      'Target sustainable hard effort (can maintain for ~1 hour).',
+      'Common intervals: 2x20min, 3x15min, 4x10min.',
+      'Take 2-5 minutes easy recovery between intervals.',
+      'Monitor power/heart rate to stay in threshold zone.',
+      'Focus on smooth, efficient pedaling at intensity.',
+      'Cool down with easy spinning.'
+    ],
+    safetyNotes: [
+      'Requires good fitness base before attempting.',
+      'Monitor effort closely to avoid going anaerobic.',
+      'Build threshold volume gradually.'
+    ],
+    modifications: {
+      beginner: 'Start with 2x10-12 minutes. Build duration gradually.',
+      advanced: 'Longer intervals or multiple sets. Include over/under work.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 40,
+      unit: 'minutes at threshold'
+    },
+    coaching: {
+      setup: ['Know threshold power/pace', 'Proper warm-up'],
+      execution: ['Sustainable hard effort', 'Consistent power', 'Smooth pedaling'],
+      common_mistakes: ['Going too hard early', 'Poor pacing', 'Inadequate warm-up'],
+      breathing: 'Hard but controlled breathing. Should be sustainable.'
+    }
+  },
+
+  'bike-VO2-max-intervals': {
+    id: 'bike-VO2-max-intervals',
+    name: 'Bike VO2 Max Intervals',
+    category: 'cycling',
+    equipment: ['bike', 'power-meter'],
+    muscleGroups: ['legs', 'cardiovascular', 'power'],
+    difficulty: 4,
+    instructions: [
+      'Warm up thoroughly including some higher intensity efforts.',
+      'Ride intervals at VO2 max power (105-120% of threshold).',
+      'Intervals typically 3-8 minutes in length.',
+      'Take recovery equal to or longer than interval time.',
+      'Focus on smooth power delivery at high intensity.',
+      'Common sets: 5x5min, 6x4min, 8x3min.',
+      'Monitor power to stay in VO2 max zone.',
+      'Cool down with extended easy spinning.'
+    ],
+    safetyNotes: [
+      'Requires excellent fitness base and recovery ability.',
+      'High intensity - allow adequate recovery between sessions.',
+      'Stop if unable to maintain target power.'
+    ],
+    modifications: {
+      beginner: 'Shorter intervals (3-4 min). Longer recovery periods.',
+      advanced: 'Longer intervals or complex sets. Shorter recovery ratios.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.01,
+    metrics: {
+      type: 'sets',
+      defaultValue: 5,
+      unit: 'VO2 intervals'
+    },
+    coaching: {
+      setup: ['Know VO2 max power', 'Excellent warm-up'],
+      execution: ['High intensity effort', 'Smooth power delivery', 'Full recovery'],
+      common_mistakes: ['Inadequate warm-up', 'Going too hard too early', 'Poor recovery'],
+      breathing: 'Very hard breathing during intervals. Full recovery between.'
+    }
+  },
+
+  'bike-climbing-repeats': {
+    id: 'bike-climbing-repeats',
+    name: 'Bike Climbing Repeats',
+    category: 'cycling',
+    equipment: ['bike'],
+    muscleGroups: ['legs', 'glutes', 'core', 'power'],
+    difficulty: 4,
+    instructions: [
+      'Find hill with 5-10% grade, 3-8 minutes long.',
+      'Warm up thoroughly before climbing efforts.',
+      'Climb at threshold to VO2 max intensity.',
+      'Practice both seated and standing climbing.',
+      'Focus on consistent power output and cadence.',
+      'Recover with easy spinning down hill or flat.',
+      'Include varied climbing intensities and durations.',
+      'Cool down with easy spinning.'
+    ],
+    safetyNotes: [
+      'Check traffic conditions for road climbing.',
+      'Build climbing volume gradually.',
+      'Monitor heart rate to avoid overexertion.'
+    ],
+    modifications: {
+      beginner: 'Moderate grades (4-6%). Shorter climbs (2-4 min).',
+      advanced: 'Steeper grades (8-12%+). Longer climbs (8-15 min).'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      unit: 'climbing repeats'
+    },
+    coaching: {
+      setup: ['Appropriate hill selection', 'Climbing position practice'],
+      execution: ['Consistent power output', 'Efficient climbing technique', 'Controlled breathing'],
+      common_mistakes: ['Poor gear selection', 'Inconsistent effort', 'Inadequate recovery'],
+      breathing: 'Hard climbing breathing. Control rhythm with pedal stroke.'
+    }
+  },
+
+  'bike-time-trial-pace': {
+    id: 'bike-time-trial-pace',
+    name: 'Bike Time Trial Pace',
+    category: 'cycling',
+    equipment: ['bike'],
+    muscleGroups: ['legs', 'core', 'aerobic-power'],
+    difficulty: 4,
+    instructions: [
+      'Practice riding at sustainable time trial intensity.',
+      'Target pace slightly below threshold (95-100% of FTP).',
+      'Focus on aerodynamic position and efficiency.',
+      'Practice even pacing and power distribution.',
+      'Include race simulation with nutrition practice.',
+      'Work on mental focus and concentration.',
+      'Practice different TT distances and strategies.',
+      'Monitor power, heart rate, and perceived effort.'
+    ],
+    safetyNotes: [
+      'Ensure aerodynamic position doesn\'t compromise safety.',
+      'Build TT position comfort gradually.',
+      'Practice in safe, controlled environment.'
+    ],
+    modifications: {
+      beginner: 'Start with shorter TT efforts (10-20 min). Focus on pacing.',
+      advanced: 'Longer TT simulations (40-180 min). Perfect race strategy.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'minutes at TT pace'
+    },
+    coaching: {
+      setup: ['Aerodynamic position', 'Power/pace targets'],
+      execution: ['Consistent sustainable effort', 'Efficient position', 'Even pacing'],
+      common_mistakes: ['Starting too hard', 'Poor position', 'Inconsistent effort'],
+      breathing: 'Controlled breathing that supports aerodynamic position.'
+    }
+  },
+};
+
+// Additional Strength Training Exercises
+const ADDITIONAL_STRENGTH_EXERCISES = {
+  'deadlift': {
+    id: 'deadlift',
+    name: 'Deadlift',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates', 'Optional: lifting straps'],
+    muscleGroups: ['Hamstrings', 'Glutes', 'Back', 'Core', 'Forearms'],
+    difficulty: 4,
+    instructions: [
+      'Stand with feet hip-width apart, bar over midfoot.',
+      'Bend at hips and knees to grip bar with hands just outside legs.',
+      'Keep chest up, shoulders back, and spine neutral.',
+      'Drive through heels and extend hips and knees simultaneously.',
+      'Keep bar close to body throughout the lift.',
+      'Stand tall with shoulders back at the top.',
+      'Lower bar by pushing hips back first, then bending knees.',
+      'Control the descent and reset for next repetition.'
+    ],
+    safetyNotes: [
+      'Learn proper form with lighter weights first.',
+      'Warm up thoroughly before heavy lifting.',
+      'Use proper lifting shoes or bare feet for stability.',
+      'Consider using lifting belt for heavy loads.'
+    ],
+    modifications: {
+      beginner: 'Start with bodyweight hip hinges, then empty barbell. Focus on form.',
+      advanced: 'Add weight progressively. Include deficit deadlifts and variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Bar over midfoot', 'Hip-width stance', 'Neutral spine'],
+      execution: ['Drive through heels', 'Bar stays close to body', 'Hips and knees extend together'],
+      common_mistakes: ['Bar drifts away from body', 'Rounding back', 'Knees cave inward'],
+      breathing: 'Deep breath at top, hold during lift, exhale at completion.'
+    }
+  },
+
+  'back-squat': {
+    id: 'back-squat',
+    name: 'Back Squat',
+    category: 'strength',
+    equipment: ['Barbell', 'Squat rack', 'Weight plates'],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Hamstrings', 'Core', 'Calves'],
+    difficulty: 4,
+    instructions: [
+      'Set bar in squat rack at chest height.',
+      'Position bar on upper back (high bar) or lower on rear delts (low bar).',
+      'Step out from rack with feet shoulder-width apart.',
+      'Initiate squat by pushing hips back and bending knees.',
+      'Descend until hip crease is below knee cap.',
+      'Drive through heels to return to standing position.',
+      'Keep chest up and knees tracking over toes.',
+      'Maintain neutral spine throughout movement.'
+    ],
+    safetyNotes: [
+      'Use safety bars set just below lowest squat position.',
+      'Warm up thoroughly with bodyweight squats.',
+      'Learn proper depth and form before adding weight.',
+      'Consider squat shoes for better ankle mobility.'
+    ],
+    modifications: {
+      beginner: 'Start with bodyweight squats, then empty barbell.',
+      advanced: 'Add weight progressively. Include pause squats and tempo variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Bar positioned correctly', 'Feet shoulder-width apart', 'Core engaged'],
+      execution: ['Hips back first', 'Knees track over toes', 'Full depth'],
+      common_mistakes: ['Knees cave inward', 'Forward lean', 'Insufficient depth'],
+      breathing: 'Deep breath at top, hold during descent and ascent, exhale at top.'
+    }
+  },
+
+  'front-squat': {
+    id: 'front-squat',
+    name: 'Front Squat',
+    category: 'strength',
+    equipment: ['Barbell', 'Squat rack', 'Weight plates'],
+    muscleGroups: ['Quadriceps', 'Core', 'Glutes', 'Upper Back'],
+    difficulty: 4,
+    instructions: [
+      'Set bar in rack at chest height.',
+      'Position bar across front of shoulders in front rack position.',
+      'Keep elbows high and upper arms parallel to ground.',
+      'Step out from rack with feet shoulder-width apart.',
+      'Descend by sitting back and down, keeping chest up.',
+      'Maintain high elbows and upright torso throughout.',
+      'Drive through heels to return to standing.',
+      'Keep core tight to support spine.'
+    ],
+    safetyNotes: [
+      'Master front rack position before adding weight.',
+      'Work on wrist and shoulder mobility.',
+      'Use safety bars for protection.',
+      'Start with lighter weights than back squat.'
+    ],
+    modifications: {
+      beginner: 'Practice front rack with empty bar. Use cross-arm grip if needed.',
+      advanced: 'Add weight gradually. Include pause front squats.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Front rack position', 'High elbows', 'Upright torso'],
+      execution: ['Maintain high elbows', 'Stay upright', 'Full depth'],
+      common_mistakes: ['Elbows drop', 'Forward lean', 'Poor front rack'],
+      breathing: 'Breath at top, brace core, controlled breathing throughout.'
+    }
   }
 };
 
+// Additional Strength Training Exercises Part 2
+const ADDITIONAL_STRENGTH_EXERCISES_2 = {
+  'overhead-squat': {
+    id: 'overhead-squat',
+    name: 'Overhead Squat',
+    category: 'strength',
+    equipment: ['Barbell or PVC pipe'],
+    muscleGroups: ['Full Body', 'Core', 'Shoulders', 'Mobility'],
+    difficulty: 4,
+    instructions: [
+      'Start with wide grip on barbell overhead.',
+      'Press bar overhead with arms locked out.',
+      'Keep bar directly over midfoot throughout movement.',
+      'Descend into squat while maintaining overhead position.',
+      'Keep chest up and arms locked throughout.',
+      'Drive through heels to return to standing.',
+      'Maintain active shoulders pressing bar up.',
+      'Focus on mobility and stability over weight.'
+    ],
+    safetyNotes: [
+      'Start with PVC pipe or empty barbell.',
+      'Requires excellent shoulder and hip mobility.',
+      'Progress very slowly with weight.',
+      'Consider overhead squat as assessment tool first.'
+    ],
+    modifications: {
+      beginner: 'Use PVC pipe. Work on mobility and basic pattern.',
+      advanced: 'Add light weight gradually. Focus on perfect form.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Wide grip', 'Bar overhead', 'Active shoulders'],
+      execution: ['Bar stays over midfoot', 'Arms locked', 'Full squat depth'],
+      common_mistakes: ['Bar drifts forward', 'Elbows bend', 'Poor depth'],
+      breathing: 'Controlled breathing while maintaining overhead stability.'
+    }
+  },
+
+  'bench-press': {
+    id: 'bench-press',
+    name: 'Bench Press',
+    category: 'strength',
+    equipment: ['Barbell', 'Bench', 'Weight plates', 'Safety bars/spotter'],
+    muscleGroups: ['Chest', 'Shoulders', 'Triceps'],
+    difficulty: 3,
+    instructions: [
+      'Lie on bench with eyes under the bar.',
+      'Grip bar slightly wider than shoulder-width.',
+      'Plant feet firmly on floor, engage core.',
+      'Unrack bar and position over chest.',
+      'Lower bar to chest with control.',
+      'Press bar back to starting position.',
+      'Keep shoulders back and down throughout.',
+      'Maintain tight core and stable base.'
+    ],
+    safetyNotes: [
+      'Always use safety bars or have a spotter.',
+      'Warm up with lighter weights.',
+      'Don\'t bounce bar off chest.',
+      'Learn proper unracking and reracking.'
+    ],
+    modifications: {
+      beginner: 'Start with empty bar or dumbbells. Focus on range of motion.',
+      advanced: 'Add weight progressively. Include pause bench and variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Eyes under bar', 'Feet planted', 'Shoulders back'],
+      execution: ['Controlled descent', 'Full range of motion', 'Stable base'],
+      common_mistakes: ['Bouncing off chest', 'Feet off ground', 'Shoulders rolling forward'],
+      breathing: 'Deep breath before descent, hold during press, exhale at top.'
+    }
+  },
+
+  'overhead-press': {
+    id: 'overhead-press',
+    name: 'Overhead Press',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates'],
+    muscleGroups: ['Shoulders', 'Triceps', 'Core', 'Upper Back'],
+    difficulty: 3,
+    instructions: [
+      'Start with bar in front rack position at shoulders.',
+      'Stand with feet hip-width apart, core engaged.',
+      'Press bar straight up, keeping it close to face.',
+      'Lock out arms overhead with bar over midfoot.',
+      'Lower bar with control back to starting position.',
+      'Keep core tight throughout movement.',
+      'Don\'t lean back excessively during press.',
+      'Maintain neutral spine alignment.'
+    ],
+    safetyNotes: [
+      'Warm up shoulders thoroughly before pressing.',
+      'Start with empty bar to learn movement.',
+      'Don\'t press behind neck.',
+      'Watch for lower back compensation.'
+    ],
+    modifications: {
+      beginner: 'Start with empty bar or dumbbells. Focus on vertical bar path.',
+      advanced: 'Add weight gradually. Include push press variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Front rack position', 'Core engaged', 'Neutral spine'],
+      execution: ['Straight bar path', 'Lock out overhead', 'Control descent'],
+      common_mistakes: ['Bar drifts forward', 'Excessive back arch', 'Incomplete lockout'],
+      breathing: 'Breath at bottom, hold during press, exhale at lockout.'
+    }
+  }
+};
+
+// Olympic Lifting Exercises
+const OLYMPIC_LIFTING_EXERCISES = {
+  'clean': {
+    id: 'clean',
+    name: 'Clean',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates', 'Olympic lifting platform'],
+    muscleGroups: ['Full Body', 'Power', 'Explosive'],
+    difficulty: 4,
+    instructions: [
+      'Start with bar on floor, feet hip-width apart.',
+      'Grip bar with hands just outside legs.',
+      'First pull: lift bar to knee level keeping back angle constant.',
+      'Second pull: explosive hip extension and shoulder shrug.',
+      'Pull yourself under the bar as it rises.',
+      'Catch bar in front rack position in quarter squat.',
+      'Stand up to complete the clean.',
+      'Lower bar to floor with control.'
+    ],
+    safetyNotes: [
+      'Learn technique with empty bar or PVC pipe.',
+      'Requires coaching for proper form.',
+      'Use Olympic lifting platform if available.',
+      'Build up weight very gradually.'
+    ],
+    modifications: {
+      beginner: 'Practice power cleans from hang position. Focus on technique.',
+      advanced: 'Full squat cleans, add weight progressively.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 3,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Proper deadlift setup', 'Hook grip recommended'],
+      execution: ['Two-phase pull', 'Explosive hip extension', 'Quick turnover'],
+      common_mistakes: ['Arm pull too early', 'Poor catch position', 'Incomplete hip extension'],
+      breathing: 'Deep breath before lift, controlled breathing throughout.'
+    }
+  },
+
+  'snatch': {
+    id: 'snatch',
+    name: 'Snatch',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates', 'Olympic lifting platform'],
+    muscleGroups: ['Full Body', 'Power', 'Mobility', 'Coordination'],
+    difficulty: 4,
+    instructions: [
+      'Start with wide grip (arms straight when bar at hip crease).',
+      'Begin with same deadlift position as clean.',
+      'First pull to knee level maintaining back angle.',
+      'Second pull with explosive hip extension.',
+      'Pull yourself under bar as it rises overhead.',
+      'Catch bar overhead in deep squat position.',
+      'Stand up with bar locked out overhead.',
+      'Lower bar to floor with control.'
+    ],
+    safetyNotes: [
+      'Most technical lift - requires extensive coaching.',
+      'Start with overhead squat mobility work.',
+      'Use PVC pipe for months before adding weight.',
+      'Requires Olympic lifting platform and bumper plates.'
+    ],
+    modifications: {
+      beginner: 'Power snatch from hang, overhead squat work.',
+      advanced: 'Full squat snatch, complex training.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.01,
+    metrics: {
+      type: 'reps',
+      defaultValue: 2,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Wide grip', 'Good deadlift position', 'Active shoulders'],
+      execution: ['Explosive second pull', 'Quick turnover', 'Stable overhead catch'],
+      common_mistakes: ['Grip too narrow', 'Poor overhead position', 'Incomplete hip extension'],
+      breathing: 'Deep breath before lift, hold during explosive phase.'
+    }
+  },
+
+  'clean-and-jerk': {
+    id: 'clean-and-jerk',
+    name: 'Clean and Jerk',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates', 'Olympic platform'],
+    muscleGroups: ['Full Body', 'Power', 'Coordination'],
+    difficulty: 4,
+    instructions: [
+      'Perform clean as described above.',
+      'Rest bar in front rack position briefly.',
+      'Dip knees slightly keeping torso upright.',
+      'Drive explosively through legs to launch bar up.',
+      'Split or squat under bar as it rises.',
+      'Catch bar locked out overhead.',
+      'Recover feet to parallel position.',
+      'Lower bar to shoulders, then to floor.'
+    ],
+    safetyNotes: [
+      'Master clean and overhead press first.',
+      'Learn split jerk footwork without weight.',
+      'Requires extensive technical coaching.',
+      'Progress weight very slowly.'
+    ],
+    modifications: {
+      beginner: 'Power clean + push press. Focus on components.',
+      advanced: 'Full clean + split jerk, add weight gradually.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.01,
+    metrics: {
+      type: 'reps',
+      defaultValue: 2,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Master individual components', 'Proper timing'],
+      execution: ['Clean, then reset', 'Explosive jerk drive', 'Stable overhead catch'],
+      common_mistakes: ['Poor front rack position', 'Timing issues', 'Incomplete lockout'],
+      breathing: 'Breathe between clean and jerk, hold during jerk.'
+    }
+  }
+};
+
+// Additional Strength Variations
+const STRENGTH_VARIATIONS = {
+  'thrusters': {
+    id: 'thrusters',
+    name: 'Thrusters',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates'],
+    muscleGroups: ['Full Body', 'Legs', 'Shoulders', 'Core'],
+    difficulty: 3,
+    instructions: [
+      'Start with bar in front rack position.',
+      'Perform a front squat to full depth.',
+      'As you stand up, use leg drive to help press bar overhead.',
+      'Lock out arms completely at the top.',
+      'Lower bar back to front rack position.',
+      'Immediately descend into next squat.',
+      'Keep core engaged throughout entire movement.',
+      'Use momentum from legs to assist press.'
+    ],
+    safetyNotes: [
+      'Master front squat and overhead press separately first.',
+      'Start with lighter weight than either movement alone.',
+      'Maintain good front rack position throughout.'
+    ],
+    modifications: {
+      beginner: 'Use empty bar or dumbbells. Break into components if needed.',
+      advanced: 'Add weight or increase reps for conditioning.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Good front rack', 'Core engaged', 'Feet shoulder-width'],
+      execution: ['Full squat depth', 'Explosive stand', 'Complete lockout'],
+      common_mistakes: ['Poor front rack', 'Pressing without leg drive', 'Incomplete lockout'],
+      breathing: 'Breathe at top, hold during squat, exhale during press.'
+    }
+  },
+
+  'push-jerk': {
+    id: 'push-jerk',
+    name: 'Push Jerk',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates'],
+    muscleGroups: ['Shoulders', 'Legs', 'Core', 'Power'],
+    difficulty: 4,
+    instructions: [
+      'Start with bar in front rack position.',
+      'Dip knees keeping torso perfectly upright.',
+      'Drive explosively through legs to launch bar.',
+      'As bar rises, drop into partial squat under it.',
+      'Catch bar with arms locked out overhead.',
+      'Stand up to complete the movement.',
+      'Lower bar to shoulders with control.',
+      'Reset for next repetition.'
+    ],
+    safetyNotes: [
+      'Master push press before attempting push jerk.',
+      'Practice receiving position without weight.',
+      'Requires good timing and coordination.'
+    ],
+    modifications: {
+      beginner: 'Focus on push press, practice overhead squat separately.',
+      advanced: 'Progress to split jerk, increase weight gradually.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 4,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Perfect front rack', 'Upright dip position'],
+      execution: ['Explosive drive', 'Quick drop under', 'Stable catch'],
+      common_mistakes: ['Poor dip position', 'Slow turnover', 'Unstable catch'],
+      breathing: 'Breathe before dip, hold during explosive phase.'
+    }
+  },
+
+  'split-jerk': {
+    id: 'split-jerk',
+    name: 'Split Jerk',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates'],
+    muscleGroups: ['Full Body', 'Power', 'Balance', 'Coordination'],
+    difficulty: 4,
+    instructions: [
+      'Start with bar in front rack position.',
+      'Dip knees keeping torso vertical.',
+      'Drive explosively through legs.',
+      'As bar rises, split feet front and back.',
+      'Front foot steps forward, back foot steps back.',
+      'Catch bar overhead with arms locked.',
+      'Recover by stepping front foot back halfway.',
+      'Then step back foot forward to parallel.'
+    ],
+    safetyNotes: [
+      'Practice split position without weight first.',
+      'Master push jerk before split jerk.',
+      'Requires excellent timing and foot speed.'
+    ],
+    modifications: {
+      beginner: 'Practice split position holds. Use push jerk first.',
+      advanced: 'Add weight gradually. Include from blocks.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 3,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Good front rack', 'Know split stance'],
+      execution: ['Explosive drive', 'Fast split', 'Stable catch'],
+      common_mistakes: ['Poor split timing', 'Uneven split stance', 'Unstable catch'],
+      breathing: 'Deep breath before dip, hold during split.'
+    }
+  }
+};
+
+// Deadlift Variations
+const DEADLIFT_VARIATIONS = {
+  'romanian-deadlift': {
+    id: 'romanian-deadlift',
+    name: 'Romanian Deadlift',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates'],
+    muscleGroups: ['Hamstrings', 'Glutes', 'Lower Back', 'Core'],
+    difficulty: 3,
+    instructions: [
+      'Start standing with bar at hip level.',
+      'Keep knees slightly bent throughout movement.',
+      'Push hips back and lower bar along legs.',
+      'Keep bar close to body at all times.',
+      'Lower until you feel stretch in hamstrings.',
+      'Drive hips forward to return to starting position.',
+      'Keep shoulders back and chest up.',
+      'Focus on hip hinge movement pattern.'
+    ],
+    safetyNotes: [
+      'Don\'t round back during movement.',
+      'Start with lighter weight than regular deadlift.',
+      'Focus on hamstring stretch, not maximum depth.'
+    ],
+    modifications: {
+      beginner: 'Start with empty bar or dumbbells. Focus on hip hinge.',
+      advanced: 'Add weight gradually. Include single leg variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Bar at hips', 'Slight knee bend', 'Shoulders back'],
+      execution: ['Push hips back', 'Bar stays close', 'Feel hamstring stretch'],
+      common_mistakes: ['Squatting instead of hinging', 'Bar drifts forward', 'Rounding back'],
+      breathing: 'Breathe at top, controlled breathing during movement.'
+    }
+  },
+
+  'sumo-deadlift': {
+    id: 'sumo-deadlift',
+    name: 'Sumo Deadlift',
+    category: 'strength',
+    equipment: ['Barbell', 'Weight plates'],
+    muscleGroups: ['Glutes', 'Quadriceps', 'Hamstrings', 'Back'],
+    difficulty: 4,
+    instructions: [
+      'Stand with feet wider than shoulder-width apart.',
+      'Toes pointed out at 30-45 degree angle.',
+      'Grip bar with hands inside legs, narrow grip.',
+      'Keep chest up and back straight.',
+      'Drive through heels and extend hips and knees.',
+      'Keep bar close to body throughout lift.',
+      'Stand tall at the top with shoulders back.',
+      'Lower with control maintaining form.'
+    ],
+    safetyNotes: [
+      'Requires good hip mobility for wide stance.',
+      'Start with conventional deadlift form first.',
+      'Gradually work into wider stance.'
+    ],
+    modifications: {
+      beginner: 'Start with moderate stance width. Focus on form.',
+      advanced: 'Optimize stance width. Add deficit or block pulls.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Wide stance', 'Toes out', 'Narrow grip'],
+      execution: ['Drive through heels', 'Bar close to body', 'Chest up'],
+      common_mistakes: ['Stance too wide', 'Knees cave in', 'Bar drifts forward'],
+      breathing: 'Deep breath at top, hold during lift, exhale at completion.'
+    }
+  },
+
+  'good-morning': {
+    id: 'good-morning',
+    name: 'Good Morning',
+    category: 'strength',
+    equipment: ['Barbell', 'Squat rack'],
+    muscleGroups: ['Hamstrings', 'Glutes', 'Lower Back', 'Core'],
+    difficulty: 3,
+    instructions: [
+      'Position bar on upper back like back squat.',
+      'Stand with feet hip-width apart.',
+      'Keep knees slightly bent throughout.',
+      'Hinge at hips pushing them back.',
+      'Lower torso until parallel to floor or comfortable stretch.',
+      'Keep back straight and chest up.',
+      'Drive hips forward to return to standing.',
+      'Maintain neutral spine throughout.'
+    ],
+    safetyNotes: [
+      'Start with empty bar or bodyweight.',
+      'Don\'t round back during movement.',
+      'Stop at comfortable stretch, don\'t force depth.'
+    ],
+    modifications: {
+      beginner: 'Start with bodyweight, hands on hips.',
+      advanced: 'Add weight gradually. Include seated variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Bar on upper back', 'Hip-width stance', 'Slight knee bend'],
+      execution: ['Hinge at hips', 'Keep back straight', 'Drive hips forward'],
+      common_mistakes: ['Rounding back', 'Too much knee bend', 'Going too deep'],
+      breathing: 'Breathe at top, controlled breathing during hinge.'
+    }
+  }
+};
+
+
+
 // Merge sport-specific exercises into main database
-Object.assign(EXERCISE_DATABASE, SPORT_SPECIFIC_EXERCISES); 
+Object.assign(EXERCISE_DATABASE, SPORT_SPECIFIC_EXERCISES);
+Object.assign(EXERCISE_DATABASE, ADDITIONAL_STRENGTH_EXERCISES);
+Object.assign(EXERCISE_DATABASE, ADDITIONAL_STRENGTH_EXERCISES_2);
+Object.assign(EXERCISE_DATABASE, OLYMPIC_LIFTING_EXERCISES);
+Object.assign(EXERCISE_DATABASE, STRENGTH_VARIATIONS);
+Object.assign(EXERCISE_DATABASE, DEADLIFT_VARIATIONS);
+
+// Key Bodyweight Exercises
+const KEY_BODYWEIGHT_EXERCISES = {
+  'pull-ups': {
+    id: 'pull-ups',
+    name: 'Pull-ups',
+    category: 'bodyweight',
+    equipment: ['Pull-up bar'],
+    muscleGroups: ['Lats', 'Rhomboids', 'Biceps', 'Core'],
+    difficulty: 4,
+    instructions: [
+      'Hang from bar with overhand grip, hands shoulder-width apart.',
+      'Start from dead hang with arms fully extended.',
+      'Pull body up until chin clears the bar.',
+      'Focus on pulling elbows down and back.',
+      'Lower with control to full arm extension.',
+      'Keep core engaged throughout movement.',
+      'Avoid swinging or kipping motions.',
+      'Complete full range of motion each rep.'
+    ],
+    safetyNotes: [
+      'Build up slowly if new to pull-ups.',
+      'Use assistance bands or assisted machine if needed.',
+      'Don\'t drop from top position.'
+    ],
+    modifications: {
+      beginner: 'Use assistance bands, negative-only reps, or assisted machine.',
+      advanced: 'Add weight with belt or vest. Include L-sit pull-ups.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Dead hang start', 'Overhand grip', 'Core engaged'],
+      execution: ['Pull elbows down', 'Chin over bar', 'Control descent'],
+      common_mistakes: ['Partial range of motion', 'Swinging', 'Dropping down'],
+      breathing: 'Exhale during pull up, inhale during lowering.'
+    }
+  },
+
+  'muscle-ups': {
+    id: 'muscle-ups',
+    name: 'Muscle-ups',
+    category: 'bodyweight',
+    equipment: ['Pull-up bar or rings'],
+    muscleGroups: ['Full Upper Body', 'Core', 'Power'],
+    difficulty: 4,
+    instructions: [
+      'Start in dead hang position.',
+      'Perform explosive pull-up bringing chest to bar.',
+      'At top of pull, lean forward and transition over bar.',
+      'Press down on bar to complete the dip portion.',
+      'Finish with arms locked out above the bar.',
+      'Lower with control back to dead hang.',
+      'Requires significant upper body strength and power.',
+      'Practice transition phase extensively.'
+    ],
+    safetyNotes: [
+      'Master pull-ups and dips before attempting.',
+      'Start with assisted or banded versions.',
+      'High skill movement requiring progression.'
+    ],
+    modifications: {
+      beginner: 'Practice pull-ups, dips, and transition separately.',
+      advanced: 'Ring muscle-ups, weighted muscle-ups.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.01,
+    metrics: {
+      type: 'reps',
+      defaultValue: 3,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Strong dead hang', 'Explosive mindset'],
+      execution: ['Explosive pull', 'Quick transition', 'Strong dip finish'],
+      common_mistakes: ['Insufficient pull-up strength', 'Poor transition', 'Kipping too much'],
+      breathing: 'Deep breath before, controlled breathing throughout.'
+    }
+  }
+};
+
+Object.assign(EXERCISE_DATABASE, KEY_BODYWEIGHT_EXERCISES);
+
+// Additional Bodyweight and Plyometric Exercises
+const ADDITIONAL_BODYWEIGHT_PLYOMETRIC = {
+  'duck-walk': {
+    id: 'duck-walk',
+    name: 'Duck Walk',
+    category: 'bodyweight',
+    equipment: ['Floor space'],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Calves', 'Balance'],
+    difficulty: 3,
+    instructions: [
+      'Squat down keeping heels on ground.',
+      'Keep chest up and core engaged.',
+      'Walk forward in squat position.',
+      'Take small steps while maintaining squat depth.',
+      'Keep knees tracking over toes.',
+      'Maintain balance throughout movement.',
+      'Keep back straight and chest up.',
+      'Can walk forward, backward, or sideways.'
+    ],
+    safetyNotes: [
+      'Requires good ankle and hip mobility.',
+      'Start with short distances.',
+      'Don\'t force depth if mobility is limited.'
+    ],
+    modifications: {
+      beginner: 'Partial squat depth, use wall for balance.',
+      advanced: 'Deeper squat, longer distances, add speed.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'distance',
+      defaultValue: 20,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Deep squat position', 'Heels down', 'Chest up'],
+      execution: ['Small steps', 'Maintain depth', 'Good balance'],
+      common_mistakes: ['Heels come up', 'Poor balance', 'Insufficient depth'],
+      breathing: 'Controlled breathing while maintaining squat.'
+    }
+  },
+
+  'burpee-broad-jumps': {
+    id: 'burpee-broad-jumps',
+    name: 'Burpee Broad Jumps',
+    category: 'plyometric',
+    equipment: ['Floor space'],
+    muscleGroups: ['Full Body', 'Power', 'Cardio'],
+    difficulty: 4,
+    instructions: [
+      'Start standing, then squat down and place hands on floor.',
+      'Jump feet back to plank position.',
+      'Perform push-up (optional).',
+      'Jump feet back toward hands.',
+      'Instead of jumping up, perform broad jump forward.',
+      'Land in squat position and immediately begin next burpee.',
+      'Focus on distance in broad jump.',
+      'Maintain good form throughout complex movement.'
+    ],
+    safetyNotes: [
+      'Ensure adequate space for broad jumps.',
+      'Land softly to protect joints.',
+      'High intensity exercise - monitor fatigue.'
+    ],
+    modifications: {
+      beginner: 'Smaller broad jumps, omit push-up.',
+      advanced: 'Increase broad jump distance, add push-up.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Adequate space', 'Good starting position'],
+      execution: ['Complete burpee', 'Explosive broad jump', 'Soft landing'],
+      common_mistakes: ['Poor burpee form', 'Insufficient jump distance', 'Hard landings'],
+      breathing: 'Controlled breathing through complex movement.'
+    }
+  },
+
+  'box-jumps': {
+    id: 'box-jumps',
+    name: 'Box Jumps',
+    category: 'plyometric',
+    equipment: ['Plyometric box or platform'],
+    muscleGroups: ['Legs', 'Glutes', 'Power', 'Coordination'],
+    difficulty: 3,
+    instructions: [
+      'Stand facing box at arm\'s length distance.',
+      'Squat down and swing arms back.',
+      'Explosively jump up onto box.',
+      'Land softly with both feet on box.',
+      'Stand up completely on top of box.',
+      'Step down carefully, don\'t jump down.',
+      'Reset and repeat for next jump.',
+      'Focus on landing mechanics and safety.'
+    ],
+    safetyNotes: [
+      'Start with lower box height.',
+      'Always step down, never jump down.',
+      'Ensure box is stable and appropriate height.'
+    ],
+    modifications: {
+      beginner: 'Lower box height, focus on landing technique.',
+      advanced: 'Higher box, single leg variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Appropriate box height', 'Safe distance', 'Stable platform'],
+      execution: ['Explosive jump', 'Soft landing', 'Step down safely'],
+      common_mistakes: ['Box too high', 'Jumping down', 'Poor landing'],
+      breathing: 'Exhale during jump, controlled breathing on box.'
+    }
+  }
+};
+
+// Functional Movement Exercises
+const FUNCTIONAL_EXERCISES = {
+  'wall-balls': {
+    id: 'wall-balls',
+    name: 'Wall Balls',
+    category: 'functional',
+    equipment: ['Medicine ball', 'Wall target'],
+    muscleGroups: ['Full Body', 'Legs', 'Shoulders', 'Core'],
+    difficulty: 3,
+    instructions: [
+      'Hold medicine ball at chest level.',
+      'Stand facing wall with feet shoulder-width apart.',
+      'Squat down keeping ball at chest.',
+      'Explosively stand and throw ball to target on wall.',
+      'Catch ball on the way down.',
+      'Immediately descend into next squat.',
+      'Target should be 9-10 feet high.',
+      'Maintain rhythm and consistent target hits.'
+    ],
+    safetyNotes: [
+      'Use appropriate ball weight for fitness level.',
+      'Stand proper distance from wall.',
+      'Watch for ball rebounds.'
+    ],
+    modifications: {
+      beginner: 'Lighter ball, lower target, pause between reps.',
+      advanced: 'Heavier ball, higher target, faster pace.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Proper distance from wall', 'Ball at chest', 'Target marked'],
+      execution: ['Full squat depth', 'Explosive throw', 'Catch and continue'],
+      common_mistakes: ['Insufficient squat depth', 'Missing target', 'Poor rhythm'],
+      breathing: 'Exhale during throw, inhale during squat.'
+    }
+  },
+
+  'farmers-carry': {
+    id: 'farmers-carry',
+    name: 'Farmers Carry',
+    category: 'functional',
+    equipment: ['Heavy dumbbells or farmers handles'],
+    muscleGroups: ['Grip', 'Core', 'Traps', 'Legs'],
+    difficulty: 2,
+    instructions: [
+      'Pick up heavy weights in each hand.',
+      'Stand tall with shoulders back.',
+      'Walk forward maintaining good posture.',
+      'Keep core engaged throughout.',
+      'Take normal length steps.',
+      'Don\'t let weights sway or bang against legs.',
+      'Maintain grip throughout walk.',
+      'Set weights down safely when complete.'
+    ],
+    safetyNotes: [
+      'Start with manageable weight.',
+      'Use proper lifting technique to pick up weights.',
+      'Clear path for walking.'
+    ],
+    modifications: {
+      beginner: 'Lighter weights, shorter distances.',
+      advanced: 'Heavier weights, longer distances, uneven loads.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'distance',
+      defaultValue: 40,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Appropriate weight selection', 'Clear walking path'],
+      execution: ['Tall posture', 'Stable grip', 'Normal walking pace'],
+      common_mistakes: ['Slouching', 'Swaying weights', 'Rushing pace'],
+      breathing: 'Steady breathing while walking.'
+    }
+  }
+};
+
+Object.assign(EXERCISE_DATABASE, ADDITIONAL_BODYWEIGHT_PLYOMETRIC);
+Object.assign(EXERCISE_DATABASE, FUNCTIONAL_EXERCISES);
+
+// More Plyometric Exercises
+const MORE_PLYOMETRIC_EXERCISES = {
+  'burpee-box-jumps': {
+    id: 'burpee-box-jumps',
+    name: 'Burpee Box Jumps',
+    category: 'plyometric',
+    equipment: ['Plyometric box', 'Floor space'],
+    muscleGroups: ['Full Body', 'Power', 'Cardio'],
+    difficulty: 4,
+    instructions: [
+      'Start standing in front of box.',
+      'Perform complete burpee (squat, plank, push-up, squat).',
+      'Instead of jumping up, jump onto box.',
+      'Land softly on box with both feet.',
+      'Stand completely upright on box.',
+      'Step down from box safely.',
+      'Immediately begin next burpee.',
+      'Maintain form throughout complex movement.'
+    ],
+    safetyNotes: [
+      'Ensure box is stable and appropriate height.',
+      'Step down from box, don\'t jump.',
+      'Very high intensity - monitor fatigue carefully.'
+    ],
+    modifications: {
+      beginner: 'Lower box, omit push-up from burpee.',
+      advanced: 'Higher box, faster pace.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Stable box', 'Adequate space', 'Safety first'],
+      execution: ['Complete burpee', 'Explosive box jump', 'Safe step down'],
+      common_mistakes: ['Poor burpee form', 'Unsafe box jump', 'Jumping down'],
+      breathing: 'Controlled breathing through complex movement sequence.'
+    }
+  },
+
+  'broad-jump': {
+    id: 'broad-jump',
+    name: 'Broad Jump',
+    category: 'plyometric',
+    equipment: ['Floor space'],
+    muscleGroups: ['Legs', 'Glutes', 'Power', 'Core'],
+    difficulty: 3,
+    instructions: [
+      'Start with feet shoulder-width apart.',
+      'Squat down and swing arms back.',
+      'Explosively jump forward for maximum distance.',
+      'Extend hips, knees, and ankles fully.',
+      'Swing arms forward during jump.',
+      'Land softly with bent knees.',
+      'Measure distance from start to back of heels.',
+      'Reset and repeat for multiple jumps.'
+    ],
+    safetyNotes: [
+      'Ensure adequate landing space.',
+      'Focus on soft landing mechanics.',
+      'Start with submaximal efforts to warm up.'
+    ],
+    modifications: {
+      beginner: 'Focus on technique over distance.',
+      advanced: 'Multiple broad jumps in sequence.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Adequate space', 'Proper starting position'],
+      execution: ['Explosive forward jump', 'Full extension', 'Soft landing'],
+      common_mistakes: ['Poor takeoff angle', 'Hard landing', 'Insufficient arm swing'],
+      breathing: 'Exhale during explosive jump phase.'
+    }
+  }
+};
+
+Object.assign(EXERCISE_DATABASE, MORE_PLYOMETRIC_EXERCISES);
+
+// Additional Plyometric and Movement Exercises
+const ADDITIONAL_MOVEMENT_EXERCISES = {
+  'lateral-bounds': {
+    id: 'lateral-bounds',
+    name: 'Lateral Bounds',
+    category: 'plyometric',
+    equipment: ['Floor space'],
+    muscleGroups: ['Legs', 'Glutes', 'Lateral stability', 'Power'],
+    difficulty: 3,
+    instructions: [
+      'Start standing on one leg.',
+      'Bound laterally to the opposite leg.',
+      'Land softly on outside leg.',
+      'Stick the landing briefly.',
+      'Immediately bound back to starting leg.',
+      'Focus on distance and control.',
+      'Maintain good landing mechanics.',
+      'Keep core engaged throughout.'
+    ],
+    safetyNotes: [
+      'Start with shorter bounds.',
+      'Focus on landing control.',
+      'Ensure adequate space for lateral movement.'
+    ],
+    modifications: {
+      beginner: 'Shorter bounds, pause between reps.',
+      advanced: 'Longer bounds, continuous movement.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions each direction'
+    },
+    coaching: {
+      setup: ['Adequate lateral space', 'Single leg starting position'],
+      execution: ['Explosive lateral push', 'Controlled landing', 'Stick position'],
+      common_mistakes: ['Poor landing control', 'Insufficient lateral distance', 'Loss of balance'],
+      breathing: 'Controlled breathing with explosive efforts.'
+    }
+  },
+
+  'depth-jumps': {
+    id: 'depth-jumps',
+    name: 'Depth Jumps',
+    category: 'plyometric',
+    equipment: ['Elevated platform', 'Landing area'],
+    muscleGroups: ['Legs', 'Reactive strength', 'Power', 'Coordination'],
+    difficulty: 4,
+    instructions: [
+      'Stand on edge of platform (12-18 inches high).',
+      'Step off platform (don\'t jump off).',
+      'Land on both feet simultaneously.',
+      'Immediately jump up as high as possible.',
+      'Focus on minimal ground contact time.',
+      'Land softly from the rebound jump.',
+      'Reset and repeat.',
+      'Emphasize reactive strength development.'
+    ],
+    safetyNotes: [
+      'Start with lower platform heights.',
+      'Ensure safe landing surface.',
+      'Advanced exercise - requires good strength base.'
+    ],
+    modifications: {
+      beginner: 'Lower platform (6-8 inches), focus on landing.',
+      advanced: 'Higher platform, faster reactive jumps.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 5,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Appropriate platform height', 'Safe landing area'],
+      execution: ['Step off platform', 'Quick ground contact', 'Explosive rebound'],
+      common_mistakes: ['Jumping off platform', 'Too much ground contact', 'Poor landing'],
+      breathing: 'Quick exhale during rebound jump.'
+    }
+  },
+
+  'single-leg-hops': {
+    id: 'single-leg-hops',
+    name: 'Single Leg Hops',
+    category: 'plyometric',
+    equipment: ['Floor space'],
+    muscleGroups: ['Single leg strength', 'Balance', 'Power', 'Stability'],
+    difficulty: 3,
+    instructions: [
+      'Stand on one leg with slight knee bend.',
+      'Hop forward on same leg.',
+      'Land softly on same leg.',
+      'Immediately hop again.',
+      'Maintain balance and control.',
+      'Complete set on one leg before switching.',
+      'Focus on consistent hop distance.',
+      'Keep core engaged for stability.'
+    ],
+    safetyNotes: [
+      'Start with shorter hops.',
+      'Focus on landing control over distance.',
+      'Build single leg strength gradually.'
+    ],
+    modifications: {
+      beginner: 'Shorter hops, pause between reps.',
+      advanced: 'Longer hops, lateral and backward variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 6,
+      unit: 'repetitions each leg'
+    },
+    coaching: {
+      setup: ['Single leg balance', 'Slight knee bend'],
+      execution: ['Controlled hopping', 'Soft landings', 'Maintain balance'],
+      common_mistakes: ['Hard landings', 'Loss of balance', 'Inconsistent distance'],
+      breathing: 'Rhythmic breathing with hop pattern.'
+    }
+  },
+
+  'tuck-jumps': {
+    id: 'tuck-jumps',
+    name: 'Tuck Jumps',
+    category: 'plyometric',
+    equipment: ['Floor space'],
+    muscleGroups: ['Legs', 'Core', 'Hip flexors', 'Power'],
+    difficulty: 4,
+    instructions: [
+      'Start in athletic position.',
+      'Jump up explosively.',
+      'Bring knees up toward chest.',
+      'Grab knees briefly at top of jump.',
+      'Release and extend legs for landing.',
+      'Land softly with bent knees.',
+      'Immediately prepare for next jump.',
+      'Focus on maximum height and knee lift.'
+    ],
+    safetyNotes: [
+      'High intensity exercise.',
+      'Focus on soft landings.',
+      'Monitor fatigue carefully.'
+    ],
+    modifications: {
+      beginner: 'Lower knee lift, pause between reps.',
+      advanced: 'Higher jumps, faster tempo.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Athletic starting position', 'Adequate ceiling height'],
+      execution: ['Explosive jump', 'High knee lift', 'Soft landing'],
+      common_mistakes: ['Insufficient knee lift', 'Hard landings', 'Poor timing'],
+      breathing: 'Exhale during explosive jump phase.'
+    }
+  },
+
+  'kettlebell-swings': {
+    id: 'kettlebell-swings',
+    name: 'Kettlebell Swings',
+    category: 'kettlebell',
+    equipment: ['Kettlebell'],
+    muscleGroups: ['Glutes', 'Hamstrings', 'Core', 'Shoulders'],
+    difficulty: 3,
+    instructions: [
+      'Stand with feet slightly wider than shoulder-width.',
+      'Hold kettlebell with both hands.',
+      'Hinge at hips and swing kettlebell between legs.',
+      'Drive hips forward explosively.',
+      'Swing kettlebell to chest/shoulder height.',
+      'Let kettlebell fall naturally.',
+      'Catch with hip hinge movement.',
+      'Maintain neutral spine throughout.'
+    ],
+    safetyNotes: [
+      'Learn proper hip hinge pattern first.',
+      'Start with lighter weight.',
+      'Ensure adequate space around you.'
+    ],
+    modifications: {
+      beginner: 'Lighter kettlebell, focus on hip hinge pattern.',
+      advanced: 'Heavier weight, single arm variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 15,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Wide stance', 'Kettlebell between legs', 'Neutral spine'],
+      execution: ['Hip hinge movement', 'Explosive hip drive', 'Control the swing'],
+      common_mistakes: ['Squatting instead of hinging', 'Using arms to lift', 'Poor posture'],
+      breathing: 'Exhale during hip drive, inhale during hinge.'
+    }
+  },
+
+  'kettlebell-goblet-squat': {
+    id: 'kettlebell-goblet-squat',
+    name: 'Kettlebell Goblet Squat',
+    category: 'kettlebell',
+    equipment: ['Kettlebell'],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Core', 'Upper back'],
+    difficulty: 2,
+    instructions: [
+      'Hold kettlebell at chest level by the horns.',
+      'Stand with feet shoulder-width apart.',
+      'Keep elbows pointing down.',
+      'Squat down keeping chest up.',
+      'Go as deep as mobility allows.',
+      'Drive through heels to stand up.',
+      'Keep kettlebell close to body.',
+      'Maintain upright torso throughout.'
+    ],
+    safetyNotes: [
+      'Start with lighter weight to learn movement.',
+      'Focus on mobility and depth.',
+      'Keep core engaged throughout.'
+    ],
+    modifications: {
+      beginner: 'Lighter weight, partial depth if needed.',
+      advanced: 'Heavier weight, pause squats, single leg variations.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Kettlebell at chest', 'Elbows down', 'Feet shoulder-width'],
+      execution: ['Deep squat', 'Chest up', 'Drive through heels'],
+      common_mistakes: ['Forward lean', 'Shallow depth', 'Elbows flaring'],
+      breathing: 'Inhale down, exhale up.'
+    }
+  },
+
+  'kettlebell-turkish-get-up': {
+    id: 'kettlebell-turkish-get-up',
+    name: 'Turkish Get-Up',
+    category: 'kettlebell',
+    equipment: ['Kettlebell'],
+    muscleGroups: ['Full body', 'Core', 'Stability', 'Coordination'],
+    difficulty: 4,
+    instructions: [
+      'Lie on back with kettlebell in right hand.',
+      'Press kettlebell straight up.',
+      'Roll to left elbow, then left hand.',
+      'Bridge up and sweep left leg under.',
+      'Come to kneeling position.',
+      'Stand up while keeping kettlebell overhead.',
+      'Reverse the movement to return to lying.',
+      'Complete all reps on one side before switching.'
+    ],
+    safetyNotes: [
+      'Learn movement without weight first.',
+      'Move slowly and controlled.',
+      'Keep eyes on kettlebell throughout.'
+    ],
+    modifications: {
+      beginner: 'Practice without weight, break into segments.',
+      advanced: 'Heavier weight, continuous movement.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 3,
+      unit: 'repetitions each side'
+    },
+    coaching: {
+      setup: ['Lying position', 'Kettlebell pressed up', 'Eyes on weight'],
+      execution: ['Slow controlled movement', 'Stable overhead position', 'Smooth transitions'],
+      common_mistakes: ['Rushing movement', 'Looking away from weight', 'Poor transitions'],
+      breathing: 'Controlled breathing throughout complex movement.'
+    }
+  },
+
+  'kettlebell-clean': {
+    id: 'kettlebell-clean',
+    name: 'Kettlebell Clean',
+    category: 'kettlebell',
+    equipment: ['Kettlebell'],
+    muscleGroups: ['Full body', 'Power', 'Coordination', 'Grip'],
+    difficulty: 4,
+    instructions: [
+      'Start with kettlebell between feet.',
+      'Hinge at hips and grab kettlebell.',
+      'Drive hips forward explosively.',
+      'Pull kettlebell up close to body.',
+      'Flip kettlebell around wrist to rack position.',
+      'Catch in front rack with elbow down.',
+      'Lower kettlebell back to starting position.',
+      'Focus on smooth, powerful movement.'
+    ],
+    safetyNotes: [
+      'Learn proper technique before adding weight.',
+      'Protect wrists during flip motion.',
+      'Start with lighter kettlebell.'
+    ],
+    modifications: {
+      beginner: 'Practice hip hinge and rack position separately.',
+      advanced: 'Heavier weight, double kettlebell cleans.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions each side'
+    },
+    coaching: {
+      setup: ['Kettlebell between feet', 'Hip hinge position'],
+      execution: ['Explosive hip drive', 'Close to body pull', 'Smooth rack'],
+      common_mistakes: ['Poor hip drive', 'Banging wrist', 'Arm pulling'],
+      breathing: 'Exhale during explosive clean motion.'
+    }
+  },
+
+  'walking-lunges': {
+    id: 'walking-lunges',
+    name: 'Walking Lunges',
+    category: 'lunge',
+    equipment: ['Floor space'],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Hamstrings', 'Calves'],
+    difficulty: 2,
+    instructions: [
+      'Start standing with feet hip-width apart.',
+      'Step forward into lunge position.',
+      'Lower back knee toward ground.',
+      'Keep front knee over ankle.',
+      'Push off back foot to step forward.',
+      'Bring back leg forward into next lunge.',
+      'Continue walking forward with lunges.',
+      'Maintain upright torso throughout.'
+    ],
+    safetyNotes: [
+      'Control the descent in each lunge.',
+      'Don\'t let front knee cave inward.',
+      'Ensure adequate space for walking.'
+    ],
+    modifications: {
+      beginner: 'Shorter steps, use wall for balance if needed.',
+      advanced: 'Add weight, increase step length.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 12,
+      unit: 'repetitions each leg'
+    },
+    coaching: {
+      setup: ['Hip-width stance', 'Upright posture'],
+      execution: ['Controlled lunge', 'Knee over ankle', 'Smooth walking motion'],
+      common_mistakes: ['Knee caving', 'Forward lean', 'Uncontrolled descent'],
+      breathing: 'Inhale during descent, exhale during step forward.'
+    }
+  },
+
+  'reverse-lunges': {
+    id: 'reverse-lunges',
+    name: 'Reverse Lunges',
+    category: 'lunge',
+    equipment: ['Floor space'],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Hamstrings', 'Core'],
+    difficulty: 2,
+    instructions: [
+      'Start standing with feet hip-width apart.',
+      'Step backward into lunge position.',
+      'Lower back knee toward ground.',
+      'Keep front knee over ankle.',
+      'Push through front heel to return to standing.',
+      'Bring back leg back to starting position.',
+      'Repeat on same leg or alternate.',
+      'Maintain balance and control throughout.'
+    ],
+    safetyNotes: [
+      'Control the backward step.',
+      'Focus on front leg stability.',
+      'Don\'t let front knee drift forward.'
+    ],
+    modifications: {
+      beginner: 'Hold onto support for balance.',
+      advanced: 'Add weight, increase depth.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.05,
+    metrics: {
+      type: 'reps',
+      defaultValue: 10,
+      unit: 'repetitions each leg'
+    },
+    coaching: {
+      setup: ['Balanced starting position', 'Core engaged'],
+      execution: ['Controlled backward step', 'Stable front leg', 'Return to center'],
+      common_mistakes: ['Loss of balance', 'Front knee drift', 'Poor control'],
+      breathing: 'Inhale during descent, exhale during return.'
+    }
+  },
+
+  'lateral-lunges': {
+    id: 'lateral-lunges',
+    name: 'Lateral Lunges',
+    category: 'lunge',
+    equipment: ['Floor space'],
+    muscleGroups: ['Quadriceps', 'Glutes', 'Adductors', 'Abductors'],
+    difficulty: 3,
+    instructions: [
+      'Start standing with feet hip-width apart.',
+      'Step wide to one side.',
+      'Sit back into hip of stepping leg.',
+      'Keep other leg straight.',
+      'Lower until comfortable stretch in groin.',
+      'Push off stepping leg to return to center.',
+      'Repeat on other side.',
+      'Keep chest up and core engaged.'
+    ],
+    safetyNotes: [
+      'Don\'t force the stretch.',
+      'Keep knee of lunging leg over ankle.',
+      'Start with smaller steps.'
+    ],
+    modifications: {
+      beginner: 'Smaller step, partial depth.',
+      advanced: 'Deeper lunge, add weight.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions each side'
+    },
+    coaching: {
+      setup: ['Wide stance available', 'Balanced starting position'],
+      execution: ['Wide step', 'Sit into hip', 'Straight opposite leg'],
+      common_mistakes: ['Knee caving inward', 'Forward lean', 'Forcing depth'],
+      breathing: 'Inhale during lunge, exhale during return.'
+    }
+  },
+
+  'curtsy-lunges': {
+    id: 'curtsy-lunges',
+    name: 'Curtsy Lunges',
+    category: 'lunge',
+    equipment: ['Floor space'],
+    muscleGroups: ['Glutes', 'Quadriceps', 'Hip stabilizers', 'Core'],
+    difficulty: 3,
+    instructions: [
+      'Start standing with feet hip-width apart.',
+      'Step one leg behind and across the other.',
+      'Lower into lunge position.',
+      'Keep front knee over ankle.',
+      'Push off back leg to return to standing.',
+      'Repeat on same side or alternate.',
+      'Focus on balance and control.',
+      'Keep hips square to front.'
+    ],
+    safetyNotes: [
+      'Start with smaller cross-behind steps.',
+      'Focus on balance and stability.',
+      'Don\'t force the range of motion.'
+    ],
+    modifications: {
+      beginner: 'Smaller step, hold support for balance.',
+      advanced: 'Deeper lunge, add weight.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.04,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions each side'
+    },
+    coaching: {
+      setup: ['Balanced starting position', 'Core engaged'],
+      execution: ['Cross behind step', 'Controlled descent', 'Stable return'],
+      common_mistakes: ['Loss of balance', 'Hip rotation', 'Poor control'],
+      breathing: 'Inhale during descent, exhale during return.'
+    }
+  },
+
+  'swim-catch-up-drill': {
+    id: 'swim-catch-up-drill',
+    name: 'Catch-Up Drill',
+    category: 'swimming',
+    equipment: ['Pool', 'Optional: kickboard'],
+    muscleGroups: ['Shoulders', 'Core', 'Technique', 'Timing'],
+    difficulty: 2,
+    instructions: [
+      'Start swimming freestyle.',
+      'Extend both arms forward.',
+      'One arm stays extended while other strokes.',
+      'Wait for stroking arm to return before starting next stroke.',
+      'Focus on full extension and catch.',
+      'Maintain body position and rotation.',
+      'Breathe to both sides.',
+      'Emphasize stroke timing and technique.'
+    ],
+    safetyNotes: [
+      'Start in shallow end if needed.',
+      'Focus on technique over speed.',
+      'Rest between lengths as needed.'
+    ],
+    modifications: {
+      beginner: 'Use kickboard for support, shorter distances.',
+      advanced: 'Longer distances, focus on perfect technique.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'distance',
+      defaultValue: 200,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Pool access', 'Focus on technique'],
+      execution: ['Full arm extension', 'Patient timing', 'Body rotation'],
+      common_mistakes: ['Rushing strokes', 'Poor extension', 'Loss of body position'],
+      breathing: 'Bilateral breathing, controlled rhythm.'
+    }
+  },
+
+  'swim-fingertip-drag': {
+    id: 'swim-fingertip-drag',
+    name: 'Fingertip Drag Drill',
+    category: 'swimming',
+    equipment: ['Pool'],
+    muscleGroups: ['Shoulders', 'Technique', 'High elbow', 'Recovery'],
+    difficulty: 2,
+    instructions: [
+      'Swim freestyle with normal stroke.',
+      'During recovery phase, drag fingertips along water surface.',
+      'Keep elbow high during recovery.',
+      'Focus on relaxed recovery arm.',
+      'Maintain normal catch and pull underwater.',
+      'Emphasize high elbow position.',
+      'Keep stroke rhythm smooth.',
+      'Practice bilateral breathing.'
+    ],
+    safetyNotes: [
+      'Focus on technique over speed.',
+      'Don\'t force the movement.',
+      'Rest as needed between lengths.'
+    ],
+    modifications: {
+      beginner: 'Shorter distances, focus on one arm at a time.',
+      advanced: 'Longer sets, combine with other drills.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'distance',
+      defaultValue: 150,
+      unit: 'meters'
+    },
+    coaching: {
+      setup: ['Pool access', 'Focus on recovery phase'],
+      execution: ['High elbow recovery', 'Fingertips drag water', 'Relaxed arm'],
+      common_mistakes: ['Low elbow', 'Tense recovery', 'Disrupted rhythm'],
+      breathing: 'Normal breathing pattern, stay relaxed.'
+    }
+  },
+
+  'swim-single-arm-drill': {
+    id: 'swim-single-arm-drill',
+    name: 'Single Arm Drill',
+    category: 'swimming',
+    equipment: ['Pool', 'Optional: kickboard'],
+    muscleGroups: ['Unilateral strength', 'Technique', 'Body position', 'Rotation'],
+    difficulty: 3,
+    instructions: [
+      'Hold kickboard with one arm extended.',
+      'Stroke with free arm only.',
+      'Focus on full stroke cycle.',
+      'Emphasize catch, pull, and recovery.',
+      'Maintain body rotation.',
+      'Keep head in neutral position.',
+      'Complete set distance before switching arms.',
+      'Focus on stroke quality over speed.'
+    ],
+    safetyNotes: [
+      'Start with shorter distances.',
+      'Focus on technique over power.',
+      'Rest between arms as needed.'
+    ],
+    modifications: {
+      beginner: 'Use kickboard for support, very short distances.',
+      advanced: 'No kickboard, longer distances.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'distance',
+      defaultValue: 100,
+      unit: 'meters each arm'
+    },
+    coaching: {
+      setup: ['Kickboard if needed', 'Focus on single arm'],
+      execution: ['Full stroke cycle', 'Body rotation', 'Quality technique'],
+      common_mistakes: ['Poor body position', 'Incomplete stroke', 'No rotation'],
+      breathing: 'Breathe to stroking side, controlled rhythm.'
+    }
+  },
+
+  'swim-sculling': {
+    id: 'swim-sculling',
+    name: 'Sculling Drill',
+    category: 'swimming',
+    equipment: ['Pool'],
+    muscleGroups: ['Feel for water', 'Forearms', 'Catch technique', 'Propulsion'],
+    difficulty: 3,
+    instructions: [
+      'Float on back or front.',
+      'Extend arms in front (front scull) or at sides (back scull).',
+      'Move hands in figure-8 pattern.',
+      'Keep elbows relatively still.',
+      'Feel pressure on palms and forearms.',
+      'Use sculling motion to move through water.',
+      'Focus on water feel and catch.',
+      'Practice different sculling positions.'
+    ],
+    safetyNotes: [
+      'Start in shallow water if needed.',
+      'Focus on feel over speed.',
+      'Rest as needed.'
+    ],
+    modifications: {
+      beginner: 'Start with back sculling, shorter durations.',
+      advanced: 'Front sculling, vertical sculling.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'time',
+      defaultValue: 30,
+      unit: 'seconds'
+    },
+    coaching: {
+      setup: ['Comfortable water depth', 'Relaxed body position'],
+      execution: ['Figure-8 hand pattern', 'Feel water pressure', 'Still elbows'],
+      common_mistakes: ['Moving elbows too much', 'Poor water feel', 'Tense arms'],
+      breathing: 'Relaxed breathing, focus on feel.'
+    }
+  },
+
+  'swim-kick-on-side': {
+    id: 'swim-kick-on-side',
+    name: 'Kick on Side Drill',
+    category: 'swimming',
+    equipment: ['Pool', 'Optional: kickboard'],
+    muscleGroups: ['Core', 'Kick technique', 'Body position', 'Rotation'],
+    difficulty: 3,
+    instructions: [
+      'Lie on side in water.',
+      'Bottom arm extended forward.',
+      'Top arm at side or on hip.',
+      'Kick with flutter kick motion.',
+      'Maintain side body position.',
+      'Keep head in line with spine.',
+      'Practice on both sides.',
+      'Focus on body rotation and kick.'
+    ],
+    safetyNotes: [
+      'Start with shorter distances.',
+      'Focus on body position.',
+      'Breathe regularly.'
+    ],
+    modifications: {
+      beginner: 'Use kickboard for support, shorter distances.',
+      advanced: 'No support, longer distances, 6-kick switch.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'distance',
+      defaultValue: 100,
+      unit: 'meters each side'
+    },
+    coaching: {
+      setup: ['Side body position', 'Proper arm placement'],
+      execution: ['Maintain side position', 'Effective kick', 'Body alignment'],
+      common_mistakes: ['Rolling to front/back', 'Poor kick', 'Head position'],
+      breathing: 'Regular breathing, maintain position.'
+    }
+  }
+};
+
+// Bodyweight Strength Exercises
+const ADDITIONAL_BODYWEIGHT_STRENGTH = {
+  'dips': {
+    id: 'dips',
+    name: 'Dips',
+    category: 'bodyweight',
+    equipment: ['Parallel bars or dip station'],
+    muscleGroups: ['Triceps', 'Chest', 'Shoulders', 'Core'],
+    difficulty: 3,
+    instructions: [
+      'Grip parallel bars with arms straight.',
+      'Support body weight on straight arms.',
+      'Lower body by bending elbows.',
+      'Descend until shoulders are below elbows.',
+      'Press back up to starting position.',
+      'Keep body upright throughout movement.',
+      'Control the descent and ascent.',
+      'Maintain core engagement.'
+    ],
+    safetyNotes: [
+      'Build up shoulder and tricep strength gradually.',
+      'Don\'t descend too deep initially.',
+      'Use assistance if needed.'
+    ],
+    modifications: {
+      beginner: 'Assisted dips, partial range of motion.',
+      advanced: 'Weighted dips, ring dips.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.03,
+    metrics: {
+      type: 'reps',
+      defaultValue: 8,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Secure grip on bars', 'Straight arm support'],
+      execution: ['Controlled descent', 'Full range of motion', 'Strong press up'],
+      common_mistakes: ['Too deep descent', 'Forward lean', 'Partial range'],
+      breathing: 'Inhale during descent, exhale during press up.'
+    }
+  },
+
+  'handstand-push-ups': {
+    id: 'handstand-push-ups',
+    name: 'Handstand Push-ups',
+    category: 'bodyweight',
+    equipment: ['Wall space'],
+    muscleGroups: ['Shoulders', 'Triceps', 'Core', 'Balance'],
+    difficulty: 5,
+    instructions: [
+      'Start in handstand position against wall.',
+      'Lower head toward ground by bending elbows.',
+      'Descend until head lightly touches ground.',
+      'Press back up to full handstand.',
+      'Keep core tight throughout movement.',
+      'Maintain straight body line.',
+      'Control both descent and ascent.',
+      'Focus on shoulder and tricep strength.'
+    ],
+    safetyNotes: [
+      'Master handstand hold first.',
+      'Use wall for support initially.',
+      'Very advanced exercise - build up gradually.'
+    ],
+    modifications: {
+      beginner: 'Pike push-ups, feet elevated push-ups.',
+      advanced: 'Freestanding handstand push-ups.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.01,
+    metrics: {
+      type: 'reps',
+      defaultValue: 3,
+      unit: 'repetitions'
+    },
+    coaching: {
+      setup: ['Stable handstand position', 'Wall support'],
+      execution: ['Controlled descent', 'Light head touch', 'Strong press up'],
+      common_mistakes: ['Poor handstand position', 'Incomplete range', 'Loss of balance'],
+      breathing: 'Controlled breathing throughout movement.'
+    }
+  },
+
+  'pistol-squats': {
+    id: 'pistol-squats',
+    name: 'Pistol Squats',
+    category: 'bodyweight',
+    equipment: ['Floor space'],
+    muscleGroups: ['Single leg strength', 'Balance', 'Mobility', 'Core'],
+    difficulty: 5,
+    instructions: [
+      'Stand on one leg with other leg extended forward.',
+      'Lower into single leg squat.',
+      'Keep extended leg straight and off ground.',
+      'Descend as low as possible.',
+      'Drive through heel to return to standing.',
+      'Maintain balance throughout movement.',
+      'Keep core engaged for stability.',
+      'Complete all reps on one leg before switching.'
+    ],
+    safetyNotes: [
+      'Requires excellent single leg strength and mobility.',
+      'Build up gradually with assisted versions.',
+      'Focus on control over depth.'
+    ],
+    modifications: {
+      beginner: 'Assisted pistol squats, box pistol squats.',
+      advanced: 'Weighted pistol squats, jumping pistol squats.'
+    },
+    equipment_alternatives: [],
+    progressionRate: 0.02,
+    metrics: {
+      type: 'reps',
+      defaultValue: 3,
+      unit: 'repetitions each leg'
+    },
+    coaching: {
+      setup: ['Single leg balance', 'Extended leg position'],
+      execution: ['Controlled descent', 'Maintain balance', 'Drive through heel'],
+      common_mistakes: ['Loss of balance', 'Incomplete range', 'Poor control'],
+      breathing: 'Controlled breathing, exhale during ascent.'
+    }
+  }
+};
+
+Object.assign(EXERCISE_DATABASE, ADDITIONAL_MOVEMENT_EXERCISES);
+Object.assign(EXERCISE_DATABASE, ADDITIONAL_BODYWEIGHT_STRENGTH);
+
+// Export category arrays for easy access
+export const PLYOMETRIC_EXERCISES = [
+  'jump-squat', 'box-jumps', 'burpees', 'mountain-climbers', 'high-knees',
+  'butt-kicks', 'jumping-jacks', 'burpee-broad-jumps', 'broad-jump', 'burpee-box-jumps',
+  'duck-walk', 'lateral-bounds', 'depth-jumps', 'single-leg-hops', 'tuck-jumps'
+];
+
+export const KETTLEBELL_EXERCISES = [
+  'kettlebell-snatch', 'kettlebell-swings', 'kettlebell-goblet-squat', 
+  'kettlebell-turkish-get-up', 'kettlebell-clean'
+];
+
+export const LUNGE_EXERCISES = [
+  'bulgarian-split-squat', 'walking-lunges', 'reverse-lunges', 
+  'lateral-lunges', 'curtsy-lunges'
+];
+
+export const SWIMMING_EXERCISES = [
+  'swim-distance-freestyle', 'swim-interval-freestyle', 'swim-tempo-freestyle',
+  'swim-backstroke-technique', 'swim-breaststroke-technique', 'swim-butterfly-technique',
+  'swim-individual-medley', 'swim-pull-sets', 'swim-kick-sets', 'swim-bilateral-breathing',
+  'swim-sighting-practice', 'swim-wetsuit-practice', 'swim-mass-start-practice',
+  'swim-exit-practice', 'swim-catch-up-drill', 'swim-fingertip-drag',
+  'swim-single-arm-drill', 'swim-sculling', 'swim-kick-on-side'
+];
+
+export const RUNNING_EXERCISES = [
+  'run-base-building', 'run-tempo-workout', 'run-interval-training', 'run-hill-training',
+  'run-fartlek-training', 'run-long-slow-distance', 'run-recovery-run', 'run-strides',
+  'run-track-intervals'
+];
+
+export const CYCLING_EXERCISES = [
+  'bike-aerobic-base', 'bike-threshold-intervals', 'bike-VO2-max-intervals',
+  'bike-climbing-repeats', 'bike-time-trial-pace', 'bike-brick-workout',
+  'bike-cadence-work', 'bike-power-intervals', 'bike-recovery-spin', 'bike-group-ride'
+];
+
+export const TRIATHLON_EXERCISES = [
+  'transition-practice-T1', 'transition-practice-T2', 'open-water-swim-practice',
+  'triathlon-simulation', 'bike-run-brick', 'swim-bike-brick', 'race-pace-practice',
+  'nutrition-practice', 'equipment-transitions', 'mental-preparation'
+];
+
+export const STRENGTH_EXERCISES = [
+  'deadlift', 'back-squat', 'front-squat', 'overhead-squat', 'bench-press',
+  'overhead-press', 'clean', 'snatch', 'clean-and-jerk', 'thrusters',
+  'push-jerk', 'split-jerk', 'romanian-deadlift', 'sumo-deadlift', 'good-morning'
+];
+
+export const BODYWEIGHT_EXERCISES = [
+  'pull-ups', 'muscle-ups', 'push-ups', 'air-squat', 'dips', 
+  'handstand-push-ups', 'pistol-squats'
+];
+
+export const FUNCTIONAL_MOVEMENT_EXERCISES = [
+  'wall-balls', 'farmers-carry', 'thrusters', 'clean-and-jerk'
+];
+
+export const ALL_EXERCISE_CATEGORIES = {
+  plyometric: PLYOMETRIC_EXERCISES,
+  kettlebell: KETTLEBELL_EXERCISES,
+  lunge: LUNGE_EXERCISES,
+  swimming: SWIMMING_EXERCISES,
+  running: RUNNING_EXERCISES,
+  cycling: CYCLING_EXERCISES,
+  triathlon: TRIATHLON_EXERCISES,
+  strength: STRENGTH_EXERCISES,
+  bodyweight: BODYWEIGHT_EXERCISES,
+  functional: FUNCTIONAL_MOVEMENT_EXERCISES
+};

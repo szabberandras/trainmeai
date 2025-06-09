@@ -27,7 +27,7 @@ import {
   Clock,
   Download
 } from 'lucide-react';
-import LayoutClientWrapper from '@/app/components/LayoutClientWrapper';
+
 import ProgramCard from '@/app/components/programs/ProgramCard';
 import ProgramCreator from '@/app/components/programs/ProgramCreator';
 import CinematicOnboarding, { UserPersonalization } from '@/app/components/onboarding/CinematicOnboarding';
@@ -585,6 +585,11 @@ What's on your mind?`;
       return;
     }
 
+    // Prevent multiple executions if onboarding is already being shown
+    if (showOnboarding) {
+      return;
+    }
+
     const loadUserDataEffect = async () => {
       if (user) {
         console.log('🚀 Loading user data for:', user.uid);
@@ -599,35 +604,31 @@ What's on your mind?`;
               userCreatedAt: userData.createdAt
             });
             
-            // Check if user has completed onboarding properly with stricter validation
-            const hasValidOnboarding = userData.hasCompletedOnboarding && 
-                                     userData.onboardingAnswers && 
-                                     userData.onboardingAnswers.activity &&
-                                     userData.onboardingAnswers.goal &&
-                                     userData.onboardingAnswers.fitnessLevel &&
-                                     userData.completedAt;
+            // Check if user has completed onboarding - use a more lenient approach
+            // Only force onboarding if explicitly marked as incomplete or missing critical data
+            const hasBasicOnboarding = userData.hasCompletedOnboarding === true;
             
-            if (hasValidOnboarding) {
+            if (hasBasicOnboarding) {
               console.log('✅ User has completed onboarding, loading dashboard');
               setUserPersonalization(userData as UserPersonalization);
               setHasCompletedOnboarding(true);
               setShowOnboarding(false);
               // Load the rest of the data
               await loadUserData();
-            } else {
-              // User exists but hasn't completed onboarding properly, show it
-              console.log('⚠️ User exists but onboarding incomplete, showing onboarding');
-              console.log('Missing onboarding data:', {
-                hasCompletedOnboarding: userData.hasCompletedOnboarding,
-                hasOnboardingAnswers: !!userData.onboardingAnswers,
-                hasActivity: userData.onboardingAnswers?.activity,
-                hasGoal: userData.onboardingAnswers?.goal,
-                hasFitnessLevel: userData.onboardingAnswers?.fitnessLevel,
-                hasCompletedAt: !!userData.completedAt
-              });
+            } else if (userData.hasCompletedOnboarding === false) {
+              // Only show onboarding if explicitly marked as incomplete
+              console.log('⚠️ User has explicitly incomplete onboarding, showing onboarding');
               setShowOnboarding(true);
               setHasCompletedOnboarding(false);
               return; // Don't load other data until onboarding is complete
+            } else {
+              // User data exists but onboarding status is unclear - allow dashboard access
+              // This prevents the automatic onboarding trigger for existing users
+              console.log('📋 User data exists, allowing dashboard access without forcing onboarding');
+              setUserPersonalization(userData as UserPersonalization);
+              setHasCompletedOnboarding(true);
+              setShowOnboarding(false);
+              await loadUserData();
             }
           } else {
             // New user, show onboarding
@@ -805,11 +806,9 @@ What's on your mind?`;
 
   if (loading) {
     return (
-      <LayoutClientWrapper>
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-gray-600">Loading your dashboard...</div>
-        </div>
-      </LayoutClientWrapper>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-gray-600">Loading your dashboard...</div>
+      </div>
     );
   }
 
@@ -821,9 +820,7 @@ What's on your mind?`;
   // Show onboarding if user hasn't completed it
   if (showOnboarding) {
     return (
-      <LayoutClientWrapper>
-        <CinematicOnboarding onComplete={handleOnboardingComplete} />
-      </LayoutClientWrapper>
+      <CinematicOnboarding onComplete={handleOnboardingComplete} />
     );
   }
 
@@ -832,7 +829,6 @@ What's on your mind?`;
   const dynamicHero = getDynamicHero(userPersonalization);
 
   return (
-    <LayoutClientWrapper>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
         <div className="px-40 flex flex-1 justify-center py-5">
           <div className="flex flex-col max-w-[960px] flex-1">
@@ -1333,6 +1329,5 @@ Your program is now being saved and you'll be redirected to view the full detail
 
         </div>
       </div>
-    </LayoutClientWrapper>
   );
 }
