@@ -1,7 +1,7 @@
 // lib/firebase.ts
 import { initializeApp, getApps } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore, enableIndexedDbPersistence, initializeFirestore, CACHE_SIZE_UNLIMITED, connectFirestoreEmulator } from 'firebase/firestore';
+import { getFirestore, enableIndexedDbPersistence, connectFirestoreEmulator } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { getConfig, isProduction, isDevelopment } from './config/environment';
 
@@ -29,9 +29,18 @@ for (const field of requiredFields) {
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 const auth = getAuth(app);
 
-// Initialize Firestore with specific database name
-// Use getFirestore with database name parameter for named databases
-const db = getFirestore(app, 'staging');
+// Initialize Firestore with default database (remove 'staging' parameter)
+const db = getFirestore(app);
+
+// Connect to Firestore emulator in development if available
+if (isDevelopment() && typeof window !== 'undefined') {
+  try {
+    connectFirestoreEmulator(db, 'localhost', 8080);
+    console.log('Connected to Firestore emulator');
+  } catch (error) {
+    console.log('Firestore emulator not available or already connected, using production database');
+  }
+}
 
 // Enable offline persistence with proper error handling
 if (typeof window !== 'undefined') {

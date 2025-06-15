@@ -12,6 +12,158 @@ import { CyclingOnboardingService, CyclingOnboardingData } from '@/lib/services/
 import { db } from '@/lib/firebase';
 import { collection, addDoc, query, where, orderBy, getDocs, limit, deleteDoc } from 'firebase/firestore';
 import EnhancedAIService from '@/lib/services/EnhancedAIService';
+import { NutritionService } from '@/lib/services/NutritionService';
+
+// 🏋️ EXPERT TRAINING PLANS & EXERCISE DATABASE IMPORTS
+import { HALF_MARATHON_PLANS, getHalfMarathonPlansByWeek, getHalfMarathonPlanSummary } from '@/lib/exercises/half-marathon-plans';
+import { CYCLING_EXERCISES } from '@/lib/exercises/cycling-training';
+import { NEW_EXERCISES } from '@/lib/exercises/new_exercises';
+import { BEGINNER_FAT_LOSS, INTERMEDIATE_HYPERTROPHY, ADVANCED_FUNCTIONAL_STRENGTH, selectProgram } from '@/lib/exercises/structured-training-programs';
+import { ALL_STRUCTURED_WORKOUTS, getWorkoutsByType, recommendWorkouts } from '@/lib/exercises/structured-workouts';
+import { ALL_TRIATHLON_EXERCISES } from '@/lib/exercises/triathlon-strength-conditioning';
+import { EXERCISE_DATABASE } from '@/lib/exercises/categories';
+import trainingPlansData from '@/lib/data/training-plans.json';
+import { ExpertPlanGenerator } from '@/lib/services/ExpertPlanGenerator';
+
+// 🏆 EXPERT TRAINING PROTOCOLS FOR SPORT-SPECIFIC CONDITIONING:
+
+// Athletic performance demands precise targeting of sport-specific physiological adaptations. Research from NSCA, ACSM, and leading sports science journals reveals that evidence-based conditioning programs reduce injury risk by 35-70% while improving performance markers by 7-17%.
+
+// 🥊 COMBAT & CLIMBING SPORTS CONDITIONING:
+
+// GRIP ENDURANCE PROTOCOLS:
+// • Chi-ishi training tools and gyroscopic devices reaching 9,000 RPM
+// • Progression: Vertical knuckle push-ups → medicine ball rotational throws (8-20 lb balls)
+// • Rotational power improves 15-25% when hip-to-shoulder force transfer is emphasized
+
+// NECK STRENGTHENING (Combat Sports):
+// • 4-way isometric protocols: 10-second holds progressing to 30-second holds
+// • Flexor-to-extensor strength ratio target: 0.8-1.0
+// • Training loads: 60% to 100% maximum voluntary contraction over 12 weeks
+
+// FINGER TRAINING (Rock Climbing):
+// • Eva López's MaxHangs protocol - gold standard backed by peer-reviewed research
+// • Minimum edge depth (MED): 5-10mm edges for 10-second hangs with 3-second safety margins
+// • Maximum added weight (MAW): 8-20mm edges with progressive loading
+// • SAFETY: Minimum 3 rest days weekly, no fingerboard training for <1 year experience
+
+// 🎾 RACQUET SPORTS & BASKETBALL CONDITIONING:
+
+// LATERAL AGILITY (Tennis/Racquet Sports):
+// • 48-75% of tennis movement occurs laterally
+// • Spider drill: 8-directional movement patterns from center baseline
+// • Medicine ball perpendicular throws: Generate forces up to 120% body weight
+
+// SHOULDER STABILITY:
+// • 28% reduction in shoulder injuries through targeted rotator cuff strengthening
+// • External rotations at 90-degree abduction, Y-T-W raises, scapular stabilization
+// • 3 times weekly with 15-rep progressions
+
+// VERTICAL JUMP (Basketball):
+// • 7-17% improvements using four-phase progressions:
+//   - Foundation (weeks 1-4): Countermovement jumps
+//   - Power development (weeks 5-8): Drop jumps from 12-24 inch boxes
+//   - Sport-specific (weeks 9-12): Depth jumps to rim touches
+//   - Reactive power: Minimal ground contact times under 250 milliseconds
+
+// ⚽ FIELD SPORTS CONDITIONING:
+
+// SOCCER CONDITIONING:
+// • Maximal aerobic speed (MAS): 30-40 second intervals at 90-100% MAS
+// • Work-to-rest ratios: 2:1
+// • Plyometric prerequisite: Ability to squat 1.5 times body weight
+
+// BASEBALL CONDITIONING:
+// • Rotational power: Medicine ball scoop tosses emphasizing hip-shoulder dissociation
+// • Shoulder health: External-to-internal rotation strength ratios of 63-98%
+// • Hand-eye coordination: 10-15 minute daily sessions with small baseball techniques
+
+// ⚡ ENERGY SYSTEM DEVELOPMENT PROTOCOLS:
+
+// ANAEROBIC ALACTIC SYSTEM (0-10 seconds):
+// • Work-to-rest ratios: 1:12 to 1:20 for complete phosphocreatine recovery
+// • 8-second maximum sprints: 96-160 seconds rest, 6-10 repetitions, 2-3 times weekly
+// • Olympic lift variations: 75-90% 1RM for 1-3 reps, 2-4 minutes rest
+
+// PLYOMETRIC VOLUME GUIDELINES:
+// • Beginners: 50-100 foot contacts per session
+// • Intermediates: 100-150 contacts
+// • Advanced: 150-200+ contacts
+// • Four-phase system over 12-week blocks
+
+// ANAEROBIC LACTIC SYSTEM (10 seconds - 2 minutes):
+// • Power intervals: 1:3 to 1:5 work-to-rest ratios
+// • Capacity development: 1:2 ratios
+// • VO2max protocol: 4-minute intervals at 90-95% HRmax with 3-minute recoveries
+// • Documented 10% VO2max improvements
+
+// LACTATE THRESHOLD TRAINING:
+// • 85-90% HRmax for 20-40 minutes continuously
+// • Interval option: 6-10 minute intervals with 2-3 minute recoveries
+// • Progressive overload: Increase duration by 5 minutes every 2 weeks
+
+// 🛡️ INJURY PREVENTION PROTOCOLS:
+
+// SHOULDER HEALTH:
+// • Three-phase progression: Foundation → Strengthening → Dynamic integration
+// • Thrower's 10 program and plyometric push-ups
+// • 4-6 weeks initial programming, then 2-3 weekly maintenance
+// • 1-pound increments, maximum 5-10 pounds resistance
+
+// KNEE HEALTH (ACL Prevention):
+// • Up to 70% reduction in non-contact injuries
+// • Single-leg balance: 30-60 second static holds → dynamic reaching patterns
+// • Nordic hamstring curls: 2-3 sets of 5-8 reps with eccentric emphasis
+// • Jump landing training: "Quiet landings" with knees behind toes
+
+// ANKLE STABILITY:
+// • 35% reduction in ankle sprains with 2 sessions weekly for 8+ weeks
+// • Progressive protocol: Static balance → Dynamic balance → Sport-specific training
+// • Y-balance exercises with dynamic reaching in multiple planes
+// • "For every 17 patients completing training, 1 ankle sprain is prevented"
+
+// CERVICAL STRENGTHENING:
+// • Chin tuck exercises: 5-10 seconds for 10 reps, 5-7 times daily
+// • Isometric 4-way strengthening over 12 weeks
+// • Upper trapezius stretching: 15-30 seconds multiple times daily
+// • Workplace ergonomics: Monitor tops at eye level, 30-60 minute movement breaks
+
+// 💥 EXPLOSIVE POWER DEVELOPMENT:
+
+// COMPLEX TRAINING:
+// • Post-activation potentiation: Heavy strength (85-95% 1RM) → 3-5 min rest → explosive movements
+// • Back squat to jump squat combination
+
+// VELOCITY-BASED TRAINING:
+// • 30-60% 1RM for optimal power output
+// • 3-6 sets of 3-6 reps with 3-5 minute complete recovery
+
+// 🔄 RECOVERY & REGENERATION:
+
+// ACTIVE RECOVERY:
+// • 20-30 minutes at 40-60% maximum heart rate on non-training days
+// • Dynamic walking, swimming therapy, easy cycling
+
+// BREATHING TECHNIQUES:
+// • Box breathing: 4-count inhale-hold-exhale-hold cycles
+// • Physiological sighs: Double inhale through nose, long exhale through mouth
+// • Progressive muscle relaxation: 10-15 minutes, 2-3 times weekly
+
+// 📊 PERIODIZATION & LOAD MANAGEMENT:
+
+// SYSTEMATIC PROGRESSION:
+// • Foundation phases: 4-6 weeks high volume, moderate intensity
+// • Strength phases: 4-6 weeks moderate volume, high intensity
+// • Power phases: 3-4 weeks low volume, maximum intensity
+// • Progressive overload: Maximum 10% weekly increments
+
+// RECOVERY REQUIREMENTS:
+// • High-intensity anaerobic training: 48-72 hours recovery between sessions
+// • Finger/grip training: Minimum 48-72 hours for tendon adaptation
+// • Movement quality assessment: Monitor knee valgus, trunk control, balance recovery
+
+// EVIDENCE-BASED IMPLEMENTATION:
+// Use these protocols as intelligent guides, adapting intensity, volume, and progression based on user's fitness level, equipment availability, and specific sport demands. Always prioritize movement quality over intensity and ensure proper progression through phases.
 
 // --- Authentication for Server-Side AI Calls ---
 let genAI: GoogleGenerativeAI | undefined;
@@ -60,6 +212,265 @@ OPERATIONAL CONSTRAINTS:
 • Communication requirements: ${constraints.communication_requirements.join(', ')}
 
 SCIENTIFIC JUSTIFICATION: When providing training or nutrition recommendations, include physiological rationale. Use [source] format for citations when referencing specific research or guidelines.
+
+🏋️ EXPERT TRAINING PLANS AS INTELLIGENT GUIDES:
+You have access to comprehensive expert training plans and exercise databases. CRITICAL: Use these as INTELLIGENT GUIDES and SCIENTIFIC FOUNDATIONS, NOT as exact templates to copy.
+
+AVAILABLE EXPERT KNOWLEDGE BASE:
+• Half Marathon Training Plans: ${Object.keys(HALF_MARATHON_PLANS).length} detailed weekly progressions with periodization principles
+• Cycling Training Programs: ${Object.keys(CYCLING_EXERCISES).length} power-based workouts with energy system targets
+• Structured Training Programs: Evidence-based progressions for fat loss, hypertrophy, and strength development
+• Triathlon Training: Multi-sport integration with energy system periodization
+• Exercise Database: ${Object.keys(NEW_EXERCISES).length} exercises with biomechanical analysis and coaching cues
+• IRONMAN Training Plans: Complete periodized programs with physiological adaptations
+
+🧠 INTELLIGENT ADAPTATION METHODOLOGY:
+NEVER copy expert plans exactly. Instead, use this framework:
+
+1. EXTRACT PRINCIPLES (Foundation - 70%):
+   • Training periodization patterns and phase progressions
+   • Energy system development sequences and intensities
+   • Movement pattern priorities and muscle group balance
+   • Recovery protocols and adaptation timeframes
+   • Exercise selection hierarchy and progression logic
+
+2. ADAPT TO USER (Personalization - 25%):
+   • Scale volume/intensity based on fitness level and time availability
+   • Modify exercises for equipment limitations while maintaining movement patterns
+   • Adjust progression rates based on user's recovery capacity and experience
+   • Personalize coaching cues and motivation strategies
+
+3. USER PREFERENCES (Flexibility - 5%):
+   • Allow exercise alternatives within same movement patterns
+   • Accommodate schedule preferences while maintaining training frequency
+   • Consider enjoyment factors that improve adherence
+
+🔬 SCIENTIFIC ADAPTATION EXAMPLES:
+
+EXPERT TEMPLATE: "Week 4: 3x1 mile at 10K pace, 2min recovery"
+BEGINNER ADAPTATION: "Week 4: 3x800m at comfortably hard effort, 90sec walk recovery"
+ADVANCED ADAPTATION: "Week 4: 4x1 mile at 10K pace, 90sec jog recovery"
+TIME-LIMITED: "Week 4: 20min tempo run with 3x3min at 10K effort, 1min easy"
+
+EXPERT TEMPLATE: "4x8 Back Squats at 75% 1RM"
+BEGINNER ADAPTATION: "3x10 Goblet Squats, focus on depth and control"
+HOME GYM: "4x8 Single-leg squats with resistance band assistance"
+INJURY HISTORY: "4x8 Box squats to parallel, emphasizing hip hinge pattern"
+
+🍎 COMPREHENSIVE NUTRITION INTEGRATION:
+Provide detailed, evidence-based nutrition guidance with EVERY training recommendation:
+
+PRECISION MACRONUTRIENT TARGETS:
+• Carbohydrates: 
+  - Low intensity days: 3-5g/kg bodyweight
+  - Moderate training: 5-7g/kg bodyweight  
+  - High volume/intensity: 8-12g/kg bodyweight
+  - Competition prep: Up to 12g/kg bodyweight
+• Protein: 
+  - Endurance athletes: 1.2-1.6g/kg bodyweight
+  - Strength athletes: 1.6-2.2g/kg bodyweight
+  - Body composition goals: 1.8-2.4g/kg bodyweight
+• Fats: 
+  - Minimum: 0.8g/kg bodyweight for hormone production
+  - Moderate training: 1.0-1.5g/kg bodyweight
+  - Low-carb periods: 1.5-2.0g/kg bodyweight
+
+NUTRIENT TIMING PROTOCOLS:
+• Pre-workout (1-4 hours before):
+  - Carbs: 1-4g/kg (closer to training = less fiber)
+  - Protein: 0.25g/kg for muscle protein synthesis
+  - Fluids: 5-10ml/kg 2-4 hours before
+• During workout (sessions >60-90min):
+  - Carbs: 30-60g/hour (multiple transportable carbs)
+  - Fluids: 150-250ml every 15-20min
+  - Electrolytes: 200-700mg sodium/hour in hot conditions
+• Post-workout (0-2 hours):
+  - Protein: 20-40g high-quality complete protein
+  - Carbs: 1-1.2g/kg for glycogen replenishment
+  - Fluids: 150% of body weight lost during exercise
+
+SPORT-SPECIFIC NUTRITION STRATEGIES:
+• Endurance Sports:
+  - Carb periodization: High on hard days (8-12g/kg), moderate on easy days (5-7g/kg)
+  - Fat adaptation phases: 2-3 weeks of <50g carbs/day with high fat (2.0g/kg)
+  - Race nutrition: Practice fueling strategies during training
+• Strength/Power Sports:
+  - Consistent moderate carbs (4-7g/kg) for training quality
+  - Higher protein (2.0-2.2g/kg) for muscle protein synthesis
+  - Creatine loading: 20g/day for 5 days, then 3-5g/day maintenance
+• Body Composition Goals:
+  - Caloric cycling: Higher calories on training days, lower on rest days
+  - Protein distribution: 25-40g every 3-4 hours throughout day
+  - Fiber targets: 25-35g/day for satiety and gut health
+
+EVIDENCE-BASED SUPPLEMENTATION:
+Only recommend supplements with strong scientific evidence:
+• Creatine Monohydrate: 3-5g daily (strength/power athletes)
+• Caffeine: 3-6mg/kg 30-60min pre-exercise (avoid if anxiety-prone)
+• Whey/Casein Protein: Only if dietary protein inadequate
+• Vitamin D3: 1000-4000 IU daily if deficient (blood test recommended)
+• Iron: Only if deficient (especially female athletes - ferritin <30ng/mL)
+• Beta-Alanine: 3-5g daily for high-intensity exercise >1min duration
+• Beetroot Juice: 500-600mg nitrate 2-3 hours before endurance exercise
+
+PRACTICAL IMPLEMENTATION:
+• Provide specific meal timing relative to training schedule
+• Suggest practical food sources for each macronutrient target
+• Account for cooking skills, budget, and cultural food preferences
+• Include hydration reminders and practical tracking methods
+• Address common nutrition challenges (travel, shift work, etc.)
+
+EXERCISE SELECTION PRIORITY:
+1. Use ExpertPlanGenerator for evidence-based exercise selection
+2. Reference specific exercises from EXERCISE_DATABASE with proper form cues
+3. Provide alternatives and modifications from the comprehensive database
+4. Include safety notes and progressions from expert exercise data
+
+TRAINING PLAN EXAMPLES TO REFERENCE:
+• For Running: Use HALF_MARATHON_PLANS with specific weekly progressions
+• For Cycling: Reference CYCLING_EXERCISES with power zones and cadence work
+• For Strength: Use structured programs (BEGINNER_FAT_LOSS, INTERMEDIATE_HYPERTROPHY, etc.)
+• For Triathlon: Integrate ALL_TRIATHLON_EXERCISES with sport-specific focus
+
+🏆 EXPERT TRAINING PROTOCOLS FOR SPORT-SPECIFIC CONDITIONING:
+
+Athletic performance demands precise targeting of sport-specific physiological adaptations. Research from NSCA, ACSM, and leading sports science journals reveals that evidence-based conditioning programs reduce injury risk by 35-70% while improving performance markers by 7-17%.
+
+🥊 COMBAT & CLIMBING SPORTS CONDITIONING:
+
+GRIP ENDURANCE PROTOCOLS:
+• Chi-ishi training tools and gyroscopic devices reaching 9,000 RPM
+• Progression: Vertical knuckle push-ups → medicine ball rotational throws (8-20 lb balls)
+• Rotational power improves 15-25% when hip-to-shoulder force transfer is emphasized
+
+NECK STRENGTHENING (Combat Sports):
+• 4-way isometric protocols: 10-second holds progressing to 30-second holds
+• Flexor-to-extensor strength ratio target: 0.8-1.0
+• Training loads: 60% to 100% maximum voluntary contraction over 12 weeks
+
+FINGER TRAINING (Rock Climbing):
+• Eva López's MaxHangs protocol - gold standard backed by peer-reviewed research
+• Minimum edge depth (MED): 5-10mm edges for 10-second hangs with 3-second safety margins
+• Maximum added weight (MAW): 8-20mm edges with progressive loading
+• SAFETY: Minimum 3 rest days weekly, no fingerboard training for <1 year experience
+
+🎾 RACQUET SPORTS & BASKETBALL CONDITIONING:
+
+LATERAL AGILITY (Tennis/Racquet Sports):
+• 48-75% of tennis movement occurs laterally
+• Spider drill: 8-directional movement patterns from center baseline
+• Medicine ball perpendicular throws: Generate forces up to 120% body weight
+
+SHOULDER STABILITY:
+• 28% reduction in shoulder injuries through targeted rotator cuff strengthening
+• External rotations at 90-degree abduction, Y-T-W raises, scapular stabilization
+• 3 times weekly with 15-rep progressions
+
+VERTICAL JUMP (Basketball):
+• 7-17% improvements using four-phase progressions:
+  - Foundation (weeks 1-4): Countermovement jumps
+  - Power development (weeks 5-8): Drop jumps from 12-24 inch boxes
+  - Sport-specific (weeks 9-12): Depth jumps to rim touches
+  - Reactive power: Minimal ground contact times under 250 milliseconds
+
+⚽ FIELD SPORTS CONDITIONING:
+
+SOCCER CONDITIONING:
+• Maximal aerobic speed (MAS): 30-40 second intervals at 90-100% MAS
+• Work-to-rest ratios: 2:1
+• Plyometric prerequisite: Ability to squat 1.5 times body weight
+
+BASEBALL CONDITIONING:
+• Rotational power: Medicine ball scoop tosses emphasizing hip-shoulder dissociation
+• Shoulder health: External-to-internal rotation strength ratios of 63-98%
+• Hand-eye coordination: 10-15 minute daily sessions with small baseball techniques
+
+⚡ ENERGY SYSTEM DEVELOPMENT PROTOCOLS:
+
+ANAEROBIC ALACTIC SYSTEM (0-10 seconds):
+• Work-to-rest ratios: 1:12 to 1:20 for complete phosphocreatine recovery
+• 8-second maximum sprints: 96-160 seconds rest, 6-10 repetitions, 2-3 times weekly
+• Olympic lift variations: 75-90% 1RM for 1-3 reps, 2-4 minutes rest
+
+PLYOMETRIC VOLUME GUIDELINES:
+• Beginners: 50-100 foot contacts per session
+• Intermediates: 100-150 contacts
+• Advanced: 150-200+ contacts
+• Four-phase system over 12-week blocks
+
+ANAEROBIC LACTIC SYSTEM (10 seconds - 2 minutes):
+• Power intervals: 1:3 to 1:5 work-to-rest ratios
+• Capacity development: 1:2 ratios
+• VO2max protocol: 4-minute intervals at 90-95% HRmax with 3-minute recoveries
+• Documented 10% VO2max improvements
+
+LACTATE THRESHOLD TRAINING:
+• 85-90% HRmax for 20-40 minutes continuously
+• Interval option: 6-10 minute intervals with 2-3 minute recoveries
+• Progressive overload: Increase duration by 5 minutes every 2 weeks
+
+🛡️ INJURY PREVENTION PROTOCOLS:
+
+SHOULDER HEALTH:
+• Three-phase progression: Foundation → Strengthening → Dynamic integration
+• Thrower's 10 program and plyometric push-ups
+• 4-6 weeks initial programming, then 2-3 weekly maintenance
+• 1-pound increments, maximum 5-10 pounds resistance
+
+KNEE HEALTH (ACL Prevention):
+• Up to 70% reduction in non-contact injuries
+• Single-leg balance: 30-60 second static holds → dynamic reaching patterns
+• Nordic hamstring curls: 2-3 sets of 5-8 reps with eccentric emphasis
+• Jump landing training: "Quiet landings" with knees behind toes
+
+ANKLE STABILITY:
+• 35% reduction in ankle sprains with 2 sessions weekly for 8+ weeks
+• Progressive protocol: Static balance → Dynamic balance → Sport-specific training
+• Y-balance exercises with dynamic reaching in multiple planes
+• "For every 17 patients completing training, 1 ankle sprain is prevented"
+
+CERVICAL STRENGTHENING:
+• Chin tuck exercises: 5-10 seconds for 10 reps, 5-7 times daily
+• Isometric 4-way strengthening over 12 weeks
+• Upper trapezius stretching: 15-30 seconds multiple times daily
+• Workplace ergonomics: Monitor tops at eye level, 30-60 minute movement breaks
+
+💥 EXPLOSIVE POWER DEVELOPMENT:
+
+COMPLEX TRAINING:
+• Post-activation potentiation: Heavy strength (85-95% 1RM) → 3-5 min rest → explosive movements
+• Back squat to jump squat combination
+
+VELOCITY-BASED TRAINING:
+• 30-60% 1RM for optimal power output
+• 3-6 sets of 3-6 reps with 3-5 minute complete recovery
+
+🔄 RECOVERY & REGENERATION:
+
+ACTIVE RECOVERY:
+• 20-30 minutes at 40-60% maximum heart rate on non-training days
+• Dynamic walking, swimming therapy, easy cycling
+
+BREATHING TECHNIQUES:
+• Box breathing: 4-count inhale-hold-exhale-hold cycles
+• Physiological sighs: Double inhale through nose, long exhale through mouth
+• Progressive muscle relaxation: 10-15 minutes, 2-3 times weekly
+
+📊 PERIODIZATION & LOAD MANAGEMENT:
+
+SYSTEMATIC PROGRESSION:
+• Foundation phases: 4-6 weeks high volume, moderate intensity
+• Strength phases: 4-6 weeks moderate volume, high intensity
+• Power phases: 3-4 weeks low volume, maximum intensity
+• Progressive overload: Maximum 10% weekly increments
+
+RECOVERY REQUIREMENTS:
+• High-intensity anaerobic training: 48-72 hours recovery between sessions
+• Finger/grip training: Minimum 48-72 hours for tendon adaptation
+• Movement quality assessment: Monitor knee valgus, trunk control, balance recovery
+
+EVIDENCE-BASED IMPLEMENTATION:
+Use these protocols as intelligent guides, adapting intensity, volume, and progression based on user's fitness level, equipment availability, and specific sport demands. Always prioritize movement quality over intensity and ensure proper progression through phases.
 
 `;
   

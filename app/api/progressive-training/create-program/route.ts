@@ -1,20 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { progressiveProgramService } from '@/lib/services/progressive-program.service';
+import { auth } from '@/auth';
+import { ProgressiveProgramService } from '@/lib/services/progressive-program.service';
 
 export async function POST(req: NextRequest) {
   try {
-    const { userId, goal, targetDate, userProfile, initialAssessment } = await req.json();
+    const session = await auth();
+    
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
-    if (!userId || !goal || !targetDate) {
+    const { goal, targetDate, userProfile, initialAssessment } = await req.json();
+
+    if (!goal || !targetDate) {
       return NextResponse.json(
-        { error: 'User ID, goal, and target date are required' },
+        { error: 'Goal and target date are required' },
         { status: 400 }
       );
     }
 
     // Create progressive program with AI-generated framework
-    const program = await progressiveProgramService.createProgressiveProgram({
-      userId,
+    const service = new ProgressiveProgramService();
+    const program = await service.createProgressiveProgram({
+      userId: session.user.id,
       goal,
       targetDate: new Date(targetDate),
       userProfile: userProfile || {},

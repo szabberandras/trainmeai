@@ -422,92 +422,387 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
   const [user] = useAuthState(auth);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [currentScreen, setCurrentScreen] = useState(0); // Start with welcome screen
-  const [currentStep, setCurrentStep] = useState(0); // For goal-focused flow
+  const [currentScreen, setCurrentScreen] = useState(0);
+  const [currentStep, setCurrentStep] = useState(0);
   const [onboardingPath, setOnboardingPath] = useState<'goal-focused' | 'exploratory' | null>(null);
   const [answers, setAnswers] = useState<Partial<OnboardingAnswers>>({});
+  const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
+  const [offlineMode, setOfflineMode] = useState(false);
+  const [connectionError, setConnectionError] = useState<string | null>(null);
+  
+  // 🔑 UNIQUE TOKEN SYSTEM - This token will be used across the entire app
+  const [userToken, setUserToken] = useState<string | null>(null);
+  
+  // 💬 CONVERSATION STATE - Required for exploratory onboarding chat
   const [conversation, setConversation] = useState<AiMessage[]>([]);
 
-  // Save progress to Firestore and update URL
+  // Generate unique user token for the entire app experience
+  const generateUserToken = (): string => {
+    const timestamp = Date.now().toString(36);
+    const randomStr = Math.random().toString(36).substring(2, 15);
+    const userPart = user?.uid?.substring(0, 8) || 'anon';
+    return `usr_${userPart}_${timestamp}_${randomStr}`;
+  };
+
+  // 💾 ENHANCED SAVE PROGRESS - Now includes comprehensive data structure
   const saveProgress = async (
     screen: number, 
     step: number, 
     path: 'goal-focused' | 'exploratory' | null, 
     currentAnswers: Partial<OnboardingAnswers>
   ) => {
-    if (!user) return;
-    
-    try {
-      await updateDoc(doc(db, 'users', user.uid), {
-        onboardingProgress: {
-          currentScreen: screen,
-          currentStep: step,
-          onboardingPath: path,
-          answers: currentAnswers,
-          selectedActivity,
-          lastUpdated: new Date()
-        }
-      });
-
-      // Update URL to reflect current progress
+    if (!user || offlineMode) {
+      // Still update URL even in offline mode with token
       const params = new URLSearchParams();
+      if (userToken) params.set('token', userToken);
       if (path) params.set('path', path);
       if (screen >= 0) params.set('screen', screen.toString());
       if (step > 0) params.set('step', step.toString());
       
       const newUrl = params.toString() ? `?${params.toString()}` : '';
       router.replace(`/onboarding${newUrl}`, { scroll: false });
-    } catch (error) {
-      console.error('Error saving onboarding progress:', error);
+      return;
+    }
+    
+    try {
+      // 🏗️ COMPREHENSIVE DATA STRUCTURE - Store everything with token
+      await setDoc(doc(db, 'users', user.uid), {
+        // Core user identification
+        userToken: userToken,
+        lastActive: new Date(),
+        
+        // Onboarding progress
+        onboardingProgress: {
+          currentScreen: screen,
+          currentStep: step,
+          onboardingPath: path,
+          answers: currentAnswers,
+          selectedActivity,
+          lastUpdated: new Date(),
+          token: userToken
+        },
+        
+        // 🤖 AI Chat System - Initialize empty but ready for data
+        aiChatSessions: {
+          currentSessionId: null,
+          totalSessions: 0,
+          lastChatDate: null,
+          chatHistory: [], // Will store all chat messages
+          preferences: {
+            aiTone: 'supportive',
+            responseLength: 'medium',
+            focusAreas: []
+          }
+        },
+        
+        // 🏋️ Training System - Initialize training data structure
+        trainingData: {
+          currentProgram: null,
+          completedWorkouts: [],
+          upcomingWorkouts: [],
+          progressMetrics: {},
+          personalRecords: {},
+          preferences: {
+            workoutDuration: currentAnswers.timeCommitment || '30',
+            daysPerWeek: currentAnswers.daysPerWeek || '3',
+            equipment: currentAnswers.equipment || []
+          }
+        },
+        
+        // 📊 Personal Info & Metrics - Comprehensive user profile
+        personalProfile: {
+          demographics: {
+            age: currentAnswers.age,
+            gender: currentAnswers.gender,
+            location: currentAnswers.location,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+          },
+          physicalMetrics: {
+            height: currentAnswers.units === 'imperial' 
+              ? { feet: currentAnswers.heightFeet, inches: currentAnswers.heightInches }
+              : { cm: currentAnswers.heightCm },
+            weight: currentAnswers.weight,
+            units: currentAnswers.units,
+            fitnessLevel: currentAnswers.fitnessLevel
+          },
+          goals: {
+            primary: currentAnswers.goal,
+            activity: currentAnswers.activity,
+            subcategory: currentAnswers.subcategory,
+            activitySpecific: currentAnswers.activitySpecific
+          },
+          preferences: {
+            notifications: true,
+            dataSharing: false,
+            privacy: 'standard'
+          }
+        },
+        
+        // 🔐 Security & Access
+        security: {
+          tokenCreated: new Date(),
+          lastTokenRefresh: new Date(),
+          accessLevel: 'user',
+          dataConsent: true
+        }
+      }, { merge: true });
+
+      console.log('✅ Comprehensive progress saved with token:', userToken);
+
+      // Update URL with token-based navigation
+      const params = new URLSearchParams();
+      if (userToken) params.set('token', userToken);
+      if (path) params.set('path', path);
+      if (screen >= 0) params.set('screen', screen.toString());
+      if (step > 0) params.set('step', step.toString());
+      
+      const newUrl = params.toString() ? `?${params.toString()}` : '';
+      router.replace(`/onboarding${newUrl}`, { scroll: false });
+      
+      setConnectionError(null);
+    } catch (error: any) {
+      console.error('❌ Error saving comprehensive progress:', error);
+      
+      if (error.code === 'unavailable' || 
+          error.code === 'deadline-exceeded' ||
+          error.message?.includes('400')) {
+        console.log('Enabling offline mode due to connection issues');
+        setOfflineMode(true);
+        setConnectionError('Working in offline mode - progress saved locally');
+      }
+      
+      // Still update URL for local navigation
+      const params = new URLSearchParams();
+      if (userToken) params.set('token', userToken);
+      if (path) params.set('path', path);
+      if (screen >= 0) params.set('screen', screen.toString());
+      if (step > 0) params.set('step', step.toString());
+      
+      const newUrl = params.toString() ? `?${params.toString()}` : '';
+      router.replace(`/onboarding${newUrl}`, { scroll: false });
     }
   };
 
-  // Load progress from Firestore and URL
+  // 🔍 ENHANCED LOAD PROGRESS - Now with comprehensive token validation
   const loadProgress = async () => {
-    if (!user) return;
-    
-    try {
-      const userDoc = await getDoc(doc(db, 'users', user.uid));
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        
-        // Check if onboarding is already completed
-        if (userData.hasCompletedOnboarding === true) {
-          console.log('User has completed onboarding, redirecting to dashboard');
-          router.push('/dashboard');
-          return;
-        }
-
-        // Load saved progress
-        const progress = userData.onboardingProgress;
-        if (progress) {
-          setCurrentScreen(progress.currentScreen || 0);
-          setCurrentStep(progress.currentStep || 0);
-          setOnboardingPath(progress.onboardingPath || null);
-          setAnswers(progress.answers || {});
-          setSelectedActivity(progress.selectedActivity || null);
-        } else {
-          // Check URL parameters for initial state
-          const urlPath = searchParams.get('path') as 'goal-focused' | 'exploratory' | null;
-          const urlScreen = parseInt(searchParams.get('screen') || '0');
-          const urlStep = parseInt(searchParams.get('step') || '0');
-          
-          if (urlPath) {
-            setOnboardingPath(urlPath);
-            setCurrentScreen(urlPath === 'goal-focused' ? -1 : -2);
-            setCurrentStep(urlStep);
-          } else {
-            setCurrentScreen(urlScreen);
-          }
-        }
-      }
-    } catch (error) {
-      console.error('Error loading onboarding progress:', error);
+    if (!user) {
+      setIsLoading(false);
+      return;
     }
     
+    let retryCount = 0;
+    const maxRetries = 1;
+    
+    const attemptLoad = async (): Promise<void> => {
+      try {
+        console.log(`🔍 Loading comprehensive user data for: ${user.uid}`);
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          
+          // 🔑 TOKEN VALIDATION & INITIALIZATION
+          let existingToken = userData.userToken;
+          const urlToken = searchParams.get('token');
+          
+          // Validate and set token
+          if (urlToken && userData.userToken === urlToken) {
+            // Valid token from URL matches stored token
+            setUserToken(urlToken);
+            console.log('✅ Valid token found:', urlToken);
+          } else if (existingToken) {
+            // Use existing stored token
+            setUserToken(existingToken);
+            console.log('✅ Using existing token:', existingToken);
+          } else {
+            // Generate new token for existing user without one
+            const newToken = generateUserToken();
+            setUserToken(newToken);
+            console.log('🆕 Generated new token for existing user:', newToken);
+            
+            // Save the new token
+            await setDoc(doc(db, 'users', user.uid), {
+              userToken: newToken,
+              security: {
+                tokenCreated: new Date(),
+                lastTokenRefresh: new Date(),
+                accessLevel: 'user',
+                dataConsent: true
+              }
+            }, { merge: true });
+          }
+          
+          // Check if onboarding is already completed
+          if (userData.hasCompletedOnboarding === true) {
+            console.log('✅ User has completed onboarding, redirecting to dashboard');
+            const token = userToken || existingToken || generateUserToken();
+            router.push(`/dashboard?token=${token}`);
+            return;
+          }
+
+          // 📊 LOAD COMPREHENSIVE PROGRESS DATA
+          const progress = userData.onboardingProgress;
+          if (progress) {
+            setCurrentScreen(progress.currentScreen || 0);
+            setCurrentStep(progress.currentStep || 0);
+            setOnboardingPath(progress.onboardingPath || null);
+            setAnswers(progress.answers || {});
+            setSelectedActivity(progress.selectedActivity || null);
+            
+            console.log('📊 Loaded existing progress:', {
+              screen: progress.currentScreen,
+              step: progress.currentStep,
+              path: progress.onboardingPath,
+              activity: progress.selectedActivity
+            });
+          } else {
+            // 🆕 NEW USER - Initialize from URL parameters
+            const urlPath = searchParams.get('path') as 'goal-focused' | 'exploratory' | null;
+            const urlScreen = parseInt(searchParams.get('screen') || '0');
+            const urlStep = parseInt(searchParams.get('step') || '0');
+            
+            if (urlPath) {
+              setOnboardingPath(urlPath);
+              setCurrentScreen(urlPath === 'goal-focused' ? -1 : -2);
+              setCurrentStep(urlStep);
+            } else {
+              setCurrentScreen(urlScreen);
+            }
+            
+            console.log('🆕 New user initialized:', { urlPath, urlScreen, urlStep });
+          }
+          
+          // 🔄 UPDATE URL WITH CURRENT TOKEN
+          const params = new URLSearchParams();
+          const currentToken = userToken || existingToken;
+          if (currentToken) params.set('token', currentToken);
+          if (progress?.onboardingPath) params.set('path', progress.onboardingPath);
+          if (progress?.currentScreen >= 0) params.set('screen', progress.currentScreen.toString());
+          if (progress?.currentStep > 0) params.set('step', progress.currentStep.toString());
+          
+          const newUrl = params.toString() ? `?${params.toString()}` : '';
+          router.replace(`/onboarding${newUrl}`, { scroll: false });
+          
+        } else {
+          // 🆕 COMPLETELY NEW USER - Create comprehensive profile
+          console.log('🆕 Creating new user profile with comprehensive data structure');
+          
+          const newToken = generateUserToken();
+          setUserToken(newToken);
+          setCurrentScreen(0);
+          
+          // Initialize comprehensive user data structure
+          await setDoc(doc(db, 'users', user.uid), {
+            // Core identification
+            userToken: newToken,
+            createdAt: new Date(),
+            lastActive: new Date(),
+            
+            // Onboarding state
+            hasCompletedOnboarding: false,
+            onboardingProgress: {
+              currentScreen: 0,
+              currentStep: 0,
+              onboardingPath: null,
+              answers: {},
+              selectedActivity: null,
+              lastUpdated: new Date(),
+              token: newToken
+            },
+            
+            // 🤖 AI Chat System - Ready for future use
+            aiChatSessions: {
+              currentSessionId: null,
+              totalSessions: 0,
+              lastChatDate: null,
+              chatHistory: [],
+              preferences: {
+                aiTone: 'supportive',
+                responseLength: 'medium',
+                focusAreas: []
+              }
+            },
+            
+            // 🏋️ Training System - Ready for programs
+            trainingData: {
+              currentProgram: null,
+              completedWorkouts: [],
+              upcomingWorkouts: [],
+              progressMetrics: {},
+              personalRecords: {},
+              preferences: {}
+            },
+            
+            // 📊 Personal Profile - Will be filled during onboarding
+            personalProfile: {
+              demographics: {},
+              physicalMetrics: {},
+              goals: {},
+              preferences: {
+                notifications: true,
+                dataSharing: false,
+                privacy: 'standard'
+              }
+            },
+            
+            // 🔐 Security
+            security: {
+              tokenCreated: new Date(),
+              lastTokenRefresh: new Date(),
+              accessLevel: 'user',
+              dataConsent: true
+            }
+          });
+          
+          // Update URL with new token
+          router.replace(`/onboarding?token=${newToken}`, { scroll: false });
+          
+          console.log('✅ New user profile created with token:', newToken);
+        }
+      } catch (error: any) {
+        console.error('❌ Error loading user data:', error);
+        
+        // Retry logic
+        if (retryCount < maxRetries && (
+          error.code === 'unavailable' || 
+          error.code === 'deadline-exceeded' ||
+          error.message?.includes('400')
+        )) {
+          retryCount++;
+          console.log(`🔄 Retrying load (attempt ${retryCount}/${maxRetries})`);
+          await new Promise(resolve => setTimeout(resolve, 1000 * retryCount));
+          return attemptLoad();
+        }
+        
+        // 📴 OFFLINE MODE - Generate local token
+        console.log('📴 Enabling offline mode with local token');
+        setOfflineMode(true);
+        setConnectionError('Working in offline mode - data will sync when online');
+        
+        const localToken = generateUserToken();
+        setUserToken(localToken);
+        
+        // Use URL parameters or start fresh
+        const urlPath = searchParams.get('path') as 'goal-focused' | 'exploratory' | null;
+        const urlScreen = parseInt(searchParams.get('screen') || '0');
+        const urlStep = parseInt(searchParams.get('step') || '0');
+        
+        if (urlPath) {
+          setOnboardingPath(urlPath);
+          setCurrentScreen(urlPath === 'goal-focused' ? -1 : -2);
+          setCurrentStep(urlStep);
+        } else {
+          setCurrentScreen(urlScreen);
+        }
+        
+        // Update URL with local token
+        router.replace(`/onboarding?token=${localToken}`, { scroll: false });
+      }
+    };
+    
+    await attemptLoad();
     setIsLoading(false);
   };
 
@@ -702,31 +997,126 @@ Maybe it's something energizing like dancing or running, something calming like 
     }
   };
 
+  // 🎯 ENHANCED COMPLETE ONBOARDING - Now with comprehensive data structure and token system
   const completeOnboarding = async (finalAnswers: OnboardingAnswers, path: 'goal-focused' | 'exploratory'): Promise<void> => {
     if (!user) return;
 
     try {
       const personalization = generatePersonalization(finalAnswers, path);
       
+      // 🏗️ SAVE COMPREHENSIVE USER DATA with token
       await setDoc(doc(db, 'users', user.uid), {
+        // ✅ COMPLETION STATUS
         hasCompletedOnboarding: true,
-        onboardingAnswers: finalAnswers,
-        personalization,
-        onboardingPath: path,
         completedAt: new Date(),
-        // Clear onboarding progress since it's completed
+        onboardingPath: path,
+        onboardingAnswers: finalAnswers,
+        userPersonalization: personalization,
+        
+        // 🔑 TOKEN SYSTEM - Maintain user token for entire app
+        userToken: userToken,
+        lastActive: new Date(),
+        
+        // 📊 ENHANCED PERSONAL PROFILE - Complete user data
+        personalProfile: {
+          demographics: {
+            age: finalAnswers.age,
+            gender: finalAnswers.gender,
+            location: finalAnswers.location,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+          },
+          physicalMetrics: {
+            height: finalAnswers.units === 'imperial' 
+              ? { feet: finalAnswers.heightFeet, inches: finalAnswers.heightInches }
+              : { cm: finalAnswers.heightCm },
+            weight: finalAnswers.weight,
+            units: finalAnswers.units,
+            fitnessLevel: finalAnswers.fitnessLevel
+          },
+          goals: {
+            primary: finalAnswers.goal,
+            activity: finalAnswers.activity,
+            subcategory: finalAnswers.subcategory,
+            activitySpecific: finalAnswers.activitySpecific
+          },
+          preferences: {
+            notifications: true,
+            dataSharing: false,
+            privacy: 'standard',
+            theme: personalization.visualTheme
+          }
+        },
+        
+        // 🏋️ TRAINING SYSTEM - Initialize with onboarding data
+        trainingData: {
+          currentProgram: null,
+          completedWorkouts: [],
+          upcomingWorkouts: [],
+          progressMetrics: {
+            startDate: new Date(),
+            initialFitnessLevel: finalAnswers.fitnessLevel,
+            targetGoal: finalAnswers.goal
+          },
+          personalRecords: {},
+          preferences: {
+            workoutDuration: finalAnswers.timeCommitment,
+            daysPerWeek: finalAnswers.daysPerWeek,
+            equipment: finalAnswers.equipment,
+            preferredDays: finalAnswers.preferredDays || []
+          }
+        },
+        
+        // 🤖 AI CHAT SYSTEM - Initialize with persona preferences
+        aiChatSessions: {
+          currentSessionId: null,
+          totalSessions: 0,
+          lastChatDate: null,
+          chatHistory: [],
+          preferences: {
+            aiTone: personalization.aiTone,
+            responseLength: 'medium',
+            focusAreas: [finalAnswers.activity, finalAnswers.goal],
+            selectedPersona: personalization.selectedPersona
+          }
+        },
+        
+        // 🔐 SECURITY & ACCESS - Complete security profile
+        security: {
+          tokenCreated: new Date(),
+          lastTokenRefresh: new Date(),
+          accessLevel: 'user',
+          dataConsent: true,
+          onboardingCompleted: true
+        },
+        
+        // 🗑️ CLEANUP - Clear onboarding progress since completed
         onboardingProgress: null
       }, { merge: true });
+
+      console.log('🎉 ONBOARDING COMPLETED! Comprehensive user data saved with token:', userToken);
+      console.log('📊 User Profile:', {
+        activity: finalAnswers.activity,
+        goal: finalAnswers.goal,
+        fitnessLevel: finalAnswers.fitnessLevel,
+        persona: personalization.selectedPersona,
+        token: userToken
+      });
 
       setIsTransitioning(true);
       
       setTimeout(() => {
-        // Clear URL parameters and redirect to dashboard
-        router.push('/dashboard');
+        // 🚀 REDIRECT TO DASHBOARD with unique user token
+        router.push(`/dashboard?token=${userToken}`);
         onComplete(personalization);
       }, 1000);
     } catch (error) {
-      console.error('Error completing onboarding:', error);
+      console.error('❌ Error completing onboarding:', error);
+      
+      // 🔄 FALLBACK - Still redirect even if save fails
+      setTimeout(() => {
+        router.push(`/dashboard?token=${userToken}`);
+        onComplete(generatePersonalization(finalAnswers, path));
+      }, 1000);
     }
   };
 

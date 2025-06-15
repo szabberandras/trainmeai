@@ -2,7 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ChevronLeft, ChevronRight, Plus, Target, Dumbbell, Heart, Zap, Trophy, Users, Calendar } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus, Target, Dumbbell, Heart, Zap, Trophy, Users, Calendar, MoreVertical } from 'lucide-react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/lib/firebase';
+import ProgramActionsMenu from '../program/ProgramActionsMenu';
 
 interface TrainingProgram {
   id: string;
@@ -28,6 +31,8 @@ const TrainingProgramNavBar: React.FC<TrainingProgramNavBarProps> = ({
   const router = useRouter();
   const params = useParams();
   const currentId = params?.id as string;
+  const [user] = useAuthState(auth);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
   
   // Use provided programs or mock data for demonstration
   const trainingPrograms = programs.length > 0 ? programs : [
@@ -222,13 +227,64 @@ const TrainingProgramNavBar: React.FC<TrainingProgramNavBarProps> = ({
                       <h3 className="font-semibold text-gray-900 truncate">{program.name}</h3>
                       <p className="text-sm text-gray-600">{program.type}</p>
                     </div>
-                    <div className={`
-                      px-2 py-1 rounded-full text-xs font-medium
-                      ${program.status === 'active' ? 'bg-green-100 text-green-800' :
-                        program.status === 'completed' ? 'bg-blue-100 text-blue-800' :
-                        'bg-gray-100 text-gray-800'}
-                    `}>
-                      {program.status}
+                    <div className="flex items-center gap-2">
+                      <div className={`
+                        px-2 py-1 rounded-full text-xs font-medium
+                        ${program.status === 'active' ? 'bg-green-100 text-green-800' :
+                          program.status === 'completed' ? 'bg-blue-100 text-blue-800' :
+                          'bg-gray-100 text-gray-800'}
+                      `}>
+                        {program.status}
+                      </div>
+                      {user && (
+                        <div onClick={(e) => e.stopPropagation()}>
+                          <ProgramActionsMenu
+                            program={{
+                              id: program.id,
+                              name: program.name,
+                              status: program.status,
+                              duration: 12, // Default duration
+                              currentDay: Math.floor(program.progress / 100 * 84), // Estimate current day
+                              type: program.type.toLowerCase() === 'endurance' ? 'cardio' : 
+                                    program.type.toLowerCase() === 'strength' ? 'strength' : 'hybrid',
+                              level: 'intermediate',
+                              createdAt: new Date(),
+                              updatedAt: new Date(),
+                              userId: user.uid,
+                              description: `${program.type} training program`,
+                              weeklyPlans: [],
+                              weeks: [],
+                              progress: {
+                                weeksCompleted: Math.floor(program.progress / 100 * 12),
+                                workoutsCompleted: 0,
+                                totalWorkouts: 0,
+                                streak: 0
+                              },
+                              totalDays: 84,
+                              dailyProgression: [],
+                              lastGeneratedDay: Math.floor(program.progress / 100 * 84),
+                              canGenerateNext: true
+                            }}
+                            userId={user.uid}
+                            onProgramUpdated={() => {
+                              setRefreshTrigger(prev => prev + 1);
+                              // Could call a parent callback to refresh programs
+                            }}
+                            onProgramCompleted={(program) => {
+                              console.log('Program completed:', program.name);
+                              router.push('/programs');
+                            }}
+                            onProgramArchived={(program) => {
+                              console.log('Program archived:', program.name);
+                              router.push('/programs');
+                            }}
+                            onProgramRestarted={(newProgramId) => {
+                              console.log('Program restarted with ID:', newProgramId);
+                              router.push(`/programs/${newProgramId}`);
+                            }}
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                   

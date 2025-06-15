@@ -45,9 +45,19 @@ export interface TrainingWeek {
 }
 
 export interface TrainingPlan {
+  id?: string;
   name: string;
+  description?: string;
+  duration?: string;
+  difficulty?: string;
   type: string;
   approach?: string;
+  focus?: string[];
+  persona?: CoachPersona;
+  experienceLevel?: ExperienceLevel;
+  energySystem?: EnergySystem;
+  periodizationPhase?: PeriodizationPhase;
+  exercises?: any[];
   weeks: TrainingWeek[];
 }
 
@@ -58,6 +68,10 @@ export interface CoachResponse {
   encouragement?: string;
 }
 
+/**
+ * @deprecated Use UserProfile from lib/types/core.ts instead
+ * This interface will be removed in a future version
+ */
 export interface UserProfile {
   experience: 'beginner' | 'intermediate' | 'advanced';
   goals: GoalType[];

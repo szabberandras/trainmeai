@@ -244,128 +244,172 @@ export default function AuthForm({ isRegistering, onToggleMode }: AuthFormProps)
 
   return (
     <form onSubmit={handleAuth} className="space-y-4">
-      {error && (
-        <div className="mb-6 rounded-xl bg-red-50 p-4">
-          <p className="text-sm text-red-700">{error}</p>
-        </div>
-      )}
-
-      <div className="mb-4">
-        <label htmlFor="email" className="block text-base font-medium text-[#222222] mb-2">
-          Email
+      {/* Email Field */}
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-primary-dark mb-1">
+          Email address
         </label>
         <input
           id="email"
+          name="email"
           type="email"
+          autoComplete="email"
+          required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full h-14 px-4 rounded-xl border border-[#dadee7] focus:border-[#0047FF] focus:ring-1 focus:ring-[#0047FF] bg-white text-[#222222] placeholder:text-[#5e6a8d]"
+          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white text-gray-900 placeholder-gray-400"
           placeholder="Enter your email"
+          disabled={isAuthenticating}
+          style={{
+            color: '#111827',
+            backgroundColor: 'white',
+            fontSize: '14px'
+          }}
         />
         {validationErrors.email && (
-          <p className="mt-1 text-sm text-[#FF4C4C]">{validationErrors.email}</p>
+          <p className="mt-1 text-sm text-red-600">{validationErrors.email}</p>
+        )}
+        {isCheckingEmail && (
+          <p className="mt-1 text-sm text-accent">Checking email availability...</p>
         )}
       </div>
 
-      <div className="mb-4">
-        <div className="flex items-center justify-between mb-2">
-          <label htmlFor="password" className="block text-base font-medium text-[#222222]">
-            Password
-          </label>
-          {!isRegistering && (
-            <button
-              type="button"
-              onClick={handleForgotPassword}
-              className="text-sm text-[#0047FF] hover:text-[#0033CC] font-medium"
-            >
-              Forgot password?
-            </button>
-          )}
-        </div>
+      {/* Password Field */}
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium text-primary-dark mb-1">
+          Password
+        </label>
         <input
           id="password"
+          name="password"
           type="password"
+          autoComplete={isRegistering ? "new-password" : "current-password"}
+          required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full h-14 px-4 rounded-xl border border-[#dadee7] focus:border-[#0047FF] focus:ring-1 focus:ring-[#0047FF] bg-white text-[#222222] placeholder:text-[#5e6a8d]"
+          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white text-gray-900 placeholder-gray-400"
           placeholder="Enter your password"
+          disabled={isAuthenticating}
+          style={{
+            color: '#111827',
+            backgroundColor: 'white',
+            fontSize: '14px'
+          }}
         />
-        {isRegistering && <PasswordStrengthMeter password={password} />}
         {validationErrors.password && (
-          <p className="mt-1 text-sm text-[#FF4C4C]">{validationErrors.password}</p>
+          <p className="mt-1 text-sm text-red-600">{validationErrors.password}</p>
+        )}
+        {isRegistering && password && (
+          <div className="mt-2">
+            <PasswordStrengthMeter password={password} />
+          </div>
         )}
       </div>
 
+      {/* Confirm Password Field - Only for Registration */}
       {shouldShowConfirmPassword && (
-        <div className={`mb-4 transition-all duration-300 ease-in-out ${shouldShowConfirmPassword ? 'opacity-100 max-h-80' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-          <label htmlFor="confirmPassword" className="block text-base font-medium text-[#222222] mb-2">
+        <div>
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-primary-dark mb-1">
             Confirm Password
           </label>
           <input
             id="confirmPassword"
+            name="confirmPassword"
             type="password"
+            autoComplete="new-password"
+            required
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full h-14 px-4 rounded-xl border border-[#dadee7] focus:border-[#0047FF] focus:ring-1 focus:ring-[#0047FF] bg-white text-[#222222] placeholder:text-[#5e6a8d]"
+            className="w-full px-3 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white text-gray-900 placeholder-gray-400"
             placeholder="Confirm your password"
+            disabled={isAuthenticating}
+            style={{
+              color: '#111827',
+              backgroundColor: 'white',
+              fontSize: '14px'
+            }}
           />
           {validationErrors.confirmPassword && (
-            <p className="mt-1 text-sm text-[#FF4C4C]">{validationErrors.confirmPassword}</p>
+            <p className="mt-1 text-sm text-red-600">{validationErrors.confirmPassword}</p>
           )}
         </div>
       )}
 
+      {/* Remember Me - Only for Login */}
       {!isRegistering && (
-        <div className="mb-4">
-          <label className="flex items-center">
-            <input
-              type="checkbox"
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
-              className="h-4 w-4 rounded border-[#dadee7] text-[#0047FF] focus:ring-[#0047FF]"
-            />
-            <span className="ml-2 text-sm text-[#222222]">Remember me</span>
+        <div className="flex items-center">
+          <input
+            id="remember-me"
+            name="remember-me"
+            type="checkbox"
+            checked={rememberMe}
+            onChange={(e) => setRememberMe(e.target.checked)}
+            className="h-4 w-4 text-midnight-green focus:ring-slate-gray border-gray-300 rounded"
+          />
+          <label htmlFor="remember-me" className="ml-2 block text-sm text-accent">
+            Remember me
           </label>
         </div>
       )}
 
-      {successMessage && (
-        <div className="mb-6 rounded-xl bg-green-50 p-4">
-          <p className="text-sm text-green-700">{successMessage}</p>
-        </div>
-      )}
-
+      {/* Submit Button */}
       <button
         type="submit"
-        disabled={isAuthenticating || isCheckingEmail}
-        className={`w-full h-12 rounded-xl font-space-grotesk font-semibold text-white bg-[#0047FF] hover:bg-[#0033CC] transition-colors ${
-          (isAuthenticating || isCheckingEmail) ? 'opacity-50 cursor-not-allowed' : ''
-        }`}
+        disabled={isAuthenticating}
+        className="w-full btn-primary-gradient py-2.5 px-4 rounded-xl font-medium text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-gray disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isAuthenticating ? (
-          <span className="flex items-center justify-center">
-            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Processing...
-          </span>
+          <div className="flex items-center justify-center">
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+            {isRegistering ? 'Creating Account...' : 'Signing In...'}
+          </div>
         ) : (
-          isRegistering ? 'Create Account' : 'Sign in'
+          isRegistering ? 'Create Account' : 'Sign In'
         )}
       </button>
 
-      <p className="mt-2 text-center">
+      {/* Toggle Mode */}
+      <div className="text-center">
         <button
           type="button"
           onClick={onToggleMode}
-          className="text-sm text-[#5e6a8d] hover:text-[#222222] underline"
+          className="text-sm text-accent hover:text-primary-dark transition-colors"
+          disabled={isAuthenticating}
         >
-          {isRegistering
-            ? 'Already have an account? Sign in'
-            : "Don't have an account? Sign up"}
+          {isRegistering 
+            ? 'Already have an account? Sign in' 
+            : "Don't have an account? Create one"
+          }
         </button>
-      </p>
+      </div>
+
+      {/* Forgot Password - Only for Login */}
+      {!isRegistering && (
+        <div className="text-center">
+          <button
+            type="button"
+            onClick={handleForgotPassword}
+            className="text-sm text-accent hover:text-primary-dark transition-colors"
+            disabled={isAuthenticating}
+          >
+            Forgot your password?
+          </button>
+        </div>
+      )}
+
+      {/* Error Message */}
+      {error && (
+        <div className="rounded-xl bg-red-50 p-4">
+          <p className="text-sm text-red-600">{error}</p>
+        </div>
+      )}
+
+      {/* Success Message */}
+      {successMessage && (
+        <div className="rounded-xl bg-green-50 p-4">
+          <p className="text-sm text-green-700">{successMessage}</p>
+        </div>
+      )}
     </form>
   );
 } 

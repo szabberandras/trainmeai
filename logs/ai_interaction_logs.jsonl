@@ -187,3 +187,9 @@
 {"timestamp":"2025-06-06T19:19:50.588Z","type":"ai_response_chat","content":"Okay, understanding that you haven't run further than 5k recently and your goal is to complete a marathon,  to help me structure a safe and progressive plan, could you tell me how many days a week you currently dedicate to running?\n"}
 {"timestamp":"2025-06-06T19:19:58.713Z","type":"user_message_chat","content":"1 day"}
 {"timestamp":"2025-06-06T19:20:00.174Z","type":"ai_response_chat","content":"Okay, one day a week currently.  To build a plan that safely increases your mileage and prepares you for a marathon, considering your current 5k run and single weekly running day,  can you tell me about any other forms of exercise you currently incorporate into your weekly routine?\n"}
+{"timestamp":"2025-06-14T21:54:04.921Z","type":"user_message_chat","content":"Can you see the new exercises like single-leg-squat and bird-dog in the database?"}
+{"timestamp":"2025-06-14T21:54:05.948Z","type":"error_chat_api","content":"Error: Failed to get document because the client is offline."}
+{"timestamp":"2025-06-14T21:54:27.963Z","type":"user_message_chat","content":"Test"}
+{"timestamp":"2025-06-14T21:54:28.149Z","type":"error_chat_api","content":"Error: Failed to get document because the client is offline."}
+{"timestamp":"2025-06-14T22:08:58.001Z","type":"user_message_chat","content":"Can you recommend a grip strength workout using towel-pull-ups and plate-pinches?"}
+{"timestamp":"2025-06-14T22:08:58.713Z","type":"error_chat_api","content":"Error: Failed to get document because the client is offline."}

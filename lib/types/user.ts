@@ -48,6 +48,10 @@ export interface UserProgram {
   totalWeeks: number;
 }
 
+/**
+ * @deprecated Use UserProfile from lib/types/core.ts instead
+ * This interface will be removed in a future version
+ */
 export interface UserProfile {
   uid: string;
   email: string;

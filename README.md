@@ -146,6 +146,18 @@ my-fitness-app/
 - **AI Integration** (`lib/ai/gemini.js`): Google Gemini API integration
 - **Authentication** (`auth.ts`): NextAuth.js configuration
 
+### Adding New Exercises
+⚠️ **IMPORTANT**: When adding new exercises to the system, follow the comprehensive workflow documented in [`docs/EXERCISE_ADDITION_WORKFLOW.md`](docs/EXERCISE_ADDITION_WORKFLOW.md). This ensures:
+- No duplicate exercises are created
+- Exercises are properly categorized
+- AI can immediately access new exercises
+- Database consistency is maintained
+
+Quick workflow:
+1. Check for duplicates
+2. Run `node scripts/add-new-exercises-batch.js`
+3. Verify AI accessibility
+
 ## 🤝 Contributing
 
 1. Fork the repository

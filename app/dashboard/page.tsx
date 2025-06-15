@@ -709,7 +709,7 @@ What's on your mind?`;
           // Add the generate button message
           const generateButtonMessage = {
             type: 'ai' as const,
-            content: "Perfect! I have all the information needed to create your personalized program. Would you like me to generate it now?",
+            content: "Perfect! I&apos;m now generating your personalized training program based on our conversation. This may take a moment...",
             timestamp: new Date(),
             metadata: {
               showGenerateButton: true
@@ -1197,39 +1197,183 @@ Your program is now being saved and you'll be redirected to view the full detail
               </div>
             )}
 
-            {/* Past Training Plans Carousel */}
+            {/* Current Training Plans */}
             <div className="mt-8">
               <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
-                Past Training Plans
+                Current Training Plans
               </h2>
               {programs.length > 0 ? (
-                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg">
-                  <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                    {PAST_PLAN_ITEMS.map((item, index) => (
-                      <div key={index} className="flex-shrink-0 w-40 text-center">
-                        <div className="w-full h-24 rounded-2xl overflow-hidden mb-2 border border-gray-200 shadow-sm">
-                          <img 
-                            src={PAST_PLAN_IMAGES[item.imageKey as keyof typeof PAST_PLAN_IMAGES]} 
-                            alt={item.title} 
-                            className="w-full h-full object-cover"
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {programs.map((program, index) => (
+                    <div key={program.id || index} className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
+                            <Dumbbell className="text-blue-600" size={20} />
+                          </div>
+                          <div>
+                            <h3 className="font-medium text-gray-900">{program.name || 'Training Program'}</h3>
+                            <p className="text-sm text-gray-500">{program.type || 'General Fitness'}</p>
+                          </div>
+                        </div>
+                        <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+                          Active
+                        </span>
+                      </div>
+                      
+                      <div className="space-y-3 mb-4">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-600">Progress</span>
+                          <span className="font-medium">Week {program.currentWeek || 1} of {program.totalWeeks || 12}</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div 
+                            className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                            style={{ width: `${((program.currentWeek || 1) / (program.totalWeeks || 12)) * 100}%` }}
                           />
                         </div>
-                        <p className="text-sm text-gray-700 font-medium">{item.title}</p>
                       </div>
-                    ))}
+
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => router.push(`/training?plan=${program.id}`)}
+                          className="flex-1 bg-gray-900 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors"
+                        >
+                          View Plan
+                        </button>
+                        <button
+                          onClick={() => router.push(`/training?plan=${program.id}#chat`)}
+                          className="flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-2 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors"
+                        >
+                          <Sparkles size={14} />
+                          AI Chat
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {/* Add New Plan Card */}
+                  <div className="bg-white/95 backdrop-blur-xl border-2 border-dashed border-gray-300 rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gray-400 cursor-pointer"
+                       onClick={() => setShowProgramCreator(true)}>
+                    <div className="flex flex-col items-center justify-center h-full min-h-[200px] text-center">
+                      <div className="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center mb-4">
+                        <Plus className="text-gray-400" size={20} />
+                      </div>
+                      <h3 className="font-medium text-gray-900 mb-2">Create New Plan</h3>
+                      <p className="text-sm text-gray-500">
+                        Start a conversation with AI to build your personalized training program
+                      </p>
+                    </div>
                   </div>
                 </div>
               ) : (
                 <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-8 shadow-lg text-center">
                   <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Calendar className="text-gray-400" size={24} />
+                    <Dumbbell className="text-gray-400" size={24} />
                   </div>
-                  <h3 className="text-gray-900 font-medium mb-2">No Past Programs</h3>
-                  <p className="text-gray-500 text-sm max-w-md mx-auto">
-                    Your completed training programs will appear here once you finish them.
+                  <h3 className="text-gray-900 font-medium mb-2">No Training Plans Yet</h3>
+                  <p className="text-gray-500 text-sm max-w-md mx-auto mb-6">
+                    Start by chatting with your AI coach below to create your first personalized training program.
                   </p>
+                  <button
+                    onClick={() => setShowProgramCreator(true)}
+                    className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-xl font-medium hover:bg-gray-800 transition-colors"
+                  >
+                    <Plus size={16} />
+                    Create Your First Plan
+                  </button>
                 </div>
               )}
+            </div>
+
+            {/* This Week Preview */}
+            {programs.length > 0 ? (
+              <div className="mt-8">
+                <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
+                  This Week Preview
+                </h2>
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg">
+                  <div className="grid grid-cols-7 gap-4">
+                    {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, index) => (
+                      <div key={day} className="text-center">
+                        <div className="text-xs font-medium text-gray-500 mb-2">{day}</div>
+                        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-3 min-h-[80px] flex flex-col justify-center">
+                          <div className="text-xs text-gray-500">No workouts scheduled</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center">
+                    <div className="text-sm text-gray-600">
+                      Ready to start your training journey?
+                    </div>
+                    <button
+                      onClick={() => router.push('/chat')}
+                      className="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium"
+                    >
+                      Create Training Plan
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="mt-8">
+                <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
+                  Your Training Calendar
+                </h2>
+                <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-8 shadow-lg text-center">
+                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Calendar size={24} className="text-gray-400" />
+                  </div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">No Training Plan Yet</h3>
+                  <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                    Start your fitness journey by chatting with our AI coach. We'll create a personalized training plan based on your goals, experience, and preferences.
+                  </p>
+                  <button
+                    onClick={() => router.push('/chat')}
+                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-blue-700 transition-colors"
+                  >
+                    <Sparkles size={16} />
+                    Start with AI Coach
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Past Training Plans - For Repetition with Updates */}
+            <div className="mt-8">
+              <h2 className="text-gray-900 text-[22px] font-light leading-tight tracking-wide mb-6">
+                Past Training Plans
+              </h2>
+              <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-3xl p-6 shadow-lg">
+                <div className="flex gap-4 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                  {PAST_PLAN_ITEMS.map((item, index) => (
+                    <div key={index} className="flex-shrink-0 w-40 text-center group cursor-pointer">
+                      <div className="w-full h-24 rounded-2xl overflow-hidden mb-2 border border-gray-200 shadow-sm group-hover:shadow-md transition-shadow">
+                        <img 
+                          src={PAST_PLAN_IMAGES[item.imageKey as keyof typeof PAST_PLAN_IMAGES]} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <p className="text-sm text-gray-700 font-medium mb-1">{item.title}</p>
+                      <button className="text-xs text-blue-600 hover:text-blue-800 font-medium">
+                        Repeat with Updates
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 pt-4 border-t border-gray-200 text-center">
+                  <p className="text-sm text-gray-500 mb-3">
+                    Want to repeat a successful program? Chat with AI to adapt it to your current goals.
+                  </p>
+                  <button className="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900 font-medium">
+                    <Sparkles size={14} />
+                    Ask AI to Recreate a Plan
+                  </button>
+                </div>
+              </div>
             </div>
 
             {/* Activity Templates Section */}

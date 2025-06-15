@@ -16,8 +16,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const auth = getAuth(app);
-// Use the staging database to match the main config
-const db = getFirestore(app, 'staging');
+// Use the default database instead of staging
+const db = getFirestore(app);
 const storage = getStorage(app);
 
 // Collection references

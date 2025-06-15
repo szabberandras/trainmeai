@@ -1,6 +1,5 @@
 /**
- * !IMPORTANT - DO NOT MODIFY THIS FILE WITHOUT EXPLICIT PERMISSION
- * This login page design has been carefully crafted with specific branding and UI requirements.
+ * Updated Login Page with Clean Mac-like Design
  */
 
 'use client';
@@ -13,16 +12,7 @@ import Image from 'next/image';
 
 // Firebase Storage URLs for assets
 const ASSETS = {
-  logo: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Logo%2F8819f3df-3241-4f21-be52-827df2f7cc25.png?alt=media&token=a017389c-c181-4143-9366-67bd70c9b6dd',
-  backgroundImage: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2FGemini_Generated_Image_up2hy2up2hy2up2h.jpeg?alt=media&token=cdef40b1-d94b-488d-9ab3-efed9574bf59',
-  userAvatars: [
-    'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2Falvito-danendra-j92WHR-KZnM-unsplash.jpg?alt=media&token=bb7a325c-d66e-4539-b784-25167de72418',
-    'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2Fapril-laugh-ng6R1DHtC3M-unsplash.jpg?alt=media&token=1704be4f-4281-4798-a08a-404befefba99',
-    'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2Fariungoo-batzorig-1_Y9Gp3dUEQ-unsplash.jpg?alt=media&token=ce431cfa-b5e7-4496-9c4a-85a382ed4c09',
-    'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2Fjim-sung-OfB4rWCnbg4-unsplash.jpg?alt=media&token=d35588c8-8ec5-4fc4-9f59-63d64fa425ac',
-    'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2Fquino-al-RAd1nIVB3_Y-unsplash.jpg?alt=media&token=3d23817e-19a0-48ef-b858-f789ff30adbd',
-    'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Login%2Frachel-mcdermott-0fN7Fxv1eWA-unsplash.jpg?alt=media&token=a284c525-4b4e-43e0-8d07-f3f522daeebf'
-  ]
+  logo: 'https://firebasestorage.googleapis.com/v0/b/trainmeai-11cf7.firebasestorage.app/o/Logo%2F8819f3df-3241-4f21-be52-827df2f7cc25.png?alt=media&token=a017389c-c181-4143-9366-67bd70c9b6dd'
 };
 
 export default function ClientOnlyLoginPage() {
@@ -37,115 +27,100 @@ export default function ClientOnlyLoginPage() {
     const register = searchParams.get('register');
     
     if (verified === 'true') {
-      setIsRegistering(false); // Switch to login mode
+      setIsRegistering(false);
       setSuccessMessage('🎉 Email verification successful! Please enter your email and password below to sign in.');
       setError(null);
     } else if (register === 'true') {
-      setIsRegistering(true); // Switch to register mode
+      setIsRegistering(true);
     }
   }, [searchParams]);
 
   return (
-    <div className="flex min-h-screen w-full">
-      {/* Left Side - Login Form */}
-      <div className="w-1/2 flex flex-col items-center justify-center bg-white px-8 py-12">
-        <div className="w-full max-w-[512px]">
-          <div className="flex justify-center mb-8">
-            <div className="w-32 h-32">
-              <Image
-                src={ASSETS.logo}
-                alt="TrainMeAI Logo"
-                width={128}
-                height={128}
-                className="object-contain"
-                style={{ objectFit: 'contain' }}
-                priority
-              />
-            </div>
-          </div>
-
-          <h1 className="font-sora text-[28px] font-bold text-[#222222] mb-6">
-            {isRegistering ? 'Create Account' : 'Sign in'}
-          </h1>
-
-          <AuthForm 
-            isRegistering={isRegistering} 
-            onToggleMode={() => setIsRegistering(!isRegistering)} 
-          />
-
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-[#f0f1f5]" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-[#5e6a8d]">
-                  Or continue with
-                </span>
+    <>
+      <style jsx global>{`
+        input::placeholder {
+          font-size: 14px !important;
+          color: #9CA3AF !important;
+        }
+      `}</style>
+      <div className="flex min-h-screen w-full">
+        {/* Left Side - Login Form */}
+        <div className="w-1/2 flex flex-col items-center justify-center bg-white px-8 py-6 relative z-10">
+          <div className="w-full max-w-[400px]">
+            <div className="flex justify-center mb-1">
+              <div className="w-40 h-40">
+                <Image
+                  src={ASSETS.logo}
+                  alt="MyPace Logo"
+                  width={160}
+                  height={160}
+                  className="object-contain"
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
               </div>
             </div>
 
-            <div className="mt-6 flex justify-center">
-              <SocialAuth
-                onError={(errorMessage) => setError(errorMessage)}
-                setIsAuthenticating={setIsAuthenticating}
-              />
-            </div>
-          </div>
-
-          {error && (
-            <div className="mt-4 rounded-xl bg-red-50 p-4">
-              <p className="text-sm text-[#FF4C4C]">{error}</p>
-            </div>
-          )}
-
-          {successMessage && (
-            <div className="mt-4 rounded-xl bg-green-50 p-4">
-              <p className="text-sm text-green-700">{successMessage}</p>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Right Side - Showcase Image */}
-      <div className="w-1/2 relative bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-16">
-        <div className="w-full max-w-[600px] aspect-[4/3] rounded-3xl overflow-hidden relative shadow-2xl">
-          <Image
-            src={ASSETS.backgroundImage}
-            alt="Fitness Motivation"
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-          />
-          <div className="absolute inset-0 flex flex-col items-start justify-between p-8 bg-gradient-to-b from-transparent via-transparent to-[rgba(0,0,0,0.8)]">
-            <h2 className="font-sora text-4xl font-bold text-white mb-2">
-              {isRegistering ? 'Welcome to TrainMe AI' : 'Welcome back'}
+            <h2 className="font-sora text-[20px] font-medium text-primary-dark mb-4 text-left">
+              {isRegistering ? 'Create your account' : 'Sign in to your account'}
             </h2>
-            <div className="w-full flex flex-col items-start space-y-4">
-              <p className="text-xl text-[#FAFAFA]">
-                Your journey to a healthier You starts here
-              </p>
 
-              {/* User Avatars */}
-              <div className="flex -space-x-3">
-                {ASSETS.userAvatars.map((avatar, index) => (
-                  <div
-                    key={index}
-                    className="relative w-10 h-10 rounded-full border-2 border-white overflow-hidden"
-                  >
-                    <Image
-                      src={avatar}
-                      alt={`User ${index + 1}`}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                ))}
+            <AuthForm 
+              isRegistering={isRegistering} 
+              onToggleMode={() => setIsRegistering(!isRegistering)} 
+            />
+
+            <div className="mt-2">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200" />
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-2 bg-white text-accent">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-2 flex justify-center">
+                <SocialAuth
+                  onError={(errorMessage) => setError(errorMessage)}
+                  setIsAuthenticating={setIsAuthenticating}
+                />
               </div>
             </div>
+
+            {error && (
+              <div className="mt-2 rounded-xl bg-red-50 p-3">
+                <p className="text-sm text-red-600">{error}</p>
+              </div>
+            )}
+
+            {successMessage && (
+              <div className="mt-2 rounded-xl bg-green-50 p-3">
+                <p className="text-sm text-green-700">{successMessage}</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Right Side - Clean Gradient Background */}
+        <div className="w-1/2 relative fullscreen-gradient-primary grainy-texture flex items-center justify-center p-16">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-white mb-6 text-shadow-soft">
+              {isRegistering ? 'Welcome' : 'Welcome back'}
+            </h1>
+            
+            <h3 className="text-2xl font-semibold text-white mb-4 text-shadow-soft">
+              Your AI Coach. Your Goals. Your Pace.
+            </h3>
+            
+            <p className="text-lg text-white opacity-80 text-shadow-soft">
+              Whether you're taking your first steps or chasing podium finishes, our AI adapts to YOUR journey.
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 } 

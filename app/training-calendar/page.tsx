@@ -11,120 +11,8 @@ import {
   Waves, Activity, Star, Timer, Grid3X3, List, Check,
   TrendingUp, Settings, Save, X, Sparkles
 } from 'lucide-react';
-
-// Mock data - replace with actual data fetching
-const mockPrograms = [
-  {
-    id: 'program-1',
-    name: 'Marathon Training - Phase 1',
-    type: 'running',
-    startDate: '2025-01-06',
-    status: 'active',
-    weeklyPlans: [
-      {
-        weekNumber: 1,
-        startDate: '2025-01-06',
-        workouts: [
-          {
-            id: 1,
-            day: 'Monday',
-            type: 'running',
-            title: 'Easy Run',
-            summary: '5km easy pace',
-            intensity: 40,
-            duration: '30min',
-            isLogged: false,
-            exercises: [
-              {
-                id: 1,
-                name: 'Easy Run',
-                plannedDistance: 5,
-                plannedPace: '5:30',
-                heartRate: 'Zone 2'
-              }
-            ]
-          },
-          {
-            id: 2,
-            day: 'Tuesday',
-            type: 'strength',
-            title: 'Upper Body Strength',
-            summary: 'Chest, shoulders, arms',
-            intensity: 70,
-            duration: '45min',
-            isLogged: true,
-            exercises: [
-              {
-                id: 1,
-                name: 'Push-ups',
-                plannedSets: 3,
-                plannedReps: 15,
-                category: 'bodyweight'
-              },
-              {
-                id: 2,
-                name: 'Pull-ups',
-                plannedSets: 3,
-                plannedReps: 8,
-                category: 'bodyweight'
-              }
-            ]
-          },
-          {
-            id: 3,
-            day: 'Wednesday',
-            type: 'running',
-            title: 'Tempo Run',
-            summary: '6km with 3km tempo',
-            intensity: 80,
-            duration: '35min',
-            isLogged: false
-          },
-          {
-            id: 4,
-            day: 'Thursday',
-            type: 'strength',
-            title: 'Lower Body',
-            summary: 'Legs and core',
-            intensity: 75,
-            duration: '50min',
-            isLogged: false
-          },
-          {
-            id: 5,
-            day: 'Friday',
-            type: 'rest',
-            title: 'Rest Day',
-            summary: 'Complete rest or light stretching',
-            intensity: 0,
-            duration: '0min',
-            isLogged: false
-          },
-          {
-            id: 6,
-            day: 'Saturday',
-            type: 'running',
-            title: 'Long Run',
-            summary: '12km steady pace',
-            intensity: 60,
-            duration: '60min',
-            isLogged: false
-          },
-          {
-            id: 7,
-            day: 'Sunday',
-            type: 'cross-training',
-            title: 'Cross Training',
-            summary: 'Cycling or swimming',
-            intensity: 50,
-            duration: '45min',
-            isLogged: false
-          }
-        ]
-      }
-    ]
-  }
-];
+import ProgramActionsMenu from '@/app/components/program/ProgramActionsMenu';
+import WorkoutCompletionModal from '@/app/components/workout/WorkoutCompletionModal';
 
 export default function TrainingCalendarPage() {
   const [user, loading] = useAuthState(auth);
@@ -139,6 +27,9 @@ export default function TrainingCalendarPage() {
   const [loggedData, setLoggedData] = useState<Record<string, any>>({});
   const [workoutNotes, setWorkoutNotes] = useState('');
   const [workoutRating, setWorkoutRating] = useState(0);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [completionWorkout, setCompletionWorkout] = useState<any>(null);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   useEffect(() => {
     if (!user && !loading) {
@@ -176,8 +67,8 @@ export default function TrainingCalendarPage() {
 
   if (!user) return null;
 
-  // In real implementation, this would come from user's actual programs
-  const userPrograms = userProfile?.programs || mockPrograms;
+  // Remove mock data - show empty state instead
+  const userPrograms = userProfile?.programs || [];
   const hasPrograms = userPrograms && userPrograms.length > 0;
   const currentProgram = hasPrograms ? userPrograms[activeProgram] : null;
   const currentWeekData = currentProgram?.weeklyPlans?.[currentWeek];
@@ -247,6 +138,37 @@ export default function TrainingCalendarPage() {
     // Update workout as logged in real implementation
   };
 
+  const handleWorkoutCompletion = (workout: any) => {
+    setCompletionWorkout(workout);
+    setShowCompletionModal(true);
+  };
+
+  const saveWorkoutCompletion = async (completionData: any) => {
+    try {
+      const response = await fetch('/api/workout-completion/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(completionData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save workout completion');
+      }
+
+      const result = await response.json();
+      console.log('Workout completion saved:', result);
+      
+      // Update the workout as logged in the UI
+      // In a real implementation, you'd update the state or refetch data
+      
+    } catch (error) {
+      console.error('Error saving workout completion:', error);
+      throw error;
+    }
+  };
+
   const renderWorkoutCard = (workout: any, isCompact = false) => (
     <div 
       key={workout.id}
@@ -255,7 +177,7 @@ export default function TrainingCalendarPage() {
         ...(workout.isLogged ? styles.workoutCardLogged : {}),
         marginBottom: isCompact ? '0.5rem' : '1rem'
       }}
-      onClick={() => !isCompact && router.push(`/training/${workout.id}`)}
+      onClick={() => !isCompact && router.push(`/programs/${currentProgram?.id}?day=${workout.day}&week=${currentWeek + 1}`)}
     >
       <div style={styles.workoutCardContent}>
         <div 
@@ -308,7 +230,7 @@ export default function TrainingCalendarPage() {
             }}
             onClick={(e) => {
               e.stopPropagation();
-              startLogging(workout);
+              handleWorkoutCompletion(workout);
             }}
           >
             {workout.isLogged ? (
@@ -318,8 +240,8 @@ export default function TrainingCalendarPage() {
               </>
             ) : (
               <>
-                <Plus style={styles.buttonIcon} />
-                <span>Log Workout</span>
+                <Check style={styles.buttonIcon} />
+                <span>Complete Workout</span>
               </>
             )}
           </button>
@@ -680,6 +602,21 @@ export default function TrainingCalendarPage() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Workout Completion Modal */}
+      {showCompletionModal && completionWorkout && (
+        <WorkoutCompletionModal
+          isOpen={showCompletionModal}
+          onClose={() => {
+            setShowCompletionModal(false);
+            setCompletionWorkout(null);
+          }}
+          workout={completionWorkout}
+          programId={currentProgram?.id || 'default'}
+          weekNumber={currentWeek + 1}
+          onSave={saveWorkoutCompletion}
+        />
       )}
     </div>
   );

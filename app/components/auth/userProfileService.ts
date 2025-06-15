@@ -1,6 +1,11 @@
 import { db } from '@/lib/firebase';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { AuthUserProfile } from '@/lib/types/core';
 
+/**
+ * @deprecated Use AuthUserProfile from lib/types/core.ts instead
+ * This interface will be removed in a future version
+ */
 export interface UserProfile {
   displayName: string;
   email: string;
@@ -19,7 +24,7 @@ export interface UserProfile {
 
 export const createUserProfile = async (
   user: any,
-  additionalData: Partial<UserProfile> = {}
+  additionalData: Partial<AuthUserProfile> = {}
 ): Promise<void> => {
   if (!user) return;
 
@@ -32,7 +37,7 @@ export const createUserProfile = async (
       const createdAt = new Date();
       const signupDate = new Date();
 
-      const userData: UserProfile = {
+      const userData: AuthUserProfile = {
         displayName: displayName || additionalData.displayName || '',
         email: userEmail,
         photoURL: photoURL || '',
@@ -67,7 +72,7 @@ export const canGenerateTrainingDay = async (userId: string): Promise<{ canGener
       return { canGenerate: false, daysRemaining: 0, reason: 'User profile not found' };
     }
     
-    const userData = userDoc.data() as UserProfile;
+    const userData = userDoc.data() as AuthUserProfile;
     
     if (userData.subscription === 'premium') {
       return { canGenerate: true, daysRemaining: -1 };
@@ -96,7 +101,7 @@ export const incrementDaysUsed = async (userId: string): Promise<void> => {
     const userDoc = await getDoc(userRef);
     
     if (userDoc.exists()) {
-      const userData = userDoc.data() as UserProfile;
+      const userData = userDoc.data() as AuthUserProfile;
       await setDoc(userRef, {
         ...userData,
         daysUsed: userData.daysUsed + 1,

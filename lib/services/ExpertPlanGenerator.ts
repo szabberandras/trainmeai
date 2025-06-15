@@ -2,7 +2,7 @@
 
 import { Exercise } from '@/types/templates';
 import { OnboardingAnswers, UserPersonalization } from '@/app/components/onboarding/CinematicOnboarding';
-import { EXERCISE_DATABASE } from '@/lib/exercises/database';
+import { EXERCISE_DATABASE } from '@/lib/exercises/categories';
 
 export interface ExerciseHierarchy {
   exerciseId: string;

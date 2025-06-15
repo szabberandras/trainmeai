@@ -11,7 +11,9 @@ import {
   ProgramFramework,
   TrainingWorkout,
   AI_COACHING_PROMPTS
-} from '@/types/progressive-training';
+} from '@/lib/types/progressive-training';
+import { ALL_TRIATHLON_EXERCISES } from '@/lib/exercises/triathlon-strength-conditioning';
+import { ALL_STRUCTURED_WORKOUTS, getWorkoutsByType, getWorkoutsByDifficulty, recommendWorkouts } from '@/lib/exercises/structured-workouts';
 
 export interface ProgressiveProgramRequest {
   userId: string;
@@ -59,12 +61,16 @@ export class ProgressiveProgramService {
       startDate: new Date(),
       
       // Progressive structure
+      generationType: 'progressive',
       generatedWeeks: [week1],
       currentWeek: 1,
       totalPlannedWeeks: framework.estimatedWeeks,
       
       // AI-driven framework
       programFramework: framework,
+      
+      // Export capabilities
+      exportable: false, // Progressive programs are not exportable
       
       // Tracking
       status: 'active',
@@ -159,28 +165,28 @@ export class ProgressiveProgramService {
           weeks: Math.floor(weeksToRace * 0.4),
           focus: 'Aerobic development, technique, consistency',
           weeklyHours: '8-12 hours',
-          keyWorkouts: ['Long swim', 'Long bike', 'Long run']
+          keyWorkouts: ['Long swim', 'Long bike', 'Long run', 'Strength foundation']
         },
         {
           name: 'Build Phase',
           weeks: Math.floor(weeksToRace * 0.3),
           focus: 'Race pace work, brick training, volume increase',
           weeklyHours: '12-16 hours',
-          keyWorkouts: ['Bike-run bricks', 'Tempo sessions', 'Race simulation']
+          keyWorkouts: ['Bike-run bricks', 'Tempo sessions', 'Race simulation', 'Power development']
         },
         {
           name: 'Peak Phase',
           weeks: Math.floor(weeksToRace * 0.2),
           focus: 'Race specificity, peak fitness, mental preparation',
           weeklyHours: '16-20 hours',
-          keyWorkouts: ['Race rehearsal', 'Peak intervals', 'Long course practice']
+          keyWorkouts: ['Race rehearsal', 'Peak intervals', 'Long course practice', 'Performance strength']
         },
         {
           name: 'Taper',
           weeks: Math.floor(weeksToRace * 0.1),
           focus: 'Recovery, race preparation, maintaining feel',
           weeklyHours: '6-10 hours',
-          keyWorkouts: ['Short race pace', 'Easy sessions', 'Race prep']
+          keyWorkouts: ['Short race pace', 'Easy sessions', 'Race prep', 'Mobility work']
         }
       ],
       milestones: [
@@ -194,7 +200,9 @@ export class ProgressiveProgramService {
         'Include recovery week every 4th week',
         'Prioritize swim technique in early phases',
         'Build bike endurance before run volume',
-        'Practice nutrition strategy in long sessions'
+        'Practice nutrition strategy in long sessions',
+        'Include triathlon-specific strength training 2x per week',
+        'Progress from foundation to power to performance strength phases'
       ]
     };
   }
@@ -594,16 +602,32 @@ export class ProgressiveProgramService {
   }
   
   private async generateBaseWeek(weekNumber: number, phase: any, program: ProgressiveProgram): Promise<TrainingWeek> {
-    // This integrates with your existing workout generation logic
+    const workouts: TrainingWorkout[] = [];
+    
+    // Determine strength phase based on program phase
+    const strengthPhase = this.getStrengthPhase(phase.name);
+    
+    if (program.goal.toLowerCase().includes('ironman')) {
+      // Ironman-specific week structure
+      workouts.push(
+        this.generateSwimWorkout(weekNumber, phase),
+        this.generateBikeWorkout(weekNumber, phase),
+        this.generateRunWorkout(weekNumber, phase),
+        this.generateTriathlonStrengthWorkout(weekNumber, strengthPhase),
+        this.generateBrickWorkout(weekNumber, phase),
+        this.generateRecoveryWorkout(weekNumber, phase)
+      );
+    }
+    
     return {
-      id: `${program.id}-week-${weekNumber}`,
+      id: this.generateId(),
       weekNumber,
-      theme: phase.name,
+      theme: `${phase.name} - Week ${weekNumber}`,
       focus: phase.focus,
-      workouts: [], // Would be populated by existing workout generation
+      workouts,
       completed: false,
       generatedAt: new Date(),
-      coachingNotes: [`Week ${weekNumber} of ${phase.name} phase - ${phase.focus}`]
+      coachingNotes: [`Week ${weekNumber} of ${phase.name} phase`]
     };
   }
   
@@ -694,6 +718,365 @@ export class ProgressiveProgramService {
         'Include variety to maintain engagement',
         'Listen to body signals'
       ]
+    };
+  }
+
+  /**
+   * Generate triathlon-specific strength workout using Phil Mosley's exercises
+   */
+  private generateTriathlonStrengthWorkout(weekNumber: number, strengthPhase: string): TrainingWorkout {
+    let selectedExercises: any[] = [];
+    let workoutName = '';
+    let duration = 45;
+    
+    switch (strengthPhase) {
+      case 'foundation':
+        // Base Building phase - Foundation exercises
+        selectedExercises = this.getTriathlonExercisesByNames([
+          'SQUAT', 'ALTERNATE LUNGE', 'GLUTE BRIDGE', 'REVERSE LUNGE'
+        ]);
+        workoutName = 'Triathlon Strength Foundation';
+        duration = 30 + (weekNumber * 2);
+        break;
+        
+      case 'power':
+        // Build phase - Power development
+        selectedExercises = this.getTriathlonExercisesByNames([
+          'SQUAT JUMP', 'BULGARIAN SQUAT', 'DUMBBELL PULLOVER', 'SINGLE LEG SQUAT'
+        ]);
+        workoutName = 'Triathlon Power Development';
+        duration = 45 + (weekNumber * 2);
+        break;
+        
+      case 'performance':
+        // Peak phase - Performance strength
+        selectedExercises = this.getTriathlonExercisesByNames([
+          'SINGLE LEG SQUAT', 'SQUAT JUMP', 'DUMBBELL PULLOVER', 'BULGARIAN SQUAT'
+        ]);
+        workoutName = 'Triathlon Performance Strength';
+        duration = 60;
+        break;
+        
+      default:
+        // Maintenance/Taper - Light strength
+        selectedExercises = this.getTriathlonExercisesByNames([
+          'GLUTE BRIDGE', 'SQUAT', 'DOWNWARD DOG', 'PIGEON POSE'
+        ]);
+        workoutName = 'Triathlon Strength Maintenance';
+        duration = 30;
+    }
+    
+    return {
+      id: this.generateId(),
+      title: workoutName,
+      type: 'strength',
+      description: `Triathlon-specific strength training focusing on ${strengthPhase} development`,
+      duration,
+      intensity: strengthPhase === 'performance' ? 'high' : 'moderate',
+      exercises: selectedExercises,
+      completed: false,
+      isKeyWorkout: true
+    };
+  }
+
+  /**
+   * Get strength phase based on program phase
+   */
+  private getStrengthPhase(programPhase: string): string {
+    switch (programPhase.toLowerCase()) {
+      case 'base building':
+        return 'foundation';
+      case 'build phase':
+        return 'power';
+      case 'peak phase':
+        return 'performance';
+      case 'taper':
+        return 'maintenance';
+      default:
+        return 'foundation';
+    }
+  }
+
+  /**
+   * Get triathlon exercises by names
+   */
+  private getTriathlonExercisesByNames(names: string[]): any[] {
+    return names.map(name => {
+      const exercise = ALL_TRIATHLON_EXERCISES.find(ex => ex.name === name);
+      if (!exercise) return null;
+      
+      return {
+        id: this.generateId(),
+        name: exercise.name,
+        category: exercise.category,
+        muscleGroups: exercise.works || exercise.stretches || [],
+        instructions: exercise.instructions,
+        tips: exercise.tips || [],
+        reps: exercise.reps || '10-15',
+        sets: exercise.sets || '2-3',
+        duration: exercise.duration,
+        equipment: exercise.equipment,
+        why: exercise.why,
+        alternatives: exercise.alternatives || [],
+        progressions: exercise.progressions || []
+      };
+    }).filter(Boolean);
+  }
+
+  /**
+   * Generate swim workout using structured templates
+   */
+  private generateSwimWorkout(weekNumber: number, phase: any): TrainingWorkout {
+    // Try to find appropriate structured workout
+    const structuredWorkouts = getWorkoutsByType('swim');
+    const difficulty = this.getDifficultyForWeek(weekNumber, phase);
+    const appropriateWorkouts = structuredWorkouts.filter(w => w.difficulty === difficulty);
+    
+    if (appropriateWorkouts.length > 0) {
+      const selectedWorkout = appropriateWorkouts[Math.floor(Math.random() * appropriateWorkouts.length)];
+      
+      return {
+        id: this.generateId(),
+        title: selectedWorkout.title,
+        type: 'swimming',
+        description: selectedWorkout.focus,
+        duration: this.parseDurationToMinutes(selectedWorkout.duration || '60 minutes'),
+        intensity: this.getIntensityFromDifficulty(selectedWorkout.difficulty),
+        exercises: this.convertStructuredWorkoutToExercises(selectedWorkout),
+        completed: false,
+        isKeyWorkout: true
+      };
+    }
+    
+    // Fallback to basic swim workout
+    const baseDuration = 45;
+    const progressiveDuration = baseDuration + (weekNumber * 5);
+    
+    return {
+      id: this.generateId(),
+      title: 'Swim Training',
+      type: 'swimming',
+      description: `${phase.focus} swim session with technique emphasis`,
+      duration: Math.min(progressiveDuration, 90),
+      intensity: phase.name === 'Peak Phase' ? 'high' : 'moderate',
+      exercises: [],
+      completed: false,
+      isKeyWorkout: true
+    };
+  }
+
+  /**
+   * Generate run workout using structured templates
+   */
+  private generateRunWorkout(weekNumber: number, phase: any): TrainingWorkout {
+    // Try to find appropriate structured workout
+    const structuredWorkouts = getWorkoutsByType('run');
+    const difficulty = this.getDifficultyForWeek(weekNumber, phase);
+    const appropriateWorkouts = structuredWorkouts.filter(w => w.difficulty === difficulty);
+    
+    if (appropriateWorkouts.length > 0) {
+      const selectedWorkout = appropriateWorkouts[Math.floor(Math.random() * appropriateWorkouts.length)];
+      
+      return {
+        id: this.generateId(),
+        title: selectedWorkout.title,
+        type: 'running',
+        description: selectedWorkout.focus,
+        duration: this.parseDurationToMinutes(selectedWorkout.duration || '45 minutes'),
+        intensity: this.getIntensityFromDifficulty(selectedWorkout.difficulty),
+        exercises: this.convertStructuredWorkoutToExercises(selectedWorkout),
+        completed: false,
+        isKeyWorkout: true
+      };
+    }
+    
+    // Fallback to basic run workout
+    const baseDuration = 45;
+    const progressiveDuration = baseDuration + (weekNumber * 8);
+    
+    return {
+      id: this.generateId(),
+      title: 'Run Training',
+      type: 'running',
+      description: `${phase.focus} run session with progressive volume`,
+      duration: Math.min(progressiveDuration, 120),
+      intensity: phase.name === 'Peak Phase' ? 'high' : 'low',
+      exercises: [],
+      completed: false,
+      isKeyWorkout: true
+    };
+  }
+
+  /**
+   * Generate brick workout using structured templates
+   */
+  private generateBrickWorkout(weekNumber: number, phase: any): TrainingWorkout {
+    if (phase.name === 'Base Building' && weekNumber < 4) {
+      // No bricks in early base phase
+      return this.generateRecoveryWorkout(weekNumber, phase);
+    }
+    
+    // Try to find structured brick workout
+    const structuredWorkouts = getWorkoutsByType('brick');
+    if (structuredWorkouts.length > 0) {
+      const selectedWorkout = structuredWorkouts[0]; // Use the 10 Hour Triathlete brick workout
+      
+      return {
+        id: this.generateId(),
+        title: selectedWorkout.title,
+        type: 'brick',
+        description: selectedWorkout.focus,
+        duration: this.parseDurationToMinutes(selectedWorkout.duration || '90 minutes'),
+        intensity: 'moderate',
+        exercises: this.convertStructuredWorkoutToExercises(selectedWorkout),
+        completed: false,
+        isKeyWorkout: phase.name !== 'Base Building'
+      };
+    }
+    
+    // Fallback to basic brick
+    return {
+      id: this.generateId(),
+      title: 'Brick Training',
+      type: 'brick',
+      description: 'Bike-to-run transition practice for race specificity',
+      duration: 60 + (weekNumber * 5),
+      intensity: 'moderate',
+      exercises: [],
+      completed: false,
+      isKeyWorkout: phase.name !== 'Base Building'
+    };
+  }
+
+  /**
+   * Convert structured workout to exercise format
+   */
+  private convertStructuredWorkoutToExercises(structuredWorkout: any): any[] {
+    return structuredWorkout.structure.map((phase: any) => ({
+      id: this.generateId(),
+      name: phase.phase,
+      category: 'structured',
+      instructions: phase.steps.map((step: any) => 
+        `${step.effort || ''} ${step.details || ''} ${step.note || ''}`.trim()
+      ),
+      duration: phase.steps[0]?.duration || '',
+      sets: phase.steps[0]?.sets?.toString() || '1',
+      reps: phase.steps[0]?.distance || phase.steps[0]?.interval_distance || '',
+      rest: phase.steps[0]?.rest || phase.steps[0]?.recovery || '',
+      source: structuredWorkout.source,
+      scalingOptions: structuredWorkout.scalingOptions
+    }));
+  }
+
+  /**
+   * Get difficulty level for current week and phase
+   */
+  private getDifficultyForWeek(weekNumber: number, phase: any): 'beginner' | 'intermediate' | 'advanced' {
+    if (phase.name === 'Base Building') {
+      return weekNumber <= 4 ? 'beginner' : 'intermediate';
+    } else if (phase.name === 'Build Phase') {
+      return 'intermediate';
+    } else if (phase.name === 'Peak Phase') {
+      return 'advanced';
+    } else { // Taper
+      return 'beginner';
+    }
+  }
+
+  /**
+   * Parse duration string to minutes
+   */
+  private parseDurationToMinutes(duration: string): number {
+    const durationLower = duration.toLowerCase();
+    
+    if (durationLower.includes('hour')) {
+      const hours = parseFloat(durationLower.match(/(\d+\.?\d*)/)?.[0] || '1');
+      return Math.round(hours * 60);
+    }
+    
+    if (durationLower.includes('min')) {
+      const minutes = parseFloat(durationLower.match(/(\d+)/)?.[0] || '45');
+      return minutes;
+    }
+    
+    // Handle ranges like "30-50 minutes"
+    if (durationLower.includes('-')) {
+      const range = durationLower.match(/(\d+)-(\d+)/);
+      if (range) {
+        const min = parseInt(range[1]);
+        const max = parseInt(range[2]);
+        return Math.round((min + max) / 2);
+      }
+    }
+    
+    return 45; // Default fallback
+  }
+
+  /**
+   * Get intensity from difficulty level
+   */
+  private getIntensityFromDifficulty(difficulty: string): 'low' | 'moderate' | 'high' {
+    switch (difficulty) {
+      case 'beginner': return 'low';
+      case 'intermediate': return 'moderate';
+      case 'advanced': return 'high';
+      default: return 'moderate';
+    }
+  }
+
+  /**
+   * Generate bike workout
+   */
+  private generateBikeWorkout(weekNumber: number, phase: any): TrainingWorkout {
+    const baseDuration = 60;
+    const progressiveDuration = baseDuration + (weekNumber * 10);
+    
+    return {
+      id: this.generateId(),
+      title: 'Bike Training',
+      type: 'cycling',
+      description: `${phase.focus} bike session building aerobic capacity`,
+      duration: Math.min(progressiveDuration, 180),
+      intensity: phase.name === 'Base Building' ? 'low' : 'moderate',
+      exercises: [],
+      completed: false,
+      isKeyWorkout: true
+    };
+  }
+
+  /**
+   * Generate recovery workout using structured templates
+   */
+  private generateRecoveryWorkout(weekNumber: number, phase: any): TrainingWorkout {
+    // Try to find structured recovery workout
+    const structuredWorkouts = getWorkoutsByType('recovery');
+    if (structuredWorkouts.length > 0) {
+      const selectedWorkout = structuredWorkouts[0]; // Use amateur recovery workout
+      
+      return {
+        id: this.generateId(),
+        title: selectedWorkout.title,
+        type: 'recovery',
+        description: selectedWorkout.focus,
+        duration: this.parseDurationToMinutes(selectedWorkout.duration || '30 minutes'),
+        intensity: 'low',
+        exercises: this.convertStructuredWorkoutToExercises(selectedWorkout),
+        completed: false,
+        isKeyWorkout: false
+      };
+    }
+    
+    // Fallback to basic recovery
+    return {
+      id: this.generateId(),
+      title: 'Active Recovery',
+      type: 'recovery',
+      description: 'Light movement and stretching for recovery',
+      duration: 30,
+      intensity: 'low',
+      exercises: [],
+      completed: false,
+      isKeyWorkout: false
     };
   }
 }

@@ -1,5 +1,8 @@
 // lib/types/progressive-training.ts - Types for AI-driven progressive training
 
+export type ProgramGenerationType = 'progressive' | 'full_plan';
+export type WorkoutDetailLevel = 'framework' | 'detailed' | 'completed';
+
 export interface ProgressiveProgram {
   id: string;
   userId: string;
@@ -8,18 +11,41 @@ export interface ProgressiveProgram {
   targetDate: Date;
   startDate: Date;
   
-  // Progressive structure - only generated weeks exist
+  // Program generation type
+  generationType: ProgramGenerationType;
+  
+  // Progressive structure - can have framework or detailed weeks
   generatedWeeks: TrainingWeek[];
+  frameworkWeeks?: FrameworkWeek[]; // High-level overview for full plans
   currentWeek: number;
   totalPlannedWeeks: number; // Estimated, can change
   
   // AI-driven framework for future weeks
   programFramework: ProgramFramework;
   
+  // Export capabilities
+  exportable: boolean;
+  exportFormats?: ('pdf' | 'csv' | 'json')[];
+  
   // Status tracking
   status: 'active' | 'paused' | 'completed' | 'archived';
   createdAt: Date;
   updatedAt: Date;
+}
+
+// Framework week - high level overview that gets detailed when accessed
+export interface FrameworkWeek {
+  id: string;
+  weekNumber: number;
+  theme: string;
+  focus: string;
+  phase: string;
+  estimatedHours: number;
+  keyWorkoutTypes: string[];
+  workoutCount: number;
+  detailLevel: WorkoutDetailLevel;
+  canAccess: boolean; // Based on prerequisites
+  generatedAt?: Date; // When detailed version was created
 }
 
 export interface ProgramFramework {
@@ -28,6 +54,16 @@ export interface ProgramFramework {
   phases: TrainingPhase[];
   milestones: Milestone[];
   adaptationRules: string[];
+  weeklyProgression?: WeeklyProgression[]; // For full plan generation
+}
+
+export interface WeeklyProgression {
+  weekNumber: number;
+  phase: string;
+  volumeIncrease: number; // Percentage
+  intensityFocus: string;
+  keyWorkouts: string[];
+  recoveryEmphasis: number; // 1-5 scale
 }
 
 export interface TrainingPhase {

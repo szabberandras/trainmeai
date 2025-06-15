@@ -4,7 +4,8 @@ import {
   UserProfile, 
   CoachResponse, 
   TrainingPlan,
-  ExperienceLevel 
+  ExperienceLevel,
+  PeriodizationPhase 
 } from '../types/training-system';
 import { CoachPersonas, FitCoachAI, BeginnerGuideAI, SportSpecificAI, TrainingPageCoach } from '../types/coach';
 import { PersonaSelectionService, PersonaSelectionResult } from './persona-selection.service';
@@ -261,8 +262,16 @@ export class TrainingService {
     const beginnerPrinciples = (trainingPrinciples as any).beginner_specific_principles;
     
     return {
+      id: basePlan.id,
       name: `Beginner-Safe ${basePlan.name || 'Training Plan'}`,
+      description: basePlan.description,
+      duration: basePlan.duration,
+      difficulty: basePlan.difficulty,
       type: 'beginner_focused',
+      focus: basePlan.focus,
+      persona: 'BeginnerGuide',
+      experienceLevel: basePlan.experienceLevel,
+      exercises: basePlan.exercises,
       approach: 'safety_first_progression',
       weeks: [{
         weekNumber: 1,
@@ -296,8 +305,16 @@ export class TrainingService {
     const sportApplications = (trainingPrinciples as any).sport_specific_applications;
     
     return {
+      id: basePlan.id,
       name: `Sport-Specific ${basePlan.name || 'Training Plan'}`,
+      description: basePlan.description,
+      duration: basePlan.duration,
+      difficulty: basePlan.difficulty,
       type: 'sport_specific',
+      focus: basePlan.focus,
+      persona: 'SportSpecific',
+      experienceLevel: basePlan.experienceLevel,
+      exercises: basePlan.exercises,
       approach: 'energy_system_focused',
       weeks: [{
         weekNumber: 1,
@@ -329,8 +346,16 @@ export class TrainingService {
 
   private applyMinimalistEnhancements(basePlan: any): TrainingPlan {
     return {
+      id: basePlan.id,
       name: `Daily Focus ${basePlan.name || 'Training'}`,
+      description: basePlan.description,
+      duration: basePlan.duration,
+      difficulty: basePlan.difficulty,
       type: 'minimalist',
+      focus: basePlan.focus,
+      persona: 'TrainingPage',
+      experienceLevel: basePlan.experienceLevel,
+      exercises: basePlan.exercises,
       approach: 'daily_focused',
       weeks: [{
         weekNumber: 1,
@@ -361,8 +386,16 @@ export class TrainingService {
 
   private applyFitCoachEnhancements(basePlan: any): TrainingPlan {
     return {
+      id: basePlan.id,
       name: `Comprehensive ${basePlan.name || 'Training Plan'}`,
+      description: basePlan.description,
+      duration: basePlan.duration,
+      difficulty: basePlan.difficulty,
       type: 'comprehensive',
+      focus: basePlan.focus,
+      persona: 'FitCoach',
+      experienceLevel: basePlan.experienceLevel,
+      exercises: basePlan.exercises,
       approach: 'science_based_progression',
       weeks: [{
         weekNumber: 1,
@@ -468,154 +501,248 @@ export class TrainingService {
   }
 
   private generateCheckInResponse(message: string): string {
-    switch (this.context!.persona) {
-      case 'BeginnerGuide':
-        return "Amazing work completing your session! Every workout makes you stronger. How did that feel for you?";
-        
-      case 'SportSpecific':
-        return "Excellent work! Your body is adapting to the training stimulus. Let's analyze your performance data.";
-        
-      case 'TrainingPage':
-        return "Solid work. How did that feel?";
-        
-      default: // FitCoach
-        return "Great job on completing your workout! Let's analyze how it went and plan your next session.";
-    }
+    // Analyze check-in for progress and adjustments
+    const progressAnalysis = this.analyzeProgress(message);
+    
+    return `Great work on completing your workout! ${progressAnalysis} Keep up the momentum - consistency is key to reaching your goals.`;
   }
 
   private generateFollowUpResponse(message: string): string {
-    switch (this.context!.persona) {
-      case 'BeginnerGuide':
-        return "Thanks for sharing that! I'm here to support you every step of the way. Safety and progress go hand in hand.";
-        
-      case 'SportSpecific':
-        return "Excellent feedback. This information helps me optimize your energy system training and periodization.";
-        
-      case 'TrainingPage':
-        return "Got it. Let's work with that.";
-        
-      default: // FitCoach
-        return "Thanks for sharing that information. It helps me customize your program with better scientific precision.";
-    }
+    return `I understand. How can I help you stay on track with your fitness journey?`;
   }
 
   private getPersonaSpecificEncouragement(): string {
-    const personas = coachPersonas as CoachPersonas;
-    const persona = personas[this.context!.persona];
-    
-    // Get encouragement based on persona type
-    let encouragements: string[] = [];
-    
     switch (this.context!.persona) {
       case 'BeginnerGuide':
-        const beginnerGuide = persona as BeginnerGuideAI;
-        encouragements = beginnerGuide.responsePatterns.confidence_building;
-        break;
-        
+        return "Remember, every expert was once a beginner. You're doing great!";
       case 'SportSpecific':
-        const sportSpecific = persona as SportSpecificAI;
-        encouragements = sportSpecific.responsePatterns.sport_analysis;
-        break;
-        
+        return "Consistency and progressive overload are the keys to performance gains.";
+      case 'TrainingPage':
+        return "Keep it simple, keep it consistent.";
       default:
-        encouragements = persona.responsePatterns.encouragement;
-        break;
+        return "You're making progress with every workout!";
+    }
+  }
+
+  private analyzeProgress(message: string): string {
+    // Simple progress analysis based on keywords
+    const lowerMessage = message.toLowerCase();
+    
+    if (lowerMessage.includes('easy') || lowerMessage.includes('good')) {
+      return "Sounds like you're finding your rhythm!";
+    }
+    if (lowerMessage.includes('hard') || lowerMessage.includes('difficult')) {
+      return "Challenging workouts mean you're growing stronger!";
+    }
+    if (lowerMessage.includes('tired') || lowerMessage.includes('exhausted')) {
+      return "Rest and recovery are just as important as the workout itself.";
     }
     
-    return encouragements[Math.floor(Math.random() * encouragements.length)];
+    return "Every workout is a step forward in your journey.";
   }
 
-  private formatWorkouts(workouts: any[]): string {
-    return workouts.map(workout => `${workout.day}: ${workout.title}`).join('\n');
-  }
-
-  public updateProgress(metrics: Record<string, number>): void {
-    if (!this.context) {
-      throw new Error('Training context not initialized');
-    }
-    this.context.progressMetrics = {
-      ...this.context.progressMetrics,
-      ...metrics
-    };
-  }
-
-  public recordCheckIn(feedback: string, adjustments?: string[]): void {
-    if (!this.context) {
-      throw new Error('Training context not initialized');
-    }
-    this.context.lastCheckIn = {
-      date: new Date().toISOString(),
-      feedback,
-      adjustments
-    };
-  }
+  // ===== ADDITIONAL METHODS FOR COMPLETE FUNCTIONALITY =====
 
   /**
-   * PHASE 3: Analyze progress using advanced energy system analysis
+   * Generate training plan with persona-specific approach
    */
-  public analyzeProgressWithAdvancedServices(recentWorkouts: any[], userFeedback: any): any {
-    if (!this.energySystemProfile) {
-      console.log('📊 Using basic progress analysis (Phase 3 services not available)');
-      return this.getBasicProgressAnalysis(userFeedback);
-    }
+  public async generateTrainingPlanWithPersona(
+    userProfile: any,
+    persona: CoachPersona = 'FitCoach',
+    goals: string[] = [],
+    timeframe: string = '4 weeks'
+  ): Promise<TrainingPlan> {
+    try {
+      // Apply advanced planning services if available
+      const enhancedPlan = await this.applyAdvancedPlanningServicesForPersona(userProfile, persona, goals, timeframe);
+      if (enhancedPlan) {
+        return enhancedPlan;
+      }
 
-    console.log('🔬 Analyzing progress with Phase 3 energy system intelligence');
-    
-    return EnergySystemService.analyzeEnergySystemProgress(
-      this.energySystemProfile,
-      recentWorkouts,
-      userFeedback
-    );
+      // Fallback to basic plan generation
+      return this.generateBasicPersonaPlan(userProfile, persona, goals, timeframe);
+    } catch (error) {
+      console.error('Error generating training plan:', error);
+      return this.generateBasicPersonaPlan(userProfile, persona, goals, timeframe);
+    }
   }
 
-  /**
-   * PHASE 3: Get current periodization recommendations
-   */
-  public getCurrentPeriodizationGuidance(): any {
-    if (!this.periodizationPlan) {
-      return {
-        phase: 'general',
-        focus: 'balanced_training',
-        intensity_guidance: 'moderate',
-        volume_guidance: 'progressive'
-      };
-    }
-
-    return PeriodizationService.getCurrentTrainingRecommendations(this.periodizationPlan);
-  }
-
-  /**
-   * PHASE 3: Update training plan based on progress and periodization
-   */
-  public updateTrainingPlanWithAdvancedServices(progressData: any): TrainingPlan | null {
+  private async applyAdvancedPlanningServicesForPersona(
+    userProfile: any,
+    persona: CoachPersona,
+    goals: string[],
+    timeframe: string
+  ): Promise<TrainingPlan | null> {
     if (!this.periodizationPlan || !this.energySystemProfile) {
-      console.log('📋 Using basic plan updates (Phase 3 services not available)');
       return null;
     }
 
-    // This would implement plan updates based on periodization phase transitions
-    // and energy system progress analysis
-    console.log('🔄 Updating plan with Phase 3 advanced services');
-    
-    // For now, return null to indicate advanced update is available but not implemented
-    // This would be expanded in a full implementation
-    return null;
+    try {
+      // Generate enhanced plan with periodization and energy system data
+      const plan = this.generatePersonaSpecificPlanStructure(userProfile, persona, goals, timeframe);
+      
+      // Enhance with advanced services
+      plan.periodizationPhase = this.periodizationPlan.currentMesocycle?.phase as PeriodizationPhase;
+      plan.energySystem = this.energySystemProfile.dominant_system;
+
+      return plan;
+    } catch (error) {
+      console.error('Error applying advanced planning services:', error);
+      return null;
+    }
   }
 
-  /**
-   * Basic progress analysis fallback
-   */
-  private getBasicProgressAnalysis(userFeedback: any): any {
+  private generateBasicPersonaPlan(
+    userProfile: any,
+    persona: CoachPersona,
+    goals: string[],
+    timeframe: string
+  ): TrainingPlan {
+    return this.generatePersonaSpecificPlanStructure(userProfile, persona, goals, timeframe);
+  }
+
+  private generatePersonaSpecificPlanStructure(
+    userProfile: any,
+    persona: CoachPersona,
+    goals: string[],
+    timeframe: string
+  ): TrainingPlan {
+    const baseId = `${persona.toLowerCase()}-${Date.now()}`;
+    
+    switch (persona) {
+      case 'BeginnerGuide':
+        return this.generateBeginnerPlanStructure(userProfile, goals, timeframe, baseId);
+      
+      case 'SportSpecific':
+        return this.generateSportSpecificPlanStructure(userProfile, goals, timeframe, baseId);
+      
+      case 'TrainingPage':
+        return this.generateStructuredPlanStructure(userProfile, goals, timeframe, baseId);
+      
+      case 'FitCoach':
+      default:
+        return this.generateFitCoachPlanStructure(userProfile, goals, timeframe, baseId);
+    }
+  }
+
+  private generateBeginnerPlanStructure(
+    userProfile: any,
+    goals: string[],
+    timeframe: string,
+    baseId: string
+  ): TrainingPlan {
     return {
-      progress_summary: 'Making steady progress with current training approach',
-      adaptations_occurring: ['general_fitness_improvement'],
-      recommendations: ['continue_current_program', 'focus_on_consistency'],
-      next_focus: 'mixed'
+      id: baseId,
+      name: 'Beginner-Friendly Foundation Program',
+      description: 'A gentle introduction to fitness with safety-first approach and confidence building',
+      duration: timeframe,
+      difficulty: 'Beginner',
+      type: 'beginner-foundation',
+      focus: ['Safety', 'Form', 'Confidence', 'Habit Building'],
+      persona: 'BeginnerGuide',
+      experienceLevel: userProfile.experience,
+      weeks: [],
+      exercises: []
     };
   }
 
+  private generateSportSpecificPlanStructure(
+    userProfile: any,
+    goals: string[],
+    timeframe: string,
+    baseId: string
+  ): TrainingPlan {
+    const sportFocus = this.determineSportFocus(goals);
+    return {
+      id: baseId,
+      name: `${sportFocus} Specific Training`,
+      description: `Targeted training for ${sportFocus.toLowerCase()} performance enhancement`,
+      duration: timeframe,
+      difficulty: this.mapExperienceTodifficulty(userProfile.experience),
+      type: 'sport-specific',
+      focus: ['Sport Performance', 'Energy Systems', 'Skill Transfer'],
+      persona: 'SportSpecific',
+      experienceLevel: userProfile.experience,
+      weeks: [],
+      exercises: []
+    };
+  }
+
+  private generateStructuredPlanStructure(
+    userProfile: any,
+    goals: string[],
+    timeframe: string,
+    baseId: string
+  ): TrainingPlan {
+    return {
+      id: baseId,
+      name: 'Structured Training Program',
+      description: 'Systematic approach with clear progression and measurable outcomes',
+      duration: timeframe,
+      difficulty: this.mapExperienceTodifficulty(userProfile.experience),
+      type: 'structured-progression',
+      focus: ['Progression', 'Measurement', 'Consistency'],
+      persona: 'TrainingPage',
+      experienceLevel: userProfile.experience,
+      weeks: [],
+      exercises: []
+    };
+  }
+
+  private generateFitCoachPlanStructure(
+    userProfile: any,
+    goals: string[],
+    timeframe: string,
+    baseId: string
+  ): TrainingPlan {
+    return {
+      id: baseId,
+      name: 'Comprehensive Fitness Program',
+      description: 'Well-rounded approach combining strength, cardio, and flexibility with scientific backing',
+      duration: timeframe,
+      difficulty: this.mapExperienceTodifficulty(userProfile.experience),
+      type: 'comprehensive-fitness',
+      focus: ['Overall Fitness', 'Balance', 'Evidence-Based'],
+      persona: 'FitCoach',
+      experienceLevel: userProfile.experience,
+      weeks: [],
+      exercises: []
+    };
+  }
+
+  private determineSportFocus(goals: string[]): string {
+    const sportKeywords = {
+      'Endurance': ['running', 'marathon', 'cycling', 'swimming', 'cardio', 'endurance'],
+      'Strength': ['strength', 'powerlifting', 'bodybuilding', 'muscle', 'lifting'],
+      'Combat': ['boxing', 'martial arts', 'mma', 'fighting', 'combat'],
+      'Team Sports': ['basketball', 'soccer', 'football', 'volleyball', 'team'],
+      'Skill-Based': ['tennis', 'golf', 'gymnastics', 'dance', 'skill']
+    };
+
+    for (const [sport, keywords] of Object.entries(sportKeywords)) {
+      if (goals.some(goal => keywords.some(keyword => 
+        goal.toLowerCase().includes(keyword)
+      ))) {
+        return sport;
+      }
+    }
+
+    return 'General Athletics';
+  }
+
+  private mapExperienceTodifficulty(experience: ExperienceLevel): string {
+    const mapping: Record<ExperienceLevel, string> = {
+      'complete-beginner': 'Beginner',
+      'beginner-inconsistent': 'Beginner',
+      'amateur-regular': 'Beginner-Intermediate',
+      'intermediate-structured': 'Intermediate',
+      'advanced-competitive': 'Advanced'
+    };
+    return mapping[experience] || 'Intermediate';
+  }
+
   /**
-   * PHASE 3: Get advanced training insights for dashboard
+   * Get advanced training insights for dashboard
    */
   public getAdvancedTrainingInsights(): any {
     if (!this.periodizationPlan || !this.energySystemProfile) {
@@ -636,4 +763,4 @@ export class TrainingService {
       recovery_protocols: this.periodizationPlan.currentMesocycle.recovery_protocols.map(p => p.type).join(', ')
     };
   }
-} 
+}

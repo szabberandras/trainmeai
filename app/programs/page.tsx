@@ -5,8 +5,9 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import { Search, ChevronLeft, ChevronRight, Target, TrendingUp, Flame, Crown, MessageSquare, Sparkles } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, Target, TrendingUp, Flame, Crown, MessageSquare, Sparkles, Plus } from 'lucide-react';
 import LayoutClientWrapper from '@/app/components/LayoutClientWrapper';
+import ProgressiveProgramModal from '@/app/components/programs/ProgressiveProgramModal';
 
 // Type definitions
 interface UserProfile {
@@ -65,6 +66,7 @@ export default function ProgramsPage() {
     totalWorkouts: 0
   });
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
+  const [showProgressiveModal, setShowProgressiveModal] = useState(false);
 
   useEffect(() => {
     if (!user && !loading) {
@@ -99,6 +101,54 @@ export default function ProgramsPage() {
 
     loadUserProfile();
   }, [user, loading, router]);
+
+  const createProgressiveProgram = async (programData: any) => {
+    try {
+      // Choose API endpoint based on generation type
+      const endpoint = programData.generationType === 'full_plan' 
+        ? '/api/full-plan/create'
+        : '/api/progressive-training/create-program';
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          goal: programData.goal,
+          targetDate: programData.targetDate,
+          userProfile: {
+            experienceLevel: programData.experienceLevel,
+            weeklyVolume: programData.weeklyVolume,
+            constraints: programData.constraints,
+            preferences: programData.preferences
+          },
+          includeExport: programData.includeExport || false
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to create ${programData.generationType} program`);
+      }
+
+      const result = await response.json();
+      console.log(`${programData.generationType} program created:`, result);
+      
+      // Show success message with different content based on type
+      if (programData.generationType === 'full_plan') {
+        alert(`Full plan created! ${result.program.totalPlannedWeeks} weeks planned. ${result.exportOptions ? 'Export options available.' : ''}`);
+      } else {
+        alert('Progressive program created! Week 1 is ready, future weeks will be generated based on your performance.');
+      }
+      
+      // Refresh user profile to show new program
+      // In a real implementation, you'd update the state or refetch data
+      
+    } catch (error) {
+      console.error('Error creating program:', error);
+      throw error;
+    }
+  };
 
   if (loading || isLoadingProfile) {
     return (
@@ -203,6 +253,13 @@ export default function ProgramsPage() {
                 </p>
                 <div className="flex gap-4 justify-center">
                   <button
+                    onClick={() => setShowProgressiveModal(true)}
+                    className="flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-blue-700 transition-colors"
+                  >
+                    <Sparkles className="w-5 h-5" />
+                    Create AI Program
+                  </button>
+                  <button
                     onClick={() => router.push('/dashboard#ai-chat')}
                     className="flex items-center gap-3 bg-gray-900 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-gray-800 transition-colors"
                   >
@@ -289,6 +346,14 @@ export default function ProgramsPage() {
           </div>
         </div>
       </div>
+
+      {/* Progressive Program Modal */}
+      <ProgressiveProgramModal
+        isOpen={showProgressiveModal}
+        onClose={() => setShowProgressiveModal(false)}
+        onSave={createProgressiveProgram}
+        userProfile={userProfile}
+      />
     </LayoutClientWrapper>
   );
 } 
