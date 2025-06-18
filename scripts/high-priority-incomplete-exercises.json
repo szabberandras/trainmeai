@@ -1,0 +1,4972 @@
+{
+  "summary": {
+    "totalAnalyzed": 312,
+    "highPriorityIncomplete": 190
+  },
+  "exercises": [
+    {
+      "id": "push-up",
+      "name": "Push-up",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "diamond-push-up",
+      "name": "Diamond Push-up",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "squat",
+      "name": "Bodyweight Squat",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": false,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips",
+        "safetyNotes"
+      ]
+    },
+    {
+      "id": "lunge",
+      "name": "Forward Lunge",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": false,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips",
+        "safetyNotes"
+      ]
+    },
+    {
+      "id": "lat-pulldown",
+      "name": "Lat Pulldown",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-row",
+      "name": "Dumbbell Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "cable-row",
+      "name": "Cable Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-bent-over-row",
+      "name": "Dumbbell Bent Over Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "bent-over-barbell-row",
+      "name": "Bent Over Barbell Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "kettlebell-row",
+      "name": "Kettlebell Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "landmine-row",
+      "name": "Landmine Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "machine-row",
+      "name": "Machine Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "hammerstrength-high-row",
+      "name": "Hammerstrength High Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "hammerstrength-iso-row",
+      "name": "Hammerstrength Iso Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "incline-dumbbell-row",
+      "name": "Incline Dumbbell Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "shotgun-row",
+      "name": "Shotgun Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "kettlebell-alternating-row",
+      "name": "Kettlebell Alternating Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "seated-leg-curl",
+      "name": "Seated Leg Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-romanian-deadlift",
+      "name": "Dumbbell Romanian Deadlift",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "romanian-deadlift",
+      "name": "Romanian Deadlift (Barbell)",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "lying-hamstrings-curl",
+      "name": "Lying Hamstrings Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-romanian-deadlift",
+      "name": "Single Leg Romanian Deadlift",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "deadlift",
+      "name": "Deadlift",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "glute-bridge",
+      "name": "Glute Bridge",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-glute-bridge",
+      "name": "Single Leg Glute Bridge",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "side-leg-raises",
+      "name": "Side Leg Raises (Side-Lying Hip Abduction)",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "barbell-curl",
+      "name": "Barbell Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-curl",
+      "name": "Dumbbell Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "hammer-curl",
+      "name": "Hammer Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "preacher-curl",
+      "name": "Preacher Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "sled-push",
+      "name": "Sled Push",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "sled-pull",
+      "name": "Sled Pull",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "sandbag-lunges",
+      "name": "Sandbag Lunges",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "cable-lateral-raise",
+      "name": "Cable Lateral Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-rear-delt-raise",
+      "name": "Dumbbell Rear Delt Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-lateral-raise",
+      "name": "Dumbbell Lateral Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-shoulder-press",
+      "name": "Dumbbell Shoulder Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-front-raise",
+      "name": "Dumbbell Front Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "straight-leg-kickback",
+      "name": "Straight Leg Kickback",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "medicine-ball-curtsy-lunge",
+      "name": "Medicine Ball Curtsy Lunge",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-kickback",
+      "name": "Single Leg Kickback",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "glute-kickback-machine",
+      "name": "Glute Kickback Machine",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "side-leg-kick",
+      "name": "Side Leg Kick (Side-Lying)",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "cable-hip-extension",
+      "name": "Cable Hip Extension",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "seated-back-extension",
+      "name": "Seated Back Extension (Machine)",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "back-extensions",
+      "name": "Back Extensions (Hyperextension Bench)",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "walking-lunges",
+      "name": "Walking Lunges",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "standing-calf-stretch",
+      "name": "Standing Calf Stretch (Gastrocnemius)",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "box-step-ups",
+      "name": "Box Step-Ups",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "calf-press",
+      "name": "Calf Press (Leg Press Machine)",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "standing-dumbbell-calf-raise",
+      "name": "Standing Dumbbell Calf Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "seated-machine-calf-press",
+      "name": "Seated Machine Calf Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "seated-dumbbell-calf-raise",
+      "name": "Seated Dumbbell Calf Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "standing-barbell-calf-raise",
+      "name": "Standing Barbell Calf Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "standing-kettlebell-calf-raise",
+      "name": "Standing Kettlebell Calf Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "stiff-legged-barbell-good-morning",
+      "name": "Stiff-Legged Barbell Good Morning",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "incline-back-extension",
+      "name": "Incline Back Extension",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "bike-single-leg-pedaling",
+      "name": "Single-Leg Pedaling Drills (Stationary Bike)",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "swim-plyometric-box-jumps",
+      "name": "Plyometric Box Jumps (for explosive push-off)",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "lateral-leg-lift",
+      "name": "Lateral Leg Lift",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "hamstring-bridge-with-chair",
+      "name": "Hamstring Bridge with a chair",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "lateral-wrist-curls-with-dumbbells",
+      "name": "Lateral Wrist Curls with dumbbells",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "standing-hamstring-curl",
+      "name": "Standing Hamstring Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "lateral-walk",
+      "name": "Lateral Walk",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "squat-to-overhead-press",
+      "name": "Squat to Overhead press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "speed-skater-lunges",
+      "name": "Speed Skater Lunges",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-deadlift-to-hop",
+      "name": "Single Leg Deadlift to Hop",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-calf-raise",
+      "name": "Single Leg Calf Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "alternating-jump-lunges",
+      "name": "Alternating Jump Lunges",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "side-plank-leg-lift",
+      "name": "Side Plank Leg Lift",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "reverse-lunge-knee-drive",
+      "name": "Reverse Lunge Knee Drive",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "squat-to-calf-raise",
+      "name": "Squat to Calf Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-shin-sequence",
+      "name": "Single Leg Shin Sequence",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "kang-squats",
+      "name": "Kang Squats",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "plank-calf-press",
+      "name": "Plank Calf Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "shoulder-openers",
+      "name": "Shoulder Openers",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "standing-crunch",
+      "name": "Standing Crunch",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "diagonal-lunge",
+      "name": "Diagonal Lunge",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "advanced-jump-drill",
+      "name": "Advanced Jump - Drill",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "90-degree-squats",
+      "name": "90 Degree Squats",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "chest-stretch",
+      "name": "Chest Stretch",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "sumo-squat",
+      "name": "Sumo Squat",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "chin-tucks",
+      "name": "Chin Tucks",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-hamstring-stretch",
+      "name": "Single Leg Hamstring Stretch",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "upper-back-stretch",
+      "name": "Upper Back Stretch",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "skater-squats",
+      "name": "Skater Squats",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-hip-flexor-extension-with-pole",
+      "name": "Single Leg Hip Flexor Extension with Pole",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "decline-plank-with-chair",
+      "name": "Decline Plank with Chair",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "side-plank-hip-dip",
+      "name": "Side Plank Hip Dip",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "prone-y-raises",
+      "name": "Prone Y Raises",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "standing-chest-stretch",
+      "name": "Standing Chest Stretch",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "cross-body-hamstring-stretch",
+      "name": "Cross Body Hamstring Stretch",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "toe-grab-calf-stretch",
+      "name": "Toe Grab Calf Stretch",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "standing-glute-stretch",
+      "name": "Standing Glute Stretch",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "loop-band-standing-tricep-extension",
+      "name": "Loop Band Standing Tricep Extension",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "tate-press",
+      "name": "Tate Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "machine-tricep-dip",
+      "name": "Machine Tricep Dip",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "ez-bar-overhead-tricep-extension",
+      "name": "EZ-Bar Overhead Tricep Extension",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-tricep-extension",
+      "name": "Dumbbell Tricep Extension",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-squeeze-press",
+      "name": "Dumbbell Squeeze Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "svend-press",
+      "name": "Svend Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "push-up-on-knees",
+      "name": "Push Up on Knees",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dumbbell-pull-over",
+      "name": "Dumbbell Pull Over",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "leg-raise-with-dumbbell-pull-over",
+      "name": "Leg Raise With Dumbbell Pull Over",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "barbell-decline-bench-press",
+      "name": "Barbell Decline Bench Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "incline-ez-bar-curl",
+      "name": "Incline EZ-Bar Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "wide-grip-barbell-curl",
+      "name": "Wide Grip Barbell Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "barbell-bicep-drag-curl",
+      "name": "Barbell Bicep Drag Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "spider-curls",
+      "name": "Spider Curls",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "concentration-curl",
+      "name": "Concentration Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "zottman-curl",
+      "name": "Zottman Curl",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "waiter-curls",
+      "name": "Waiter Curls",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "landmine-single-leg-romanian-deadlift",
+      "name": "Landmine Single Leg Romanian Deadlift",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "deadlift-to-calf-raise",
+      "name": "Deadlift to Calf Raise",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "cocoon-crunch",
+      "name": "Cocoon Crunch",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "inverted-row",
+      "name": "Inverted Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "t-bar-row",
+      "name": "T-Bar Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "renegade-row",
+      "name": "Renegade Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "straight-arm-pulldown",
+      "name": "Straight-Arm Pulldown",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "bird-dog-rows",
+      "name": "Bird Dog Rows",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "australian-chin-up",
+      "name": "Australian Chin Up",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "chin-up",
+      "name": "Chin Up",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "mixed-grip-pull-up",
+      "name": "Mixed Grip Pull Up",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "ring-row",
+      "name": "Ring Row",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "archer-pull-up",
+      "name": "Archer Pull Up",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "front-squat",
+      "name": "Front Squat",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "hack-squat",
+      "name": "Hack Squat",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "trap-bar-deadlift",
+      "name": "Trap Bar Deadlift",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "barbell-back-squat",
+      "name": "Barbell Back Squat",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "barbell-deadlift",
+      "name": "Barbell Deadlift",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "barbell-bench-press",
+      "name": "Barbell Bench Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "pull-ups",
+      "name": "Pull-ups",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "barbell-overhead-press",
+      "name": "Barbell Overhead Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "lunges",
+      "name": "Lunges",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "push-ups",
+      "name": "Push-ups",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "glute-strength-with-miniband",
+      "name": "Glute Strength with Miniband",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-jump",
+      "name": "Single-Leg Jump",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "snatch-pull",
+      "name": "Snatch Pull",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "back-squat",
+      "name": "Back Squat",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "overhead-squat",
+      "name": "Overhead Squat",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "bench-press",
+      "name": "Bench Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "overhead-press",
+      "name": "Overhead Press",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "push-jerk",
+      "name": "Push Jerk",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "sumo-deadlift",
+      "name": "Sumo Deadlift",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "trx-squat",
+      "name": "TRX Squat",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-squat",
+      "name": "Single Leg Squat",
+      "category": "strength",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "jumping-jacks",
+      "name": "Jumping Jacks",
+      "category": "cardio",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": false,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips",
+        "safetyNotes"
+      ]
+    },
+    {
+      "id": "step-ups",
+      "name": "Step-Ups",
+      "category": "cardio",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "marching-in-place",
+      "name": "Marching in Place",
+      "category": "cardio",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "rowing-erg",
+      "name": "Rowing Erg",
+      "category": "cardio",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "rowing-steady-state",
+      "name": "Rowing Steady State",
+      "category": "cardio",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "rowing-intervals",
+      "name": "Rowing Intervals",
+      "category": "cardio",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "plank",
+      "name": "Plank",
+      "category": "core",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": false,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips",
+        "safetyNotes"
+      ]
+    },
+    {
+      "id": "crunches",
+      "name": "Crunches",
+      "category": "core",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "leg-raise",
+      "name": "Leg Raise",
+      "category": "core",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "bicycle-crunch",
+      "name": "Bicycle Crunch",
+      "category": "core",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "reverse-crunch",
+      "name": "Reverse Crunch",
+      "category": "core",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "oblique-crunch",
+      "name": "Oblique Crunch",
+      "category": "core",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "side-plank",
+      "name": "Side Plank",
+      "category": "core",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "jump-squat",
+      "name": "Jump Squat",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "burpee",
+      "name": "Burpee",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": false,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips",
+        "safetyNotes"
+      ]
+    },
+    {
+      "id": "burpee-broad-jumps",
+      "name": "Burpee Broad Jumps",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "box-jump",
+      "name": "Box Jump",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "depth-jump",
+      "name": "Depth Jump",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "standing-broad-jump",
+      "name": "Standing Broad Jump",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "star-jump",
+      "name": "Star Jump",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "depth-jump-to-box",
+      "name": "Depth Jump to Box",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "lateral-bounds",
+      "name": "Lateral Bounds",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "tuck-jump",
+      "name": "Tuck Jump",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "box-jumps",
+      "name": "Box Jumps",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "burpee-box-jumps",
+      "name": "Burpee Box Jumps",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "broad-jump",
+      "name": "Broad Jump",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "depth-jumps",
+      "name": "Depth Jumps",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "single-leg-hops",
+      "name": "Single Leg Hops",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "tuck-jumps",
+      "name": "Tuck Jumps",
+      "category": "plyometric",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "dips",
+      "name": "Dips",
+      "category": "bodyweight",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "handstand-push-ups",
+      "name": "Handstand Push-ups",
+      "category": "bodyweight",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "pistol-squats",
+      "name": "Pistol Squats",
+      "category": "bodyweight",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "air-squats",
+      "name": "Air Squats",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "front-squat",
+      "name": "Front Squat",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "overhead-squat",
+      "name": "Overhead Squat",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "shoulder-press",
+      "name": "Shoulder Press (Strict Press)",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "push-press",
+      "name": "Push Press",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "push-jerk",
+      "name": "Push Jerk",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "burpee",
+      "name": "Burpee",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "burpee-broad-jumps",
+      "name": "Burpee Broad Jumps",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "deadlift",
+      "name": "Deadlift",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "box-jump",
+      "name": "Box Jump",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "pull-ups",
+      "name": "Pull-ups",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    },
+    {
+      "id": "sumo-deadlift-high-pull",
+      "name": "Sumo Deadlift High Pull",
+      "category": "crossfit",
+      "hasDescription": false,
+      "hasCoachingTips": false,
+      "hasSafetyNotes": true,
+      "hasInstructions": true,
+      "missingFields": [
+        "description",
+        "coachingTips"
+      ]
+    }
+  ],
+  "byCategory": {
+    "strength": [
+      {
+        "id": "push-up",
+        "name": "Push-up",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "diamond-push-up",
+        "name": "Diamond Push-up",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "squat",
+        "name": "Bodyweight Squat",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": false,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips",
+          "safetyNotes"
+        ]
+      },
+      {
+        "id": "lunge",
+        "name": "Forward Lunge",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": false,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips",
+          "safetyNotes"
+        ]
+      },
+      {
+        "id": "lat-pulldown",
+        "name": "Lat Pulldown",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-row",
+        "name": "Dumbbell Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "cable-row",
+        "name": "Cable Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-bent-over-row",
+        "name": "Dumbbell Bent Over Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "bent-over-barbell-row",
+        "name": "Bent Over Barbell Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "kettlebell-row",
+        "name": "Kettlebell Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "landmine-row",
+        "name": "Landmine Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "machine-row",
+        "name": "Machine Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "hammerstrength-high-row",
+        "name": "Hammerstrength High Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "hammerstrength-iso-row",
+        "name": "Hammerstrength Iso Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "incline-dumbbell-row",
+        "name": "Incline Dumbbell Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "shotgun-row",
+        "name": "Shotgun Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "kettlebell-alternating-row",
+        "name": "Kettlebell Alternating Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "seated-leg-curl",
+        "name": "Seated Leg Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-romanian-deadlift",
+        "name": "Dumbbell Romanian Deadlift",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "romanian-deadlift",
+        "name": "Romanian Deadlift (Barbell)",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "lying-hamstrings-curl",
+        "name": "Lying Hamstrings Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-romanian-deadlift",
+        "name": "Single Leg Romanian Deadlift",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "deadlift",
+        "name": "Deadlift",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "glute-bridge",
+        "name": "Glute Bridge",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-glute-bridge",
+        "name": "Single Leg Glute Bridge",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "side-leg-raises",
+        "name": "Side Leg Raises (Side-Lying Hip Abduction)",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "barbell-curl",
+        "name": "Barbell Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-curl",
+        "name": "Dumbbell Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "hammer-curl",
+        "name": "Hammer Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "preacher-curl",
+        "name": "Preacher Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "sled-push",
+        "name": "Sled Push",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "sled-pull",
+        "name": "Sled Pull",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "sandbag-lunges",
+        "name": "Sandbag Lunges",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "cable-lateral-raise",
+        "name": "Cable Lateral Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-rear-delt-raise",
+        "name": "Dumbbell Rear Delt Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-lateral-raise",
+        "name": "Dumbbell Lateral Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-shoulder-press",
+        "name": "Dumbbell Shoulder Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-front-raise",
+        "name": "Dumbbell Front Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "straight-leg-kickback",
+        "name": "Straight Leg Kickback",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "medicine-ball-curtsy-lunge",
+        "name": "Medicine Ball Curtsy Lunge",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-kickback",
+        "name": "Single Leg Kickback",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "glute-kickback-machine",
+        "name": "Glute Kickback Machine",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "side-leg-kick",
+        "name": "Side Leg Kick (Side-Lying)",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "cable-hip-extension",
+        "name": "Cable Hip Extension",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "seated-back-extension",
+        "name": "Seated Back Extension (Machine)",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "back-extensions",
+        "name": "Back Extensions (Hyperextension Bench)",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "walking-lunges",
+        "name": "Walking Lunges",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "standing-calf-stretch",
+        "name": "Standing Calf Stretch (Gastrocnemius)",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "box-step-ups",
+        "name": "Box Step-Ups",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "calf-press",
+        "name": "Calf Press (Leg Press Machine)",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "standing-dumbbell-calf-raise",
+        "name": "Standing Dumbbell Calf Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "seated-machine-calf-press",
+        "name": "Seated Machine Calf Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "seated-dumbbell-calf-raise",
+        "name": "Seated Dumbbell Calf Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "standing-barbell-calf-raise",
+        "name": "Standing Barbell Calf Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "standing-kettlebell-calf-raise",
+        "name": "Standing Kettlebell Calf Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "stiff-legged-barbell-good-morning",
+        "name": "Stiff-Legged Barbell Good Morning",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "incline-back-extension",
+        "name": "Incline Back Extension",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "bike-single-leg-pedaling",
+        "name": "Single-Leg Pedaling Drills (Stationary Bike)",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "swim-plyometric-box-jumps",
+        "name": "Plyometric Box Jumps (for explosive push-off)",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "lateral-leg-lift",
+        "name": "Lateral Leg Lift",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "hamstring-bridge-with-chair",
+        "name": "Hamstring Bridge with a chair",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "lateral-wrist-curls-with-dumbbells",
+        "name": "Lateral Wrist Curls with dumbbells",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "standing-hamstring-curl",
+        "name": "Standing Hamstring Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "lateral-walk",
+        "name": "Lateral Walk",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "squat-to-overhead-press",
+        "name": "Squat to Overhead press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "speed-skater-lunges",
+        "name": "Speed Skater Lunges",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-deadlift-to-hop",
+        "name": "Single Leg Deadlift to Hop",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-calf-raise",
+        "name": "Single Leg Calf Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "alternating-jump-lunges",
+        "name": "Alternating Jump Lunges",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "side-plank-leg-lift",
+        "name": "Side Plank Leg Lift",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "reverse-lunge-knee-drive",
+        "name": "Reverse Lunge Knee Drive",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "squat-to-calf-raise",
+        "name": "Squat to Calf Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-shin-sequence",
+        "name": "Single Leg Shin Sequence",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "kang-squats",
+        "name": "Kang Squats",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "plank-calf-press",
+        "name": "Plank Calf Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "shoulder-openers",
+        "name": "Shoulder Openers",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "standing-crunch",
+        "name": "Standing Crunch",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "diagonal-lunge",
+        "name": "Diagonal Lunge",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "advanced-jump-drill",
+        "name": "Advanced Jump - Drill",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "90-degree-squats",
+        "name": "90 Degree Squats",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "chest-stretch",
+        "name": "Chest Stretch",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "sumo-squat",
+        "name": "Sumo Squat",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "chin-tucks",
+        "name": "Chin Tucks",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-hamstring-stretch",
+        "name": "Single Leg Hamstring Stretch",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "upper-back-stretch",
+        "name": "Upper Back Stretch",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "skater-squats",
+        "name": "Skater Squats",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-hip-flexor-extension-with-pole",
+        "name": "Single Leg Hip Flexor Extension with Pole",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "decline-plank-with-chair",
+        "name": "Decline Plank with Chair",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "side-plank-hip-dip",
+        "name": "Side Plank Hip Dip",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "prone-y-raises",
+        "name": "Prone Y Raises",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "standing-chest-stretch",
+        "name": "Standing Chest Stretch",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "cross-body-hamstring-stretch",
+        "name": "Cross Body Hamstring Stretch",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "toe-grab-calf-stretch",
+        "name": "Toe Grab Calf Stretch",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "standing-glute-stretch",
+        "name": "Standing Glute Stretch",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "loop-band-standing-tricep-extension",
+        "name": "Loop Band Standing Tricep Extension",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "tate-press",
+        "name": "Tate Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "machine-tricep-dip",
+        "name": "Machine Tricep Dip",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "ez-bar-overhead-tricep-extension",
+        "name": "EZ-Bar Overhead Tricep Extension",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-tricep-extension",
+        "name": "Dumbbell Tricep Extension",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-squeeze-press",
+        "name": "Dumbbell Squeeze Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "svend-press",
+        "name": "Svend Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "push-up-on-knees",
+        "name": "Push Up on Knees",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "dumbbell-pull-over",
+        "name": "Dumbbell Pull Over",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "leg-raise-with-dumbbell-pull-over",
+        "name": "Leg Raise With Dumbbell Pull Over",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "barbell-decline-bench-press",
+        "name": "Barbell Decline Bench Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "incline-ez-bar-curl",
+        "name": "Incline EZ-Bar Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "wide-grip-barbell-curl",
+        "name": "Wide Grip Barbell Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "barbell-bicep-drag-curl",
+        "name": "Barbell Bicep Drag Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "spider-curls",
+        "name": "Spider Curls",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "concentration-curl",
+        "name": "Concentration Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "zottman-curl",
+        "name": "Zottman Curl",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "waiter-curls",
+        "name": "Waiter Curls",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "landmine-single-leg-romanian-deadlift",
+        "name": "Landmine Single Leg Romanian Deadlift",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "deadlift-to-calf-raise",
+        "name": "Deadlift to Calf Raise",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "cocoon-crunch",
+        "name": "Cocoon Crunch",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "inverted-row",
+        "name": "Inverted Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "t-bar-row",
+        "name": "T-Bar Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "renegade-row",
+        "name": "Renegade Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "straight-arm-pulldown",
+        "name": "Straight-Arm Pulldown",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "bird-dog-rows",
+        "name": "Bird Dog Rows",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "australian-chin-up",
+        "name": "Australian Chin Up",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "chin-up",
+        "name": "Chin Up",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "mixed-grip-pull-up",
+        "name": "Mixed Grip Pull Up",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "ring-row",
+        "name": "Ring Row",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "archer-pull-up",
+        "name": "Archer Pull Up",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "front-squat",
+        "name": "Front Squat",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "hack-squat",
+        "name": "Hack Squat",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "trap-bar-deadlift",
+        "name": "Trap Bar Deadlift",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "barbell-back-squat",
+        "name": "Barbell Back Squat",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "barbell-deadlift",
+        "name": "Barbell Deadlift",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "barbell-bench-press",
+        "name": "Barbell Bench Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "pull-ups",
+        "name": "Pull-ups",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "barbell-overhead-press",
+        "name": "Barbell Overhead Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "lunges",
+        "name": "Lunges",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "push-ups",
+        "name": "Push-ups",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "glute-strength-with-miniband",
+        "name": "Glute Strength with Miniband",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-jump",
+        "name": "Single-Leg Jump",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "snatch-pull",
+        "name": "Snatch Pull",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "back-squat",
+        "name": "Back Squat",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "overhead-squat",
+        "name": "Overhead Squat",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "bench-press",
+        "name": "Bench Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "overhead-press",
+        "name": "Overhead Press",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "push-jerk",
+        "name": "Push Jerk",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "sumo-deadlift",
+        "name": "Sumo Deadlift",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "trx-squat",
+        "name": "TRX Squat",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-squat",
+        "name": "Single Leg Squat",
+        "category": "strength",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      }
+    ],
+    "cardio": [
+      {
+        "id": "jumping-jacks",
+        "name": "Jumping Jacks",
+        "category": "cardio",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": false,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips",
+          "safetyNotes"
+        ]
+      },
+      {
+        "id": "step-ups",
+        "name": "Step-Ups",
+        "category": "cardio",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "marching-in-place",
+        "name": "Marching in Place",
+        "category": "cardio",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "rowing-erg",
+        "name": "Rowing Erg",
+        "category": "cardio",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "rowing-steady-state",
+        "name": "Rowing Steady State",
+        "category": "cardio",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "rowing-intervals",
+        "name": "Rowing Intervals",
+        "category": "cardio",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      }
+    ],
+    "core": [
+      {
+        "id": "plank",
+        "name": "Plank",
+        "category": "core",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": false,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips",
+          "safetyNotes"
+        ]
+      },
+      {
+        "id": "crunches",
+        "name": "Crunches",
+        "category": "core",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "leg-raise",
+        "name": "Leg Raise",
+        "category": "core",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "bicycle-crunch",
+        "name": "Bicycle Crunch",
+        "category": "core",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "reverse-crunch",
+        "name": "Reverse Crunch",
+        "category": "core",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "oblique-crunch",
+        "name": "Oblique Crunch",
+        "category": "core",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "side-plank",
+        "name": "Side Plank",
+        "category": "core",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      }
+    ],
+    "plyometric": [
+      {
+        "id": "jump-squat",
+        "name": "Jump Squat",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "burpee",
+        "name": "Burpee",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": false,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips",
+          "safetyNotes"
+        ]
+      },
+      {
+        "id": "burpee-broad-jumps",
+        "name": "Burpee Broad Jumps",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "box-jump",
+        "name": "Box Jump",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "depth-jump",
+        "name": "Depth Jump",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "standing-broad-jump",
+        "name": "Standing Broad Jump",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "star-jump",
+        "name": "Star Jump",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "depth-jump-to-box",
+        "name": "Depth Jump to Box",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "lateral-bounds",
+        "name": "Lateral Bounds",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "tuck-jump",
+        "name": "Tuck Jump",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "box-jumps",
+        "name": "Box Jumps",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "burpee-box-jumps",
+        "name": "Burpee Box Jumps",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "broad-jump",
+        "name": "Broad Jump",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "depth-jumps",
+        "name": "Depth Jumps",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "single-leg-hops",
+        "name": "Single Leg Hops",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "tuck-jumps",
+        "name": "Tuck Jumps",
+        "category": "plyometric",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      }
+    ],
+    "bodyweight": [
+      {
+        "id": "dips",
+        "name": "Dips",
+        "category": "bodyweight",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "handstand-push-ups",
+        "name": "Handstand Push-ups",
+        "category": "bodyweight",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "pistol-squats",
+        "name": "Pistol Squats",
+        "category": "bodyweight",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      }
+    ],
+    "crossfit": [
+      {
+        "id": "air-squats",
+        "name": "Air Squats",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "front-squat",
+        "name": "Front Squat",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "overhead-squat",
+        "name": "Overhead Squat",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "shoulder-press",
+        "name": "Shoulder Press (Strict Press)",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "push-press",
+        "name": "Push Press",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "push-jerk",
+        "name": "Push Jerk",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "burpee",
+        "name": "Burpee",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "burpee-broad-jumps",
+        "name": "Burpee Broad Jumps",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "deadlift",
+        "name": "Deadlift",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "box-jump",
+        "name": "Box Jump",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "pull-ups",
+        "name": "Pull-ups",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      },
+      {
+        "id": "sumo-deadlift-high-pull",
+        "name": "Sumo Deadlift High Pull",
+        "category": "crossfit",
+        "hasDescription": false,
+        "hasCoachingTips": false,
+        "hasSafetyNotes": true,
+        "hasInstructions": true,
+        "missingFields": [
+          "description",
+          "coachingTips"
+        ]
+      }
+    ]
+  }
+}
