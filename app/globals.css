@@ -584,18 +584,10 @@ input:focus {
 /* Gradient Backgrounds */
 .gradient-bg-primary {
   background: linear-gradient(135deg, var(--midnight-green), var(--dark-slate-gray), var(--slate-gray));
+  position: relative;
 }
 
-.gradient-bg-secondary {
-  background: linear-gradient(45deg, var(--ebony), var(--dark-slate-gray), var(--midnight-green));
-}
-
-.gradient-bg-tertiary {
-  background: linear-gradient(180deg, var(--slate-gray), var(--silver), var(--dark-slate-gray));
-}
-
-/* Grainy Texture Overlay */
-.grainy-texture::before {
+.gradient-bg-primary::before {
   content: '';
   position: absolute;
   top: 0;
@@ -613,7 +605,79 @@ input:focus {
   z-index: 1;
 }
 
-/* Full Screen Gradient Backgrounds */
+.gradient-bg-secondary {
+  background: linear-gradient(45deg, var(--ebony), var(--dark-slate-gray), var(--midnight-green));
+  position: relative;
+}
+
+.gradient-bg-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 4px 4px, 6px 6px, 8px 8px;
+  background-position: 0 0, 2px 2px, 4px 4px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gradient-bg-tertiary {
+  background: linear-gradient(180deg, var(--slate-gray), var(--silver), var(--dark-slate-gray));
+  position: relative;
+}
+
+.gradient-bg-tertiary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 4px 4px, 6px 6px, 8px 8px;
+  background-position: 0 0, 2px 2px, 4px 4px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Grainy Texture Overlay - Universal grain effect for all backgrounds */
+.grainy-texture::before,
+.grain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 4px 4px, 6px 6px, 8px 8px;
+  background-position: 0 0, 2px 2px, 4px 4px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure parent elements with grain effect have relative positioning */
+.grainy-texture,
+.grain {
+  position: relative;
+}
+
+/* Full Screen Gradient Backgrounds - All with grain effect */
 .fullscreen-gradient-primary {
   background: linear-gradient(135deg, 
     hsla(var(--midnight-green-hsl), 1) 0%,
@@ -626,6 +690,24 @@ input:focus {
   position: relative;
 }
 
+.fullscreen-gradient-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 4px 4px, 6px 6px, 8px 8px;
+  background-position: 0 0, 2px 2px, 4px 4px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .fullscreen-gradient-secondary {
   background: linear-gradient(45deg,
     hsla(var(--ebony-hsl), 1) 0%,
@@ -635,6 +717,24 @@ input:focus {
   );
   min-height: 100vh;
   position: relative;
+}
+
+.fullscreen-gradient-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 4px 4px, 6px 6px, 8px 8px;
+  background-position: 0 0, 2px 2px, 4px 4px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Loading Screen Gradient */
@@ -735,6 +835,25 @@ input:focus {
   );
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
+  position: relative;
+}
+
+.animated-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 4px 4px, 6px 6px, 8px 8px;
+  background-position: 0 0, 2px 2px, 4px 4px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Utility Classes */
@@ -804,4 +923,19 @@ input.mac-input {
 
 input.mac-input::placeholder {
   color: #9ca3af !important;
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out;
 } 

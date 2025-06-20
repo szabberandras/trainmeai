@@ -5,9 +5,18 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
-import { ArrowRight, ArrowLeft, Target, Heart, Sparkles, Send, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { 
+  ArrowRight, 
+  ArrowLeft, 
+  Heart, 
+  Sparkles, 
+  Send, 
+  ThumbsUp, 
+  ThumbsDown
+} from 'lucide-react';
 import { PersonaSelectionService, PersonaSelectionResult } from '@/lib/services/persona-selection.service';
 import { CoachPersona } from '@/lib/types/training-system';
+import { aiTrainingService, type ConversationData } from '@/lib/services/ai-training-service';
 
 interface AiMessage {
   type: 'user' | 'ai';
@@ -33,11 +42,17 @@ export interface OnboardingAnswers {
   heightInches?: string;
   weight?: string;
   fitnessLevel: string;
+  currentStatus?: string; // New field for current training status
   timeCommitment: string;
+  sessionLength?: string; // New field for preferred session length
   daysPerWeek: string;
   preferredDays?: string[];
   equipment: string[];
+  trainingEnvironments?: string[];
   goal: string;
+  
+  // Enhanced injury tracking
+  injuries?: string; // New field for injury history and limitations
   
   // Activity-specific data
   activitySpecific?: {
@@ -49,6 +64,31 @@ export interface OnboardingAnswers {
     eventDate?: string;
     environment?: string;
     trainingIntensity?: string;
+    
+    // Enhanced running-specific fields
+    currentMileage?: string; // '0-5', '6-15', '16-30', '31-50', '50+'
+    biggestChallenge?: string; // 'endurance', 'speed', 'injury', 'consistency', 'race-prep'
+    
+    // Enhanced triathlon-specific fields
+    triExperience?: string; // 'never', 'sprint', 'olympic', 'half', 'full'
+    weakestDiscipline?: string; // 'swimming', 'cycling', 'running', 'transitions', 'all'
+    
+    // Enhanced strength-specific fields
+    currentAbilities?: {
+      pushups?: string; // 'None', '1-10', '11-25', '25+'
+      pullups?: string; // 'None', '1-5', '6-10', '10+'
+      squat?: string; // 'No', 'Yes with difficulty', 'Yes easily'
+      plank?: string; // '<30 sec', '30-60 sec', '1-2 min', '2+ min'
+    };
+    trainingStyleInterest?: string; // 'bodybuilding', 'powerlifting', 'olympic', 'functional'
+    
+    // Enhanced Hyrox-specific fields
+    hyroxAbilities?: {
+      oneKmRun?: string; // '>6 min', '5-6 min', '4-5 min', '<4 min'
+      burpees?: string; // '1 min', '3 min', '5+ min'
+      sled?: string; // 'Never tried', 'Light weight', 'Moderate', 'Heavy'
+    };
+    hyroxWeakness?: string; // 'running', 'functional', 'skills', 'pacing'
     
     // Simplified activity-specific fields
     cyclingFocus?: string; // 'general-fitness', 'event-prep', 'performance'
@@ -144,55 +184,52 @@ interface CinematicOnboardingProps {
   onSkip?: () => void;
 }
 
-// Goal-focused onboarding steps
+// 🎯 ENHANCED GOAL-FOCUSED STEPS - Updated structure
 const GOAL_FOCUSED_STEPS = [
-  {
-    id: 'activity',
-    title: 'What brings you here today?',
-    subtitle: 'Choose your primary activity to get started. You can add more later.',
-    type: 'activity-selection'
+  { 
+    type: 'activity-selection', 
+    title: 'Choose Your Training Focus', 
+    subtitle: 'What type of movement calls to you? This will shape your entire fitness journey.' 
   },
-  {
-    id: 'subcategory',
-    title: 'Tell us more about your focus',
-    subtitle: 'Help us understand your specific interests within this activity.',
-    type: 'subcategory-selection'
+  { 
+    type: 'subcategory-selection', 
+    title: 'Get Specific', 
+    subtitle: 'Let\'s dive deeper into your chosen activity to create the perfect program.' 
   },
-  {
-    id: 'demographics',
-    title: 'Tell us about yourself',
-    subtitle: 'This helps us create a personalized experience just for you.',
-    type: 'demographics'
+  { 
+    type: 'demographics', 
+    title: 'Tell Us About Yourself', 
+    subtitle: 'Understanding who you are helps us create a plan that truly fits your life and goals.' 
   },
-  {
-    id: 'fitness-level',
-    title: 'What\'s your fitness level?',
-    subtitle: 'Help us set the right intensity for your training.',
-    type: 'fitness-level'
+  { 
+    type: 'experience-level', 
+    title: 'What\'s Your Experience Level?', 
+    subtitle: 'There\'s no judgment here - just honest assessment to build the perfect starting point.' 
   },
-  {
-    id: 'time-availability',
-    title: 'How much time do you have?',
-    subtitle: 'Choose a daily commitment that feels sustainable for your lifestyle.',
-    type: 'time-availability'
+  { 
+    type: 'current-status', 
+    title: 'Current Training Status', 
+    subtitle: 'Where are you right now in your fitness journey? This helps us meet you where you are.' 
   },
-  {
-    id: 'equipment',
-    title: 'What equipment do you have access to?',
-    subtitle: 'Select all that apply. Don\'t worry if you don\'t have everything.',
-    type: 'equipment'
+  { 
+    type: 'time-commitment', 
+    title: 'Time Availability', 
+    subtitle: 'The best fitness plan is one you can actually stick to. Let\'s find your sweet spot.' 
   },
-  {
-    id: 'goals',
-    title: 'What\'s your main goal?',
-    subtitle: 'Choose the goal that resonates most with you right now.',
-    type: 'goals'
+  { 
+    type: 'equipment-access', 
+    title: 'Equipment & Training Environment', 
+    subtitle: 'Amazing results don\'t require expensive equipment. Let\'s see what tools we have to work with.' 
   },
-  {
-    id: 'activity-specific',
-    title: 'Let\'s get specific',
-    subtitle: 'A few more details to create the perfect plan for you.',
-    type: 'activity-specific'
+  { 
+    type: 'primary-goal', 
+    title: 'What\'s Your Main Goal?', 
+    subtitle: 'What drives you? Understanding your deeper motivation helps us create a plan that resonates.' 
+  },
+  { 
+    type: 'activity-specific', 
+    title: 'Ready to Create Your Plan', 
+    subtitle: 'Perfect! We have everything we need to create your personalized training program. Let\'s finalize the details and get started.' 
   }
 ];
 
@@ -202,32 +239,34 @@ const ACTIVITIES = [
     id: 'cardio-endurance',
     title: 'Cardio & Endurance',
     description: 'Running, Cycling, Swimming, Triathlon, General Cardio',
-    icon: '🏃‍♀️',
-    gradient: 'linear-gradient(45deg, rgba(255,59,48,0.8), rgba(255,149,0,0.8))',
+    icon: '🏃‍♂️',
+    gradient: 'linear-gradient(45deg, rgba(230,57,70,0.8), rgba(168,218,220,0.8))',
     heroTitle: 'Build Your Endurance',
     heroDescription: 'From 5Ks to marathons, cycling adventures to swimming laps - let\'s build your cardiovascular fitness.',
     subcategories: [
-      { id: 'running', name: 'Running (Road, Trail, Track)' },
-      { id: 'cycling', name: 'Cycling (Road, Mountain, Indoor)' },
-      { id: 'swimming', name: 'Swimming (Pool, Open Water)' },
-      { id: 'triathlon', name: 'Triathlon/Duathlon' },
-      { id: 'general-cardio', name: 'General Cardio & Cross-training' }
+      { id: 'running', name: 'Running (Road, Trail, Track)', icon: '🏃‍♂️' },
+      { id: 'cycling', name: 'Cycling (Road, Mountain, Indoor)', icon: '🚴‍♂️' },
+      { id: 'swimming', name: 'Swimming (Pool, Open Water)', icon: '🏊‍♂️' },
+      { id: 'triathlon', name: 'Triathlon/Duathlon', icon: '🏆' },
+      { id: 'ironman', name: 'Ironman/Ultra-Distance Triathlon', icon: '🔥' },
+      { id: 'general-cardio', name: 'General Cardio & Cross-training', icon: '❤️' }
     ]
   },
   {
     id: 'strength-power',
     title: 'Strength & Power',
     description: 'Weightlifting, Bodybuilding, Powerlifting, CrossFit, General Strength',
-    icon: '🏋️‍♀️',
-    gradient: 'linear-gradient(45deg, rgba(191,90,242,0.8), rgba(255,45,146,0.8))',
+    icon: '🏋️‍♂️',
+    gradient: 'linear-gradient(45deg, rgba(29,53,87,0.8), rgba(69,123,157,0.8))',
     heroTitle: 'Build Your Strength',
     heroDescription: 'From bodyweight basics to powerlifting prowess - transform your strength and confidence.',
     subcategories: [
-      { id: 'general-strength', name: 'General Fitness & Toning' },
-      { id: 'muscle-building', name: 'Muscle Building (Hypertrophy)' },
-      { id: 'powerlifting', name: 'Strength & Powerlifting' },
-      { id: 'crossfit', name: 'Functional Fitness/CrossFit' },
-      { id: 'bodyweight', name: 'Bodyweight & Calisthenics' }
+      { id: 'general-strength', name: 'General Fitness & Toning', icon: '🏋️‍♂️' },
+      { id: 'muscle-building', name: 'Muscle Building (Hypertrophy)', icon: '💪' },
+      { id: 'powerlifting', name: 'Strength & Powerlifting', icon: '🏆' },
+      { id: 'crossfit', name: 'Functional Fitness/CrossFit', icon: '⚡' },
+      { id: 'hyrox', name: 'Hyrox/Functional Racing', icon: '🛡️' },
+      { id: 'bodyweight', name: 'Bodyweight & Calisthenics', icon: '🤸‍♂️' }
     ]
   },
   {
@@ -235,15 +274,15 @@ const ACTIVITIES = [
     title: 'Mind-Body & Flexibility',
     description: 'Yoga, Pilates, Barre, Flexibility, Mindfulness',
     icon: '🧘‍♀️',
-    gradient: 'linear-gradient(45deg, rgba(48,209,88,0.8), rgba(0,122,255,0.8))',
+    gradient: 'linear-gradient(45deg, rgba(92,112,110,0.8), rgba(241,250,238,0.8))',
     heroTitle: 'Find Your Balance',
     heroDescription: 'Discover harmony between mind and body through mindful movement and flexibility.',
     subcategories: [
-      { id: 'yoga', name: 'Yoga (Hatha, Vinyasa, Power)' },
-      { id: 'pilates', name: 'Pilates (Mat, Reformer)' },
-      { id: 'barre', name: 'Barre' },
-      { id: 'flexibility', name: 'General Stretching & Mobility' },
-      { id: 'mindfulness', name: 'Mindfulness & Meditation' }
+      { id: 'yoga', name: 'Yoga (Hatha, Vinyasa, Power)', icon: '🧘‍♀️' },
+      { id: 'pilates', name: 'Pilates (Mat, Reformer)', icon: '🤸‍♀️' },
+      { id: 'barre', name: 'Barre', icon: '🩰' },
+      { id: 'flexibility', name: 'General Stretching & Mobility', icon: '🤸‍♂️' },
+      { id: 'mindfulness', name: 'Mindfulness & Meditation', icon: '🧠' }
     ]
   },
   {
@@ -251,32 +290,32 @@ const ACTIVITIES = [
     title: 'Team Sports',
     description: 'Soccer, Basketball, Rugby, Hockey, Volleyball',
     icon: '⚽',
-    gradient: 'linear-gradient(45deg, rgba(255,45,146,0.8), rgba(255,149,0,0.8))',
+    gradient: 'linear-gradient(45deg, rgba(189,177,181,0.8), rgba(152,173,195,0.8))',
     heroTitle: 'Dominate Your Sport',
     heroDescription: 'Train like a pro for your favorite team sport and elevate your game.',
     subcategories: [
-      { id: 'soccer', name: 'Football/Soccer' },
-      { id: 'basketball', name: 'Basketball' },
-      { id: 'rugby', name: 'Rugby' },
-      { id: 'hockey', name: 'Hockey' },
-      { id: 'volleyball', name: 'Volleyball' },
-      { id: 'other-team', name: 'Other Team Sport' }
+      { id: 'soccer', name: 'Football/Soccer', icon: '⚽' },
+      { id: 'basketball', name: 'Basketball', icon: '🏀' },
+      { id: 'rugby', name: 'Rugby', icon: '🏉' },
+      { id: 'hockey', name: 'Hockey', icon: '🏒' },
+      { id: 'volleyball', name: 'Volleyball', icon: '🏐' },
+      { id: 'other-team', name: 'Other Team Sport', icon: '🏟️' }
     ]
   },
   {
     id: 'outdoor-adventure',
     title: 'Outdoor & Adventure',
     description: 'Hiking, Climbing, Skiing, Kayaking, Surfing',
-    icon: '🧗‍♀️',
-    gradient: 'linear-gradient(45deg, rgba(0,122,255,0.8), rgba(48,209,88,0.8))',
+    icon: '🏔️',
+    gradient: 'linear-gradient(45deg, rgba(55,50,23,0.8), rgba(92,112,110,0.8))',
     heroTitle: 'Embrace Adventure',
     heroDescription: 'Prepare for outdoor adventures and build the fitness for your next expedition.',
     subcategories: [
-      { id: 'hiking', name: 'Hiking/Backpacking' },
-      { id: 'climbing', name: 'Rock Climbing/Bouldering' },
-      { id: 'skiing', name: 'Skiing/Snowboarding' },
-      { id: 'water-sports', name: 'Kayaking/Surfing/Paddleboarding' },
-      { id: 'other-outdoor', name: 'Other Outdoor Activity' }
+      { id: 'hiking', name: 'Hiking/Backpacking', icon: '🥾' },
+      { id: 'climbing', name: 'Rock Climbing/Bouldering', icon: '🧗‍♂️' },
+      { id: 'skiing', name: 'Skiing/Snowboarding', icon: '⛷️' },
+      { id: 'water-sports', name: 'Kayaking/Surfing/Paddleboarding', icon: '🏄‍♂️' },
+      { id: 'other-outdoor', name: 'Other Outdoor Activity', icon: '🏕️' }
     ]
   },
   {
@@ -284,55 +323,23 @@ const ACTIVITIES = [
     title: 'Combat Sports',
     description: 'Boxing, MMA, Martial Arts, Wrestling',
     icon: '🥊',
-    gradient: 'linear-gradient(45deg, rgba(255,149,0,0.8), rgba(191,90,242,0.8))',
+    gradient: 'linear-gradient(45deg, rgba(230,57,70,0.8), rgba(29,53,87,0.8))',
     heroTitle: 'Master Combat Sports',
     heroDescription: 'Build the strength, conditioning, and skills for combat sports excellence.',
     subcategories: [
-      { id: 'boxing', name: 'Boxing' },
-      { id: 'mma', name: 'MMA (Mixed Martial Arts)' },
-      { id: 'bjj', name: 'Brazilian Jiu-Jitsu' },
-      { id: 'muay-thai', name: 'Muay Thai/Kickboxing' },
-      { id: 'martial-arts', name: 'Traditional Martial Arts' },
-      { id: 'wrestling', name: 'Wrestling' }
-    ]
-  },
-  {
-    id: 'dance-movement',
-    title: 'Dance & Movement',
-    description: 'Ballet, Hip-Hop, Contemporary, Gymnastics',
-    icon: '🩰',
-    gradient: 'linear-gradient(45deg, rgba(255,45,146,0.8), rgba(191,90,242,0.8))',
-    heroTitle: 'Express Through Movement',
-    heroDescription: 'Build the strength, flexibility, and artistry for beautiful movement.',
-    subcategories: [
-      { id: 'ballet', name: 'Ballet' },
-      { id: 'hip-hop', name: 'Hip-Hop/Street Dance' },
-      { id: 'contemporary', name: 'Contemporary/Modern' },
-      { id: 'jazz-tap', name: 'Jazz/Tap' },
-      { id: 'gymnastics', name: 'Gymnastics/Acrobatics' }
-    ]
-  },
-  {
-    id: 'precision-skill',
-    title: 'Precision & Skill Sports',
-    description: 'Golf, Archery, Bowling, Darts, Esports',
-    icon: '🎯',
-    gradient: 'linear-gradient(45deg, rgba(0,122,255,0.8), rgba(255,149,0,0.8))',
-    heroTitle: 'Perfect Your Precision',
-    heroDescription: 'Build the focus, stability, and supportive fitness for precision sports.',
-    subcategories: [
-      { id: 'golf', name: 'Golf' },
-      { id: 'archery', name: 'Archery' },
-      { id: 'bowling', name: 'Bowling' },
-      { id: 'darts', name: 'Darts' },
-      { id: 'esports', name: 'Esports (Competitive Gaming)' }
+      { id: 'boxing', name: 'Boxing', icon: '🥊' },
+      { id: 'mma', name: 'MMA (Mixed Martial Arts)', icon: '🤼‍♂️' },
+      { id: 'bjj', name: 'Brazilian Jiu-Jitsu', icon: '🥋' },
+      { id: 'muay-thai', name: 'Muay Thai/Kickboxing', icon: '🦵' },
+      { id: 'martial-arts', name: 'Traditional Martial Arts', icon: '🥋' },
+      { id: 'wrestling', name: 'Wrestling', icon: '🤼‍♂️' }
     ]
   },
   {
     id: 'multiple-activities',
     title: 'Multiple Activities',
     description: 'I engage in several different activities',
-    icon: '➕',
+    icon: '🔄',
     gradient: 'linear-gradient(45deg, rgba(191,90,242,0.8), rgba(0,122,255,0.8))',
     heroTitle: 'Multi-Sport Athlete',
     heroDescription: 'Let\'s create a comprehensive plan that balances all your activities.',
@@ -345,39 +352,272 @@ const FITNESS_LEVELS = [
   {
     id: 'beginner',
     title: 'Complete Beginner',
-    subtitle: 'Just starting out or returning after a long break'
+    subtitle: 'Just starting out or returning after a long break',
+    icon: '🌱'
   },
   {
     id: 'some-experience',
     title: 'Some Experience',
-    subtitle: 'Occasional activity but looking to be more consistent'
+    subtitle: 'Occasional activity but looking to be more consistent',
+    icon: '🚶‍♀️'
   },
   {
     id: 'regular',
     title: 'Regular Practitioner',
-    subtitle: 'Active several times per week with good base fitness'
+    subtitle: 'Active several times per week with good base fitness',
+    icon: '🏃‍♂️'
   },
   {
     id: 'advanced',
     title: 'Advanced/Competitive',
-    subtitle: 'High level of fitness with structured training experience'
+    subtitle: 'High level of fitness with structured training experience',
+    icon: '🏆'
   }
 ];
 
 // Time options
 const TIME_OPTIONS = [
-  { value: '15', label: '15 minutes' },
-  { value: '30', label: '30 minutes' },
-  { value: '45', label: '45 minutes' },
-  { value: '60', label: '60 minutes' },
-  { value: '90', label: '90+ minutes' }
+  { value: '15', label: '15 minutes', icon: '⚡' },
+  { value: '30', label: '30 minutes', icon: '⏰' },
+  { value: '45', label: '45 minutes', icon: '🕐' },
+  { value: '60', label: '60 minutes', icon: '⏳' },
+  { value: '90', label: '90+ minutes', icon: '🔥' }
 ];
 
 // Equipment options
 const EQUIPMENT_OPTIONS = [
-  'None', 'Dumbbells', 'Kettlebells', 'Resistance Bands', 
-  'Yoga Mat', 'Foam Roller', 'Pull-up Bar', 'Gym Access'
+  { id: 'none', name: 'None', icon: '🏠' },
+  { id: 'dumbbells', name: 'Dumbbells', icon: '🏋️‍♀️' },
+  { id: 'kettlebells', name: 'Kettlebells', icon: '⚫' },
+  { id: 'resistance-bands', name: 'Resistance Bands', icon: '🎯' },
+  { id: 'yoga-mat', name: 'Yoga Mat', icon: '🧘‍♀️' },
+  { id: 'foam-roller', name: 'Foam Roller', icon: '📏' },
+  { id: 'pullup-bar', name: 'Pull-up Bar', icon: '🔗' },
+  { id: 'gym-access', name: 'Gym Access', icon: '🏢' }
 ];
+
+// Enhanced Activity-specific equipment options - focused on what's ESSENTIAL to conduct the activity
+const ACTIVITY_SPECIFIC_EQUIPMENT = {
+  'cardio-endurance': {
+    running: [
+      { id: 'treadmill', name: 'Treadmill', icon: '🏃‍♂️' },
+      { id: 'track-trail', name: 'Track/Trail Access', icon: '🛤️' }
+    ],
+    cycling: [
+      { id: 'bicycle', name: 'Bicycle', icon: '🚴‍♀️' },
+      { id: 'bike-trainer', name: 'Bike Trainer/Indoor Setup', icon: '🚴‍♂️' },
+      { id: 'stationary-bike', name: 'Stationary Bike', icon: '🚴‍♀️' }
+    ],
+    swimming: [
+      { id: 'pool-access', name: 'Pool Access', icon: '🏊‍♀️' },
+      { id: 'open-water', name: 'Open Water Access', icon: '🌊' }
+    ],
+    triathlon: [
+      { id: 'bicycle', name: 'Bicycle', icon: '🚴‍♀️' },
+      { id: 'pool-access', name: 'Pool Access', icon: '🏊‍♀️' },
+      { id: 'bike-trainer', name: 'Bike Trainer', icon: '🚴‍♂️' },
+      { id: 'treadmill', name: 'Treadmill', icon: '🏃‍♂️' }
+    ]
+  },
+  'strength-power': {
+    general: [
+      { id: 'dumbbells', name: 'Dumbbells', icon: '🏋️‍♀️' },
+      { id: 'barbell-plates', name: 'Barbell & Plates', icon: '🏋️‍♂️' },
+      { id: 'adjustable-bench', name: 'Adjustable Bench', icon: '🪑' },
+      { id: 'squat-rack', name: 'Squat Rack', icon: '🏗️' }
+    ],
+    'functional-fitness': [
+      { id: 'kettlebells', name: 'Kettlebells', icon: '⚫' },
+      { id: 'medicine-ball', name: 'Medicine Ball', icon: '⚽' },
+      { id: 'jump-rope', name: 'Jump Rope', icon: '🪢' },
+      { id: 'plyo-box', name: 'Plyo Box', icon: '📦' },
+      { id: 'pullup-bar', name: 'Pull-up Bar', icon: '🔗' }
+    ],
+    'hyrox': [
+      { id: 'sled', name: 'Sled for Pushing/Pulling', icon: '🛷' },
+      { id: 'kettlebells', name: 'Kettlebells', icon: '⚫' },
+      { id: 'wall-balls', name: 'Wall Ball', icon: '⚽' },
+      { id: 'rowing-machine', name: 'Rowing Machine', icon: '🚣‍♂️' }
+    ]
+  },
+  'team-sports': {
+    'soccer-football': [
+      { id: 'soccer-ball', name: 'Soccer Ball', icon: '⚽' },
+      { id: 'training-cones', name: 'Training Cones', icon: '🚧' },
+      { id: 'goal-target', name: 'Goal/Target', icon: '🥅' },
+      { id: 'field-access', name: 'Field/Space Access', icon: '🏟️' }
+    ],
+    'basketball-volleyball': [
+      { id: 'basketball', name: 'Basketball', icon: '🏀' },
+      { id: 'hoop-access', name: 'Hoop Access', icon: '🏀' },
+      { id: 'court-access', name: 'Court Access', icon: '🏟️' }
+    ]
+  },
+  'outdoor-adventure': {
+    'hiking': [
+      { id: 'trail-access', name: 'Trail Access', icon: '🥾' },
+      { id: 'backpack', name: 'Hiking Backpack', icon: '🎒' },
+      { id: 'treadmill-alt', name: 'Treadmill (Indoor Alt)', icon: '🏃‍♂️' }
+    ],
+    'climbing': [
+      { id: 'climbing-wall', name: 'Climbing Wall Access', icon: '🧗‍♂️' },
+      { id: 'rock-access', name: 'Rock/Crag Access', icon: '🏔️' }
+    ]
+  },
+  'combat-sports': {
+    'boxing-kickboxing': [
+      { id: 'heavy-bag', name: 'Heavy Bag', icon: '🥊' },
+      { id: 'boxing-gloves', name: 'Boxing Gloves', icon: '🥊' },
+      { id: 'training-space', name: 'Training Space', icon: '🥊' }
+    ],
+    'grappling': [
+      { id: 'grappling-mats', name: 'Grappling Mats', icon: '🤼‍♂️' },
+      { id: 'training-space', name: 'Training Space', icon: '🥊' }
+    ],
+    'martial-arts': [
+      { id: 'dojo-access', name: 'Dojo/Training Space', icon: '🏯' },
+      { id: 'heavy-bag', name: 'Heavy Bag', icon: '🥊' }
+    ]
+  },
+  'mind-body': {
+    'yoga': [
+      { id: 'yoga-mat', name: 'Yoga Mat', icon: '🧘‍♀️' },
+      { id: 'quiet-space', name: 'Quiet Space', icon: '🏠' }
+    ],
+    'pilates': [
+      { id: 'exercise-mat', name: 'Exercise Mat', icon: '🧘‍♀️' },
+      { id: 'pilates-reformer', name: 'Pilates Reformer', icon: '🛏️' },
+      { id: 'pilates-ball', name: 'Pilates Ball', icon: '⚽' }
+    ],
+    'meditation': [
+      { id: 'meditation-cushion', name: 'Meditation Cushion', icon: '🪑' },
+      { id: 'quiet-space', name: 'Quiet Space', icon: '🏠' }
+    ]
+  },
+  'dance-movement': {
+    'dance': [
+      { id: 'dance-studio', name: 'Dance Studio Access', icon: '💃' },
+      { id: 'mirror-space', name: 'Mirror & Open Space', icon: '🪞' }
+    ]
+  },
+  'precision-skill': {
+    'golf': [
+      { id: 'golf-clubs', name: 'Golf Clubs', icon: '🏌️‍♂️' },
+      { id: 'driving-range', name: 'Driving Range Access', icon: '🏌️‍♂️' }
+    ],
+    'tennis': [
+      { id: 'tennis-racket', name: 'Tennis Racket', icon: '🎾' },
+      { id: 'tennis-court', name: 'Tennis Court Access', icon: '🎾' }
+    ]
+  }
+};
+
+// Enhanced training environment options
+const TRAINING_ENVIRONMENT_OPTIONS = [
+  { id: 'home', name: 'Home', icon: '🏠', description: 'Train in your own space' },
+  { id: 'gym', name: 'Gym/Fitness Center', icon: '🏢', description: 'Access to full equipment' },
+  { id: 'outdoor', name: 'Outdoor Spaces', icon: '🌳', description: 'Parks, trails, streets' },
+  { id: 'studio', name: 'Specialized Studio', icon: '🏛️', description: 'Yoga, dance, martial arts studios' },
+  { id: 'pool', name: 'Swimming Pool', icon: '🏊‍♀️', description: 'Pool or open water access' },
+  { id: 'court-field', name: 'Courts/Fields', icon: '🏟️', description: 'Sports facilities' }
+];
+
+// Function to get relevant equipment based on activity and subcategory
+const getRelevantEquipment = (activity: string, subcategory?: string) => {
+  const baseEquipment = [
+    { id: 'none', name: 'None', icon: '🏠' },
+    { id: 'resistance-bands', name: 'Resistance Bands', icon: '🎯' },
+    { id: 'foam-roller', name: 'Foam Roller', icon: '📏' },
+    { id: 'gym-access', name: 'Gym Access', icon: '🏢' }
+  ];
+
+  const activityEquipment = ACTIVITY_SPECIFIC_EQUIPMENT[activity as keyof typeof ACTIVITY_SPECIFIC_EQUIPMENT];
+  
+  if (activityEquipment && subcategory) {
+    const subcategoryEquipment = activityEquipment[subcategory as keyof typeof activityEquipment];
+    if (subcategoryEquipment) {
+      return [...baseEquipment, ...subcategoryEquipment];
+    }
+  }
+
+  // Fallback to general equipment for the activity
+  if (activityEquipment) {
+    const generalKey = Object.keys(activityEquipment)[0];
+    const generalEquipment = activityEquipment[generalKey as keyof typeof activityEquipment];
+    if (generalEquipment) {
+      return [...baseEquipment, ...generalEquipment];
+    }
+  }
+
+  // Final fallback to original equipment options
+  return EQUIPMENT_OPTIONS;
+};
+
+// Function to get relevant training environments based on activity and subcategory
+const getRelevantEnvironments = (activity: string, subcategory?: string) => {
+  const environmentMap: Record<string, Record<string, string[]>> = {
+    'cardio-endurance': {
+      'running': ['home', 'gym', 'outdoor'],
+      'cycling': ['home', 'gym', 'outdoor'],
+      'swimming': ['pool'],
+      'triathlon': ['home', 'gym', 'outdoor', 'pool']
+    },
+    'strength-power': {
+      'general': ['home', 'gym'],
+      'functional-fitness': ['home', 'gym', 'outdoor'],
+      'hyrox': ['gym']
+    },
+    'team-sports': {
+      'soccer-football': ['outdoor', 'court-field'],
+      'basketball-volleyball': ['gym', 'court-field']
+    },
+    'outdoor-adventure': {
+      'hiking': ['outdoor'],
+      'climbing': ['gym', 'outdoor']
+    },
+    'combat-sports': {
+      'boxing-kickboxing': ['home', 'gym', 'studio'],
+      'grappling': ['gym', 'studio'],
+      'martial-arts': ['studio']
+    },
+    'mind-body': {
+      'yoga': ['home', 'studio'],
+      'pilates': ['home', 'gym', 'studio'],
+      'meditation': ['home']
+    },
+    'dance-movement': {
+      'dance': ['home', 'studio']
+    },
+    'precision-skill': {
+      'golf': ['outdoor', 'court-field'],
+      'tennis': ['court-field']
+    }
+  };
+
+  const activityEnvironments = environmentMap[activity];
+  let relevantEnvironmentIds: string[] = [];
+
+  if (activityEnvironments && subcategory) {
+    const subcategoryEnvironments = activityEnvironments[subcategory];
+    if (subcategoryEnvironments) {
+      relevantEnvironmentIds = subcategoryEnvironments;
+    }
+  }
+
+  // Fallback to general environments for the activity
+  if (relevantEnvironmentIds.length === 0 && activityEnvironments) {
+    const generalKey = Object.keys(activityEnvironments)[0];
+    const generalEnvironments = activityEnvironments[generalKey];
+    if (generalEnvironments) {
+      relevantEnvironmentIds = generalEnvironments;
+    }
+  }
+
+  // Return filtered environment options
+  return TRAINING_ENVIRONMENT_OPTIONS.filter(env => 
+    relevantEnvironmentIds.includes(env.id)
+  );
+};
 
 // Goals
 const GOALS: Array<{
@@ -385,36 +625,42 @@ const GOALS: Array<{
   title: string;
   subtitle: string;
   aspirationalFraming: string;
+  icon: string;
 }> = [
   {
     id: 'fitness',
-    title: '🎯 Get Fit & Healthy',
+    title: 'Get Fit & Healthy',
     subtitle: 'Build overall fitness and establish healthy habits',
-    aspirationalFraming: 'Imagine having energy all day and feeling confident in your body'
+    aspirationalFraming: 'Imagine having energy all day and feeling confident in your body',
+    icon: '🎯'
   },
   {
     id: 'weight-loss',
-    title: '⚖️ Lose Weight',
+    title: 'Lose Weight',
     subtitle: 'Burn calories and achieve a healthier body composition',
-    aspirationalFraming: 'Picture yourself feeling lighter, more energetic, and loving how you look'
+    aspirationalFraming: 'Picture yourself feeling lighter, more energetic, and loving how you look',
+    icon: '⚖️'
   },
   {
     id: 'strength',
-    title: '💪 Feel Strong & Powerful',
+    title: 'Feel Strong & Powerful',
     subtitle: 'Build the strength to handle anything life throws at you',
-    aspirationalFraming: 'Envision carrying groceries with ease, playing with kids without getting tired, and feeling unstoppable'
+    aspirationalFraming: 'Envision carrying groceries with ease, playing with kids without getting tired, and feeling unstoppable',
+    icon: '💪'
   },
   {
     id: 'performance',
-    title: '🏆 Improve Performance',
+    title: 'Improve Performance',
     subtitle: 'Train for competitions or personal records',
-    aspirationalFraming: 'See yourself crushing your goals and achieving things you never thought possible'
+    aspirationalFraming: 'See yourself crushing your goals and achieving things you never thought possible',
+    icon: '🏆'
   },
   {
     id: 'wellbeing',
-    title: '🧘‍♀️ Manage Stress & Wellbeing',
+    title: 'Manage Stress & Wellbeing',
     subtitle: 'Focus on mental health and relaxation',
-    aspirationalFraming: 'Imagine feeling calm, centered, and resilient no matter what your day brings'
+    aspirationalFraming: 'Imagine feeling calm, centered, and resilient no matter what your day brings',
+    icon: '🧘‍♀️'
   }
 ];
 
@@ -437,6 +683,7 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
   
   // 💬 CONVERSATION STATE - Required for exploratory onboarding chat
   const [conversation, setConversation] = useState<AiMessage[]>([]);
+  const [sessionId, setSessionId] = useState<string>('');
 
   // Generate unique user token for the entire app experience
   const generateUserToken = (): string => {
@@ -453,13 +700,33 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
     path: 'goal-focused' | 'exploratory' | null, 
     currentAnswers: Partial<OnboardingAnswers>
   ) => {
-    if (!user || offlineMode) {
+    if (!user) {
+      return;
+    }
+    
+    if (offlineMode) {
+      // Save to localStorage in offline mode
+      if (typeof window !== 'undefined') {
+        const offlineProgress = {
+          currentScreen: screen,
+          currentStep: step,
+          onboardingPath: path,
+          answers: currentAnswers,
+          selectedActivity,
+          lastUpdated: new Date().toISOString(),
+          token: userToken
+        };
+        
+        localStorage.setItem(`fitness_app_offline_progress_${user.uid}`, JSON.stringify(offlineProgress));
+        console.log('📱 Saved offline progress:', offlineProgress);
+      }
+      
       // Still update URL even in offline mode with token
       const params = new URLSearchParams();
       if (userToken) params.set('token', userToken);
       if (path) params.set('path', path);
       if (screen >= 0) params.set('screen', screen.toString());
-      if (step > 0) params.set('step', step.toString());
+      if (step >= 0) params.set('step', step.toString());
       
       const newUrl = params.toString() ? `?${params.toString()}` : '';
       router.replace(`/onboarding${newUrl}`, { scroll: false });
@@ -551,12 +818,28 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
 
       console.log('✅ Comprehensive progress saved with token:', userToken);
 
+      // Also save to localStorage as backup
+      if (typeof window !== 'undefined') {
+        const backupProgress = {
+          currentScreen: screen,
+          currentStep: step,
+          onboardingPath: path,
+          answers: currentAnswers,
+          selectedActivity,
+          lastUpdated: new Date().toISOString(),
+          token: userToken
+        };
+        
+        localStorage.setItem(`fitness_app_offline_progress_${user.uid}`, JSON.stringify(backupProgress));
+        console.log('💾 Backup progress saved to localStorage');
+      }
+
       // Update URL with token-based navigation
       const params = new URLSearchParams();
       if (userToken) params.set('token', userToken);
       if (path) params.set('path', path);
       if (screen >= 0) params.set('screen', screen.toString());
-      if (step > 0) params.set('step', step.toString());
+      if (step >= 0) params.set('step', step.toString());
       
       const newUrl = params.toString() ? `?${params.toString()}` : '';
       router.replace(`/onboarding${newUrl}`, { scroll: false });
@@ -571,6 +854,22 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
         console.log('Enabling offline mode due to connection issues');
         setOfflineMode(true);
         setConnectionError('Working in offline mode - progress saved locally');
+        
+        // Save to localStorage when going offline
+        if (typeof window !== 'undefined') {
+          const offlineProgress = {
+            currentScreen: screen,
+            currentStep: step,
+            onboardingPath: path,
+            answers: currentAnswers,
+            selectedActivity,
+            lastUpdated: new Date().toISOString(),
+            token: userToken
+          };
+          
+          localStorage.setItem(`fitness_app_offline_progress_${user.uid}`, JSON.stringify(offlineProgress));
+          console.log('📱 Saved progress to localStorage due to connection error');
+        }
       }
       
       // Still update URL for local navigation
@@ -578,7 +877,7 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
       if (userToken) params.set('token', userToken);
       if (path) params.set('path', path);
       if (screen >= 0) params.set('screen', screen.toString());
-      if (step > 0) params.set('step', step.toString());
+      if (step >= 0) params.set('step', step.toString());
       
       const newUrl = params.toString() ? `?${params.toString()}` : '';
       router.replace(`/onboarding${newUrl}`, { scroll: false });
@@ -603,87 +902,95 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
         if (userDoc.exists()) {
           const userData = userDoc.data();
           
-          // 🔑 TOKEN VALIDATION & INITIALIZATION
-          let existingToken = userData.userToken;
+          // 🔑 SIMPLIFIED TOKEN VALIDATION - Prevent flow resets
+          let activeToken = userData.userToken;
           const urlToken = searchParams.get('token');
           
-          // Validate and set token
-          if (urlToken && userData.userToken === urlToken) {
-            // Valid token from URL matches stored token
+          // Use existing token or URL token, only generate new if neither exists
+          if (activeToken) {
+            setUserToken(activeToken);
+            console.log('✅ Using existing stored token:', activeToken);
+          } else if (urlToken) {
             setUserToken(urlToken);
-            console.log('✅ Valid token found:', urlToken);
-          } else if (existingToken) {
-            // Use existing stored token
-            setUserToken(existingToken);
-            console.log('✅ Using existing token:', existingToken);
+            activeToken = urlToken;
+            console.log('✅ Using URL token:', urlToken);
           } else {
-            // Generate new token for existing user without one
-            const newToken = generateUserToken();
-            setUserToken(newToken);
-            console.log('🆕 Generated new token for existing user:', newToken);
-            
-            // Save the new token
-            await setDoc(doc(db, 'users', user.uid), {
-              userToken: newToken,
-              security: {
-                tokenCreated: new Date(),
-                lastTokenRefresh: new Date(),
-                accessLevel: 'user',
-                dataConsent: true
-              }
-            }, { merge: true });
+            // Only generate new token if neither exists
+            activeToken = generateUserToken();
+            setUserToken(activeToken);
+            console.log('🆕 Generated new token:', activeToken);
           }
-          
+        
           // Check if onboarding is already completed
           if (userData.hasCompletedOnboarding === true) {
             console.log('✅ User has completed onboarding, redirecting to dashboard');
-            const token = userToken || existingToken || generateUserToken();
-            router.push(`/dashboard?token=${token}`);
+            setIsLoading(false);
+            router.push(`/dashboard?token=${activeToken}`);
             return;
           }
 
           // 📊 LOAD COMPREHENSIVE PROGRESS DATA
           const progress = userData.onboardingProgress;
-          if (progress) {
-            setCurrentScreen(progress.currentScreen || 0);
-            setCurrentStep(progress.currentStep || 0);
-            setOnboardingPath(progress.onboardingPath || null);
+          
+          // 🔗 ALWAYS CHECK URL PARAMETERS FIRST - They take precedence for navigation
+          const urlPath = searchParams.get('path') as 'goal-focused' | 'exploratory' | null;
+          const urlScreen = parseInt(searchParams.get('screen') || '0');
+          const urlStep = parseInt(searchParams.get('step') || '0');
+          
+          if (progress && progress.answers && Object.keys(progress.answers).length > 0) {
+            // EXISTING PROGRESS FOUND - Prioritize URL parameters for navigation, but restore all data
+            const finalScreen = urlPath ? (urlPath === 'goal-focused' ? -1 : -2) : (progress.currentScreen || 0);
+            const finalStep = (urlStep >= 0 && urlPath) ? urlStep : (progress.currentStep || 0);
+            const finalPath = urlPath || (progress.onboardingPath || null);
+            
+            setCurrentScreen(finalScreen);
+            setCurrentStep(finalStep);
+            setOnboardingPath(finalPath);
             setAnswers(progress.answers || {});
             setSelectedActivity(progress.selectedActivity || null);
-            
-            console.log('📊 Loaded existing progress:', {
-              screen: progress.currentScreen,
-              step: progress.currentStep,
-              path: progress.onboardingPath,
-              activity: progress.selectedActivity
+              
+            console.log('📊 Loaded existing progress with data restoration:', {
+              screen: finalScreen,
+              step: finalStep,
+              path: finalPath,
+              activity: progress.selectedActivity,
+              urlOverride: !!urlPath,
+              answers: Object.keys(progress.answers || {}).length,
+              answersData: progress.answers
             });
+              
+            // Always update URL to ensure it has the correct parameters
+            const params = new URLSearchParams();
+            if (activeToken) params.set('token', activeToken);
+            if (finalPath) params.set('path', finalPath);
+            if (finalStep >= 0 && finalPath) params.set('step', finalStep.toString());
+            
+            const newUrl = params.toString() ? `?${params.toString()}` : '';
+            router.replace(`/onboarding${newUrl}`, { scroll: false });
           } else {
-            // 🆕 NEW USER - Initialize from URL parameters
-            const urlPath = searchParams.get('path') as 'goal-focused' | 'exploratory' | null;
-            const urlScreen = parseInt(searchParams.get('screen') || '0');
-            const urlStep = parseInt(searchParams.get('step') || '0');
+            // EXISTING USER BUT NO PROGRESS - Initialize from URL parameters or start fresh
+            console.log('📊 No existing progress found, checking URL parameters');
             
             if (urlPath) {
               setOnboardingPath(urlPath);
               setCurrentScreen(urlPath === 'goal-focused' ? -1 : -2);
               setCurrentStep(urlStep);
+              
+              console.log('🔄 Existing user, no progress - initialized from URL:', { urlPath, urlScreen, urlStep });
             } else {
               setCurrentScreen(urlScreen);
+              console.log('🔄 Existing user, no progress - initialized from screen:', urlScreen);
             }
             
-            console.log('🆕 New user initialized:', { urlPath, urlScreen, urlStep });
+            // Update URL with user's token
+            const params = new URLSearchParams();
+            if (activeToken) params.set('token', activeToken);
+            if (urlPath) params.set('path', urlPath);
+            if (urlStep >= 0 && urlPath) params.set('step', urlStep.toString());
+            
+            const newUrl = params.toString() ? `?${params.toString()}` : '';
+            router.replace(`/onboarding${newUrl}`, { scroll: false });
           }
-          
-          // 🔄 UPDATE URL WITH CURRENT TOKEN
-          const params = new URLSearchParams();
-          const currentToken = userToken || existingToken;
-          if (currentToken) params.set('token', currentToken);
-          if (progress?.onboardingPath) params.set('path', progress.onboardingPath);
-          if (progress?.currentScreen >= 0) params.set('screen', progress.currentScreen.toString());
-          if (progress?.currentStep > 0) params.set('step', progress.currentStep.toString());
-          
-          const newUrl = params.toString() ? `?${params.toString()}` : '';
-          router.replace(`/onboarding${newUrl}`, { scroll: false });
           
         } else {
           // 🆕 COMPLETELY NEW USER - Create comprehensive profile
@@ -691,7 +998,19 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
           
           const newToken = generateUserToken();
           setUserToken(newToken);
-          setCurrentScreen(0);
+          
+          // Check URL parameters for new user
+          const urlPath = searchParams.get('path') as 'goal-focused' | 'exploratory' | null;
+          const urlScreen = parseInt(searchParams.get('screen') || '0');
+          const urlStep = parseInt(searchParams.get('step') || '0');
+          
+          if (urlPath) {
+            setOnboardingPath(urlPath);
+            setCurrentScreen(urlPath === 'goal-focused' ? -1 : -2);
+            setCurrentStep(urlStep);
+          } else {
+            setCurrentScreen(urlScreen);
+          }
           
           // Initialize comprehensive user data structure
           await setDoc(doc(db, 'users', user.uid), {
@@ -703,9 +1022,9 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
             // Onboarding state
             hasCompletedOnboarding: false,
             onboardingProgress: {
-              currentScreen: 0,
-              currentStep: 0,
-              onboardingPath: null,
+              currentScreen: urlScreen,
+              currentStep: urlStep,
+              onboardingPath: urlPath,
               answers: {},
               selectedActivity: null,
               lastUpdated: new Date(),
@@ -757,7 +1076,13 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
           });
           
           // Update URL with new token
-          router.replace(`/onboarding?token=${newToken}`, { scroll: false });
+          const params = new URLSearchParams();
+          if (newToken) params.set('token', newToken);
+          if (urlPath) params.set('path', urlPath);
+          if (urlStep >= 0 && urlPath) params.set('step', urlStep.toString());
+          
+          const newUrl = params.toString() ? `?${params.toString()}` : '';
+          router.replace(`/onboarding${newUrl}`, { scroll: false });
           
           console.log('✅ New user profile created with token:', newToken);
         }
@@ -776,29 +1101,77 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
           return attemptLoad();
         }
         
-        // 📴 OFFLINE MODE - Generate local token
+        // 📴 OFFLINE MODE - Generate local token and restore from localStorage
         console.log('📴 Enabling offline mode with local token');
         setOfflineMode(true);
         setConnectionError('Working in offline mode - data will sync when online');
         
-        const localToken = generateUserToken();
+        // Try to restore from localStorage first
+        let localToken = '';
+        let localProgress = null;
+        
+        if (typeof window !== 'undefined') {
+          localToken = localStorage.getItem(`fitness_app_token_${user.uid}`) || '';
+          const progressData = localStorage.getItem(`fitness_app_offline_progress_${user.uid}`);
+          if (progressData) {
+            try {
+              localProgress = JSON.parse(progressData);
+              console.log('📱 Restored offline progress:', localProgress);
+            } catch (e) {
+              console.log('⚠️ Failed to parse offline progress');
+            }
+          }
+        }
+        
+        if (!localToken) {
+          localToken = generateUserToken();
+        }
+        
         setUserToken(localToken);
         
-        // Use URL parameters or start fresh
-        const urlPath = searchParams.get('path') as 'goal-focused' | 'exploratory' | null;
-        const urlScreen = parseInt(searchParams.get('screen') || '0');
-        const urlStep = parseInt(searchParams.get('step') || '0');
-        
-        if (urlPath) {
-          setOnboardingPath(urlPath);
-          setCurrentScreen(urlPath === 'goal-focused' ? -1 : -2);
-          setCurrentStep(urlStep);
+        // Restore progress if available
+        if (localProgress) {
+          setCurrentScreen(localProgress.currentScreen || 0);
+          setCurrentStep(localProgress.currentStep || 0);
+          setOnboardingPath(localProgress.onboardingPath || null);
+          setAnswers(localProgress.answers || {});
+          setSelectedActivity(localProgress.selectedActivity || null);
+          
+          console.log('📱 Restored offline state:', {
+            screen: localProgress.currentScreen,
+            step: localProgress.currentStep,
+            path: localProgress.onboardingPath,
+            answersCount: Object.keys(localProgress.answers || {}).length
+          });
         } else {
-          setCurrentScreen(urlScreen);
+          // Check URL parameters for offline mode
+          const urlPath = searchParams.get('path') as 'goal-focused' | 'exploratory' | null;
+          const urlStep = parseInt(searchParams.get('step') || '0');
+          
+          if (urlPath) {
+            setOnboardingPath(urlPath);
+            setCurrentScreen(urlPath === 'goal-focused' ? -1 : -2);
+            setCurrentStep(urlStep);
+            console.log('📴 Offline mode initialized from URL:', { urlPath, urlStep });
+          }
+        }
+        
+        // Store token locally for offline persistence
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(`fitness_app_token_${user.uid}`, localToken);
         }
         
         // Update URL with local token
-        router.replace(`/onboarding?token=${localToken}`, { scroll: false });
+        const urlPath = searchParams.get('path') as 'goal-focused' | 'exploratory' | null;
+        const urlStep = parseInt(searchParams.get('step') || '0');
+        
+        const params = new URLSearchParams();
+        if (localToken) params.set('token', localToken);
+        if (urlPath) params.set('path', urlPath);
+        if (urlStep >= 0 && urlPath) params.set('step', urlStep.toString());
+        
+        const newUrl = params.toString() ? `?${params.toString()}` : '';
+        router.replace(`/onboarding${newUrl}`, { scroll: false });
       }
     };
     
@@ -807,6 +1180,10 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
   };
 
   useEffect(() => {
+    // Generate session ID for AI training
+    const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+    setSessionId(newSessionId);
+    
     loadProgress();
   }, [user, searchParams]);
 
@@ -817,19 +1194,30 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
     let newStep = currentStep;
     
     setTimeout(async () => {
-      if (currentScreen < 1) {
-        newScreen = currentScreen + 1;
-        setCurrentScreen(newScreen);
-      } else if (onboardingPath === 'goal-focused' && currentStep < GOAL_FOCUSED_STEPS.length - 1) {
+      if (onboardingPath === 'goal-focused' && currentStep < GOAL_FOCUSED_STEPS.length - 1) {
+        // Advance to next step in goal-focused flow
         newStep = currentStep + 1;
         setCurrentStep(newStep);
-      } else if (onboardingPath === 'goal-focused') {
+      } else if (onboardingPath === 'goal-focused' && currentStep === GOAL_FOCUSED_STEPS.length - 1) {
+        // Complete onboarding when on the last step
+        console.log('🎯 Completing goal-focused onboarding with answers:', answers);
         completeOnboarding(answers as OnboardingAnswers, 'goal-focused');
         return;
+      } else if (currentScreen < 1) {
+        // Only advance screen if not in goal-focused flow
+        newScreen = currentScreen + 1;
+        setCurrentScreen(newScreen);
       }
       
       // Save progress after state update
       await saveProgress(newScreen, newStep, onboardingPath, answers);
+      
+      // Scroll to top when moving to next step
+      const formSection = document.querySelector('.w-1\\/2 .bg-white');
+      if (formSection) {
+        formSection.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      
       setIsTransitioning(false);
     }, 600);
   };
@@ -850,6 +1238,13 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
         newPath = null;
         setCurrentScreen(newScreen);
         setOnboardingPath(newPath);
+      } else if (onboardingPath === 'exploratory' && currentScreen === -2) {
+        // Go back to path selection from exploratory onboarding
+        newScreen = 1;
+        newPath = null;
+        setCurrentScreen(newScreen);
+        setOnboardingPath(newPath);
+        setConversation([]); // Clear conversation when going back
       } else if (currentScreen > 0) {
         newScreen = currentScreen - 1;
         setCurrentScreen(newScreen);
@@ -887,7 +1282,7 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
     }, 600);
   };
 
-  const handleExploratoryMessage = (message: string) => {
+  const handleExploratoryMessage = async (message: string) => {
     // Add user message
     const userMessage: AiMessage = {
       type: 'user',
@@ -895,10 +1290,14 @@ export default function CinematicOnboarding({ onComplete, onSkip }: CinematicOnb
       timestamp: new Date()
     };
     
-    setConversation(prev => [...prev, userMessage]);
+    const updatedConversation = [...conversation, userMessage];
+    setConversation(updatedConversation);
+    
+    // Save conversation immediately (for abandoned users)
+    await saveExploratoryConversation(updatedConversation);
     
     // Simple conversation logic - in a real implementation, this would be more sophisticated
-    setTimeout(() => {
+    setTimeout(async () => {
       let aiResponse = '';
       
       // Basic conversation flow based on message content
@@ -941,11 +1340,15 @@ I think I have enough information to create a personalized plan that fits your l
         timestamp: new Date()
       };
       
-      setConversation(prev => [...prev, aiMessage]);
+      const finalConversation = [...updatedConversation, aiMessage];
+      setConversation(finalConversation);
+      
+      // Save updated conversation with AI response
+      await saveExploratoryConversation(finalConversation);
       
       // If we've had enough conversation, offer to complete onboarding
       if (conversation.length >= 6) {
-        setTimeout(() => {
+        setTimeout(async () => {
           const completionMessage: AiMessage = {
             type: 'ai',
             content: `Perfect! I have a great understanding of what you're looking for. Let me create a personalized fitness plan that matches your preferences and lifestyle.
@@ -956,26 +1359,175 @@ Ready to see your customized recommendations?`,
               showGenerateButton: true
             }
           };
-          setConversation(prev => [...prev, completionMessage]);
+          const completedConversation = [...finalConversation, completionMessage];
+          setConversation(completedConversation);
+          
+          // Save final conversation state
+          await saveExploratoryConversation(completedConversation);
         }, 2000);
       }
     }, 1000);
   };
 
-  const initializeExploratoryConversation = () => {
+  // 💾 SAVE EXPLORATORY CONVERSATION - Persist chat for abandoned users and analysis
+  const saveExploratoryConversation = async (conversationData: AiMessage[]) => {
+    if (!user || !sessionId) return;
+    
+    try {
+      // Save to onboarding progress for abandoned users
+      await setDoc(doc(db, 'users', user.uid), {
+        onboardingProgress: {
+          screen: currentScreen,
+          step: currentStep,
+          path: onboardingPath,
+          answers: answers,
+          conversation: conversationData,
+          lastUpdated: new Date(),
+          userToken: userToken
+        },
+        // Also save to exploratory chat history
+        exploratoryConversation: {
+          messages: conversationData,
+          lastUpdated: new Date(),
+          isCompleted: false
+        }
+      }, { merge: true });
+      
+      // 🤖 AI TRAINING DATA COLLECTION - Convert to training format
+      const trainingMessages: ConversationData['messages'] = conversationData.map(msg => ({
+        type: msg.type,
+        content: msg.content,
+        timestamp: msg.timestamp,
+        metadata: msg.metadata
+      }));
+
+      // Collect conversation data for AI training
+      await aiTrainingService.collectConversationData(
+        user.uid,
+        sessionId,
+        'onboarding',
+        trainingMessages,
+        conversationData.length >= 6 ? 'completed' : 'abandoned',
+        {
+          fitnessLevel: answers.fitnessLevel || 'unknown',
+          goals: [answers.goal || 'general-fitness'],
+          preferences: answers.equipment || [],
+          activityType: answers.activity || 'general-fitness'
+        }
+      );
+      
+      console.log('💬 Exploratory conversation saved:', conversationData.length, 'messages');
+      console.log('🤖 AI training data collected for session:', sessionId);
+    } catch (error) {
+      console.error('❌ Error saving exploratory conversation:', error);
+    }
+  };
+
+  // 🧠 ANALYZE CONVERSATION - Extract insights for training plan creation
+  const analyzeConversation = (conversationData: AiMessage[]): Partial<OnboardingAnswers> => {
+    const userMessages = conversationData.filter(msg => msg.type === 'user').map(msg => msg.content.toLowerCase());
+    const allText = userMessages.join(' ');
+    
+    // Initialize with defaults
+    const insights: Partial<OnboardingAnswers> = {
+      activity: 'general-fitness',
+      age: '30',
+      gender: 'prefer-not-to-say',
+      units: 'metric',
+      heightCm: '170',
+      fitnessLevel: 'some-experience',
+      timeCommitment: '30',
+      daysPerWeek: '3-4',
+      equipment: [],
+      goal: 'fitness'
+    };
+    
+    // Analyze activity preferences
+    if (allText.includes('strong') || allText.includes('lift') || allText.includes('muscle') || allText.includes('weight')) {
+      insights.activity = 'strength-power';
+      insights.goal = 'muscle-gain';
+    } else if (allText.includes('calm') || allText.includes('yoga') || allText.includes('relax') || allText.includes('stress') || allText.includes('peace')) {
+      insights.activity = 'mind-body';
+      insights.goal = 'wellbeing';
+    } else if (allText.includes('run') || allText.includes('cardio') || allText.includes('heart') || allText.includes('energy')) {
+      insights.activity = 'cardio-endurance';
+      insights.goal = 'fitness';
+    } else if (allText.includes('sport') || allText.includes('team') || allText.includes('game')) {
+      insights.activity = 'team-sports';
+      insights.goal = 'performance';
+    }
+    
+    // Analyze fitness level
+    if (allText.includes('beginner') || allText.includes('new') || allText.includes('start') || allText.includes('never')) {
+      insights.fitnessLevel = 'beginner';
+    } else if (allText.includes('advanced') || allText.includes('experienced') || allText.includes('compete') || allText.includes('athlete')) {
+      insights.fitnessLevel = 'advanced';
+    } else if (allText.includes('regular') || allText.includes('consistent') || allText.includes('active')) {
+      insights.fitnessLevel = 'regular';
+    }
+    
+    // Analyze time preferences
+    if (allText.includes('busy') || allText.includes('quick') || allText.includes('short') || allText.includes('15') || allText.includes('twenty')) {
+      insights.timeCommitment = '15';
+      insights.daysPerWeek = '2-3';
+    } else if (allText.includes('hour') || allText.includes('long') || allText.includes('60') || allText.includes('90')) {
+      insights.timeCommitment = '60';
+      insights.daysPerWeek = '4-5';
+    }
+    
+    // Analyze equipment preferences
+    if (allText.includes('gym') || allText.includes('equipment') || allText.includes('machine')) {
+      insights.equipment = ['Gym Access', 'Dumbbells'];
+    } else if (allText.includes('home') || allText.includes('bodyweight') || allText.includes('no equipment')) {
+      insights.equipment = ['None'];
+    } else {
+      insights.equipment = ['Dumbbells', 'Yoga Mat'];
+    }
+    
+    // Analyze goals
+    if (allText.includes('lose weight') || allText.includes('weight loss') || allText.includes('slim')) {
+      insights.goal = 'weight-loss';
+    } else if (allText.includes('muscle') || allText.includes('bulk') || allText.includes('gain')) {
+      insights.goal = 'muscle-gain';
+    } else if (allText.includes('stress') || allText.includes('mental') || allText.includes('wellbeing') || allText.includes('health')) {
+      insights.goal = 'wellbeing';
+    } else if (allText.includes('compete') || allText.includes('performance') || allText.includes('better')) {
+      insights.goal = 'performance';
+    }
+    
+    console.log('🧠 Conversation Analysis Results:', insights);
+    return insights;
+  };
+
+  const initializeExploratoryConversation = async () => {
     const exploratoryMessages = [
       {
         type: 'ai' as const,
-        content: `Hi there! I love that you're open to exploring what might work best for you. That's actually a really smart approach - fitness should feel right for YOU.
+        content: `Your Fitness Discovery
 
-Let's start simple: when you think about moving your body or being active, what sounds most appealing to you right now?
+Every journey begins with exploration - let's find what feels right for YOU!
 
-Maybe it's something energizing like dancing or running, something calming like yoga or walking, something that makes you feel strong like lifting weights, or maybe you're not sure yet - and that's totally okay too!`,
+Welcome! We're here to help you discover the type of movement that truly resonates with you. No pressure, no judgment, just genuine exploration of what makes you feel good.
+
+What kind of activity appeals to you most right now?
+
+Energizing movement - running, dancing, sports, anything that gets your heart pumping
+
+Mindful movement - yoga, walking, stretching, activities that center and calm you  
+
+Strength building - weights, resistance training, movements that make you feel powerful
+
+Still exploring - and that's perfectly wonderful too!
+
+Remember: there are no wrong answers here, only the beginning of YOUR unique fitness story.`,
         timestamp: new Date()
       }
     ];
     
     setConversation(exploratoryMessages);
+    
+    // Save initial conversation state
+    await saveExploratoryConversation(exploratoryMessages);
   };
 
   const handleAnswer = async (field: string, value: string | string[] | any) => {
@@ -984,17 +1536,23 @@ Maybe it's something energizing like dancing or running, something calming like 
     
     if (field === 'activity') {
       setSelectedActivity(value as string);
+      
+      // Auto-scroll to continue button after activity selection
+      setTimeout(() => {
+        const continueButton = document.querySelector('[data-continue-button]');
+        if (continueButton) {
+          continueButton.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+        }
+      }, 300); // Small delay to ensure UI has updated
     }
     
     // Save progress after answer update
     await saveProgress(currentScreen, currentStep, onboardingPath, newAnswers);
     
-    // Auto-advance for subcategory selection to improve UX
-    if (field === 'subcategory') {
-      setTimeout(() => {
-        handleNext();
-      }, 300); // Small delay for visual feedback
-    }
+    // Removed auto-advance for subcategory selection - rely on Continue button for better UX
   };
 
   // 🎯 ENHANCED COMPLETE ONBOARDING - Now with comprehensive data structure and token system
@@ -1093,6 +1651,43 @@ Maybe it's something energizing like dancing or running, something calming like 
         onboardingProgress: null
       }, { merge: true });
 
+      // 🤖 AI TRAINING DATA COLLECTION - For goal-focused onboarding completion
+      if (sessionId) {
+        try {
+          // Create a synthetic conversation for goal-focused path
+          const syntheticMessages: ConversationData['messages'] = [
+            {
+              type: 'user',
+              content: `I want to focus on ${finalAnswers.activity} for ${finalAnswers.goal}`,
+              timestamp: new Date(),
+            },
+            {
+              type: 'ai',
+              content: `Great choice! I'll help you create a personalized ${finalAnswers.activity} program for ${finalAnswers.goal}.`,
+              timestamp: new Date(),
+            }
+          ];
+
+          await aiTrainingService.collectConversationData(
+            user.uid,
+            sessionId,
+            'onboarding',
+            syntheticMessages,
+            'completed',
+            {
+              fitnessLevel: finalAnswers.fitnessLevel,
+              goals: [finalAnswers.goal],
+              preferences: finalAnswers.equipment,
+              activityType: finalAnswers.activity
+            }
+          );
+
+          console.log('🤖 AI training data collected for goal-focused onboarding');
+        } catch (error) {
+          console.error('❌ Error collecting AI training data:', error);
+        }
+      }
+
       console.log('🎉 ONBOARDING COMPLETED! Comprehensive user data saved with token:', userToken);
       console.log('📊 User Profile:', {
         activity: finalAnswers.activity,
@@ -1105,8 +1700,8 @@ Maybe it's something energizing like dancing or running, something calming like 
       setIsTransitioning(true);
       
       setTimeout(() => {
-        // 🚀 REDIRECT TO DASHBOARD with unique user token
-        router.push(`/dashboard?token=${userToken}`);
+        // 🚀 REDIRECT TO AI CHAT for deep dive conversation before training plan
+        router.push(`/chat?onboarding=completed&token=${userToken}`);
         onComplete(personalization);
       }, 1000);
     } catch (error) {
@@ -1114,7 +1709,7 @@ Maybe it's something energizing like dancing or running, something calming like 
       
       // 🔄 FALLBACK - Still redirect even if save fails
       setTimeout(() => {
-        router.push(`/dashboard?token=${userToken}`);
+        router.push(`/chat?onboarding=completed&token=${userToken}`);
         onComplete(generatePersonalization(finalAnswers, path));
       }, 1000);
     }
@@ -1188,7 +1783,7 @@ Maybe it's something energizing like dancing or running, something calming like 
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center">
+      <div className="min-h-screen fullscreen-gradient-primary grainy-texture flex items-center justify-center">
         <div className="text-center max-w-md p-8">
           <div className="mb-8 flex justify-center">
             <img 
@@ -1197,9 +1792,9 @@ Maybe it's something energizing like dancing or running, something calming like 
               className="w-20 h-20 object-contain"
             />
           </div>
-          <h1 className="text-2xl font-light text-gray-900 mb-2 font-sans">MyPace</h1>
-          <p className="text-gray-600 mb-8 font-sans">Preparing your personalized onboarding...</p>
-          <div className="w-8 h-8 border-3 border-gray-200 border-t-blue-500 rounded-full animate-spin mx-auto"></div>
+          <h1 className="text-2xl font-light text-white mb-2 font-sans text-shadow-soft">MyPace</h1>
+          <p className="text-white opacity-80 mb-8 font-sans text-shadow-soft">Preparing your personalized onboarding...</p>
+          <div className="w-8 h-8 border-3 border-white/30 border-t-white rounded-full animate-spin mx-auto"></div>
         </div>
       </div>
     );
@@ -1208,7 +1803,7 @@ Maybe it's something energizing like dancing or running, something calming like 
   // Welcome to MyPace screen
   if (currentScreen === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-400 via-purple-500 to-teal-500 flex flex-col items-center justify-center px-8 relative">
+      <div className="min-h-screen bg-gradient-to-br from-rose-200 via-purple-200 to-indigo-200 flex flex-col items-center justify-center px-8 relative">
         <div className={`text-center transition-all duration-1000 ${isTransitioning ? 'opacity-0 transform translate-y-8' : 'opacity-100 transform translate-y-0'}`}>
           <div className="mb-12">
             <div className="mb-8 flex justify-center">
@@ -1219,19 +1814,17 @@ Maybe it's something energizing like dancing or running, something calming like 
               />
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-semibold text-white tracking-tight mb-6" style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}>
-              Welcome to MyPace
-            </h1>
+
           </div>
           
-          <p className="text-xl text-white/90 mb-16 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-800 mb-16 font-medium max-w-2xl mx-auto leading-relaxed">
             Your AI-powered fitness companion designed to help you achieve your goals with personalized training programs and expert guidance
           </p>
           
           <div className="flex justify-center">
             <button
               onClick={handleNext}
-              className="group flex items-center gap-3 bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-xl hover:bg-white/30 transition-all duration-300 font-semibold"
+              className="group flex items-center gap-3 bg-white/80 backdrop-blur-sm border border-white/50 text-gray-800 px-8 py-4 rounded-xl hover:bg-white/90 transition-all duration-300 font-semibold shadow-lg"
             >
               <span>Get Started</span>
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -1245,13 +1838,13 @@ Maybe it's something energizing like dancing or running, something calming like 
   // Path choice screen
   if (currentScreen === 1) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-400 via-blue-500 to-cyan-500 flex flex-col items-center justify-center px-8 relative">
+      <div className="min-h-screen bg-gradient-to-br from-blue-200 via-teal-200 to-green-200 flex flex-col items-center justify-center px-8 relative">
         <div className={`text-center transition-all duration-1000 max-w-4xl mx-auto ${isTransitioning ? 'opacity-0 transform translate-y-8' : 'opacity-100 transform translate-y-0'}`}>
-          <h1 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-5xl font-light text-gray-800 mb-6 tracking-tight leading-tight">
             Start your journey
           </h1>
           
-          <p className="text-lg text-white/90 mb-16 font-light max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 mb-16 font-light max-w-2xl mx-auto">
             Choose the path that feels right for you
           </p>
           
@@ -1262,7 +1855,7 @@ Maybe it's something energizing like dancing or running, something calming like 
             >
               <div className="flex items-start gap-4">
                 <div className="bg-blue-100 p-3 rounded-2xl group-hover:bg-blue-200 transition-colors duration-300">
-                  <Target className="text-blue-600" size={24} />
+                  <div className="text-blue-600 text-2xl">🎯</div>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -1307,10 +1900,10 @@ Maybe it's something energizing like dancing or running, something calming like 
         <div 
           className="flex-1 flex items-center justify-center relative min-h-screen"
           style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            background: 'linear-gradient(135deg, #e0c3fc 0%, #9bb5ff 100%)'
           }}
         >
-          <div className="text-center text-white z-10 p-10">
+          <div className="text-center text-gray-800 z-10 p-10">
             <h1 className="text-5xl font-semibold mb-4 tracking-tight">
               Let's Explore Together
             </h1>
@@ -1322,14 +1915,27 @@ Maybe it's something energizing like dancing or running, something calming like 
 
         {/* Conversation Section */}
         <div className="flex-1 bg-white/95 backdrop-blur-xl flex flex-col min-h-screen">
-          {/* Header */}
+          {/* Back Arrow & Header */}
           <div className="p-10 pb-0">
+            <div className="flex items-center gap-4 mb-6">
+              <button
+                onClick={handlePrevious}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                title="Choose Different Path"
+              >
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <div>
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">
               Fitness Discovery Chat
             </h2>
             <p className="text-gray-600">
               Take your time - there are no wrong answers here!
             </p>
+              </div>
+            </div>
           </div>
 
           {/* Chat Messages */}
@@ -1357,24 +1963,47 @@ Maybe it's something energizing like dancing or running, something calming like 
                     <p className="whitespace-pre-wrap leading-relaxed">{message.content}</p>
                     {message.metadata?.showGenerateButton && (
                       <button
-                        onClick={() => {
-                          // Create a basic profile from the conversation
+                        onClick={async () => {
+                          // Analyze conversation to extract insights
+                          const conversationInsights = analyzeConversation(conversation);
+                          
+                          // Create profile from conversation analysis
                           const exploratoryAnswers: OnboardingAnswers = {
-                            activity: 'general-fitness', // Default for exploratory
-                            age: '30', // Default
-                            gender: 'prefer-not-to-say', // Default
-                            units: 'metric', // Default
-                            heightCm: '170', // Default height
-                            fitnessLevel: 'some-experience', // Default
-                            timeCommitment: '30', // Default
-                            daysPerWeek: '3-4', // Default
-                            equipment: [], // Default to bodyweight
-                            goal: 'fitness' // Default
+                            activity: conversationInsights.activity || 'general-fitness',
+                            age: conversationInsights.age || '30',
+                            gender: conversationInsights.gender || 'prefer-not-to-say',
+                            units: conversationInsights.units || 'metric',
+                            heightCm: conversationInsights.heightCm || '170',
+                            fitnessLevel: conversationInsights.fitnessLevel || 'some-experience',
+                            timeCommitment: conversationInsights.timeCommitment || '30',
+                            daysPerWeek: conversationInsights.daysPerWeek || '3-4',
+                            equipment: conversationInsights.equipment || ['None'],
+                            goal: conversationInsights.goal || 'fitness'
                           };
                           
+                          // Mark conversation as completed
+                          await setDoc(doc(db, 'users', user!.uid), {
+                            exploratoryConversation: {
+                              messages: conversation,
+                              lastUpdated: new Date(),
+                              isCompleted: true,
+                              analyzedInsights: conversationInsights
+                            }
+                          }, { merge: true });
+                          
+                          console.log('🎯 Completing exploratory onboarding with insights:', exploratoryAnswers);
                           completeOnboarding(exploratoryAnswers, 'exploratory');
                         }}
-                        className="mt-3 bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-purple-700 transition-colors"
+                        className="mt-3 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
+                        style={{
+                          background: 'linear-gradient(135deg, #5c706e, #98adc3)',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, #373217, #5c706e)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, #5c706e, #98adc3)';
+                        }}
                       >
                         Create My Plan
                       </button>
@@ -1391,7 +2020,7 @@ Maybe it's something energizing like dancing or running, something calming like 
               <input
                 type="text"
                 placeholder="Share your thoughts..."
-                className="flex-1 p-4 border border-gray-300 rounded-xl text-base focus:outline-none focus:border-purple-500 focus:ring-3 focus:ring-purple-100"
+                className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-900 focus:outline-0 focus:ring-0 border border-gray-200 bg-white focus:border-blue-500 h-14 placeholder:text-gray-400"
                 onKeyPress={(e) => {
                   if (e.key === 'Enter') {
                     const input = e.target as HTMLInputElement;
@@ -1410,7 +2039,16 @@ Maybe it's something energizing like dancing or running, something calming like 
                     input.value = '';
                   }
                 }}
-                className="px-6 py-4 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-colors"
+                className="px-6 py-4 text-white rounded-xl transition-all duration-200"
+                style={{
+                  background: 'linear-gradient(135deg, #5c706e, #98adc3)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #373217, #5c706e)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #5c706e, #98adc3)';
+                }}
               >
                 Send
               </button>
@@ -1430,106 +2068,422 @@ Maybe it's something energizing like dancing or running, something calming like 
       <div className="min-h-screen flex">
         {/* Hero Section */}
         <div 
-          className="flex-1 flex items-center justify-center relative min-h-screen"
+          className="flex-1 flex items-center justify-center relative min-h-screen grainy-texture"
           style={{
-            background: selectedActivityData?.gradient || 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
+            background: selectedActivityData?.gradient || 'linear-gradient(135deg, #373217 0%, #5c706e 50%, #98adc3 100%)'
           }}
         >
-          <div className="text-center text-white z-10 p-10">
-            <h1 className="text-5xl font-semibold mb-4 tracking-tight">
-              {selectedActivityData?.heroTitle || 'Welcome to MyPace'}
-            </h1>
-            <p className="text-xl opacity-90 max-w-md leading-relaxed">
-              {selectedActivityData?.heroDescription || 'Your personalized journey to better health and fitness starts here.'}
-            </p>
+          <div className="text-center text-white z-10 p-10 flex flex-col items-center justify-center">
+            {(() => {
+              // Get selected activity data for dynamic content
+              const selectedActivityData = getSelectedActivity();
+              
+              // Dynamic content based on selected activity and step
+              const getDynamicContent = () => {
+                // Use answers.activity to get the activity data for dynamic content
+                const activityData = ACTIVITIES.find(activity => activity.id === answers.activity);
+                
+                // Step 0: Activity selection - show default or selected activity
+                if (currentStep === 0) {
+                  if (activityData) {
+                    return {
+                      title: activityData.heroTitle || activityData.title,
+                      description: activityData.heroDescription || `Build the perfect ${activityData.title.toLowerCase()} program tailored just for you.`
+                    };
+                  }
+                  return {
+                  title: "Your Fitness Journey Begins",
+                  description: "Every great transformation starts with a single choice. What type of movement calls to you today?"
+                  };
+                }
+                
+                // Step-specific dynamic content based on what we're collecting
+                if (activityData) {
+                  const activityName = activityData.title.toLowerCase();
+                  
+                  switch (currentStep) {
+                    case 1: // Subcategory selection
+                      return {
+                        title: `Refine Your ${activityData.title} Focus`,
+                        description: `Let's get specific about your ${activityName} goals and interests.`
+                      };
+                    case 2: // Demographics
+                      return {
+                        title: `Personalizing Your ${activityData.title} Plan`,
+                        description: `Tell us about yourself so we can tailor your ${activityName} program perfectly.`
+                      };
+                    case 3: // Fitness level
+                      return {
+                        title: `Your ${activityData.title} Starting Point`,
+                        description: `Understanding your current fitness level helps us create the right ${activityName} progression.`
+                      };
+                    case 4: // Time commitment
+                      return {
+                        title: `Fitting ${activityData.title} Into Your Life`,
+                        description: `Let's find the perfect training schedule that works with your lifestyle.`
+                      };
+                    case 5: // Equipment
+                      return {
+                        title: `Your ${activityData.title} Setup`,
+                        description: `What equipment do you have access to for your ${activityName} training?`
+                      };
+                    case 6: // Goals
+                      return {
+                        title: `Your ${activityData.title} Goals`,
+                        description: `What do you want to achieve with your ${activityName} training?`
+                      };
+                    case 7: // Final step
+                      return {
+                        title: `Ready to Start Your ${activityData.title} Journey`,
+                        description: `Perfect! Let's create your personalized ${activityName} program and get started.`
+                      };
+                    default:
+                      return {
+                        title: activityData.heroTitle || activityData.title,
+                        description: activityData.heroDescription || `Build the perfect ${activityName} program tailored just for you.`
+                      };
+                  }
+                }
+                
+                // Fallback content for other steps
+                const stepContent: Record<number, { title: string; description: string }> = {
+                  1: { title: "Let's Get Specific", description: "Great choice! Now let's dive deeper into what aspect of this activity excites you most." },
+                  2: { title: "Getting to Know You", description: "Understanding who you are helps us create a plan that truly fits your life and goals." },
+                  3: { title: "Where You Stand Today", description: "There's no judgment here - just honest assessment to build the perfect starting point for your journey." },
+                  4: { title: "Making It Sustainable", description: "The best fitness plan is one you can actually stick to. Let's find your sweet spot for consistency." },
+                  5: { title: "Working With What You Have", description: "Amazing results don't require expensive equipment. Let's see what tools we have to work with." },
+                  6: { title: "Your Why Matters", description: "What drives you? Understanding your deeper motivation helps us create a plan that truly resonates." },
+                  7: { title: "Ready to Create Your Plan", description: "Perfect! We have everything we need to create your personalized training program. Let's finalize the details and get started." }
+                };
+                
+                return stepContent[currentStep] || { title: "Setup Your Profile", description: "Complete your profile setup" };
+              };
+              
+              const content = getDynamicContent();
+              
+              return (
+                <div className="max-w-lg mx-auto">
+                  <h1 className="text-5xl font-semibold mb-4 tracking-tight text-center">
+                    {content.title}
+                  </h1>
+                  <p className="text-xl opacity-90 leading-relaxed text-center mb-8">
+                    {content.description}
+                  </p>
+
+                  {/* Contextual Info Sections - Moved to left side under H1/H2 */}
+                  <div className="space-y-4 max-w-md mx-auto">
+                    {/* Contextual Info for Triathlon/Ironman */}
+                    {(answers.subcategory === 'triathlon' || answers.subcategory === 'ironman') && currentStep === 5 && (
+                      <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+                        <div className="flex items-start gap-3">
+                          <div className="text-white/80 mt-0.5">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-white mb-1">FYI - Triathlon Training</h4>
+                            <p className="text-sm text-white/80">Along with biking, running and swimming, you'll need comprehensive strength training to build the power and durability for race day success.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Contextual Info for Strength Training */}
+                    {answers.activity === 'strength-power' && currentStep === 6 && (
+                      <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+                        <div className="flex items-start gap-3">
+                          <div className="text-white/80 mt-0.5">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-white mb-1">Strength Training Tip</h4>
+                            <p className="text-sm text-white/80">Progressive overload is key - we'll start with your current abilities and gradually increase intensity to build strength safely and effectively.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Contextual Info for Running */}
+                    {answers.activity === 'cardio-endurance' && answers.subcategory === 'running' && currentStep === 6 && (
+                      <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+                        <div className="flex items-start gap-3">
+                          <div className="text-white/80 mt-0.5">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-white mb-1">Running Success</h4>
+                            <p className="text-sm text-white/80">The 80/20 rule works - 80% of your training should be at an easy, conversational pace, with 20% at higher intensities for optimal improvement.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Contextual Info for Bodyweight Training */}
+                    {answers.equipment?.includes('bodyweight-only') && currentStep === 6 && (
+                      <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+                        <div className="flex items-start gap-3">
+                          <div className="text-white/80 mt-0.5">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-white mb-1">Bodyweight Power</h4>
+                            <p className="text-sm text-white/80">No equipment? No problem! Bodyweight training can build incredible strength, endurance, and mobility - we'll show you advanced progressions.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Contextual Info for Beginners */}
+                    {answers.fitnessLevel === 'beginner' && currentStep === 2 && (
+                      <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+                        <div className="flex items-start gap-3">
+                          <div className="text-white/80 mt-0.5">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-white mb-1">Perfect Starting Point</h4>
+                            <p className="text-sm text-white/80">Everyone starts somewhere! We'll create a gentle, progressive plan that builds confidence and sustainable habits from day one.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Contextual Info for Rehabilitation */}
+                    {answers.goal === 'rehabilitation' && currentStep === 6 && (
+                      <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+                        <div className="flex items-start gap-3">
+                          <div className="text-white/80 mt-0.5">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-white mb-1">Safety First</h4>
+                            <p className="text-sm text-white/80">Recovery requires careful progression. We'll create a conservative plan, but always consult your healthcare provider before starting any new exercise program.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
 
-        {/* Content Section */}
-        <div className="flex-1 bg-white/95 backdrop-blur-xl flex flex-col min-h-screen">
-          {/* Progress Header */}
-          <div className="flex items-center justify-between p-10 pb-0">
-            <span className="text-sm font-medium text-gray-500">
-              Step {currentStep + 1} of {GOAL_FOCUSED_STEPS.length}
-            </span>
-            <div className="flex-1 h-1 bg-gray-200 rounded-full mx-5 overflow-hidden">
-              <div 
-                className="h-full bg-blue-500 rounded-full transition-all duration-500"
-                style={{ width: `${getCurrentProgress()}%` }}
-              />
+        {/* Form Section */}
+        <div className="w-1/2 bg-white flex flex-col">
+          {/* Header with Progress */}
+          <div className="px-6 pt-6 pb-6 border-b border-gray-100">
+            {/* Back Button, Step Text, and Progress Bar in one line */}
+            <div className="flex items-center gap-4">
+              {currentStep > 0 && (
+              <button
+                onClick={handlePrevious}
+                  className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 flex-shrink-0"
+                  title="Go Back"
+              >
+                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              )}
+              <div className="text-sm text-gray-500 font-medium flex-shrink-0">
+                Step {currentStep + 1} of {GOAL_FOCUSED_STEPS.length}
+            </div>
+              <div className="flex-1 bg-gray-200 rounded-full h-2">
+                <div 
+                  className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${((currentStep + 1) / GOAL_FOCUSED_STEPS.length) * 100}%` }}
+                ></div>
+              </div>
             </div>
           </div>
 
-          {/* Main Content */}
-          <div className="flex-1 p-10 flex flex-col">
-            <div className={`transition-all duration-1000 ${isTransitioning ? 'opacity-0 transform translate-y-5' : 'opacity-100 transform translate-y-0'}`}>
-              <h2 className="text-3xl font-semibold mb-2 text-gray-900 tracking-tight">
-                {step.title}
-              </h2>
-              <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-                {step.subtitle}
-              </p>
+          <div className="flex-1 px-6 py-8 overflow-y-auto">
+            <div>
+              {/* Step Title and Description */}
+              <div className="mb-8">
+                {/* Header */}
+                <div className="px-4 py-6 border-b border-gray-200">
+                  <div className="text-center">
+                    <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                      {(() => {
+                        const step = GOAL_FOCUSED_STEPS[currentStep];
+                        const stepTitles: { [key: string]: string } = {
+                          'activity-selection': 'What moves you?',
+                          'subcategory-selection': 'Let\'s get specific',
+                          'demographics': 'About you',
+                          'experience-level': 'Your fitness background',
+                          'current-status': 'Current training status',
+                          'time-commitment': 'Time & schedule',
+                          'equipment-access': 'Equipment & space',
+                          'primary-goal': 'Your main goal',
+                          'activity-specific': 'Final details'
+                        };
+                        
+                        // Dynamic titles for better context
+                        if (step.type === 'experience-level' && answers.activity === 'cardio-endurance') {
+                          if (answers.subcategory === 'triathlon' || answers.subcategory === 'ironman') {
+                            return 'Triathlon & Endurance Starting Point';
+                          }
+                          return 'Cardio & Endurance Level';
+                        }
+                        
+                        if (step.type === 'time-commitment' && answers.activity === 'cardio-endurance') {
+                          if (answers.subcategory === 'triathlon' || answers.subcategory === 'ironman') {
+                            return 'Fitting Triathlon Into Your Life';
+                          }
+                        }
+                        
+                        return stepTitles[step.type] || 'Onboarding';
+                      })()}
+                    </h1>
+                    <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                      {(() => {
+                        const step = GOAL_FOCUSED_STEPS[currentStep];
+                        const stepDescriptions: { [key: string]: string } = {
+                          'activity-selection': 'What type of movement calls to you? Choose the activity that excites you most.',
+                          'subcategory-selection': 'Let\'s get more specific about your interests and goals.',
+                          'demographics': 'Help us personalize your experience with some basic information.',
+                          'experience-level': 'Understanding your current level helps us create the perfect starting point.',
+                          'current-status': 'Where are you right now in your fitness journey? This helps us meet you where you are.',
+                          'time-commitment': 'Let\'s find a schedule that works with your lifestyle.',
+                          'equipment-access': 'We\'ll design your program around what you have available.',
+                          'primary-goal': 'What\'s driving your fitness journey? This helps us focus your training.',
+                          'activity-specific': 'Just a few more details to perfect your training plan.'
+                        };
+                        
+                        // Dynamic descriptions for better context
+                        if (step.type === 'experience-level' && answers.activity === 'cardio-endurance') {
+                          return 'Understanding your current fitness level helps us create the right cardio & endurance progression.';
+                        }
+                        
+                        if (step.type === 'time-commitment' && answers.activity === 'cardio-endurance') {
+                          return 'Let\'s create a sustainable training schedule that fits your lifestyle and goals.';
+                        }
+                        
+                        return stepDescriptions[step.type] || 'Complete your personalized fitness assessment.';
+                      })()}
+                    </p>
+                  </div>
+                </div>
+              </div>
 
               {/* Activity Selection */}
               {step.type === 'activity-selection' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                  {ACTIVITIES.map((activity) => (
+                <div className="space-y-6 mb-6">
+                  <div className="grid grid-cols-2 gap-6">
+                    {ACTIVITIES.map((activity) => {
+                    const isSelected = answers.activity === activity.id;
+                    return (
                     <button
                       key={activity.id}
                       onClick={() => handleAnswer('activity', activity.id)}
-                      className={`bg-white border-2 rounded-xl p-6 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                        answers.activity === activity.id 
-                          ? 'border-blue-500 bg-blue-50' 
-                          : 'border-gray-200 hover:border-gray-300'
+                          className={`bg-white rounded-xl py-4 px-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                          isSelected 
+                              ? 'border-2 border-blue-500 shadow-xl' 
+                            : 'border border-gray-200 hover:border-gray-300'
                       }`}
                     >
-                      <div className="text-3xl mb-4">{activity.icon}</div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{activity.title}</h3>
+                          <div className="text-3xl mb-2">{activity.icon}</div>
+                          <h3 className="text-base font-semibold text-gray-900 mb-2">{activity.title}</h3>
                       <p className="text-sm text-gray-600 leading-relaxed">{activity.description}</p>
                     </button>
-                  ))}
+                    );
+                  })}
+                  </div>
                 </div>
               )}
 
               {/* Subcategory Selection */}
-              {step.type === 'subcategory-selection' && selectedActivity && (
-                <div className="space-y-4 mb-10">
+              {step.type === 'subcategory-selection' && (
+                <div className="space-y-6 mb-6">
                   {(() => {
                     const selectedActivityData = getSelectedActivity();
-                    const subcategories = selectedActivityData?.subcategories;
                     
-                    if (subcategories && subcategories.length > 0) {
-                      return subcategories.map((subcategory) => (
-                        <button
-                          key={subcategory.id}
-                          onClick={() => handleAnswer('subcategory', subcategory.id)}
-                          className={`w-full bg-white border rounded-lg p-4 text-left transition-all duration-200 hover:bg-gray-50 flex items-center justify-between ${
-                            answers.subcategory === subcategory.id 
-                              ? 'border-blue-500 bg-blue-50' 
-                              : 'border-gray-200'
-                          }`}
-                        >
-                          <div>
-                            <div className="text-base font-medium text-gray-900">{subcategory.name}</div>
-                          </div>
-                          <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center ${
-                            answers.subcategory === subcategory.id 
-                              ? 'border-blue-500 bg-blue-500' 
-                              : 'border-gray-300'
-                          }`}>
-                            {answers.subcategory === subcategory.id && (
-                              <div className="w-2 h-2 bg-white rounded-full" />
-                            )}
-                          </div>
-                        </button>
-                      ));
-                    } else {
+                    // Special handling for Multiple Activities
+                    if (answers.activity === 'multiple-activities') {
                       return (
-                        <div className="text-center py-8">
-                          <p className="text-gray-600">Perfect! Let's continue with your {selectedActivityData?.title} journey.</p>
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-900 mb-4">What activities do you want to combine?</h3>
+                          <p className="text-gray-600 mb-6">Select the activities you'd like to include in your training program:</p>
+                          <div className="grid grid-cols-2 gap-4">
+                            {ACTIVITIES.filter(activity => activity.id !== 'multiple-activities').map((activity) => {
+                              const isSelected = answers.secondaryActivities?.some(sa => sa.activity === activity.id);
+                              return (
+                                <button
+                                  key={activity.id}
+                                  onClick={() => {
+                                    const currentSecondary = answers.secondaryActivities || [];
+                                    const newSecondary = isSelected
+                                      ? currentSecondary.filter(sa => sa.activity !== activity.id)
+                                      : [...currentSecondary, {
+                                          activity: activity.id,
+                                          proficiencyLevel: 'beginner',
+                                          weeklyVolume: '1-2-hours',
+                                          primaryGoal: 'general-health'
+                                        }];
+                                    handleAnswer('secondaryActivities', newSecondary);
+                                  }}
+                                  className={`bg-white rounded-xl py-4 px-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                                    isSelected 
+                                      ? 'border-2 border-blue-500 shadow-xl' 
+                                      : 'border border-gray-200 hover:border-gray-300'
+                                  }`}
+                                >
+                                  <div className="text-2xl mb-2">{activity.icon}</div>
+                                  <h3 className="text-sm font-semibold text-gray-900">{activity.title}</h3>
+                                </button>
+                              );
+                            })}
+                          </div>
                         </div>
                       );
                     }
+                    
+                    // Regular subcategory selection
+                    if (!selectedActivityData?.subcategories?.length) {
+                      return (
+                        <div className="text-center py-8">
+                          <p className="text-gray-600">Great choice! Let's continue setting up your {selectedActivityData?.title} program.</p>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4">What type of {selectedActivityData?.title.toLowerCase()} interests you most?</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {selectedActivityData.subcategories.map((subcategory) => {
+                        const isSelected = answers.subcategory === subcategory.id;
+                        return (
+                        <button
+                          key={subcategory.id}
+                          onClick={() => handleAnswer('subcategory', subcategory.id)}
+                                className={`bg-white rounded-xl py-4 px-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                              isSelected 
+                                ? 'border-2 border-blue-500 shadow-xl' 
+                                : 'border border-gray-200 hover:border-gray-300'
+                          }`}
+                        >
+                            <div className="text-2xl mb-3">{subcategory.icon}</div>
+                            <h3 className="text-base font-semibold text-gray-900 mb-1">{subcategory.name}</h3>
+                        </button>
+                        );
+                          })}
+                        </div>
+                        </div>
+                      );
                   })()}
                 </div>
               )}
@@ -1537,771 +2491,696 @@ Maybe it's something energizing like dancing or running, something calming like 
               {/* Demographics */}
               {step.type === 'demographics' && (
                 <div className="space-y-6 mb-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-base font-medium text-gray-900 mb-2">Age</label>
+                      <label className="block text-base font-medium text-gray-900 mb-3">Age</label>
                     <input
                       type="number"
-                      min="13"
-                      max="100"
                       placeholder="Enter your age"
-                      className="w-full p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
+                        min="13"
+                        max="120"
+                        className="w-full p-4 border border-gray-300 rounded-lg text-base bg-white text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
                       value={answers.age || ''}
                       onChange={(e) => handleAnswer('age', e.target.value)}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-base font-medium text-gray-900 mb-2">Gender</label>
+                      <label className="block text-base font-medium text-gray-900 mb-3">Gender</label>
                     <select 
-                      className="w-full p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
+                        className="w-full p-4 border border-gray-300 rounded-lg text-base bg-white text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
                       value={answers.gender || ''}
                       onChange={(e) => handleAnswer('gender', e.target.value)}
                     >
                       <option value="">Select gender</option>
-                      <option value="female">Female</option>
                       <option value="male">Male</option>
+                        <option value="female">Female</option>
                       <option value="non-binary">Non-binary</option>
                       <option value="prefer-not-to-say">Prefer not to say</option>
                     </select>
+                    </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Height and Weight */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-base font-medium text-gray-900 mb-2">
-                        Height {answers.units === 'imperial' ? '(ft/in)' : '(cm)'}
+                      <label className="block text-base font-medium text-gray-900 mb-3">
+                        Height (cm) <span className="text-sm text-gray-500 font-normal">(Optional)</span>
                       </label>
-                      {answers.units === 'imperial' ? (
-                        <div className="flex gap-2">
                           <input
                             type="number"
-                            min="3"
-                            max="8"
-                            placeholder="Feet"
-                            className="flex-1 p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
-                            value={answers.heightFeet || ''}
-                            onChange={(e) => handleAnswer('heightFeet', e.target.value)}
-                          />
-                          <input
-                            type="number"
-                            min="0"
-                            max="11"
-                            placeholder="Inches"
-                            className="flex-1 p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
-                            value={answers.heightInches || ''}
-                            onChange={(e) => handleAnswer('heightInches', e.target.value)}
-                          />
-                        </div>
-                      ) : (
-                        <input
-                          type="number"
-                          min="100"
-                          max="250"
-                          placeholder="Enter height in cm"
-                          className="w-full p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
+                          placeholder="Height in cm"
+                        className="w-full p-4 border border-gray-300 rounded-lg text-base bg-white text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
                           value={answers.heightCm || ''}
                           onChange={(e) => handleAnswer('heightCm', e.target.value)}
                         />
-                      )}
                     </div>
-
                     <div>
-                      <label className="block text-base font-medium text-gray-900 mb-2">
-                        Weight {answers.units === 'imperial' ? '(lbs)' : '(kg)'} <span className="text-gray-500 text-sm">(Optional)</span>
+                      <label className="block text-base font-medium text-gray-900 mb-3">
+                        Weight (kg) <span className="text-sm text-gray-500 font-normal">(Optional)</span>
                       </label>
                       <input
                         type="number"
-                        min={answers.units === 'imperial' ? '50' : '20'}
-                        max={answers.units === 'imperial' ? '500' : '200'}
-                        placeholder={`Enter weight in ${answers.units === 'imperial' ? 'lbs' : 'kg'}`}
-                        className="w-full p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
+                        placeholder="Weight in kg"
+                        className="w-full p-4 border border-gray-300 rounded-lg text-base bg-white text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
                         value={answers.weight || ''}
                         onChange={(e) => handleAnswer('weight', e.target.value)}
                       />
                     </div>
                   </div>
 
+                  {/* Location */}
                   <div>
-                    <label className="block text-base font-medium text-gray-900 mb-2">Location (Optional)</label>
+                    <label className="block text-base font-medium text-gray-900 mb-3">
+                      Location <span className="text-sm text-gray-500 font-normal">(Optional)</span>
+                    </label>
                     <input
                       type="text"
                       placeholder="City, Country or Timezone"
-                      className="w-full p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
+                      className="w-full p-4 border border-gray-300 rounded-lg text-base bg-white text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
                       value={answers.location || ''}
                       onChange={(e) => handleAnswer('location', e.target.value)}
                     />
-                    <p className="text-sm text-gray-500 mt-1">Helps us suggest local events and optimal training times</p>
+                    <p className="text-sm text-gray-500 mt-2">Helps us suggest local events and optimal training times</p>
                   </div>
 
+                  {/* Units */}
                   <div>
-                    <label className="block text-base font-medium text-gray-900 mb-2">Units</label>
-                    <select 
-                      className="w-full p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
-                      value={answers.units || 'metric'}
-                      onChange={(e) => handleAnswer('units', e.target.value)}
-                    >
-                      <option value="metric">Metric (km, kg, cm)</option>
-                      <option value="imperial">Imperial (miles, lbs, ft)</option>
-                    </select>
+                    <label className="block text-base font-medium text-gray-900 mb-3">
+                      Units <span className="text-sm text-gray-500 font-normal">(Optional)</span>
+                    </label>
+                    <div className="grid grid-cols-2 gap-3">
+                      {[
+                        { id: 'metric', name: 'Metric (kg, cm)', icon: '📏' },
+                        { id: 'imperial', name: 'Imperial (lbs, ft)', icon: '📐' }
+                      ].map((unit) => {
+                        const isSelected = answers.units === unit.id;
+                      return (
+                        <button
+                            key={unit.id}
+                            onClick={() => handleAnswer('units', unit.id)}
+                            className={`bg-white rounded-lg p-3 text-left transition-all duration-300 hover:shadow-md ${
+                            isSelected 
+                                ? 'border-2 border-blue-500 shadow-lg bg-blue-50' 
+                              : 'border border-gray-200 hover:border-gray-300'
+                          }`}
+                        >
+                            <div className="text-lg mb-1">{unit.icon}</div>
+                            <div className="text-sm font-medium text-gray-900">{unit.name}</div>
+                        </button>
+                      );
+                      })}
+                  </div>
                   </div>
                 </div>
               )}
 
-              {/* Fitness Level */}
-              {step.type === 'fitness-level' && (
-                <div className="space-y-3 mb-10">
-                  {FITNESS_LEVELS.map((level) => (
-                    <button
-                      key={level.id}
-                      onClick={() => handleAnswer('fitnessLevel', level.id)}
-                      className={`w-full bg-white border rounded-lg p-4 text-left transition-all duration-200 hover:bg-gray-50 flex items-center justify-between ${
-                        answers.fitnessLevel === level.id 
-                          ? 'border-blue-500 bg-blue-50' 
-                          : 'border-gray-200'
-                      }`}
-                    >
-                      <div>
-                        <div className="text-base font-medium text-gray-900 mb-1">{level.title}</div>
-                        <div className="text-sm text-gray-600">{level.subtitle}</div>
-                      </div>
-                      <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center ${
-                        answers.fitnessLevel === level.id 
-                          ? 'border-blue-500 bg-blue-500' 
-                          : 'border-gray-300'
-                      }`}>
-                        {answers.fitnessLevel === level.id && (
-                          <div className="w-2 h-2 bg-white rounded-full" />
-                        )}
-                      </div>
-                    </button>
-                  ))}
+              {/* Fitness Level - Compact Layout */}
+              {step.type === 'experience-level' && (
+                <div className="space-y-6 mb-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      { id: 'beginner', name: 'Beginner', description: 'New to fitness or returning after a break', icon: '🌱' },
+                      { id: 'some-experience', name: 'Some Experience', description: 'Occasional exercise, basic knowledge', icon: '🔄' },
+                      { id: 'intermediate', name: 'Intermediate', description: 'Regular exercise routine, good form', icon: '🚶‍♂️' },
+                      { id: 'advanced', name: 'Advanced', description: 'Consistent training, strong technique', icon: '🏃‍♂️' },
+                      { id: 'expert', name: 'Expert', description: 'Years of experience, competition level', icon: '🔥' }
+                    ].map((level) => {
+                      const isSelected = answers.fitnessLevel === level.id;
+                      return (
+                        <button
+                          key={level.id}
+                          onClick={() => handleAnswer('fitnessLevel', level.id)}
+                        className={`bg-white rounded-xl py-4 px-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                            isSelected 
+                            ? 'border-2 border-blue-500 shadow-xl' 
+                              : 'border border-gray-200 hover:border-gray-300'
+                          }`}
+                        >
+                          <div className="text-2xl mb-3">{level.icon}</div>
+                          <h3 className="text-base font-semibold text-gray-900 mb-1">{level.name}</h3>
+                          <p className="text-sm text-gray-600">{level.description}</p>
+                        </button>
+                      );
+                  })}
+                  </div>
                 </div>
               )}
 
-              {/* Time Availability */}
-              {step.type === 'time-availability' && (
-                <div className="space-y-6 mb-10">
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                    {TIME_OPTIONS.map((option) => (
+              {/* Current Status - Compact Layout */}
+              {step.type === 'current-status' && (
+                <div className="space-y-6 mb-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      { id: 'not-training', name: 'Not Currently Training', description: 'Taking a break or just starting', icon: '🛑' },
+                      { id: 'inconsistent', name: 'Inconsistent Training', description: 'Training on and off, looking for consistency', icon: '🔄' },
+                      { id: 'regular-training', name: 'Regular Training', description: 'Training consistently but want to improve', icon: '📈' },
+                      { id: 'structured-program', name: 'Following a Program', description: 'Currently following a structured plan', icon: '📋' },
+                      { id: 'returning-from-break', name: 'Returning from Break', description: 'Coming back after time off', icon: '🔄' },
+                      { id: 'injury-recovery', name: 'Injury Recovery', description: 'Recovering from injury or setback', icon: '🩹' }
+                  ].map((status) => {
+                    const isSelected = answers.currentStatus === status.id;
+                    return (
                       <button
-                        key={option.value}
-                        onClick={() => handleAnswer('timeCommitment', option.value)}
-                        className={`bg-white border rounded-lg p-5 text-center transition-all duration-200 hover:bg-gray-50 ${
-                          answers.timeCommitment === option.value 
-                            ? 'border-blue-500 bg-blue-50' 
-                            : 'border-gray-200'
+                        key={status.id}
+                        onClick={() => handleAnswer('currentStatus', status.id)}
+                          className={`bg-white rounded-xl py-4 px-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                          isSelected 
+                              ? 'border-2 border-blue-500 shadow-xl' 
+                            : 'border border-gray-200 hover:border-gray-300'
                         }`}
                       >
-                        <div className="text-2xl font-semibold text-gray-900 mb-1">
-                          {option.value === '90' ? '90+' : option.value}
-                        </div>
-                        <div className="text-xs text-gray-600 font-medium">minutes</div>
+                          <div className="text-2xl mb-3">{status.icon}</div>
+                        <h3 className="text-base font-semibold text-gray-900 mb-1">{status.name}</h3>
+                          <p className="text-sm text-gray-600">{status.description}</p>
                       </button>
-                    ))}
+                    );
+                  })}
+                  </div>
+                </div>
+              )}
+
+              {/* Time Commitment - Compact Layout */}
+              {step.type === 'time-commitment' && (
+                <div className="space-y-6 mb-6">
+                  {/* Session Length - Horizontal Grid */}
+                  <div>
+                    <label className="block text-base font-medium text-gray-900 mb-3">Preferred session length</label>
+                    <div className="grid grid-cols-5 gap-3">
+                      {[
+                        { id: '15', name: '15', label: 'minutes', icon: '⚡' },
+                        { id: '30', name: '30', label: 'minutes', icon: '⏰' },
+                        { id: '45', name: '45', label: 'minutes', icon: '🕐' },
+                        { id: '60', name: '60', label: 'minutes', icon: '⏳' },
+                        { id: '90', name: '90+', label: 'minutes', icon: '🔥' }
+                      ].map((duration) => {
+                        const isSelected = answers.sessionLength === duration.id;
+                        return (
+                          <button
+                            key={duration.id}
+                            onClick={() => handleAnswer('sessionLength', duration.id)}
+                            className={`bg-white rounded-lg p-3 text-center transition-all duration-300 hover:shadow-md ${
+                              isSelected 
+                                ? 'border-2 border-blue-500 shadow-lg bg-blue-50' 
+                                : 'border border-gray-200 hover:border-gray-300'
+                            }`}
+                          >
+                            <div className="text-lg mb-1">{duration.icon}</div>
+                            <div className="text-sm font-medium text-gray-900">{duration.name}</div>
+                            <div className="text-xs text-gray-600">{duration.label}</div>
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
 
+                  {/* Days per Week - Dropdown */}
                   <div>
-                    <label className="block text-base font-medium text-gray-900 mb-2">Days per week</label>
+                    <label className="block text-base font-medium text-gray-900 mb-3">Days per week</label>
                     <select 
-                      className="w-full p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
+                      className="w-full p-4 border border-gray-300 rounded-lg text-base bg-white text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
                       value={answers.daysPerWeek || ''}
                       onChange={(e) => handleAnswer('daysPerWeek', e.target.value)}
                     >
-                      <option value="">How many days can you commit?</option>
-                      <option value="2-3">2-3 days</option>
-                      <option value="3-4">3-4 days</option>
-                      <option value="4-5">4-5 days</option>
-                      <option value="5-6">5-6 days</option>
-                      <option value="daily">Daily</option>
+                      <option value="">Select days per week</option>
+                      <option value="1">1 day per week</option>
+                      <option value="2">2 days per week</option>
+                      <option value="3">3 days per week</option>
+                      <option value="4">4 days per week</option>
+                      <option value="5">5 days per week</option>
+                      <option value="6">6 days per week</option>
+                      <option value="7">7 days per week</option>
                     </select>
                   </div>
                 </div>
               )}
 
-              {/* Equipment */}
-              {step.type === 'equipment' && (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
-                  {EQUIPMENT_OPTIONS.map((equipment) => (
-                    <button
-                      key={equipment}
-                      onClick={() => {
-                        const currentEquipment = answers.equipment || [];
-                        const newEquipment = currentEquipment.includes(equipment)
-                          ? currentEquipment.filter(e => e !== equipment)
-                          : [...currentEquipment, equipment];
-                        handleAnswer('equipment', newEquipment);
-                      }}
-                      className={`bg-white border rounded-lg p-4 text-center transition-all duration-200 hover:bg-gray-50 text-base font-medium ${
-                        (answers.equipment || []).includes(equipment)
-                          ? 'border-blue-500 bg-blue-50 text-blue-700' 
-                          : 'border-gray-200 text-gray-900'
-                      }`}
-                    >
-                      {equipment}
-                    </button>
-                  ))}
+              {/* Equipment - Simplified Layout */}
+              {step.type === 'equipment-access' && (
+                <div className="space-y-6 mb-6">
+                  <div>
+                    <label className="block text-base font-medium text-gray-900 mb-3">What equipment do you have access to?</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {(() => {
+                        const baseEquipment = [
+                          { id: 'gym-access', name: 'Gym Access', description: 'Full gym with weights, machines, cardio equipment', icon: '🏢' },
+                          { id: 'home-setup', name: 'Home Setup', description: 'Dumbbells, resistance bands, basic equipment', icon: '🏠' },
+                          { id: 'bodyweight-only', name: 'Bodyweight Only', description: 'No equipment needed, just your body', icon: '🤸‍♂️' }
+                        ];
+
+                        const activitySpecific = [];
+                        if (answers.activity === 'cardio-endurance' && (answers.subcategory === 'swimming' || answers.subcategory === 'triathlon' || answers.subcategory === 'ironman')) {
+                          activitySpecific.push({ id: 'pool-access', name: 'Pool Access', description: 'Swimming pool for training', icon: '🏊‍♀️' });
+                        }
+                        if (answers.activity === 'cardio-endurance' && (answers.subcategory === 'cycling' || answers.subcategory === 'triathlon' || answers.subcategory === 'ironman')) {
+                          activitySpecific.push({ id: 'bicycle', name: 'Bicycle', description: 'Road bike, mountain bike, or trainer', icon: '🚴‍♂️' });
+                        }
+
+                        const allEquipment = [...baseEquipment, ...activitySpecific];
+
+                        return allEquipment.map((equipment) => {
+                          const isSelected = answers.equipment?.includes(equipment.id);
+                    return (
+                      <button
+                              key={equipment.id}
+                        onClick={() => {
+                          const currentEquipment = answers.equipment || [];
+                          const newEquipment = isSelected 
+                                  ? currentEquipment.filter(e => e !== equipment.id)
+                                  : [...currentEquipment, equipment.id];
+                          handleAnswer('equipment', newEquipment);
+                        }}
+                              className={`bg-white rounded-lg p-4 text-left transition-all duration-300 hover:shadow-md ${
+                          isSelected 
+                                  ? 'border-2 border-blue-500 shadow-lg bg-blue-50' 
+                            : 'border border-gray-200 hover:border-gray-300'
+                        }`}
+                      >
+                              <div className="flex items-start gap-3">
+                                <div className="text-2xl">{equipment.icon}</div>
+                                <div>
+                                  <h3 className="text-base font-semibold text-gray-900 mb-1">{equipment.name}</h3>
+                                  <p className="text-sm text-gray-600">{equipment.description}</p>
                 </div>
+                </div>
+                      </button>
+                    );
+                        });
+                      })()}
+                </div>
+                      </div>
+                      
+                  {/* Environment Preference */}
+                  <div>
+                    <label className="block text-base font-medium text-gray-900 mb-3">Training environment preferences</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {(() => {
+                        const getEnvironmentOptions = () => {
+                          const baseOptions = [];
+                          
+                          // Activity-specific environment options
+                          if (answers.activity === 'cardio-endurance') {
+                            if (answers.subcategory === 'running') {
+                              baseOptions.push(
+                                { id: 'outdoor-running', name: 'Outdoor Running', description: 'Parks, trails, roads', icon: '🏃‍♂️' },
+                                { id: 'indoor-running', name: 'Indoor Running', description: 'Treadmill, indoor track', icon: '🏃‍♀️' }
+                              );
+                            } else if (answers.subcategory === 'cycling') {
+                              baseOptions.push(
+                                { id: 'outdoor-cycling', name: 'Outdoor Cycling', description: 'Roads, trails, paths', icon: '🚴‍♂️' },
+                                { id: 'indoor-cycling', name: 'Indoor Cycling', description: 'Trainer, spin class', icon: '🚴‍♀️' }
+                              );
+                            } else if (answers.subcategory === 'swimming') {
+                              baseOptions.push(
+                                { id: 'pool-swimming', name: 'Pool Swimming', description: 'Indoor/outdoor pools', icon: '🏊‍♂️' },
+                                { id: 'open-water', name: 'Open Water', description: 'Lakes, ocean, rivers', icon: '🌊' }
+                              );
+                            } else if (answers.subcategory === 'triathlon' || answers.subcategory === 'ironman') {
+                              baseOptions.push(
+                                { id: 'pool-swimming', name: 'Pool Swimming', description: 'Indoor/outdoor pools', icon: '🏊‍♂️' },
+                                { id: 'open-water', name: 'Open Water', description: 'Lakes, ocean for race prep', icon: '🌊' },
+                                { id: 'outdoor-cycling', name: 'Outdoor Cycling', description: 'Roads, bike paths', icon: '🚴‍♂️' },
+                                { id: 'indoor-cycling', name: 'Indoor Cycling', description: 'Trainer for bad weather', icon: '🚴‍♀️' },
+                                { id: 'outdoor-running', name: 'Outdoor Running', description: 'Roads, trails', icon: '🏃‍♂️' },
+                                { id: 'indoor-running', name: 'Indoor Running', description: 'Treadmill backup', icon: '🏃‍♀️' }
+                              );
+                            } else {
+                              // General cardio options
+                              baseOptions.push(
+                                { id: 'outdoor', name: 'Outdoor', description: 'Parks, trails, fresh air', icon: '🌳' },
+                                { id: 'gym', name: 'Gym', description: 'Cardio machines, climate control', icon: '🏢' },
+                                { id: 'home', name: 'Home', description: 'Indoor workouts', icon: '🏠' }
+                              );
+                            }
+                          } else if (answers.activity === 'strength-power') {
+                            baseOptions.push(
+                              { id: 'gym', name: 'Gym', description: 'Full weight room access', icon: '🏢' },
+                              { id: 'home-gym', name: 'Home Gym', description: 'Personal equipment setup', icon: '🏠' },
+                              { id: 'outdoor-strength', name: 'Outdoor', description: 'Parks, calisthenics areas', icon: '🌳' }
+                            );
+                          } else if (answers.activity === 'mind-body') {
+                            baseOptions.push(
+                              { id: 'studio', name: 'Studio', description: 'Yoga/pilates studios', icon: '🧘‍♀️' },
+                              { id: 'home-practice', name: 'Home Practice', description: 'Personal space', icon: '🏠' },
+                              { id: 'outdoor-mindful', name: 'Outdoor', description: 'Nature, peaceful settings', icon: '🌿' }
+                            );
+                          } else {
+                            // Default options for other activities
+                            baseOptions.push(
+                              { id: 'gym', name: 'Gym', description: 'Full facility access', icon: '🏢' },
+                              { id: 'outdoor', name: 'Outdoor', description: 'Parks, open spaces', icon: '🌳' },
+                              { id: 'home', name: 'Home', description: 'Indoor workouts', icon: '🏠' },
+                              { id: 'studio', name: 'Studio', description: 'Specialized facilities', icon: '🏛️' }
+                            );
+                          }
+                          
+                          return baseOptions;
+                        };
+
+                        const environmentOptions = getEnvironmentOptions();
+                        
+                        return environmentOptions.map((environment) => {
+                          const isSelected = answers.trainingEnvironments?.includes(environment.id);
+                    return (
+                      <button
+                              key={environment.id}
+                        onClick={() => {
+                                const currentEnvironments = answers.trainingEnvironments || [];
+                                const newEnvironments = isSelected 
+                                  ? currentEnvironments.filter(e => e !== environment.id)
+                                  : [...currentEnvironments, environment.id];
+                                handleAnswer('trainingEnvironments', newEnvironments);
+                              }}
+                              className={`bg-white rounded-lg p-4 text-left transition-all duration-300 hover:shadow-md ${
+                          isSelected 
+                                  ? 'border-2 border-blue-500 shadow-lg bg-blue-50' 
+                            : 'border border-gray-200 hover:border-gray-300'
+                        }`}
+                      >
+                              <div className="flex items-start gap-3">
+                                <div className="text-2xl">{environment.icon}</div>
+                                <div>
+                                  <h3 className="text-base font-semibold text-gray-900 mb-1">{environment.name}</h3>
+                                  <p className="text-sm text-gray-600">{environment.description}</p>
+                </div>
+                              </div>
+                      </button>
+                    );
+                        });
+                      })()}
+                </div>
+                      </div>
+                      </div>
               )}
 
-              {/* Goals */}
-              {step.type === 'goals' && (
-                <div className="space-y-3 mb-10">
-                  {GOALS.map((goal) => (
-                    <button
-                      key={goal.id}
-                      onClick={() => handleAnswer('goal', goal.id)}
-                      className={`w-full bg-white border rounded-lg p-4 text-left transition-all duration-200 hover:bg-gray-50 flex items-center justify-between ${
-                        answers.goal === goal.id 
-                          ? 'border-blue-500 bg-blue-50' 
-                          : 'border-gray-200'
-                      }`}
-                    >
-                      <div>
-                        <div className="text-base font-medium text-gray-900 mb-1">{goal.title}</div>
-                        <div className="text-sm text-gray-600 mb-2">{goal.subtitle}</div>
-                        <div className="text-xs text-blue-600 italic">{goal.aspirationalFraming}</div>
+              {/* Primary Goal - Compact Layout */}
+              {step.type === 'primary-goal' && (
+                <div className="space-y-6 mb-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      { id: 'performance', name: 'Performance', description: 'Train for specific event/competition', icon: '🏆' },
+                      { id: 'body-composition', name: 'Body Composition', description: 'Lose fat or gain muscle', icon: '💪' },
+                      { id: 'general-health', name: 'General Health', description: 'Feel better, live healthier', icon: '❤️' },
+                      { id: 'skill-development', name: 'Skill Development', description: 'Master new techniques', icon: '🎯' },
+                      { id: 'stress-relief', name: 'Stress Relief', description: 'Mental wellness and relaxation', icon: '🧘‍♀️' },
+                      { id: 'rehabilitation', name: 'Rehabilitation', description: 'Recover from injury or pain', icon: '🩹' }
+                    ].map((goal) => {
+                      const isSelected = answers.goal === goal.id;
+                            return (
+                            <button
+                          key={goal.id}
+                          onClick={() => handleAnswer('goal', goal.id)}
+                                className={`bg-white rounded-xl py-4 px-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                                  isSelected 
+                                    ? 'border-2 border-blue-500 shadow-xl' 
+                                    : 'border border-gray-200 hover:border-gray-300'
+                              }`}
+                            >
+                          <div className="text-2xl mb-3">{goal.icon}</div>
+                          <h3 className="text-base font-semibold text-gray-900 mb-1">{goal.name}</h3>
+                          <p className="text-sm text-gray-600">{goal.description}</p>
+                            </button>
+                            );
+                          })}
+                        </div>
                       </div>
-                      <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center ${
-                        answers.goal === goal.id 
-                          ? 'border-blue-500 bg-blue-500' 
-                          : 'border-gray-300'
-                      }`}>
-                        {answers.goal === goal.id && (
-                          <div className="w-2 h-2 bg-white rounded-full" />
-                        )}
-                      </div>
-                    </button>
-                  ))}
-                </div>
               )}
 
               {/* Activity-Specific Questions */}
               {step.type === 'activity-specific' && (
-                <div className="space-y-6 mb-10">
-                  {answers.activity === 'cardio-endurance' && (
+                <div className="space-y-6 mb-6">
+                  {answers.activity === 'cardio-endurance' && (answers.subcategory === 'triathlon' || answers.subcategory === 'ironman') && (
                     <>
-                      <div>
-                        <label className="block text-base font-medium text-gray-900 mb-2">Current weekly volume</label>
-                        <select 
-                          className="w-full p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
-                          value={answers.activitySpecific?.currentVolume || ''}
-                          onChange={(e) => handleAnswer('activitySpecific', { ...answers.activitySpecific, currentVolume: e.target.value })}
+                      {/* Triathlon/Ironman Experience - Always visible first */}
+                      <div className="transition-all duration-500 ease-in-out">
+                        <div 
+                          className={`transition-all duration-300 ${
+                            answers.activitySpecific?.triExperience ? 'mb-3' : 'mb-6'
+                          }`}
                         >
-                          <option value="">Select your typical weekly activity</option>
-                          <option value="1-2-hours">1-2 hours per week</option>
-                          <option value="3-5-hours">3-5 hours per week</option>
-                          <option value="6-8-hours">6-8 hours per week</option>
-                          <option value="9-plus-hours">9+ hours per week</option>
-                        </select>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-base font-medium text-gray-900 mb-2">Training environment preference</label>
-                        <select 
-                          className="w-full p-3 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
-                          value={answers.activitySpecific?.environment || ''}
-                          onChange={(e) => handleAnswer('activitySpecific', { ...answers.activitySpecific, environment: e.target.value })}
-                        >
-                          <option value="">Select preference</option>
-                          <option value="indoor">Indoor (gym, treadmill, trainer)</option>
-                          <option value="outdoor">Outdoor (roads, trails, open water)</option>
-                          <option value="both">Both indoor and outdoor</option>
-                        </select>
-                      </div>
-                    </>
-                  )}
-
-                  {answers.activity === 'strength-power' && (
-                    <>
-                      <div>
-                        <label className="block text-base font-medium text-gray-900 mb-2">Strength training experience</label>
-                        <div className="space-y-3">
-                          {[
-                            { id: 'never-lifted', title: 'Never lifted weights / Bodyweight only' },
-                            { id: 'some-experience', title: 'Some gym experience / Basic lifts' },
-                            { id: 'regular-gym', title: 'Regular gym-goer / Intermediate lifts' },
-                            { id: 'advanced-lifter', title: 'Advanced lifter / Specific programming knowledge' }
-                          ].map((level) => (
-                            <button
-                              key={level.id}
-                              onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, strengthExperienceLevel: level.id })}
-                              className={`w-full bg-white border rounded-lg p-4 text-left transition-all duration-200 hover:bg-gray-50 flex items-center justify-between ${
-                                answers.activitySpecific?.strengthExperienceLevel === level.id 
-                                  ? 'border-blue-500 bg-blue-50' 
-                                  : 'border-gray-200'
-                              }`}
-                            >
-                              <div className="text-base font-medium text-gray-900">{level.title}</div>
-                              <div className={`w-5 h-5 border-2 rounded-full flex items-center justify-center ${
-                                answers.activitySpecific?.strengthExperienceLevel === level.id 
-                                  ? 'border-blue-500 bg-blue-500' 
-                                  : 'border-gray-300'
-                              }`}>
-                                {answers.activitySpecific?.strengthExperienceLevel === level.id && (
-                                  <div className="w-2 h-2 bg-white rounded-full" />
-                                )}
-                              </div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  {answers.activity === 'mind-body' && (
-                    <>
-                      <div>
-                        <label className="block text-base font-medium text-gray-900 mb-2">What draws you to mind-body practices?</label>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {[
-                            'Reduce stress & anxiety',
-                            'Improve sleep quality', 
-                            'Enhance focus & concentration',
-                            'Increase physical flexibility',
-                            'Improve balance & posture',
-                            'Build core strength'
-                          ].map((goal) => (
-                            <button
-                              key={goal}
+                          {answers.activitySpecific?.triExperience ? (
+                            /* Collapsed completed section */
+                            <div 
+                              className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200"
                               onClick={() => {
-                                const currentGoals = answers.activitySpecific?.mindBodyGoals || [];
-                                const newGoals = currentGoals.includes(goal)
-                                  ? currentGoals.filter(g => g !== goal)
-                                  : [...currentGoals, goal];
-                                handleAnswer('activitySpecific', { ...answers.activitySpecific, mindBodyGoals: newGoals });
+                                const newActivitySpecific = { ...answers.activitySpecific };
+                                delete newActivitySpecific.triExperience;
+                                handleAnswer('activitySpecific', newActivitySpecific);
                               }}
-                              className={`bg-white border rounded-lg p-3 text-center transition-all duration-200 hover:bg-gray-50 text-sm font-medium ${
-                                (answers.activitySpecific?.mindBodyGoals || []).includes(goal)
-                                  ? 'border-blue-500 bg-blue-50 text-blue-700' 
-                                  : 'border-gray-200 text-gray-900'
-                              }`}
                             >
-                              {goal}
-                            </button>
-                          ))}
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                  </div>
+                                  <div>
+                                    <h3 className="text-base font-semibold text-gray-900">Triathlon Experience</h3>
+                                    <p className="text-sm text-gray-600">
+                                      {(() => {
+                                        const experienceMap: { [key: string]: string } = {
+                                          'never': 'First Time - New to triathlon training',
+                                          'sprint': 'Sprint Distance - Standard distance experience',
+                                          'olympic': 'Olympic Distance - Standard distance experience',
+                                          'half': 'Half Ironman - Long course experience',
+                                          'full': 'Full Ironman - Ultimate endurance experience'
+                                        };
+                                        return experienceMap[answers.activitySpecific?.triExperience || ''] || answers.activitySpecific?.triExperience;
+                                      })()}
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="text-gray-400 text-sm">Click to change</div>
+                              </div>
+                            </div>
+                          ) : (
+                            /* Expanded selection section */
+                            <div>
+                              <label className="block text-base font-medium text-gray-900 mb-3">Your triathlon experience</label>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {[
+                                  { id: 'never', name: 'First Time', description: 'New to triathlon training', icon: '🌱' },
+                                  { id: 'sprint', name: 'Sprint Distance', description: 'Completed sprint triathlons', icon: '🏃‍♂️' },
+                                  { id: 'olympic', name: 'Olympic Distance', description: 'Completed Olympic/standard distance', icon: '🏊‍♂️' },
+                                  { id: 'half', name: 'Half Ironman', description: 'Completed 70.3 distance', icon: '🚴‍♂️' },
+                                  { id: 'full', name: 'Full Ironman', description: 'Completed 140.6 distance', icon: '🏆' }
+                                ].map((experience) => {
+                                  const isSelected = answers.activitySpecific?.triExperience === experience.id;
+                                  return (
+                                    <button
+                                      key={experience.id}
+                                      onClick={() => handleAnswer('activitySpecific', { 
+                                        ...answers.activitySpecific, 
+                                        triExperience: experience.id 
+                                      })}
+                                      className={`bg-white rounded-xl py-4 px-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                                        isSelected 
+                                          ? 'border-2 border-blue-500 shadow-xl' 
+                                          : 'border border-gray-200 hover:border-gray-300'
+                                      }`}
+                                    >
+                                      <div className="text-2xl mb-3">{experience.icon}</div>
+                                      <h3 className="text-base font-semibold text-gray-900 mb-1">{experience.name}</h3>
+                                      <p className="text-sm text-gray-600">{experience.description}</p>
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </div>
-                    </>
-                  )}
 
-                  {/* Simplified Activity-Specific Questions */}
-                  
-                  {/* Cycling - Simplified */}
-                  {selectedActivity === 'cardio-endurance' && answers.subcategory === 'cycling' && (
-                    <div>
-                      <label className="block text-base font-medium text-gray-900 mb-2">What's your main cycling focus?</label>
-                      <div className="grid grid-cols-1 gap-3">
-                        {[
-                          { id: 'general-fitness', label: 'General Fitness & Health', description: 'Build overall cycling fitness' },
-                          { id: 'event-prep', label: 'Event Preparation', description: 'Training for a specific cycling event' },
-                          { id: 'performance', label: 'Performance & Power', description: 'Improve speed, power, and cycling performance' }
-                        ].map((goal) => (
-                          <button
-                            key={goal.id}
-                            onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, cyclingFocus: goal.id })}
-                            className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                              answers.activitySpecific?.cyclingFocus === goal.id
-                                ? 'border-blue-500 bg-blue-50' 
-                                : 'border-gray-200'
+                      {/* Target Distance - Appears after experience is selected */}
+                      {answers.activitySpecific?.triExperience && (
+                        <div className="animate-fade-in-up transition-all duration-500 ease-in-out">
+                          <div 
+                            className={`transition-all duration-300 ${
+                              answers.activitySpecific?.triathlonDistance ? 'mb-3' : 'mb-6'
                             }`}
                           >
-                            <div className="font-medium text-gray-900">{goal.label}</div>
-                            <div className="text-sm text-gray-600">{goal.description}</div>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Triathlon/Multisport */}
-                  {selectedActivity === 'cardio-endurance' && answers.subcategory === 'triathlon' && (
-                    <>
-                      <div>
-                        <label className="block text-base font-medium text-gray-900 mb-2">What's your triathlon goal?</label>
-                        <div className="grid grid-cols-1 gap-3">
-                          {[
-                            { id: 'fitness-testing', label: 'Fitness Testing', description: 'Assess current fitness levels' },
-                            { id: 'season-prep', label: 'Season Preparation', description: 'Off-season training without specific event' },
-                            { id: 'race-prep', label: 'Race Preparation', description: 'Training for an upcoming triathlon' }
-                          ].map((goal) => (
-                            <button
-                              key={goal.id}
-                              onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, triathlonGoal: goal.id })}
-                              className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                answers.activitySpecific?.triathlonGoal === goal.id
-                                  ? 'border-blue-500 bg-blue-50' 
-                                  : 'border-gray-200'
-                              }`}
-                            >
-                              <div className="font-medium text-gray-900">{goal.label}</div>
-                              <div className="text-sm text-gray-600">{goal.description}</div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {answers.activitySpecific?.triathlonGoal === 'race-prep' && (
-                        <div>
-                          <label className="block text-base font-medium text-gray-900 mb-2">What distance is your event?</label>
-                          <div className="grid grid-cols-1 gap-3">
-                            {[
-                              { id: 'sprint', label: 'Sprint Distance', description: '750m swim, 20km bike, 5km run' },
-                              { id: 'olympic', label: 'Olympic Distance', description: '1.5km swim, 40km bike, 10km run' },
-                              { id: 'half', label: 'Half Distance', description: '1.9km swim, 90km bike, 21km run' },
-                              { id: 'full', label: 'Full Distance', description: '3.8km swim, 180km bike, 42km run' }
-                            ].map((distance) => (
-                              <button
-                                key={distance.id}
-                                onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, triathlonDistance: distance.id })}
-                                className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                  answers.activitySpecific?.triathlonDistance === distance.id
-                                    ? 'border-blue-500 bg-blue-50' 
-                                    : 'border-gray-200'
-                                }`}
+                            {answers.activitySpecific?.triathlonDistance ? (
+                              /* Collapsed completed section */
+                              <div 
+                                className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200"
+                                onClick={() => {
+                                  const newActivitySpecific = { ...answers.activitySpecific };
+                                  delete newActivitySpecific.triathlonDistance;
+                                  handleAnswer('activitySpecific', newActivitySpecific);
+                                }}
                               >
-                                <div className="font-medium text-gray-900">{distance.label}</div>
-                                <div className="text-sm text-gray-600">{distance.description}</div>
-                              </button>
-                            ))}
+                                <div className="flex items-center justify-between">
+                                  <div className="flex items-center gap-3">
+                                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                      </svg>
+                                    </div>
+                                    <div>
+                                      <h3 className="text-base font-semibold text-gray-900">Your target distance</h3>
+                                      <p className="text-sm text-gray-600">
+                                        {(() => {
+                                          const distanceMap: { [key: string]: string } = {
+                                            'sprint': 'Sprint - 750m swim, 20km bike, 5km run',
+                                            'olympic': 'Olympic - 1.5km swim, 40km bike, 10km run',
+                                            'half': 'Half Ironman - 1.9km swim, 90km bike, 21km run',
+                                            'full': 'Full Ironman - 3.8km swim, 180km bike, 42km run'
+                                          };
+                                          return distanceMap[answers.activitySpecific?.triathlonDistance || ''] || answers.activitySpecific?.triathlonDistance;
+                                        })()}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div className="text-gray-400 text-sm">Click to change</div>
+                                </div>
+                              </div>
+                            ) : (
+                              /* Expanded selection section */
+                              <div>
+                                <label className="block text-base font-medium text-gray-900 mb-3">Your target distance</label>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  {[
+                                    { id: 'sprint', name: 'Sprint', description: '750m swim, 20km bike, 5km run', icon: '⚡' },
+                                    { id: 'olympic', name: 'Olympic', description: '1.5km swim, 40km bike, 10km run', icon: '🥇' },
+                                    { id: 'half', name: 'Half Ironman', description: '1.9km swim, 90km bike, 21km run', icon: '🔥' },
+                                    { id: 'full', name: 'Full Ironman', description: '3.8km swim, 180km bike, 42km run', icon: '💪' }
+                                  ].map((distance) => {
+                                    const isSelected = answers.activitySpecific?.triathlonDistance === distance.id;
+                                    return (
+                                      <button
+                                        key={distance.id}
+                                        onClick={() => handleAnswer('activitySpecific', { 
+                                          ...answers.activitySpecific, 
+                                          triathlonDistance: distance.id 
+                                        })}
+                                        className={`bg-white rounded-xl py-4 px-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                                          isSelected 
+                                            ? 'border-2 border-blue-500 shadow-xl' 
+                                            : 'border border-gray-200 hover:border-gray-300'
+                                        }`}
+                                      >
+                                        <div className="text-2xl mb-3">{distance.icon}</div>
+                                        <h3 className="text-base font-semibold text-gray-900 mb-1">{distance.name}</h3>
+                                        <p className="text-sm text-gray-600">{distance.description}</p>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
 
-                      {(answers.activitySpecific?.triathlonGoal === 'season-prep' || answers.activitySpecific?.triathlonDistance) && (
-                        <div>
-                          <label className="block text-base font-medium text-gray-900 mb-2">Which area needs the most improvement?</label>
-                          <div className="grid grid-cols-1 gap-3">
-                            {[
-                              { id: 'swimming', label: 'Become a stronger swimmer', description: 'Focus on swim technique and endurance' },
-                              { id: 'cycling', label: 'Become a stronger cyclist', description: 'Build cycling power and endurance' },
-                              { id: 'running', label: 'Become a stronger runner', description: 'Improve running speed and endurance' },
-                              { id: 'balanced', label: 'A balanced plan is best', description: 'Equal focus across all three disciplines' }
-                            ].map((focus) => (
-                              <button
-                                key={focus.id}
-                                onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, triathlonFocus: focus.id })}
-                                className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                  answers.activitySpecific?.triathlonFocus === focus.id
-                                    ? 'border-blue-500 bg-blue-50' 
-                                    : 'border-gray-200'
-                                }`}
-                              >
-                                <div className="font-medium text-gray-900">{focus.label}</div>
-                                <div className="text-sm text-gray-600">{focus.description}</div>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  {/* Running */}
-                  {selectedActivity === 'cardio-endurance' && answers.subcategory === 'running' && (
-                    <>
-                      <div>
-                        <label className="block text-base font-medium text-gray-900 mb-2">What's your primary running goal?</label>
-                        <div className="grid grid-cols-1 gap-3">
-                          {[
-                            { id: 'general-fitness', label: 'General Fitness', description: 'Build running fitness and endurance' },
-                            { id: 'event-prep', label: 'Event Preparation', description: 'Training for a specific race distance' }
-                          ].map((goal) => (
-                            <button
-                              key={goal.id}
-                              onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, runningGoal: goal.id })}
-                              className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                answers.activitySpecific?.runningGoal === goal.id
-                                  ? 'border-blue-500 bg-blue-50' 
-                                  : 'border-gray-200'
-                              }`}
-                            >
-                              <div className="font-medium text-gray-900">{goal.label}</div>
-                              <div className="text-sm text-gray-600">{goal.description}</div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {answers.activitySpecific?.runningGoal === 'event-prep' && (
-                        <div>
-                          <label className="block text-base font-medium text-gray-900 mb-2">What's your target race distance?</label>
-                          <div className="grid grid-cols-1 gap-3">
-                            {[
-                              { id: '5k', label: '5K', description: 'Short distance speed focus' },
-                              { id: '10k', label: '10K', description: 'Mid-distance endurance' },
-                              { id: 'half-marathon', label: 'Half Marathon', description: '21.1km / 13.1 miles' },
-                              { id: 'marathon', label: 'Marathon', description: '42.2km / 26.2 miles' },
-                              { id: 'ultramarathon', label: 'Ultramarathon', description: 'Beyond marathon distance' }
-                            ].map((distance) => (
-                              <button
-                                key={distance.id}
-                                onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, runningDistance: distance.id })}
-                                className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                  answers.activitySpecific?.runningDistance === distance.id
-                                    ? 'border-blue-500 bg-blue-50' 
-                                    : 'border-gray-200'
-                                }`}
-                              >
-                                <div className="font-medium text-gray-900">{distance.label}</div>
-                                <div className="text-sm text-gray-600">{distance.description}</div>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  {/* Swimming */}
-                  {selectedActivity === 'cardio-endurance' && answers.subcategory === 'swimming' && (
-                    <>
-                      <div>
-                        <label className="block text-base font-medium text-gray-900 mb-2">What's your primary swimming goal?</label>
-                        <div className="grid grid-cols-1 gap-3">
-                          {[
-                            { id: 'general-fitness', label: 'General Fitness', description: 'Build swimming fitness and endurance' },
-                            { id: 'technique-focus', label: 'Technique Focus', description: 'Improve stroke technique and efficiency' },
-                            { id: 'event-prep', label: 'Event Preparation', description: 'Training for swimming competitions' }
-                          ].map((goal) => (
-                            <button
-                              key={goal.id}
-                              onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, swimmingFocus: goal.id })}
-                              className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                answers.activitySpecific?.swimmingFocus === goal.id
-                                  ? 'border-blue-500 bg-blue-50' 
-                                  : 'border-gray-200'
-                              }`}
-                            >
-                              <div className="font-medium text-gray-900">{goal.label}</div>
-                              <div className="text-sm text-gray-600">{goal.description}</div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {answers.activitySpecific?.swimmingFocus === 'event-prep' && (
-                        <div>
-                          <label className="block text-base font-medium text-gray-900 mb-2">What type of event are you preparing for?</label>
-                          <div className="grid grid-cols-1 gap-3">
-                            {[
-                              { id: 'pool-meet', label: 'Pool Meet (Masters)', description: 'Competitive pool swimming' },
-                              { id: 'open-water', label: 'Open Water Race', description: 'Lake, ocean, or river swimming' },
-                              { id: 'triathlon-swim', label: 'Triathlon Swim Leg', description: 'Swimming portion of triathlon' }
-                            ].map((eventType) => (
-                              <button
-                                key={eventType.id}
-                                onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, swimmingEventType: eventType.id })}
-                                className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                  answers.activitySpecific?.swimmingEventType === eventType.id
-                                    ? 'border-blue-500 bg-blue-50' 
-                                    : 'border-gray-200'
-                                }`}
-                              >
-                                <div className="font-medium text-gray-900">{eventType.label}</div>
-                                <div className="text-sm text-gray-600">{eventType.description}</div>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  {/* Cross-Training Focus */}
-                  {selectedActivity === 'mind-body' && (
-                    <div>
-                      <label className="block text-base font-medium text-gray-900 mb-2">What's your main focus?</label>
-                      <div className="grid grid-cols-1 gap-3">
-                        {[
-                          { id: 'mobility-stability', label: 'Mobility & Stability', description: 'Improve range of motion and stability' },
-                          { id: 'strength-support', label: 'Strength Support', description: 'Complement other training with strength work' },
-                          { id: 'yoga-practice', label: 'Yoga Practice', description: 'Develop yoga skills and mindfulness' },
-                          { id: 'mental-training', label: 'Mental Training', description: 'Focus on mental performance and mindfulness' }
-                        ].map((focus) => (
-                          <button
-                            key={focus.id}
-                            onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, crossTrainingFocus: focus.id })}
-                            className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                              answers.activitySpecific?.crossTrainingFocus === focus.id
-                                ? 'border-blue-500 bg-blue-50' 
-                                : 'border-gray-200'
+                      {/* Weakest Discipline - Appears after distance is selected */}
+                      {answers.activitySpecific?.triExperience && answers.activitySpecific?.triathlonDistance && (
+                        <div className="animate-fade-in-up transition-all duration-500 ease-in-out">
+                          <div 
+                            className={`transition-all duration-300 ${
+                              answers.activitySpecific?.weakestDiscipline ? 'mb-3' : 'mb-6'
                             }`}
                           >
-                            <div className="font-medium text-gray-900">{focus.label}</div>
-                            <div className="text-sm text-gray-600">{focus.description}</div>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Strength Training */}
-                  {selectedActivity === 'strength-power' && (
-                    <>
-                      <div>
-                        <label className="block text-base font-medium text-gray-900 mb-2">What's your primary strength training goal?</label>
-                        <div className="grid grid-cols-1 gap-3">
-                          {[
-                            { id: 'general-strength', label: 'General Strength & Fitness', description: 'Build overall strength and muscle tone' },
-                            { id: 'powerlifting', label: 'Powerlifting', description: 'Focus on squat, bench press, and deadlift' },
-                            { id: 'bodybuilding', label: 'Bodybuilding', description: 'Muscle growth and physique development' },
-                            { id: 'functional-fitness', label: 'Functional Fitness', description: 'Strength for daily activities and sports' }
-                          ].map((goal) => (
-                            <button
-                              key={goal.id}
-                              onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, strengthGoal: goal.id })}
-                              className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                answers.activitySpecific?.strengthGoal === goal.id
-                                  ? 'border-blue-500 bg-blue-50' 
-                                  : 'border-gray-200'
-                              }`}
-                            >
-                              <div className="font-medium text-gray-900">{goal.label}</div>
-                              <div className="text-sm text-gray-600">{goal.description}</div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {answers.activitySpecific?.strengthGoal && (
-                        <div>
-                          <label className="block text-base font-medium text-gray-900 mb-2">What's your preferred training style?</label>
-                          <div className="grid grid-cols-1 gap-3">
-                            {[
-                              { id: 'barbell-focused', label: 'Barbell-Focused', description: 'Compound movements with barbells' },
-                              { id: 'dumbbell-bodyweight', label: 'Dumbbell & Bodyweight', description: 'Versatile training with dumbbells and bodyweight' },
-                              { id: 'machine-based', label: 'Machine-Based', description: 'Gym machines and cable systems' },
-                              { id: 'mixed-approach', label: 'Mixed Approach', description: 'Combination of all equipment types' }
-                            ].map((style) => (
-                              <button
-                                key={style.id}
-                                onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, strengthStyle: style.id })}
-                                className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                  answers.activitySpecific?.strengthStyle === style.id
-                                    ? 'border-blue-500 bg-blue-50' 
-                                    : 'border-gray-200'
-                                }`}
+                            {answers.activitySpecific?.weakestDiscipline ? (
+                              /* Collapsed completed section */
+                              <div 
+                                className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors duration-200"
+                                onClick={() => {
+                                  const newActivitySpecific = { ...answers.activitySpecific };
+                                  delete newActivitySpecific.weakestDiscipline;
+                                  handleAnswer('activitySpecific', newActivitySpecific);
+                                }}
                               >
-                                <div className="font-medium text-gray-900">{style.label}</div>
-                                <div className="text-sm text-gray-600">{style.description}</div>
-                              </button>
-                            ))}
+                                <div className="flex items-center justify-between">
+                                  <div className="flex items-center gap-3">
+                                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                      </svg>
+                                    </div>
+                                    <div>
+                                      <h3 className="text-base font-semibold text-gray-900">Which discipline needs the most work?</h3>
+                                      <p className="text-sm text-gray-600">
+                                        {(() => {
+                                          const disciplineMap: { [key: string]: string } = {
+                                            'swimming': 'Swimming - Need to improve technique and endurance',
+                                            'cycling': 'Cycling - Want to build bike fitness and power',
+                                            'running': 'Running - Need to work on run endurance',
+                                            'transitions': 'Transitions - Want to improve T1 and T2 speed',
+                                            'all': 'All Equally - Balanced improvement across all three'
+                                          };
+                                          return disciplineMap[answers.activitySpecific?.weakestDiscipline || ''] || answers.activitySpecific?.weakestDiscipline;
+                                        })()}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div className="text-gray-400 text-sm">Click to change</div>
+                                </div>
+                              </div>
+                            ) : (
+                              /* Expanded selection section */
+                              <div>
+                                <label className="block text-base font-medium text-gray-900 mb-3">Which discipline needs the most work?</label>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  {[
+                                    { id: 'swimming', name: 'Swimming', description: 'Need to improve technique and endurance', icon: '🏊‍♂️' },
+                                    { id: 'cycling', name: 'Cycling', description: 'Want to build bike fitness and power', icon: '🚴‍♂️' },
+                                    { id: 'running', name: 'Running', description: 'Need to work on run endurance', icon: '🏃‍♂️' },
+                                    { id: 'transitions', name: 'Transitions', description: 'Want to improve T1 and T2 speed', icon: '⚡' },
+                                    { id: 'all', name: 'All Equally', description: 'Balanced improvement across all three', icon: '⚖️' }
+                                  ].map((discipline) => {
+                                    const isSelected = answers.activitySpecific?.weakestDiscipline === discipline.id;
+                                    return (
+                                      <button
+                                        key={discipline.id}
+                                        onClick={() => handleAnswer('activitySpecific', { 
+                                          ...answers.activitySpecific, 
+                                          weakestDiscipline: discipline.id 
+                                        })}
+                                        className={`bg-white rounded-xl py-4 px-4 text-left transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                                          isSelected 
+                                            ? 'border-2 border-blue-500 shadow-xl' 
+                                            : 'border border-gray-200 hover:border-gray-300'
+                                        }`}
+                                      >
+                                        <div className="text-2xl mb-3">{discipline.icon}</div>
+                                        <h3 className="text-base font-semibold text-gray-900 mb-1">{discipline.name}</h3>
+                                        <p className="text-sm text-gray-600">{discipline.description}</p>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
+
+                      {/* Completion message removed - users continue to AI chat for further personalization */}
                     </>
                   )}
 
-                  {/* Team Sports */}
-                  {selectedActivity === 'team-sports' && (
-                    <>
-                      <div>
-                        <label className="block text-base font-medium text-gray-900 mb-2">What's your current season status?</label>
-                        <div className="grid grid-cols-1 gap-3">
-                          {[
-                            { id: 'in-season', label: 'In-Season', description: 'Currently playing/competing regularly' },
-                            { id: 'off-season', label: 'Off-Season', description: 'Between seasons, building fitness' },
-                            { id: 'pre-season', label: 'Pre-Season', description: 'Preparing for upcoming season' },
-                            { id: 'recreational', label: 'Recreational', description: 'Playing casually year-round' }
-                          ].map((status) => (
-                            <button
-                              key={status.id}
-                              onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, seasonStatus: status.id })}
-                              className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                answers.activitySpecific?.seasonStatus === status.id
-                                  ? 'border-blue-500 bg-blue-50' 
-                                  : 'border-gray-200'
-                              }`}
-                            >
-                              <div className="font-medium text-gray-900">{status.label}</div>
-                              <div className="text-sm text-gray-600">{status.description}</div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {answers.activitySpecific?.seasonStatus && (
-                        <div>
-                          <label className="block text-base font-medium text-gray-900 mb-2">What's your primary focus?</label>
-                          <div className="grid grid-cols-1 gap-3">
-                            {[
-                              { id: 'injury-prevention', label: 'Injury Prevention', description: 'Strengthen weak areas and prevent common injuries' },
-                              { id: 'performance-conditioning', label: 'Performance Conditioning', description: 'Improve speed, agility, and sport-specific fitness' },
-                              { id: 'return-to-play', label: 'Return to Play', description: 'Recovering from injury and getting back to sport' },
-                              { id: 'general-fitness', label: 'General Fitness', description: 'Maintain overall fitness for recreational play' }
-                            ].map((focus) => (
-                              <button
-                                key={focus.id}
-                                onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, teamSportsFocus: focus.id })}
-                                className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                  answers.activitySpecific?.teamSportsFocus === focus.id
-                                    ? 'border-blue-500 bg-blue-50' 
-                                    : 'border-gray-200'
-                                }`}
-                              >
-                                <div className="font-medium text-gray-900">{focus.label}</div>
-                                <div className="text-sm text-gray-600">{focus.description}</div>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {answers.activitySpecific?.teamSportsFocus && (
-                        <div>
-                          <label className="block text-base font-medium text-gray-900 mb-2">How often do you currently practice/play?</label>
-                          <div className="grid grid-cols-1 gap-3">
-                            {[
-                              { id: 'daily', label: 'Daily', description: 'Training or playing every day' },
-                              { id: '4-6-times', label: '4-6 times per week', description: 'Regular training schedule' },
-                              { id: '2-3-times', label: '2-3 times per week', description: 'Moderate training frequency' },
-                              { id: '1-time', label: 'Once per week', description: 'Recreational or limited schedule' },
-                              { id: 'irregular', label: 'Irregular/Seasonal', description: 'Varies by season or availability' }
-                            ].map((frequency) => (
-                              <button
-                                key={frequency.id}
-                                onClick={() => handleAnswer('activitySpecific', { ...answers.activitySpecific, teamSportsFrequency: frequency.id })}
-                                className={`bg-white border rounded-lg p-3 text-left transition-all duration-200 hover:bg-gray-50 ${
-                                  answers.activitySpecific?.teamSportsFrequency === frequency.id
-                                    ? 'border-blue-500 bg-blue-50' 
-                                    : 'border-gray-200'
-                                }`}
-                              >
-                                <div className="font-medium text-gray-900">{frequency.label}</div>
-                                <div className="text-sm text-gray-600">{frequency.description}</div>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  {/* Add more activity-specific sections as needed */}
-                  {!['cardio-endurance', 'strength-power', 'mind-body', 'team-sports'].includes(answers.activity || '') && (
+                  {/* Default message for other activities or if no specific questions */}
+                  {!(answers.activity === 'cardio-endurance' && (answers.subcategory === 'triathlon' || answers.subcategory === 'ironman')) && (
                     <div className="text-center py-8">
-                      <p className="text-gray-600">Great choice! We'll create a personalized plan for your {getSelectedActivity()?.title} journey.</p>
+                      <p className="text-gray-600">Perfect! We have everything we need to create your personalized training program.</p>
                     </div>
                   )}
                 </div>
               )}
+                      </div>
             </div>
 
             {/* Navigation */}
-            <div className="flex gap-4 mt-auto">
-              {currentStep > 0 && (
-                <button
-                  onClick={handlePrevious}
-                  className="flex-1 py-3 px-6 bg-gray-100 text-gray-700 rounded-lg text-base font-medium hover:bg-gray-200 transition-colors duration-200"
-                >
-                  Back
-                </button>
-              )}
+          <div className="px-4 py-8 border-t border-gray-200">
+            <div className="flex justify-end">
               <button
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className="flex-1 py-3 px-6 bg-blue-500 text-white rounded-lg text-base font-medium hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200"
+                data-continue-button
+                className="py-3 px-8 text-white rounded-lg text-base font-medium disabled:opacity-40 disabled:cursor-not-allowed bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
               >
-                {currentStep === GOAL_FOCUSED_STEPS.length - 1 ? 'Complete Setup' : 'Continue'}
+                {currentStep === GOAL_FOCUSED_STEPS.length - 1 ? 'Let\'s Finalize Your Training Plan →' : 'Continue'}
               </button>
             </div>
           </div>
@@ -2318,22 +3197,35 @@ Maybe it's something energizing like dancing or running, something calming like 
       case 'subcategory-selection':
         // Allow proceeding if no subcategories exist or one is selected
         const selectedActivityData = getSelectedActivity();
+        
+        // Special handling for Multiple Activities - require at least one secondary activity
+        if (answers.activity === 'multiple-activities') {
+          return !!(answers.secondaryActivities && answers.secondaryActivities.length > 0);
+        }
+        
         return !selectedActivityData?.subcategories?.length || !!answers.subcategory;
       case 'demographics':
-        const hasHeight = answers.units === 'imperial' 
-          ? !!(answers.heightFeet && answers.heightInches)
-          : !!answers.heightCm;
-        return !!(answers.age && answers.gender && answers.units && hasHeight);
-      case 'fitness-level':
+        // Only require age and gender, height and units are optional
+        return !!(answers.age && answers.gender);
+      case 'experience-level':
         return !!answers.fitnessLevel;
-      case 'time-availability':
-        return !!(answers.timeCommitment && answers.daysPerWeek);
-      case 'equipment':
-        return true; // Equipment is optional
-      case 'goals':
+      case 'current-status':
+        return !!answers.currentStatus;
+      case 'time-commitment':
+        return !!(answers.sessionLength && answers.daysPerWeek);
+      case 'equipment-access':
+        // Require at least one equipment selection
+        return !!(answers.equipment && answers.equipment.length > 0);
+      case 'primary-goal':
         return !!answers.goal;
       case 'activity-specific':
-        return true; // Activity-specific questions are optional for now
+        // For triathlon/ironman, require the key selections
+        if (answers.activity === 'cardio-endurance' && (answers.subcategory === 'triathlon' || answers.subcategory === 'ironman')) {
+          return !!(answers.activitySpecific?.triExperience && 
+                   answers.activitySpecific?.triathlonDistance && 
+                   answers.activitySpecific?.weakestDiscipline);
+        }
+        return true; // Activity-specific questions are optional for other activities
       default:
         return true;
     }
